@@ -1,0 +1,28 @@
+# Everything a running instance stores: the SQLite DB (mail, pages, vectors), logs, models, settings, secrets
+data/
+data_*/
+*.sqlite3
+*.sqlite3-*
+settings.local.yaml
+.env
+company_adapter.py
+!tools/company_adapter.example.py
+
+# Environments and builds
+.venv/
+.venv-*/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+frontend/node_modules/
+dist/
+dist_package.log
+testdata/gen_content.log
+# written per machine by install.bat / setup.bat / patches
+MANIFEST.json
+backups/
+llmwiki/BUILD.json
+
+# The built frontend IS committed (frontend/dist) so the company PCs never need Node
+!frontend/dist/

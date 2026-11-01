@@ -1,0 +1,86 @@
+Message-ID: <tms_upgrade.t2.m10.f47a6b70ed@corp-europe.example>
+Date: Mon, 26 Oct 2026 10:25:00 +0100
+From: "Tom Hendriks" <t.hendriks@corp-europe.example>
+To: "RouteWise Support" <routewise@routewise.example>
+Cc: "Pieter Bakker" <p.bakker@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: TMS 9.2 go-live - status message times off by one hour
+In-Reply-To: <tms_upgrade.t2.m9.307e97d815@corp-europe.example>
+References: <tms_upgrade.t2.m9.307e97d815@corp-europe.example>
+Thread-Index: Ad1lK9+Tc17AZiJVylRn5W5qWB+1ZuOHWj79
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============1575061335889903982=="
+
+--===============1575061335889903982==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Production is live on 9.2.0.3, thanks for the support over the weekend. We ha=
+ve one issue: timestamps in the outgoing status messages are shifted by one h=
+our since the clock change on 25 Oct. Example: a pickup planned 08:00 local i=
+s sent as 07:00. Ticket RW-48302, priority high because carriers use these ti=
+mes for slot planning. Can you provide a hotfix today?
+
+Kind regards,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 251 6464
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Pieter Bakker <p.bakker@corp-europe.example>
+Sent: Monday, 26 October 2026 07:50
+To: Tom Hendriks
+Subject: TMS 9.2 go-live - status message times off by one hour
+
+The upgrade went through: smoke tests were green on Saturday evening, so we t=
+ook the go decision at 22:00 and the system was back on Sunday at 11:30. The =
+booking bot is running again. This morning I see one issue: the pickup and de=
+livery times in the status messages to the carriers are one hour off. I think=
+ it is related to the clock change on Sunday 25 Oct, as timestamps before 03:=
+00 are fine. Planners at Felixstowe noticed it first. Can you raise this with=
+ RouteWise as priority?
+
+Kind regards,
+Pieter Bakker
+RPA and IT developer
+Corp Europe B.V. | Rotterdam
+T +31 10 878 4475
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============1575061335889903982==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Production is live on 9.2.0.3, thanks for the support over the=
+ weekend. We have one issue: timestamps in the outgoing status messages are s=
+hifted by one hour since the clock change on 25 Oct. Example: a pickup planne=
+d 08:00 local is sent as 07:00. Ticket RW-48302, priority high because carrie=
+rs use these times for slot planning. Can you provide a hotfix today?</p><p>K=
+ind regards,<br>Tom Hendriks<br>Transport planner<br>Corp Europe B.V. | Rotte=
+rdam<br>T +31 10 251 6464<br><br>This e-mail and any attachments are confiden=
+tial and intended solely for the addressee. If you received it in error, plea=
+se delete it.</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;pad=
+ding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Pieter Bakker &lt;p.bakker@corp-europ=
+e.example&gt;<br><b>Sent:</b> Monday, 26 October 2026 07:50<br><b>To:</b> Tom=
+ Hendriks<br><b>Cc:</b> DL CT<br><b>Subject:</b> TMS 9.2 go-live - status mes=
+sage times off by one hour</p></div><p>The upgrade went through: smoke tests =
+were green on Saturday evening, so we took the go decision at 22:00 and the s=
+ystem was back on Sunday at 11:30. The booking bot is running again. This mor=
+ning I see one issue: the pickup and delivery times in the status messages to=
+ the carriers are one hour off. I think it is related to the clock change on =
+Sunday 25 Oct, as timestamps before 03:00 are fine. Planners at Felixstowe no=
+ticed it first. Can you raise this with RouteWise as priority?</p><p>Kind reg=
+ards,<br>Pieter Bakker<br>RPA and IT developer<br>Corp Europe B.V. | Rotterda=
+m<br>T +31 10 878 4475<br><br>This e-mail and any attachments are confidentia=
+l and intended solely for the addressee. If you received it in error, please =
+delete it.</p></body></html>
+
+--===============1575061335889903982==--

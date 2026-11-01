@@ -1,0 +1,127 @@
+Message-ID: <ewm_rotterdam.t1.m3.f2e4dfc0e8@corp-europe.example>
+Date: Tue, 22 Sep 2026 10:20:00 +0200
+From: "Hanna Schmidt" <h.schmidt@corp-europe.example>
+To: "Ruud Jansen" <r.jansen@corp-europe.example>
+Cc: "Sofie Peeters" <s.peeters@corp-europe.example>,
+ "Lukas Becker" <l.becker@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: Rotterdam DC EWM go-live: cutover and hypercare
+In-Reply-To: <ewm_rotterdam.t1.m2.6801fb16f6@corp-europe.example>
+References: <ewm_rotterdam.t1.m1.be61a86dd4@corp-europe.example>
+ <ewm_rotterdam.t1.m2.6801fb16f6@corp-europe.example>
+Thread-Index: Ad1KayjzL+eLBoUDym4gsn7p8PRZLlADb9UAt7/KTUk=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============9081643248117236739=="
+
+--===============9081643248117236739==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Good point, and no. My proposal is to freeze wave planning until 17 Nov. Unti=
+l then we release waves manually, with the same cut-off times as today (10:00=
+ and 14:00).
+
+The reason is the customs go-live. It changes the delivery block logic for ex=
+port deliveries. If we change waves and customs checks at the same time and s=
+omething breaks, we will not know which change caused it. So wave templates s=
+tay as they are, and we change them only after 17 Nov.
+
+Regards,
+Hanna Schmidt
+EWM project lead (Rotterdam and Venlo rollouts)
+Corp Europe B.V. | Rotterdam
+T +31 10 615 9977
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Ruud Jansen <r.jansen@corp-europe.example>
+Sent: Tuesday, 22 September 2026 08:45
+To: Hanna Schmidt
+Subject: RE: Rotterdam DC EWM go-live: cutover and hypercare
+
+Shift leaders can attend, no problem. One question: what happens with wave pl=
+anning? The Dutch customs go-live is 17 Nov and the outbound waves will chang=
+e with it. Do we really want to start wave planning in EWM in week 1?
+
+Thanks,
+Ruud Jansen
+Logistics manager Rotterdam, owner of the customs migration project
+Corp Europe B.V. | Rotterdam
+T +31 10 893 3851
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Hanna Schmidt <h.schmidt@corp-europe.example>
+Sent: Monday, 21 September 2026 09:10
+To: Ruud Jansen
+Subject: Rotterdam DC EWM go-live: cutover and hypercare
+
+Cutover plan for Rotterdam is final. Legacy WM is frozen on Friday 2 Oct at 1=
+8:00, physical count runs Saturday 3 Oct, and EWM go-live is Tuesday 6 Oct at=
+ 06:00 with the first shift. Hypercare runs until 30 Oct, with a daily 15-min=
+ute stand-up at 08:30 in the Rotterdam control room.
+
+For open warehouse tasks please use /SCWM/MON, not the old LT23 lists. Lukas,=
+ I need the supervisor and picker roles loaded by 30 Sep. Ruud, please confir=
+m that the Rotterdam shift leaders can attend the stand-up. The plan is attac=
+hed.
+
+Best regards,
+Hanna Schmidt
+EWM project lead (Rotterdam and Venlo rollouts)
+Corp Europe B.V. | Rotterdam
+T +31 10 396 7888
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============9081643248117236739==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Good point, and no. My proposal is to freeze wave planning unt=
+il 17 Nov. Until then we release waves manually, with the same cut-off times =
+as today (10:00 and 14:00).</p>
+<p>The reason is the customs go-live. It changes the delivery block logic for=
+ export deliveries. If we change waves and customs checks at the same time an=
+d something breaks, we will not know which change caused it. So wave template=
+s stay as they are, and we change them only after 17 Nov.</p><p>Regards,<br>H=
+anna Schmidt<br>EWM project lead (Rotterdam and Venlo rollouts)<br>Corp Europ=
+e B.V. | Rotterdam<br>T +31 10 615 9977<br><br>This e-mail and any attachment=
+s are confidential and intended solely for the addressee. If you received it =
+in error, please delete it.</p><div style=3D'border:none;border-top:solid #E1=
+E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Ruud Jansen &lt;r.janse=
+n@corp-europe.example&gt;<br><b>Sent:</b> Tuesday, 22 September 2026 08:45<br=
+><b>To:</b> Hanna Schmidt<br><b>Cc:</b> Sofie Peeters; Lukas Becker; DL CT<br=
+><b>Subject:</b> RE: Rotterdam DC EWM go-live: cutover and hypercare</p></div=
+><p>Shift leaders can attend, no problem. One question: what happens with wav=
+e planning? The Dutch customs go-live is 17 Nov and the outbound waves will c=
+hange with it. Do we really want to start wave planning in EWM in week 1?</p>=
+<p>Thanks,<br>Ruud Jansen<br>Logistics manager Rotterdam, owner of the custom=
+s migration project<br>Corp Europe B.V. | Rotterdam<br>T +31 10 893 3851<br><=
+br>This e-mail and any attachments are confidential and intended solely for t=
+he addressee. If you received it in error, please delete it.</p><div style=3D=
+'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>=
+From:</b> Hanna Schmidt &lt;h.schmidt@corp-europe.example&gt;<br><b>Sent:</b>=
+ Monday, 21 September 2026 09:10<br><b>To:</b> Ruud Jansen<br><b>Cc:</b> Sofi=
+e Peeters; Lukas Becker; DL CT<br><b>Subject:</b> Rotterdam DC EWM go-live: c=
+utover and hypercare</p></div><p>Cutover plan for Rotterdam is final. Legacy =
+WM is frozen on Friday 2 Oct at 18:00, physical count runs Saturday 3 Oct, an=
+d EWM go-live is Tuesday 6 Oct at 06:00 with the first shift. Hypercare runs =
+until 30 Oct, with a daily 15-minute stand-up at 08:30 in the Rotterdam contr=
+ol room.</p>
+<p>For open warehouse tasks please use /SCWM/MON, not the old LT23 lists. Luk=
+as, I need the supervisor and picker roles loaded by 30 Sep. Ruud, please con=
+firm that the Rotterdam shift leaders can attend the stand-up. The plan is at=
+tached.</p><p>Best regards,<br>Hanna Schmidt<br>EWM project lead (Rotterdam a=
+nd Venlo rollouts)<br>Corp Europe B.V. | Rotterdam<br>T +31 10 396 7888<br><b=
+r>This e-mail and any attachments are confidential and intended solely for th=
+e addressee. If you received it in error, please delete it.</p></body></html>
+
+--===============9081643248117236739==--

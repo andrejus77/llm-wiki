@@ -1,0 +1,15 @@
+Message-ID: <noise.sap-batch.202609220605.6295@corp-europe.example>
+Date: Tue, 22 Sep 2026 06:05:00 +0200
+From: "SAP Batch" <sap-batch@corp-europe.example>
+To: dl-ct@corp-europe.example
+Subject: Job ZLE_DELIVERY_MONITOR finished 22.09.2026
+X-Mailer: SAP NetWeaver 7.5
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+Job ZLE_DELIVERY_MONITOR (step 1) finished.
+Runtime: 98 s
+Deliveries checked: 1886
+Errors: 2
+Spool list attached.

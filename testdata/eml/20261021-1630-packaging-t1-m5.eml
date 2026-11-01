@@ -1,0 +1,460 @@
+Message-ID: <packaging.t1.m5.4d70943676@corp-europe.example>
+Date: Wed, 21 Oct 2026 16:30:00 +0200
+From: "Daan Visser" <d.visser@corp-europe.example>
+To: "Lukas Becker" <l.becker@corp-europe.example>
+Cc: "Sofie Peeters" <s.peeters@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: New carton sizes S2 / M3 / L4 from 2 Nov - master data and EWM
+In-Reply-To: <packaging.t1.m4.c40e401016@corp-europe.example>
+References: <packaging.t1.m1.a564164ff0@corp-europe.example>
+ <packaging.t1.m2.7e514c98df@corp-europe.example>
+ <packaging.t1.m3.2599e755e8@corp-europe.example>
+ <packaging.t1.m4.c40e401016@corp-europe.example>
+Thread-Index: Ad1haKcpMFeVGQsClQYqoD+kZQvtijdvhexD+BivycoozQOglqBKQ6nN
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============4428803535297544002=="
+
+--===============4428803535297544002==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Lukas, no, the 312 is all sites, not only Antwerp. Rotterdam and Venlo use th=
+e same materials, so your instructions apply there as well. No separate check=
+ needed.
+
+Status: the MM02 update is finished for all 312 materials. 298 went through i=
+n the first run. 14 were blocked because they were locked by a batch job; I r=
+epeated those after the job ended and they are fine now. Screenshot of the la=
+st one is below.
+
+Thanks,
+Daan Visser
+Master data specialist
+Corp Europe B.V. | Rotterdam
+T +31 10 272 4824
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Lukas Becker <l.becker@corp-europe.example>
+Sent: Monday, 19 October 2026 14:10
+To: Daan Visser
+Subject: RE: New carton sizes S2 / M3 / L4 from 2 Nov - master data and EWM
+
+Daan, the packaging instructions in EWM are adjusted for S2, M3 and L4 in the=
+ quality system. I made them valid from 2 Nov. The old instructions for S1, M=
+2 and L3 stay active in parallel, so Sofie's team can keep packing with the o=
+ld cartons until they are gone. I will close them when she tells me the stock=
+ is zero.
+
+One question: I assumed your 312 materials are only the ones shipped from Ant=
+werp. Do they include Rotterdam and Venlo? If not, I need to check the instru=
+ctions for those sites too.
+
+Thanks,
+Lukas Becker
+SAP key user SD/LE
+Corp Europe B.V. | Rotterdam
+T +31 10 498 1534
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Daan Visser <d.visser@corp-europe.example>
+Sent: Thursday, 15 October 2026 08:45
+To: Sofie Peeters
+Subject: RE: New carton sizes S2 / M3 / L4 from 2 Nov - master data and EWM
+
+No need to scrap anything, Sofie. Decision: the old cartons are used up first=
+. 2 Nov is the date from which S2, M3 and L4 are the standard in the master d=
+ata, but Antwerp keeps packing into S1, M2 and L3 until the stock is empty. N=
+othing goes back to the supplier.
+
+The first delivery of new cartons for Antwerp is planned for Thu 29 Oct, so p=
+lease keep bay 14 free from that day. Once an old size is finished, switch th=
+at size to the new one.
+
+For reference, the new sizes (internal dimensions):
+
+New size | Replaces | Internal size (mm)
+S2 | S1 | 300 x 200 x 150
+M3 | M2 | 400 x 300 x 200
+L4 | L3 | 600 x 400 x 300
+
+Best regards,
+Daan Visser
+Master data specialist
+Corp Europe B.V. | Rotterdam
+T +31 10 765 2229
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Sofie Peeters <s.peeters@corp-europe.example>
+Sent: Wednesday, 14 October 2026 11:05
+To: Daan Visser
+Subject: RE: New carton sizes S2 / M3 / L4 from 2 Nov - master data and EWM
+
+Daan, counted this morning in Antwerp: S1 =3D 4,200 pcs, M2 =3D 2,800 pcs, L3=
+ =3D 1,500 pcs.
+
+My question: do we have to stop using them on 2 Nov? If yes, I need to arrang=
+e to send the rest back or scrap it, and that is a lot of cartons. At the cur=
+rent pick volume S1 lasts about 3 weeks after 2 Nov, L3 even longer.
+
+Also, when do the new cartons arrive? I need floor space in bay 14 before the=
+y come.
+
+Regards,
+Sofie Peeters
+Warehouse supervisor Antwerp
+Corp Europe B.V. | Rotterdam
+T +31 10 876 2330
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Daan Visser <d.visser@corp-europe.example>
+Sent: Tuesday, 13 October 2026 09:20
+To: Sofie Peeters
+Subject: New carton sizes S2 / M3 / L4 from 2 Nov - master data and EWM
+
+Sofie, Lukas - heads-up on the packaging change. From Monday 2 Nov we switch =
+to three new carton sizes: S2, M3 and L4. They replace the old S1, M2 and L3.
+
+On my side I will update the packaging data in the material master with MM02.=
+ By my count that is 312 materials. I plan to have this done by Wed 21 Oct, s=
+o there is a buffer before go-live.
+
+Lukas, the packaging instructions in EWM will need adjusting as well. Can you=
+ take that?
+
+Sofie, can you send me the current stock of the old cartons in Antwerp? I wan=
+t to know if we need to do anything special with the leftovers before 2 Nov.
+
+Best regards,
+Daan Visser
+Master data specialist
+Corp Europe B.V. | Rotterdam
+T +31 10 840 4457
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============4428803535297544002==
+MIME-Version: 1.0
+Content-Type: multipart/related;
+ boundary="===============9151430085068069297=="
+
+--===============9151430085068069297==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<html><body><p>Lukas, no, the 312 is all sites, not only Antwerp. Rotterdam a=
+nd Venlo use the same materials, so your instructions apply there as well. No=
+ separate check needed.</p>
+<p>Status: the MM02 update is finished for all 312 materials. 298 went throug=
+h in the first run. 14 were blocked because they were locked by a batch job; =
+I repeated those after the job ended and they are fine now. Screenshot of the=
+ last one is below.</p><p><img src=3D'cid:img4.370e7ca8@corp' alt=3D'MM02 - C=
+hange Material (Packaging data)' width=3D'600'></p><p>Thanks,<br>Daan Visser<=
+br>Master data specialist<br>Corp Europe B.V. | Rotterdam<br>T +31 10 272 482=
+4<br><br>This e-mail and any attachments are confidential and intended solely=
+ for the addressee. If you received it in error, please delete it.</p><div st=
+yle=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'>=
+<p><b>From:</b> Lukas Becker &lt;l.becker@corp-europe.example&gt;<br><b>Sent:=
+</b> Monday, 19 October 2026 14:10<br><b>To:</b> Daan Visser<br><b>Cc:</b> So=
+fie Peeters; DL CT<br><b>Subject:</b> RE: New carton sizes S2 / M3 / L4 from =
+2 Nov - master data and EWM</p></div><p>Daan, the packaging instructions in E=
+WM are adjusted for S2, M3 and L4 in the quality system. I made them valid fr=
+om 2 Nov. The old instructions for S1, M2 and L3 stay active in parallel, so =
+Sofie&#x27;s team can keep packing with the old cartons until they are gone. =
+I will close them when she tells me the stock is zero.</p>
+<p>One question: I assumed your 312 materials are only the ones shipped from =
+Antwerp. Do they include Rotterdam and Venlo? If not, I need to check the ins=
+tructions for those sites too.</p><p>Thanks,<br>Lukas Becker<br>SAP key user =
+SD/LE<br>Corp Europe B.V. | Rotterdam<br>T +31 10 498 1534<br><br>This e-mail=
+ and any attachments are confidential and intended solely for the addressee. =
+If you received it in error, please delete it.</p><div style=3D'border:none;b=
+order-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Daan=
+ Visser &lt;d.visser@corp-europe.example&gt;<br><b>Sent:</b> Thursday, 15 Oct=
+ober 2026 08:45<br><b>To:</b> Sofie Peeters<br><b>Cc:</b> Lukas Becker; DL CT=
+<br><b>Subject:</b> RE: New carton sizes S2 / M3 / L4 from 2 Nov - master dat=
+a and EWM</p></div><p>No need to scrap anything, Sofie. Decision: the old car=
+tons are used up first. 2 Nov is the date from which S2, M3 and L4 are the st=
+andard in the master data, but Antwerp keeps packing into S1, M2 and L3 until=
+ the stock is empty. Nothing goes back to the supplier.</p>
+<p>The first delivery of new cartons for Antwerp is planned for Thu 29 Oct, s=
+o please keep bay 14 free from that day. Once an old size is finished, switch=
+ that size to the new one.</p>
+<p>For reference, the new sizes (internal dimensions):</p><table style=3D'bor=
+der-collapse:collapse;font-size:10pt'><tr><th style=3D'border:1px solid #999;=
+padding:3px 6px'>New size</th><th style=3D'border:1px solid #999;padding:3px =
+6px'>Replaces</th><th style=3D'border:1px solid #999;padding:3px 6px'>Interna=
+l size (mm)</th></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>=
+S2</td><td style=3D'border:1px solid #999;padding:3px 6px'>S1</td><td style=
+=3D'border:1px solid #999;padding:3px 6px'>300 x 200 x 150</td></tr><tr><td s=
+tyle=3D'border:1px solid #999;padding:3px 6px'>M3</td><td style=3D'border:1px=
+ solid #999;padding:3px 6px'>M2</td><td style=3D'border:1px solid #999;paddin=
+g:3px 6px'>400 x 300 x 200</td></tr><tr><td style=3D'border:1px solid #999;pa=
+dding:3px 6px'>L4</td><td style=3D'border:1px solid #999;padding:3px 6px'>L3<=
+/td><td style=3D'border:1px solid #999;padding:3px 6px'>600 x 400 x 300</td><=
+/tr></table><p>Best regards,<br>Daan Visser<br>Master data specialist<br>Corp=
+ Europe B.V. | Rotterdam<br>T +31 10 765 2229<br><br>This e-mail and any atta=
+chments are confidential and intended solely for the addressee. If you receiv=
+ed it in error, please delete it.</p><div style=3D'border:none;border-top:sol=
+id #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Sofie Peeters &lt=
+;s.peeters@corp-europe.example&gt;<br><b>Sent:</b> Wednesday, 14 October 2026=
+ 11:05<br><b>To:</b> Daan Visser<br><b>Cc:</b> Lukas Becker; DL CT<br><b>Subj=
+ect:</b> RE: New carton sizes S2 / M3 / L4 from 2 Nov - master data and EWM</=
+p></div><p>Daan, counted this morning in Antwerp: S1 =3D 4,200 pcs, M2 =3D 2,=
+800 pcs, L3 =3D 1,500 pcs.</p>
+<p>My question: do we have to stop using them on 2 Nov? If yes, I need to arr=
+ange to send the rest back or scrap it, and that is a lot of cartons. At the =
+current pick volume S1 lasts about 3 weeks after 2 Nov, L3 even longer.</p>
+<p>Also, when do the new cartons arrive? I need floor space in bay 14 before =
+they come.</p><p>Regards,<br>Sofie Peeters<br>Warehouse supervisor Antwerp<br=
+>Corp Europe B.V. | Rotterdam<br>T +31 10 876 2330<br><br>This e-mail and any=
+ attachments are confidential and intended solely for the addressee. If you r=
+eceived it in error, please delete it.</p><div style=3D'border:none;border-to=
+p:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Daan Visser =
+&lt;d.visser@corp-europe.example&gt;<br><b>Sent:</b> Tuesday, 13 October 2026=
+ 09:20<br><b>To:</b> Sofie Peeters<br><b>Cc:</b> Lukas Becker; DL CT<br><b>Su=
+bject:</b> New carton sizes S2 / M3 / L4 from 2 Nov - master data and EWM</p>=
+</div><p>Sofie, Lukas - heads-up on the packaging change. From Monday 2 Nov w=
+e switch to three new carton sizes: S2, M3 and L4. They replace the old S1, M=
+2 and L3.</p>
+<p>On my side I will update the packaging data in the material master with MM=
+02. By my count that is 312 materials. I plan to have this done by Wed 21 Oct=
+, so there is a buffer before go-live.</p>
+<p>Lukas, the packaging instructions in EWM will need adjusting as well. Can =
+you take that?</p>
+<p>Sofie, can you send me the current stock of the old cartons in Antwerp? I =
+want to know if we need to do anything special with the leftovers before 2 No=
+v.</p><p>Best regards,<br>Daan Visser<br>Master data specialist<br>Corp Europ=
+e B.V. | Rotterdam<br>T +31 10 840 4457<br><br>This e-mail and any attachment=
+s are confidential and intended solely for the addressee. If you received it =
+in error, please delete it.</p></body></html>
+
+--===============9151430085068069297==
+Content-Type: image/png
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="MM02 - Change Material (Packaging data).png"
+Content-ID: <img4.370e7ca8@corp>
+MIME-Version: 1.0
+
+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
+RK5CYII=
+
+--===============9151430085068069297==--
+
+--===============4428803535297544002==--

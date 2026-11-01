@@ -1,0 +1,11 @@
+Message-ID: <noise.approve.202609281553.5668@corp-europe.example>
+Date: Mon, 28 Sep 2026 15:53:00 +0200
+From: "SAP Workflow" <approve@corp-europe.example>
+To: dl-ct@corp-europe.example
+Subject: PO 4500200171 waiting for your approval
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
+
+Purchase order 4500200171 (value EUR 17,435) is waiting for your approval.
+Open the workflow inbox (SBWP) to approve or reject.

@@ -1,0 +1,88 @@
+Message-ID: <ewm_rotterdam.t1.m5.5a24c73e32@corp-europe.example>
+Date: Thu, 24 Sep 2026 09:30:00 +0200
+From: "Lukas Becker" <l.becker@corp-europe.example>
+To: "Hanna Schmidt" <h.schmidt@corp-europe.example>
+Cc: "Ruud Jansen" <r.jansen@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: Rotterdam DC EWM go-live: cutover and hypercare
+In-Reply-To: <ewm_rotterdam.t1.m1.be61a86dd4@corp-europe.example>
+References: <ewm_rotterdam.t1.m1.be61a86dd4@corp-europe.example>
+Thread-Index: Ad1L9oGjL+eLBoUDym4gsn7p8PRZLo5M3IJ5
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============4310692740077701409=="
+
+--===============4310692740077701409==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Status on users: 38 Rotterdam users are created (31 pickers, 5 supervisors, 2=
+ key users). The supervisor role does not contain the authorisation for /SCWM=
+/MON yet. It was missing from the template we copied from the Venlo test syst=
+em. I will fix it in a new transport and move it to production by Wednesday 3=
+0 Sep.
+
+Thanks,
+Lukas Becker
+SAP key user SD/LE
+Corp Europe B.V. | Rotterdam
+T +31 10 891 4501
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Hanna Schmidt <h.schmidt@corp-europe.example>
+Sent: Monday, 21 September 2026 09:10
+To: Ruud Jansen
+Subject: Rotterdam DC EWM go-live: cutover and hypercare
+
+Cutover plan for Rotterdam is final. Legacy WM is frozen on Friday 2 Oct at 1=
+8:00, physical count runs Saturday 3 Oct, and EWM go-live is Tuesday 6 Oct at=
+ 06:00 with the first shift. Hypercare runs until 30 Oct, with a daily 15-min=
+ute stand-up at 08:30 in the Rotterdam control room.
+
+For open warehouse tasks please use /SCWM/MON, not the old LT23 lists. Lukas,=
+ I need the supervisor and picker roles loaded by 30 Sep. Ruud, please confir=
+m that the Rotterdam shift leaders can attend the stand-up. The plan is attac=
+hed.
+
+Best regards,
+Hanna Schmidt
+EWM project lead (Rotterdam and Venlo rollouts)
+Corp Europe B.V. | Rotterdam
+T +31 10 396 7888
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============4310692740077701409==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Status on users: 38 Rotterdam users are created (31 pickers, 5=
+ supervisors, 2 key users). The supervisor role does not contain the authoris=
+ation for /SCWM/MON yet. It was missing from the template we copied from the =
+Venlo test system. I will fix it in a new transport and move it to production=
+ by Wednesday 30 Sep.</p><p>Thanks,<br>Lukas Becker<br>SAP key user SD/LE<br>=
+Corp Europe B.V. | Rotterdam<br>T +31 10 891 4501<br><br>This e-mail and any =
+attachments are confidential and intended solely for the addressee. If you re=
+ceived it in error, please delete it.</p><div style=3D'border:none;border-top=
+:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Hanna Schmidt=
+ &lt;h.schmidt@corp-europe.example&gt;<br><b>Sent:</b> Monday, 21 September 2=
+026 09:10<br><b>To:</b> Ruud Jansen<br><b>Cc:</b> Sofie Peeters; Lukas Becker=
+; DL CT<br><b>Subject:</b> Rotterdam DC EWM go-live: cutover and hypercare</p=
+></div><p>Cutover plan for Rotterdam is final. Legacy WM is frozen on Friday =
+2 Oct at 18:00, physical count runs Saturday 3 Oct, and EWM go-live is Tuesda=
+y 6 Oct at 06:00 with the first shift. Hypercare runs until 30 Oct, with a da=
+ily 15-minute stand-up at 08:30 in the Rotterdam control room.</p>
+<p>For open warehouse tasks please use /SCWM/MON, not the old LT23 lists. Luk=
+as, I need the supervisor and picker roles loaded by 30 Sep. Ruud, please con=
+firm that the Rotterdam shift leaders can attend the stand-up. The plan is at=
+tached.</p><p>Best regards,<br>Hanna Schmidt<br>EWM project lead (Rotterdam a=
+nd Venlo rollouts)<br>Corp Europe B.V. | Rotterdam<br>T +31 10 396 7888<br><b=
+r>This e-mail and any attachments are confidential and intended solely for th=
+e addressee. If you received it in error, please delete it.</p></body></html>
+
+--===============4310692740077701409==--

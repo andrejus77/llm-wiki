@@ -1,0 +1,72 @@
+Message-ID: <authorizations.t1.m1.401ccccc6a@corp-europe.example>
+Date: Mon, 19 Oct 2026 09:20:00 +0200
+From: "Tom Hendriks" <t.hendriks@corp-europe.example>
+To: "Lukas Becker" <l.becker@corp-europe.example>
+Cc: "DL CT" <dl-ct@corp-europe.example>
+Subject: SAP roles for transport planning - REQ0048213
+Thread-Index: Ad1fmkBWAIvqFwR3B6KH+5bc+U1pxQ==
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============3449158769869832781=="
+
+--===============3449158769869832781==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Lukas, I started as transport planner today and my SAP user only has the b=
+asic display roles. I raised request REQ0048213 in the IT portal a few minute=
+s ago. It is waiting for your approval as role owner.
+
+What I need for planning the daily outbound runs:
+- VT01N / VT02N to create and change shipments
+- VL06O to monitor deliveries that are due for shipping
+
+I put Rotterdam as the location in the request. Can you approve it today, or =
+tell me if something is missing? I would like to start planning on my own by =
+the end of the week.
+
+T-code | Purpose | Access needed
+VT01N | Create shipment | Change
+VT02N | Change shipment | Change
+VL06O | Delivery monitoring (outbound) | Display
+
+Kind regards,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 745 3060
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============3449158769869832781==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Hi Lukas, I started as transport planner today and my SAP user=
+ only has the basic display roles. I raised request REQ0048213 in the IT port=
+al a few minutes ago. It is waiting for your approval as role owner.</p>
+<p>What I need for planning the daily outbound runs:<br>- VT01N / VT02N to cr=
+eate and change shipments<br>- VL06O to monitor deliveries that are due for s=
+hipping</p>
+<p>I put Rotterdam as the location in the request. Can you approve it today, =
+or tell me if something is missing? I would like to start planning on my own =
+by the end of the week.</p><table style=3D'border-collapse:collapse;font-size=
+:10pt'><tr><th style=3D'border:1px solid #999;padding:3px 6px'>T-code</th><th=
+ style=3D'border:1px solid #999;padding:3px 6px'>Purpose</th><th style=3D'bor=
+der:1px solid #999;padding:3px 6px'>Access needed</th></tr><tr><td style=3D'b=
+order:1px solid #999;padding:3px 6px'>VT01N</td><td style=3D'border:1px solid=
+ #999;padding:3px 6px'>Create shipment</td><td style=3D'border:1px solid #999=
+;padding:3px 6px'>Change</td></tr><tr><td style=3D'border:1px solid #999;padd=
+ing:3px 6px'>VT02N</td><td style=3D'border:1px solid #999;padding:3px 6px'>Ch=
+ange shipment</td><td style=3D'border:1px solid #999;padding:3px 6px'>Change<=
+/td></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>VL06O</td><t=
+d style=3D'border:1px solid #999;padding:3px 6px'>Delivery monitoring (outbou=
+nd)</td><td style=3D'border:1px solid #999;padding:3px 6px'>Display</td></tr>=
+</table><p>Kind regards,<br>Tom Hendriks<br>Transport planner<br>Corp Europe =
+B.V. | Rotterdam<br>T +31 10 745 3060<br><br>This e-mail and any attachments =
+are confidential and intended solely for the addressee. If you received it in=
+ error, please delete it.</p></body></html>
+
+--===============3449158769869832781==--

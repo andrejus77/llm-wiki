@@ -1,0 +1,486 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "Gdansk warehouse lease - site selection",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-09-21 09:10",
+     "from": "kzielinska",
+     "to": [
+      "mdeboer"
+     ],
+     "cc": [
+      "erossi"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Mark, as discussed in the last staff call, our current Gdansk space is full and we cannot take on the extra Baltic volume from Q1 next year. I have shortlisted two sites for a new 12,000 m2 warehouse: Port Logistics Park (close to the container terminal) and Kowale (further out, newer building). Both can hand over on 1 February 2027.\n\nCan I get your OK to run a proper comparison (rent, docks, distance to port, fit-out) and bring you a recommendation by mid-October? I would ask Elena to handle the commercial side with both landlords, since she already knows the local agents.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-09-22 08:45",
+     "from": "mdeboer",
+     "to": [
+      "kzielinska"
+     ],
+     "cc": [
+      "erossi"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Approved, go ahead. Boundary conditions from my side: at least 12,000 m2, handover no later than 1 February 2027, and I want a decision before the end of October so legal has enough time before signing. Anything above 5 years fixed term needs my sign-off, so please keep the term at 5 years.\n\nElena, please take the lead on the commercial negotiation with both landlords. Katarzyna covers the operational side (docks, layout, access for trucks). Send me one combined comparison, not two separate mails.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-09-29 14:20",
+     "from": "erossi",
+     "to": [
+      "kzielinska"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Both landlords have sent their first offers, summary below and in the attached sheet. Monthly figures are for 12,000 m2, excluding VAT and service charge. Port Logistics Park is clearly more expensive per m2, Kowale cheaper. Both ask for a 3-month rent deposit. I have not yet asked for any rent-free period, I will do that after your site visits.",
+     "table": {
+      "header": [
+       "Item",
+       "Port Logistics Park",
+       "Kowale"
+      ],
+      "rows": [
+       [
+        "Rent per m2 per month",
+        "EUR 4.80",
+        "EUR 4.10"
+       ],
+       [
+        "Monthly rent (12,000 m2)",
+        "EUR 57,600",
+        "EUR 49,200"
+       ],
+       [
+        "Term",
+        "5 years",
+        "5 years"
+       ],
+       [
+        "Deposit",
+        "3 months",
+        "3 months"
+       ],
+       [
+        "Handover",
+        "1 Feb 2027",
+        "1 Feb 2027"
+       ]
+      ]
+     },
+     "attachment": {
+      "kind": "xlsx",
+      "name": "Gdansk_offer_comparison_v1.xlsx",
+      "rows": [
+       [
+        "Item",
+        "Port Logistics Park",
+        "Kowale"
+       ],
+       [
+        "Rent EUR/m2/month",
+        "4.80",
+        "4.10"
+       ],
+       [
+        "Monthly rent EUR",
+        "57600",
+        "49200"
+       ],
+       [
+        "Annual rent EUR",
+        "691200",
+        "590400"
+       ],
+       [
+        "Deposit (3 months) EUR",
+        "172800",
+        "147600"
+       ]
+      ]
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m4",
+     "date": "2026-10-02 16:05",
+     "from": "kzielinska",
+     "to": [
+      "erossi"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "I visited both sites on Wednesday and Thursday. Operational findings:\n\nPort Logistics Park: 10 dock doors, clear height 9 m, about 6 km from the container terminal. Truck yard is tight, two trailers waiting at the same time block the entrance.\n\nKowale: 14 dock doors, clear height 10.5 m, large yard, but about 28 km from the port. Roughly 25 minutes longer drive per trip according to my test run at 10:00.\n\nFor our volumes the extra docks and height at Kowale are a real plus. The distance is the only real downside. Elena, could you ask Kowale for a rent-free period during fit-out? We need time for racking and the WMS setup after handover.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-10-07 11:30",
+     "from": "erossi",
+     "to": [
+      "kzielinska"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Update from the negotiations. Kowale agreed to 1 month rent-free from handover, so the first rent payment falls on 1 March 2027 instead of 1 February. Rent stays at EUR 4.10/m2.\n\nI also went back to Port Logistics Park and asked them to come down on price. They refused: EUR 4.80/m2 is their final number, they say they have other interested tenants for the same building. No rent-free period offered either.\n\nOne open point on the Kowale side: they want the deposit before signing, I will try to move it to 14 days after signing.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m6",
+     "date": "2026-10-08 08:20",
+     "from": "kzielinska",
+     "to": [
+      "erossi"
+     ],
+     "cc": [],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "Thanks Elena, good result on the rent-free month. I will check with Tom what the longer drive means for our port shuttles and come back with a cost estimate for the comparison.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m7",
+     "date": "2026-10-14 15:40",
+     "from": "kzielinska",
+     "to": [
+      "mdeboer"
+     ],
+     "cc": [
+      "erossi"
+     ],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Mark, here is the combined comparison. I recommend Kowale.\n\nKowale is EUR 8,400 per month cheaper in rent (EUR 100,800 per year). The longer distance adds cost: Tom's estimate is about 25 port shuttle moves per week, each roughly EUR 14 more expensive, so around EUR 1,500 per month extra. Net saving is still about EUR 6,900 per month, around EUR 82,800 per year. On top of that Kowale gives us 14 docks instead of 10 and 10.5 m clear height instead of 9 m, plus 1 month rent-free.\n\nMain risk is the 28 km distance to the port.",
+     "table": {
+      "header": [
+       "Criterion",
+       "Port Logistics Park",
+       "Kowale"
+      ],
+      "rows": [
+       [
+        "Rent EUR/m2/month",
+        "4.80",
+        "4.10"
+       ],
+       [
+        "Dock doors",
+        "10",
+        "14"
+       ],
+       [
+        "Clear height",
+        "9 m",
+        "10.5 m"
+       ],
+       [
+        "Distance to port",
+        "6 km",
+        "28 km"
+       ],
+       [
+        "Rent-free",
+        "none",
+        "1 month"
+       ],
+       [
+        "Extra shuttle cost",
+        "0",
+        "approx. EUR 1,500/month"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m8",
+     "date": "2026-10-15 09:05",
+     "from": "mdeboer",
+     "to": [
+      "kzielinska"
+     ],
+     "cc": [
+      "erossi"
+     ],
+     "reply_to": "m7",
+     "forward": false,
+     "body": "Thanks, clear overview. My concern is service, not cost. Do the Baltic customers lose anything with 25 minutes more driving? Do we still make the next-day delivery promise, and does the extra distance create problems with driver hours on the late departures?\n\nAlso, what happens if the Kowale deposit timing cannot be agreed? I do not want to carry a surprise cash-out before the signing.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m9",
+     "date": "2026-10-19 10:50",
+     "from": "kzielinska",
+     "to": [
+      "mdeboer"
+     ],
+     "cc": [
+      "erossi"
+     ],
+     "reply_to": "m8",
+     "forward": false,
+     "body": "Checked with Tom. Service: our cut-off for next-day delivery to the Baltic customers is 16:00, and with the extra 25 minutes the last shuttle from the port still arrives before 14:30, so the promise is not at risk. Driver hours: the longest late departure currently uses 7h20 of driving, with Kowale it becomes about 7h45, still below the 9 hour daily limit.\n\nOn the deposit, Elena has the answer, but as far as I know Kowale has not yet confirmed the 14 days after signing.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m10",
+     "date": "2026-10-21 17:10",
+     "from": "mdeboer",
+     "to": [
+      "kzielinska",
+      "erossi"
+     ],
+     "cc": [],
+     "reply_to": "m9",
+     "forward": false,
+     "body": "Decision: we go with Kowale. The lower rent (EUR 4.10 versus EUR 4.80 per m2) outweighs the longer drive, and the service impact is small according to Katarzyna's check. Lease start is 1 February 2027, 12,000 m2, 5 years fixed.\n\nElena, please send the draft lease to Legal this week. Signing is planned for 20 November, after the legal review. Please make the deposit payable 14 days after signing a condition, and tell me if Kowale refuses. Katarzyna, start preparing the layout and the racking requirements.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m11",
+     "date": "2026-10-23 13:25",
+     "from": "erossi",
+     "to": [
+      "mdeboer",
+      "kzielinska"
+     ],
+     "cc": [],
+     "reply_to": "m10",
+     "forward": false,
+     "body": "Status: I informed Kowale of our decision yesterday and sent the draft lease to Legal this morning. Kowale accepted the deposit 14 days after signing: EUR 147,600 (3 x EUR 49,200), so due around 4 December if we sign on 20 November.\n\nI have also told Port Logistics Park that we will not proceed, they were polite about it. Legal expects to finish the review by 13 November, which leaves a week buffer before signing.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m12",
+     "date": "2026-10-29 08:35",
+     "from": "kzielinska",
+     "to": [
+      "erossi"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": "m11",
+     "forward": false,
+     "body": "Thanks Elena, good to have the deposit date fixed. I will ask for racking quotes now, so we can order right after signing and be ready for the fit-out in February.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "Corp Europe will lease a 12,000 m2 warehouse in Gdansk from 1 February 2027 to serve Baltic customers.",
+   "emails": [
+    "m1",
+    "m2",
+    "m10"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "Two sites were compared: Port Logistics Park and Kowale.",
+   "emails": [
+    "m1",
+    "m3"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "Port Logistics Park asked EUR 4.80/m2 per month (EUR 57,600 per month) and refused to lower it; Kowale asked EUR 4.10/m2 (EUR 49,200 per month).",
+   "emails": [
+    "m3",
+    "m5"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "Kowale has 14 dock doors and 10.5 m clear height, versus 10 doors and 9 m at Port Logistics Park.",
+   "emails": [
+    "m4",
+    "m7"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "Kowale is about 28 km from the port (about 25 minutes longer drive); Port Logistics Park is about 6 km away.",
+   "emails": [
+    "m4",
+    "m7"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "Kowale agreed to 1 month rent-free from handover, so first rent is due 1 March 2027.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "Extra port shuttle cost for Kowale is estimated at about EUR 1,500 per month (25 moves per week, about EUR 14 more each), leaving a net saving of about EUR 6,900 per month.",
+   "emails": [
+    "m7"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "Mark de Boer decided on 21 October to choose Kowale because the lower rent outweighs the longer drive.",
+   "emails": [
+    "m10"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "Lease term is 5 years fixed; anything longer needs Mark de Boer's sign-off.",
+   "emails": [
+    "m2",
+    "m10"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "Lease signing is planned for 20 November 2026, after legal review.",
+   "emails": [
+    "m10",
+    "m11"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "Elena Rossi leads the commercial negotiation and sent the draft lease to Legal on 23 October; Legal expects to finish by 13 November.",
+   "emails": [
+    "m2",
+    "m11"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "Kowale accepted the deposit of EUR 147,600 (3 months rent) payable 14 days after signing, around 4 December.",
+   "emails": [
+    "m11"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "The next-day delivery cut-off to Baltic customers is 16:00 and the last shuttle still arrives before 14:30; the longest driver day rises from 7h20 to about 7h45, below the 9 hour limit.",
+   "emails": [
+    "m9"
+   ]
+  },
+  {
+   "id": "F14",
+   "text": "Katarzyna Zielinska is requesting racking quotes so she can order right after signing and be ready for fit-out in February.",
+   "emails": [
+    "m10",
+    "m12"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "Why was Kowale chosen over Port Logistics Park for the new Gdansk warehouse?",
+   "a": "Kowale has the lower rent (EUR 4.10 vs EUR 4.80 per m2), which outweighs the longer drive to the port; it also has more docks and a rent-free month.",
+   "facts": [
+    "F3",
+    "F8",
+    "F6"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "When is the Gdansk lease planned to be signed?",
+   "a": "20 November 2026, after legal review.",
+   "facts": [
+    "F10"
+   ],
+   "type": "when"
+  },
+  {
+   "q": "How much is the Kowale deposit and when is it due?",
+   "a": "EUR 147,600 (3 months rent), due 14 days after signing, around 4 December.",
+   "facts": [
+    "F12"
+   ],
+   "type": "fact"
+  },
+  {
+   "q": "Who negotiated the commercial terms with the Gdansk landlords?",
+   "a": "Elena Rossi (procurement buyer).",
+   "facts": [
+    "F11"
+   ],
+   "type": "who"
+  },
+  {
+   "q": "What is the net monthly saving of Kowale versus Port Logistics Park after extra shuttle costs, and what is the monthly rent difference behind it?",
+   "a": "Rent is EUR 8,400 per month lower; after about EUR 1,500 extra shuttle cost the net saving is about EUR 6,900 per month.",
+   "facts": [
+    "F3",
+    "F7"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "Did the longer drive to Kowale put the next-day delivery promise at risk?",
+   "a": "No. The last shuttle still arrives before 14:30 against the 16:00 cut-off, and driver hours stay below the 9 hour limit.",
+   "facts": [
+    "F13"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "How many employees will work at the new Gdansk warehouse?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "gdansk_lease",
+  "title": "New warehouse lease in Gdansk",
+  "level": "project",
+  "korean": false
+ }
+}

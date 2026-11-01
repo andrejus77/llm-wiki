@@ -1,0 +1,4 @@
+# Development and testing only (not packaged for the server).
+-r requirements.txt
+pytest>=8.0
+Pillow>=10.0

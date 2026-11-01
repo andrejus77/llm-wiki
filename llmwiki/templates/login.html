@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LLM Wiki · Sign in</title>
+<style>
+:root { --bg:#F2F5F8; --surface:#fff; --ink:#17202A; --muted:#5B6773; --line:#D8DFE6; --accent:#1D5BB8; }
+@media (prefers-color-scheme: dark) { :root { --bg:#0D1217; --surface:#141B23; --ink:#E2E8EE; --muted:#96A3B0; --line:#25303D; --accent:#78A9F3; } }
+body { background:var(--bg); color:var(--ink); font-family:system-ui,-apple-system,"Segoe UI",sans-serif; margin:0; display:grid; place-items:center; min-height:100vh; }
+form { background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:28px; width:min(360px, calc(100vw - 32px)); box-sizing:border-box; }
+h1 { margin:0 0 16px; font-size:1.3rem; } label { display:block; font-size:.85rem; color:var(--muted); margin:10px 0 4px; }
+input { width:100%; box-sizing:border-box; padding:8px 10px; border:1px solid var(--line); border-radius:6px; background:var(--bg); color:var(--ink); font:inherit; }
+button { margin-top:16px; width:100%; padding:9px; border:0; border-radius:6px; background:var(--accent); color:#fff; font:inherit; font-weight:600; cursor:pointer; }
+.err { color:#c0392b; font-size:.85rem; }
+</style></head>
+<body><form method="post">{% csrf_token %}
+<h1>LLM Wiki</h1>
+{% if form.errors %}<p class="err">Wrong user name or password.</p>{% endif %}
+<label for="id_username">User name</label><input id="id_username" name="username" autofocus required>
+<label for="id_password">Password</label><input id="id_password" name="password" type="password" required>
+<input type="hidden" name="next" value="{{ next }}">
+<button type="submit">Sign in</button>
+</form></body></html>

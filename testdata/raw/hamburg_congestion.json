@@ -1,0 +1,365 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "Hamburg terminal congestion - 6 containers affected",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-09-22 08:45",
+     "from": "hht",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [],
+     "reply_to": null,
+     "forward": false,
+     "body": "Customer advisory: yard utilisation at Hamburg is currently above 92% and still rising. Several vessel arrivals are delayed by 3-5 days because berth and yard capacity are tight. Import gate-out appointments are limited and we cannot guarantee same-day pick-up for containers discharged this week. We recommend you do not book truck slots until you receive a discharge confirmation from us. We will update you every Monday and Thursday.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-09-22 10:20",
+     "from": "thendriks",
+     "to": [
+      "hschmidt"
+     ],
+     "cc": [],
+     "reply_to": null,
+     "forward": false,
+     "body": "Hanna, heads-up: HHT Hamburg has yard utilisation above 92% and vessels are running 3-5 days late. I have 6 of our containers on the affected vessels. Four are for Venlo and two for Rotterdam. Do you have any stock that is critical for the EWM rollout? I need to know which ones to protect before I look at alternatives like Bremerhaven.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-09-23 08:50",
+     "from": "hschmidt",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Thanks Tom. Two of the Venlo containers are critical: MSKU4417302 and TGHU8820154. They hold the racking components and scanners for the EWM test area, and we need them in Venlo by 5 October at the latest for the cycle count preparation. The other four can slip a few days without problems. Rotterdam is not urgent.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m4",
+     "date": "2026-09-24 14:15",
+     "from": "thendriks",
+     "to": [
+      "hht"
+     ],
+     "cc": [],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Can you give me a realistic gate-out date for our 6 containers on the vessels due 28 Sep - 2 Oct? Two of them are time-critical for a project at our Venlo site. If Hamburg cannot offer slots before 5 October, I will move the cargo to Bremerhaven and truck it from there. Please confirm if the shipping line can still change the discharge port.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-09-25 10:05",
+     "from": "hht",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Utilisation is now 94%. The earliest gate-out slots we can offer for your containers are from 6 October, and that is not guaranteed. Revised vessel arrivals are 29 Sep - 2 Oct. A change of discharge port is a matter between you and the shipping line, we only handle what is discharged here. If you want to divert, please do it before the vessels pass the Elbe pilot station.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m6",
+     "date": "2026-09-28 09:30",
+     "from": "thendriks",
+     "to": [
+      "hschmidt"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "Decision: I have rebooked all 6 containers to discharge in Bremerhaven and will truck them to our sites. Extra cost is EUR 1,900 per container for the trucking, so EUR 11,400 in total. Hamburg could not offer slots before 6 October, which would miss the 5 October date for the two EWM containers. Mark, FYI for the cost, I will book it on the freight cost centre. Table below with the new ETAs.",
+     "table": {
+      "header": [
+       "Container",
+       "PO",
+       "Delivery site",
+       "Original ETA Hamburg",
+       "New ETA Bremerhaven",
+       "Expected delivery"
+      ],
+      "rows": [
+       [
+        "MSKU4417302",
+        "4500218831",
+        "Venlo",
+        "24 Sep",
+        "29 Sep",
+        "1 Oct"
+       ],
+       [
+        "TGHU8820154",
+        "4500218831",
+        "Venlo",
+        "24 Sep",
+        "29 Sep",
+        "1 Oct"
+       ],
+       [
+        "CMAU5503917",
+        "4500218904",
+        "Venlo",
+        "25 Sep",
+        "30 Sep",
+        "3 Oct"
+       ],
+       [
+        "HLXU3391028",
+        "4500218955",
+        "Venlo",
+        "26 Sep",
+        "1 Oct",
+        "5 Oct"
+       ],
+       [
+        "MRKU7265540",
+        "4500219012",
+        "Rotterdam",
+        "25 Sep",
+        "30 Sep",
+        "2 Oct"
+       ],
+       [
+        "TCLU6048831",
+        "4500219047",
+        "Rotterdam",
+        "26 Sep",
+        "2 Oct",
+        "6 Oct"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m7",
+     "date": "2026-09-28 15:40",
+     "from": "hschmidt",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": "m6",
+     "forward": false,
+     "body": "Thanks Tom, that works for us. Please make sure the two EWM containers are trucked first, with delivery to Venlo on 1 October as planned. I will tell the Venlo team to keep the goods receipt slots free that day.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m8",
+     "date": "2026-10-08 09:10",
+     "from": "hht",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [],
+     "reply_to": null,
+     "forward": false,
+     "body": "Update: yard utilisation dropped to 81% this morning and normal gate-out appointments are available again from 8 October. Vessel arrivals are back on schedule. Thank you for your patience during the congestion.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m9",
+     "date": "2026-10-09 11:25",
+     "from": "thendriks",
+     "to": [
+      "hschmidt"
+     ],
+     "cc": [],
+     "reply_to": "m7",
+     "forward": false,
+     "body": "Closing this one: all 6 containers arrived via Bremerhaven and were delivered. The two EWM containers reached Venlo on 1 October, the last one (TCLU6048831) arrived in Rotterdam on 6 October. Hamburg has been back to normal since 8 October, so for the next shipments I will book Hamburg again. Total extra trucking cost was EUR 11,400.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "On 22 Sep 2026 HHT Hamburg reported yard utilisation above 92% and vessel arrivals delayed by 3-5 days.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "HHT advised not to book truck slots until a discharge confirmation is received.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "Tom had 6 containers on the affected vessels: four for Venlo and two for Rotterdam.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "MSKU4417302 and TGHU8820154 were critical, holding racking components and scanners for the EWM test area in Venlo.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "Hanna needed the two critical containers in Venlo by 5 October for cycle count preparation.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "On 25 Sep HHT's utilisation was 94% and the earliest gate-out slots were from 6 October, not guaranteed.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "Changing the discharge port is a matter between the customer and the shipping line, not HHT.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "On 28 Sep Tom rebooked all 6 containers to discharge in Bremerhaven and truck them to the sites.",
+   "emails": [
+    "m6"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "Extra trucking cost is EUR 1,900 per container, EUR 11,400 in total, booked on the freight cost centre.",
+   "emails": [
+    "m6",
+    "m9"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "Rebooking was needed because Hamburg could not offer gate-out slots before 6 October, missing the 5 October date.",
+   "emails": [
+    "m6"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "CMAU5503917 (PO 4500218904) was expected in Venlo on 3 Oct; HLXU3391028 (PO 4500218955) on 5 Oct.",
+   "emails": [
+    "m6"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "Hanna asked that the two EWM containers be trucked first, with Venlo delivery on 1 October.",
+   "emails": [
+    "m7"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "From 8 Oct 2026 HHT utilisation fell to 81% and normal gate-out appointments resumed.",
+   "emails": [
+    "m8"
+   ]
+  },
+  {
+   "id": "F14",
+   "text": "The last container, TCLU6048831, was delivered to Rotterdam on 6 October; Tom will book Hamburg again for future shipments.",
+   "emails": [
+    "m9"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "How much extra did the rebooking via Bremerhaven cost in total, and what was the cost per container?",
+   "a": "EUR 11,400 in total, EUR 1,900 per container for trucking.",
+   "facts": [
+    "F9"
+   ],
+   "type": "fact"
+  },
+  {
+   "q": "Why did Tom move the containers to Bremerhaven instead of waiting for Hamburg?",
+   "a": "Hamburg could not offer gate-out slots before 6 October, which would miss the 5 October deadline for the two EWM containers in Venlo.",
+   "facts": [
+    "F10",
+    "F5",
+    "F6"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "Which containers were critical for the EWM rollout and what was in them?",
+   "a": "MSKU4417302 and TGHU8820154, with racking components and scanners for the EWM test area in Venlo.",
+   "facts": [
+    "F4"
+   ],
+   "type": "identifier"
+  },
+  {
+   "q": "When did the situation at HHT Hamburg return to normal?",
+   "a": "From 8 October 2026, when utilisation dropped to 81%.",
+   "facts": [
+    "F13"
+   ],
+   "type": "when"
+  },
+  {
+   "q": "Which PO belongs to the container that was expected in Venlo on 3 October, and what is that container's number?",
+   "a": "CMAU5503917, PO 4500218904.",
+   "facts": [
+    "F11"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "Which shipping line agreed to change the discharge port to Bremerhaven, and what did it charge for the change?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "hamburg_congestion",
+  "title": "Hamburg terminal congestion and vessel delays",
+  "level": "topic",
+  "korean": false
+ }
+}

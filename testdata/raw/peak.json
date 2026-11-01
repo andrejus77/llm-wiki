@@ -1,0 +1,408 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "Peak season 2026 - capacity plan Venlo",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-10-05 09:10",
+     "from": "jdevries",
+     "to": [
+      "mdeboer"
+     ],
+     "cc": [
+      "speeters",
+      "thendriks"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Mark, the peak forecast for Nov-Dec is in. We expect +35% outbound volume compared to the monthly average of the last 12 months. In Venlo that means roughly 1,900 more order lines per day in the worst weeks, and our current two-shift setup will not cope.\n\nMy proposal:\n- 25 temporary workers in Venlo, starting Monday 9 November\n- Saturday shifts during the peak weeks\n- extra trailer capacity from Veltrans, 12 trucks per day\n\nI will send a cost split next week. Can you give me a first reaction on the approach? We need to sign the agency contract by the end of October, otherwise the agency cannot guarantee the 25 people for 9 Nov.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-10-06 08:45",
+     "from": "mdeboer",
+     "to": [
+      "jdevries"
+     ],
+     "cc": [
+      "speeters",
+      "thendriks"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Approach makes sense to me in principle. Two things before I can decide: I need the cost split per item with a total, and I want to know if Antwerp is affected. Sofie, can your site absorb part of the Venlo overflow or do you also need extra people? Please reply with numbers, not feelings.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-10-08 14:20",
+     "from": "speeters",
+     "to": [
+      "mdeboer"
+     ],
+     "cc": [
+      "jdevries",
+      "thendriks"
+     ],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Antwerp expects about +20% in the same period, which we can handle with our own team and planned overtime. So no temps for us. What we cannot do is take over Venlo volume: we are at 91% storage utilisation already and the racking extension only comes in Q1. If Venlo needs overflow space, the answer from Antwerp is no.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m4",
+     "date": "2026-10-12 11:05",
+     "from": "thendriks",
+     "to": [
+      "jdevries"
+     ],
+     "cc": [
+      "mdeboer",
+      "speeters"
+     ],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "Update on transport. I spoke with Veltrans and they can provide 12 extra trucks per day on top of our current contract volume, from 9 November until 18 December. They want a firm booking by 30 October, after that capacity goes to other customers. The extra rate is at the current contract level plus a peak surcharge, so I count about €105,000 for the whole period. Jeroen, please use this number in your budget.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-10-14 16:30",
+     "from": "jdevries",
+     "to": [
+      "mdeboer"
+     ],
+     "cc": [
+      "speeters",
+      "thendriks"
+     ],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Mark, here is the cost split for the peak plan Venlo, details in the attached sheet. Total request is €310,000. The temp cost is based on the agency rate for 25 people for 6 weeks. The €10,000 contingency is for no-shows and extra agency hours.",
+     "table": {
+      "header": [
+       "Item",
+       "Amount (EUR)"
+      ],
+      "rows": [
+       [
+        "Temp workers (25 FTE, from 9 Nov)",
+        "142,000"
+       ],
+       [
+        "Saturday shift premiums",
+        "38,000"
+       ],
+       [
+        "Veltrans extra trucks (12/day)",
+        "105,000"
+       ],
+       [
+        "Equipment, PPE, training",
+        "15,000"
+       ],
+       [
+        "Contingency",
+        "10,000"
+       ],
+       [
+        "Total",
+        "310,000"
+       ]
+      ]
+     },
+     "attachment": {
+      "kind": "xlsx",
+      "name": "Peak_2026_Venlo_budget.xlsx",
+      "rows": [
+       [
+        "Item",
+        "Amount (EUR)",
+        "Owner"
+       ],
+       [
+        "Temp workers (25 FTE)",
+        "142000",
+        "jdevries"
+       ],
+       [
+        "Saturday shift premiums",
+        "38000",
+        "jdevries"
+       ],
+       [
+        "Veltrans extra trucks",
+        "105000",
+        "thendriks"
+       ],
+       [
+        "Equipment, PPE, training",
+        "15000",
+        "jdevries"
+       ],
+       [
+        "Contingency",
+        "10000",
+        "jdevries"
+       ],
+       [
+        "Total",
+        "310000",
+        ""
+       ]
+      ]
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m6",
+     "date": "2026-10-19 09:40",
+     "from": "mdeboer",
+     "to": [
+      "jdevries"
+     ],
+     "cc": [
+      "thendriks"
+     ],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "Thanks for the split. Two questions. First, why Saturday shifts and not simply a third shift or more temps on the weekdays? Second, Tom writes 12 trucks per day. Is that 12 in total over the whole period or 12 every day? The sheet says 105k, so I want to be sure I read it right.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m7",
+     "date": "2026-10-20 10:15",
+     "from": "jdevries",
+     "to": [
+      "mdeboer"
+     ],
+     "cc": [
+      "thendriks"
+     ],
+     "reply_to": "m6",
+     "forward": false,
+     "body": "Trucks: it is 12 every day, so 12 extra loads leaving Venlo per working day on top of the normal volume. Tom can confirm.\n\nSaturday vs third shift: our dock doors and the pick zones are already fully used in the two weekday shifts, a third shift would not add door capacity but Saturday does. Saturday also lets us catch up on the backlog before the Monday carrier pickups. A night shift would cost more because of the higher night premium and we would need extra supervision. So Saturday shifts with the 25 temps is the cheapest way to cover the +35%.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m8",
+     "date": "2026-10-22 15:50",
+     "from": "mdeboer",
+     "to": [
+      "jdevries",
+      "thendriks"
+     ],
+     "cc": [
+      "speeters"
+     ],
+     "reply_to": "m7",
+     "forward": false,
+     "body": "Clear, thanks. I approve the budget of €310,000 for the peak plan Venlo as of today. Jeroen, sign the agency contract and book the 25 temps for 9 November. Tom, confirm the Veltrans booking before the 30 October deadline. Sofie, thanks for the clear answer on Antwerp. Please report actual spend against the budget every two weeks from mid November.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m9",
+     "date": "2026-10-23 08:35",
+     "from": "thendriks",
+     "to": [
+      "mdeboer"
+     ],
+     "cc": [
+      "jdevries",
+      "speeters"
+     ],
+     "reply_to": "m8",
+     "forward": false,
+     "body": "Ok, will send the booking confirmation to Veltrans today so we are well before the 30 October deadline.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "Peak volume in Nov-Dec 2026 is expected to be +35% compared to the monthly average of the last 12 months.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "The plan for Venlo is 25 temporary workers starting Monday 9 November, Saturday shifts, and 12 extra Veltrans trucks per day.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "The agency contract has to be signed by the end of October, otherwise the agency cannot guarantee the 25 people for 9 Nov.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "Antwerp expects about +20% volume and will handle it with its own team and overtime, without temps.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "Antwerp cannot take Venlo overflow because storage utilisation is already 91% and the racking extension only comes in Q1.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "Veltrans can supply 12 extra trucks per day from 9 November until 18 December, with a firm booking needed by 30 October.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "The Veltrans extra trucks are budgeted at about €105,000 for the whole period.",
+   "emails": [
+    "m4",
+    "m5"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "The budget request of €310,000 consists of temps €142,000, Saturday premiums €38,000, Veltrans trucks €105,000, equipment/PPE/training €15,000 and contingency €10,000.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "The €10,000 contingency covers no-shows and extra agency hours.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "Saturday shifts were chosen over a third shift because dock doors and pick zones are fully used in the two weekday shifts, a third shift would not add door capacity, and night premiums would cost more and need extra supervision.",
+   "emails": [
+    "m7"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "The 12 trucks are 12 every day, not 12 in total.",
+   "emails": [
+    "m7"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "Mark de Boer approved the €310,000 budget on 22 October 2026.",
+   "emails": [
+    "m8"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "After approval Jeroen signs the agency contract, Tom confirms the Veltrans booking before 30 October, and spend is reported against budget every two weeks from mid November.",
+   "emails": [
+    "m8"
+   ]
+  },
+  {
+   "id": "F14",
+   "text": "Tom Hendriks planned to send the Veltrans booking confirmation on 23 October.",
+   "emails": [
+    "m9"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "How much budget was approved for the year-end peak plan in Venlo and when?",
+   "a": "€310,000, approved by Mark de Boer on 22 October 2026.",
+   "facts": [
+    "F12",
+    "F8"
+   ],
+   "type": "fact"
+  },
+  {
+   "q": "Why were Saturday shifts chosen instead of a third shift in Venlo?",
+   "a": "Dock doors and pick zones are already full in the two weekday shifts, so a third shift adds no door capacity; Saturday does, and night premiums and extra supervision would cost more.",
+   "facts": [
+    "F10"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "When do the 25 temps start in Venlo and what is the deadline to sign the agency contract?",
+   "a": "They start Monday 9 November; the contract must be signed by the end of October.",
+   "facts": [
+    "F2",
+    "F3"
+   ],
+   "type": "when"
+  },
+  {
+   "q": "Why can Antwerp not take over overflow from Venlo during the peak?",
+   "a": "Storage utilisation in Antwerp is already 91% and the racking extension only arrives in Q1.",
+   "facts": [
+    "F5"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "What part of the €310,000 budget goes to extra trucks, and who provides the trucks?",
+   "a": "About €105,000 for 12 extra trucks per day from Veltrans.",
+   "facts": [
+    "F7",
+    "F6"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "Who had to confirm the Veltrans booking and by when?",
+   "a": "Tom Hendriks, before the 30 October deadline.",
+   "facts": [
+    "F13",
+    "F6"
+   ],
+   "type": "who"
+  },
+  {
+   "q": "How many temporary workers will Gdansk hire for the peak season?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "peak",
+  "title": "Year-end peak season planning",
+  "level": "project",
+  "korean": false
+ }
+}

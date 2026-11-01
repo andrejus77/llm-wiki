@@ -1,0 +1,54 @@
+Message-ID: <resent.accrual.t1.m1.a78c327f43@corp-europe.example>
+Date: Fri, 25 Sep 2026 09:30:00 +0200
+From: "Ana Novak" <a.novak@corp-europe.example>
+To: "Tom Hendriks" <t.hendriks@corp-europe.example>
+Cc: "DL FIN" <dl-fin@corp-europe.example>
+Subject: Weekly freight accrual - week 39
+Thread-Index: Ad1Mv6wNNfoXqNLsN5wJkCBqnkJsww==
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============7142344453171586982=="
+
+--===============7142344453171586982==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Tom, it's Friday, so time for the weekly freight accrual. This week it is =
+also the September close, so the figure will be booked for the month.
+
+Could you send me the TMS report of shipments delivered but not yet invoiced,=
+ cut-off today 25.09? I need it by 12:00 if possible. My routine is: take you=
+r report, match against open items in FBL1N, post the accrual with FB50 to G/=
+L 4711000, and set the reversal for the 1st of the month.
+
+Please include shipment number, delivery number, carrier, site and the agreed=
+ freight amount.
+
+Kind regards,
+Ana Novak
+Accounts payable analyst (Finance)
+Corp Europe B.V. | Rotterdam
+T +31 10 225 5506
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============7142344453171586982==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Hi Tom, it&#x27;s Friday, so time for the weekly freight accru=
+al. This week it is also the September close, so the figure will be booked fo=
+r the month.</p>
+<p>Could you send me the TMS report of shipments delivered but not yet invoic=
+ed, cut-off today 25.09? I need it by 12:00 if possible. My routine is: take =
+your report, match against open items in FBL1N, post the accrual with FB50 to=
+ G/L 4711000, and set the reversal for the 1st of the month.</p>
+<p>Please include shipment number, delivery number, carrier, site and the agr=
+eed freight amount.</p><p>Kind regards,<br>Ana Novak<br>Accounts payable anal=
+yst (Finance)<br>Corp Europe B.V. | Rotterdam<br>T +31 10 225 5506<br><br>Thi=
+s e-mail and any attachments are confidential and intended solely for the add=
+ressee. If you received it in error, please delete it.</p></body></html>
+
+--===============7142344453171586982==--

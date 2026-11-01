@@ -1,0 +1,50 @@
+Message-ID: <rpa_bot.t1.m1.4e275b24c5@corp-europe.example>
+Date: Tue, 20 Oct 2026 09:15:00 +0200
+From: "Ana Novak" <a.novak@corp-europe.example>
+To: "Pieter Bakker" <p.bakker@corp-europe.example>
+Cc: "DL FIN" <dl-fin@corp-europe.example>
+Subject: Invoice bot errors on Veltrans invoices
+Thread-Index: Ad1gYrfvEnyYQLth5LkTrbmWfHX+0A==
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============3828001407636089377=="
+
+--===============3828001407636089377==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Pieter, the invoice bot sent error mails again this morning. All Veltrans inv=
+oices from the weekend mailbox are sitting in the exception folder, 12 in tot=
+al (INV-48211 to INV-48222). Other carriers went through fine, so it looks sp=
+ecific to Veltrans. Nothing has been posted in FB60 for them.
+
+Payment run for Veltrans is planned for 30 Oct, so I have some time, but I wo=
+uld like to know soon whether this is a quick fix or not. Can you have a look?
+
+Best regards,
+Ana Novak
+Accounts payable analyst (Finance)
+Corp Europe B.V. | Rotterdam
+T +31 10 892 7511
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============3828001407636089377==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Pieter, the invoice bot sent error mails again this morning. A=
+ll Veltrans invoices from the weekend mailbox are sitting in the exception fo=
+lder, 12 in total (INV-48211 to INV-48222). Other carriers went through fine,=
+ so it looks specific to Veltrans. Nothing has been posted in FB60 for them.<=
+/p>
+<p>Payment run for Veltrans is planned for 30 Oct, so I have some time, but I=
+ would like to know soon whether this is a quick fix or not. Can you have a l=
+ook?</p><p>Best regards,<br>Ana Novak<br>Accounts payable analyst (Finance)<b=
+r>Corp Europe B.V. | Rotterdam<br>T +31 10 892 7511<br><br>This e-mail and an=
+y attachments are confidential and intended solely for the addressee. If you =
+received it in error, please delete it.</p></body></html>
+
+--===============3828001407636089377==--

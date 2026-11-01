@@ -1,0 +1,72 @@
+Message-ID: <customs.t2.m5.b830665dcc@nordline.example>
+Date: Fri, 25 Sep 2026 15:40:00 +0200
+From: "Erik Holm" <eholm@nordline.example>
+To: "Ruud Jansen" <r.jansen@corp-europe.example>
+Cc: "Pia Lindqvist" <plindqvist@nordline.example>,
+ "Marta Kowalska" <m.kowalska@corp-europe.example>,
+ "DL CUS" <dl-cus@corp-europe.example>
+Subject: Re: Nordline DMS release and test file
+In-Reply-To: <customs.t2.m4.8e271c1396@corp-europe.example>
+References: <customs.t2.m4.8e271c1396@corp-europe.example>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============4879862922522813766=="
+
+--===============4879862922522813766==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Ruud, our plan today: DMS release at the end of October, so in time for 3 =
+Nov but without much buffer. We can send you a test file with sample declarat=
+ions by 31 Oct. It will contain the same message structure as the production =
+release. For the end-to-end test with customs on your side we use the pre-rel=
+ease build. I will tell you immediately if the release date changes.
+
+Best regards,
+Erik Holm
+IT integration lead at Nordline
+
+-----Original Message-----
+From: Ruud Jansen <r.jansen@corp-europe.example>
+Sent: Thursday, 24 September 2026 10:20
+To: Pia Lindqvist; Erik Holm
+Subject: Nordline DMS release and test file
+
+Pia, Erik, as you know customs replaces the old declaration system by DMS and=
+ we plan go-live on 3 Nov 2026. Can you send us your release plan for the DMS=
+ interface? We need to know when your test build is ready, how you will send =
+test declarations and which message version you use. Marta is our contact for=
+ the technical details.
+
+Regards,
+Ruud Jansen
+Logistics manager Rotterdam, owner of the customs migration project
+Corp Europe B.V. | Rotterdam
+T +31 10 573 1653
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============4879862922522813766==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Hi Ruud, our plan today: DMS release at the end of October, so=
+ in time for 3 Nov but without much buffer. We can send you a test file with =
+sample declarations by 31 Oct. It will contain the same message structure as =
+the production release. For the end-to-end test with customs on your side we =
+use the pre-release build. I will tell you immediately if the release date ch=
+anges.</p><p>Best regards,<br>Erik Holm<br>IT integration lead at Nordline</p=
+><div class=3D'gmail_quote'>On Thu, 24 Sep 2026 at 10:20, Ruud Jansen &lt;r.j=
+ansen@corp-europe.example&gt; wrote:<br><p>Pia, Erik, as you know customs rep=
+laces the old declaration system by DMS and we plan go-live on 3 Nov 2026. Ca=
+n you send us your release plan for the DMS interface? We need to know when y=
+our test build is ready, how you will send test declarations and which messag=
+e version you use. Marta is our contact for the technical details.</p><p>Rega=
+rds,<br>Ruud Jansen<br>Logistics manager Rotterdam, owner of the customs migr=
+ation project<br>Corp Europe B.V. | Rotterdam<br>T +31 10 573 1653<br><br>Thi=
+s e-mail and any attachments are confidential and intended solely for the add=
+ressee. If you received it in error, please delete it.</p></div></body></html>
+
+--===============4879862922522813766==--

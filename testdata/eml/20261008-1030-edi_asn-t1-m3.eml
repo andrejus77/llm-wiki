@@ -1,0 +1,167 @@
+Message-ID: <edi_asn.t1.m3.9229bebc1a@corp-europe.example>
+Date: Thu, 08 Oct 2026 10:30:00 +0200
+From: "Pieter Bakker" <p.bakker@corp-europe.example>
+To: "Lukas Becker" <l.becker@corp-europe.example>
+Cc: "Emma Laurent" <e.laurent@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: DESADV to Brightwater failing since 7 Oct - IDoc status 51
+In-Reply-To: <edi_asn.t1.m2.43d725d61d@corp-europe.example>
+References: <edi_asn.t1.m1.21a63fb12c@corp-europe.example>
+ <edi_asn.t1.m2.43d725d61d@corp-europe.example>
+Thread-Index: Ad1W/zUwSIP6KIIi58stmPaZV9/Wn1n2mh1iKfFF5pM=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============5804040933989407786=="
+
+--===============5804040933989407786==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Found it. On 6 Oct we transported a change to the DESADV mapping for the new =
+pallet label layout. Since then the SSCC field is filled from the wrong sourc=
+e field for mixed pallets, and the target segment expects exactly 18 digits. =
+The mapping rejects the message, so the IDoc ends in status 51 before it leav=
+es SAP. This is our mistake, I did not test a delivery with mixed pallets. I =
+need to correct the mapping and test it against the Brightwater test endpoint=
+. Realistic date for production is early next week, I will confirm.
+
+Regards,
+Pieter Bakker
+RPA and IT developer
+Corp Europe B.V. | Rotterdam
+T +31 10 646 9379
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Lukas Becker <l.becker@corp-europe.example>
+Sent: Thursday, 08 October 2026 09:05
+To: Emma Laurent
+Subject: RE: DESADV to Brightwater failing since 7 Oct - IDoc status 51
+
+Checked in WE02. All outbound DESADV IDocs for Brightwater since 7 Oct are in=
+ status 51, so nothing was sent to their EDI gateway. The error text points t=
+o the pallet SSCC segment. Message type is DESADV, partner BRIGHTW. So far 15=
+ IDocs are stuck, 6 from yesterday and 9 from today. Screenshot and the 7 Oct=
+ IDocs are below. Pieter, can you look at the mapping? I cannot see the cause=
+ in the delivery data, the SSCCs on the handling units look normal in VL03N.
+
+IDoc | Delivery | Created | Status | Error
+0000000048213377 | 80412301 | 07.10. 08:12 | 51 | SSCC segment mapping
+0000000048213390 | 80412305 | 07.10. 09:47 | 51 | SSCC segment mapping
+0000000048213412 | 80412311 | 07.10. 11:03 | 51 | SSCC segment mapping
+0000000048213455 | 80412322 | 07.10. 13:30 | 51 | SSCC segment mapping
+0000000048213471 | 80412329 | 07.10. 15:18 | 51 | SSCC segment mapping
+0000000048213498 | 80412334 | 07.10. 16:55 | 51 | SSCC segment mapping
+
+Kind regards,
+Lukas Becker
+SAP key user SD/LE
+Corp Europe B.V. | Rotterdam
+T +31 10 311 8119
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Emma Laurent <e.laurent@corp-europe.example>
+Sent: Thursday, 08 October 2026 08:20
+To: Lukas Becker
+Subject: DESADV to Brightwater failing since 7 Oct - IDoc status 51
+
+Brightwater called me twice this morning. They have not received a single ASN=
+ from us since yesterday and their receiving hub cannot book dock slots witho=
+ut it. Two trucks from Venlo are already on the road with no advance notice. =
+Can you check what happens with the DESADV on our side? As far as I know noth=
+ing changed on their end. I need something I can tell them before noon, even =
+if it is only a rough cause.
+
+Regards,
+Emma Laurent
+Customer service lead
+Corp Europe B.V. | Rotterdam
+T +31 10 382 5349
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============5804040933989407786==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Found it. On 6 Oct we transported a change to the DESADV mappi=
+ng for the new pallet label layout. Since then the SSCC field is filled from =
+the wrong source field for mixed pallets, and the target segment expects exac=
+tly 18 digits. The mapping rejects the message, so the IDoc ends in status 51=
+ before it leaves SAP. This is our mistake, I did not test a delivery with mi=
+xed pallets. I need to correct the mapping and test it against the Brightwate=
+r test endpoint. Realistic date for production is early next week, I will con=
+firm.</p><p>Regards,<br>Pieter Bakker<br>RPA and IT developer<br>Corp Europe =
+B.V. | Rotterdam<br>T +31 10 646 9379<br><br>This e-mail and any attachments =
+are confidential and intended solely for the addressee. If you received it in=
+ error, please delete it.</p><div style=3D'border:none;border-top:solid #E1E1=
+E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Lukas Becker &lt;l.becker=
+@corp-europe.example&gt;<br><b>Sent:</b> Thursday, 08 October 2026 09:05<br><=
+b>To:</b> Emma Laurent<br><b>Cc:</b> Pieter Bakker; DL CT<br><b>Subject:</b> =
+RE: DESADV to Brightwater failing since 7 Oct - IDoc status 51</p></div><p>Ch=
+ecked in WE02. All outbound DESADV IDocs for Brightwater since 7 Oct are in s=
+tatus 51, so nothing was sent to their EDI gateway. The error text points to =
+the pallet SSCC segment. Message type is DESADV, partner BRIGHTW. So far 15 I=
+Docs are stuck, 6 from yesterday and 9 from today. Screenshot and the 7 Oct I=
+Docs are below. Pieter, can you look at the mapping? I cannot see the cause i=
+n the delivery data, the SSCCs on the handling units look normal in VL03N.</p=
+><table style=3D'border-collapse:collapse;font-size:10pt'><tr><th style=3D'bo=
+rder:1px solid #999;padding:3px 6px'>IDoc</th><th style=3D'border:1px solid #=
+999;padding:3px 6px'>Delivery</th><th style=3D'border:1px solid #999;padding:=
+3px 6px'>Created</th><th style=3D'border:1px solid #999;padding:3px 6px'>Stat=
+us</th><th style=3D'border:1px solid #999;padding:3px 6px'>Error</th></tr><tr=
+><td style=3D'border:1px solid #999;padding:3px 6px'>0000000048213377</td><td=
+ style=3D'border:1px solid #999;padding:3px 6px'>80412301</td><td style=3D'bo=
+rder:1px solid #999;padding:3px 6px'>07.10. 08:12</td><td style=3D'border:1px=
+ solid #999;padding:3px 6px'>51</td><td style=3D'border:1px solid #999;paddin=
+g:3px 6px'>SSCC segment mapping</td></tr><tr><td style=3D'border:1px solid #9=
+99;padding:3px 6px'>0000000048213390</td><td style=3D'border:1px solid #999;p=
+adding:3px 6px'>80412305</td><td style=3D'border:1px solid #999;padding:3px 6=
+px'>07.10. 09:47</td><td style=3D'border:1px solid #999;padding:3px 6px'>51</=
+td><td style=3D'border:1px solid #999;padding:3px 6px'>SSCC segment mapping</=
+td></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>0000000048213=
+412</td><td style=3D'border:1px solid #999;padding:3px 6px'>80412311</td><td =
+style=3D'border:1px solid #999;padding:3px 6px'>07.10. 11:03</td><td style=3D=
+'border:1px solid #999;padding:3px 6px'>51</td><td style=3D'border:1px solid =
+#999;padding:3px 6px'>SSCC segment mapping</td></tr><tr><td style=3D'border:1=
+px solid #999;padding:3px 6px'>0000000048213455</td><td style=3D'border:1px s=
+olid #999;padding:3px 6px'>80412322</td><td style=3D'border:1px solid #999;pa=
+dding:3px 6px'>07.10. 13:30</td><td style=3D'border:1px solid #999;padding:3p=
+x 6px'>51</td><td style=3D'border:1px solid #999;padding:3px 6px'>SSCC segmen=
+t mapping</td></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>00=
+00000048213471</td><td style=3D'border:1px solid #999;padding:3px 6px'>804123=
+29</td><td style=3D'border:1px solid #999;padding:3px 6px'>07.10. 15:18</td><=
+td style=3D'border:1px solid #999;padding:3px 6px'>51</td><td style=3D'border=
+:1px solid #999;padding:3px 6px'>SSCC segment mapping</td></tr><tr><td style=
+=3D'border:1px solid #999;padding:3px 6px'>0000000048213498</td><td style=3D'=
+border:1px solid #999;padding:3px 6px'>80412334</td><td style=3D'border:1px s=
+olid #999;padding:3px 6px'>07.10. 16:55</td><td style=3D'border:1px solid #99=
+9;padding:3px 6px'>51</td><td style=3D'border:1px solid #999;padding:3px 6px'=
+>SSCC segment mapping</td></tr></table><p><img src=3D'cid:img1.bf54fcdf@corp'=
+ alt=3D'IDoc List (WE02)' width=3D'600'></p><p>Kind regards,<br>Lukas Becker<=
+br>SAP key user SD/LE<br>Corp Europe B.V. | Rotterdam<br>T +31 10 311 8119<br=
+><br>This e-mail and any attachments are confidential and intended solely for=
+ the addressee. If you received it in error, please delete it.</p><div style=
+=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p>=
+<b>From:</b> Emma Laurent &lt;e.laurent@corp-europe.example&gt;<br><b>Sent:</=
+b> Thursday, 08 October 2026 08:20<br><b>To:</b> Lukas Becker<br><b>Cc:</b> P=
+ieter Bakker; DL CT<br><b>Subject:</b> DESADV to Brightwater failing since 7 =
+Oct - IDoc status 51</p></div><p>Brightwater called me twice this morning. Th=
+ey have not received a single ASN from us since yesterday and their receiving=
+ hub cannot book dock slots without it. Two trucks from Venlo are already on =
+the road with no advance notice. Can you check what happens with the DESADV o=
+n our side? As far as I know nothing changed on their end. I need something I=
+ can tell them before noon, even if it is only a rough cause.</p><p>Regards,<=
+br>Emma Laurent<br>Customer service lead<br>Corp Europe B.V. | Rotterdam<br>T=
+ +31 10 382 5349<br><br>This e-mail and any attachments are confidential and =
+intended solely for the addressee. If you received it in error, please delete=
+ it.</p></body></html>
+
+--===============5804040933989407786==--

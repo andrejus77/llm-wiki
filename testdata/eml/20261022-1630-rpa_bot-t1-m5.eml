@@ -1,0 +1,112 @@
+Message-ID: <rpa_bot.t1.m5.62fd10b5c6@corp-europe.example>
+Date: Thu, 22 Oct 2026 16:30:00 +0200
+From: "Pieter Bakker" <p.bakker@corp-europe.example>
+To: "Ana Novak" <a.novak@corp-europe.example>
+Cc: "DL FIN" <dl-fin@corp-europe.example>
+Subject: RE: Invoice bot errors on Veltrans invoices
+In-Reply-To: <rpa_bot.t1.m4.8ec1073a63@veltrans.example>
+References: <rpa_bot.t1.m3.2430f09707@corp-europe.example>
+ <rpa_bot.t1.m4.8ec1073a63@veltrans.example>
+Thread-Index: Ad1iMdGTEnyYQLth5LkTrbmWfHX+0KvwidKjP/i28F8=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============8163289036545754402=="
+
+--===============8163289036545754402==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Veltrans confirmed the new template since 19 Oct and will not revert, so I ch=
+anged the bot instead. It now has a fallback: if the total is not on page 1 i=
+t searches all pages for the totals block. I tested it on 3 of the 12 invoice=
+s in the test environment and the totals matched.
+
+I scheduled a rerun of the whole batch of 12 for the night of 23 Oct. The bot=
+ will post what it can and leave anything with missing data in the exception =
+folder. You can check the results afterwards.
+
+Regards,
+Pieter Bakker
+RPA and IT developer
+Corp Europe B.V. | Rotterdam
+T +31 10 798 7242
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Veltrans Billing <vbilling@veltrans.example>
+Sent: Wednesday, 21 October 2026 14:20
+To: Pieter Bakker
+Subject: Re: Invoice bot errors on Veltrans invoices
+
+Hello Pieter, yes, we moved to a new invoice template with our billing system=
+ update on 19 Oct. For invoices with more than one page the totals block now =
+sits on the last page. This is the final layout and we will not revert it. Ot=
+her fields (invoice number, date, PO reference, IBAN) have the same labels as=
+ before, only the position differs slightly. Sorry for the inconvenience, we =
+should have announced it.
+
+Best regards,
+Veltrans Billing
+Billing team of Veltrans (road carrier)
+
+-----Original Message-----
+From: Pieter Bakker <p.bakker@corp-europe.example>
+Sent: Wednesday, 21 October 2026 10:05
+To: Veltrans Billing
+Subject: Invoice bot errors on Veltrans invoices
+
+Hello Veltrans Billing team, since 20 Oct our automated invoice processing fa=
+ils on your PDF invoices (for example INV-48211). It looks like the invoice t=
+otal has moved from page 1 to page 2. Can you confirm whether you changed the=
+ invoice template, since when, and whether this is the final layout? Also ple=
+ase tell us if any other fields changed, so we can adapt once.
+
+Kind regards,
+Pieter Bakker
+RPA and IT developer
+Corp Europe B.V. | Rotterdam
+T +31 10 665 7038
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============8163289036545754402==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Veltrans confirmed the new template since 19 Oct and will not =
+revert, so I changed the bot instead. It now has a fallback: if the total is =
+not on page 1 it searches all pages for the totals block. I tested it on 3 of=
+ the 12 invoices in the test environment and the totals matched.</p>
+<p>I scheduled a rerun of the whole batch of 12 for the night of 23 Oct. The =
+bot will post what it can and leave anything with missing data in the excepti=
+on folder. You can check the results afterwards.</p><p>Regards,<br>Pieter Bak=
+ker<br>RPA and IT developer<br>Corp Europe B.V. | Rotterdam<br>T +31 10 798 7=
+242<br><br>This e-mail and any attachments are confidential and intended sole=
+ly for the addressee. If you received it in error, please delete it.</p><div =
+style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm=
+'><p><b>From:</b> Veltrans Billing &lt;vbilling@veltrans.example&gt;<br><b>Se=
+nt:</b> Wednesday, 21 October 2026 14:20<br><b>To:</b> Pieter Bakker<br><b>Cc=
+:</b> Ana Novak; DL FIN<br><b>Subject:</b> Re: Invoice bot errors on Veltrans=
+ invoices</p></div><p>Hello Pieter, yes, we moved to a new invoice template w=
+ith our billing system update on 19 Oct. For invoices with more than one page=
+ the totals block now sits on the last page. This is the final layout and we =
+will not revert it. Other fields (invoice number, date, PO reference, IBAN) h=
+ave the same labels as before, only the position differs slightly. Sorry for =
+the inconvenience, we should have announced it.</p><p>Best regards,<br>Veltra=
+ns Billing<br>Billing team of Veltrans (road carrier)</p><div class=3D'gmail_=
+quote'>On Wed, 21 Oct 2026 at 10:05, Pieter Bakker &lt;p.bakker@corp-europe.e=
+xample&gt; wrote:<br><p>Hello Veltrans Billing team, since 20 Oct our automat=
+ed invoice processing fails on your PDF invoices (for example INV-48211). It =
+looks like the invoice total has moved from page 1 to page 2. Can you confirm=
+ whether you changed the invoice template, since when, and whether this is th=
+e final layout? Also please tell us if any other fields changed, so we can ad=
+apt once.</p><p>Kind regards,<br>Pieter Bakker<br>RPA and IT developer<br>Cor=
+p Europe B.V. | Rotterdam<br>T +31 10 665 7038<br><br>This e-mail and any att=
+achments are confidential and intended solely for the addressee. If you recei=
+ved it in error, please delete it.</p></div></body></html>
+
+--===============8163289036545754402==--

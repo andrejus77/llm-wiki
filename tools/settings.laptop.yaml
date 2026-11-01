@@ -1,0 +1,49 @@
+# Work laptop: the backlog from your Outlook .pst, processed here, then shipped to the server with
+# `tools\package.bat --with-data`. Copy to data\settings.yaml (setup.bat --laptop does it).
+#
+# Email stages (notes, routing, editor, tags) and the chat: ONLY the internal APIs — the mail holds personal data.
+# Gemini / Claude Code / Codex (logged in on this laptop) are "external": they only get the wiki lint (stage review),
+# which sees wiki page text, never emails, with phone numbers / e-mail addresses / IBANs / addresses removed.
+server:
+  mode: local
+  host: 127.0.0.1
+  port: 8000
+sources:
+  pop3_enabled: false                        # the server fetches the department mailboxes. If POP3 is reachable from this laptop
+                                             # and the mailboxes still hold the backlog, POP3 is better than the .pst (complete
+                                             # department mail): set true and fill pop3_accounts like in settings.server.yaml
+  pop3_accounts: []
+  pst_path: "C:\\Users\\<you>\\Documents\\Outlook Files\\<mailbox>.pst"   # <-- fill in, or "default" = your Outlook mailbox itself (.ost/Exchange)
+  pst_route: com                             # classic Outlook must be installed and may stay open
+  pst_dept_only: true                        # your personal mailbox: only mail with a department address in To/Cc
+  dept_addresses: ["dl-a@your-company.example", "dl-b@your-company.example", "dl-c@your-company.example"]   # <-- fill in
+  dept_aliases: {}                           # e.g. {"dl-a@your-company.example": ["DL Control Tower"]} if Outlook shows names
+  internal_domains: ["your-company.example"]                                                                # <-- fill in
+  time_zone: Europe/Amsterdam
+pool:
+  failover_on_error: true
+  endpoints:
+    - {name: api-b, kind: custom, rpm: 3, max_concurrent: 3, timeout_s: 0, context_tokens: 150000, stages: ["*"], redact_pii: true}
+    - {name: api-a, kind: custom, rpm: 10, max_concurrent: 2, timeout_s: 180, context_tokens: 32000,
+       stages: ["s1", "s12", "s4", "report", "judge"], fallback_stages: ["*"], structured_output: true, redact_pii: true, priority: 1}
+    # external: wiki lint only (privacy.external_stages); each needs its CLI installed and logged in once
+    - {name: gemini, kind: gemini_cli, model: gemini-2.5-pro, external: true, rpm: 30, max_concurrent: 2, timeout_s: 300, context_tokens: 200000, priority: 2}
+    - {name: claude, kind: claude_cli, model: sonnet, external: true, rpm: 20, max_concurrent: 2, timeout_s: 300, context_tokens: 150000, priority: 3}
+    - {name: codex, kind: codex_cli, model: "", external: true, rpm: 20, max_concurrent: 2, timeout_s: 300, context_tokens: 150000, priority: 4,
+       structured_output: false}
+departments:
+  names: {"dl-a@your-company.example": "Team A", "dl-b@your-company.example": "Team B", "dl-c@your-company.example": "AI"}   # <-- fill in
+  ai_address: "dl-c@your-company.example"    # <-- the AI department's address
+  team_members: []                           # <-- the team's addresses (or globs)
+privacy:
+  test_data_only: false                      # real mail
+  external_stages: ["review"]
+  redact_outputs: true
+reviewer:
+  schedule: nightly                          # lint after each batch (uses the external endpoints above)
+retrieval:
+  embed_model: multilingual-e5-small
+  vector_store: qdrant
+schedule:
+  live_enabled: false                        # live mode runs on the server, not here
+  batch_enabled: false

@@ -1,0 +1,50 @@
+/* layout: one readable column (max 980px) with a wider grid for the feature cards; status chips under the title */
+:root {
+  --bg: #f6f7f9; --surface: #ffffff; --ink: #18212b; --muted: #5a6573; --line: #dde2e8;
+  --accent: #1f5fae; --accent-soft: #e3ecf8; --ok: #1d7a4f; --ok-soft: #e1f2e8; --hl: #fff4d6;
+  --f-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif; --f-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f141a; --surface: #161d25; --ink: #e3e9ef; --muted: #98a4b1; --line: #27313c;
+  --accent: #79a9ee; --accent-soft: #1a2b42; --ok: #6cc79a; --ok-soft: #14301f; --hl: #3a3218; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0f141a; --surface: #161d25; --ink: #e3e9ef; --muted: #98a4b1; --line: #27313c;
+  --accent: #79a9ee; --accent-soft: #1a2b42; --ok: #6cc79a; --ok-soft: #14301f; --hl: #3a3218; color-scheme: dark }
+body { background: var(--bg); color: var(--ink); font: 16px/1.6 var(--f-body); }
+.page { max-width: 1080px; margin: 0 auto; padding-block: 28px 60px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1 { font-size: clamp(1.7rem, 3.6vw, 2.5rem); line-height: 1.15; margin: 4px 0 10px; text-wrap: balance; font-weight: 800; letter-spacing: -.01em; }
+h2 { font-size: 1.45rem; margin: 46px 0 12px; padding-top: 10px; border-top: 1px solid var(--line); text-wrap: balance; }
+h3 { font-size: 1.05rem; margin: 26px 0 8px; }
+p, li { max-width: 72ch; }
+.eyebrow { font: 500 .78rem var(--f-mono); text-transform: uppercase; letter-spacing: .1em; color: var(--accent); margin: 0; }
+.lede { font-size: 1.12rem; color: var(--muted); margin: 0 0 14px; }
+.status { display: flex; flex-wrap: wrap; gap: 8px; }
+.status span { font: 500 .8rem var(--f-mono); padding: 4px 10px; border-radius: 999px; }
+.status .ok { background: var(--ok-soft); color: var(--ok); }
+.toc { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 22px 0 0; font-size: .92rem; }
+.toc a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
+.toc a:hover, .toc a:focus-visible { border-bottom-color: var(--accent); outline: none; }
+.steps { padding-left: 1.3em; display: grid; gap: 8px; }
+.steps li::marker { color: var(--accent); font-weight: 700; }
+code { font: .86em var(--f-mono); background: var(--accent-soft); padding: 1px 5px; border-radius: 4px; overflow-wrap: anywhere; }
+.note { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; }
+.small { font-size: .9rem; color: var(--muted); }
+.example { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 12px 16px; margin: 14px 0; }
+.example .q { font-weight: 600; margin: 6px 0 8px; }
+.example .a p { margin: 4px 0; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+.feat { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; min-width: 0; }
+.feat h3 { margin: 0 0 6px; font-size: 1.02rem; }
+.feat ul { margin: 0; padding-left: 1.1em; font-size: .93rem; display: grid; gap: 4px; }
+.tw { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: .9rem; }
+th, td { padding: 6px 10px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+th { font: 500 .74rem var(--f-mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); background: var(--bg); }
+td.n { font-variant-numeric: tabular-nums; font-family: var(--f-mono); font-size: .86rem; white-space: nowrap; }
+tr.hl td { background: var(--hl); font-weight: 600; }
+tbody tr:last-child td { border-bottom: 0; }
+.shot { margin: 16px 0 26px; }
+.shot img { display: block; width: 100%; border: 1px solid var(--line); border-radius: 8px; }
+.shot figcaption { font-size: .86rem; color: var(--muted); margin-top: 6px; }
+.foot { margin-top: 50px; font: .78rem var(--f-mono); color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }

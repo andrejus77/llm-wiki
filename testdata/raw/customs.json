@@ -1,0 +1,714 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "Customs migration to DMS - plan, tests and go-live",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-09-21 09:10",
+     "from": "rjansen",
+     "to": [
+      "mkowalska",
+      "hschmidt"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Kick-off note for the Q4 customs migration. Dutch customs switches from the old declaration system to DMS. Our declarations go out through the customs gateway, from SAP and from Nordline as forwarder. Go-live is planned for 3 Nov 2026.\n\nMy proposal for the workstreams:\n- Marta: contact with the customs test team, test cases, export mapping\n- Hanna: EWM side, so that nothing changes in Rotterdam while we cut over\n- Me: Nordline, planning, reporting to Mark\n\nPlease flag anything that threatens 3 Nov as early as possible. I would like a first status in two weeks.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-09-21 11:30",
+     "from": "hschmidt",
+     "to": [
+      "rjansen"
+     ],
+     "cc": [
+      "mkowalska",
+      "mdeboer"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "From the EWM side I want a change freeze in Rotterdam. Proposal: freeze from 19 Oct until go-live on 3 Nov. In that period no transports to the Rotterdam EWM system, except emergency fixes that you approve.\n\nReason: the outbound delivery data (VL02N/VL03N) feeds the declarations, and I do not want a changed delivery or handling unit logic to appear in the middle of the end-to-end test. Venlo rollout preparation continues as planned, it is not affected.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-09-23 14:05",
+     "from": "mkowalska",
+     "to": [
+      "customstest"
+     ],
+     "cc": [
+      "rjansen"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Dear customs test team, we are Corp Europe B.V. and will submit declarations to DMS through our gateway. We would like to book an end-to-end test in the first week of November, ahead of our planned go-live on 3 Nov. Could you tell us which days you can offer and how many declarations you expect from us? Please also send the test plan and the technical contact for message rejections.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m8",
+     "date": "2026-10-01 10:20",
+     "from": "customstest",
+     "to": [
+      "mkowalska"
+     ],
+     "cc": [
+      "rjansen",
+      "dl-cus"
+     ],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "Thank you for your request. We can offer the end-to-end test window on 4, 5 and 6 November. We expect at least 20 declarations in total from each declarant, covering exports, amendments and at least one rejection scenario. Please send us the list of test declarations (local reference, goods items, expected result) one week before the window. Rejections are returned on the same day with an error code, so you can correct and resubmit within the window.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m9",
+     "date": "2026-10-02 08:50",
+     "from": "mkowalska",
+     "to": [
+      "customstest"
+     ],
+     "cc": [
+      "rjansen",
+      "dl-cus"
+     ],
+     "reply_to": "m8",
+     "forward": false,
+     "body": "Thanks, we confirm the window 4-6 November. I will send the list of test declarations before the deadline.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m11",
+     "date": "2026-10-08 13:15",
+     "from": "mkowalska",
+     "to": [
+      "rjansen"
+     ],
+     "cc": [
+      "hschmidt",
+      "mdeboer",
+      "dl-cus"
+     ],
+     "reply_to": "m9",
+     "forward": false,
+     "body": "Here is the first draft of the test cases for 4-6 Nov. Customs asks for at least 20 declarations, I planned 22 so we have a buffer of two. Delivery numbers are real Rotterdam and Venlo test deliveries. Nordline submits the TC5 declarations from their side with their DMS build.\n\nHanna, TC3 and TC4 need EWM deliveries that are already goods-issued, can you check the two deliveries?",
+     "table": {
+      "header": [
+       "TC",
+       "Scenario",
+       "Declarations",
+       "Example delivery",
+       "Expected result"
+      ],
+      "rows": [
+       [
+        "TC1",
+        "Standard export, one goods item",
+        "8",
+        "80412233",
+        "Accepted"
+       ],
+       [
+        "TC2",
+        "Export with multiple goods items",
+        "4",
+        "80412590",
+        "Accepted"
+       ],
+       [
+        "TC3",
+        "Amendment after goods issue",
+        "2",
+        "80412611",
+        "Accepted, version 2"
+       ],
+       [
+        "TC4",
+        "Cancellation of a declaration",
+        "2",
+        "80412702",
+        "Cancelled"
+       ],
+       [
+        "TC5",
+        "Declaration submitted by Nordline",
+        "4",
+        "80412845",
+        "Accepted"
+       ],
+       [
+        "TC6",
+        "Deliberate error (wrong commodity code)",
+        "2",
+        "80412903",
+        "Rejected with error code"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m12",
+     "date": "2026-10-09 09:40",
+     "from": "hschmidt",
+     "to": [
+      "mkowalska"
+     ],
+     "cc": [
+      "rjansen",
+      "dl-cus"
+     ],
+     "reply_to": "m11",
+     "forward": false,
+     "body": "Checked both deliveries in VL03N. 80412611 is goods-issued, fine for TC3. 80412702 was still open in EWM, so I asked the Rotterdam team to post the goods issue today, it should be ready by Monday. Reminder: the EWM change freeze in Rotterdam starts on 19 Oct, so please tell me before then if you need any other delivery created or changed.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m13",
+     "date": "2026-10-13 15:00",
+     "from": "rjansen",
+     "to": [
+      "mdeboer"
+     ],
+     "cc": [
+      "mkowalska",
+      "hschmidt",
+      "dl-cus"
+     ],
+     "reply_to": "m12",
+     "forward": false,
+     "body": "Status customs migration, short version:\n- Go-live still 3 Nov.\n- Test window with customs booked for 4-6 Nov, 22 declarations planned (minimum 20).\n- Export mapping: 103 of 105 fields done, two goods-item fields are waiting for Finance.\n- Nordline has not yet shown a stable DMS build. I expect their test file by 31 Oct and will chase Erik.\n- EWM freeze in Rotterdam starts 19 Oct.\n\nBiggest risk is Nordline. I will tell you immediately if that changes.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m14",
+     "date": "2026-10-15 08:30",
+     "from": "mdeboer",
+     "to": [
+      "rjansen"
+     ],
+     "cc": [
+      "mkowalska",
+      "hschmidt",
+      "dl-cus"
+     ],
+     "reply_to": "m13",
+     "forward": false,
+     "body": "Thanks Ruud, clear. Please keep me posted on Nordline weekly. If the date moves, I want a go/no-go call with all of you after the test and before we switch.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m16",
+     "date": "2026-10-20 11:40",
+     "from": "rjansen",
+     "to": [
+      "mdeboer",
+      "hschmidt",
+      "mkowalska"
+     ],
+     "cc": [
+      "dl-cus"
+     ],
+     "reply_to": "m14",
+     "forward": false,
+     "body": "Nordline just told us that their DMS release slips from the end of October to 10 Nov. We cannot go live on 3 Nov without them, so I decided:\n\n1. Go-live moves from 3 Nov to 17 Nov 2026.\n2. No parallel formats: we do not run old and new declaration format side by side. One cut-over.\n3. EWM change freeze in Rotterdam stays until 17 Nov (Hanna).\n4. End-to-end test with customs stays on 4-6 Nov, at least 20 declarations.\n5. Go/no-go call on 12 Nov, Mark decides.\n6. Nordline test file is due 31 Oct.\n\nMarta, please inform the customs test team.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m17",
+     "date": "2026-10-21 09:05",
+     "from": "hschmidt",
+     "to": [
+      "rjansen"
+     ],
+     "cc": [
+      "mdeboer",
+      "mkowalska",
+      "dl-cus"
+     ],
+     "reply_to": "m16",
+     "forward": false,
+     "body": "Understood, I extend the freeze in Rotterdam to 17 Nov. That is two more weeks without regular transports. Emergency fixes only with your approval, and I will log them. Venlo EWM rollout preparation is not touched, as agreed. Please confirm that 12 Nov is the last point where we could still stop the cut-over, otherwise I need to plan the freeze exit differently.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m18",
+     "date": "2026-10-21 14:20",
+     "from": "mdeboer",
+     "to": [
+      "rjansen"
+     ],
+     "cc": [
+      "hschmidt",
+      "mkowalska",
+      "dl-cus"
+     ],
+     "reply_to": "m16",
+     "forward": false,
+     "body": "I agree with 17 Nov and the call on 12 Nov. One question: why no parallel formats? It would feel safer to keep the old format as a fallback for a week or two.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m19",
+     "date": "2026-10-22 08:45",
+     "from": "rjansen",
+     "to": [
+      "mdeboer"
+     ],
+     "cc": [
+      "hschmidt",
+      "mkowalska",
+      "dl-cus"
+     ],
+     "reply_to": "m18",
+     "forward": false,
+     "body": "Three reasons. First, the customs gateway can only run one message format per partner profile, so a fallback would need a second profile and a second mapping. Second, we would have to test both paths, which doubles the test effort in a very short window. Third, customs switches off the old system at go-live anyway, so the old format would have no receiver. The real fallback is the 12 Nov go/no-go: if we are not ready, we stay on the old system and move the date.\n\nHanna: yes, 12 Nov is the last point to stop.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m20",
+     "date": "2026-10-23 10:10",
+     "from": "mkowalska",
+     "to": [
+      "customstest"
+     ],
+     "cc": [
+      "rjansen",
+      "dl-cus"
+     ],
+     "reply_to": "m9",
+     "forward": false,
+     "body": "Update from our side: our forwarder Nordline moves its DMS release to 10 Nov, so our go-live moves from 3 Nov to 17 Nov. The test window 4-6 Nov stays as booked, with at least 20 declarations. Nordline will send us a test file by 31 Oct and we will include it in our list. Please confirm that the window is still valid and that the deadline for the declaration list is unchanged.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m21",
+     "date": "2026-10-26 09:30",
+     "from": "customstest",
+     "to": [
+      "mkowalska"
+     ],
+     "cc": [
+      "rjansen",
+      "dl-cus"
+     ],
+     "reply_to": "m20",
+     "forward": false,
+     "body": "Confirmed, the window 4-6 November remains valid. The list of test declarations is needed by Friday 30 October. A later go-live on your side is no problem for us, the old system will be switched off per declarant only after the DMS go-live is confirmed.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  },
+  {
+   "key": "t2",
+   "subject": "Nordline DMS release and test file",
+   "emails": [
+    {
+     "id": "m4",
+     "date": "2026-09-24 10:20",
+     "from": "rjansen",
+     "to": [
+      "plindqvist",
+      "eholm"
+     ],
+     "cc": [
+      "mkowalska"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Pia, Erik, as you know customs replaces the old declaration system by DMS and we plan go-live on 3 Nov 2026. Can you send us your release plan for the DMS interface? We need to know when your test build is ready, how you will send test declarations and which message version you use. Marta is our contact for the technical details.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-09-25 15:40",
+     "from": "eholm",
+     "to": [
+      "rjansen"
+     ],
+     "cc": [
+      "plindqvist",
+      "mkowalska"
+     ],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Hi Ruud, our plan today: DMS release at the end of October, so in time for 3 Nov but without much buffer. We can send you a test file with sample declarations by 31 Oct. It will contain the same message structure as the production release. For the end-to-end test with customs on your side we use the pre-release build. I will tell you immediately if the release date changes.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m15",
+     "date": "2026-10-20 09:15",
+     "from": "eholm",
+     "to": [
+      "rjansen"
+     ],
+     "cc": [
+      "plindqvist",
+      "mkowalska",
+      "dl-cus"
+     ],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "Ruud, bad news. Our testing found two issues in the DMS message handling for amendments, and the fix needs another regression round. Our DMS release therefore slips from the end of October to 10 Nov. I am sorry, we saw it only yesterday. The test file for 31 Oct stays as planned, it comes from the pre-release build. Pia will call you this afternoon to discuss what it means for your go-live.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m22",
+     "date": "2026-10-30 16:10",
+     "from": "eholm",
+     "to": [
+      "rjansen"
+     ],
+     "cc": [
+      "plindqvist",
+      "mkowalska",
+      "dl-cus"
+     ],
+     "reply_to": "m15",
+     "forward": false,
+     "body": "The Nordline test file is sent to Marta today, one day before the deadline of 31 Oct. It contains 24 sample declarations: 16 exports, 4 amendments and 4 cancellations. Two of the exports carry the same commodity code error on purpose so you can check the rejection handling. If your gateway has a problem parsing the file, call me, I am available over the weekend.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m23",
+     "date": "2026-10-30 16:45",
+     "from": "rjansen",
+     "to": [
+      "eholm"
+     ],
+     "cc": [
+      "plindqvist",
+      "mkowalska",
+      "dl-cus"
+     ],
+     "reply_to": "m22",
+     "forward": false,
+     "body": "Thanks Erik, well received. Marta will load it via the gateway on Monday and check the messages in SXMB_MONI. We will give you feedback before the test window starts on 4 Nov.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  },
+  {
+   "key": "t3",
+   "subject": "DMS export mapping - open fields",
+   "emails": [
+    {
+     "id": "m6",
+     "date": "2026-09-28 09:00",
+     "from": "mkowalska",
+     "to": [
+      "rjansen"
+     ],
+     "cc": [
+      "hschmidt",
+      "dl-cus"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Attached is the current export mapping from the SAP delivery/billing data to the DMS declaration. 103 of 105 fields are mapped and reviewed. Two fields at goods-item level are still open because the values come from Finance: the statistical value and the customs value per item. I put both on yellow in the sheet. I also added dl-cus on this mail so the team sees the current version.",
+     "table": null,
+     "attachment": {
+      "kind": "xlsx",
+      "name": "DMS_export_mapping_v3.xlsx",
+      "rows": [
+       [
+        "DMS field",
+        "SAP source",
+        "Rule",
+        "Status"
+       ],
+       [
+        "DECL_TYPE",
+        "Fixed",
+        "EX",
+        "Mapped"
+       ],
+       [
+        "CONSIGNOR_EORI",
+        "T001W / customs data",
+        "Plant EORI number",
+        "Mapped"
+       ],
+       [
+        "DELIVERY_REF",
+        "LIKP-VBELN",
+        "8-digit delivery number",
+        "Mapped"
+       ],
+       [
+        "GROSS_MASS",
+        "LIKP-BTGEW",
+        "Round to 3 decimals",
+        "Mapped"
+       ],
+       [
+        "GI_COMMODITY_CODE",
+        "MARC-STEUC",
+        "10 digits",
+        "Mapped"
+       ],
+       [
+        "GI_STAT_VALUE",
+        "Finance",
+        "Rule needed from Finance",
+        "Open"
+       ],
+       [
+        "GI_CUSTOMS_VALUE",
+        "Finance",
+        "Rule needed from Finance",
+        "Open"
+       ]
+      ]
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m7",
+     "date": "2026-09-29 10:25",
+     "from": "rjansen",
+     "to": [
+      "anovak"
+     ],
+     "cc": [
+      "mkowalska",
+      "dl-cus"
+     ],
+     "reply_to": "m6",
+     "forward": false,
+     "body": "Ana, for the new customs declaration we need two values per goods item: the statistical value and the customs value. Today they are calculated in a Finance process. Can you tell us the rule (net invoice value, freight and insurance allocation, currency) and the source in SAP? Marta has the sheet with the open fields. Without it the mapping stays at 103 of 105 fields.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m10",
+     "date": "2026-10-06 11:15",
+     "from": "anovak",
+     "to": [
+      "rjansen"
+     ],
+     "cc": [
+      "mkowalska",
+      "dl-cus"
+     ],
+     "reply_to": "m7",
+     "forward": false,
+     "body": "Hi Ruud, I checked with my colleagues. The values today come from a manual allocation of freight cost per invoice, for example INV-30418, which is done after the month-end close. We need to decide whether the automatic rule can be used in the declaration at all. I cannot promise it before the October close, so please plan with an answer by 6 Nov. Until then both fields stay open on your side.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "The original go-live of the new customs declaration system DMS was planned for 3 Nov 2026.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "On 20 Oct Nordline announced that its DMS release slips from the end of October to 10 Nov because testing found two issues with amendments.",
+   "emails": [
+    "m15"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "Ruud Jansen moved the go-live from 3 Nov to 17 Nov 2026 with no parallel formats.",
+   "emails": [
+    "m16"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "The EWM change freeze in Rotterdam was proposed by Hanna Schmidt to start on 19 Oct and was extended to 17 Nov.",
+   "emails": [
+    "m2",
+    "m17"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "The end-to-end test with customs takes place on 4-6 Nov 2026 and needs at least 20 declarations.",
+   "emails": [
+    "m8",
+    "m16"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "The go/no-go call is on 12 Nov and Mark de Boer decides; 12 Nov is the last point to stop the cut-over.",
+   "emails": [
+    "m16",
+    "m19"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "The Nordline test file is due 31 Oct; it was sent on 30 Oct with 24 sample declarations (16 exports, 4 amendments, 4 cancellations).",
+   "emails": [
+    "m5",
+    "m22"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "The export mapping has 103 of 105 fields mapped.",
+   "emails": [
+    "m6"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "The two open mapping fields are GI_STAT_VALUE and GI_CUSTOMS_VALUE (statistical and customs value per goods item), which depend on Finance; Ana Novak expects an answer by 6 Nov.",
+   "emails": [
+    "m6",
+    "m10"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "No parallel formats because the gateway supports only one message format per partner profile, testing both would double the effort, and customs switches off the old system at go-live.",
+   "emails": [
+    "m19"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "Marta Kowalska is the contact for the customs test team and planned 22 test declarations (6 test cases) as buffer over the minimum of 20.",
+   "emails": [
+    "m3",
+    "m11"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "Customs needs the list of test declarations by Friday 30 Oct.",
+   "emails": [
+    "m21"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "The fallback if the team is not ready is to stay on the old system and move the date at the go/no-go of 12 Nov.",
+   "emails": [
+    "m19"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "When is the new go-live of the DMS customs migration and why was it moved?",
+   "a": "17 Nov 2026; Nordline's DMS release slipped from the end of October to 10 Nov.",
+   "facts": [
+    "F2",
+    "F3"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "Why do we not run the old and the new declaration format in parallel?",
+   "a": "The gateway supports only one message format per partner profile, testing both would double the effort, and customs switches off the old system at go-live.",
+   "facts": [
+    "F10"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "Which two mapping fields are still open and who do they wait for?",
+   "a": "GI_STAT_VALUE and GI_CUSTOMS_VALUE (goods-item statistical and customs value); they wait for Finance (Ana Novak, answer by 6 Nov).",
+   "facts": [
+    "F9"
+   ],
+   "type": "identifier"
+  },
+  {
+   "q": "What are the dates of the end-to-end test with customs and the go/no-go call?",
+   "a": "Test on 4-6 Nov 2026 (at least 20 declarations); go/no-go call on 12 Nov.",
+   "facts": [
+    "F5",
+    "F6"
+   ],
+   "type": "when"
+  },
+  {
+   "q": "How long does the Rotterdam EWM change freeze last in the end, and who proposed it?",
+   "a": "From 19 Oct until 17 Nov; proposed by Hanna Schmidt.",
+   "facts": [
+    "F4"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "Who in Corp Europe is the contact for the customs test team and how many test declarations are planned?",
+   "a": "Marta Kowalska; 22 declarations planned (minimum 20).",
+   "facts": [
+    "F11",
+    "F5"
+   ],
+   "type": "who"
+  },
+  {
+   "q": "Which SAP transport number carries the gateway mapping change for DMS?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "customs",
+  "title": "Q4 customs migration to the new declaration system (DMS)",
+  "level": "project",
+  "korean": false
+ }
+}

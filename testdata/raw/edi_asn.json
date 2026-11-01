@@ -1,0 +1,437 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "DESADV to Brightwater failing since 7 Oct - IDoc status 51",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-10-08 08:20",
+     "from": "elaurent",
+     "to": [
+      "lbecker"
+     ],
+     "cc": [
+      "pbakker"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Brightwater called me twice this morning. They have not received a single ASN from us since yesterday and their receiving hub cannot book dock slots without it. Two trucks from Venlo are already on the road with no advance notice. Can you check what happens with the DESADV on our side? As far as I know nothing changed on their end. I need something I can tell them before noon, even if it is only a rough cause.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-10-08 09:05",
+     "from": "lbecker",
+     "to": [
+      "elaurent"
+     ],
+     "cc": [
+      "pbakker"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Checked in WE02. All outbound DESADV IDocs for Brightwater since 7 Oct are in status 51, so nothing was sent to their EDI gateway. The error text points to the pallet SSCC segment. Message type is DESADV, partner BRIGHTW. So far 15 IDocs are stuck, 6 from yesterday and 9 from today. Screenshot and the 7 Oct IDocs are below. Pieter, can you look at the mapping? I cannot see the cause in the delivery data, the SSCCs on the handling units look normal in VL03N.",
+     "table": {
+      "header": [
+       "IDoc",
+       "Delivery",
+       "Created",
+       "Status",
+       "Error"
+      ],
+      "rows": [
+       [
+        "0000000048213377",
+        "80412301",
+        "07.10. 08:12",
+        "51",
+        "SSCC segment mapping"
+       ],
+       [
+        "0000000048213390",
+        "80412305",
+        "07.10. 09:47",
+        "51",
+        "SSCC segment mapping"
+       ],
+       [
+        "0000000048213412",
+        "80412311",
+        "07.10. 11:03",
+        "51",
+        "SSCC segment mapping"
+       ],
+       [
+        "0000000048213455",
+        "80412322",
+        "07.10. 13:30",
+        "51",
+        "SSCC segment mapping"
+       ],
+       [
+        "0000000048213471",
+        "80412329",
+        "07.10. 15:18",
+        "51",
+        "SSCC segment mapping"
+       ],
+       [
+        "0000000048213498",
+        "80412334",
+        "07.10. 16:55",
+        "51",
+        "SSCC segment mapping"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": {
+      "title": "IDoc List (WE02)",
+      "lines": [
+       "Direction: Outbound   Message type: DESADV   Partner: BRIGHTW",
+       "Status 51 - 15 IDocs   Status 03 - 0 IDocs since 07.10.",
+       "0000000048213377  Error: Mapping error in segment SSCC / pallet ID"
+      ]
+     }
+    },
+    {
+     "id": "m3",
+     "date": "2026-10-08 10:30",
+     "from": "pbakker",
+     "to": [
+      "lbecker"
+     ],
+     "cc": [
+      "elaurent"
+     ],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Found it. On 6 Oct we transported a change to the DESADV mapping for the new pallet label layout. Since then the SSCC field is filled from the wrong source field for mixed pallets, and the target segment expects exactly 18 digits. The mapping rejects the message, so the IDoc ends in status 51 before it leaves SAP. This is our mistake, I did not test a delivery with mixed pallets. I need to correct the mapping and test it against the Brightwater test endpoint. Realistic date for production is early next week, I will confirm.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m6",
+     "date": "2026-10-13",
+     "from": "pbakker",
+     "to": [
+      "lbecker"
+     ],
+     "cc": [
+      "elaurent"
+     ],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "Fix is ready and tested. I ran 5 deliveries including two with mixed pallets against the Brightwater test endpoint and their gateway accepted all of them with 18-digit SSCCs. I will transport it to production tomorrow, 14 Oct, in the morning slot. Lukas, after the transport please run one new delivery as a check and then reprocess the stuck IDocs with BD87.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m7",
+     "date": "2026-10-14 14:30",
+     "from": "lbecker",
+     "to": [
+      "elaurent"
+     ],
+     "cc": [
+      "pbakker"
+     ],
+     "reply_to": "m6",
+     "forward": false,
+     "body": "Transport arrived at 09:10. I created a test delivery 80412398 and the IDoc went to status 03 straight away. At 11:00 I reprocessed all stuck DESADV IDocs for Brightwater with BD87. 37 IDocs in total, all now in status 03, nothing left in 51. Overview per day below. Emma, you can tell Brightwater the ASNs are on their way, they will arrive as one batch.",
+     "table": {
+      "header": [
+       "Date",
+       "Failed IDocs",
+       "First IDoc",
+       "Result after BD87"
+      ],
+      "rows": [
+       [
+        "07.10.",
+        "6",
+        "0000000048213377",
+        "status 03"
+       ],
+       [
+        "08.10.",
+        "9",
+        "0000000048213520",
+        "status 03"
+       ],
+       [
+        "09.10.",
+        "7",
+        "0000000048213688",
+        "status 03"
+       ],
+       [
+        "12.10.",
+        "8",
+        "0000000048214015",
+        "status 03"
+       ],
+       [
+        "13.10.",
+        "7",
+        "0000000048214260",
+        "status 03"
+       ],
+       [
+        "Total",
+        "37",
+        "",
+        "all 03"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  },
+  {
+   "key": "t2",
+   "subject": "Brightwater ASN - interim solution until fix",
+   "emails": [
+    {
+     "id": "m4",
+     "date": "2026-10-08 11:15",
+     "from": "elaurent",
+     "to": [
+      "brightwater"
+     ],
+     "cc": [
+      "lbecker"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "We have found the cause of the missing ASNs: a mapping error on our side in the pallet SSCC segment, since 7 Oct. IT is working on a fix, expected early next week. As an interim solution we can send you an Excel list per shipment with delivery number, pallet SSCCs and quantities, every morning before 08:00. Would that be enough for your receiving hub to plan the dock slots? Apologies for the trouble.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-10-08 16:40",
+     "from": "brightwater",
+     "to": [
+      "elaurent"
+     ],
+     "cc": [
+      "lbecker"
+     ],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Thanks for the quick update. The Excel list works for us, but only temporarily, our team has to key it in by hand. Please send it before 08:00 and include the delivery number and the SSCC per pallet, otherwise we cannot book the slots. Can you also confirm the date the normal ASN flow is back? We can accept the manual process until 15 Oct at the latest.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m8",
+     "date": "2026-10-14 15:40",
+     "from": "elaurent",
+     "to": [
+      "brightwater"
+     ],
+     "cc": [
+      "lbecker",
+      "pbakker"
+     ],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "The fix went into production today, 14 Oct, at 09:10. We reprocessed the 37 DESADV messages that failed between 7 and 13 Oct, so you will receive them as a batch in your gateway. Please check that they arrive correctly. New ASNs go out automatically again, so the Excel list stops from tomorrow. Tell me if you see duplicates or missing deliveries.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m9",
+     "date": "2026-10-21 09:15",
+     "from": "brightwater",
+     "to": [
+      "elaurent"
+     ],
+     "cc": [],
+     "reply_to": "m8",
+     "forward": false,
+     "body": "Thanks Emma. We received the batch and the ASNs since then without problems. No duplicates, all SSCCs matched on receipt. You can close this from our side.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "DESADV ASNs to Brightwater started failing on 7 Oct 2026.",
+   "emails": [
+    "m1",
+    "m2"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "The failed DESADV IDocs were in status 51 in WE02, partner BRIGHTW, and were never sent to the EDI gateway.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "The error was a mapping error in the pallet SSCC segment.",
+   "emails": [
+    "m2",
+    "m3"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "The cause was a DESADV mapping change transported on 6 Oct for the new pallet label layout; for mixed pallets the SSCC was filled from the wrong source field, while the target segment expects 18 digits.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "Pieter Bakker admitted he had not tested a delivery with mixed pallets before the change.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "As an interim solution Emma Laurent offered Brightwater a daily Excel list with delivery number, pallet SSCCs and quantities before 08:00.",
+   "emails": [
+    "m4",
+    "m5"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "Brightwater accepted the manual Excel process only until 15 Oct at the latest because they have to key it in by hand.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "Pieter tested the fix with 5 deliveries, including two with mixed pallets, against the Brightwater test endpoint on or before 13 Oct.",
+   "emails": [
+    "m6"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "The fix was transported to production on 14 Oct at 09:10.",
+   "emails": [
+    "m6",
+    "m7",
+    "m8"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "Lukas Becker checked the fix with test delivery 80412398, whose IDoc went straight to status 03.",
+   "emails": [
+    "m7"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "37 IDocs were reprocessed with BD87 on 14 Oct at 11:00 and all reached status 03.",
+   "emails": [
+    "m7",
+    "m8"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "The 37 failed IDocs were distributed over days as 6 (7 Oct), 9 (8 Oct), 7 (9 Oct), 8 (12 Oct) and 7 (13 Oct).",
+   "emails": [
+    "m7"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "On 21 Oct Brightwater confirmed that the batch and later ASNs arrived without duplicates and that all SSCCs matched.",
+   "emails": [
+    "m9"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "Why did the DESADV IDocs for Brightwater end in status 51 from 7 October?",
+   "a": "A change to the DESADV mapping transported on 6 Oct filled the SSCC field from the wrong source for mixed pallets, so the SSCC segment (which expects 18 digits) rejected the message.",
+   "facts": [
+    "F2",
+    "F3",
+    "F4"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "How many Brightwater IDocs were reprocessed with BD87 and when?",
+   "a": "37 IDocs, on 14 Oct at 11:00.",
+   "facts": [
+    "F11"
+   ],
+   "type": "fact"
+  },
+  {
+   "q": "Who found the cause of the SSCC mapping error and who reprocessed the IDocs?",
+   "a": "Pieter Bakker found the cause; Lukas Becker reprocessed the IDocs with BD87.",
+   "facts": [
+    "F4",
+    "F11"
+   ],
+   "type": "who"
+  },
+  {
+   "q": "What interim solution did Brightwater get while the ASN flow was broken?",
+   "a": "A daily Excel list per shipment with delivery number, pallet SSCCs and quantities, sent before 08:00.",
+   "facts": [
+    "F6",
+    "F7"
+   ],
+   "type": "howto"
+  },
+  {
+   "q": "Which delivery was used to verify the fix in production, and what was the result?",
+   "a": "Delivery 80412398; its IDoc went to status 03 immediately.",
+   "facts": [
+    "F10"
+   ],
+   "type": "identifier"
+  },
+  {
+   "q": "How many IDocs had failed by the morning of 8 Oct, and how many of the later total of 37 failed on 12 and 13 Oct?",
+   "a": "15 had failed by 8 Oct (6 from 7 Oct and 9 from 8 Oct); 15 of the 37 failed on 12 and 13 Oct (8 + 7).",
+   "facts": [
+    "F12"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "What compensation or credit did Corp Europe offer Brightwater for the missing ASNs?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "edi_asn",
+  "title": "EDI ASN failures for customer Brightwater",
+  "level": "topic",
+  "korean": false
+ }
+}

@@ -1,0 +1,237 @@
+[
+ {
+  "id": "ko_customs_docs-q1",
+  "storyline": "ko_customs_docs",
+  "q": "How much duty did Rotterdam customs charge on the three Pyeongtaek shipments and why?",
+  "a": "EUR 18,400 in full duty, because the invoices had no EU-Korea FTA origin statement so the preference could not be applied.",
+  "type": "why",
+  "facts": [
+   "Three Pyeongtaek shipments cleared in Rotterdam on 8 and 9 October 2026 without the EU-Korea FTA origin statement on the invoice.",
+   "Because the proof of origin was missing, customs in Rotterdam charged full duty of EUR 18,400 on the three shipments."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m10",
+   "m8"
+  ],
+  "gold_message_ids": [
+   "ko_customs_docs.t1.m1.319bcda660@corp-europe.example",
+   "ko_customs_docs.t2.m10.ae59b94379@corp-europe.example",
+   "ko_customs_docs.t2.m8.cf6467328e@corp-europe.example"
+  ]
+ },
+ {
+  "id": "ko_customs_docs-q2",
+  "storyline": "ko_customs_docs",
+  "q": "From which date does the Pyeongtaek plant put the origin statement on its invoices?",
+  "a": "From 20 October 2026.",
+  "type": "when",
+  "facts": [
+   "The new Pyeongtaek invoice template with the origin statement and exporter number is live from 20 October 2026."
+  ],
+  "gold_email_keys": [
+   "m6",
+   "m8"
+  ],
+  "gold_message_ids": [
+   "ko_customs_docs.t1.m6.074a97bd85@plant-korea.example",
+   "ko_customs_docs.t2.m8.cf6467328e@corp-europe.example"
+  ]
+ },
+ {
+  "id": "ko_customs_docs-q3",
+  "storyline": "ko_customs_docs",
+  "q": "What is the case number of the refund request for the Korea shipments?",
+  "a": "RFD-2026-10-7731.",
+  "type": "identifier",
+  "facts": [
+   "The refund request was filed on 22 October 2026 under case number RFD-2026-10-7731."
+  ],
+  "gold_email_keys": [
+   "m10",
+   "m12"
+  ],
+  "gold_message_ids": [
+   "ko_customs_docs.t2.m10.ae59b94379@corp-europe.example",
+   "ko_customs_docs.t2.m12.940c96d097@corp-europe.example"
+  ]
+ },
+ {
+  "id": "ko_customs_docs-q4",
+  "storyline": "ko_customs_docs",
+  "q": "Why does the invoice have to show the approved exporter number KR-AE-20417?",
+  "a": "Each of the invoices is above EUR 6,000, so an approved exporter number is required with the origin statement.",
+  "type": "why",
+  "facts": [
+   "The approved exporter number KR-AE-20417 is required on the invoices because each invoice is above EUR 6,000."
+  ],
+  "gold_email_keys": [
+   "m2",
+   "m3"
+  ],
+  "gold_message_ids": [
+   "ko_customs_docs.t1.m2.278b0c15e9@plant-korea.example",
+   "ko_customs_docs.t1.m3.9530a2801c@corp-europe.example"
+  ]
+ },
+ {
+  "id": "ko_customs_docs-q5",
+  "storyline": "ko_customs_docs",
+  "q": "When can the refund decision be expected and who approved filing the request?",
+  "a": "Early to mid December (6 to 8 weeks after filing on 22 October); Ruud Jansen approved filing.",
+  "type": "multihop",
+  "facts": [
+   "Ruud Jansen approved filing the refund request, and Ana Novak was asked to keep EUR 18,400 as an open item/receivable on the Rotterdam customs cost center.",
+   "The refund request was filed on 22 October 2026 under case number RFD-2026-10-7731.",
+   "Customs normally decides in 6 to 8 weeks, so Marta expects a decision in early to mid December."
+  ],
+  "gold_email_keys": [
+   "m10",
+   "m12",
+   "m8",
+   "m9"
+  ],
+  "gold_message_ids": [
+   "ko_customs_docs.t2.m10.ae59b94379@corp-europe.example",
+   "ko_customs_docs.t2.m12.940c96d097@corp-europe.example",
+   "ko_customs_docs.t2.m8.cf6467328e@corp-europe.example",
+   "ko_customs_docs.t2.m9.ed8c3a329c@corp-europe.example"
+  ]
+ },
+ {
+  "id": "ko_customs_docs-q6",
+  "storyline": "ko_customs_docs",
+  "q": "Which invoice was the first one issued on the new template and which deliveries were still in transit when the problem was found?",
+  "a": "INV-48305 (delivery 80456855) was the first on the new template; deliveries 80456802 and 80456811 were in transit.",
+  "type": "multihop",
+  "facts": [
+   "Two more shipments (deliveries 80456802 and 80456811) were in transit and arriving 23 and 24 October; Marta held the declarations until corrected invoices arrived.",
+   "The first shipment on the new template was INV-48305 (delivery 80456855) and it looked good."
+  ],
+  "gold_email_keys": [
+   "m12",
+   "m5",
+   "m7"
+  ],
+  "gold_message_ids": [
+   "ko_customs_docs.t2.m12.940c96d097@corp-europe.example",
+   "ko_customs_docs.t1.m5.c8eb89a77e@corp-europe.example",
+   "ko_customs_docs.t1.m7.b0a3b7eb00@corp-europe.example"
+  ]
+ },
+ {
+  "id": "ko_customs_docs-q7",
+  "storyline": "ko_customs_docs",
+  "q": "Will the refund from Dutch customs include interest?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "ko_hq_forecast-q1",
+  "storyline": "ko_hq_forecast",
+  "q": "How many TEU did Nordline secure for November on the Korea to Rotterdam lane?",
+  "a": "1,100 TEU",
+  "type": "fact",
+  "facts": [
+   "Tom Hendriks secured 1,100 TEU of vessel capacity with Nordline for November."
+  ],
+  "gold_email_keys": [
+   "m3"
+  ],
+  "gold_message_ids": [
+   "ko_hq_forecast.t1.m3.e30a0dfb87@corp-europe.example"
+  ]
+ },
+ {
+  "id": "ko_hq_forecast-q2",
+  "storyline": "ko_hq_forecast",
+  "q": "Why is the rail option used for 140 TEU in November?",
+  "a": "Nordline capacity is limited to 1,100 TEU of the 1,240 TEU, and rail covers the remaining 140 TEU instead of extra spot capacity.",
+  "type": "why",
+  "facts": [
+   "Tom Hendriks secured 1,100 TEU of vessel capacity with Nordline for November.",
+   "The remaining 140 TEU are moved by rail instead of buying extra spot capacity from Nordline.",
+   "The rail cargo of 140 TEU comes from the Pyeongtaek plant and is ready on 5 November."
+  ],
+  "gold_email_keys": [
+   "m10",
+   "m3",
+   "m7",
+   "m9"
+  ],
+  "gold_message_ids": [
+   "ko_hq_forecast.t1.m10.d33a48ad8f@corp-europe.example",
+   "ko_hq_forecast.t1.m3.e30a0dfb87@corp-europe.example",
+   "ko_hq_forecast.t1.m7.f853e0eb85@plant-korea.example",
+   "ko_hq_forecast.t1.m9.b34abebf81@corp-europe.example"
+  ]
+ },
+ {
+  "id": "ko_hq_forecast-q3",
+  "storyline": "ko_hq_forecast",
+  "q": "What is the rail booking reference for the 140 TEU from Pyeongtaek?",
+  "a": "RAIL-26-4471",
+  "type": "identifier",
+  "facts": [
+   "The rail booking for 140 TEU was confirmed on 22 October with reference RAIL-26-4471, loading in W46."
+  ],
+  "gold_email_keys": [
+   "m10"
+  ],
+  "gold_message_ids": [
+   "ko_hq_forecast.t1.m10.d33a48ad8f@corp-europe.example"
+  ]
+ },
+ {
+  "id": "ko_hq_forecast-q4",
+  "storyline": "ko_hq_forecast",
+  "q": "Which week is the busiest for the November Korea inbound, and how many TEU?",
+  "a": "W47 with 340 TEU",
+  "type": "fact",
+  "facts": [
+   "Weekly split for November: W45 280, W46 320, W47 340, W48 300 TEU.",
+   "Mark de Boer approved the forecast on 21 October on the condition that the rail booking is confirmed by 23 October; W47 (340 TEU) needs extra terminal gate slots."
+  ],
+  "gold_email_keys": [
+   "m4",
+   "m9"
+  ],
+  "gold_message_ids": [
+   "ko_hq_forecast.t1.m4.0aa567e28b@hq-korea.example",
+   "ko_hq_forecast.t1.m9.b34abebf81@corp-europe.example"
+  ]
+ },
+ {
+  "id": "ko_hq_forecast-q5",
+  "storyline": "ko_hq_forecast",
+  "q": "What misunderstanding did the Pyeongtaek plant have about the volume and how was it solved?",
+  "a": "Seo-yeon thought rail 140 TEU came on top of 1,240 TEU (1,380 total); Tom explained that 1,240 TEU is the total, with 1,100 sea and 140 rail.",
+  "type": "multihop",
+  "facts": [
+   "Lee Seo-yeon wrongly assumed that the 140 TEU rail was on top of 1,240 TEU (1,380 TEU total); Tom clarified that 1,240 TEU is the total including rail."
+  ],
+  "gold_email_keys": [
+   "m5",
+   "m6",
+   "m7"
+  ],
+  "gold_message_ids": [
+   "ko_hq_forecast.t1.m5.5dc8e32364@plant-korea.example",
+   "ko_hq_forecast.t1.m6.087139784b@corp-europe.example",
+   "ko_hq_forecast.t1.m7.f853e0eb85@plant-korea.example"
+  ]
+ },
+ {
+  "id": "ko_hq_forecast-q6",
+  "storyline": "ko_hq_forecast",
+  "q": "Which rail terminal in Europe is used for the Korea rail shipments?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ }
+]

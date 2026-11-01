@@ -1,0 +1,81 @@
+Message-ID: <ewm_rotterdam.t1.m1.be61a86dd4@corp-europe.example>
+Date: Mon, 21 Sep 2026 09:10:00 +0200
+From: "Hanna Schmidt" <h.schmidt@corp-europe.example>
+To: "Ruud Jansen" <r.jansen@corp-europe.example>
+Cc: "Sofie Peeters" <s.peeters@corp-europe.example>,
+ "Lukas Becker" <l.becker@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: Rotterdam DC EWM go-live: cutover and hypercare
+Thread-Index: Ad1JmDckL+eLBoUDym4gsn7p8PRZLg==
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============2113947558534692266=="
+
+--===============2113947558534692266==
+Content-Type: multipart/alternative;
+ boundary="===============7111664664912964667=="
+
+--===============7111664664912964667==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Cutover plan for Rotterdam is final. Legacy WM is frozen on Friday 2 Oct at 1=
+8:00, physical count runs Saturday 3 Oct, and EWM go-live is Tuesday 6 Oct at=
+ 06:00 with the first shift. Hypercare runs until 30 Oct, with a daily 15-min=
+ute stand-up at 08:30 in the Rotterdam control room.
+
+For open warehouse tasks please use /SCWM/MON, not the old LT23 lists. Lukas,=
+ I need the supervisor and picker roles loaded by 30 Sep. Ruud, please confir=
+m that the Rotterdam shift leaders can attend the stand-up. The plan is attac=
+hed.
+
+Best regards,
+Hanna Schmidt
+EWM project lead (Rotterdam and Venlo rollouts)
+Corp Europe B.V. | Rotterdam
+T +31 10 396 7888
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============7111664664912964667==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Cutover plan for Rotterdam is final. Legacy WM is frozen on Fr=
+iday 2 Oct at 18:00, physical count runs Saturday 3 Oct, and EWM go-live is T=
+uesday 6 Oct at 06:00 with the first shift. Hypercare runs until 30 Oct, with=
+ a daily 15-minute stand-up at 08:30 in the Rotterdam control room.</p>
+<p>For open warehouse tasks please use /SCWM/MON, not the old LT23 lists. Luk=
+as, I need the supervisor and picker roles loaded by 30 Sep. Ruud, please con=
+firm that the Rotterdam shift leaders can attend the stand-up. The plan is at=
+tached.</p><p>Best regards,<br>Hanna Schmidt<br>EWM project lead (Rotterdam a=
+nd Venlo rollouts)<br>Corp Europe B.V. | Rotterdam<br>T +31 10 396 7888<br><b=
+r>This e-mail and any attachments are confidential and intended solely for th=
+e addressee. If you received it in error, please delete it.</p></body></html>
+
+--===============7111664664912964667==--
+
+--===============2113947558534692266==
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Rotterdam_EWM_cutover_plan_v3.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2Jq
+CjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2Jq
+CjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA1OTUg
+ODQyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4g
+Pj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCAyODcgPj4Kc3RyZWFtCkJUIC9GMSAxMCBU
+ZiA1MCA4MDAgVGQgMTMgVEwKKFJvdHRlcmRhbSBEQyBFV00gY3V0b3ZlciBwbGFuIHYzKSAnCihG
+cmkgMiBPY3QgMTg6MDAgLSBsZWdhY3kgV00gZnJlZXplKSAnCihTYXQgMyBPY3QgLSBwaHlzaWNh
+bCBjb3VudCkgJwooU3VuIDQgT2N0IC0gbWFzdGVyIGRhdGEgY2hlY2spICcKKFR1ZSA2IE9jdCAw
+NjowMCAtIGdvLWxpdmUsIGZpcnN0IHNoaWZ0KSAnCihEYWlseSBzdGFuZC11cCAwODozMCBkdXJp
+bmcgaHlwZXJjYXJlKSAnCihIeXBlcmNhcmUgZW5kOiBGcmkgMzAgT2N0KSAnCkVUCmVuZHN0cmVh
+bQplbmRvYmoKNSAwIG9iago8PCAvVHlwZSAvRm9udCAvU3VidHlwZSAvVHlwZTEgL0Jhc2VGb250
+IC9IZWx2ZXRpY2EgPj4KZW5kb2JqCnhyZWYKMCA2CjAwMDAwMDAwMDAgNjU1MzUgZiAKMDAwMDAw
+MDAwOSAwMDAwMCBuIAowMDAwMDAwMDU4IDAwMDAwIG4gCjAwMDAwMDAxMTUgMDAwMDAgbiAKMDAw
+MDAwMDI0MSAwMDAwMCBuIAowMDAwMDAwNTc5IDAwMDAwIG4gCnRyYWlsZXIKPDwgL1NpemUgNiAv
+Um9vdCAxIDAgUiA+PgpzdGFydHhyZWYKNjQ5CiUlRU9GCg==
+
+--===============2113947558534692266==--

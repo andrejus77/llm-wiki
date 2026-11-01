@@ -1,0 +1,62 @@
+Message-ID: <ai_mail_classifier.t1.m1.14e1206d19@corp-europe.example>
+Date: Tue, 13 Oct 2026 09:10:00 +0200
+From: "Nina Meijer" <n.meijer@corp-europe.example>
+To: "Emma Laurent" <e.laurent@corp-europe.example>,
+ "Stefan Kovac" <s.kovac@corp-europe.example>
+Cc: "Pieter Bakker" <p.bakker@corp-europe.example>,
+ "DL AI" <dl-ai@corp-europe.example>
+Subject: Pilot: automatic sorting of customer service mail
+Thread-Index: Ad1a4dw7PA0iKuVudaAI5a0VOQMaaQ==
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============6016183420188629959=="
+
+--===============6016183420188629959==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Emma, Stefan,
+
+As agreed in the steering meeting we start the pilot to sort incoming custome=
+r service mail into the five queues (delivery status, damage, invoicing, book=
+ing change, other) with Gemini 2.5 Flash through the company Vertex AI tenant=
+. Customer service sorts about 900 mails a week by hand today.
+
+Plan:
+- Emma: export 200 anonymised mails from September with the queue they ended =
+up in (by 16 Oct)
+- Stefan: prompt + small evaluation script, accuracy target 90 % (by 23 Oct)
+- Go/no-go for a shadow run in November on 29 Oct
+
+Pieter, FYI because the RPA mailbox reader would feed the model later.
+
+Thanks,
+Nina Meijer
+AI lead, Logistics Europe
+Corp Europe B.V. | Rotterdam
+T +31 10 810 2040
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============6016183420188629959==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Emma, Stefan,</p>
+<p>As agreed in the steering meeting we start the pilot to sort incoming cust=
+omer service mail into the five queues (delivery status, damage, invoicing, b=
+ooking change, other) with Gemini 2.5 Flash through the company Vertex AI ten=
+ant. Customer service sorts about 900 mails a week by hand today.</p>
+<p>Plan:<br>- Emma: export 200 anonymised mails from September with the queue=
+ they ended up in (by 16 Oct)<br>- Stefan: prompt + small evaluation script, =
+accuracy target 90 % (by 23 Oct)<br>- Go/no-go for a shadow run in November o=
+n 29 Oct</p>
+<p>Pieter, FYI because the RPA mailbox reader would feed the model later.</p>=
+<p>Thanks,<br>Nina Meijer<br>AI lead, Logistics Europe<br>Corp Europe B.V. | =
+Rotterdam<br>T +31 10 810 2040<br><br>This e-mail and any attachments are con=
+fidential and intended solely for the addressee. If you received it in error,=
+ please delete it.</p></body></html>
+
+--===============6016183420188629959==--

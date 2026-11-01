@@ -1,0 +1,49 @@
+# First settings for the company server. install.bat copies this to data\settings.yaml (only if none exists).
+# Most values can later be changed in the portal (Agent > Settings); the portal's saved settings win, EXCEPT the
+# machine keys (pool.endpoints, .pst/.eml paths, POP3 mailboxes, server, privacy.test_data_only): this file wins for those, so data
+# imported from the work laptop never brings the laptop's endpoints (Gemini/Claude/Codex) to the server.
+server:
+  mode: server            # Django login required
+  host: 0.0.0.0
+  port: 8000
+sources:
+  pop3_enabled: true
+  pop3_accounts:                             # <-- one entry per shared department mailbox; each password in its own env var
+    - {dept: "dl-a@your-company.example", host: "pop3.your-company.example", port: 995, ssl: true, user: "dl-a", password_env: "LLMWIKI_POP3_PW_A"}
+    - {dept: "dl-b@your-company.example", host: "pop3.your-company.example", port: 995, ssl: true, user: "dl-b", password_env: "LLMWIKI_POP3_PW_B"}
+    - {dept: "dl-c@your-company.example", host: "pop3.your-company.example", port: 995, ssl: true, user: "dl-c", password_env: "LLMWIKI_POP3_PW_C"}
+  pst_path: ""                               # the backfill runs on the work laptop; leave empty here
+  dept_addresses: ["dl-a@your-company.example", "dl-b@your-company.example", "dl-c@your-company.example"]   # <-- fill in
+  internal_domains: ["your-company.example"]                                                                # <-- fill in
+  time_zone: Europe/Amsterdam
+pool:
+  failover_on_error: true                    # a request API B blocks or fails goes to API A
+  endpoints:
+    # API B: 3 requests/min (60 later), large context, sometimes blocks input with personal data.
+    # redact_pii removes phone numbers / e-mail addresses / IBANs / addresses before sending, so it blocks less.
+    - {name: api-b, kind: custom, model: "", rpm: 3, max_concurrent: 3, timeout_s: 0, context_tokens: 150000, stages: ["*"],
+       redact_pii: true}
+    # API A: 180 s limit, accepts personal data (it cleans it), takes a JSON schema (LangChain with_structured_output).
+    # Normally only the small stages; any stage when API B blocked or failed the request (fallback_stages).
+    # redact_pii is not needed for API A, but one rule for all is simpler (reference numbers are never removed);
+    # set it to false if the answers suffer.
+    - {name: api-a, kind: custom, model: "", rpm: 10, max_concurrent: 2, timeout_s: 180, context_tokens: 32000,
+       stages: ["s1", "s12", "s4", "report", "judge"], fallback_stages: ["*"], structured_output: true, redact_pii: true, priority: 1}
+privacy:
+  external_stages: ["review"]               # no external endpoints on the server anyway
+  redact_outputs: true                       # notes, wiki pages, reports and chat answers never carry PII
+departments:                                 # one report per department; every topic in exactly one of them
+  names: {"dl-a@your-company.example": "Team A", "dl-b@your-company.example": "Team B", "dl-c@your-company.example": "AI"}   # <-- fill in
+  ai_address: "dl-c@your-company.example"    # <-- the AI department's address (AI-related topics go to its report)
+  team_members: []                           # <-- the team's addresses (or globs); a topic is reported only if one of them wrote in the window
+reports:
+  daily_time: "07:00"                        # 'past 7 days' report every morning
+  weekly_weekday: 3                          # Thursday = the weekly report (before the CFO meeting on Friday)
+retrieval:
+  embed_model: multilingual-e5-small         # handles Korean; fallback: bge-small-en-v1.5 or hashed
+  vector_store: qdrant                       # fallback: sqlite
+chat:
+  engine: langgraph                          # fallback: plain
+schedule:
+  batch_time: "18:00"
+  live_enabled: false                        # switch on after importing the backfill (Agent > Settings > Schedule)

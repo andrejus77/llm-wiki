@@ -1,0 +1,307 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "Stock in Q after delivery without certificates - how to release",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-10-05 09:10",
+     "from": "speeters",
+     "to": [
+      "lbecker"
+     ],
+     "cc": [],
+     "reply_to": null,
+     "forward": false,
+     "body": "Lukas, we have the same problem as in September. Delivery 80651234 (PO 4500187342, 12 pallets of steel brackets, material 100-20418) arrived on Friday 2 October without the 3.1 material certificates. The goods receipt is posted, but everything sits in stock type Q and the outbound planners cannot see it as available.\n\nLast time it took us 3 days to get it free, mostly because nobody knew who had to do what. Can you remind me of the exact steps and t-codes? I would like to write it down properly this time so the next shift does not have to ask you.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-10-05 13:25",
+     "from": "lbecker",
+     "to": [
+      "speeters"
+     ],
+     "cc": [],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Sure. The Q stock is not an error. With this material the system creates an inspection lot automatically at goods receipt (inspection type 01), and the stock stays blocked in quality inspection until a usage decision is made. Steps below.\n\nThe 3 days in September came from two things: the supplier only sent the certificates on the Wednesday, and QA was not told that the lot existed, so the usage decision was only made on the Thursday. So the trick is to tell QA on day 1 and chase the supplier at the same time.",
+     "table": {
+      "header": [
+       "Step",
+       "T-code",
+       "What to do",
+       "Who"
+      ],
+      "rows": [
+       [
+        "1",
+        "MMBE",
+        "Check that the stock really is in Q (quality inspection) for plant 2030",
+        "Warehouse"
+       ],
+       [
+        "2",
+        "QA32",
+        "Find the inspection lot by plant, material or PO and note the lot number",
+        "Warehouse"
+       ],
+       [
+        "3",
+        "-",
+        "Ask the supplier for the certificates; mail the lot number to QA",
+        "Warehouse"
+       ],
+       [
+        "4",
+        "QE51N",
+        "Record results of the QA checks and attach the certificates",
+        "QA"
+       ],
+       [
+        "5",
+        "QA11",
+        "Make the usage decision (code A = accepted)",
+        "QA"
+       ],
+       [
+        "6",
+        "MMBE",
+        "Check that the stock moved from Q to unrestricted",
+        "Warehouse"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-10-06 08:40",
+     "from": "speeters",
+     "to": [
+      "lbecker"
+     ],
+     "cc": [],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Thanks, that is clear. I found the lot in QA32 and mailed the number to QA yesterday afternoon: inspection lot 010000004871.\n\nOne question: the supplier says the certificates will take until the end of the week. Venlo needs these brackets on Thursday for an outbound order. Does the usage decision really need the certificates, or can QA decide on their own checks? And what does the QA11 screen look like, so I can show it in the how-to?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m4",
+     "date": "2026-10-06 10:15",
+     "from": "lbecker",
+     "to": [
+      "speeters"
+     ],
+     "cc": [],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "SAP itself does not force the certificates. It is a QA decision: if QA does its own sample check in QE51N and is happy, they can accept the lot in QA11 and note in the remarks that the certificates are still outstanding. That is for QA to decide, not for us. Ask them directly.\n\nImportant: in QA11 the stock posting must be ticked, so the stock moves from Q to unrestricted automatically with the usage decision. If it is not ticked, the stock stays in Q even though the lot is closed. Screenshot of the screen below with lot 010000004871 as example.",
+     "table": null,
+     "attachment": null,
+     "screenshot": {
+      "title": "QA11 - Record Usage Decision",
+      "lines": [
+       "Inspection lot: 010000004871    Plant: 2030",
+       "Material: 100-20418 Steel bracket    Lot qty: 12 PAL",
+       "Usage decision code: A   Accepted",
+       "Quality score: 100",
+       "Stock posting: Unrestricted-use 12 PAL (from Q)",
+       "Remarks: 3.1 certificates outstanding, QA sample check OK"
+      ]
+     }
+    },
+    {
+     "id": "m5",
+     "date": "2026-10-09 16:05",
+     "from": "speeters",
+     "to": [
+      "lbecker"
+     ],
+     "cc": [],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Update: QA did their sample check on Tuesday afternoon and made the usage decision in QA11 on Wednesday 7 October at 14:20, code A. The 12 pallets of delivery 80651234 moved from Q to unrestricted straight away, I checked in MMBE and the movement in MB51. Venlo got their brackets on Thursday as planned.\n\nSo this time it took about 2 days instead of 3, and the certificates only arrived today. I will add the QA remark that they were late.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m6",
+     "date": "2026-10-12 09:30",
+     "from": "lbecker",
+     "to": [
+      "speeters"
+     ],
+     "cc": [],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "Good result. Please put the steps from my mail of 5 October and the QA11 screenshot into the how-to for inbound, so every site can use it. One tip for the page: save a QA32 variant with plant and stock type Q, then you see every open lot each morning and do not depend on someone telling you.\n\nIf the stock does not move after the usage decision, check first that the stock posting was ticked in QA11. Call me if it still does not work.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "Delivery 80651234 on PO 4500187342 (12 pallets of steel brackets, material 100-20418) arrived on Friday 2 October 2026 without 3.1 material certificates.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "Stock stays in stock type Q because an inspection lot is created automatically at goods receipt (inspection type 01) and remains blocked until a usage decision is made.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "The first time (September) it took 3 days because the supplier sent certificates only on Wednesday and QA was not told about the lot, so the usage decision came on Thursday.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "The how-to steps: MMBE to check stock in Q, QA32 to find the inspection lot, supplier sends certificates and the lot number goes to QA, QE51N to record results, QA11 for the usage decision, MMBE to verify.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "Sofie Peeters found the inspection lot 010000004871 in QA32 and mailed the number to QA on 5 October.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "Venlo needed the brackets on Thursday 8 October for an outbound order.",
+   "emails": [
+    "m3",
+    "m5"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "SAP does not force the certificates; QA decides whether to accept on its own sample check in QE51N, with a remark that certificates are outstanding.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "In QA11 the stock posting must be ticked so the stock moves from Q to unrestricted with the usage decision; otherwise it stays in Q although the lot is closed.",
+   "emails": [
+    "m4",
+    "m6"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "The QA11 usage decision uses code A (accepted); in the example for lot 010000004871 the quality score is 100 and 12 PAL are posted to unrestricted.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "QA made the usage decision in QA11 on Wednesday 7 October at 14:20 and the 12 pallets moved to unrestricted immediately; this was verified in MMBE and MB51.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "This time release took about 2 days instead of 3; the certificates only arrived on 9 October.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "Lukas Becker asked Sofie Peeters to put the steps and the QA11 screenshot into the inbound how-to for all sites.",
+   "emails": [
+    "m6"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "Tip: save a QA32 variant with plant and stock type Q to see every open inspection lot each morning.",
+   "emails": [
+    "m6"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "Which t-code is used to make the usage decision that releases stock from quality inspection?",
+   "a": "QA11",
+   "facts": [
+    "F4",
+    "F9"
+   ],
+   "type": "identifier"
+  },
+  {
+   "q": "Why did the first release of supplier stock without certificates take 3 days?",
+   "a": "The supplier sent the certificates only on Wednesday and QA was not told the inspection lot existed, so the usage decision was made on Thursday.",
+   "facts": [
+    "F3"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "How do I find the inspection lot for stock sitting in Q?",
+   "a": "Use QA32 and search by plant, material or PO, then note the lot number and send it to QA.",
+   "facts": [
+    "F4",
+    "F5"
+   ],
+   "type": "howto"
+  },
+  {
+   "q": "The inspection lot is closed in QA11 but the stock is still in Q. What should I check?",
+   "a": "Check that the stock posting was ticked in QA11; otherwise the stock does not move to unrestricted.",
+   "facts": [
+    "F8"
+   ],
+   "type": "howto"
+  },
+  {
+   "q": "When was delivery 80651234 released to unrestricted stock and who made the decision?",
+   "a": "On Wednesday 7 October 2026 at 14:20, by QA with usage decision code A in QA11.",
+   "facts": [
+    "F10",
+    "F9"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "Which supplier price discount or penalty was agreed for the late certificates on delivery 80651234?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "qm_block",
+  "title": "Inbound quality block for supplier stock",
+  "level": "task",
+  "korean": false
+ }
+}

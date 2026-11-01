@@ -1,0 +1,109 @@
+Message-ID: <edi_asn.t2.m8.1fe1405424@corp-europe.example>
+Date: Wed, 14 Oct 2026 15:40:00 +0200
+From: "Emma Laurent" <e.laurent@corp-europe.example>
+To: "Brightwater Retail Logistics" <brightwater@brightwater.example>
+Cc: "Lukas Becker" <l.becker@corp-europe.example>,
+ "Pieter Bakker" <p.bakker@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: Brightwater ASN - interim solution until fix
+In-Reply-To: <edi_asn.t2.m5.2d586f34b1@brightwater.example>
+References: <edi_asn.t2.m4.3cc6922b47@corp-europe.example>
+ <edi_asn.t2.m5.2d586f34b1@brightwater.example>
+Thread-Index: Ad1b4YIh3mn0fBN7UBusfTh9sQX3NQS5gFNnJkB8sks=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============7896972373701248735=="
+
+--===============7896972373701248735==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+The fix went into production today, 14 Oct, at 09:10. We reprocessed the 37 D=
+ESADV messages that failed between 7 and 13 Oct, so you will receive them as =
+a batch in your gateway. Please check that they arrive correctly. New ASNs go=
+ out automatically again, so the Excel list stops from tomorrow. Tell me if y=
+ou see duplicates or missing deliveries.
+
+Regards,
+Emma Laurent
+Customer service lead
+Corp Europe B.V. | Rotterdam
+T +31 10 882 7691
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Brightwater Retail Logistics <brightwater@brightwater.example>
+Sent: Thursday, 08 October 2026 16:40
+To: Emma Laurent
+Subject: Re: Brightwater ASN - interim solution until fix
+
+Thanks for the quick update. The Excel list works for us, but only temporaril=
+y, our team has to key it in by hand. Please send it before 08:00 and include=
+ the delivery number and the SSCC per pallet, otherwise we cannot book the sl=
+ots. Can you also confirm the date the normal ASN flow is back? We can accept=
+ the manual process until 15 Oct at the latest.
+
+Best regards,
+Brightwater Retail Logistics
+New customer (retail)
+
+-----Original Message-----
+From: Emma Laurent <e.laurent@corp-europe.example>
+Sent: Thursday, 08 October 2026 11:15
+To: Brightwater Retail Logistics
+Subject: Brightwater ASN - interim solution until fix
+
+We have found the cause of the missing ASNs: a mapping error on our side in t=
+he pallet SSCC segment, since 7 Oct. IT is working on a fix, expected early n=
+ext week. As an interim solution we can send you an Excel list per shipment w=
+ith delivery number, pallet SSCCs and quantities, every morning before 08:00.=
+ Would that be enough for your receiving hub to plan the dock slots? Apologie=
+s for the trouble.
+
+Kind regards,
+Emma Laurent
+Customer service lead
+Corp Europe B.V. | Rotterdam
+T +31 10 507 9308
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============7896972373701248735==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>The fix went into production today, 14 Oct, at 09:10. We repro=
+cessed the 37 DESADV messages that failed between 7 and 13 Oct, so you will r=
+eceive them as a batch in your gateway. Please check that they arrive correct=
+ly. New ASNs go out automatically again, so the Excel list stops from tomorro=
+w. Tell me if you see duplicates or missing deliveries.</p><p>Regards,<br>Emm=
+a Laurent<br>Customer service lead<br>Corp Europe B.V. | Rotterdam<br>T +31 1=
+0 882 7691<br><br>This e-mail and any attachments are confidential and intend=
+ed solely for the addressee. If you received it in error, please delete it.</=
+p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm =
+0cm 0cm'><p><b>From:</b> Brightwater Retail Logistics &lt;brightwater@brightw=
+ater.example&gt;<br><b>Sent:</b> Thursday, 08 October 2026 16:40<br><b>To:</b=
+> Emma Laurent<br><b>Cc:</b> Lukas Becker; DL CT<br><b>Subject:</b> Re: Brigh=
+twater ASN - interim solution until fix</p></div><p>Thanks for the quick upda=
+te. The Excel list works for us, but only temporarily, our team has to key it=
+ in by hand. Please send it before 08:00 and include the delivery number and =
+the SSCC per pallet, otherwise we cannot book the slots. Can you also confirm=
+ the date the normal ASN flow is back? We can accept the manual process until=
+ 15 Oct at the latest.</p><p>Best regards,<br>Brightwater Retail Logistics<br=
+>New customer (retail)</p><div class=3D'gmail_quote'>On Thu, 08 Oct 2026 at 1=
+1:15, Emma Laurent &lt;e.laurent@corp-europe.example&gt; wrote:<br><p>We have=
+ found the cause of the missing ASNs: a mapping error on our side in the pall=
+et SSCC segment, since 7 Oct. IT is working on a fix, expected early next wee=
+k. As an interim solution we can send you an Excel list per shipment with del=
+ivery number, pallet SSCCs and quantities, every morning before 08:00. Would =
+that be enough for your receiving hub to plan the dock slots? Apologies for t=
+he trouble.</p><p>Kind regards,<br>Emma Laurent<br>Customer service lead<br>C=
+orp Europe B.V. | Rotterdam<br>T +31 10 507 9308<br><br>This e-mail and any a=
+ttachments are confidential and intended solely for the addressee. If you rec=
+eived it in error, please delete it.</p></div></body></html>
+
+--===============7896972373701248735==--

@@ -1,0 +1,83 @@
+Message-ID: <customs.t3.m7.2680d67c1c@corp-europe.example>
+Date: Tue, 29 Sep 2026 10:25:00 +0200
+From: "Ruud Jansen" <r.jansen@corp-europe.example>
+To: "Ana Novak" <a.novak@corp-europe.example>
+Cc: "Marta Kowalska" <m.kowalska@corp-europe.example>,
+ "DL CUS" <dl-cus@corp-europe.example>
+Subject: RE: DMS export mapping - open fields
+In-Reply-To: <customs.t3.m6.393ee80b52@corp-europe.example>
+References: <customs.t3.m6.393ee80b52@corp-europe.example>
+Thread-Index: Ad1P7ASoOZLgLkRL91HqUH6Zaz46npOU6i28
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============0485850190172539256=="
+
+--===============0485850190172539256==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Ana, for the new customs declaration we need two values per goods item: the s=
+tatistical value and the customs value. Today they are calculated in a Financ=
+e process. Can you tell us the rule (net invoice value, freight and insurance=
+ allocation, currency) and the source in SAP? Marta has the sheet with the op=
+en fields. Without it the mapping stays at 103 of 105 fields.
+
+Best regards,
+Ruud Jansen
+Logistics manager Rotterdam, owner of the customs migration project
+Corp Europe B.V. | Rotterdam
+T +31 10 622 1406
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Marta Kowalska <m.kowalska@corp-europe.example>
+Sent: Monday, 28 September 2026 09:00
+To: Ruud Jansen
+Subject: DMS export mapping - open fields
+
+Attached is the current export mapping from the SAP delivery/billing data to =
+the DMS declaration. 103 of 105 fields are mapped and reviewed. Two fields at=
+ goods-item level are still open because the values come from Finance: the st=
+atistical value and the customs value per item. I put both on yellow in the s=
+heet. I also added dl-cus on this mail so the team sees the current version.
+
+Best regards,
+Marta Kowalska
+Customs coordinator
+Corp Europe B.V. | Rotterdam
+T +31 10 442 3662
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============0485850190172539256==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Ana, for the new customs declaration we need two values per go=
+ods item: the statistical value and the customs value. Today they are calcula=
+ted in a Finance process. Can you tell us the rule (net invoice value, freigh=
+t and insurance allocation, currency) and the source in SAP? Marta has the sh=
+eet with the open fields. Without it the mapping stays at 103 of 105 fields.<=
+/p><p>Best regards,<br>Ruud Jansen<br>Logistics manager Rotterdam, owner of t=
+he customs migration project<br>Corp Europe B.V. | Rotterdam<br>T +31 10 622 =
+1406<br><br>This e-mail and any attachments are confidential and intended sol=
+ely for the addressee. If you received it in error, please delete it.</p><div=
+ style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0c=
+m'><p><b>From:</b> Marta Kowalska &lt;m.kowalska@corp-europe.example&gt;<br><=
+b>Sent:</b> Monday, 28 September 2026 09:00<br><b>To:</b> Ruud Jansen<br><b>C=
+c:</b> Hanna Schmidt; DL CUS<br><b>Subject:</b> DMS export mapping - open fie=
+lds</p></div><p>Attached is the current export mapping from the SAP delivery/=
+billing data to the DMS declaration. 103 of 105 fields are mapped and reviewe=
+d. Two fields at goods-item level are still open because the values come from=
+ Finance: the statistical value and the customs value per item. I put both on=
+ yellow in the sheet. I also added dl-cus on this mail so the team sees the c=
+urrent version.</p><p>Best regards,<br>Marta Kowalska<br>Customs coordinator<=
+br>Corp Europe B.V. | Rotterdam<br>T +31 10 442 3662<br><br>This e-mail and a=
+ny attachments are confidential and intended solely for the addressee. If you=
+ received it in error, please delete it.</p></body></html>
+
+--===============0485850190172539256==--

@@ -1,0 +1,282 @@
+Message-ID: <accrual.t1.m4.586c14a381@corp-europe.example>
+Date: Fri, 25 Sep 2026 14:20:00 +0200
+From: "Tom Hendriks" <t.hendriks@corp-europe.example>
+To: "Ana Novak" <a.novak@corp-europe.example>
+Cc: "DL FIN" <dl-fin@corp-europe.example>
+Subject: RE: Weekly freight accrual - week 39
+In-Reply-To: <accrual.t1.m3.12db294625@corp-europe.example>
+References: <accrual.t1.m1.a78c327f43@corp-europe.example>
+ <accrual.t1.m2.f659334bdd@corp-europe.example>
+ <accrual.t1.m3.12db294625@corp-europe.example>
+Thread-Index: Ad1M6C9CNfoXqNLsN5wJkCBqnkJsw6bBrY8ysQ9Nt6aMCIqziw==
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============8712543734380692773=="
+
+--===============8712543734380692773==
+Content-Type: multipart/alternative;
+ boundary="===============4100357150501881776=="
+
+--===============4100357150501881776==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+You are right, sorry. Reran with POD date up to 25.09: now 44 shipments, 5 mo=
+re than before, total EUR 184,300. The extra 5 were all delivered early. Summ=
+ary per site below, full list attached.
+
+Site | Amount EUR
+Rotterdam | 61,200
+Venlo | 48,750
+Antwerp | 27,400
+Hamburg | 21,950
+Felixstowe | 13,100
+Gdansk | 11,900
+Total | 184,300
+
+Best regards,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 717 1434
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Ana Novak <a.novak@corp-europe.example>
+Sent: Friday, 25 September 2026 11:50
+To: Tom Hendriks
+Subject: RE: Weekly freight accrual - week 39
+
+Thanks Tom. I think the filter is the problem: for the accrual I need the act=
+ual delivery date (POD date) up to 25.09, not the planned date. Shipments del=
+ivered early with a planned date of 26-28.09 are missing, and those are costs=
+ of September.
+
+Could you rerun it with POD date? And yes, INV-48213 is cleared in FBL1N, so =
+that line will drop out on my side.
+
+Kind regards,
+Ana Novak
+Accounts payable analyst (Finance)
+Corp Europe B.V. | Rotterdam
+T +31 10 804 7912
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Tom Hendriks <t.hendriks@corp-europe.example>
+Sent: Friday, 25 September 2026 11:10
+To: Ana Novak
+Subject: RE: Weekly freight accrual - week 39
+
+Hi Ana, report attached. 39 shipments, total EUR 176,850. I filtered on plann=
+ed delivery date up to 25.09, as that is the default variant in the TMS.
+
+Example line: delivery 80412233 with Veltrans, Venlo, EUR 1,840. Note that IN=
+V-48213 for that one is already booked, so you should see it cleared in FBL1N.
+
+Best regards,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 428 3286
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Ana Novak <a.novak@corp-europe.example>
+Sent: Friday, 25 September 2026 09:30
+To: Tom Hendriks
+Subject: Weekly freight accrual - week 39
+
+Hi Tom, it's Friday, so time for the weekly freight accrual. This week it is =
+also the September close, so the figure will be booked for the month.
+
+Could you send me the TMS report of shipments delivered but not yet invoiced,=
+ cut-off today 25.09? I need it by 12:00 if possible. My routine is: take you=
+r report, match against open items in FBL1N, post the accrual with FB50 to G/=
+L 4711000, and set the reversal for the 1st of the month.
+
+Please include shipment number, delivery number, carrier, site and the agreed=
+ freight amount.
+
+Kind regards,
+Ana Novak
+Accounts payable analyst (Finance)
+Corp Europe B.V. | Rotterdam
+T +31 10 225 5506
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============4100357150501881776==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>You are right, sorry. Reran with POD date up to 25.09: now 44 =
+shipments, 5 more than before, total EUR 184,300. The extra 5 were all delive=
+red early. Summary per site below, full list attached.</p><table style=3D'bor=
+der-collapse:collapse;font-size:10pt'><tr><th style=3D'border:1px solid #999;=
+padding:3px 6px'>Site</th><th style=3D'border:1px solid #999;padding:3px 6px'=
+>Amount EUR</th></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>=
+Rotterdam</td><td style=3D'border:1px solid #999;padding:3px 6px'>61,200</td>=
+</tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>Venlo</td><td st=
+yle=3D'border:1px solid #999;padding:3px 6px'>48,750</td></tr><tr><td style=
+=3D'border:1px solid #999;padding:3px 6px'>Antwerp</td><td style=3D'border:1p=
+x solid #999;padding:3px 6px'>27,400</td></tr><tr><td style=3D'border:1px sol=
+id #999;padding:3px 6px'>Hamburg</td><td style=3D'border:1px solid #999;paddi=
+ng:3px 6px'>21,950</td></tr><tr><td style=3D'border:1px solid #999;padding:3p=
+x 6px'>Felixstowe</td><td style=3D'border:1px solid #999;padding:3px 6px'>13,=
+100</td></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>Gdansk</=
+td><td style=3D'border:1px solid #999;padding:3px 6px'>11,900</td></tr><tr><t=
+d style=3D'border:1px solid #999;padding:3px 6px'>Total</td><td style=3D'bord=
+er:1px solid #999;padding:3px 6px'>184,300</td></tr></table><p>Best regards,<=
+br>Tom Hendriks<br>Transport planner<br>Corp Europe B.V. | Rotterdam<br>T +31=
+ 10 717 1434<br><br>This e-mail and any attachments are confidential and inte=
+nded solely for the addressee. If you received it in error, please delete it.=
+</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0c=
+m 0cm 0cm'><p><b>From:</b> Ana Novak &lt;a.novak@corp-europe.example&gt;<br><=
+b>Sent:</b> Friday, 25 September 2026 11:50<br><b>To:</b> Tom Hendriks<br><b>=
+Cc:</b> DL FIN<br><b>Subject:</b> RE: Weekly freight accrual - week 39</p></d=
+iv><p>Thanks Tom. I think the filter is the problem: for the accrual I need t=
+he actual delivery date (POD date) up to 25.09, not the planned date. Shipmen=
+ts delivered early with a planned date of 26-28.09 are missing, and those are=
+ costs of September.</p>
+<p>Could you rerun it with POD date? And yes, INV-48213 is cleared in FBL1N, =
+so that line will drop out on my side.</p><p>Kind regards,<br>Ana Novak<br>Ac=
+counts payable analyst (Finance)<br>Corp Europe B.V. | Rotterdam<br>T +31 10 =
+804 7912<br><br>This e-mail and any attachments are confidential and intended=
+ solely for the addressee. If you received it in error, please delete it.</p>=
+<div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0c=
+m 0cm'><p><b>From:</b> Tom Hendriks &lt;t.hendriks@corp-europe.example&gt;<br=
+><b>Sent:</b> Friday, 25 September 2026 11:10<br><b>To:</b> Ana Novak<br><b>C=
+c:</b> DL FIN<br><b>Subject:</b> RE: Weekly freight accrual - week 39</p></di=
+v><p>Hi Ana, report attached. 39 shipments, total EUR 176,850. I filtered on =
+planned delivery date up to 25.09, as that is the default variant in the TMS.=
+</p>
+<p>Example line: delivery 80412233 with Veltrans, Venlo, EUR 1,840. Note that=
+ INV-48213 for that one is already booked, so you should see it cleared in FB=
+L1N.</p><p>Best regards,<br>Tom Hendriks<br>Transport planner<br>Corp Europe =
+B.V. | Rotterdam<br>T +31 10 428 3286<br><br>This e-mail and any attachments =
+are confidential and intended solely for the addressee. If you received it in=
+ error, please delete it.</p><div style=3D'border:none;border-top:solid #E1E1=
+E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Ana Novak &lt;a.novak@cor=
+p-europe.example&gt;<br><b>Sent:</b> Friday, 25 September 2026 09:30<br><b>To=
+:</b> Tom Hendriks<br><b>Cc:</b> DL FIN<br><b>Subject:</b> Weekly freight acc=
+rual - week 39</p></div><p>Hi Tom, it&#x27;s Friday, so time for the weekly f=
+reight accrual. This week it is also the September close, so the figure will =
+be booked for the month.</p>
+<p>Could you send me the TMS report of shipments delivered but not yet invoic=
+ed, cut-off today 25.09? I need it by 12:00 if possible. My routine is: take =
+your report, match against open items in FBL1N, post the accrual with FB50 to=
+ G/L 4711000, and set the reversal for the 1st of the month.</p>
+<p>Please include shipment number, delivery number, carrier, site and the agr=
+eed freight amount.</p><p>Kind regards,<br>Ana Novak<br>Accounts payable anal=
+yst (Finance)<br>Corp Europe B.V. | Rotterdam<br>T +31 10 225 5506<br><br>Thi=
+s e-mail and any attachments are confidential and intended solely for the add=
+ressee. If you received it in error, please delete it.</p></body></html>
+
+--===============4100357150501881776==--
+
+--===============8712543734380692773==
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="TMS_delivered_not_invoiced_KW39_v2.xlsx"
+MIME-Version: 1.0
+
+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
+c10ueG1sUEsFBgAAAAAJAAkAPgIAAGARAAAAAA==
+
+--===============8712543734380692773==--

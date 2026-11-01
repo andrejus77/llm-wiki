@@ -1,0 +1,391 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "AEO audit 9 Dec - preparation",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-10-05 09:10",
+     "from": "customstest",
+     "to": [
+      "mkowalska"
+     ],
+     "cc": [
+      "rjansen",
+      "mdeboer"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Please note that the audit of the AEO certificate of Corp Europe B.V. is scheduled for 9 December 2026, starting 09:00 at your Rotterdam site. Two auditors will attend. In the afternoon we would like to see the access control at the Venlo site, so please arrange a contact person there.\n\nWe ask you to send the updated written procedures, the security risk assessment and the training records for security-relevant staff no later than 20 November 2026. Please send them to this mailbox as PDF. If anything cannot be ready, tell us before that date and not on the day of the audit.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-10-06 11:30",
+     "from": "rjansen",
+     "to": [
+      "mkowalska"
+     ],
+     "cc": [
+      "mdeboer",
+      "dl-cus"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Marta, you are the owner of this preparation, I will support where I can. Proposal for the plan:\n\n1. Update all AEO procedures by 30 October.\n2. Walk the Rotterdam yard with the security checklist, one walk in week 42.\n3. Complete the training records for everyone with access to the secured areas.\n4. Mock audit on 24 November, so we still have time to fix findings before the real audit on 9 December.\n\nThe documents go to the customs test team by 20 November. Mark, are you ok with 24 Nov for the mock audit? I would ask Hanna's EWM people to keep that week free of go-live activities in Rotterdam.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-10-12 15:20",
+     "from": "mkowalska",
+     "to": [
+      "rjansen"
+     ],
+     "cc": [
+      "mdeboer",
+      "dl-cus"
+     ],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Status after the first week. Mark confirmed 24 Nov for the mock audit by phone, so that is fixed. The yard walk in Rotterdam is planned for tomorrow 13 Oct and I will do Venlo the day after, because the customs team wants to see Venlo as well. Numbers so far:",
+     "table": {
+      "header": [
+       "Item",
+       "Status 12 Oct",
+       "Target"
+      ],
+      "rows": [
+       [
+        "Procedures updated",
+        "4 of 9",
+        "9 of 9 by 30 Oct"
+       ],
+       [
+        "Training records complete",
+        "62 of 78 employees",
+        "78 of 78 by 13 Nov"
+       ],
+       [
+        "Rotterdam yard checklist",
+        "not started",
+        "walk on 13 Oct"
+       ],
+       [
+        "Mock audit",
+        "booked",
+        "24 Nov"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m7",
+     "date": "2026-10-23 08:45",
+     "from": "mdeboer",
+     "to": [
+      "mkowalska"
+     ],
+     "cc": [
+      "rjansen"
+     ],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "Marta, I have the management meeting next Tuesday and will be asked about the AEO audit. Can you give me a short status? I heard there was a finding in Venlo after your walk. How serious is it, and does it put the certificate at risk? Please also tell me if you need budget or people from my side, for example for the fence or lighting at the Rotterdam yard, before we are too close to 9 December.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m8",
+     "date": "2026-10-29 16:10",
+     "from": "mkowalska",
+     "to": [
+      "mdeboer"
+     ],
+     "cc": [
+      "rjansen",
+      "dl-cus"
+     ],
+     "reply_to": "m7",
+     "forward": false,
+     "body": "Mark, here is the status as of today.\n\nProcedures: all 9 updated on 28 Oct, so we are on time. Training: 74 of 78 employees done, the 4 missing are night shift in Rotterdam and are booked for 5 Nov. Yard checklist Rotterdam: 31 points, 28 ok, 3 open (lighting at gate 2, one damaged fence section near the container stack, camera 6 out of focus). The fence repair is the only one with cost, around EUR 4,800, and I would like your approval.\n\nVenlo: the visitor registration gap is not a blocker for the certificate if it is closed and documented before the audit. Jeroen has the action and the new digital log goes live on 6 Nov. The open points are in the attached list.",
+     "table": null,
+     "attachment": {
+      "kind": "xlsx",
+      "name": "AEO_open_points_2026-10-29.xlsx",
+      "rows": [
+       [
+        "Point",
+        "Site",
+        "Owner",
+        "Due",
+        "Status"
+       ],
+       [
+        "Lighting gate 2",
+        "Rotterdam",
+        "rjansen",
+        "2026-11-10",
+        "open"
+       ],
+       [
+        "Fence section near stack C",
+        "Rotterdam",
+        "rjansen",
+        "2026-11-13",
+        "open, EUR 4,800"
+       ],
+       [
+        "Camera 6 focus",
+        "Rotterdam",
+        "rjansen",
+        "2026-11-06",
+        "open"
+       ],
+       [
+        "Visitor registration",
+        "Venlo",
+        "jdevries",
+        "2026-11-06",
+        "in progress"
+       ],
+       [
+        "Training night shift (4 people)",
+        "Rotterdam",
+        "mkowalska",
+        "2026-11-05",
+        "booked"
+       ]
+      ]
+     },
+     "screenshot": null
+    }
+   ]
+  },
+  {
+   "key": "t2",
+   "subject": "Venlo visitor registration - AEO finding",
+   "emails": [
+    {
+     "id": "m4",
+     "date": "2026-10-15 10:05",
+     "from": "mkowalska",
+     "to": [
+      "jdevries"
+     ],
+     "cc": [
+      "rjansen"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Jeroen, during my AEO walk-through in Venlo on 14 Oct I found a gap at the gate. Visitors sign a paper sheet, nobody checks an ID, and there is no record of when the visitor badge comes back. The auditors will ask for exactly this on 9 Dec, so we have to fix it.\n\nMy proposal: a digital visitor log at reception with ID check, numbered badges and a sign-out time, and the log kept for 12 months. Can your team own this in Venlo? I would like it live by 6 November so we have enough time before the mock audit on 24 Nov.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-10-16 09:40",
+     "from": "jdevries",
+     "to": [
+      "mkowalska"
+     ],
+     "cc": [
+      "rjansen"
+     ],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Understood, we can take it. I will ask Pieter whether a simple form on the reception tablet is possible, otherwise we start with an Excel log on the reception PC. We have 20 numbered badges in stock, I will order 10 more.\n\nOne question: do truck drivers also need to be in this log? We have about 60 to 80 drivers per day at the outbound gates and the reception would be blocked.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m6",
+     "date": "2026-10-19 13:15",
+     "from": "mkowalska",
+     "to": [
+      "jdevries"
+     ],
+     "cc": [
+      "rjansen"
+     ],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "Drivers are not part of it. They are covered by the separate gate procedure with the driver check at the outbound gate, and that one was ok in my walk-through. The log is for visitors and contractors who enter the building or the warehouse.\n\nThe Excel log is fine as a start if the tablet form is not ready, as long as it has the fields name, company, ID checked yes/no, badge number, time in and time out. Deadline stays 6 November. Please send me a screenshot or a copy of the first filled page so I can add it to the audit file.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "The customs authority audits the AEO certificate of Corp Europe on 9 December 2026, starting at 09:00 at the Rotterdam site.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "The audit documents (updated procedures, security risk assessment, training records) must be sent to the customs test team by 20 November 2026.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "In the afternoon of the audit the auditors want to see access control at the Venlo site.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "Marta Kowalska is the owner of the AEO audit preparation; Ruud Jansen supports.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "The mock audit is planned for 24 November 2026, so findings can be fixed before the real audit on 9 December.",
+   "emails": [
+    "m2",
+    "m3"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "On 12 October 4 of 9 procedures were updated and 62 of 78 employees had complete training records.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "The Rotterdam yard security walk was planned for 13 October and the Venlo walk for 14 October.",
+   "emails": [
+    "m3",
+    "m4"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "The gap in Venlo: visitors sign a paper sheet, no ID is checked and there is no record of badge return.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "The fix is a digital visitor log with ID check, numbered badges and sign-out time, kept for 12 months, to be live by 6 November; Jeroen de Vries owns the action in Venlo.",
+   "emails": [
+    "m4",
+    "m5",
+    "m8"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "Truck drivers are not part of the visitor log because they are covered by the separate outbound gate procedure.",
+   "emails": [
+    "m6"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "If the tablet form is not ready, an Excel log on the reception PC is accepted, with the fields name, company, ID checked, badge number, time in and time out.",
+   "emails": [
+    "m5",
+    "m6"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "On 29 October all 9 procedures were updated (done 28 Oct) and 74 of 78 employees had finished training; the 4 missing are night shift in Rotterdam, booked for 5 November.",
+   "emails": [
+    "m8"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "The Rotterdam yard checklist has 31 points with 3 open: lighting at gate 2, a damaged fence section near the container stack, and camera 6 out of focus.",
+   "emails": [
+    "m8"
+   ]
+  },
+  {
+   "id": "F14",
+   "text": "The fence repair costs around EUR 4,800 and Marta asked Mark de Boer for approval.",
+   "emails": [
+    "m8"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "When is the AEO audit by the customs authority and where does it start?",
+   "a": "9 December 2026 at 09:00 at the Rotterdam site.",
+   "facts": [
+    "F1"
+   ],
+   "type": "when"
+  },
+  {
+   "q": "What exactly was the gap found in Venlo during the AEO walk-through?",
+   "a": "Visitors only sign a paper sheet, no ID is checked and there is no record of when the badge is returned.",
+   "facts": [
+    "F8"
+   ],
+   "type": "fact"
+  },
+  {
+   "q": "Why are truck drivers not included in the new Venlo visitor log?",
+   "a": "They are covered by the separate outbound gate procedure with a driver check, which was ok in the walk-through.",
+   "facts": [
+    "F10"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "Who owns the Venlo visitor registration fix and by when must it be live?",
+   "a": "Jeroen de Vries, live by 6 November 2026.",
+   "facts": [
+    "F9"
+   ],
+   "type": "who"
+  },
+  {
+   "q": "Which items were still open on the Rotterdam yard checklist at the end of October and what did the fence repair cost?",
+   "a": "Lighting at gate 2, a damaged fence section near the container stack and camera 6 out of focus; the fence repair is about EUR 4,800.",
+   "facts": [
+    "F13",
+    "F14"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "How many auditors from the customs authority will attend the AEO audit on the final day, and what are their names?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "aeo",
+  "title": "AEO customs audit preparation",
+  "level": "project",
+  "korean": false
+ }
+}

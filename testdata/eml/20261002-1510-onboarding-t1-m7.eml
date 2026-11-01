@@ -1,0 +1,133 @@
+Message-ID: <onboarding.t1.m7.b61f3f706c@corp-europe.example>
+Date: Fri, 02 Oct 2026 15:10:00 +0200
+From: "Tom Hendriks" <t.hendriks@corp-europe.example>
+To: "Emma Laurent" <e.laurent@corp-europe.example>
+Cc: "Lukas Becker" <l.becker@corp-europe.example>,
+ "Daan Visser" <d.visser@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: Brightwater Retail - onboarding and master data
+In-Reply-To: <onboarding.t1.m4.62feb27ebd@corp-europe.example>
+References: <onboarding.t1.m1.e5f9f77855@corp-europe.example>
+ <onboarding.t1.m4.62feb27ebd@corp-europe.example>
+Thread-Index: Ad1Sb1RK0XaIrw0EDwBUA+C4IkYzF80Bp8+Q+uX58k0=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============4039897634641739407=="
+
+--===============4039897634641739407==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Question for planning the first week. I see the window 06:00-14:00 on the shi=
+p-tos. Is this a delivery slot that we can miss by an hour or two, or a hard =
+limit? For Zaandam from Venlo I would need the truck to leave around 03:30-04=
+:00 to be on the dock at 06:00 at the earliest. If it is a soft window I can =
+plan normal daytime departures.
+
+Kind regards,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 355 3444
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Daan Visser <d.visser@corp-europe.example>
+Sent: Friday, 25 September 2026 11:30
+To: Emma Laurent
+Subject: RE: Brightwater Retail - onboarding and master data
+
+Master data for Brightwater is created. Sold-to is 100845 (created in XD01). =
+The three delivery points are ship-to 100846 (DC Mechelen), 100847 (DC Tilbur=
+g) and 100848 (Store hub Zaandam). Shipping condition is 02 (standard) on all=
+ of them, as agreed in the contract. The unloading times 06:00-14:00 are main=
+tained in the unloading points of each ship-to.
+
+Screenshot of the sold-to below. Lukas, you can start your test order now.
+
+Kind regards,
+Daan Visser
+Master data specialist
+Corp Europe B.V. | Rotterdam
+T +31 10 212 5658
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Emma Laurent <e.laurent@corp-europe.example>
+Sent: Monday, 21 September 2026 09:10
+To: Daan Visser
+Subject: Brightwater Retail - onboarding and master data
+
+Brightwater Retail signed last week and wants to start shipping on Monday 12 =
+October. They have 3 delivery points, two in the Netherlands and one in Belgi=
+um. Everything ships from Venlo.
+
+Daan, can you create the customer master once I have the data? I will ask Bri=
+ghtwater for addresses, VAT numbers and receiving hours this week. Lukas, I w=
+ould like you to run a test order through the whole chain before go-live (ord=
+er, delivery, shipment). Tom, please keep an eye on transport capacity for th=
+e first weeks, we expect about 6 deliveries per week at the start.
+
+Let me know if you need anything else from my side.
+
+Kind regards,
+Emma Laurent
+Customer service lead
+Corp Europe B.V. | Rotterdam
+T +31 10 766 5786
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============4039897634641739407==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Question for planning the first week. I see the window 06:00-1=
+4:00 on the ship-tos. Is this a delivery slot that we can miss by an hour or =
+two, or a hard limit? For Zaandam from Venlo I would need the truck to leave =
+around 03:30-04:00 to be on the dock at 06:00 at the earliest. If it is a sof=
+t window I can plan normal daytime departures.</p><p>Kind regards,<br>Tom Hen=
+driks<br>Transport planner<br>Corp Europe B.V. | Rotterdam<br>T +31 10 355 34=
+44<br><br>This e-mail and any attachments are confidential and intended solel=
+y for the addressee. If you received it in error, please delete it.</p><div s=
+tyle=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'=
+><p><b>From:</b> Daan Visser &lt;d.visser@corp-europe.example&gt;<br><b>Sent:=
+</b> Friday, 25 September 2026 11:30<br><b>To:</b> Emma Laurent<br><b>Cc:</b>=
+ Lukas Becker; Tom Hendriks; DL CT<br><b>Subject:</b> RE: Brightwater Retail =
+- onboarding and master data</p></div><p>Master data for Brightwater is creat=
+ed. Sold-to is 100845 (created in XD01). The three delivery points are ship-t=
+o 100846 (DC Mechelen), 100847 (DC Tilburg) and 100848 (Store hub Zaandam). S=
+hipping condition is 02 (standard) on all of them, as agreed in the contract.=
+ The unloading times 06:00-14:00 are maintained in the unloading points of ea=
+ch ship-to.</p>
+<p>Screenshot of the sold-to below. Lukas, you can start your test order now.=
+</p><p><img src=3D'cid:img3.513a112b@corp' alt=3D'XD03 Display Customer: Sale=
+s Area Data' width=3D'600'></p><p>Kind regards,<br>Daan Visser<br>Master data=
+ specialist<br>Corp Europe B.V. | Rotterdam<br>T +31 10 212 5658<br><br>This =
+e-mail and any attachments are confidential and intended solely for the addre=
+ssee. If you received it in error, please delete it.</p><div style=3D'border:=
+none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b=
+> Emma Laurent &lt;e.laurent@corp-europe.example&gt;<br><b>Sent:</b> Monday, =
+21 September 2026 09:10<br><b>To:</b> Daan Visser<br><b>Cc:</b> Lukas Becker;=
+ Tom Hendriks; DL CT<br><b>Subject:</b> Brightwater Retail - onboarding and m=
+aster data</p></div><p>Brightwater Retail signed last week and wants to start=
+ shipping on Monday 12 October. They have 3 delivery points, two in the Nethe=
+rlands and one in Belgium. Everything ships from Venlo.</p>
+<p>Daan, can you create the customer master once I have the data? I will ask =
+Brightwater for addresses, VAT numbers and receiving hours this week. Lukas, =
+I would like you to run a test order through the whole chain before go-live (=
+order, delivery, shipment). Tom, please keep an eye on transport capacity for=
+ the first weeks, we expect about 6 deliveries per week at the start.</p>
+<p>Let me know if you need anything else from my side.</p><p>Kind regards,<br=
+>Emma Laurent<br>Customer service lead<br>Corp Europe B.V. | Rotterdam<br>T +=
+31 10 766 5786<br><br>This e-mail and any attachments are confidential and in=
+tended solely for the addressee. If you received it in error, please delete i=
+t.</p></body></html>
+
+--===============4039897634641739407==--

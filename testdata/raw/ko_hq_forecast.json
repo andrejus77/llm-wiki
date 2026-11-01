@@ -1,0 +1,508 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "Q4 inbound forecast Busan/Incheon to Rotterdam - November volumes",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-10-05 09:10",
+     "from": "kimhq",
+     "to": [
+      "mdeboer"
+     ],
+     "cc": [
+      "thendriks",
+      "parkhq"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "마크 드 보어 님, 안녕하세요. 본사 물류기획팀 김민준입니다.\n\n4분기 유럽向 입고 물량 예측을 공유드립니다. 부산항 및 인천항 출발, 로테르담 도착 기준으로 11월 계획 물량은 1,240 TEU이며, 전년 동월(1,138 TEU) 대비 약 9% 증가한 수치입니다.\n\nNordline 선복이 이 물량을 충분히 커버할 수 있는지 확인 부탁드립니다. 최종 예측 확정 기한은 10월 25일입니다.\n\n첨부 파일에 월별 요약이 있으니 검토 후 의견 주시기 바랍니다. 감사합니다.",
+     "table": null,
+     "attachment": {
+      "kind": "xlsx",
+      "name": "Q4_inbound_forecast_v1.xlsx",
+      "rows": [
+       [
+        "Month",
+        "Origin",
+        "Destination",
+        "Planned TEU",
+        "Prior year TEU",
+        "Change"
+       ],
+       [
+        "November",
+        "Busan/Incheon",
+        "Rotterdam",
+        "1240",
+        "1138",
+        "+9%"
+       ]
+      ]
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-10-06 11:30",
+     "from": "mdeboer",
+     "to": [
+      "kimhq"
+     ],
+     "cc": [
+      "thendriks",
+      "parkhq"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Min-jun, thanks for the early view. 1,240 TEU for November is a clear step up, so we need to check the Nordline allocation first. Tom will come back to you with what is actually secured on the vessel side.\n\nTwo things we need from your side: a split per week (W45-W48) and a split per port, Busan versus Incheon. Without that we cannot plan the gate slots at the Rotterdam terminal.\n\nWe will work towards your deadline of 25 October for the final forecast.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-10-08 14:05",
+     "from": "thendriks",
+     "to": [
+      "kimhq"
+     ],
+     "cc": [
+      "mdeboer",
+      "parkhq"
+     ],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Min-jun, I checked with Nordline. For November we have secured 1,100 TEU of vessel capacity. That leaves 140 TEU of your 1,240 TEU not covered by sea, and my proposal is to move those 140 TEU by rail instead of asking Nordline for extra space at spot rates.\n\nSummary below. Please send me the weekly split and the Busan/Incheon split so I can place the rail booking. Rail needs lead time, so I would like to have this by the end of next week.",
+     "table": {
+      "header": [
+       "Mode",
+       "TEU November"
+      ],
+      "rows": [
+       [
+        "Nordline vessel (secured)",
+        "1,100"
+       ],
+       [
+        "Rail",
+        "140"
+       ],
+       [
+        "Total",
+        "1,240"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m4",
+     "date": "2026-10-09 10:20",
+     "from": "kimhq",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "mdeboer",
+      "parkhq"
+     ],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "톰 님, 빠른 확인 감사합니다. Nordline 1,100 TEU 확보와 나머지 140 TEU 철도 운송 제안 모두 본사에서 동의합니다.\n\n요청하신 주차별 물량을 아래 표와 첨부 파일에 정리했습니다. 11월 W45부터 W48까지의 합계는 1,240 TEU입니다. 항만별 분할(부산/인천)은 평택공장 수출 담당인 이서연 님이 생산계획과 대조한 후 직접 전달드릴 예정입니다.\n\n궁금한 점이 있으면 알려 주세요.",
+     "table": {
+      "header": [
+       "주차",
+       "계획 TEU"
+      ],
+      "rows": [
+       [
+        "W45",
+        "280"
+       ],
+       [
+        "W46",
+        "320"
+       ],
+       [
+        "W47",
+        "340"
+       ],
+       [
+        "W48",
+        "300"
+       ],
+       [
+        "합계",
+        "1,240"
+       ]
+      ]
+     },
+     "attachment": {
+      "kind": "xlsx",
+      "name": "Nov_weekly_split_v2.xlsx",
+      "rows": [
+       [
+        "Week",
+        "Planned TEU"
+       ],
+       [
+        "W45",
+        "280"
+       ],
+       [
+        "W46",
+        "320"
+       ],
+       [
+        "W47",
+        "340"
+       ],
+       [
+        "W48",
+        "300"
+       ],
+       [
+        "Total",
+        "1240"
+       ]
+      ]
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-10-13 09:40",
+     "from": "leeplant",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "mdeboer",
+      "kimhq"
+     ],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "톰 님, 평택공장 수출 담당 이서연입니다.\n\n11월 물량을 공장 생산계획과 대조했습니다. 항만별로는 부산 출발 720 TEU, 인천 출발 520 TEU로 계획하고 있습니다.\n\n그런데 제가 받은 자료를 보니 해상 1,240 TEU에 철도 140 TEU가 추가되는 것으로 보여, 공장에서는 총 1,380 TEU를 준비하는 것으로 이해하고 있었습니다. 이 이해가 맞는지 확인 부탁드립니다. 맞다면 생산 일정을 조정해야 합니다.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m6",
+     "date": "2026-10-14 08:55",
+     "from": "thendriks",
+     "to": [
+      "leeplant"
+     ],
+     "cc": [
+      "mdeboer",
+      "kimhq"
+     ],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "Seo-yeon, thanks for the port split, 720 + 520 matches the 1,240 TEU total. But there is a misunderstanding: the 140 TEU by rail are NOT on top. The total for November is 1,240 TEU, of which 1,100 TEU go by Nordline vessel and 140 TEU by rail.\n\nSo please do not prepare 1,380 TEU. Can you confirm 1,240 TEU in total, and tell me from which date the 140 TEU for rail will be ready for pickup? I need that for the rail booking.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m7",
+     "date": "2026-10-16 10:05",
+     "from": "leeplant",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "mdeboer",
+      "kimhq"
+     ],
+     "reply_to": "m6",
+     "forward": false,
+     "body": "톰 님, 설명 감사합니다. 제가 표를 잘못 읽었습니다. 총 물량은 1,240 TEU이고, 그중 해상 1,100 TEU, 철도 140 TEU임을 확인했습니다. 1,380 TEU 준비는 하지 않겠습니다.\n\n철도로 운송할 140 TEU는 평택공장 출고분이며, 화물 준비 완료일은 11월 5일입니다. 항만별 분할은 이전 메일과 같이 부산 720 TEU, 인천 520 TEU로 유지합니다.\n\n일정에 변동이 생기면 바로 알려 드리겠습니다.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m8",
+     "date": "2026-10-19 13:15",
+     "from": "parkhq",
+     "to": [
+      "mdeboer"
+     ],
+     "cc": [
+      "kimhq",
+      "thendriks"
+     ],
+     "reply_to": "m7",
+     "forward": false,
+     "body": "마크 님, 본사 글로벌 SCM 매니저 박지호입니다.\n\n11월 물량이 전년 대비 9% 증가한 이유는 연말 리테일 수요 증가와 신제품 출시에 따른 초기 물량 때문입니다. 물량 조정 여지는 크지 않습니다.\n\n로테르담 창고와 터미널 게이트 슬롯이 가장 바쁜 W47(340 TEU)을 소화할 수 있는지 확인 부탁드립니다. 유럽 측 승인 의견을 10월 22일까지 주시면 최종 예측에 반영하겠습니다.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m9",
+     "date": "2026-10-21 15:30",
+     "from": "mdeboer",
+     "to": [
+      "parkhq"
+     ],
+     "cc": [
+      "kimhq",
+      "thendriks"
+     ],
+     "reply_to": "m8",
+     "forward": false,
+     "body": "Ji-ho, thanks for the background. We approve the November forecast of 1,240 TEU from the European side.\n\nThe Rotterdam warehouse can handle the peak week W47 with 340 TEU, but we will ask the terminal for extra gate slots in that week. One condition: the rail booking for the 140 TEU must be confirmed by 23 October, because Nordline is capped at 1,100 TEU and there is no other sea capacity left for November.\n\nTom will confirm the rail booking to you and Min-jun.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m10",
+     "date": "2026-10-22 16:40",
+     "from": "thendriks",
+     "to": [
+      "kimhq"
+     ],
+     "cc": [
+      "mdeboer",
+      "parkhq",
+      "leeplant"
+     ],
+     "reply_to": "m9",
+     "forward": false,
+     "body": "Min-jun, the rail booking for 140 TEU is confirmed, booking reference RAIL-26-4471. Cargo pickup at the Pyeongtaek plant is based on the ready date of 5 November given by Seo-yeon, loading in W46.\n\nSo November is now fully covered: 1,100 TEU Nordline vessel plus 140 TEU rail. Please use these figures in the final forecast file.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m11",
+     "date": "2026-10-23 09:25",
+     "from": "kimhq",
+     "to": [
+      "mdeboer"
+     ],
+     "cc": [
+      "thendriks",
+      "parkhq"
+     ],
+     "reply_to": "m10",
+     "forward": false,
+     "body": "마크 님, 최종 예측 파일(v3)을 첨부합니다. 11월 총 1,240 TEU(Nordline 선박 1,100 TEU, 철도 140 TEU)이며 철도 예약번호 RAIL-26-4471을 반영했습니다.\n\n확정 기한인 10월 25일이 일요일이므로 영업일 기준 오늘 금요일에 제출합니다. 문제가 없으면 이 버전으로 확정하겠습니다.",
+     "table": null,
+     "attachment": {
+      "kind": "xlsx",
+      "name": "Q4_inbound_forecast_final_v3.xlsx",
+      "rows": [
+       [
+        "Month",
+        "Mode",
+        "TEU",
+        "Reference"
+       ],
+       [
+        "November",
+        "Nordline vessel",
+        "1100",
+        "Nordline allocation"
+       ],
+       [
+        "November",
+        "Rail",
+        "140",
+        "RAIL-26-4471"
+       ],
+       [
+        "November",
+        "Total",
+        "1240",
+        ""
+       ]
+      ]
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m12",
+     "date": "2026-10-26 08:50",
+     "from": "mdeboer",
+     "to": [
+      "kimhq"
+     ],
+     "cc": [
+      "thendriks",
+      "parkhq"
+     ],
+     "reply_to": "m11",
+     "forward": false,
+     "body": "Min-jun, received, thanks. Version 3 is fine for us, please consider the November forecast of 1,240 TEU final.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "The planned November inbound volume from Busan/Incheon to Rotterdam is 1,240 TEU.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "The 1,240 TEU is about 9% higher than November last year (1,138 TEU).",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "The deadline for the final forecast was 25 October.",
+   "emails": [
+    "m1",
+    "m11"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "Tom Hendriks secured 1,100 TEU of vessel capacity with Nordline for November.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "The remaining 140 TEU are moved by rail instead of buying extra spot capacity from Nordline.",
+   "emails": [
+    "m3",
+    "m9"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "Weekly split for November: W45 280, W46 320, W47 340, W48 300 TEU.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "Port split: 720 TEU from Busan and 520 TEU from Incheon.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "Lee Seo-yeon wrongly assumed that the 140 TEU rail was on top of 1,240 TEU (1,380 TEU total); Tom clarified that 1,240 TEU is the total including rail.",
+   "emails": [
+    "m5",
+    "m6",
+    "m7"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "The rail cargo of 140 TEU comes from the Pyeongtaek plant and is ready on 5 November.",
+   "emails": [
+    "m7",
+    "m10"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "The 9% increase is caused by year-end retail demand and a new product launch.",
+   "emails": [
+    "m8"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "Mark de Boer approved the forecast on 21 October on the condition that the rail booking is confirmed by 23 October; W47 (340 TEU) needs extra terminal gate slots.",
+   "emails": [
+    "m9"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "The rail booking for 140 TEU was confirmed on 22 October with reference RAIL-26-4471, loading in W46.",
+   "emails": [
+    "m10"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "Kim Min-jun submitted final forecast v3 on Friday 23 October because 25 October is a Sunday; Mark accepted it on 26 October.",
+   "emails": [
+    "m11",
+    "m12"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "How many TEU did Nordline secure for November on the Korea to Rotterdam lane?",
+   "a": "1,100 TEU",
+   "facts": [
+    "F4"
+   ],
+   "type": "fact"
+  },
+  {
+   "q": "Why is the rail option used for 140 TEU in November?",
+   "a": "Nordline capacity is limited to 1,100 TEU of the 1,240 TEU, and rail covers the remaining 140 TEU instead of extra spot capacity.",
+   "facts": [
+    "F4",
+    "F5",
+    "F9"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "What is the rail booking reference for the 140 TEU from Pyeongtaek?",
+   "a": "RAIL-26-4471",
+   "facts": [
+    "F12"
+   ],
+   "type": "identifier"
+  },
+  {
+   "q": "Which week is the busiest for the November Korea inbound, and how many TEU?",
+   "a": "W47 with 340 TEU",
+   "facts": [
+    "F6",
+    "F11"
+   ],
+   "type": "fact"
+  },
+  {
+   "q": "What misunderstanding did the Pyeongtaek plant have about the volume and how was it solved?",
+   "a": "Seo-yeon thought rail 140 TEU came on top of 1,240 TEU (1,380 total); Tom explained that 1,240 TEU is the total, with 1,100 sea and 140 rail.",
+   "facts": [
+    "F8"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "Which rail terminal in Europe is used for the Korea rail shipments?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "ko_hq_forecast",
+  "title": "Korea HQ: Q4 shipment forecast alignment (Korean-language mail)",
+  "level": "topic",
+  "korean": true
+ }
+}

@@ -1,0 +1,234 @@
+Message-ID: <po_approval.t1.m8.1f547c8ee1@corp-europe.example>
+Date: Tue, 22 Sep 2026 10:00:00 +0200
+From: "Pieter Bakker" <p.bakker@corp-europe.example>
+To: "Elena Rossi" <e.rossi@corp-europe.example>
+Cc: "Jeroen de Vries" <j.devries@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: PO 4500123456 pallets - still not released
+In-Reply-To: <po_approval.t1.m5.3a8bb4d2f5@corp-europe.example>
+References: <po_approval.t1.m1.5a8e269118@corp-europe.example>
+ <po_approval.t1.m2.e1a6f21d31@corp-europe.example>
+ <po_approval.t1.m3.d473b70548@corp-europe.example>
+ <po_approval.t1.m4.843002a87a@corp-europe.example>
+ <po_approval.t1.m5.3a8bb4d2f5@corp-europe.example>
+Thread-Index: Ad1KaF2yOhQB0Z3YWJYqoEAdKb/+8DH/pL55cNCJtOlvfrjPYZMO1mL91ILnqco=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============2269698028185122621=="
+
+--===============2269698028185122621==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Elena, the change is done as of this afternoon. The approver position for rel=
+ease code 02 now points to Mark de Boer, and I re-triggered the workflow for =
+PO 4500123456. The work item should be in his SAP inbox (SBWP) now. Sorry for=
+ the delay, the change request waited in the queue for the weekly transport w=
+indow. Please check tomorrow morning that the status moved on.
+
+Thanks,
+Pieter Bakker
+RPA and IT developer
+Corp Europe B.V. | Rotterdam
+T +31 10 244 6213
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Elena Rossi <e.rossi@corp-europe.example>
+Sent: Tuesday, 22 September 2026 05:00
+To: Pieter Bakker
+Subject: RE: PO 4500123456 pallets - still not released
+
+Pieter, it is the position assignment. The release strategy itself is fine: c=
+ode 02 for POs above EUR 10,000 is correct, we do not want to change that. On=
+ly the holder of the approver position is wrong. Please move it to the Rotter=
+dam logistics management. I cannot approve my own PO, so I cannot work around=
+ it. Please send the change request number when you have it.
+
+Thanks,
+Elena Rossi
+Procurement buyer
+Corp Europe B.V. | Rotterdam
+T +31 10 666 6272
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Pieter Bakker <p.bakker@corp-europe.example>
+Sent: Tuesday, 22 September 2026 00:00
+To: Elena Rossi
+Subject: RE: PO 4500123456 pallets - still not released
+
+Elena, I looked at it. Just to be sure I change the right thing: do you mean =
+the release code in the release strategy (OMGS), or the agent assignment of t=
+he workflow task? I can see that release code 02 is assigned to a position in=
+ the org structure, and that position is still held by the user who moved to =
+Antwerp. If it is the position assignment, I can fix it through a change requ=
+est. Normally that takes 2-3 working days, but I can try to push it.
+
+Thanks,
+Pieter Bakker
+RPA and IT developer
+Corp Europe B.V. | Rotterdam
+T +31 10 352 8316
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Elena Rossi <e.rossi@corp-europe.example>
+Sent: Tuesday, 20 October 2026 09:50
+To: Pieter Bakker
+Subject: RE: PO 4500123456 pallets - still not released
+
+Pieter, PO 4500123456 (PalletPro, EUR 12,480) has been blocked since 14 Oct. =
+The release workflow still routes to the approver who moved to Antwerp. Pleas=
+e change the workflow owner so that the task goes to the Rotterdam logistics =
+management instead. Screenshot of the release status is below. Venlo has abou=
+t six working days of pallets left, so this is urgent for us. Can you give me=
+ a date when you can do it?
+
+Kind regards,
+Elena Rossi
+Procurement buyer
+Corp Europe B.V. | Rotterdam
+T +31 10 489 5891
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Elena Rossi <e.rossi@corp-europe.example>
+Sent: Tuesday, 20 October 2026 09:25
+To: Jeroen de Vries
+Subject: RE: PO 4500123456 pallets - still not released
+
+Jeroen, I created PO 4500123456 on 14 Oct (4,000 EUR pallets, EUR 12,480 tota=
+l, so EUR 3.12 each). It has been sitting in 'awaiting release' since then. B=
+ecause the value is above EUR 10,000 it needs release code 02, and the ME21N =
+workflow still sends the approval task to a colleague who moved to Antwerp in=
+ September. Nobody in Rotterdam or Venlo ever sees the work item, which is wh=
+y nothing happened for almost a week. I did not notice earlier because I assu=
+med the approver was just slow. I am raising it with IT right now and will ke=
+ep you posted.
+
+Thanks,
+Elena Rossi
+Procurement buyer
+Corp Europe B.V. | Rotterdam
+T +31 10 548 9318
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Jeroen de Vries <j.devries@corp-europe.example>
+Sent: Tuesday, 20 October 2026 08:40
+To: Elena Rossi
+Subject: PO 4500123456 pallets - still not released
+
+Elena, what is the status of the PalletPro order for the EUR pallets? Our cou=
+nt this morning shows 1,150 pallets left in Venlo. We use about 190 a day on =
+outbound, so that is roughly six working days. PalletPro told us last week th=
+ey need 2-3 days after the order is confirmed, so we are already tight. Can y=
+ou tell me when the PO will go out? If it slips beyond this week I need to te=
+ll my shift leads to start mixing in the old pool pallets, and that costs us =
+time at the dock.
+
+Best regards,
+Jeroen de Vries
+Outbound team lead Venlo
+Corp Europe B.V. | Rotterdam
+T +31 10 271 5526
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============2269698028185122621==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Elena, the change is done as of this afternoon. The approver p=
+osition for release code 02 now points to Mark de Boer, and I re-triggered th=
+e workflow for PO 4500123456. The work item should be in his SAP inbox (SBWP)=
+ now. Sorry for the delay, the change request waited in the queue for the wee=
+kly transport window. Please check tomorrow morning that the status moved on.=
+</p><p>Thanks,<br>Pieter Bakker<br>RPA and IT developer<br>Corp Europe B.V. |=
+ Rotterdam<br>T +31 10 244 6213<br><br>This e-mail and any attachments are co=
+nfidential and intended solely for the addressee. If you received it in error=
+, please delete it.</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0=
+pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Elena Rossi &lt;e.rossi@corp-eu=
+rope.example&gt;<br><b>Sent:</b> Tuesday, 22 September 2026 05:00<br><b>To:</=
+b> Pieter Bakker<br><b>Cc:</b> Jeroen de Vries; DL CT<br><b>Subject:</b> RE: =
+PO 4500123456 pallets - still not released</p></div><p>Pieter, it is the posi=
+tion assignment. The release strategy itself is fine: code 02 for POs above E=
+UR 10,000 is correct, we do not want to change that. Only the holder of the a=
+pprover position is wrong. Please move it to the Rotterdam logistics manageme=
+nt. I cannot approve my own PO, so I cannot work around it. Please send the c=
+hange request number when you have it.</p><p>Thanks,<br>Elena Rossi<br>Procur=
+ement buyer<br>Corp Europe B.V. | Rotterdam<br>T +31 10 666 6272<br><br>This =
+e-mail and any attachments are confidential and intended solely for the addre=
+ssee. If you received it in error, please delete it.</p><div style=3D'border:=
+none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b=
+> Pieter Bakker &lt;p.bakker@corp-europe.example&gt;<br><b>Sent:</b> Tuesday,=
+ 22 September 2026 00:00<br><b>To:</b> Elena Rossi<br><b>Cc:</b> Jeroen de Vr=
+ies; DL CT<br><b>Subject:</b> RE: PO 4500123456 pallets - still not released<=
+/p></div><p>Elena, I looked at it. Just to be sure I change the right thing: =
+do you mean the release code in the release strategy (OMGS), or the agent ass=
+ignment of the workflow task? I can see that release code 02 is assigned to a=
+ position in the org structure, and that position is still held by the user w=
+ho moved to Antwerp. If it is the position assignment, I can fix it through a=
+ change request. Normally that takes 2-3 working days, but I can try to push =
+it.</p><p>Thanks,<br>Pieter Bakker<br>RPA and IT developer<br>Corp Europe B.V=
+. | Rotterdam<br>T +31 10 352 8316<br><br>This e-mail and any attachments are=
+ confidential and intended solely for the addressee. If you received it in er=
+ror, please delete it.</p><div style=3D'border:none;border-top:solid #E1E1E1 =
+1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Elena Rossi &lt;e.rossi@corp=
+-europe.example&gt;<br><b>Sent:</b> Tuesday, 20 October 2026 09:50<br><b>To:<=
+/b> Pieter Bakker<br><b>Cc:</b> Jeroen de Vries; DL CT<br><b>Subject:</b> RE:=
+ PO 4500123456 pallets - still not released</p></div><p>Pieter, PO 4500123456=
+ (PalletPro, EUR 12,480) has been blocked since 14 Oct. The release workflow =
+still routes to the approver who moved to Antwerp. Please change the workflow=
+ owner so that the task goes to the Rotterdam logistics management instead. S=
+creenshot of the release status is below. Venlo has about six working days of=
+ pallets left, so this is urgent for us. Can you give me a date when you can =
+do it?</p><p><img src=3D'cid:img2.4cd4f02b@corp' alt=3D'ME23N - Purchase Orde=
+r 4500123456 - Release strategy' width=3D'600'></p><p>Kind regards,<br>Elena =
+Rossi<br>Procurement buyer<br>Corp Europe B.V. | Rotterdam<br>T +31 10 489 58=
+91<br><br>This e-mail and any attachments are confidential and intended solel=
+y for the addressee. If you received it in error, please delete it.</p><div s=
+tyle=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'=
+><p><b>From:</b> Elena Rossi &lt;e.rossi@corp-europe.example&gt;<br><b>Sent:<=
+/b> Tuesday, 20 October 2026 09:25<br><b>To:</b> Jeroen de Vries<br><b>Cc:</b=
+> DL CT<br><b>Subject:</b> RE: PO 4500123456 pallets - still not released</p>=
+</div><p>Jeroen, I created PO 4500123456 on 14 Oct (4,000 EUR pallets, EUR 12=
+,480 total, so EUR 3.12 each). It has been sitting in &#x27;awaiting release&=
+#x27; since then. Because the value is above EUR 10,000 it needs release code=
+ 02, and the ME21N workflow still sends the approval task to a colleague who =
+moved to Antwerp in September. Nobody in Rotterdam or Venlo ever sees the wor=
+k item, which is why nothing happened for almost a week. I did not notice ear=
+lier because I assumed the approver was just slow. I am raising it with IT ri=
+ght now and will keep you posted.</p><p>Thanks,<br>Elena Rossi<br>Procurement=
+ buyer<br>Corp Europe B.V. | Rotterdam<br>T +31 10 548 9318<br><br>This e-mai=
+l and any attachments are confidential and intended solely for the addressee.=
+ If you received it in error, please delete it.</p><div style=3D'border:none;=
+border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Jer=
+oen de Vries &lt;j.devries@corp-europe.example&gt;<br><b>Sent:</b> Tuesday, 2=
+0 October 2026 08:40<br><b>To:</b> Elena Rossi<br><b>Cc:</b> DL CT<br><b>Subj=
+ect:</b> PO 4500123456 pallets - still not released</p></div><p>Elena, what i=
+s the status of the PalletPro order for the EUR pallets? Our count this morni=
+ng shows 1,150 pallets left in Venlo. We use about 190 a day on outbound, so =
+that is roughly six working days. PalletPro told us last week they need 2-3 d=
+ays after the order is confirmed, so we are already tight. Can you tell me wh=
+en the PO will go out? If it slips beyond this week I need to tell my shift l=
+eads to start mixing in the old pool pallets, and that costs us time at the d=
+ock.</p><p>Best regards,<br>Jeroen de Vries<br>Outbound team lead Venlo<br>Co=
+rp Europe B.V. | Rotterdam<br>T +31 10 271 5526<br><br>This e-mail and any at=
+tachments are confidential and intended solely for the addressee. If you rece=
+ived it in error, please delete it.</p></body></html>
+
+--===============2269698028185122621==--

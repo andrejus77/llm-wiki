@@ -1,0 +1,456 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "Delivery block Z1 on Venlo deliveries",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-10-21 08:40",
+     "from": "jdevries",
+     "to": [
+      "lbecker"
+     ],
+     "cc": [],
+     "reply_to": null,
+     "forward": false,
+     "body": "Lukas, we have a problem in Venlo. When we started picking this morning, 14 outbound deliveries for tomorrow's trucks came up with delivery block Z1 (credit check) in VL02N. Yesterday evening none of them had a block. I have pasted the list below and a screenshot of the first one, 80012354.\n\nWe have carriers booked for 10:00 and 14:00 tomorrow, so I need to know today what can be released. Total value is about EUR 458k. Nobody in the team has changed anything on the orders.\n\nCan you have a look? I assume it has to do with the credit settings of the customers, but I don't know what changed.",
+     "table": {
+      "header": [
+       "Delivery",
+       "Customer",
+       "Value EUR",
+       "Block"
+      ],
+      "rows": [
+       [
+        "80012345",
+        "Hoogeveen Bouw",
+        "18,400",
+        "Z1"
+       ],
+       [
+        "80012346",
+        "Van Dijk Techniek",
+        "12,950",
+        "Z1"
+       ],
+       [
+        "80012347",
+        "Maas Installatie",
+        "9,780",
+        "Z1"
+       ],
+       [
+        "80012348",
+        "Keukens Limburg",
+        "22,300",
+        "Z1"
+       ],
+       [
+        "80012349",
+        "Rhein Haustechnik",
+        "31,600",
+        "Z1"
+       ],
+       [
+        "80012350",
+        "Peeters Sanitair",
+        "14,250",
+        "Z1"
+       ],
+       [
+        "80012351",
+        "Techni-Care BV",
+        "8,900",
+        "Z1"
+       ],
+       [
+        "80012352",
+        "Hoogeveen Bouw",
+        "27,500",
+        "Z1"
+       ],
+       [
+        "80012353",
+        "Venray Metaal",
+        "16,200",
+        "Z1"
+       ],
+       [
+        "80012354",
+        "Maas Installatie",
+        "58,400",
+        "Z1"
+       ],
+       [
+        "80012355",
+        "Rhein Haustechnik",
+        "64,900",
+        "Z1"
+       ],
+       [
+        "80012356",
+        "Keukens Limburg",
+        "71,300",
+        "Z1"
+       ],
+       [
+        "80012357",
+        "Van Dijk Techniek",
+        "49,750",
+        "Z1"
+       ],
+       [
+        "80012358",
+        "Techni-Care BV",
+        "52,100",
+        "Z1"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": {
+      "title": "Change Outbound Delivery 80012354 (VL02N)",
+      "lines": [
+       "Ship-to party: Maas Installatie, Venlo",
+       "Delivery block: Z1 Credit check",
+       "Overall status credit check: C - Not OK",
+       "Message: Credit limit exceeded, credit segment 0002",
+       "Planned goods issue date: 22.10.2026"
+      ]
+     }
+    },
+    {
+     "id": "m2",
+     "date": "2026-10-21 09:35",
+     "from": "lbecker",
+     "to": [
+      "jdevries"
+     ],
+     "cc": [],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Jeroen, looking at it now. The screenshot already shows a hint: the credit message mentions segment 0002. For Venlo customers I would expect 0001, so I suspect the credit segment was changed in the customer master overnight.\n\nI'll check the credit data of a few customers to confirm and will come back to you before noon. Please don't do a manual goods issue workaround, it will not work anyway with the block in place.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-10-21 10:50",
+     "from": "lbecker",
+     "to": [
+      "dvisser"
+     ],
+     "cc": [
+      "jdevries"
+     ],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Daan, did master data change anything on the Venlo customers yesterday? 14 deliveries got Z1 this morning. In the credit data of Maas Installatie, Rhein Haustechnik and Keukens Limburg I see segment 0002 with a limit of EUR 50,000. Last week the same customers were in segment 0001 with EUR 250,000.\n\nIf this was a mass change, can you tell me which customers were included and why? Logistics was not informed and we have trucks booked for tomorrow.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m4",
+     "date": "2026-10-21 13:10",
+     "from": "dvisser",
+     "to": [
+      "lbecker"
+     ],
+     "cc": [
+      "jdevries"
+     ],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "Yes, that was me. Yesterday afternoon I ran a mass change on the Venlo customers as part of the segment clean-up ticket, to move them from 0001 to 0002. The new segment has a default limit of EUR 50,000, and I did not realise the old individual limits would not carry over. That was my mistake, and I should have warned logistics and Finance before the run.\n\n23 Venlo customers were included. I can set the segment back to 0001, but the open exposure would then be recalculated overnight and I would rather not touch it again without Finance agreeing. Ana would need to confirm how she wants it handled.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-10-21 15:20",
+     "from": "lbecker",
+     "to": [
+      "jdevries"
+     ],
+     "cc": [
+      "anovak"
+     ],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Jeroen, update. Daan confirmed the cause: a mass change moved the Venlo customers to credit segment 0002 (limit EUR 50,000 instead of 250,000).\n\nI have released 9 deliveries in VKM3: 80012345 to 80012353. As key user I can release single deliveries below EUR 35,000 on my own. The remaining 5 (80012354 to 80012358) are all above that, so Finance has to approve them. I'm asking Ana now.\n\nTo recognise this in future: in VL02N open the status overview and look at the credit line. The message names the credit segment. If it says 0002 for a Venlo customer where you expect 0001, the block comes from a segment change and not from real overdue items. You can check the customer's limit in UKM_BP.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m6",
+     "date": "2026-10-21 16:05",
+     "from": "lbecker",
+     "to": [
+      "anovak"
+     ],
+     "cc": [
+      "jdevries"
+     ],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "Ana, we need a temporary credit limit for 5 deliveries in Venlo that are still on Z1: 80012354 (Maas Installatie, EUR 58,400), 80012355 (Rhein Haustechnik, EUR 64,900), 80012356 (Keukens Limburg, EUR 71,300), 80012357 (Van Dijk Techniek, EUR 49,750) and 80012358 (Techni-Care BV, EUR 52,100). Together EUR 296,450.\n\nThe customers have no overdue items. The only reason for the block is the segment change from 0001 to 0002 by master data, which cut the limit from EUR 250,000 to EUR 50,000. Trucks are booked for 22 Oct, but the goods can also leave on 23 Oct if needed. Can you raise the limits in UKM_BP?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m7",
+     "date": "2026-10-22 09:20",
+     "from": "anovak",
+     "to": [
+      "lbecker"
+     ],
+     "cc": [
+      "jdevries",
+      "dvisser"
+     ],
+     "reply_to": "m6",
+     "forward": false,
+     "body": "Lukas, I checked the 5 customers: no overdue items, so I support the request. But I cannot decide on a temporary limit myself. Any temporary increase has to be approved by Finance credit management first, and I only process it in UKM_BP afterwards. I sent the approval request yesterday evening and have no answer yet.\n\nSorry, this means the trucks for today will leave without these 5 deliveries. I expect the approval tomorrow morning. I will propose EUR 120,000 per customer, valid for 14 days, so Daan has time to fix the segment setup properly.\n\nDaan, please do not change the segment again until I confirm.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m8",
+     "date": "2026-10-22 09:45",
+     "from": "dvisser",
+     "to": [
+      "anovak"
+     ],
+     "cc": [
+      "lbecker",
+      "jdevries"
+     ],
+     "reply_to": "m7",
+     "forward": false,
+     "body": "Understood Ana, I won't touch the segments until you confirm. I'll also prepare a list of the other 18 customers affected outside Venlo, so we can see in advance which ones could hit a block.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m9",
+     "date": "2026-10-23 08:50",
+     "from": "anovak",
+     "to": [
+      "jdevries"
+     ],
+     "cc": [
+      "lbecker",
+      "dvisser"
+     ],
+     "reply_to": "m7",
+     "forward": false,
+     "body": "Approval from credit management came in at 08:30. I have set a temporary credit limit of EUR 120,000 for each of the 5 customers in UKM_BP, valid until 6 Nov 2026. After that date the limit falls back to the segment limit unless Daan has corrected the setup by then.\n\nLukas, you can run VKM3 again for 80012354 to 80012358, the block should release now. Jeroen, please make sure these five ship today.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m10",
+     "date": "2026-10-23 11:30",
+     "from": "jdevries",
+     "to": [
+      "anovak"
+     ],
+     "cc": [
+      "lbecker",
+      "dvisser"
+     ],
+     "reply_to": "m9",
+     "forward": false,
+     "body": "Thanks Ana and Lukas. The 5 deliveries were released and all of them left Venlo on the 12:00 truck. All 14 are now shipped.\n\nDaan, one request for next time: please send a short note to the Venlo outbound team before any mass change on customer credit data.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "On the morning of 21 Oct 2026, 14 outbound deliveries in Venlo (80012345 to 80012358) had delivery block Z1 (credit check) in VL02N, total value about EUR 458k.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "The screenshot of delivery 80012354 in VL02N showed block Z1 and a credit message mentioning credit segment 0002.",
+   "emails": [
+    "m1",
+    "m2"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "Daan Visser ran a mass change on 20 Oct 2026 that moved 23 Venlo customers from credit segment 0001 to 0002 as part of a segment clean-up ticket.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "Segment 0002 has a default limit of EUR 50,000, while the previous limit in segment 0001 was EUR 250,000; the old individual limits did not carry over.",
+   "emails": [
+    "m3",
+    "m4"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "Master data did not inform logistics or Finance before the mass change.",
+   "emails": [
+    "m4",
+    "m10"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "Lukas Becker released 9 deliveries (80012345 to 80012353) in VKM3 on 21 Oct.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "A key user can release single deliveries below EUR 35,000 on their own in VKM3; the remaining 5 deliveries were above that and needed Finance.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "To recognise a segment change, open the status overview in VL02N and read the credit line: if it names segment 0002 for a Venlo customer who should be in 0001, the block comes from the segment change and not from overdue items; the limit can be checked in UKM_BP.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "The 5 remaining deliveries (80012354 to 80012358) were worth EUR 296,450 together, and the customers had no overdue items.",
+   "emails": [
+    "m6",
+    "m7"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "A temporary credit limit must be approved by Finance credit management; Ana Novak then processes it in UKM_BP but cannot decide it herself.",
+   "emails": [
+    "m7"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "Because approval was still pending on 22 Oct, the trucks that day left without the 5 blocked deliveries.",
+   "emails": [
+    "m7"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "On 23 Oct at 08:30 credit management approved, and Ana set a temporary limit of EUR 120,000 per customer for the 5 customers, valid until 6 Nov 2026.",
+   "emails": [
+    "m9"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "All 5 remaining deliveries were released and left Venlo on the 12:00 truck on 23 Oct, so all 14 shipped.",
+   "emails": [
+    "m10"
+   ]
+  },
+  {
+   "id": "F14",
+   "text": "Daan Visser will prepare a list of 18 other affected customers outside Venlo and will not change the segments again until Ana confirms.",
+   "emails": [
+    "m7",
+    "m8"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "Why did 14 Venlo deliveries get delivery block Z1 on 21 Oct 2026?",
+   "a": "Master data moved the Venlo customers from credit segment 0001 to 0002 in a mass change, cutting the limit from EUR 250,000 to EUR 50,000, so the credit check failed.",
+   "facts": [
+    "F3",
+    "F4",
+    "F1"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "How can I tell in VL02N that a Z1 block comes from a credit segment change?",
+   "a": "Open the status overview and check the credit line: if it names segment 0002 for a Venlo customer who should be in 0001, it is a segment change, not overdue items. The limit can be checked in UKM_BP.",
+   "facts": [
+    "F8"
+   ],
+   "type": "howto"
+  },
+  {
+   "q": "Who can approve a temporary credit limit, and who enters it in the system?",
+   "a": "Finance credit management approves it; Ana Novak then sets it in UKM_BP.",
+   "facts": [
+    "F10"
+   ],
+   "type": "who"
+  },
+  {
+   "q": "Until when is the temporary credit limit of EUR 120,000 valid for the five Venlo customers?",
+   "a": "Until 6 Nov 2026.",
+   "facts": [
+    "F12"
+   ],
+   "type": "when"
+  },
+  {
+   "q": "Which delivery numbers did Lukas release in VKM3 and which needed Finance?",
+   "a": "Lukas released 80012345 to 80012353 (9 deliveries, each below EUR 35,000); 80012354 to 80012358 needed Finance.",
+   "facts": [
+    "F6",
+    "F7",
+    "F9"
+   ],
+   "type": "identifier"
+  },
+  {
+   "q": "Why could Lukas not release deliveries 80012354 to 80012358 himself, and how were they finally shipped?",
+   "a": "Each was above his EUR 35,000 release authority, so Finance credit management approved a temporary limit of EUR 120,000 per customer on 23 Oct, after which they were released and shipped on the 12:00 truck.",
+   "facts": [
+    "F7",
+    "F10",
+    "F12",
+    "F13"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "What is the permanent new credit limit that Finance decided for Venlo customers after the clean-up?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "z1_block",
+  "title": "Delivery block Z1 after a credit segment change in Venlo",
+  "level": "topic",
+  "korean": false
+ }
+}

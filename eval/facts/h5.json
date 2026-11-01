@@ -1,0 +1,19 @@
+{
+ "run": [
+  ["Mailbox", "418 files to 4 department addresses (27 storylines incl. 2 AI storylines, 157 automated mails)"],
+  ["Stored / lost · thread purity / completeness", "415 / 0 · 1.0 / 0.9922"],
+  ["Units · unit errors", "249 (224 fast path, 25 staged) · 0"],
+  ["Pages", "25 for 27 storylines; 10 projects, 10 topics, 5 tasks (22 promotions by the size check during the run)"],
+  ["Storylines in the right department's report", "27 / 27 (incl. the n8n flow mailed only to Control Tower → AI & Automation)"],
+  ["AI flag", "15 of 15 AI emails flagged, 0 false positives (the classic RPA invoice bot is not AI)"],
+  ["Automated mail", "40 skipped by rules; of the other 117, 111 recognised as automated; 91 % of all automated mail skipped or not important; 0 routed to a page"],
+  ["Storyline (human) emails wrongly marked automated", "0"],
+  ["Retrieval on this store (e5, weights)", "recall@1 0.92 · recall@5 0.98 · MRR 0.94 (169 golden questions)"]
+ ],
+ "reports": [
+  ["Weekly · Thu 29 Oct (22–28 Oct)", "Control Tower 6 stories · Customs 1 · Finance 3 · AI & Automation 2 — no topic in two reports; all texts by the agent (16 requests)"],
+  ["Daily · Sun 1 Nov (25–31 Oct)", "Control Tower 5 · Customs 2 · Finance 4 · AI & Automation 2 — no overlaps; 17 requests"],
+  ["Team filter", "'Nordline ocean rate renewal 2027' left out of both (only partner mail in the window); 'AEO audit' left out of the weekly, in the daily once a team member wrote"],
+  ["Window only", "story texts mention only events inside their window (checked: the 29 Oct go/no-go of the AI pilot is not in the weekly ending 28 Oct)"]
+ ]
+}

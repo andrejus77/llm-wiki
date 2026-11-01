@@ -1,0 +1,381 @@
+{
+ "created": "2026-11-01T01:07:57",
+ "questions": 163,
+ "note": "chat answers, deep multi-agent mode (Haiku judge)",
+ "settings": {
+  "embed_model": "multilingual-e5-small",
+  "rrf_k": 60,
+  "top_k": 8
+ },
+ "retrieval": [
+  {
+   "name": "BM25 only (FTS5)",
+   "recall_1": 0.667,
+   "recall_5": 0.942,
+   "recall_10": 0.986,
+   "mrr": 0.782,
+   "ndcg_10": 0.816,
+   "ms": 9.4,
+   "recall_5_by_type": {
+    "why": 0.912,
+    "identifier": 1.0,
+    "howto": 0.667,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "vector only · multilingual-e5-small",
+   "recall_1": 0.645,
+   "recall_5": 0.935,
+   "recall_10": 0.978,
+   "mrr": 0.772,
+   "ndcg_10": 0.814,
+   "ms": 88.1,
+   "recall_5_by_type": {
+    "why": 0.941,
+    "identifier": 1.0,
+    "howto": 0.667,
+    "multihop": 0.88,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 0.933
+   }
+  },
+  {
+   "name": "hybrid RRF · multilingual-e5-small",
+   "recall_1": 0.732,
+   "recall_5": 0.971,
+   "recall_10": 0.993,
+   "mrr": 0.832,
+   "ndcg_10": 0.845,
+   "ms": 69.5,
+   "recall_5_by_type": {
+    "why": 0.941,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid + source weights · multilingual-e5-small",
+   "recall_1": 0.949,
+   "recall_5": 0.978,
+   "recall_10": 0.986,
+   "mrr": 0.965,
+   "ndcg_10": 0.938,
+   "ms": 73.4,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.92,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid + weights + recency · multilingual-e5-small",
+   "recall_1": 0.957,
+   "recall_5": 0.978,
+   "recall_10": 0.986,
+   "mrr": 0.967,
+   "ndcg_10": 0.943,
+   "ms": 39.5,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.92,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "vector only · bge-small-en-v1.5",
+   "recall_1": 0.638,
+   "recall_5": 0.964,
+   "recall_10": 0.971,
+   "mrr": 0.768,
+   "ndcg_10": 0.797,
+   "ms": 99.9,
+   "recall_5_by_type": {
+    "why": 0.971,
+    "identifier": 1.0,
+    "howto": 0.778,
+    "multihop": 0.92,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid RRF · bge-small-en-v1.5",
+   "recall_1": 0.71,
+   "recall_5": 0.971,
+   "recall_10": 0.993,
+   "mrr": 0.819,
+   "ndcg_10": 0.828,
+   "ms": 95.8,
+   "recall_5_by_type": {
+    "why": 0.941,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid + source weights · bge-small-en-v1.5",
+   "recall_1": 0.935,
+   "recall_5": 0.986,
+   "recall_10": 0.986,
+   "mrr": 0.957,
+   "ndcg_10": 0.923,
+   "ms": 79.3,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid + weights + recency · bge-small-en-v1.5",
+   "recall_1": 0.935,
+   "recall_5": 0.978,
+   "recall_10": 0.986,
+   "mrr": 0.955,
+   "ndcg_10": 0.926,
+   "ms": 108.8,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.92,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "vector only · hashed",
+   "recall_1": 0.623,
+   "recall_5": 0.957,
+   "recall_10": 0.978,
+   "mrr": 0.76,
+   "ndcg_10": 0.784,
+   "ms": 25.5,
+   "recall_5_by_type": {
+    "why": 0.971,
+    "identifier": 0.947,
+    "howto": 0.889,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 0.895,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid RRF · hashed",
+   "recall_1": 0.761,
+   "recall_5": 0.957,
+   "recall_10": 0.986,
+   "mrr": 0.848,
+   "ndcg_10": 0.845,
+   "ms": 36.6,
+   "recall_5_by_type": {
+    "why": 0.941,
+    "identifier": 1.0,
+    "howto": 0.778,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid + source weights · hashed",
+   "recall_1": 0.928,
+   "recall_5": 0.971,
+   "recall_10": 0.986,
+   "mrr": 0.949,
+   "ndcg_10": 0.914,
+   "ms": 35.3,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.92,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid + weights + recency · hashed",
+   "recall_1": 0.928,
+   "recall_5": 0.971,
+   "recall_10": 0.986,
+   "mrr": 0.949,
+   "ndcg_10": 0.918,
+   "ms": 41.4,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.92,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 1.0
+   }
+  }
+ ],
+ "answers": [
+  {
+   "name": "langgraph · deep",
+   "n": 7,
+   "correct": 1.0,
+   "faithful": 0.429,
+   "source_precision": 0.652,
+   "abstention": 0.0,
+   "seconds": 23.6,
+   "items": [
+    {
+     "q": "Why was the first week 39 freight accrual report rejected?",
+     "gold": "It was filtered on planned delivery date instead of the actual delivery (POD) date, so five early-delivered shipments were missing.",
+     "answer": "- The first week 39 report (v1) was rejected by Ana Novak because it was filtered on the planned delivery date up to 25.09, the TMS default [13][14].\n- The accrual needs the actual delivery (POD) date up to the cut-off. Early deliveries with planned dates of 26-28.09 are September costs, and the planned-date filter missed them [14][9].\n- v1 showed 39 shipments totalling EUR 176,850. Ana asked Tom to rerun the report on the POD date [13][14].\n- The corrected v2 showed 44 shipments totalling EUR 184,300, which was posted as document 1900004127. v1 is superseded and should not be used [12][17].\n- The sources do not use the word \"rejected\"; this describes Ana's correction of the report.",
+     "judge": {
+      "correct": 1,
+      "faithful": 0,
+      "reason": "The answer gives the key reference fact: v1 was filtered on planned delivery date instead of POD date, which missed early deliveries. Faithfulness fails because the cited sources [13], [14], and [17] are not in the provided list, and the v1 figures (39 shipments, EUR 176,850), the 'TMS default' claim, and the 26-28.09 planned dates cannot be verified from the visible sources."
+     },
+     "precision": 0.8,
+     "seconds": 39.9
+    },
+    {
+     "q": "What was the September freight accrual amount and which document was posted?",
+     "gold": "EUR 184,300, accounting document 1900004127, posted to account 4711000 with FB50.",
+     "answer": "- **Amount:** EUR 184,300 (44 shipments with POD date up to 25.09.2026) [9][10]\n- **Document:** Accounting document 1900004127, posted with FB50 to G/L 4711000 on 25 Sep 2026 [9][10][4]\n- **Reversal:** Reversed automatically on 1 Oct 2026 [9][4]\n- **Note:** The superseded planned-date report (v1, EUR 176,850) should not be used [9][11]. The EUR 201,950 figure is October's accrual, not September's [2][3].",
+     "judge": {
+      "correct": 1,
+      "faithful": 0,
+      "reason": "Amount EUR 184,300, doc 1900004127, FB50 to 4711000 and the 1 Oct reversal all match the reference and sources [4][7][9][10]. The v1 planned-date figure of EUR 176,850 is not visible in the truncated excerpts of [9] or [11], so that claim is unverifiable."
+     },
+     "precision": 0.5,
+     "seconds": 22.5
+    },
+    {
+     "q": "Which steps does Ana follow for the weekly freight accrual?",
+     "gold": "Get the TMS report, match in FBL1N, post with FB50 to G/L 4711000, and set the reversal for the 1st of the month.",
+     "answer": "Ana's weekly freight accrual steps:\n- **Step 1, request:** Every Friday she asks Tom Hendriks for the TMS delivered-not-invoiced report, due by 12:00. It must include shipment, delivery, carrier, site and agreed freight amount [3]. On the last Friday of the month, the same request covers the month-end close [3][6].\n- **Step 2, filter:** Filter on actual POD date up to the cut-off, not planned date. This has been required since 25 Sep 2026. The planned-date v1 report is superseded [3][2].\n- **Step 3, clear:** Match each shipment in FBL1N. Invoiced items are cleared and drop out of the accrual [3][5].\n- **Step 4, post:** Post the remaining total with FB50 to G/L 4711000, reversing on the 1st of the following month. The reversal is automatic [3][8][5].\n\nException: For the October close, Ana a",
+     "judge": {
+      "correct": 1,
+      "faithful": 1,
+      "reason": "Covers all reference facts: TMS report request, FBL1N matching, FB50 posting to 4711000, and reversal on the 1st. Claims about the 25 Sep POD-date rule and the unconfirmed POD sit in truncated source text that I could not fully verify."
+     },
+     "precision": 0.0,
+     "seconds": 24.5
+    },
+    {
+     "q": "Why were deliveries 80419876 and 80419902 included in the October accrual even without a POD?",
+     "gold": "The carrier (Nordline) confirmed delivery on 29.10 by mail.",
+     "answer": "The inclusion was a one-off, ad hoc exception based on carrier email, not a documented rule:\n- Tom Hendriks included deliveries 80419876 and 80419902 (Nordline, Hamburg) because the carrier confirmed delivery on 29.10 by email. Their POD was not yet in the TMS [1].\n- Ana Novak approved inclusion on that carrier mail basis, matched them in FBL1N with nothing else open, and posted the EUR 201,950 accrual with FB50 to 4711000, reversing 01.11 [3].\n\nPolicy context:\n- The standard requires filtering the TMS report on POD date up to the cut-off, not planned date, and the report must include the listed fields [5][6].\n- No wiki rule covers shipments missing a POD, so the carrier-mail basis is an undocumented exception to the POD-date requirement [5][6].\n\nOpen points:\n- The sources do not show that",
+     "judge": {
+      "correct": 1,
+      "faithful": 1,
+      "reason": "The answer states the reference's key fact: the carrier confirmed delivery on 29.10 by mail/email. Its other claims (Tom's POD-not-in-TMS note, Ana's approval, FB50 to 4711000, 01.11 reversal, POD-date filtering rule, today being 01.11) all match the sources or the provided date."
+     },
+     "precision": 1.0,
+     "seconds": 19.2
+    },
+    {
+     "q": "How large was the October accrual, and what reversal date was set?",
+     "gold": "EUR 201,950, reversal date 01.11.",
+     "answer": "- October 2026 accrual: EUR 201,950, posted with FB50 to G/L 4711000 [5][2]. Site split: Rotterdam 66,300; Venlo 52,100; Antwerp 29,800; Hamburg 23,450; Felixstowe 15,900; Gdansk 14,400 [3].\n- Reversal date set: 01.11.2026, i.e. the 1st of the following month [2][5].\n- Open points: the POD for Hamburg Nordline deliveries 80419876 and 80419902 still needs confirming, since they were approved on carrier mail without a POD in the TMS [2][5]. No source confirms that the 01.11 reversal has run; today is 1 Nov 2026, so that check is still pending [2].",
+     "judge": {
+      "correct": 1,
+      "faithful": 0,
+      "reason": "The accrual amount (EUR 201,950) and reversal date (01.11) match the reference. The site split figures are cited to [3], but that excerpt does not contain them. The claim that the Hamburg shipments lack a POD in the TMS is also not stated in the cited sources."
+     },
+     "precision": 1.0,
+     "seconds": 15.2
+    },
+    {
+     "q": "Why did Antwerp choose a dispatcher check before loading instead of a check at the gate?",
+     "gold": "The gate only checks driver ID and delivery number, and a dispatcher check before loading also avoids reloading a truck that cannot leave.",
+     "answer": "The gate check would not catch the actual problem. The gate only verifies driver ID and delivery number, so it would miss a missing dangerous goods declaration (DGD) [1][5].\n\n- **Earlier and cheaper to fix:** The dispatcher checks before loading starts, so no UN 1263 pallet is loaded until the printed, signed DGD is in hand. This also avoids reloading a truck that cannot leave [1][5].\n- **Decision history:** Marta Kowalska first proposed a gate check on 2 Oct [7]. Sofie Peeters proposed the dispatcher check on 5 Oct [1][5]. Marta agreed on 8 Oct, and the rule took effect on 12 Oct [2][9].\n- **Root cause:** The DGDs existed in SAP but were never printed, because the print job went to the wrong office printer [1][11].\n\nThe sources do not discuss safety, gate congestion, or compliance as reas",
+     "judge": {
+      "correct": 1,
+      "faithful": 0,
+      "reason": "Covers both reference points: the gate only checks driver ID and delivery number, and the dispatcher check avoids reloading a truck that cannot leave. Faithfulness fails on 'cheaper to fix', which no source states. The 2 Oct gate proposal is also cited to [7] when [12] supports it."
+     },
+     "precision": 0.67,
+     "seconds": 20.8
+    },
+    {
+     "q": "What caused the DGDs for the two UN 1263 shipments to be missing?",
+     "gold": "They existed in SAP but were not printed because the print job went to the wrong printer in the office.",
+     "answer": "Both DGDs existed in SAP but were never printed. The print job went to the wrong office printer, so the signed DGDs never reached the shipment folder [5][9][2].\n\n- Delivery 80451233 (UN 1263, 12 pallets), found 29 Sep 2026 [2][8]\n- Delivery 80451290 (UN 1263, 8 pallets), found 30 Sep 2026 [2][8]\n\nThe DGDs were not missing from the system. Marta Kowalska had asked whether they were never created or only not printed [6], and Sofie Peeters answered that they were created but not printed [5]. The sources do not explain why the print job went to the wrong printer, or who created or requested each DGD [2][5].",
+     "judge": {
+      "correct": 1,
+      "faithful": 1,
+      "reason": "States the reference's key fact: the DGDs existed in SAP but were not printed because the print job went to the wrong office printer. Dates, delivery numbers, and the Kowalska/Peeters exchange match the sources. The 'never reached the shipment folder' phrasing is a small inference but follows from the non-printing."
+     },
+     "precision": 0.6,
+     "seconds": 20.8
+    },
+    {
+     "q": "Who is the approver for freight accruals above EUR 200,000?",
+     "answer": "The sources do not name an approver for freight accruals above EUR 200,000. No approval matrix or threshold rule for this process appears in the evidence.\n\n- The accrual process is owned on the finance side by Ana Novak, with Tom Hendriks supplying the TMS report [1].\n- The October 2026 accrual of EUR 201,950 was approved by Ana Novak by email, based on carrier mail for two Hamburg shipments [8][2]. This is one observed approval, not a documented rule.\n- The EUR 35,000 Finance approval threshold",
+     "abstained": false
+    }
+   ]
+  }
+ ],
+ "ingest": {
+  "true_emails": 368,
+  "stored": 368,
+  "missing": 0,
+  "alias_copies_merged": 3,
+  "resent_marked_duplicate": 1,
+  "thread_purity": 1.0,
+  "thread_completeness": 0.9917,
+  "true_threads": 43,
+  "stored_threads_for_real_mail": 45,
+  "noise_skipped": 13,
+  "noise_total": 125,
+  "quoted_only_in_truth": 5,
+  "emails_processed": 354,
+  "notes_per_processed_email": 1.0,
+  "routing_accuracy": 0.922,
+  "pages_per_storyline (≥2 emails)": 1.16,
+  "storylines": 25,
+  "pages": 16,
+  "page_purity": 0.793,
+  "storylines_with_own_page": "16/25",
+  "units": 304,
+  "units_retried_share": 0.0,
+  "fast_path_fallbacks": 0,
+  "section_versions": 284,
+  "drafts_rejected_or_replaced": 71,
+  "items_written": 656,
+  "items_pending_or_failed": 0,
+  "llm_calls": 550,
+  "llm_calls_by_status": {
+   "ok": 550
+  }
+ }
+}

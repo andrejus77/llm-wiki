@@ -1,0 +1,44 @@
+Message-ID: <tms_upgrade.t1.m1.350e499d4a@routewise.example>
+Date: Wed, 23 Sep 2026 10:05:00 +0200
+From: "RouteWise Support" <routewise@routewise.example>
+To: "Tom Hendriks" <t.hendriks@corp-europe.example>
+Cc: "Pieter Bakker" <p.bakker@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: TMS upgrade to RouteWise 9.2 - weekend 24-25 Oct
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============0424914790344382933=="
+
+--===============0424914790344382933==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Following our call yesterday, we confirm the upgrade of your production TMS f=
+rom 9.0 to 9.2 for the weekend of 24-25 October. The window runs from Saturda=
+y 06:00 to Sunday 14:00 CET. Your QA system RW-QA will be upgraded to 9.2.0.2=
+ by us on 5 October, so you have about three weeks for testing. Main changes:=
+ new multi-stop rate engine, extended CO2 reporting per shipment leg and a ne=
+w REST API version. Please note the old API v2 stays available, so existing i=
+ntegrations should keep working, but we recommend testing them. Can you send =
+us your test plan before the QA upgrade?
+
+Best regards,
+RouteWise Support
+TMS software vendor
+
+--===============0424914790344382933==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Following our call yesterday, we confirm the upgrade of your p=
+roduction TMS from 9.0 to 9.2 for the weekend of 24-25 October. The window ru=
+ns from Saturday 06:00 to Sunday 14:00 CET. Your QA system RW-QA will be upgr=
+aded to 9.2.0.2 by us on 5 October, so you have about three weeks for testing=
+. Main changes: new multi-stop rate engine, extended CO2 reporting per shipme=
+nt leg and a new REST API version. Please note the old API v2 stays available=
+, so existing integrations should keep working, but we recommend testing them=
+. Can you send us your test plan before the QA upgrade?</p><p>Best regards,<b=
+r>RouteWise Support<br>TMS software vendor</p></body></html>
+
+--===============0424914790344382933==--

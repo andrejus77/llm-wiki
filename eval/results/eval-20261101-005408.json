@@ -1,0 +1,276 @@
+{
+ "created": "2026-11-01T00:48:48",
+ "questions": 163,
+ "note": "Haiku (text mode), 6 synthetic weeks, retrieval grid",
+ "settings": {
+  "embed_model": "multilingual-e5-small",
+  "rrf_k": 60,
+  "top_k": 8
+ },
+ "retrieval": [
+  {
+   "name": "BM25 only (FTS5)",
+   "recall_1": 0.667,
+   "recall_5": 0.942,
+   "recall_10": 0.986,
+   "mrr": 0.782,
+   "ndcg_10": 0.816,
+   "ms": 7.2,
+   "recall_5_by_type": {
+    "why": 0.912,
+    "identifier": 1.0,
+    "howto": 0.667,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "vector only · multilingual-e5-small",
+   "recall_1": 0.645,
+   "recall_5": 0.935,
+   "recall_10": 0.978,
+   "mrr": 0.772,
+   "ndcg_10": 0.814,
+   "ms": 36.6,
+   "recall_5_by_type": {
+    "why": 0.941,
+    "identifier": 1.0,
+    "howto": 0.667,
+    "multihop": 0.88,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 0.933
+   }
+  },
+  {
+   "name": "hybrid RRF · multilingual-e5-small",
+   "recall_1": 0.732,
+   "recall_5": 0.971,
+   "recall_10": 0.993,
+   "mrr": 0.832,
+   "ndcg_10": 0.845,
+   "ms": 29.0,
+   "recall_5_by_type": {
+    "why": 0.941,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid + source weights · multilingual-e5-small",
+   "recall_1": 0.949,
+   "recall_5": 0.978,
+   "recall_10": 0.986,
+   "mrr": 0.965,
+   "ndcg_10": 0.938,
+   "ms": 24.6,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.92,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid + weights + recency · multilingual-e5-small",
+   "recall_1": 0.957,
+   "recall_5": 0.978,
+   "recall_10": 0.986,
+   "mrr": 0.967,
+   "ndcg_10": 0.943,
+   "ms": 24.7,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.92,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "vector only · bge-small-en-v1.5",
+   "recall_1": 0.638,
+   "recall_5": 0.964,
+   "recall_10": 0.971,
+   "mrr": 0.768,
+   "ndcg_10": 0.797,
+   "ms": 24.6,
+   "recall_5_by_type": {
+    "why": 0.971,
+    "identifier": 1.0,
+    "howto": 0.778,
+    "multihop": 0.92,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid RRF · bge-small-en-v1.5",
+   "recall_1": 0.71,
+   "recall_5": 0.971,
+   "recall_10": 0.993,
+   "mrr": 0.819,
+   "ndcg_10": 0.828,
+   "ms": 26.8,
+   "recall_5_by_type": {
+    "why": 0.941,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid + source weights · bge-small-en-v1.5",
+   "recall_1": 0.935,
+   "recall_5": 0.986,
+   "recall_10": 0.986,
+   "mrr": 0.957,
+   "ndcg_10": 0.923,
+   "ms": 27.1,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid + weights + recency · bge-small-en-v1.5",
+   "recall_1": 0.935,
+   "recall_5": 0.978,
+   "recall_10": 0.986,
+   "mrr": 0.955,
+   "ndcg_10": 0.926,
+   "ms": 28.1,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.92,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "vector only · hashed",
+   "recall_1": 0.623,
+   "recall_5": 0.957,
+   "recall_10": 0.978,
+   "mrr": 0.76,
+   "ndcg_10": 0.784,
+   "ms": 8.0,
+   "recall_5_by_type": {
+    "why": 0.971,
+    "identifier": 0.947,
+    "howto": 0.889,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 0.895,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid RRF · hashed",
+   "recall_1": 0.761,
+   "recall_5": 0.957,
+   "recall_10": 0.986,
+   "mrr": 0.848,
+   "ndcg_10": 0.845,
+   "ms": 10.2,
+   "recall_5_by_type": {
+    "why": 0.941,
+    "identifier": 1.0,
+    "howto": 0.778,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid + source weights · hashed",
+   "recall_1": 0.928,
+   "recall_5": 0.971,
+   "recall_10": 0.986,
+   "mrr": 0.949,
+   "ndcg_10": 0.914,
+   "ms": 10.4,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.92,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid + weights + recency · hashed",
+   "recall_1": 0.928,
+   "recall_5": 0.971,
+   "recall_10": 0.986,
+   "mrr": 0.949,
+   "ndcg_10": 0.918,
+   "ms": 10.5,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.92,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 1.0
+   }
+  }
+ ],
+ "ingest": {
+  "true_emails": 368,
+  "stored": 368,
+  "missing": 0,
+  "alias_copies_merged": 3,
+  "resent_marked_duplicate": 1,
+  "thread_purity": 1.0,
+  "thread_completeness": 0.9917,
+  "true_threads": 43,
+  "stored_threads_for_real_mail": 45,
+  "noise_skipped": 13,
+  "noise_total": 125,
+  "quoted_only_in_truth": 5,
+  "emails_processed": 354,
+  "notes_per_processed_email": 1.0,
+  "routing_accuracy": 0.922,
+  "pages_per_storyline (≥2 emails)": 1.16,
+  "storylines": 25,
+  "units": 304,
+  "units_retried_share": 0.0,
+  "fast_path_fallbacks": 0,
+  "section_versions": 284,
+  "drafts_rejected_or_replaced": 71,
+  "items_written": 656,
+  "items_pending_or_failed": 0,
+  "llm_calls": 467,
+  "llm_calls_by_status": {
+   "ok": 467
+  }
+ }
+}

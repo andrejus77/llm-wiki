@@ -1,0 +1,326 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "PO 4500123456 pallets - still not released",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-10-20 08:40",
+     "from": "jdevries",
+     "to": [
+      "erossi"
+     ],
+     "cc": [],
+     "reply_to": null,
+     "forward": false,
+     "body": "Elena, what is the status of the PalletPro order for the EUR pallets? Our count this morning shows 1,150 pallets left in Venlo. We use about 190 a day on outbound, so that is roughly six working days. PalletPro told us last week they need 2-3 days after the order is confirmed, so we are already tight. Can you tell me when the PO will go out? If it slips beyond this week I need to tell my shift leads to start mixing in the old pool pallets, and that costs us time at the dock.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-10-20 09:25",
+     "from": "erossi",
+     "to": [
+      "jdevries"
+     ],
+     "cc": [],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Jeroen, I created PO 4500123456 on 14 Oct (4,000 EUR pallets, EUR 12,480 total, so EUR 3.12 each). It has been sitting in 'awaiting release' since then. Because the value is above EUR 10,000 it needs release code 02, and the ME21N workflow still sends the approval task to a colleague who moved to Antwerp in September. Nobody in Rotterdam or Venlo ever sees the work item, which is why nothing happened for almost a week. I did not notice earlier because I assumed the approver was just slow. I am raising it with IT right now and will keep you posted.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-10-20 09:50",
+     "from": "erossi",
+     "to": [
+      "pbakker"
+     ],
+     "cc": [
+      "jdevries"
+     ],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Pieter, PO 4500123456 (PalletPro, EUR 12,480) has been blocked since 14 Oct. The release workflow still routes to the approver who moved to Antwerp. Please change the workflow owner so that the task goes to the Rotterdam logistics management instead. Screenshot of the release status is below. Venlo has about six working days of pallets left, so this is urgent for us. Can you give me a date when you can do it?",
+     "table": null,
+     "attachment": null,
+     "screenshot": {
+      "title": "ME23N - Purchase Order 4500123456 - Release strategy",
+      "lines": [
+       "Document: 4500123456   Vendor: PalletPro",
+       "Net value: 12,480.00 EUR",
+       "Release group: 01   Strategy: Z2",
+       "Release code 02: NOT released",
+       "Status: Awaiting release (since 14.10.2026)"
+      ]
+     }
+    },
+    {
+     "id": "m4",
+     "date": "2026-10-21",
+     "from": "pbakker",
+     "to": [
+      "erossi"
+     ],
+     "cc": [
+      "jdevries"
+     ],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "Elena, I looked at it. Just to be sure I change the right thing: do you mean the release code in the release strategy (OMGS), or the agent assignment of the workflow task? I can see that release code 02 is assigned to a position in the org structure, and that position is still held by the user who moved to Antwerp. If it is the position assignment, I can fix it through a change request. Normally that takes 2-3 working days, but I can try to push it.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-10-21",
+     "from": "erossi",
+     "to": [
+      "pbakker"
+     ],
+     "cc": [
+      "jdevries"
+     ],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Pieter, it is the position assignment. The release strategy itself is fine: code 02 for POs above EUR 10,000 is correct, we do not want to change that. Only the holder of the approver position is wrong. Please move it to the Rotterdam logistics management. I cannot approve my own PO, so I cannot work around it. Please send the change request number when you have it.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m8",
+     "date": "2026-10-27",
+     "from": "pbakker",
+     "to": [
+      "erossi"
+     ],
+     "cc": [
+      "jdevries"
+     ],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "Elena, the change is done as of this afternoon. The approver position for release code 02 now points to Mark de Boer, and I re-triggered the workflow for PO 4500123456. The work item should be in his SAP inbox (SBWP) now. Sorry for the delay, the change request waited in the queue for the weekly transport window. Please check tomorrow morning that the status moved on.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m9",
+     "date": "2026-10-28",
+     "from": "erossi",
+     "to": [
+      "jdevries"
+     ],
+     "cc": [
+      "pbakker"
+     ],
+     "reply_to": "m8",
+     "forward": false,
+     "body": "Jeroen, PO 4500123456 was released this morning at 10:05 and has gone to PalletPro. They confirmed delivery to Venlo on Friday 30 Oct, 4,000 pallets. Pieter, thanks, the workflow works now. Jeroen, please plan the old pool pallets for Thursday so you do not run dry before the delivery arrives.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  },
+  {
+   "key": "t2",
+   "subject": "Hold 4,000 EUR pallets - PO 4500123456 pending",
+   "emails": [
+    {
+     "id": "m6",
+     "date": "2026-10-23 10:15",
+     "from": "erossi",
+     "to": [
+      "palletpro"
+     ],
+     "cc": [
+      "jdevries"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Hello, our PO 4500123456 for 4,000 EUR pallets at EUR 3.12 each (EUR 12,480) is delayed by an internal approval issue on our side. We expect to release it early next week. Can you reserve the stock for us and keep the price? Our Venlo site will run short of pallets around 28 Oct, so we need delivery within two working days after the PO reaches you. Please confirm what you can hold and until when.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m7",
+     "date": "2026-10-26",
+     "from": "palletpro",
+     "to": [
+      "erossi"
+     ],
+     "cc": [
+      "jdevries"
+     ],
+     "reply_to": "m6",
+     "forward": false,
+     "body": "Hello Elena, we can reserve 4,000 EUR pallets for you and hold the price of EUR 3.12 until Friday 30 Oct. Delivery to Venlo takes two working days after we receive the PO. So if the order arrives by Wednesday 28 Oct, we can deliver on Friday 30 Oct. After 30 Oct we cannot guarantee the stock or the price, because another customer has asked for the same batch.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "Purchase order 4500123456 for 4,000 EUR pallets from PalletPro was created on 14 Oct 2026 and has a total value of EUR 12,480 (EUR 3.12 per pallet).",
+   "emails": [
+    "m2",
+    "m6"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "The PO stayed in 'awaiting release' because the ME21N release workflow still routed the approval task to a colleague who moved to Antwerp in September.",
+   "emails": [
+    "m2",
+    "m3"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "Release code 02 is required for POs above EUR 10,000; the release strategy itself was correct and not changed.",
+   "emails": [
+    "m2",
+    "m5"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "On 20 Oct Venlo had 1,150 EUR pallets left and used about 190 per day, roughly six working days of stock.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "Elena Rossi asked Pieter Bakker on 20 Oct to change the workflow owner so approval goes to Rotterdam logistics management.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "Pieter first asked whether the release code (OMGS) or the position assignment needed changing; Elena clarified it was the position assignment of the approver.",
+   "emails": [
+    "m4",
+    "m5"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "Elena cannot approve her own PO, so she could not work around the blocked workflow.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "PalletPro agreed on 26 Oct to reserve 4,000 pallets and hold the price of EUR 3.12 until Friday 30 Oct.",
+   "emails": [
+    "m7"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "PalletPro delivers to Venlo two working days after receiving the PO, so the PO had to arrive by Wed 28 Oct for delivery on Fri 30 Oct.",
+   "emails": [
+    "m7"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "On 27 Oct Pieter Bakker changed the approver position for release code 02 to Mark de Boer and re-triggered the workflow.",
+   "emails": [
+    "m8"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "The change took until 27 Oct because the change request waited for the weekly transport window.",
+   "emails": [
+    "m8"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "PO 4500123456 was released on 28 Oct at 10:05 and sent to PalletPro, with delivery to Venlo confirmed for Fri 30 Oct.",
+   "emails": [
+    "m9"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "Jeroen de Vries was asked to use old pool pallets on Thursday 29 Oct to bridge until the delivery.",
+   "emails": [
+    "m9"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "Why was PO 4500123456 not approved for two weeks after it was created?",
+   "a": "The ME21N release workflow still routed the approval task to a colleague who had moved to Antwerp, so nobody in Rotterdam or Venlo saw it.",
+   "facts": [
+    "F2"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "Who became the approver for release code 02 and who made the change?",
+   "a": "Mark de Boer became the approver; Pieter Bakker changed it on 27 Oct.",
+   "facts": [
+    "F10"
+   ],
+   "type": "who"
+  },
+  {
+   "q": "When was PO 4500123456 released and when was the delivery to Venlo confirmed for?",
+   "a": "Released on 28 Oct at 10:05; delivery confirmed for Friday 30 Oct.",
+   "facts": [
+    "F12"
+   ],
+   "type": "when"
+  },
+  {
+   "q": "What is the value and quantity of PO 4500123456?",
+   "a": "EUR 12,480 for 4,000 EUR pallets (EUR 3.12 each) from PalletPro.",
+   "facts": [
+    "F1"
+   ],
+   "type": "identifier"
+  },
+  {
+   "q": "Why did the PO have to reach PalletPro by 28 Oct, and what was the risk after 30 Oct?",
+   "a": "Delivery takes two working days, so 28 Oct meant delivery on 30 Oct; after 30 Oct PalletPro could not guarantee the stock or the EUR 3.12 price.",
+   "facts": [
+    "F8",
+    "F9"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "What is the name of the buyer who moved to Antwerp and whose approval was blocking the PO?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "po_approval",
+  "title": "PO 4500123 waiting for approval (ME21N workflow)",
+  "level": "task",
+  "korean": false
+ }
+}

@@ -1,0 +1,113 @@
+Message-ID: <onboarding.t2.m10.b0d3836880@corp-europe.example>
+Date: Thu, 15 Oct 2026 11:15:00 +0200
+From: "Tom Hendriks" <t.hendriks@corp-europe.example>
+To: "Emma Laurent" <e.laurent@corp-europe.example>
+Cc: "Lukas Becker" <l.becker@corp-europe.example>,
+ "Daan Visser" <d.visser@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: Brightwater - late deliveries in first week
+In-Reply-To: <onboarding.t2.m9.8c3d001934@corp-europe.example>
+References: <onboarding.t2.m9.8c3d001934@corp-europe.example>
+Thread-Index: Ad1chadoQotQpnB7UBcHga2+2AsjO/nhM9yW
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============6100385865593726255=="
+
+--===============6100385865593726255==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+I looked at both. The orders were entered in the morning of the shipping day,=
+ so picking and loading in Venlo only finished around 09:30 and the trucks le=
+ft at 09:45 and 10:20. With the drive time this was too late for a 14:00 limi=
+t. It was not a master data problem, the window was correct on both deliverie=
+s.
+
+Proposal: Brightwater orders must be in by 14:00 the day before, we load in t=
+he evening and the trucks leave at 04:00 for Zaandam and 05:00 for Mechelen. =
+Lukas, can the system calculate the dates in a way that supports this?
+
+Thanks,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 653 5871
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Emma Laurent <e.laurent@corp-europe.example>
+Sent: Wednesday, 14 October 2026 09:30
+To: Tom Hendriks
+Subject: Brightwater - late deliveries in first week
+
+Brightwater called me this morning. We had 2 late deliveries in the first wee=
+k:
+
+- 80412455 to Store hub Zaandam, shipped 12 Oct, arrived 14:25, dock was alre=
+ady closed
+- 80412461 to DC Mechelen, shipped 14 Oct, arrived 14:50
+
+Both were refused and have to be redelivered the next day. Brightwater is not=
+ happy but accepted it for now because it is the first week. Can you tell me =
+what went wrong? I need an answer for them by tomorrow.
+
+Delivery | Ship-to | Arrival | Window closes
+80412455 | 100848 Zaandam | 14:25 | 14:00
+80412461 | 100846 Mechelen | 14:50 | 14:00
+
+Best regards,
+Emma Laurent
+Customer service lead
+Corp Europe B.V. | Rotterdam
+T +31 10 735 7232
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============6100385865593726255==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>I looked at both. The orders were entered in the morning of th=
+e shipping day, so picking and loading in Venlo only finished around 09:30 an=
+d the trucks left at 09:45 and 10:20. With the drive time this was too late f=
+or a 14:00 limit. It was not a master data problem, the window was correct on=
+ both deliveries.</p>
+<p>Proposal: Brightwater orders must be in by 14:00 the day before, we load i=
+n the evening and the trucks leave at 04:00 for Zaandam and 05:00 for Mechele=
+n. Lukas, can the system calculate the dates in a way that supports this?</p>=
+<p>Thanks,<br>Tom Hendriks<br>Transport planner<br>Corp Europe B.V. | Rotterd=
+am<br>T +31 10 653 5871<br><br>This e-mail and any attachments are confidenti=
+al and intended solely for the addressee. If you received it in error, please=
+ delete it.</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;paddi=
+ng:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Emma Laurent &lt;e.laurent@corp-europe.=
+example&gt;<br><b>Sent:</b> Wednesday, 14 October 2026 09:30<br><b>To:</b> To=
+m Hendriks<br><b>Cc:</b> Lukas Becker; Daan Visser; DL CT<br><b>Subject:</b> =
+Brightwater - late deliveries in first week</p></div><p>Brightwater called me=
+ this morning. We had 2 late deliveries in the first week:</p>
+<ul><li>80412455 to Store hub Zaandam, shipped 12 Oct, arrived 14:25, dock wa=
+s already closed</li><li>80412461 to DC Mechelen, shipped 14 Oct, arrived 14:=
+50</li></ul>
+<p>Both were refused and have to be redelivered the next day. Brightwater is =
+not happy but accepted it for now because it is the first week. Can you tell =
+me what went wrong? I need an answer for them by tomorrow.</p><table style=3D=
+'border-collapse:collapse;font-size:10pt'><tr><th style=3D'border:1px solid #=
+999;padding:3px 6px'>Delivery</th><th style=3D'border:1px solid #999;padding:=
+3px 6px'>Ship-to</th><th style=3D'border:1px solid #999;padding:3px 6px'>Arri=
+val</th><th style=3D'border:1px solid #999;padding:3px 6px'>Window closes</th=
+></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>80412455</td><t=
+d style=3D'border:1px solid #999;padding:3px 6px'>100848 Zaandam</td><td styl=
+e=3D'border:1px solid #999;padding:3px 6px'>14:25</td><td style=3D'border:1px=
+ solid #999;padding:3px 6px'>14:00</td></tr><tr><td style=3D'border:1px solid=
+ #999;padding:3px 6px'>80412461</td><td style=3D'border:1px solid #999;paddin=
+g:3px 6px'>100846 Mechelen</td><td style=3D'border:1px solid #999;padding:3px=
+ 6px'>14:50</td><td style=3D'border:1px solid #999;padding:3px 6px'>14:00</td=
+></tr></table><p>Best regards,<br>Emma Laurent<br>Customer service lead<br>Co=
+rp Europe B.V. | Rotterdam<br>T +31 10 735 7232<br><br>This e-mail and any at=
+tachments are confidential and intended solely for the addressee. If you rece=
+ived it in error, please delete it.</p></body></html>
+
+--===============6100385865593726255==--

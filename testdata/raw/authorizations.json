@@ -1,0 +1,265 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "SAP roles for transport planning - REQ0048213",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-10-19 09:20",
+     "from": "thendriks",
+     "to": [
+      "lbecker"
+     ],
+     "cc": [],
+     "reply_to": null,
+     "forward": false,
+     "body": "Hi Lukas, I started as transport planner today and my SAP user only has the basic display roles. I raised request REQ0048213 in the IT portal a few minutes ago. It is waiting for your approval as role owner.\n\nWhat I need for planning the daily outbound runs:\n- VT01N / VT02N to create and change shipments\n- VL06O to monitor deliveries that are due for shipping\n\nI put Rotterdam as the location in the request. Can you approve it today, or tell me if something is missing? I would like to start planning on my own by the end of the week.",
+     "table": {
+      "header": [
+       "T-code",
+       "Purpose",
+       "Access needed"
+      ],
+      "rows": [
+       [
+        "VT01N",
+        "Create shipment",
+        "Change"
+       ],
+       [
+        "VT02N",
+        "Change shipment",
+        "Change"
+       ],
+       [
+        "VL06O",
+        "Delivery monitoring (outbound)",
+        "Display"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-10-19 14:05",
+     "from": "lbecker",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Hi Tom, I see the request in my approval queue. Before I approve, one question: you only mention Rotterdam, but in the team plan you also take over part of the Venlo outbound runs. If so, the shipping point authorization for Venlo (VN01) has to be in the request too, otherwise VT01N will refuse you with 'no authorization for shipping point' on Venlo deliveries.\n\nVT01N/VT02N come with the role Z_LE_SHIPMENT_PLANNER and VL06O with Z_LE_DELIVERY_MONITOR. Both are fine for your function, so no extra sign-off is needed. Can you confirm the plants?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-10-20 08:50",
+     "from": "thendriks",
+     "to": [
+      "lbecker"
+     ],
+     "cc": [],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Good catch, thanks. Yes, I plan both Rotterdam (RT01) and Venlo (VN01) from the start. I forgot to mention Venlo in the portal text. Please add VN01 to the request, or tell me if I should raise a new one. I would rather avoid a second ticket because it would cost us another day.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m4",
+     "date": "2026-10-20 16:30",
+     "from": "lbecker",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "No new ticket needed. I added shipping points RT01 and VN01 as a comment in REQ0048213 and approved it just now. IT provisions approved requests overnight, so the roles should be active tomorrow morning (Wed 21 Oct). Log off and on again in SAP, as the authorizations are only loaded at login.\n\nThis is what I see on your user in SU01 after the approval:",
+     "table": null,
+     "attachment": null,
+     "screenshot": {
+      "title": "SU01 - Display User THENDRIKS - Roles",
+      "lines": [
+       "Role                       Valid from   Valid to",
+       "Z_LE_SHIPMENT_PLANNER      21.10.2026   31.12.9999",
+       "Z_LE_DELIVERY_MONITOR      21.10.2026   31.12.9999",
+       "Z_BASIC_DISPLAY            19.10.2026   31.12.9999",
+       "Org levels: Shipping point RT01, VN01"
+      ]
+     }
+    },
+    {
+     "id": "m5",
+     "date": "2026-10-21 10:10",
+     "from": "thendriks",
+     "to": [
+      "lbecker"
+     ],
+     "cc": [],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Works. After re-login VL06O shows the open deliveries for both RT01 and VN01, and I could open delivery 80451237 (Venlo) and change a test shipment in VT02N. No authorization errors. Thanks for the quick help, I will close the ticket in the portal.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "Tom Hendriks started as transport planner on 19 Oct 2026 and initially had only basic display roles in SAP.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "Tom requested access via the IT portal under request REQ0048213 on 19 Oct 2026.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "The requested access was VT01N and VT02N (create/change shipments) and VL06O (delivery monitoring).",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "Lukas Becker approves the request as role owner.",
+   "emails": [
+    "m1",
+    "m4"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "Tom's original request named only Rotterdam, but he also plans Venlo outbound runs.",
+   "emails": [
+    "m1",
+    "m2",
+    "m3"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "Without shipping point VN01 in the authorization, VT01N would refuse Venlo deliveries with 'no authorization for shipping point'.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "VT01N/VT02N are covered by role Z_LE_SHIPMENT_PLANNER and VL06O by role Z_LE_DELIVERY_MONITOR; no extra sign-off is needed for them.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "Tom wanted to avoid a second ticket because it would cost another day, so Lukas added shipping points RT01 and VN01 as a comment in REQ0048213.",
+   "emails": [
+    "m3",
+    "m4"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "Lukas approved the request on 20 Oct 2026 at about 16:30.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "IT provisions approved requests overnight, so the roles were active from Wed 21 Oct 2026.",
+   "emails": [
+    "m4",
+    "m5"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "Authorizations are only loaded at login, so the user has to log off and on again in SAP.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "On 21 Oct Tom confirmed VL06O showed open deliveries for RT01 and VN01 and he could change a test shipment in VT02N on Venlo delivery 80451237 without errors.",
+   "emails": [
+    "m5"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "Which ticket number was used to request the SAP roles for the new transport planner?",
+   "a": "REQ0048213",
+   "facts": [
+    "F2"
+   ],
+   "type": "identifier"
+  },
+  {
+   "q": "Why did Lukas ask Tom to confirm the plants before approving?",
+   "a": "Tom only named Rotterdam but also plans Venlo runs; without shipping point VN01, VT01N would refuse Venlo deliveries.",
+   "facts": [
+    "F5",
+    "F6"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "Which SAP roles cover VT01N/VT02N and VL06O?",
+   "a": "Z_LE_SHIPMENT_PLANNER covers VT01N/VT02N; Z_LE_DELIVERY_MONITOR covers VL06O.",
+   "facts": [
+    "F7"
+   ],
+   "type": "fact"
+  },
+  {
+   "q": "Who approves SAP role requests for shipment planning and when were Tom's roles active?",
+   "a": "Lukas Becker approves as role owner; the roles were active from Wednesday 21 Oct 2026, after overnight provisioning.",
+   "facts": [
+    "F4",
+    "F9",
+    "F10"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "What should a user do after IT has provisioned new SAP roles?",
+   "a": "Log off and on again in SAP, because authorizations are only loaded at login.",
+   "facts": [
+    "F11"
+   ],
+   "type": "howto"
+  },
+  {
+   "q": "How long is the password validity of Tom's new SAP account?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "authorizations",
+  "title": "SAP access for new colleague",
+  "level": "task",
+  "korean": false
+ }
+}

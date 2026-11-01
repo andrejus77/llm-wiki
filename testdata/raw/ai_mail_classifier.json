@@ -1,0 +1,57 @@
+{
+ "storyline": {"key": "ai_mail_classifier", "title": "Gemini pilot: sorting customer service emails into queues", "level": "project", "korean": false},
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "Pilot: automatic sorting of customer service mail",
+   "emails": [
+    {"id": "m1", "date": "2026-10-13 09:10", "from": "nmeijer", "to": ["elaurent", "skovac"], "cc": ["pbakker"], "reply_to": null, "forward": false,
+     "body": "Emma, Stefan,\n\nAs agreed in the steering meeting we start the pilot to sort incoming customer service mail into the five queues (delivery status, damage, invoicing, booking change, other) with Gemini 2.5 Flash through the company Vertex AI tenant. Customer service sorts about 900 mails a week by hand today.\n\nPlan:\n- Emma: export 200 anonymised mails from September with the queue they ended up in (by 16 Oct)\n- Stefan: prompt + small evaluation script, accuracy target 90 % (by 23 Oct)\n- Go/no-go for a shadow run in November on 29 Oct\n\nPieter, FYI because the RPA mailbox reader would feed the model later.",
+     "table": null, "attachment": null, "screenshot": null},
+    {"id": "m2", "date": "2026-10-13 11:25", "from": "elaurent", "to": ["nmeijer"], "cc": ["skovac"], "reply_to": "m1", "forward": false,
+     "body": "Nina, fine for us. I will take the 200 mails from the September archive and remove names and phone numbers before I send them. Note that about 15 % of our mail is in German and some in Polish, please make sure the test covers that.",
+     "table": null, "attachment": null, "screenshot": null},
+    {"id": "m3", "date": "2026-10-16 15:40", "from": "elaurent", "to": ["skovac"], "cc": ["nmeijer"], "reply_to": "m2", "forward": false,
+     "body": "Stefan, the export is in the project folder: 200 mails, 38 delivery status, 41 damage, 52 invoicing, 29 booking change, 40 other. 31 of them are German, 9 Polish.",
+     "table": {"header": ["Queue", "Mails", "German", "Polish"], "rows": [["Delivery status", "38", "6", "2"], ["Damage", "41", "8", "3"], ["Invoicing", "52", "9", "1"], ["Booking change", "29", "4", "2"], ["Other", "40", "4", "1"]]},
+     "attachment": null, "screenshot": null},
+    {"id": "m4", "date": "2026-10-22 16:05", "from": "skovac", "to": ["nmeijer", "elaurent"], "cc": [], "reply_to": "m3", "forward": false,
+     "body": "First results on the 200 test mails: 186 correct (93 %). It put 14 in the wrong queue, 9 of them German damage claims that it sent to 'other' because the claim number format CLM-xxxx was not in the instructions. I added two German examples and the claim format; on a second run 194 of 200 were correct (97 %). Cost on the tenant: about 0.4 cent per mail.",
+     "table": null, "attachment": null, "screenshot": null},
+    {"id": "m5", "date": "2026-10-23 08:50", "from": "elaurent", "to": ["skovac"], "cc": ["nmeijer"], "reply_to": "m4", "forward": false,
+     "body": "Impressive. The six it still gets wrong, are those the forwarded mails with three customers in one thread? Those are hard for my team too. For the shadow run I would like the agent to see the suggested queue next to the real one, not to move anything yet.",
+     "table": null, "attachment": null, "screenshot": null},
+    {"id": "m6", "date": "2026-10-29 14:20", "from": "nmeijer", "to": ["elaurent", "skovac"], "cc": ["mdeboer", "pbakker"], "reply_to": "m5", "forward": false,
+     "body": "Decision from today's go/no-go: GO for a shadow run from 9 Nov to 4 Dec. The model only suggests a queue in a column of the shared mailbox view; nothing is moved automatically. Data stays in the EU tenant. Stefan builds the connector with Pieter's mailbox reader by 6 Nov. We decide on automatic sorting on 7 Dec based on the shadow-run accuracy (target 95 %).",
+     "table": null, "attachment": null, "screenshot": null}
+   ]
+  },
+  {
+   "key": "t2",
+   "subject": "Data protection check for the mail sorting pilot",
+   "emails": [
+    {"id": "d1", "date": "2026-10-20 10:00", "from": "nmeijer", "to": ["dvisser"], "cc": ["skovac"], "reply_to": null, "forward": false,
+     "body": "Daan, for the shadow run we need the data protection check. Mails are processed in the EU region of our Vertex AI tenant, nothing is stored by the provider and no training on our data. Can you confirm which form we need?",
+     "table": null, "attachment": null, "screenshot": null},
+    {"id": "d2", "date": "2026-10-21 13:30", "from": "dvisser", "to": ["nmeijer"], "cc": ["skovac"], "reply_to": "d1", "forward": false,
+     "body": "Nina, it is the short DPIA screening form (DP-07). With EU processing and no retention it is normally approved within a week. I filed it today as DP-07-2026-114.",
+     "table": null, "attachment": null, "screenshot": null},
+    {"id": "d3", "date": "2026-10-28 09:15", "from": "dvisser", "to": ["nmeijer"], "cc": ["skovac"], "reply_to": "d2", "forward": false,
+     "body": "DP-07-2026-114 is approved, valid until 31 Mar 2027. Condition: mails with medical or HR content must be excluded, the classifier should route them to 'other' without processing the body.",
+     "table": null, "attachment": null, "screenshot": null}
+   ]
+  }
+ ],
+ "facts": [
+  {"id": "F1", "text": "The pilot sorts customer service mail into five queues with Gemini 2.5 Flash via the company Vertex AI tenant; customer service sorts about 900 mails a week by hand.", "emails": ["m1"]},
+  {"id": "F2", "text": "The test set has 200 anonymised September mails, 31 German and 9 Polish.", "emails": ["m3"]},
+  {"id": "F3", "text": "The first run classified 186 of 200 correctly (93 %); after adding German examples and the CLM claim format 194 of 200 (97 %), at about 0.4 cent per mail.", "emails": ["m4"]},
+  {"id": "F4", "text": "On 29 Oct the go/no-go decided a shadow run from 9 Nov to 4 Dec where the model only suggests a queue; automatic sorting is decided on 7 Dec with a 95 % target.", "emails": ["m6"]},
+  {"id": "F5", "text": "The data protection screening DP-07-2026-114 was approved until 31 Mar 2027 on condition that medical or HR mails go to 'other' unprocessed.", "emails": ["d3"]}
+ ],
+ "questions": [
+  {"q": "What accuracy did the mail sorting pilot reach on the test set?", "a": "93 % on the first run (186 of 200) and 97 % (194 of 200) after adding German examples and the claim number format.", "facts": ["F3"], "type": "fact"},
+  {"q": "What was decided at the go/no-go of the mail sorting pilot?", "a": "A shadow run from 9 Nov to 4 Dec in which the model only suggests queues; automatic sorting is decided on 7 Dec with a 95 % target.", "facts": ["F4"], "type": "decision"},
+  {"q": "What condition came with the data protection approval for the mail classifier?", "a": "DP-07-2026-114 is valid until 31 Mar 2027 and medical or HR mails must be routed to 'other' without processing the body.", "facts": ["F5"], "type": "fact"}
+ ]
+}

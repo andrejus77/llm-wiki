@@ -1,0 +1,5 @@
+{
+ "question": "Why did the Rotterdam EWM go-live move, and what is the new date?",
+ "answer": "The sources don't show the Rotterdam EWM go-live itself being moved. EWM went live at 06:00 on Tue 6 Oct 2026 [4].\nThe date that moved is the Dutch customs DMS go-live:\n- It was moved from 3 Nov to 17 Nov 2026 on 20 Oct 2026 [2][6].\n- Reason: Nordline's DMS release slipped to 10 Nov [2].\n- Ruud Jansen chose a single cut-over with no parallel declaration formats, and Mark de Boer decides the go/no-go on 12 Nov [2][6].\n- The 3 Nov date on other pages is superseded [1].\nRelated: the Rotterdam EWM change freeze was extended to 17 Nov to match the customs cut-over [2]. Hypercare closes 30 Oct 2026 [4][8].",
+ "meta": "LangGraph agent, fast mode, Haiku · 13.7 s · 5 sources (wiki sections and one email), each opens in the side drawer. The question's premise was wrong; the agent corrected it from the sources instead of inventing a reason."
+}

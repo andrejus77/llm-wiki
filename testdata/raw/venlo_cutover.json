@@ -1,0 +1,378 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "Venlo EWM cut-over date options",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-10-12 09:10",
+     "from": "hschmidt",
+     "to": [
+      "jdevries"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Venlo moves to the new EWM release in Q1 2027, after Rotterdam. We need to fix the cut-over weekend and I see three options: 16 Jan, 30 Jan or 13 Feb 2027.\n\nThe plan has four phases: data migration, training, dress rehearsal and the cut-over weekend itself. Each option shifts all four. My gut feeling is that January is tight because of peak season, but I want your view on the outbound volumes before I put a recommendation together.\n\nI would like to decide in a workshop on 5 Nov at 09:00. Jeroen, can you tell me which weeks are critical for Venlo outbound? Mark, you are in copy so you can see where we stand.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-10-13 14:20",
+     "from": "jdevries",
+     "to": [
+      "hschmidt"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "January is the problem. The December peak runs into mid-January because of returns and the Q1 promo shipments. Last year we averaged about 2,400 outbound deliveries per day in the first three weeks of January, against roughly 1,600 per day in February.\n\nAlso, our temp staff contracts end on 31 Jan, so a go-live on 30 Jan would put the new system on the floor exactly when we lose people. 16 Jan is out for me, because the training would have to happen in December, the busiest weeks.\n\nSo 13 Feb is my preference, but please show me what it does to the training slots.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-10-14 08:45",
+     "from": "mdeboer",
+     "to": [
+      "hschmidt"
+     ],
+     "cc": [
+      "jdevries"
+     ],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Thanks both. Hanna, can you put the three options side by side with the dates for all four phases? I want to see what a later date costs us. My concern with 13 Feb is that it is close to the end of Q1 and leaves little room if the dress rehearsal fails.\n\nPlease also tell me how long the training needs. In Rotterdam I remember it was a point of discussion.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m4",
+     "date": "2026-10-15 11:30",
+     "from": "hschmidt",
+     "to": [
+      "mdeboer"
+     ],
+     "cc": [
+      "jdevries"
+     ],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "Here is the overview per option. Training is two weeks in all cases, split by shift. Data migration is about four weeks including two test loads.\n\nOption 13 Feb leaves three weeks between the end of training and the cut-over, which is fine for the dress rehearsal and still leaves a fallback slot on 27 Feb. Option 16 Jan puts the training in the December peak, which Jeroen already flagged.",
+     "table": {
+      "header": [
+       "Option",
+       "Data migration starts",
+       "Training",
+       "Dress rehearsal",
+       "Cut-over weekend"
+      ],
+      "rows": [
+       [
+        "16 Jan 2027",
+        "9 Nov",
+        "7-18 Dec",
+        "8-9 Jan",
+        "16-17 Jan"
+       ],
+       [
+        "30 Jan 2027",
+        "30 Nov",
+        "4-15 Jan",
+        "22-23 Jan",
+        "30-31 Jan"
+       ],
+       [
+        "13 Feb 2027",
+        "4 Jan",
+        "18-29 Jan",
+        "5-6 Feb",
+        "13-14 Feb"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-10-16 16:05",
+     "from": "jdevries",
+     "to": [
+      "hschmidt"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Thanks, that helps. With 13 Feb the training on 18-29 Jan still overlaps with the tail of the January peak, but it is manageable if we train per shift. I have 42 operators who need training, so I would do three groups of 14.\n\nTwo questions: what happens if the dress rehearsal on 5-6 Feb goes badly, and how many key users do you need from my side? I can free up people, but not during the same days as the rehearsal.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m6",
+     "date": "2026-10-19 09:40",
+     "from": "hschmidt",
+     "to": [
+      "jdevries"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "Three groups of 14 works for me, two sessions per group.\n\nIf the rehearsal fails, we hold a go/no-go right after it, on Monday 8 Feb. With a no-go the next slot is the weekend of 27 Feb. That is the reason I would rather not plan the primary date later than 13 Feb.\n\nFrom Venlo I need four key users. They support the training and are on the floor during the cut-over weekend. Can you send me the names?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m7",
+     "date": "2026-10-21 13:15",
+     "from": "jdevries",
+     "to": [
+      "hschmidt"
+     ],
+     "cc": [],
+     "reply_to": "m6",
+     "forward": false,
+     "body": "Ok, understood on the 27 Feb fallback. I will send you the four key user names by Friday 23 Oct, I just need to check the shift rosters first.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m8",
+     "date": "2026-10-26 10:00",
+     "from": "mdeboer",
+     "to": [
+      "hschmidt",
+      "jdevries"
+     ],
+     "cc": [],
+     "reply_to": "m6",
+     "forward": false,
+     "body": "I have read the thread. I will join the workshop on 5 Nov at 09:00 and I expect us to leave with a decision on the date. Hanna, please send me a one-page recommendation by Tuesday 3 Nov, with the risks per option.\n\nMy current view is that 13 Feb is the most sensible choice given the peak, as long as the 27 Feb fallback is agreed with Venlo upfront. Jeroen, please check that nothing else in the Venlo calendar conflicts with 13-14 Feb.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  },
+  {
+   "key": "t2",
+   "subject": "Rotterdam EWM lessons learned",
+   "emails": [
+    {
+     "id": "m9",
+     "date": "2026-10-27 15:30",
+     "from": "hschmidt",
+     "to": [
+      "jdevries"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": null,
+     "forward": true,
+     "body": "Forwarding the lessons learned from the Rotterdam go-live that Ruud Jansen shared with me. Please read it before the workshop on 5 Nov.\n\nThe points that matter most for Venlo: 38 of about 4,100 bins had stock differences after migration, the one-day handheld training was too short, and the cut-over took 31 hours instead of the 24 planned. I want to use these in the Venlo plan.",
+     "table": null,
+     "attachment": {
+      "kind": "pdf",
+      "name": "Rotterdam_EWM_lessons_learned.pdf",
+      "text": "Rotterdam EWM go-live - lessons learned\n\n1. Data migration: 38 of about 4,100 bins showed stock differences after the final load. Cause: open transfer orders not closed before the extract. Action: close all open TOs and run a count 2 days before cut-over.\n2. Training: one day of handheld (HHT) training was too short. Two days recommended.\n3. Cut-over: planned 24 hours, actual 31 hours. Label printer queues had to be reconfigured on the Sunday.\n4. Hypercare: 2 weeks with 3 people on the floor was just enough."
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m10",
+     "date": "2026-10-28 09:20",
+     "from": "jdevries",
+     "to": [
+      "hschmidt"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": "m9",
+     "forward": false,
+     "body": "Thanks Hanna, useful. Three things from my side for Venlo:\n\n1. We do a stock count in the bins 2 days before the cut-over weekend, and close all open transfer orders first, as Rotterdam advises.\n2. I want two days of handheld training, not one. That fits within the two training weeks you planned.\n3. I would like hypercare of 3 weeks instead of 2, because we have more operators than Rotterdam.\n\nCan we put these on the agenda for 5 Nov?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "Venlo moves to the new EWM release in Q1 2027, after Rotterdam.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "The cut-over date options for Venlo are 16 Jan, 30 Jan and 13 Feb 2027.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "A workshop on 5 Nov at 09:00 decides the cut-over date.",
+   "emails": [
+    "m1",
+    "m8"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "The project has four phases: data migration, training, dress rehearsal and the cut-over weekend.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "Jeroen de Vries prefers 13 Feb because January outbound averages about 2,400 deliveries per day versus about 1,600 per day in February.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "Venlo temp staff contracts end on 31 Jan, which argues against a 30 Jan go-live.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "The 16 Jan option would put training on 7-18 Dec, in the December peak.",
+   "emails": [
+    "m2",
+    "m4"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "For the 13 Feb option, data migration starts 4 Jan, training is 18-29 Jan and the dress rehearsal is 5-6 Feb.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "42 Venlo operators need training, in three groups of 14 with two sessions per group.",
+   "emails": [
+    "m5",
+    "m6"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "If the dress rehearsal fails, a go/no-go is held on Monday 8 Feb and the fallback slot is the weekend of 27 Feb.",
+   "emails": [
+    "m6"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "Hanna Schmidt needs four Venlo key users, whose names Jeroen will send by 23 Oct.",
+   "emails": [
+    "m6",
+    "m7"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "Mark de Boer wants a one-page recommendation from Hanna by 3 Nov and currently leans towards 13 Feb.",
+   "emails": [
+    "m8"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "In Rotterdam, 38 of about 4,100 bins had stock differences after migration, and the cut-over took 31 hours instead of 24.",
+   "emails": [
+    "m9"
+   ]
+  },
+  {
+   "id": "F14",
+   "text": "Jeroen wants a bin count 2 days before cut-over, two days of handheld training and 3 weeks of hypercare for Venlo.",
+   "emails": [
+    "m10"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "Why does Venlo prefer 13 Feb 2027 over the January dates for the EWM cut-over?",
+   "a": "January is still peak (about 2,400 deliveries per day vs about 1,600 in Feb), temp contracts end 31 Jan, and 16 Jan would put training in the December peak.",
+   "facts": [
+    "F5",
+    "F6",
+    "F7"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "What is the fallback if the Venlo EWM dress rehearsal fails?",
+   "a": "A go/no-go on Monday 8 Feb; with a no-go the next cut-over slot is the weekend of 27 Feb.",
+   "facts": [
+    "F10"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "When is the workshop that decides the Venlo EWM cut-over date?",
+   "a": "5 Nov 2026 at 09:00.",
+   "facts": [
+    "F3"
+   ],
+   "type": "when"
+  },
+  {
+   "q": "How many Venlo operators need EWM training and how are they grouped?",
+   "a": "42 operators, in three groups of 14.",
+   "facts": [
+    "F9"
+   ],
+   "type": "fact"
+  },
+  {
+   "q": "What went wrong with the data migration in Rotterdam according to the lessons learned?",
+   "a": "38 of about 4,100 bins showed stock differences, caused by open transfer orders not closed before the extract.",
+   "facts": [
+    "F13"
+   ],
+   "type": "fact"
+  },
+  {
+   "q": "What is the budget for the Venlo EWM cut-over?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "venlo_cutover",
+  "title": "Venlo EWM cut-over planning",
+  "level": "project",
+  "korean": false
+ }
+}

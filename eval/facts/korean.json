@@ -1,0 +1,9 @@
+{
+ "Emails in the Korean slice (Korean-language)": "19 (7)",
+ "Threads with 회신/전달 prefixes and Korean quote headers: purity / completeness": "1.0 / 1.0",
+ "Unit errors in the pipeline run": 0,
+ "Notes for Korean emails written in English": "7 of 7",
+ "Pages (English titles)": "EU-Korea FTA origin statement on Pyeongtaek export invoices; Q4 2026 inbound forecast Busan/Incheon to Rotterdam",
+ "Hangul query '원산지 증명' (FTS5 trigram + vectors): top hits": "emails: 회신: Refund request duty Korea shipments EUR 18,400 · Park Ji; emails: 회신: Missing FTA origin statement on Pyeongtaek invoices - du; emails: 회신: Missing FTA origin statement on Pyeongtaek invoices - du",
+ "English query → finds the page written from Korean mail": "wiki: Page: EU-Korea FTA origin statement on Pyeongtaek export invoices (top"
+}

@@ -1,0 +1,73 @@
+{
+ "rewrite": [
+  [
+   "Pages accepted by the guards",
+   "25 of 25"
+  ],
+  [
+   "Words on the pages",
+   "38,872 → 9,884 (budget 9,977; the mail behind them: 20,815 words of new text by people)"
+  ],
+  [
+   "Pages over their budget (> 15 %)",
+   2
+  ],
+  [
+   "Pages with a repeated sentence (script check)",
+   5
+  ],
+  [
+   "Pages with a sentence about the sources",
+   0
+  ],
+  [
+   "Editor requests · confirm rounds (to shorten or fix)",
+   "25 · 15"
+  ]
+ ],
+ "example": {
+  "title": "Felixstowe reefer import checklist",
+  "before": 759,
+  "after": 147,
+  "source": 302,
+  "html": "<p><b>Summary</b><br>Felixstowe reefer import checklist: Harbour Agency checks each reefer&#x27;s commodity code against the invoice and packing list before the vessel arrives. In use since 12 Oct 2026; Oliver Wright tracks arrivals. Next: Tom Hendriks&#x27; customs team to check codes on all UK-bound reefers before submission.</p><p><b>How the check works</b><br>1. Booking confirmed: customs coordinator sends invoice and packing list to Harbour.<br>2. At least 2 working days before vessel ETA: Harbour checks the code against the goods description.<br>3. Mismatch: Harbour calls Marta Kowalska; code corrected with supplier before arrival.<br>4. Import declaration lodged and accepted before arrival.<br>5. Arrival day: Oliver Wright confirms release status.</p><p><b>Decisions</b><br>Marta Kowalska drafted v1. Harbour agreed 9 Oct, provided documents arrive at booking; otherwise it says so at once. The 22–25 Sep hold was our wrong code, not Veltrans&#x27; (Tom Hendriks, 14 Oct). Demurrage EUR 1,260.00 stays with Corp Europe (Mark de Boer, 21 Oct).</p>"
+ },
+ "fresh": [
+  [
+   "Emails processed · units · unit errors",
+   "374 · 249 · 0"
+  ],
+  [
+   "Pages for 27 storylines · page purity · routing accuracy",
+   "24 · 0.939 · 0.97"
+  ],
+  [
+   "Words on all pages vs the mail behind them",
+   "8,607 vs 20,802 (0.41×; budget 10,116)"
+  ],
+  [
+   "Page length / mail length, median page",
+   "0.45"
+  ],
+  [
+   "Pages over their budget (> 15 %)",
+   "0 of 24"
+  ],
+  [
+   "Pages with a repeated sentence (script check)",
+   3
+  ],
+  [
+   "Pages with a sentence about the sources",
+   0
+  ],
+  [
+   "Editor requests · confirm rounds · rewrites rejected by the guards",
+   "75 · 49 · 0"
+  ],
+  [
+   "Time",
+   "≈ 36 min at 2–3 parallel requests (stopped once by the PC for low memory after 4 of 6 weeks, resumed where it stopped)"
+  ]
+ ]
+}

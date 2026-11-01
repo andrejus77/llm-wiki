@@ -1,0 +1,355 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "TMS export: CO2 per shipment column from week 44",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-10-14 09:10",
+     "from": "thendriks",
+     "to": [
+      "routewise"
+     ],
+     "cc": [
+      "pbakker"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "We want to show CO2 per shipment on the logistics KPI dashboard and would like to get it straight from the TMS export instead of calculating it in Excel.\n\nCould you add a column co2_kg_per_shipment to the standard shipment export? Our scope:\n- road legs only, no sea or rail\n- well-to-wheel (WTW), calculated according to the GLEC framework\n- value in kg, per shipment\n\nPieter Bakker (in cc) maintains the dashboard mapping and needs a sample file before he can change anything. Our target is that the column is in the export from week 44. Is that realistic on your side?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-10-15 11:20",
+     "from": "routewise",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "pbakker"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Thanks Tom, this is feasible. We can enable the column co2_kg_per_shipment for your tenant so that it appears in the export from week 44 (Monday 26 October).\n\nPoints to be aware of:\n- The calculation covers road legs only, WTW, based on GLEC default emission factors per vehicle type and distance.\n- As long as carriers do not send actual fuel consumption, the value is an estimate based on these defaults.\n- Decimal separator is a dot, two decimals, empty value for shipments without a road leg.\n\nI attached a sample export with 5 shipments so Pieter can start on the mapping.",
+     "table": null,
+     "attachment": {
+      "kind": "xlsx",
+      "name": "sample_export_co2_wk44.xlsx",
+      "rows": [
+       [
+        "delivery",
+        "origin",
+        "destination",
+        "distance_km",
+        "co2_kg_per_shipment"
+       ],
+       [
+        "80412231",
+        "Rotterdam",
+        "Venlo",
+        "105",
+        "92.40"
+       ],
+       [
+        "80412288",
+        "Hamburg",
+        "Venlo",
+        "482",
+        "431.75"
+       ],
+       [
+        "80412305",
+        "Antwerp",
+        "Venlo",
+        "128",
+        "113.20"
+       ],
+       [
+        "80412342",
+        "Rotterdam",
+        "Antwerp",
+        "98",
+        "86.90"
+       ],
+       [
+        "80412377",
+        "Felixstowe",
+        "Rotterdam",
+        ""
+       ]
+      ]
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-10-16 14:05",
+     "from": "pbakker",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Got the sample, thanks. The file loads fine, I only need to add the new field to the mapping in the dashboard data model. Two questions before I do:\n\n1. Row 80412377 (Felixstowe - Rotterdam) has an empty CO2 value. I assume that is the sea leg, so it is correctly left out? I will show it as blank, not as 0, otherwise the monthly average gets distorted.\n2. Should the dashboard show the number as a fact or as an estimate? Since carriers do not deliver actual fuel data yet, I would rather label it.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m4",
+     "date": "2026-10-19 08:45",
+     "from": "thendriks",
+     "to": [
+      "pbakker"
+     ],
+     "cc": [],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "1. Yes, Felixstowe - Rotterdam is a sea shipment, so no road leg and no value. Blank is right, please exclude blanks from the average.\n2. Agree, label it. Please call the tile \"CO2 (est.)\" with a tooltip that says: road legs only, WTW, GLEC, estimate until carriers deliver actual fuel data. I do not have a date for the actual data from the carriers yet, so I would not promise anything in the tooltip.\n\nCan you have the updated mapping ready in the test dashboard by Wednesday? Then I can compare a few shipments against my own calculation before the first real export.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-10-21 16:30",
+     "from": "pbakker",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "The mapping is updated in the test dashboard. co2_kg_per_shipment is now loaded as a numeric field, blanks are excluded from the average, and the tile is labelled \"CO2 (est.)\" with the tooltip you described.\n\nI loaded the 5 sample rows. Total for the 4 road shipments is 724.25 kg, average 181.06 kg per shipment. Mark, I added you in cc because the tile will appear on the management view as well. The production dashboard switches to the new field with the first export of week 44; until then the tile stays empty.",
+     "table": {
+      "header": [
+       "delivery",
+       "lane",
+       "distance_km",
+       "co2_kg_per_shipment"
+      ],
+      "rows": [
+       [
+        "80412231",
+        "Rotterdam - Venlo",
+        "105",
+        "92.40"
+       ],
+       [
+        "80412288",
+        "Hamburg - Venlo",
+        "482",
+        "431.75"
+       ],
+       [
+        "80412305",
+        "Antwerp - Venlo",
+        "128",
+        "113.20"
+       ],
+       [
+        "80412342",
+        "Rotterdam - Antwerp",
+        "98",
+        "86.90"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m6",
+     "date": "2026-10-22 09:00",
+     "from": "thendriks",
+     "to": [
+      "pbakker"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "Thanks Pieter, will check the test dashboard this morning.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "From week 44 (Monday 26 October 2026) the TMS shipment export contains a column co2_kg_per_shipment.",
+   "emails": [
+    "m1",
+    "m2"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "The CO2 value covers road legs only; sea and rail are not included.",
+   "emails": [
+    "m1",
+    "m2"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "The calculation is well-to-wheel (WTW) and follows the GLEC framework.",
+   "emails": [
+    "m1",
+    "m2"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "Tom de Vries's colleague Tom Hendriks requested the column from RouteWise; Pieter Bakker maintains the dashboard mapping.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "RouteWise calculates the value with GLEC default emission factors per vehicle type and distance, so it is an estimate until carriers send actual fuel consumption.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "The export uses a dot as decimal separator, two decimals, and an empty value for shipments without a road leg.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "RouteWise supplied a sample export with 5 shipments (sample_export_co2_wk44.xlsx) for Pieter to build the mapping.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "Delivery 80412377 (Felixstowe - Rotterdam) is a sea shipment and has a blank CO2 value.",
+   "emails": [
+    "m2",
+    "m3",
+    "m4"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "Blank CO2 values are shown as blank instead of 0 and excluded from the average, to avoid distorting the monthly average.",
+   "emails": [
+    "m3",
+    "m4",
+    "m5"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "The dashboard tile is labelled \"CO2 (est.)\" with a tooltip: road legs only, WTW, GLEC, estimate until carriers deliver actual fuel data.",
+   "emails": [
+    "m4",
+    "m5"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "There is no date yet for when carriers will deliver actual fuel data.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "On 21 October Pieter updated the mapping in the test dashboard; the production dashboard switches to the new field with the first export of week 44.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "In the sample, the 4 road shipments total 724.25 kg CO2, an average of 181.06 kg per shipment; Hamburg - Venlo (482 km) is 431.75 kg.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F14",
+   "text": "Mark de Boer was put in cc because the tile will also appear on the management view.",
+   "emails": [
+    "m5"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "From when does the TMS export contain the co2_kg_per_shipment column?",
+   "a": "From week 44, i.e. Monday 26 October 2026.",
+   "facts": [
+    "F1"
+   ],
+   "type": "when"
+  },
+  {
+   "q": "Why is the CO2 figure on the dashboard labelled as an estimate?",
+   "a": "Because it is based on GLEC default emission factors; carriers have not yet delivered actual fuel consumption data.",
+   "facts": [
+    "F5",
+    "F10"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "Which transport legs are included in the CO2 per shipment value?",
+   "a": "Road legs only, calculated well-to-wheel according to the GLEC framework.",
+   "facts": [
+    "F2",
+    "F3"
+   ],
+   "type": "fact"
+  },
+  {
+   "q": "Who updated the dashboard mapping for the new CO2 column?",
+   "a": "Pieter Bakker.",
+   "facts": [
+    "F4",
+    "F12"
+   ],
+   "type": "who"
+  },
+  {
+   "q": "How are shipments without a road leg, such as Felixstowe - Rotterdam delivery 80412377, treated in the dashboard average?",
+   "a": "Their CO2 value is blank, shown as blank (not 0) and excluded from the average.",
+   "facts": [
+    "F8",
+    "F9"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "When will carriers deliver the actual fuel data for the CO2 calculation?",
+   "a": "not in the emails",
+   "facts": [
+    "F11"
+   ],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "kpi_co2",
+  "title": "KPI dashboard: CO2 per shipment column",
+  "level": "task",
+  "korean": false
+ }
+}

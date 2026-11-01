@@ -1,0 +1,199 @@
+Message-ID: <adr.t1.m5.652102e169@corp-europe.example>
+Date: Mon, 12 Oct 2026 07:55:00 +0200
+From: "Sofie Peeters" <s.peeters@corp-europe.example>
+To: "Marta Kowalska" <m.kowalska@corp-europe.example>
+Cc: "Lukas Becker" <l.becker@corp-europe.example>,
+ "DL CUS" <dl-cus@corp-europe.example>
+Subject: RE: Missing ADR documents UN 1263 - Antwerp
+In-Reply-To: <adr.t1.m4.d2b764c570@corp-europe.example>
+References: <adr.t1.m1.7675a7ba0b@corp-europe.example>
+ <adr.t1.m2.709a75b939@corp-europe.example>
+ <adr.t1.m3.00382851f7@corp-europe.example>
+ <adr.t1.m4.d2b764c570@corp-europe.example>
+Thread-Index: Ad1aDjeczXvAGdTCSG941hEjQL5J16SZkKtE/n6qs+/Y+vyupVdvRxKb
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============5826173242136815424=="
+
+--===============5826173242136815424==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+The checklist is live in the WMS since this morning, thanks Lukas. The dispat=
+chers have been briefed. I also booked the refresher training for the drivers=
+: Tuesday 20 Oct at 13:00 in the Antwerp training room. 18 drivers are on the=
+ list. I would like you to run the ADR part, about 45 minutes, including the =
+UN 1263 examples from the two cases.
+
+Regards,
+Sofie Peeters
+Warehouse supervisor Antwerp
+Corp Europe B.V. | Rotterdam
+T +31 10 563 4432
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Marta Kowalska <m.kowalska@corp-europe.example>
+Sent: Thursday, 08 October 2026 11:30
+To: Sofie Peeters
+Subject: RE: Missing ADR documents UN 1263 - Antwerp
+
+Agreed, the dispatcher check before loading is the better place. Proposal for=
+ the new rule, effective Monday 12 Oct: no loading of dangerous goods without=
+ a dispatcher check of the DGD, recorded in a checklist in the WMS. Lukas, ca=
+n you build the checklist as a mandatory step in the loading task for ADR del=
+iveries? Items I suggest: DGD printed and signed, UN number and quantity matc=
+h the delivery, packing group stated, driver ADR certificate valid, written i=
+nstructions in the cab. Five items, all must be ticked before the task can be=
+ closed.
+
+Best regards,
+Marta Kowalska
+Customs coordinator
+Corp Europe B.V. | Rotterdam
+T +31 10 303 7227
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Sofie Peeters <s.peeters@corp-europe.example>
+Sent: Monday, 05 October 2026 08:40
+To: Marta Kowalska
+Subject: RE: Missing ADR documents UN 1263 - Antwerp
+
+The DGDs existed in SAP but were never printed, because the print job went to=
+ the wrong printer in the office. The gate only checks the driver ID and the =
+delivery number, so a gate check would not help much. I would rather put the =
+check with the dispatcher before loading starts. Nobody loads a pallet of UN =
+1263 until the dispatcher has the printed and signed DGD in hand. That is ear=
+lier than the gate and also avoids reloading a truck that cannot leave.
+
+Kind regards,
+Sofie Peeters
+Warehouse supervisor Antwerp
+Corp Europe B.V. | Rotterdam
+T +31 10 246 4733
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Marta Kowalska <m.kowalska@corp-europe.example>
+Sent: Friday, 02 October 2026 10:05
+To: Sofie Peeters
+Subject: RE: Missing ADR documents UN 1263 - Antwerp
+
+Hi Sofie, thanks for catching this. For UN 1263 the driver needs the signed d=
+angerous goods declaration (DGD) with UN number, class, packing group and qua=
+ntity. Was the DGD created in SAP but just not printed, or was it never creat=
+ed? I assume the gate check should have stopped it, so my first thought is to=
+ add a check at the gate. Please confirm how the trucks are handled today.
+
+Regards,
+Marta Kowalska
+Customs coordinator
+Corp Europe B.V. | Rotterdam
+T +31 10 843 6925
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Sofie Peeters <s.peeters@corp-europe.example>
+Sent: Thursday, 01 October 2026 09:10
+To: Marta Kowalska
+Subject: Missing ADR documents UN 1263 - Antwerp
+
+Marta, we found two outbound shipments in Antwerp this week without ADR trans=
+port documents. Both contain paint, UN 1263 (class 3). Delivery 80451233 (12 =
+pallets) was found on 29 Sep, delivery 80451290 (8 pallets) on 30 Sep. In bot=
+h cases the truck was already at the dock and the dangerous goods declaration=
+ was not in the shipment folder. We held the trucks until the paperwork was p=
+rinted, which cost about 2.5 hours in total. Nothing left the site without do=
+cuments, but it was close. Can you help me define what must be checked before=
+ loading?
+
+Kind regards,
+Sofie Peeters
+Warehouse supervisor Antwerp
+Corp Europe B.V. | Rotterdam
+T +31 10 587 2291
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============5826173242136815424==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>The checklist is live in the WMS since this morning, thanks Lu=
+kas. The dispatchers have been briefed. I also booked the refresher training =
+for the drivers: Tuesday 20 Oct at 13:00 in the Antwerp training room. 18 dri=
+vers are on the list. I would like you to run the ADR part, about 45 minutes,=
+ including the UN 1263 examples from the two cases.</p><p>Regards,<br>Sofie P=
+eeters<br>Warehouse supervisor Antwerp<br>Corp Europe B.V. | Rotterdam<br>T +=
+31 10 563 4432<br><br>This e-mail and any attachments are confidential and in=
+tended solely for the addressee. If you received it in error, please delete i=
+t.</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt =
+0cm 0cm 0cm'><p><b>From:</b> Marta Kowalska &lt;m.kowalska@corp-europe.exampl=
+e&gt;<br><b>Sent:</b> Thursday, 08 October 2026 11:30<br><b>To:</b> Sofie Pee=
+ters<br><b>Cc:</b> Mark de Boer; Lukas Becker; DL CUS<br><b>Subject:</b> RE: =
+Missing ADR documents UN 1263 - Antwerp</p></div><p>Agreed, the dispatcher ch=
+eck before loading is the better place. Proposal for the new rule, effective =
+Monday 12 Oct: no loading of dangerous goods without a dispatcher check of th=
+e DGD, recorded in a checklist in the WMS. Lukas, can you build the checklist=
+ as a mandatory step in the loading task for ADR deliveries? Items I suggest:=
+ DGD printed and signed, UN number and quantity match the delivery, packing g=
+roup stated, driver ADR certificate valid, written instructions in the cab. F=
+ive items, all must be ticked before the task can be closed.</p><p>Best regar=
+ds,<br>Marta Kowalska<br>Customs coordinator<br>Corp Europe B.V. | Rotterdam<=
+br>T +31 10 303 7227<br><br>This e-mail and any attachments are confidential =
+and intended solely for the addressee. If you received it in error, please de=
+lete it.</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:=
+3.0pt 0cm 0cm 0cm'><p><b>From:</b> Sofie Peeters &lt;s.peeters@corp-europe.ex=
+ample&gt;<br><b>Sent:</b> Monday, 05 October 2026 08:40<br><b>To:</b> Marta K=
+owalska<br><b>Cc:</b> Mark de Boer; DL CUS<br><b>Subject:</b> RE: Missing ADR=
+ documents UN 1263 - Antwerp</p></div><p>The DGDs existed in SAP but were nev=
+er printed, because the print job went to the wrong printer in the office. Th=
+e gate only checks the driver ID and the delivery number, so a gate check wou=
+ld not help much. I would rather put the check with the dispatcher before loa=
+ding starts. Nobody loads a pallet of UN 1263 until the dispatcher has the pr=
+inted and signed DGD in hand. That is earlier than the gate and also avoids r=
+eloading a truck that cannot leave.</p><p>Kind regards,<br>Sofie Peeters<br>W=
+arehouse supervisor Antwerp<br>Corp Europe B.V. | Rotterdam<br>T +31 10 246 4=
+733<br><br>This e-mail and any attachments are confidential and intended sole=
+ly for the addressee. If you received it in error, please delete it.</p><div =
+style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm=
+'><p><b>From:</b> Marta Kowalska &lt;m.kowalska@corp-europe.example&gt;<br><b=
+>Sent:</b> Friday, 02 October 2026 10:05<br><b>To:</b> Sofie Peeters<br><b>Cc=
+:</b> Mark de Boer; DL CUS<br><b>Subject:</b> RE: Missing ADR documents UN 12=
+63 - Antwerp</p></div><p>Hi Sofie, thanks for catching this. For UN 1263 the =
+driver needs the signed dangerous goods declaration (DGD) with UN number, cla=
+ss, packing group and quantity. Was the DGD created in SAP but just not print=
+ed, or was it never created? I assume the gate check should have stopped it, =
+so my first thought is to add a check at the gate. Please confirm how the tru=
+cks are handled today.</p><p>Regards,<br>Marta Kowalska<br>Customs coordinato=
+r<br>Corp Europe B.V. | Rotterdam<br>T +31 10 843 6925<br><br>This e-mail and=
+ any attachments are confidential and intended solely for the addressee. If y=
+ou received it in error, please delete it.</p><div style=3D'border:none;borde=
+r-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Sofie Pe=
+eters &lt;s.peeters@corp-europe.example&gt;<br><b>Sent:</b> Thursday, 01 Octo=
+ber 2026 09:10<br><b>To:</b> Marta Kowalska<br><b>Cc:</b> Mark de Boer; DL CU=
+S<br><b>Subject:</b> Missing ADR documents UN 1263 - Antwerp</p></div><p>Mart=
+a, we found two outbound shipments in Antwerp this week without ADR transport=
+ documents. Both contain paint, UN 1263 (class 3). Delivery 80451233 (12 pall=
+ets) was found on 29 Sep, delivery 80451290 (8 pallets) on 30 Sep. In both ca=
+ses the truck was already at the dock and the dangerous goods declaration was=
+ not in the shipment folder. We held the trucks until the paperwork was print=
+ed, which cost about 2.5 hours in total. Nothing left the site without docume=
+nts, but it was close. Can you help me define what must be checked before loa=
+ding?</p><p>Kind regards,<br>Sofie Peeters<br>Warehouse supervisor Antwerp<br=
+>Corp Europe B.V. | Rotterdam<br>T +31 10 587 2291<br><br>This e-mail and any=
+ attachments are confidential and intended solely for the addressee. If you r=
+eceived it in error, please delete it.</p></body></html>
+
+--===============5826173242136815424==--

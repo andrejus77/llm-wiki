@@ -1,0 +1,81 @@
+Message-ID: <detention.t1.m1.001894686f@nordline.example>
+Date: Thu, 08 Oct 2026 10:05:00 +0200
+From: "Pia Lindqvist" <plindqvist@nordline.example>
+To: "Ana Novak" <a.novak@corp-europe.example>
+Cc: "Sofie Peeters" <s.peeters@corp-europe.example>,
+ "DL FIN" <dl-fin@corp-europe.example>
+Subject: Nordline detention invoice INV-48213 / MSKU1234567
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============0468352061244699404=="
+
+--===============0468352061244699404==
+Content-Type: multipart/alternative;
+ boundary="===============4955936315346264835=="
+
+--===============4955936315346264835==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Ana, please find attached our detention invoice for container MSKU1234567.=
+ The container was delivered to your Antwerp DC on 2026-09-16 and collected a=
+s an empty on 2026-09-29. Free time at the DC ended on 2026-09-18, so we char=
+ge 11 days (19 to 29 September) at EUR 150 per day. Payment term is 30 days, =
+so the due date is 2026-11-07. Sofie, I put you in copy because the container=
+ was at your site. If you need the terminal gate tickets to check the dates, =
+just let me know.
+
+Invoice | Container | Chargeable days | Rate per day | Amount
+INV-48213 | MSKU1234567 | 11 | EUR 150 | EUR 1,650
+
+Best regards,
+Pia Lindqvist
+Account manager at Nordline (freight forwarder)
+
+--===============4955936315346264835==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Hi Ana, please find attached our detention invoice for contain=
+er MSKU1234567. The container was delivered to your Antwerp DC on 2026-09-16 =
+and collected as an empty on 2026-09-29. Free time at the DC ended on 2026-09=
+-18, so we charge 11 days (19 to 29 September) at EUR 150 per day. Payment te=
+rm is 30 days, so the due date is 2026-11-07. Sofie, I put you in copy becaus=
+e the container was at your site. If you need the terminal gate tickets to ch=
+eck the dates, just let me know.</p><table style=3D'border-collapse:collapse;=
+font-size:10pt'><tr><th style=3D'border:1px solid #999;padding:3px 6px'>Invoi=
+ce</th><th style=3D'border:1px solid #999;padding:3px 6px'>Container</th><th =
+style=3D'border:1px solid #999;padding:3px 6px'>Chargeable days</th><th style=
+=3D'border:1px solid #999;padding:3px 6px'>Rate per day</th><th style=3D'bord=
+er:1px solid #999;padding:3px 6px'>Amount</th></tr><tr><td style=3D'border:1p=
+x solid #999;padding:3px 6px'>INV-48213</td><td style=3D'border:1px solid #99=
+9;padding:3px 6px'>MSKU1234567</td><td style=3D'border:1px solid #999;padding=
+:3px 6px'>11</td><td style=3D'border:1px solid #999;padding:3px 6px'>EUR 150<=
+/td><td style=3D'border:1px solid #999;padding:3px 6px'>EUR 1,650</td></tr></=
+table><p>Best regards,<br>Pia Lindqvist<br>Account manager at Nordline (freig=
+ht forwarder)</p></body></html>
+
+--===============4955936315346264835==--
+
+--===============0468352061244699404==
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="INV-48213_Nordline_detention.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2Jq
+CjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2Jq
+CjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA1OTUg
+ODQyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4g
+Pj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCAyNDEgPj4Kc3RyZWFtCkJUIC9GMSAxMCBU
+ZiA1MCA4MDAgVGQgMTMgVEwKKE5vcmRsaW5lIEZyZWlnaHQgLSBJbnZvaWNlIElOVi00ODIxMy4g
+RGV0ZW50aW9uIGNoYXJnZSwgY29udGFpbmVyIE1TS1UxMjM0NTY3LCBBbnR3ZXJwIERDLikgJwoo
+Q2hhcmdlYWJsZSBwZXJpb2QgMjAyNi0wOS0xOSB0byAyMDI2LTA5LTI5IFwoMTEgZGF5c1wpIGF0
+IEVVUiAxNTAvZGF5LiBUb3RhbCBFVVIgMSw2NTAuMDAuIER1ZSkgJwooMjAyNi0xMS0wNy4pICcK
+RVQKZW5kc3RyZWFtCmVuZG9iago1IDAgb2JqCjw8IC9UeXBlIC9Gb250IC9TdWJ0eXBlIC9UeXBl
+MSAvQmFzZUZvbnQgL0hlbHZldGljYSA+PgplbmRvYmoKeHJlZgowIDYKMDAwMDAwMDAwMCA2NTUz
+NSBmIAowMDAwMDAwMDA5IDAwMDAwIG4gCjAwMDAwMDAwNTggMDAwMDAgbiAKMDAwMDAwMDExNSAw
+MDAwMCBuIAowMDAwMDAwMjQxIDAwMDAwIG4gCjAwMDAwMDA1MzMgMDAwMDAgbiAKdHJhaWxlcgo8
+PCAvU2l6ZSA2IC9Sb290IDEgMCBSID4+CnN0YXJ0eHJlZgo2MDMKJSVFT0YK
+
+--===============0468352061244699404==--

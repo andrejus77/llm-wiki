@@ -1,0 +1,200 @@
+Message-ID: <packaging.t1.m4.c40e401016@corp-europe.example>
+Date: Mon, 19 Oct 2026 14:10:00 +0200
+From: "Lukas Becker" <l.becker@corp-europe.example>
+To: "Daan Visser" <d.visser@corp-europe.example>
+Cc: "Sofie Peeters" <s.peeters@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: New carton sizes S2 / M3 / L4 from 2 Nov - master data and EWM
+In-Reply-To: <packaging.t1.m3.2599e755e8@corp-europe.example>
+References: <packaging.t1.m1.a564164ff0@corp-europe.example>
+ <packaging.t1.m2.7e514c98df@corp-europe.example>
+ <packaging.t1.m3.2599e755e8@corp-europe.example>
+Thread-Index: Ad1fwsOLMFeVGQsClQYqoD+kZQvtisUGQjtJuQ77tEgN/vaz3A==
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============2234697829257759408=="
+
+--===============2234697829257759408==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Daan, the packaging instructions in EWM are adjusted for S2, M3 and L4 in the=
+ quality system. I made them valid from 2 Nov. The old instructions for S1, M=
+2 and L3 stay active in parallel, so Sofie's team can keep packing with the o=
+ld cartons until they are gone. I will close them when she tells me the stock=
+ is zero.
+
+One question: I assumed your 312 materials are only the ones shipped from Ant=
+werp. Do they include Rotterdam and Venlo? If not, I need to check the instru=
+ctions for those sites too.
+
+Thanks,
+Lukas Becker
+SAP key user SD/LE
+Corp Europe B.V. | Rotterdam
+T +31 10 498 1534
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Daan Visser <d.visser@corp-europe.example>
+Sent: Thursday, 15 October 2026 08:45
+To: Sofie Peeters
+Subject: RE: New carton sizes S2 / M3 / L4 from 2 Nov - master data and EWM
+
+No need to scrap anything, Sofie. Decision: the old cartons are used up first=
+. 2 Nov is the date from which S2, M3 and L4 are the standard in the master d=
+ata, but Antwerp keeps packing into S1, M2 and L3 until the stock is empty. N=
+othing goes back to the supplier.
+
+The first delivery of new cartons for Antwerp is planned for Thu 29 Oct, so p=
+lease keep bay 14 free from that day. Once an old size is finished, switch th=
+at size to the new one.
+
+For reference, the new sizes (internal dimensions):
+
+New size | Replaces | Internal size (mm)
+S2 | S1 | 300 x 200 x 150
+M3 | M2 | 400 x 300 x 200
+L4 | L3 | 600 x 400 x 300
+
+Best regards,
+Daan Visser
+Master data specialist
+Corp Europe B.V. | Rotterdam
+T +31 10 765 2229
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Sofie Peeters <s.peeters@corp-europe.example>
+Sent: Wednesday, 14 October 2026 11:05
+To: Daan Visser
+Subject: RE: New carton sizes S2 / M3 / L4 from 2 Nov - master data and EWM
+
+Daan, counted this morning in Antwerp: S1 =3D 4,200 pcs, M2 =3D 2,800 pcs, L3=
+ =3D 1,500 pcs.
+
+My question: do we have to stop using them on 2 Nov? If yes, I need to arrang=
+e to send the rest back or scrap it, and that is a lot of cartons. At the cur=
+rent pick volume S1 lasts about 3 weeks after 2 Nov, L3 even longer.
+
+Also, when do the new cartons arrive? I need floor space in bay 14 before the=
+y come.
+
+Regards,
+Sofie Peeters
+Warehouse supervisor Antwerp
+Corp Europe B.V. | Rotterdam
+T +31 10 876 2330
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Daan Visser <d.visser@corp-europe.example>
+Sent: Tuesday, 13 October 2026 09:20
+To: Sofie Peeters
+Subject: New carton sizes S2 / M3 / L4 from 2 Nov - master data and EWM
+
+Sofie, Lukas - heads-up on the packaging change. From Monday 2 Nov we switch =
+to three new carton sizes: S2, M3 and L4. They replace the old S1, M2 and L3.
+
+On my side I will update the packaging data in the material master with MM02.=
+ By my count that is 312 materials. I plan to have this done by Wed 21 Oct, s=
+o there is a buffer before go-live.
+
+Lukas, the packaging instructions in EWM will need adjusting as well. Can you=
+ take that?
+
+Sofie, can you send me the current stock of the old cartons in Antwerp? I wan=
+t to know if we need to do anything special with the leftovers before 2 Nov.
+
+Best regards,
+Daan Visser
+Master data specialist
+Corp Europe B.V. | Rotterdam
+T +31 10 840 4457
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============2234697829257759408==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Daan, the packaging instructions in EWM are adjusted for S2, M=
+3 and L4 in the quality system. I made them valid from 2 Nov. The old instruc=
+tions for S1, M2 and L3 stay active in parallel, so Sofie&#x27;s team can kee=
+p packing with the old cartons until they are gone. I will close them when sh=
+e tells me the stock is zero.</p>
+<p>One question: I assumed your 312 materials are only the ones shipped from =
+Antwerp. Do they include Rotterdam and Venlo? If not, I need to check the ins=
+tructions for those sites too.</p><p>Thanks,<br>Lukas Becker<br>SAP key user =
+SD/LE<br>Corp Europe B.V. | Rotterdam<br>T +31 10 498 1534<br><br>This e-mail=
+ and any attachments are confidential and intended solely for the addressee. =
+If you received it in error, please delete it.</p><div style=3D'border:none;b=
+order-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Daan=
+ Visser &lt;d.visser@corp-europe.example&gt;<br><b>Sent:</b> Thursday, 15 Oct=
+ober 2026 08:45<br><b>To:</b> Sofie Peeters<br><b>Cc:</b> Lukas Becker; DL CT=
+<br><b>Subject:</b> RE: New carton sizes S2 / M3 / L4 from 2 Nov - master dat=
+a and EWM</p></div><p>No need to scrap anything, Sofie. Decision: the old car=
+tons are used up first. 2 Nov is the date from which S2, M3 and L4 are the st=
+andard in the master data, but Antwerp keeps packing into S1, M2 and L3 until=
+ the stock is empty. Nothing goes back to the supplier.</p>
+<p>The first delivery of new cartons for Antwerp is planned for Thu 29 Oct, s=
+o please keep bay 14 free from that day. Once an old size is finished, switch=
+ that size to the new one.</p>
+<p>For reference, the new sizes (internal dimensions):</p><table style=3D'bor=
+der-collapse:collapse;font-size:10pt'><tr><th style=3D'border:1px solid #999;=
+padding:3px 6px'>New size</th><th style=3D'border:1px solid #999;padding:3px =
+6px'>Replaces</th><th style=3D'border:1px solid #999;padding:3px 6px'>Interna=
+l size (mm)</th></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>=
+S2</td><td style=3D'border:1px solid #999;padding:3px 6px'>S1</td><td style=
+=3D'border:1px solid #999;padding:3px 6px'>300 x 200 x 150</td></tr><tr><td s=
+tyle=3D'border:1px solid #999;padding:3px 6px'>M3</td><td style=3D'border:1px=
+ solid #999;padding:3px 6px'>M2</td><td style=3D'border:1px solid #999;paddin=
+g:3px 6px'>400 x 300 x 200</td></tr><tr><td style=3D'border:1px solid #999;pa=
+dding:3px 6px'>L4</td><td style=3D'border:1px solid #999;padding:3px 6px'>L3<=
+/td><td style=3D'border:1px solid #999;padding:3px 6px'>600 x 400 x 300</td><=
+/tr></table><p>Best regards,<br>Daan Visser<br>Master data specialist<br>Corp=
+ Europe B.V. | Rotterdam<br>T +31 10 765 2229<br><br>This e-mail and any atta=
+chments are confidential and intended solely for the addressee. If you receiv=
+ed it in error, please delete it.</p><div style=3D'border:none;border-top:sol=
+id #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Sofie Peeters &lt=
+;s.peeters@corp-europe.example&gt;<br><b>Sent:</b> Wednesday, 14 October 2026=
+ 11:05<br><b>To:</b> Daan Visser<br><b>Cc:</b> Lukas Becker; DL CT<br><b>Subj=
+ect:</b> RE: New carton sizes S2 / M3 / L4 from 2 Nov - master data and EWM</=
+p></div><p>Daan, counted this morning in Antwerp: S1 =3D 4,200 pcs, M2 =3D 2,=
+800 pcs, L3 =3D 1,500 pcs.</p>
+<p>My question: do we have to stop using them on 2 Nov? If yes, I need to arr=
+ange to send the rest back or scrap it, and that is a lot of cartons. At the =
+current pick volume S1 lasts about 3 weeks after 2 Nov, L3 even longer.</p>
+<p>Also, when do the new cartons arrive? I need floor space in bay 14 before =
+they come.</p><p>Regards,<br>Sofie Peeters<br>Warehouse supervisor Antwerp<br=
+>Corp Europe B.V. | Rotterdam<br>T +31 10 876 2330<br><br>This e-mail and any=
+ attachments are confidential and intended solely for the addressee. If you r=
+eceived it in error, please delete it.</p><div style=3D'border:none;border-to=
+p:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Daan Visser =
+&lt;d.visser@corp-europe.example&gt;<br><b>Sent:</b> Tuesday, 13 October 2026=
+ 09:20<br><b>To:</b> Sofie Peeters<br><b>Cc:</b> Lukas Becker; DL CT<br><b>Su=
+bject:</b> New carton sizes S2 / M3 / L4 from 2 Nov - master data and EWM</p>=
+</div><p>Sofie, Lukas - heads-up on the packaging change. From Monday 2 Nov w=
+e switch to three new carton sizes: S2, M3 and L4. They replace the old S1, M=
+2 and L3.</p>
+<p>On my side I will update the packaging data in the material master with MM=
+02. By my count that is 312 materials. I plan to have this done by Wed 21 Oct=
+, so there is a buffer before go-live.</p>
+<p>Lukas, the packaging instructions in EWM will need adjusting as well. Can =
+you take that?</p>
+<p>Sofie, can you send me the current stock of the old cartons in Antwerp? I =
+want to know if we need to do anything special with the leftovers before 2 No=
+v.</p><p>Best regards,<br>Daan Visser<br>Master data specialist<br>Corp Europ=
+e B.V. | Rotterdam<br>T +31 10 840 4457<br><br>This e-mail and any attachment=
+s are confidential and intended solely for the addressee. If you received it =
+in error, please delete it.</p></body></html>
+
+--===============2234697829257759408==--

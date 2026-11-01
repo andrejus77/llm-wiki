@@ -1,0 +1,294 @@
+Message-ID: <qm_block.t1.m6.52772c9a69@corp-europe.example>
+Date: Mon, 12 Oct 2026 09:30:00 +0200
+From: "Lukas Becker" <l.becker@corp-europe.example>
+To: "Sofie Peeters" <s.peeters@corp-europe.example>
+Cc: "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: Stock in Q after delivery without certificates - how to release
+In-Reply-To: <qm_block.t1.m5.3120b5331e@corp-europe.example>
+References: <qm_block.t1.m1.7e3443e557@corp-europe.example>
+ <qm_block.t1.m2.ccae10d6b6@corp-europe.example>
+ <qm_block.t1.m3.0fe88965f6@corp-europe.example>
+ <qm_block.t1.m4.8836a3f08b@corp-europe.example>
+ <qm_block.t1.m5.3120b5331e@corp-europe.example>
+Thread-Index: Ad1aG30TNUxUSO8tKS8kAsHSBHiltrnMRucHZhDGC1PyDtDLDpsmGktb6pX1X24=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============7337550544568957111=="
+
+--===============7337550544568957111==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Good result. Please put the steps from my mail of 5 October and the QA11 scre=
+enshot into the how-to for inbound, so every site can use it. One tip for the=
+ page: save a QA32 variant with plant and stock type Q, then you see every op=
+en lot each morning and do not depend on someone telling you.
+
+If the stock does not move after the usage decision, check first that the sto=
+ck posting was ticked in QA11. Call me if it still does not work.
+
+Thanks,
+Lukas Becker
+SAP key user SD/LE
+Corp Europe B.V. | Rotterdam
+T +31 10 370 5906
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Sofie Peeters <s.peeters@corp-europe.example>
+Sent: Friday, 09 October 2026 16:05
+To: Lukas Becker
+Subject: RE: Stock in Q after delivery without certificates - how to release
+
+Update: QA did their sample check on Tuesday afternoon and made the usage dec=
+ision in QA11 on Wednesday 7 October at 14:20, code A. The 12 pallets of deli=
+very 80651234 moved from Q to unrestricted straight away, I checked in MMBE a=
+nd the movement in MB51. Venlo got their brackets on Thursday as planned.
+
+So this time it took about 2 days instead of 3, and the certificates only arr=
+ived today. I will add the QA remark that they were late.
+
+Regards,
+Sofie Peeters
+Warehouse supervisor Antwerp
+Corp Europe B.V. | Rotterdam
+T +31 10 432 2480
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Lukas Becker <l.becker@corp-europe.example>
+Sent: Tuesday, 06 October 2026 10:15
+To: Sofie Peeters
+Subject: RE: Stock in Q after delivery without certificates - how to release
+
+SAP itself does not force the certificates. It is a QA decision: if QA does i=
+ts own sample check in QE51N and is happy, they can accept the lot in QA11 an=
+d note in the remarks that the certificates are still outstanding. That is fo=
+r QA to decide, not for us. Ask them directly.
+
+Important: in QA11 the stock posting must be ticked, so the stock moves from =
+Q to unrestricted automatically with the usage decision. If it is not ticked,=
+ the stock stays in Q even though the lot is closed. Screenshot of the screen=
+ below with lot 010000004871 as example.
+
+Thanks,
+Lukas Becker
+SAP key user SD/LE
+Corp Europe B.V. | Rotterdam
+T +31 10 524 8994
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Sofie Peeters <s.peeters@corp-europe.example>
+Sent: Tuesday, 06 October 2026 08:40
+To: Lukas Becker
+Subject: RE: Stock in Q after delivery without certificates - how to release
+
+Thanks, that is clear. I found the lot in QA32 and mailed the number to QA ye=
+sterday afternoon: inspection lot 010000004871.
+
+One question: the supplier says the certificates will take until the end of t=
+he week. Venlo needs these brackets on Thursday for an outbound order. Does t=
+he usage decision really need the certificates, or can QA decide on their own=
+ checks? And what does the QA11 screen look like, so I can show it in the how=
+-to?
+
+Thanks,
+Sofie Peeters
+Warehouse supervisor Antwerp
+Corp Europe B.V. | Rotterdam
+T +31 10 865 2315
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Lukas Becker <l.becker@corp-europe.example>
+Sent: Monday, 05 October 2026 13:25
+To: Sofie Peeters
+Subject: RE: Stock in Q after delivery without certificates - how to release
+
+Sure. The Q stock is not an error. With this material the system creates an i=
+nspection lot automatically at goods receipt (inspection type 01), and the st=
+ock stays blocked in quality inspection until a usage decision is made. Steps=
+ below.
+
+The 3 days in September came from two things: the supplier only sent the cert=
+ificates on the Wednesday, and QA was not told that the lot existed, so the u=
+sage decision was only made on the Thursday. So the trick is to tell QA on da=
+y 1 and chase the supplier at the same time.
+
+Step | T-code | What to do | Who
+1 | MMBE | Check that the stock really is in Q (quality inspection) for plant=
+ 2030 | Warehouse
+2 | QA32 | Find the inspection lot by plant, material or PO and note the lot =
+number | Warehouse
+3 | - | Ask the supplier for the certificates; mail the lot number to QA | Wa=
+rehouse
+4 | QE51N | Record results of the QA checks and attach the certificates | QA
+5 | QA11 | Make the usage decision (code A =3D accepted) | QA
+6 | MMBE | Check that the stock moved from Q to unrestricted | Warehouse
+
+Kind regards,
+Lukas Becker
+SAP key user SD/LE
+Corp Europe B.V. | Rotterdam
+T +31 10 680 5342
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Sofie Peeters <s.peeters@corp-europe.example>
+Sent: Monday, 05 October 2026 09:10
+To: Lukas Becker
+Subject: Stock in Q after delivery without certificates - how to release
+
+Lukas, we have the same problem as in September. Delivery 80651234 (PO 450018=
+7342, 12 pallets of steel brackets, material 100-20418) arrived on Friday 2 O=
+ctober without the 3.1 material certificates. The goods receipt is posted, bu=
+t everything sits in stock type Q and the outbound planners cannot see it as =
+available.
+
+Last time it took us 3 days to get it free, mostly because nobody knew who ha=
+d to do what. Can you remind me of the exact steps and t-codes? I would like =
+to write it down properly this time so the next shift does not have to ask yo=
+u.
+
+Thanks,
+Sofie Peeters
+Warehouse supervisor Antwerp
+Corp Europe B.V. | Rotterdam
+T +31 10 870 3529
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============7337550544568957111==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Good result. Please put the steps from my mail of 5 October an=
+d the QA11 screenshot into the how-to for inbound, so every site can use it. =
+One tip for the page: save a QA32 variant with plant and stock type Q, then y=
+ou see every open lot each morning and do not depend on someone telling you.<=
+/p>
+<p>If the stock does not move after the usage decision, check first that the =
+stock posting was ticked in QA11. Call me if it still does not work.</p><p>Th=
+anks,<br>Lukas Becker<br>SAP key user SD/LE<br>Corp Europe B.V. | Rotterdam<b=
+r>T +31 10 370 5906<br><br>This e-mail and any attachments are confidential a=
+nd intended solely for the addressee. If you received it in error, please del=
+ete it.</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3=
+.0pt 0cm 0cm 0cm'><p><b>From:</b> Sofie Peeters &lt;s.peeters@corp-europe.exa=
+mple&gt;<br><b>Sent:</b> Friday, 09 October 2026 16:05<br><b>To:</b> Lukas Be=
+cker<br><b>Cc:</b> DL CT<br><b>Subject:</b> RE: Stock in Q after delivery wit=
+hout certificates - how to release</p></div><p>Update: QA did their sample ch=
+eck on Tuesday afternoon and made the usage decision in QA11 on Wednesday 7 O=
+ctober at 14:20, code A. The 12 pallets of delivery 80651234 moved from Q to =
+unrestricted straight away, I checked in MMBE and the movement in MB51. Venlo=
+ got their brackets on Thursday as planned.</p>
+<p>So this time it took about 2 days instead of 3, and the certificates only =
+arrived today. I will add the QA remark that they were late.</p><p>Regards,<b=
+r>Sofie Peeters<br>Warehouse supervisor Antwerp<br>Corp Europe B.V. | Rotterd=
+am<br>T +31 10 432 2480<br><br>This e-mail and any attachments are confidenti=
+al and intended solely for the addressee. If you received it in error, please=
+ delete it.</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;paddi=
+ng:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Lukas Becker &lt;l.becker@corp-europe.e=
+xample&gt;<br><b>Sent:</b> Tuesday, 06 October 2026 10:15<br><b>To:</b> Sofie=
+ Peeters<br><b>Cc:</b> DL CT<br><b>Subject:</b> RE: Stock in Q after delivery=
+ without certificates - how to release</p></div><p>SAP itself does not force =
+the certificates. It is a QA decision: if QA does its own sample check in QE5=
+1N and is happy, they can accept the lot in QA11 and note in the remarks that=
+ the certificates are still outstanding. That is for QA to decide, not for us=
+. Ask them directly.</p>
+<p>Important: in QA11 the stock posting must be ticked, so the stock moves fr=
+om Q to unrestricted automatically with the usage decision. If it is not tick=
+ed, the stock stays in Q even though the lot is closed. Screenshot of the scr=
+een below with lot 010000004871 as example.</p><p><img src=3D'cid:img3.33fce0=
+73@corp' alt=3D'QA11 - Record Usage Decision' width=3D'600'></p><p>Thanks,<br=
+>Lukas Becker<br>SAP key user SD/LE<br>Corp Europe B.V. | Rotterdam<br>T +31 =
+10 524 8994<br><br>This e-mail and any attachments are confidential and inten=
+ded solely for the addressee. If you received it in error, please delete it.<=
+/p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm=
+ 0cm 0cm'><p><b>From:</b> Sofie Peeters &lt;s.peeters@corp-europe.example&gt;=
+<br><b>Sent:</b> Tuesday, 06 October 2026 08:40<br><b>To:</b> Lukas Becker<br=
+><b>Cc:</b> DL CT<br><b>Subject:</b> RE: Stock in Q after delivery without ce=
+rtificates - how to release</p></div><p>Thanks, that is clear. I found the lo=
+t in QA32 and mailed the number to QA yesterday afternoon: inspection lot 010=
+000004871.</p>
+<p>One question: the supplier says the certificates will take until the end o=
+f the week. Venlo needs these brackets on Thursday for an outbound order. Doe=
+s the usage decision really need the certificates, or can QA decide on their =
+own checks? And what does the QA11 screen look like, so I can show it in the =
+how-to?</p><p>Thanks,<br>Sofie Peeters<br>Warehouse supervisor Antwerp<br>Cor=
+p Europe B.V. | Rotterdam<br>T +31 10 865 2315<br><br>This e-mail and any att=
+achments are confidential and intended solely for the addressee. If you recei=
+ved it in error, please delete it.</p><div style=3D'border:none;border-top:so=
+lid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Lukas Becker &lt=
+;l.becker@corp-europe.example&gt;<br><b>Sent:</b> Monday, 05 October 2026 13:=
+25<br><b>To:</b> Sofie Peeters<br><b>Cc:</b> DL CT<br><b>Subject:</b> RE: Sto=
+ck in Q after delivery without certificates - how to release</p></div><p>Sure=
+. The Q stock is not an error. With this material the system creates an inspe=
+ction lot automatically at goods receipt (inspection type 01), and the stock =
+stays blocked in quality inspection until a usage decision is made. Steps bel=
+ow.</p>
+<p>The 3 days in September came from two things: the supplier only sent the c=
+ertificates on the Wednesday, and QA was not told that the lot existed, so th=
+e usage decision was only made on the Thursday. So the trick is to tell QA on=
+ day 1 and chase the supplier at the same time.</p><table style=3D'border-col=
+lapse:collapse;font-size:10pt'><tr><th style=3D'border:1px solid #999;padding=
+:3px 6px'>Step</th><th style=3D'border:1px solid #999;padding:3px 6px'>T-code=
+</th><th style=3D'border:1px solid #999;padding:3px 6px'>What to do</th><th s=
+tyle=3D'border:1px solid #999;padding:3px 6px'>Who</th></tr><tr><td style=3D'=
+border:1px solid #999;padding:3px 6px'>1</td><td style=3D'border:1px solid #9=
+99;padding:3px 6px'>MMBE</td><td style=3D'border:1px solid #999;padding:3px 6=
+px'>Check that the stock really is in Q (quality inspection) for plant 2030</=
+td><td style=3D'border:1px solid #999;padding:3px 6px'>Warehouse</td></tr><tr=
+><td style=3D'border:1px solid #999;padding:3px 6px'>2</td><td style=3D'borde=
+r:1px solid #999;padding:3px 6px'>QA32</td><td style=3D'border:1px solid #999=
+;padding:3px 6px'>Find the inspection lot by plant, material or PO and note t=
+he lot number</td><td style=3D'border:1px solid #999;padding:3px 6px'>Warehou=
+se</td></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>3</td><td=
+ style=3D'border:1px solid #999;padding:3px 6px'>-</td><td style=3D'border:1p=
+x solid #999;padding:3px 6px'>Ask the supplier for the certificates; mail the=
+ lot number to QA</td><td style=3D'border:1px solid #999;padding:3px 6px'>War=
+ehouse</td></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>4</td=
+><td style=3D'border:1px solid #999;padding:3px 6px'>QE51N</td><td style=3D'b=
+order:1px solid #999;padding:3px 6px'>Record results of the QA checks and att=
+ach the certificates</td><td style=3D'border:1px solid #999;padding:3px 6px'>=
+QA</td></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>5</td><td=
+ style=3D'border:1px solid #999;padding:3px 6px'>QA11</td><td style=3D'border=
+:1px solid #999;padding:3px 6px'>Make the usage decision (code A =3D accepted=
+)</td><td style=3D'border:1px solid #999;padding:3px 6px'>QA</td></tr><tr><td=
+ style=3D'border:1px solid #999;padding:3px 6px'>6</td><td style=3D'border:1p=
+x solid #999;padding:3px 6px'>MMBE</td><td style=3D'border:1px solid #999;pad=
+ding:3px 6px'>Check that the stock moved from Q to unrestricted</td><td style=
+=3D'border:1px solid #999;padding:3px 6px'>Warehouse</td></tr></table><p>Kind=
+ regards,<br>Lukas Becker<br>SAP key user SD/LE<br>Corp Europe B.V. | Rotterd=
+am<br>T +31 10 680 5342<br><br>This e-mail and any attachments are confidenti=
+al and intended solely for the addressee. If you received it in error, please=
+ delete it.</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;paddi=
+ng:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Sofie Peeters &lt;s.peeters@corp-europe=
+.example&gt;<br><b>Sent:</b> Monday, 05 October 2026 09:10<br><b>To:</b> Luka=
+s Becker<br><b>Cc:</b> DL CT<br><b>Subject:</b> Stock in Q after delivery wit=
+hout certificates - how to release</p></div><p>Lukas, we have the same proble=
+m as in September. Delivery 80651234 (PO 4500187342, 12 pallets of steel brac=
+kets, material 100-20418) arrived on Friday 2 October without the 3.1 materia=
+l certificates. The goods receipt is posted, but everything sits in stock typ=
+e Q and the outbound planners cannot see it as available.</p>
+<p>Last time it took us 3 days to get it free, mostly because nobody knew who=
+ had to do what. Can you remind me of the exact steps and t-codes? I would li=
+ke to write it down properly this time so the next shift does not have to ask=
+ you.</p><p>Thanks,<br>Sofie Peeters<br>Warehouse supervisor Antwerp<br>Corp =
+Europe B.V. | Rotterdam<br>T +31 10 870 3529<br><br>This e-mail and any attac=
+hments are confidential and intended solely for the addressee. If you receive=
+d it in error, please delete it.</p></body></html>
+
+--===============7337550544568957111==--

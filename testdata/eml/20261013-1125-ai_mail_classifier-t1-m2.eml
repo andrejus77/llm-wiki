@@ -1,0 +1,93 @@
+Message-ID: <ai_mail_classifier.t1.m2.86e3991f79@corp-europe.example>
+Date: Tue, 13 Oct 2026 11:25:00 +0200
+From: "Emma Laurent" <e.laurent@corp-europe.example>
+To: "Nina Meijer" <n.meijer@corp-europe.example>
+Cc: "Stefan Kovac" <s.kovac@corp-europe.example>,
+ "DL AI" <dl-ai@corp-europe.example>
+Subject: RE: Pilot: automatic sorting of customer service mail
+In-Reply-To: <ai_mail_classifier.t1.m1.14e1206d19@corp-europe.example>
+References: <ai_mail_classifier.t1.m1.14e1206d19@corp-europe.example>
+Thread-Index: Ad1a9Lg1PA0iKuVudaAI5a0VOQMaaakJdIdA
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============8677599023691676360=="
+
+--===============8677599023691676360==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Nina, fine for us. I will take the 200 mails from the September archive and r=
+emove names and phone numbers before I send them. Note that about 15 % of our=
+ mail is in German and some in Polish, please make sure the test covers that.
+
+Thanks,
+Emma Laurent
+Customer service lead
+Corp Europe B.V. | Rotterdam
+T +31 10 590 8668
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Nina Meijer <n.meijer@corp-europe.example>
+Sent: Tuesday, 13 October 2026 09:10
+To: Emma Laurent; Stefan Kovac
+Subject: Pilot: automatic sorting of customer service mail
+
+Emma, Stefan,
+
+As agreed in the steering meeting we start the pilot to sort incoming custome=
+r service mail into the five queues (delivery status, damage, invoicing, book=
+ing change, other) with Gemini 2.5 Flash through the company Vertex AI tenant=
+. Customer service sorts about 900 mails a week by hand today.
+
+Plan:
+- Emma: export 200 anonymised mails from September with the queue they ended =
+up in (by 16 Oct)
+- Stefan: prompt + small evaluation script, accuracy target 90 % (by 23 Oct)
+- Go/no-go for a shadow run in November on 29 Oct
+
+Pieter, FYI because the RPA mailbox reader would feed the model later.
+
+Thanks,
+Nina Meijer
+AI lead, Logistics Europe
+Corp Europe B.V. | Rotterdam
+T +31 10 810 2040
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============8677599023691676360==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Nina, fine for us. I will take the 200 mails from the Septembe=
+r archive and remove names and phone numbers before I send them. Note that ab=
+out 15 % of our mail is in German and some in Polish, please make sure the te=
+st covers that.</p><p>Thanks,<br>Emma Laurent<br>Customer service lead<br>Cor=
+p Europe B.V. | Rotterdam<br>T +31 10 590 8668<br><br>This e-mail and any att=
+achments are confidential and intended solely for the addressee. If you recei=
+ved it in error, please delete it.</p><div style=3D'border:none;border-top:so=
+lid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Nina Meijer &lt;=
+n.meijer@corp-europe.example&gt;<br><b>Sent:</b> Tuesday, 13 October 2026 09:=
+10<br><b>To:</b> Emma Laurent; Stefan Kovac<br><b>Cc:</b> Pieter Bakker; DL A=
+I<br><b>Subject:</b> Pilot: automatic sorting of customer service mail</p></d=
+iv><p>Emma, Stefan,</p>
+<p>As agreed in the steering meeting we start the pilot to sort incoming cust=
+omer service mail into the five queues (delivery status, damage, invoicing, b=
+ooking change, other) with Gemini 2.5 Flash through the company Vertex AI ten=
+ant. Customer service sorts about 900 mails a week by hand today.</p>
+<p>Plan:<br>- Emma: export 200 anonymised mails from September with the queue=
+ they ended up in (by 16 Oct)<br>- Stefan: prompt + small evaluation script, =
+accuracy target 90 % (by 23 Oct)<br>- Go/no-go for a shadow run in November o=
+n 29 Oct</p>
+<p>Pieter, FYI because the RPA mailbox reader would feed the model later.</p>=
+<p>Thanks,<br>Nina Meijer<br>AI lead, Logistics Europe<br>Corp Europe B.V. | =
+Rotterdam<br>T +31 10 810 2040<br><br>This e-mail and any attachments are con=
+fidential and intended solely for the addressee. If you received it in error,=
+ please delete it.</p></body></html>
+
+--===============8677599023691676360==--

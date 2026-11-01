@@ -1,0 +1,48 @@
+Message-ID: <edi_asn.t2.m4.3cc6922b47@corp-europe.example>
+Date: Thu, 08 Oct 2026 11:15:00 +0200
+From: "Emma Laurent" <e.laurent@corp-europe.example>
+To: "Brightwater Retail Logistics" <brightwater@brightwater.example>
+Cc: "Lukas Becker" <l.becker@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: Brightwater ASN - interim solution until fix
+Thread-Index: Ad1XBX6D3mn0fBN7UBusfTh9sQX3NQ==
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============8728426335304084337=="
+
+--===============8728426335304084337==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+We have found the cause of the missing ASNs: a mapping error on our side in t=
+he pallet SSCC segment, since 7 Oct. IT is working on a fix, expected early n=
+ext week. As an interim solution we can send you an Excel list per shipment w=
+ith delivery number, pallet SSCCs and quantities, every morning before 08:00.=
+ Would that be enough for your receiving hub to plan the dock slots? Apologie=
+s for the trouble.
+
+Kind regards,
+Emma Laurent
+Customer service lead
+Corp Europe B.V. | Rotterdam
+T +31 10 507 9308
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============8728426335304084337==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>We have found the cause of the missing ASNs: a mapping error o=
+n our side in the pallet SSCC segment, since 7 Oct. IT is working on a fix, e=
+xpected early next week. As an interim solution we can send you an Excel list=
+ per shipment with delivery number, pallet SSCCs and quantities, every mornin=
+g before 08:00. Would that be enough for your receiving hub to plan the dock =
+slots? Apologies for the trouble.</p><p>Kind regards,<br>Emma Laurent<br>Cust=
+omer service lead<br>Corp Europe B.V. | Rotterdam<br>T +31 10 507 9308<br><br=
+>This e-mail and any attachments are confidential and intended solely for the=
+ addressee. If you received it in error, please delete it.</p></body></html>
+
+--===============8728426335304084337==--

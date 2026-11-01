@@ -1,0 +1,147 @@
+Message-ID: <authorizations.t1.m3.4a7fde3c72@corp-europe.example>
+Date: Tue, 20 Oct 2026 08:50:00 +0200
+From: "Tom Hendriks" <t.hendriks@corp-europe.example>
+To: "Lukas Becker" <l.becker@corp-europe.example>
+Cc: "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: SAP roles for transport planning - REQ0048213
+In-Reply-To: <authorizations.t1.m2.2a156c922a@corp-europe.example>
+References: <authorizations.t1.m1.401ccccc6a@corp-europe.example>
+ <authorizations.t1.m2.2a156c922a@corp-europe.example>
+Thread-Index: Ad1gXzneAIvqFwR3B6KH+5bc+U1pxZrFV9+bn8RSbPY=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============4951441287904337382=="
+
+--===============4951441287904337382==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Good catch, thanks. Yes, I plan both Rotterdam (RT01) and Venlo (VN01) from t=
+he start. I forgot to mention Venlo in the portal text. Please add VN01 to th=
+e request, or tell me if I should raise a new one. I would rather avoid a sec=
+ond ticket because it would cost us another day.
+
+Best regards,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 471 9645
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Lukas Becker <l.becker@corp-europe.example>
+Sent: Monday, 19 October 2026 14:05
+To: Tom Hendriks
+Subject: RE: SAP roles for transport planning - REQ0048213
+
+Hi Tom, I see the request in my approval queue. Before I approve, one questio=
+n: you only mention Rotterdam, but in the team plan you also take over part o=
+f the Venlo outbound runs. If so, the shipping point authorization for Venlo =
+(VN01) has to be in the request too, otherwise VT01N will refuse you with 'no=
+ authorization for shipping point' on Venlo deliveries.
+
+VT01N/VT02N come with the role Z_LE_SHIPMENT_PLANNER and VL06O with Z_LE_DELI=
+VERY_MONITOR. Both are fine for your function, so no extra sign-off is needed=
+. Can you confirm the plants?
+
+Best regards,
+Lukas Becker
+SAP key user SD/LE
+Corp Europe B.V. | Rotterdam
+T +31 10 875 8787
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Tom Hendriks <t.hendriks@corp-europe.example>
+Sent: Monday, 19 October 2026 09:20
+To: Lukas Becker
+Subject: SAP roles for transport planning - REQ0048213
+
+Hi Lukas, I started as transport planner today and my SAP user only has the b=
+asic display roles. I raised request REQ0048213 in the IT portal a few minute=
+s ago. It is waiting for your approval as role owner.
+
+What I need for planning the daily outbound runs:
+- VT01N / VT02N to create and change shipments
+- VL06O to monitor deliveries that are due for shipping
+
+I put Rotterdam as the location in the request. Can you approve it today, or =
+tell me if something is missing? I would like to start planning on my own by =
+the end of the week.
+
+T-code | Purpose | Access needed
+VT01N | Create shipment | Change
+VT02N | Change shipment | Change
+VL06O | Delivery monitoring (outbound) | Display
+
+Kind regards,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 745 3060
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============4951441287904337382==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Good catch, thanks. Yes, I plan both Rotterdam (RT01) and Venl=
+o (VN01) from the start. I forgot to mention Venlo in the portal text. Please=
+ add VN01 to the request, or tell me if I should raise a new one. I would rat=
+her avoid a second ticket because it would cost us another day.</p><p>Best re=
+gards,<br>Tom Hendriks<br>Transport planner<br>Corp Europe B.V. | Rotterdam<b=
+r>T +31 10 471 9645<br><br>This e-mail and any attachments are confidential a=
+nd intended solely for the addressee. If you received it in error, please del=
+ete it.</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3=
+.0pt 0cm 0cm 0cm'><p><b>From:</b> Lukas Becker &lt;l.becker@corp-europe.examp=
+le&gt;<br><b>Sent:</b> Monday, 19 October 2026 14:05<br><b>To:</b> Tom Hendri=
+ks<br><b>Cc:</b> DL CT<br><b>Subject:</b> RE: SAP roles for transport plannin=
+g - REQ0048213</p></div><p>Hi Tom, I see the request in my approval queue. Be=
+fore I approve, one question: you only mention Rotterdam, but in the team pla=
+n you also take over part of the Venlo outbound runs. If so, the shipping poi=
+nt authorization for Venlo (VN01) has to be in the request too, otherwise VT0=
+1N will refuse you with &#x27;no authorization for shipping point&#x27; on Ve=
+nlo deliveries.</p>
+<p>VT01N/VT02N come with the role Z_LE_SHIPMENT_PLANNER and VL06O with Z_LE_D=
+ELIVERY_MONITOR. Both are fine for your function, so no extra sign-off is nee=
+ded. Can you confirm the plants?</p><p>Best regards,<br>Lukas Becker<br>SAP k=
+ey user SD/LE<br>Corp Europe B.V. | Rotterdam<br>T +31 10 875 8787<br><br>Thi=
+s e-mail and any attachments are confidential and intended solely for the add=
+ressee. If you received it in error, please delete it.</p><div style=3D'borde=
+r:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:<=
+/b> Tom Hendriks &lt;t.hendriks@corp-europe.example&gt;<br><b>Sent:</b> Monda=
+y, 19 October 2026 09:20<br><b>To:</b> Lukas Becker<br><b>Cc:</b> DL CT<br><b=
+>Subject:</b> SAP roles for transport planning - REQ0048213</p></div><p>Hi Lu=
+kas, I started as transport planner today and my SAP user only has the basic =
+display roles. I raised request REQ0048213 in the IT portal a few minutes ago=
+. It is waiting for your approval as role owner.</p>
+<p>What I need for planning the daily outbound runs:<br>- VT01N / VT02N to cr=
+eate and change shipments<br>- VL06O to monitor deliveries that are due for s=
+hipping</p>
+<p>I put Rotterdam as the location in the request. Can you approve it today, =
+or tell me if something is missing? I would like to start planning on my own =
+by the end of the week.</p><table style=3D'border-collapse:collapse;font-size=
+:10pt'><tr><th style=3D'border:1px solid #999;padding:3px 6px'>T-code</th><th=
+ style=3D'border:1px solid #999;padding:3px 6px'>Purpose</th><th style=3D'bor=
+der:1px solid #999;padding:3px 6px'>Access needed</th></tr><tr><td style=3D'b=
+order:1px solid #999;padding:3px 6px'>VT01N</td><td style=3D'border:1px solid=
+ #999;padding:3px 6px'>Create shipment</td><td style=3D'border:1px solid #999=
+;padding:3px 6px'>Change</td></tr><tr><td style=3D'border:1px solid #999;padd=
+ing:3px 6px'>VT02N</td><td style=3D'border:1px solid #999;padding:3px 6px'>Ch=
+ange shipment</td><td style=3D'border:1px solid #999;padding:3px 6px'>Change<=
+/td></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>VL06O</td><t=
+d style=3D'border:1px solid #999;padding:3px 6px'>Delivery monitoring (outbou=
+nd)</td><td style=3D'border:1px solid #999;padding:3px 6px'>Display</td></tr>=
+</table><p>Kind regards,<br>Tom Hendriks<br>Transport planner<br>Corp Europe =
+B.V. | Rotterdam<br>T +31 10 745 3060<br><br>This e-mail and any attachments =
+are confidential and intended solely for the addressee. If you received it in=
+ error, please delete it.</p></body></html>
+
+--===============4951441287904337382==--

@@ -1,0 +1,443 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "Veltrans INV-88213 - rates above contract VT-2026-03",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-10-05 09:20",
+     "from": "anovak",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Tom, during the three-way match for Veltrans invoice INV-88213 (total EUR 35,237.50) I found that lines 1 and 2 are well above contract VT-2026-03. Together they are EUR 4,140.00 over. There is also a fuel surcharge of EUR 517.50 as line 3, although the contract rate is all-in. Comparison below. Line 4 is demurrage for two reefers at Felixstowe, which I will come back to separately. Can you confirm the contract rates are correct as I have them in the vendor master? I have blocked the invoice for payment (block reason R) until this is cleared.",
+     "table": {
+      "header": [
+       "Line",
+       "Description",
+       "Qty",
+       "Invoiced rate (EUR)",
+       "Contract rate (EUR)",
+       "Difference (EUR)"
+      ],
+      "rows": [
+       [
+        "1",
+        "FTL Venlo - Gdansk",
+        "14 trips",
+        "1,310.00",
+        "1,180.00",
+        "+1,820.00"
+       ],
+       [
+        "2",
+        "FTL Venlo - Hamburg",
+        "20 trips",
+        "756.00",
+        "640.00",
+        "+2,320.00"
+       ],
+       [
+        "3",
+        "Fuel surcharge",
+        "1",
+        "517.50",
+        "0.00 (all-in rate)",
+        "+517.50"
+       ],
+       [
+        "4",
+        "Demurrage 2 reefers Felixstowe",
+        "1",
+        "1,260.00",
+        "n/a",
+        "tbc"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-10-06 08:45",
+     "from": "thendriks",
+     "to": [
+      "anovak"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Ana, your contract rates are correct: EUR 1,180 per trip Venlo - Gdansk and EUR 640 per trip Venlo - Hamburg, valid from 1 January 2026 under VT-2026-03. Fuel is included in the all-in rate, so line 3 should not be there at all. The invoiced rates look exactly like the 2025 rate card to me. I will write to Jan Novotny at Veltrans today and ask for a corrected invoice or a credit note. Please keep the block on INV-88213 in the meantime.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-10-06 11:10",
+     "from": "thendriks",
+     "to": [
+      "jnovotny"
+     ],
+     "cc": [
+      "vbilling",
+      "anovak",
+      "mdeboer"
+     ],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Jan, invoice INV-88213 does not match our contract VT-2026-03. Lines 1 and 2 are charged at EUR 1,310 and EUR 756 per trip instead of the contract EUR 1,180 and EUR 640, which makes EUR 4,140.00 too much. On top, line 3 adds a EUR 517.50 fuel surcharge, but the contract rate is all-in. Please check your rate card and send us a credit note for the difference. We have blocked the invoice until we have it. Can you confirm by Friday?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m4",
+     "date": "2026-10-09 14:30",
+     "from": "jnovotny",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "vbilling",
+      "anovak",
+      "mdeboer"
+     ],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "Tom, thanks for catching this and sorry for the trouble. We checked: our billing system still used the 2025 rate card for your account, the 2026 rates of VT-2026-03 were not activated, and the fuel surcharge came from the old tariff. You are right on lines 1 to 3. Our billing team will issue a credit note for EUR 4,657.50 (EUR 4,140.00 plus the EUR 517.50 surcharge) against INV-88213. Line 4, the demurrage for the two reefers at Felixstowe, is a pass-through from the terminal and is correct as invoiced.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-10-13 10:05",
+     "from": "anovak",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Tom, now line 4: EUR 1,260.00 demurrage for two reefers, MSKU4471920 and TGHU8830154, 3 days each at EUR 210 per day. Veltrans says it is a pass-through. Do you know why they were held at Felixstowe in September? I need to know if we can push this back to Veltrans or if the cost belongs to us, so I can book it on the right cost centre.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m6",
+     "date": "2026-10-14 09:40",
+     "from": "thendriks",
+     "to": [
+      "anovak"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "Ana, I checked with Oliver Wright in Felixstowe. Both reefers were held from 22 to 25 September because our import declaration had a wrong commodity code, and Harbour Agency UK had to amend it before customs released them. So the hold was caused by our customs paperwork, not by Veltrans. The demurrage of EUR 1,260.00 stays with Corp Europe. Please release line 4 for payment and book it to logistics Felixstowe. Mark, FYI, since it is a cost on our side.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m7",
+     "date": "2026-10-16 16:20",
+     "from": "vbilling",
+     "to": [
+      "anovak"
+     ],
+     "cc": [
+      "jnovotny",
+      "thendriks"
+     ],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Dear Ana, please find attached credit note CN-40377 for EUR 4,657.50 against invoice INV-88213, covering the rate difference on lines 1 and 2 (EUR 4,140.00) and the fuel surcharge on line 3 (EUR 517.50). Line 4 remains valid. Please apply it to the open invoice.",
+     "table": null,
+     "attachment": {
+      "kind": "pdf",
+      "name": "CN-40377_Veltrans_credit_note.pdf",
+      "text": "Veltrans - Credit note CN-40377\nDate: 16 October 2026\nCustomer: Corp Europe B.V.\nReference invoice: INV-88213\nContract: VT-2026-03\n\nReason: 2025 rate card applied in error\nLines 1-2 rate correction: EUR 4,140.00\nLine 3 fuel surcharge (all-in contract): EUR 517.50\nTotal credit: EUR 4,657.50"
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m8",
+     "date": "2026-10-19 09:50",
+     "from": "anovak",
+     "to": [
+      "vbilling"
+     ],
+     "cc": [
+      "jnovotny",
+      "thendriks"
+     ],
+     "reply_to": "m7",
+     "forward": false,
+     "body": "Thanks, credit note CN-40377 received and booked against INV-88213. The net amount to pay is EUR 30,580.00 (EUR 35,237.50 minus EUR 4,657.50), which includes the EUR 1,260.00 demurrage on line 4. I have released the block and the invoice goes into the next payment run.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m9",
+     "date": "2026-10-21 10:15",
+     "from": "mdeboer",
+     "to": [
+      "anovak"
+     ],
+     "cc": [
+      "thendriks"
+     ],
+     "reply_to": "m8",
+     "forward": false,
+     "body": "Ok, thanks both. Agreed that the demurrage stays with us, we caused the hold with the wrong commodity code. Tom, please make sure the customs team checks the codes on reefer shipments to the UK before we submit, so this does not happen again.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  },
+  {
+   "key": "t2",
+   "subject": "Monthly spot check Veltrans invoices until rate card is fixed",
+   "emails": [
+    {
+     "id": "m10",
+     "date": "2026-10-22 13:00",
+     "from": "anovak",
+     "to": [
+      "mdeboer"
+     ],
+     "cc": [
+      "thendriks"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Mark, after INV-88213 Finance proposes a monthly spot check of Veltrans invoices: I take 10 invoices per month and compare the rates line by line with VT-2026-03. We continue until Veltrans confirms in writing that the 2026 rate card is active in their billing system. I would do the first check at the end of October. For this I need Tom to send me a rate extract of the contract. Are you ok with this?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m11",
+     "date": "2026-10-23 08:30",
+     "from": "mdeboer",
+     "to": [
+      "anovak"
+     ],
+     "cc": [
+      "thendriks"
+     ],
+     "reply_to": "m10",
+     "forward": false,
+     "body": "Yes, go ahead with the monthly spot check. Tom, please send Ana the VT-2026-03 rate extract by Monday. The check stops only when Veltrans has confirmed in writing that the rate card is corrected and a clean invoice cycle has passed.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m12",
+     "date": "2026-10-29 15:10",
+     "from": "jnovotny",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "anovak",
+      "mdeboer"
+     ],
+     "reply_to": "m11",
+     "forward": false,
+     "body": "Tom, for your information: our IT corrected the rate card for Corp Europe in the billing system on 27 October, now with the VT-2026-03 rates and without fuel surcharge. The next invoices will be the first ones with the new rates. If your spot check finds any deviation, please send it directly to me.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "Ana Novak found that Veltrans invoice INV-88213 (total EUR 35,237.50) had lines 1 and 2 EUR 4,140.00 above contract VT-2026-03.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "Line 1 (Venlo - Gdansk, 14 trips) was invoiced at EUR 1,310 per trip against a contract rate of EUR 1,180; line 2 (Venlo - Hamburg, 20 trips) at EUR 756 against EUR 640.",
+   "emails": [
+    "m1",
+    "m3"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "Line 3 of INV-88213 was a fuel surcharge of EUR 517.50, which should not apply because the contract rate is all-in.",
+   "emails": [
+    "m1",
+    "m2"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "Tom Hendriks confirmed the contract rates are valid from 1 January 2026 under VT-2026-03 and contacted Jan Novotny at Veltrans.",
+   "emails": [
+    "m2",
+    "m3"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "Jan Novotny admitted that Veltrans' billing system still used the 2025 rate card for Corp Europe, so the 2026 rates were not activated.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "Veltrans issued credit note CN-40377 on 16 October 2026 for EUR 4,657.50 (EUR 4,140.00 rate difference plus EUR 517.50 fuel surcharge).",
+   "emails": [
+    "m4",
+    "m7"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "Line 4 of INV-88213 is EUR 1,260.00 demurrage for two reefers, MSKU4471920 and TGHU8830154, at 3 days each and EUR 210 per day.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "The two reefers were held at Felixstowe from 22 to 25 September because Corp Europe's import declaration had a wrong commodity code that Harbour Agency UK had to amend.",
+   "emails": [
+    "m6",
+    "m9"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "The demurrage of EUR 1,260.00 stays with Corp Europe because the hold was caused by its own customs paperwork; it is booked to logistics Felixstowe.",
+   "emails": [
+    "m6",
+    "m9"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "After the credit note, the net amount payable on INV-88213 is EUR 30,580.00, including the demurrage; Ana released the payment block on 19 October.",
+   "emails": [
+    "m8"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "Finance (Ana Novak) proposed a monthly spot check of 10 Veltrans invoices against VT-2026-03, and Mark de Boer approved it on 23 October.",
+   "emails": [
+    "m10",
+    "m11"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "The spot check continues until Veltrans confirms in writing that the rate card is corrected and a clean invoice cycle has passed; Tom sends Ana the rate extract of VT-2026-03.",
+   "emails": [
+    "m10",
+    "m11"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "Veltrans corrected the rate card for Corp Europe in its billing system on 27 October 2026, without fuel surcharge.",
+   "emails": [
+    "m12"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "Why was invoice INV-88213 from Veltrans too high?",
+   "a": "Veltrans' billing system still used the 2025 rate card instead of the 2026 rates in contract VT-2026-03, and added a fuel surcharge although the rate is all-in.",
+   "facts": [
+    "F3",
+    "F5"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "What was the amount and number of the Veltrans credit note for INV-88213?",
+   "a": "Credit note CN-40377 for EUR 4,657.50.",
+   "facts": [
+    "F6"
+   ],
+   "type": "identifier"
+  },
+  {
+   "q": "How is the credit note amount of EUR 4,657.50 made up?",
+   "a": "EUR 4,140.00 rate difference on lines 1 and 2 plus the EUR 517.50 fuel surcharge on line 3.",
+   "facts": [
+    "F1",
+    "F3",
+    "F6"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "Who pays the demurrage for the two reefers held at Felixstowe, and why?",
+   "a": "Corp Europe pays the EUR 1,260.00, because the hold (22-25 September) was caused by a wrong commodity code in its own import declaration.",
+   "facts": [
+    "F8",
+    "F9"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "What is the net amount to pay on INV-88213 after the credit note?",
+   "a": "EUR 30,580.00 (EUR 35,237.50 minus EUR 4,657.50), including the demurrage.",
+   "facts": [
+    "F1",
+    "F6",
+    "F10"
+   ],
+   "type": "fact"
+  },
+  {
+   "q": "When did Veltrans correct its rate card for Corp Europe?",
+   "a": "On 27 October 2026.",
+   "facts": [
+    "F13"
+   ],
+   "type": "when"
+  },
+  {
+   "q": "What penalty clause applies in contract VT-2026-03 if Veltrans invoices wrongly again?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "veltrans_invoices",
+  "title": "Veltrans invoice mismatches (2025 rates still used)",
+  "level": "topic",
+  "korean": false
+ }
+}

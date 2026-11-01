@@ -1,0 +1,141 @@
+{
+ "created": "2026-11-01T13:42:03",
+ "questions": 169,
+ "note": "v4 store (4 departments, AI storylines): retrieval e5",
+ "settings": {
+  "embed_model": "multilingual-e5-small",
+  "rrf_k": 60,
+  "top_k": 8
+ },
+ "retrieval": [
+  {
+   "name": "BM25 only (FTS5)",
+   "recall_1": 0.688,
+   "recall_5": 0.958,
+   "recall_10": 0.993,
+   "mrr": 0.803,
+   "ndcg_10": 0.826,
+   "ms": 3.7,
+   "recall_5_by_type": {
+    "why": 0.941,
+    "identifier": 1.0,
+    "howto": 0.8,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 0.955,
+    "who": 1.0,
+    "decision": 1.0
+   }
+  },
+  {
+   "name": "vector only · multilingual-e5-small",
+   "recall_1": 0.667,
+   "recall_5": 0.944,
+   "recall_10": 0.972,
+   "mrr": 0.787,
+   "ndcg_10": 0.817,
+   "ms": 24.0,
+   "recall_5_by_type": {
+    "why": 0.971,
+    "identifier": 1.0,
+    "howto": 0.7,
+    "multihop": 0.92,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 0.867,
+    "decision": 1.0
+   }
+  },
+  {
+   "name": "hybrid RRF · multilingual-e5-small",
+   "recall_1": 0.708,
+   "recall_5": 0.972,
+   "recall_10": 0.979,
+   "mrr": 0.822,
+   "ndcg_10": 0.84,
+   "ms": 25.6,
+   "recall_5_by_type": {
+    "why": 0.941,
+    "identifier": 1.0,
+    "howto": 0.9,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0,
+    "decision": 1.0
+   }
+  },
+  {
+   "name": "hybrid + source weights · multilingual-e5-small",
+   "recall_1": 0.917,
+   "recall_5": 0.979,
+   "recall_10": 0.986,
+   "mrr": 0.945,
+   "ndcg_10": 0.928,
+   "ms": 24.4,
+   "recall_5_by_type": {
+    "why": 0.971,
+    "identifier": 1.0,
+    "howto": 0.9,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0,
+    "decision": 1.0
+   }
+  },
+  {
+   "name": "hybrid + weights + recency · multilingual-e5-small",
+   "recall_1": 0.91,
+   "recall_5": 0.979,
+   "recall_10": 0.986,
+   "mrr": 0.944,
+   "ndcg_10": 0.927,
+   "ms": 25.4,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.8,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0,
+    "decision": 1.0
+   }
+  }
+ ],
+ "ingest": {
+  "true_emails": 415,
+  "stored": 415,
+  "missing": 0,
+  "alias_copies_merged": 3,
+  "resent_marked_duplicate": 1,
+  "thread_purity": 1.0,
+  "thread_completeness": 0.9922,
+  "true_threads": 46,
+  "stored_threads_for_real_mail": 48,
+  "noise_skipped": 40,
+  "noise_total": 157,
+  "quoted_only_in_truth": 5,
+  "emails_processed": 374,
+  "notes_per_processed_email": 1.0,
+  "routing_accuracy": 0.973,
+  "pages_per_storyline (≥2 emails)": 1.04,
+  "storylines": 27,
+  "pages": 25,
+  "page_purity": 0.948,
+  "storylines_with_own_page": "24/27",
+  "units": 322,
+  "units_retried_share": 0.0,
+  "fast_path_fallbacks": 0,
+  "section_versions": 324,
+  "drafts_rejected_or_replaced": 72,
+  "items_written": 624,
+  "items_pending_or_failed": 0,
+  "llm_calls": 537,
+  "llm_calls_by_status": {
+   "ok": 516,
+   "rejected": 21
+  }
+ }
+}

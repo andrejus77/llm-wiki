@@ -1,0 +1,120 @@
+Message-ID: <ewm_rotterdam.t1.m6.b0da490203@corp-europe.example>
+Date: Wed, 30 Sep 2026 16:40:00 +0200
+From: "Lukas Becker" <l.becker@corp-europe.example>
+To: "Hanna Schmidt" <h.schmidt@corp-europe.example>
+Cc: "Ruud Jansen" <r.jansen@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: Rotterdam DC EWM go-live: cutover and hypercare
+In-Reply-To: <ewm_rotterdam.t1.m5.5a24c73e32@corp-europe.example>
+References: <ewm_rotterdam.t1.m1.be61a86dd4@corp-europe.example>
+ <ewm_rotterdam.t1.m5.5a24c73e32@corp-europe.example>
+Thread-Index: Ad1Q6ZIdL+eLBoUDym4gsn7p8PRZLtA5pkiDNlPyqaI=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============3432484887314400954=="
+
+--===============3432484887314400954==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Transport is in production. I tested with a supervisor test user: /SCWM/MON o=
+pens and shows the open warehouse tasks per queue and per activity area. All =
+38 users can log on. Passwords are handed out in the shift briefing on Monday=
+ 5 Oct.
+
+Best regards,
+Lukas Becker
+SAP key user SD/LE
+Corp Europe B.V. | Rotterdam
+T +31 10 874 2389
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Lukas Becker <l.becker@corp-europe.example>
+Sent: Thursday, 24 September 2026 09:30
+To: Hanna Schmidt
+Subject: RE: Rotterdam DC EWM go-live: cutover and hypercare
+
+Status on users: 38 Rotterdam users are created (31 pickers, 5 supervisors, 2=
+ key users). The supervisor role does not contain the authorisation for /SCWM=
+/MON yet. It was missing from the template we copied from the Venlo test syst=
+em. I will fix it in a new transport and move it to production by Wednesday 3=
+0 Sep.
+
+Thanks,
+Lukas Becker
+SAP key user SD/LE
+Corp Europe B.V. | Rotterdam
+T +31 10 891 4501
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Hanna Schmidt <h.schmidt@corp-europe.example>
+Sent: Monday, 21 September 2026 09:10
+To: Ruud Jansen
+Subject: Rotterdam DC EWM go-live: cutover and hypercare
+
+Cutover plan for Rotterdam is final. Legacy WM is frozen on Friday 2 Oct at 1=
+8:00, physical count runs Saturday 3 Oct, and EWM go-live is Tuesday 6 Oct at=
+ 06:00 with the first shift. Hypercare runs until 30 Oct, with a daily 15-min=
+ute stand-up at 08:30 in the Rotterdam control room.
+
+For open warehouse tasks please use /SCWM/MON, not the old LT23 lists. Lukas,=
+ I need the supervisor and picker roles loaded by 30 Sep. Ruud, please confir=
+m that the Rotterdam shift leaders can attend the stand-up. The plan is attac=
+hed.
+
+Best regards,
+Hanna Schmidt
+EWM project lead (Rotterdam and Venlo rollouts)
+Corp Europe B.V. | Rotterdam
+T +31 10 396 7888
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============3432484887314400954==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Transport is in production. I tested with a supervisor test us=
+er: /SCWM/MON opens and shows the open warehouse tasks per queue and per acti=
+vity area. All 38 users can log on. Passwords are handed out in the shift bri=
+efing on Monday 5 Oct.</p><p>Best regards,<br>Lukas Becker<br>SAP key user SD=
+/LE<br>Corp Europe B.V. | Rotterdam<br>T +31 10 874 2389<br><br>This e-mail a=
+nd any attachments are confidential and intended solely for the addressee. If=
+ you received it in error, please delete it.</p><div style=3D'border:none;bor=
+der-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Lukas =
+Becker &lt;l.becker@corp-europe.example&gt;<br><b>Sent:</b> Thursday, 24 Sept=
+ember 2026 09:30<br><b>To:</b> Hanna Schmidt<br><b>Cc:</b> Ruud Jansen; DL CT=
+<br><b>Subject:</b> RE: Rotterdam DC EWM go-live: cutover and hypercare</p></=
+div><p>Status on users: 38 Rotterdam users are created (31 pickers, 5 supervi=
+sors, 2 key users). The supervisor role does not contain the authorisation fo=
+r /SCWM/MON yet. It was missing from the template we copied from the Venlo te=
+st system. I will fix it in a new transport and move it to production by Wedn=
+esday 30 Sep.</p><p>Thanks,<br>Lukas Becker<br>SAP key user SD/LE<br>Corp Eur=
+ope B.V. | Rotterdam<br>T +31 10 891 4501<br><br>This e-mail and any attachme=
+nts are confidential and intended solely for the addressee. If you received i=
+t in error, please delete it.</p><div style=3D'border:none;border-top:solid #=
+E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Hanna Schmidt &lt;h.s=
+chmidt@corp-europe.example&gt;<br><b>Sent:</b> Monday, 21 September 2026 09:1=
+0<br><b>To:</b> Ruud Jansen<br><b>Cc:</b> Sofie Peeters; Lukas Becker; DL CT<=
+br><b>Subject:</b> Rotterdam DC EWM go-live: cutover and hypercare</p></div><=
+p>Cutover plan for Rotterdam is final. Legacy WM is frozen on Friday 2 Oct at=
+ 18:00, physical count runs Saturday 3 Oct, and EWM go-live is Tuesday 6 Oct =
+at 06:00 with the first shift. Hypercare runs until 30 Oct, with a daily 15-m=
+inute stand-up at 08:30 in the Rotterdam control room.</p>
+<p>For open warehouse tasks please use /SCWM/MON, not the old LT23 lists. Luk=
+as, I need the supervisor and picker roles loaded by 30 Sep. Ruud, please con=
+firm that the Rotterdam shift leaders can attend the stand-up. The plan is at=
+tached.</p><p>Best regards,<br>Hanna Schmidt<br>EWM project lead (Rotterdam a=
+nd Venlo rollouts)<br>Corp Europe B.V. | Rotterdam<br>T +31 10 396 7888<br><b=
+r>This e-mail and any attachments are confidential and intended solely for th=
+e addressee. If you received it in error, please delete it.</p></body></html>
+
+--===============3432484887314400954==--

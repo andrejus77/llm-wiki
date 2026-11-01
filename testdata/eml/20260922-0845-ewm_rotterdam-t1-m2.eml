@@ -1,0 +1,87 @@
+Message-ID: <ewm_rotterdam.t1.m2.6801fb16f6@corp-europe.example>
+Date: Tue, 22 Sep 2026 08:45:00 +0200
+From: "Ruud Jansen" <r.jansen@corp-europe.example>
+To: "Hanna Schmidt" <h.schmidt@corp-europe.example>
+Cc: "Sofie Peeters" <s.peeters@corp-europe.example>,
+ "Lukas Becker" <l.becker@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: Rotterdam DC EWM go-live: cutover and hypercare
+In-Reply-To: <ewm_rotterdam.t1.m1.be61a86dd4@corp-europe.example>
+References: <ewm_rotterdam.t1.m1.be61a86dd4@corp-europe.example>
+Thread-Index: Ad1KXeN8L+eLBoUDym4gsn7p8PRZLq9ikp2R
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============7531949914533972890=="
+
+--===============7531949914533972890==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Shift leaders can attend, no problem. One question: what happens with wave pl=
+anning? The Dutch customs go-live is 17 Nov and the outbound waves will chang=
+e with it. Do we really want to start wave planning in EWM in week 1?
+
+Thanks,
+Ruud Jansen
+Logistics manager Rotterdam, owner of the customs migration project
+Corp Europe B.V. | Rotterdam
+T +31 10 893 3851
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Hanna Schmidt <h.schmidt@corp-europe.example>
+Sent: Monday, 21 September 2026 09:10
+To: Ruud Jansen
+Subject: Rotterdam DC EWM go-live: cutover and hypercare
+
+Cutover plan for Rotterdam is final. Legacy WM is frozen on Friday 2 Oct at 1=
+8:00, physical count runs Saturday 3 Oct, and EWM go-live is Tuesday 6 Oct at=
+ 06:00 with the first shift. Hypercare runs until 30 Oct, with a daily 15-min=
+ute stand-up at 08:30 in the Rotterdam control room.
+
+For open warehouse tasks please use /SCWM/MON, not the old LT23 lists. Lukas,=
+ I need the supervisor and picker roles loaded by 30 Sep. Ruud, please confir=
+m that the Rotterdam shift leaders can attend the stand-up. The plan is attac=
+hed.
+
+Best regards,
+Hanna Schmidt
+EWM project lead (Rotterdam and Venlo rollouts)
+Corp Europe B.V. | Rotterdam
+T +31 10 396 7888
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============7531949914533972890==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Shift leaders can attend, no problem. One question: what happe=
+ns with wave planning? The Dutch customs go-live is 17 Nov and the outbound w=
+aves will change with it. Do we really want to start wave planning in EWM in =
+week 1?</p><p>Thanks,<br>Ruud Jansen<br>Logistics manager Rotterdam, owner of=
+ the customs migration project<br>Corp Europe B.V. | Rotterdam<br>T +31 10 89=
+3 3851<br><br>This e-mail and any attachments are confidential and intended s=
+olely for the addressee. If you received it in error, please delete it.</p><d=
+iv style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm =
+0cm'><p><b>From:</b> Hanna Schmidt &lt;h.schmidt@corp-europe.example&gt;<br><=
+b>Sent:</b> Monday, 21 September 2026 09:10<br><b>To:</b> Ruud Jansen<br><b>C=
+c:</b> Sofie Peeters; Lukas Becker; DL CT<br><b>Subject:</b> Rotterdam DC EWM=
+ go-live: cutover and hypercare</p></div><p>Cutover plan for Rotterdam is fin=
+al. Legacy WM is frozen on Friday 2 Oct at 18:00, physical count runs Saturda=
+y 3 Oct, and EWM go-live is Tuesday 6 Oct at 06:00 with the first shift. Hype=
+rcare runs until 30 Oct, with a daily 15-minute stand-up at 08:30 in the Rott=
+erdam control room.</p>
+<p>For open warehouse tasks please use /SCWM/MON, not the old LT23 lists. Luk=
+as, I need the supervisor and picker roles loaded by 30 Sep. Ruud, please con=
+firm that the Rotterdam shift leaders can attend the stand-up. The plan is at=
+tached.</p><p>Best regards,<br>Hanna Schmidt<br>EWM project lead (Rotterdam a=
+nd Venlo rollouts)<br>Corp Europe B.V. | Rotterdam<br>T +31 10 396 7888<br><b=
+r>This e-mail and any attachments are confidential and intended solely for th=
+e addressee. If you received it in error, please delete it.</p></body></html>
+
+--===============7531949914533972890==--

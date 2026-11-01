@@ -1,0 +1,184 @@
+Message-ID: <tms_upgrade.t1.m2.96fb0d23ce@corp-europe.example>
+Date: Fri, 25 Sep 2026 14:20:00 +0200
+From: "Tom Hendriks" <t.hendriks@corp-europe.example>
+To: "Pieter Bakker" <p.bakker@corp-europe.example>
+Cc: "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: TMS upgrade to RouteWise 9.2 - weekend 24-25 Oct
+In-Reply-To: <tms_upgrade.t1.m1.350e499d4a@routewise.example>
+References: <tms_upgrade.t1.m1.350e499d4a@routewise.example>
+Thread-Index: Ad1M6C9Ct6ZV9pfzHSx1uUdiGzt62qYY9f5+
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============8113740190363616666=="
+
+--===============8113740190363616666==
+Content-Type: multipart/alternative;
+ boundary="===============0491591294680648807=="
+
+--===============0491591294680648807==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Pieter, RouteWise confirmed the 9.2 upgrade for 24-25 Oct. I drafted a test p=
+lan with 40 test cases, see attachment. Cases 1-25 are planner functions (ten=
+dering, rate calculation, multi-stop, carrier assignment), 26-35 are reports =
+incl. CO2, and 36-40 are the interfaces. Could you take the interface cases 3=
+6-40 and check that the booking bot still works against API v2? I will do the=
+ rest from 5 Oct when QA is upgraded. Target: first full run done by 7 Oct.
+
+Kind regards,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 238 5986
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: RouteWise Support <routewise@routewise.example>
+Sent: Wednesday, 23 September 2026 10:05
+To: Tom Hendriks
+Subject: TMS upgrade to RouteWise 9.2 - weekend 24-25 Oct
+
+Following our call yesterday, we confirm the upgrade of your production TMS f=
+rom 9.0 to 9.2 for the weekend of 24-25 October. The window runs from Saturda=
+y 06:00 to Sunday 14:00 CET. Your QA system RW-QA will be upgraded to 9.2.0.2=
+ by us on 5 October, so you have about three weeks for testing. Main changes:=
+ new multi-stop rate engine, extended CO2 reporting per shipment leg and a ne=
+w REST API version. Please note the old API v2 stays available, so existing i=
+ntegrations should keep working, but we recommend testing them. Can you send =
+us your test plan before the QA upgrade?
+
+Best regards,
+RouteWise Support
+TMS software vendor
+
+--===============0491591294680648807==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Pieter, RouteWise confirmed the 9.2 upgrade for 24-25 Oct. I d=
+rafted a test plan with 40 test cases, see attachment. Cases 1-25 are planner=
+ functions (tendering, rate calculation, multi-stop, carrier assignment), 26-=
+35 are reports incl. CO2, and 36-40 are the interfaces. Could you take the in=
+terface cases 36-40 and check that the booking bot still works against API v2=
+? I will do the rest from 5 Oct when QA is upgraded. Target: first full run d=
+one by 7 Oct.</p><p>Kind regards,<br>Tom Hendriks<br>Transport planner<br>Cor=
+p Europe B.V. | Rotterdam<br>T +31 10 238 5986<br><br>This e-mail and any att=
+achments are confidential and intended solely for the addressee. If you recei=
+ved it in error, please delete it.</p><div style=3D'border:none;border-top:so=
+lid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> RouteWise Suppor=
+t &lt;routewise@routewise.example&gt;<br><b>Sent:</b> Wednesday, 23 September=
+ 2026 10:05<br><b>To:</b> Tom Hendriks<br><b>Cc:</b> Pieter Bakker; DL CT<br>=
+<b>Subject:</b> TMS upgrade to RouteWise 9.2 - weekend 24-25 Oct</p></div><p>=
+Following our call yesterday, we confirm the upgrade of your production TMS f=
+rom 9.0 to 9.2 for the weekend of 24-25 October. The window runs from Saturda=
+y 06:00 to Sunday 14:00 CET. Your QA system RW-QA will be upgraded to 9.2.0.2=
+ by us on 5 October, so you have about three weeks for testing. Main changes:=
+ new multi-stop rate engine, extended CO2 reporting per shipment leg and a ne=
+w REST API version. Please note the old API v2 stays available, so existing i=
+ntegrations should keep working, but we recommend testing them. Can you send =
+us your test plan before the QA upgrade?</p><p>Best regards,<br>RouteWise Sup=
+port<br>TMS software vendor</p></body></html>
+
+--===============0491591294680648807==--
+
+--===============8113740190363616666==
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="TMS_92_testplan_v1.xlsx"
+MIME-Version: 1.0
+
+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
+AgAAhhEAAAAA
+
+--===============8113740190363616666==--

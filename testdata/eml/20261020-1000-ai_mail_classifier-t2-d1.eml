@@ -1,0 +1,43 @@
+Message-ID: <ai_mail_classifier.t2.d1.7c32cd4843@corp-europe.example>
+Date: Tue, 20 Oct 2026 10:00:00 +0200
+From: "Nina Meijer" <n.meijer@corp-europe.example>
+To: "Daan Visser" <d.visser@corp-europe.example>
+Cc: "Stefan Kovac" <s.kovac@corp-europe.example>,
+ "DL AI" <dl-ai@corp-europe.example>
+Subject: Data protection check for the mail sorting pilot
+Thread-Index: Ad1gaQFDcinbNXR2hlfUQYszlJZOzA==
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============8008104587006614229=="
+
+--===============8008104587006614229==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Daan, for the shadow run we need the data protection check. Mails are process=
+ed in the EU region of our Vertex AI tenant, nothing is stored by the provide=
+r and no training on our data. Can you confirm which form we need?
+
+Regards,
+Nina Meijer
+AI lead, Logistics Europe
+Corp Europe B.V. | Rotterdam
+T +31 10 700 1319
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============8008104587006614229==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Daan, for the shadow run we need the data protection check. Ma=
+ils are processed in the EU region of our Vertex AI tenant, nothing is stored=
+ by the provider and no training on our data. Can you confirm which form we n=
+eed?</p><p>Regards,<br>Nina Meijer<br>AI lead, Logistics Europe<br>Corp Europ=
+e B.V. | Rotterdam<br>T +31 10 700 1319<br><br>This e-mail and any attachment=
+s are confidential and intended solely for the addressee. If you received it =
+in error, please delete it.</p></body></html>
+
+--===============8008104587006614229==--

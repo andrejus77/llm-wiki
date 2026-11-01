@@ -1,0 +1,198 @@
+Message-ID: <n8n_eta_flow.t1.m5.95c58c5155@corp-europe.example>
+Date: Wed, 28 Oct 2026 11:00:00 +0100
+From: "Tom Hendriks" <t.hendriks@corp-europe.example>
+To: "Stefan Kovac" <s.kovac@corp-europe.example>
+Cc: "DL CT" <dl-ct@corp-europe.example>,
+ "Mark de Boer" <m.deboer@corp-europe.example>
+Subject: RE: Carrier ETA mails into RouteWise automatically
+In-Reply-To: <n8n_eta_flow.t1.m4.92091b12f1@corp-europe.example>
+References: <n8n_eta_flow.t1.m1.761d40da63@corp-europe.example>
+ <n8n_eta_flow.t1.m2.f33f8adb60@corp-europe.example>
+ <n8n_eta_flow.t1.m3.c43e53f247@corp-europe.example>
+ <n8n_eta_flow.t1.m4.92091b12f1@corp-europe.example>
+Thread-Index: Ad1mwxga+TkB1c/hnUN27GevLOq3sP6tyEa51irvlvoM/JzChipHx5hI
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============2937297597882156169=="
+
+--===============2937297597882156169==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Great result, that saves my planners about an hour a day. Let's switch Nordli=
+ne to production on 2 Nov and add Veltrans after two clean weeks. Mails with =
+two shipment numbers stay on the review list for now.
+
+Best regards,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 421 8933
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Stefan Kovac <s.kovac@corp-europe.example>
+Sent: Monday, 26 October 2026 16:20
+To: Tom Hendriks
+Subject: RE: Carrier ETA mails into RouteWise automatically
+
+Nordline test week done: 412 ETA mails, 398 written automatically, 14 sent to=
+ the review list (mostly mails with two shipment numbers). No wrong ETA writt=
+en. The old ETA is kept as a history entry in RouteWise.
+
+Day | Mails | Written | To review
+Tue 20 Oct | 81 | 78 | 3
+Wed 21 Oct | 86 | 84 | 2
+Thu 22 Oct | 79 | 76 | 3
+Fri 23 Oct | 88 | 85 | 3
+Mon 26 Oct | 78 | 75 | 3
+
+Best regards,
+Stefan Kovac
+Automation engineer (n8n, Python, LLM tooling)
+Corp Europe B.V. | Rotterdam
+T +31 10 523 2958
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Tom Hendriks <t.hendriks@corp-europe.example>
+Sent: Wednesday, 21 October 2026 09:40
+To: Stefan Kovac
+Subject: RE: Carrier ETA mails into RouteWise automatically
+
+Sounds good. Please start with Nordline only, their mails are the most consis=
+tent. We need the old ETA kept in the shipment history so we can see what cha=
+nged.
+
+Thanks,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 477 6023
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Stefan Kovac <s.kovac@corp-europe.example>
+Sent: Monday, 19 October 2026 14:05
+To: Tom Hendriks
+Subject: RE: Carrier ETA mails into RouteWise automatically
+
+Tom, the n8n flow polls the ETA mailbox every 10 minutes, extracts the shipme=
+nt number and the new ETA, and calls the RouteWise API to update the shipment=
+. For mails without a fixed layout an extraction step with the language model=
+ on our tenant reads the text. Anything below 0.8 confidence goes to a review=
+ list in Teams instead of being written.
+
+Regards,
+Stefan Kovac
+Automation engineer (n8n, Python, LLM tooling)
+Corp Europe B.V. | Rotterdam
+T +31 10 635 6419
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Tom Hendriks <t.hendriks@corp-europe.example>
+Sent: Monday, 19 October 2026 10:30
+To: DL CT
+Subject: Carrier ETA mails into RouteWise automatically
+
+Hi all, every day we copy around 120 ETA updates from carrier mails into Rout=
+eWise by hand, mostly from Nordline and Veltrans. Stefan offered to build a f=
+low that reads those mails and updates the shipments. Stefan, can you share h=
+ow it would work before we agree?
+
+Regards,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 684 9698
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============2937297597882156169==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Great result, that saves my planners about an hour a day. Let&=
+#x27;s switch Nordline to production on 2 Nov and add Veltrans after two clea=
+n weeks. Mails with two shipment numbers stay on the review list for now.</p>=
+<p>Best regards,<br>Tom Hendriks<br>Transport planner<br>Corp Europe B.V. | R=
+otterdam<br>T +31 10 421 8933<br><br>This e-mail and any attachments are conf=
+idential and intended solely for the addressee. If you received it in error, =
+please delete it.</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt=
+;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Stefan Kovac &lt;s.kovac@corp-eur=
+ope.example&gt;<br><b>Sent:</b> Monday, 26 October 2026 16:20<br><b>To:</b> T=
+om Hendriks<br><b>Cc:</b> DL CT<br><b>Subject:</b> RE: Carrier ETA mails into=
+ RouteWise automatically</p></div><p>Nordline test week done: 412 ETA mails, =
+398 written automatically, 14 sent to the review list (mostly mails with two =
+shipment numbers). No wrong ETA written. The old ETA is kept as a history ent=
+ry in RouteWise.</p><table style=3D'border-collapse:collapse;font-size:10pt'>=
+<tr><th style=3D'border:1px solid #999;padding:3px 6px'>Day</th><th style=3D'=
+border:1px solid #999;padding:3px 6px'>Mails</th><th style=3D'border:1px soli=
+d #999;padding:3px 6px'>Written</th><th style=3D'border:1px solid #999;paddin=
+g:3px 6px'>To review</th></tr><tr><td style=3D'border:1px solid #999;padding:=
+3px 6px'>Tue 20 Oct</td><td style=3D'border:1px solid #999;padding:3px 6px'>8=
+1</td><td style=3D'border:1px solid #999;padding:3px 6px'>78</td><td style=3D=
+'border:1px solid #999;padding:3px 6px'>3</td></tr><tr><td style=3D'border:1p=
+x solid #999;padding:3px 6px'>Wed 21 Oct</td><td style=3D'border:1px solid #9=
+99;padding:3px 6px'>86</td><td style=3D'border:1px solid #999;padding:3px 6px=
+'>84</td><td style=3D'border:1px solid #999;padding:3px 6px'>2</td></tr><tr><=
+td style=3D'border:1px solid #999;padding:3px 6px'>Thu 22 Oct</td><td style=
+=3D'border:1px solid #999;padding:3px 6px'>79</td><td style=3D'border:1px sol=
+id #999;padding:3px 6px'>76</td><td style=3D'border:1px solid #999;padding:3p=
+x 6px'>3</td></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>Fri=
+ 23 Oct</td><td style=3D'border:1px solid #999;padding:3px 6px'>88</td><td st=
+yle=3D'border:1px solid #999;padding:3px 6px'>85</td><td style=3D'border:1px =
+solid #999;padding:3px 6px'>3</td></tr><tr><td style=3D'border:1px solid #999=
+;padding:3px 6px'>Mon 26 Oct</td><td style=3D'border:1px solid #999;padding:3=
+px 6px'>78</td><td style=3D'border:1px solid #999;padding:3px 6px'>75</td><td=
+ style=3D'border:1px solid #999;padding:3px 6px'>3</td></tr></table><p>Best r=
+egards,<br>Stefan Kovac<br>Automation engineer (n8n, Python, LLM tooling)<br>=
+Corp Europe B.V. | Rotterdam<br>T +31 10 523 2958<br><br>This e-mail and any =
+attachments are confidential and intended solely for the addressee. If you re=
+ceived it in error, please delete it.</p><div style=3D'border:none;border-top=
+:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Tom Hendriks =
+&lt;t.hendriks@corp-europe.example&gt;<br><b>Sent:</b> Wednesday, 21 October =
+2026 09:40<br><b>To:</b> Stefan Kovac<br><b>Cc:</b> DL CT<br><b>Subject:</b> =
+RE: Carrier ETA mails into RouteWise automatically</p></div><p>Sounds good. P=
+lease start with Nordline only, their mails are the most consistent. We need =
+the old ETA kept in the shipment history so we can see what changed.</p><p>Th=
+anks,<br>Tom Hendriks<br>Transport planner<br>Corp Europe B.V. | Rotterdam<br=
+>T +31 10 477 6023<br><br>This e-mail and any attachments are confidential an=
+d intended solely for the addressee. If you received it in error, please dele=
+te it.</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.=
+0pt 0cm 0cm 0cm'><p><b>From:</b> Stefan Kovac &lt;s.kovac@corp-europe.example=
+&gt;<br><b>Sent:</b> Monday, 19 October 2026 14:05<br><b>To:</b> Tom Hendriks=
+<br><b>Cc:</b> DL CT<br><b>Subject:</b> RE: Carrier ETA mails into RouteWise =
+automatically</p></div><p>Tom, the n8n flow polls the ETA mailbox every 10 mi=
+nutes, extracts the shipment number and the new ETA, and calls the RouteWise =
+API to update the shipment. For mails without a fixed layout an extraction st=
+ep with the language model on our tenant reads the text. Anything below 0.8 c=
+onfidence goes to a review list in Teams instead of being written.</p><p>Rega=
+rds,<br>Stefan Kovac<br>Automation engineer (n8n, Python, LLM tooling)<br>Cor=
+p Europe B.V. | Rotterdam<br>T +31 10 635 6419<br><br>This e-mail and any att=
+achments are confidential and intended solely for the addressee. If you recei=
+ved it in error, please delete it.</p><div style=3D'border:none;border-top:so=
+lid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Tom Hendriks &lt=
+;t.hendriks@corp-europe.example&gt;<br><b>Sent:</b> Monday, 19 October 2026 1=
+0:30<br><b>To:</b> DL CT<br><b>Cc:</b> Stefan Kovac<br><b>Subject:</b> Carrie=
+r ETA mails into RouteWise automatically</p></div><p>Hi all, every day we cop=
+y around 120 ETA updates from carrier mails into RouteWise by hand, mostly fr=
+om Nordline and Veltrans. Stefan offered to build a flow that reads those mai=
+ls and updates the shipments. Stefan, can you share how it would work before =
+we agree?</p><p>Regards,<br>Tom Hendriks<br>Transport planner<br>Corp Europe =
+B.V. | Rotterdam<br>T +31 10 684 9698<br><br>This e-mail and any attachments =
+are confidential and intended solely for the addressee. If you received it in=
+ error, please delete it.</p></body></html>
+
+--===============2937297597882156169==--

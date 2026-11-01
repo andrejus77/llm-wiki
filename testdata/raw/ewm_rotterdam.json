@@ -1,0 +1,558 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "Rotterdam DC EWM go-live: cutover and hypercare",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-09-21 09:10",
+     "from": "hschmidt",
+     "to": [
+      "rjansen"
+     ],
+     "cc": [
+      "speeters",
+      "lbecker"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Cutover plan for Rotterdam is final. Legacy WM is frozen on Friday 2 Oct at 18:00, physical count runs Saturday 3 Oct, and EWM go-live is Tuesday 6 Oct at 06:00 with the first shift. Hypercare runs until 30 Oct, with a daily 15-minute stand-up at 08:30 in the Rotterdam control room.\n\nFor open warehouse tasks please use /SCWM/MON, not the old LT23 lists. Lukas, I need the supervisor and picker roles loaded by 30 Sep. Ruud, please confirm that the Rotterdam shift leaders can attend the stand-up. The plan is attached.",
+     "table": null,
+     "attachment": {
+      "kind": "pdf",
+      "name": "Rotterdam_EWM_cutover_plan_v3.pdf",
+      "text": "Rotterdam DC EWM cutover plan v3\nFri 2 Oct 18:00 - legacy WM freeze\nSat 3 Oct - physical count\nSun 4 Oct - master data check\nTue 6 Oct 06:00 - go-live, first shift\nDaily stand-up 08:30 during hypercare\nHypercare end: Fri 30 Oct"
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-09-22 08:45",
+     "from": "rjansen",
+     "to": [
+      "hschmidt"
+     ],
+     "cc": [
+      "speeters",
+      "lbecker"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Shift leaders can attend, no problem. One question: what happens with wave planning? The Dutch customs go-live is 17 Nov and the outbound waves will change with it. Do we really want to start wave planning in EWM in week 1?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-09-22 10:20",
+     "from": "hschmidt",
+     "to": [
+      "rjansen"
+     ],
+     "cc": [
+      "speeters",
+      "lbecker"
+     ],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Good point, and no. My proposal is to freeze wave planning until 17 Nov. Until then we release waves manually, with the same cut-off times as today (10:00 and 14:00).\n\nThe reason is the customs go-live. It changes the delivery block logic for export deliveries. If we change waves and customs checks at the same time and something breaks, we will not know which change caused it. So wave templates stay as they are, and we change them only after 17 Nov.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m4",
+     "date": "2026-09-23 14:05",
+     "from": "speeters",
+     "to": [
+      "hschmidt"
+     ],
+     "cc": [
+      "rjansen",
+      "lbecker"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Antwerp has been on EWM for a while, so I can lend two RF-trained pickers to Rotterdam for the first week (6-9 Oct). They know the RF menu and the confirmation flow, so they can coach the others. I would send them Monday 5 Oct for the dry run. Is that useful, or is there too little space in the control room?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-09-24 09:30",
+     "from": "lbecker",
+     "to": [
+      "hschmidt"
+     ],
+     "cc": [
+      "rjansen"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Status on users: 38 Rotterdam users are created (31 pickers, 5 supervisors, 2 key users). The supervisor role does not contain the authorisation for /SCWM/MON yet. It was missing from the template we copied from the Venlo test system. I will fix it in a new transport and move it to production by Wednesday 30 Sep.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m6",
+     "date": "2026-09-30 16:40",
+     "from": "lbecker",
+     "to": [
+      "hschmidt"
+     ],
+     "cc": [
+      "rjansen"
+     ],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "Transport is in production. I tested with a supervisor test user: /SCWM/MON opens and shows the open warehouse tasks per queue and per activity area. All 38 users can log on. Passwords are handed out in the shift briefing on Monday 5 Oct.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m7",
+     "date": "2026-10-02 17:50",
+     "from": "hschmidt",
+     "to": [
+      "rjansen"
+     ],
+     "cc": [
+      "speeters",
+      "lbecker"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Go/no-go done at 17:30: GO. Legacy WM is frozen as of 18:00. Open points are not blocking: the label printer in dock 4 is still being swapped, and we use dock 3 until it is done. Sofie, yes please, send your two pickers on Monday 5 Oct, they are welcome. Count starts tomorrow at 07:00.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m8",
+     "date": "2026-10-06 16:30",
+     "from": "hschmidt",
+     "to": [
+      "rjansen"
+     ],
+     "cc": [
+      "speeters",
+      "lbecker"
+     ],
+     "reply_to": "m7",
+     "forward": false,
+     "body": "Day 1 is done. Go-live at 06:00 went without a stop. Pick rate was 163 lines/hour, which is 88% of the baseline of 185 lines/hour. That is in line with the expectation for day 1. At 16:00 /SCWM/MON showed 214 open warehouse tasks, which is higher than I expected. Lukas, can you look at this? Screenshot attached.",
+     "table": null,
+     "attachment": null,
+     "screenshot": {
+      "title": "Warehouse Monitor /SCWM/MON - Whse RTD1",
+      "lines": [
+       "Time: 06.10.2026 16:00",
+       "Open warehouse tasks: 214",
+       "Queue REPL-B: 180 (not assigned)",
+       "Queue PICK-A: 21",
+       "Queue PICK-C: 13"
+      ]
+     }
+    },
+    {
+     "id": "m9",
+     "date": "2026-10-06 16:45",
+     "from": "rjansen",
+     "to": [
+      "lbecker"
+     ],
+     "cc": [
+      "hschmidt",
+      "speeters"
+     ],
+     "reply_to": "m8",
+     "forward": false,
+     "body": "Why are 214 tasks open? Are these real picks that are stuck?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m10",
+     "date": "2026-10-06 17:10",
+     "from": "lbecker",
+     "to": [
+      "rjansen"
+     ],
+     "cc": [
+      "hschmidt",
+      "speeters"
+     ],
+     "reply_to": "m9",
+     "forward": false,
+     "body": "No, they are not picks. 180 of the 214 are replenishment tasks in queue REPL-B. The queue was not assigned to any resource group, so nobody on RF received them. I have assigned REPL-B to the resource group RG_REPL and told the two Antwerp pickers to take it tomorrow. The remaining 34 are normal picks in progress. I will check /SCWM/MON again at 07:00.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m11",
+     "date": "2026-10-07 08:05",
+     "from": "rjansen",
+     "to": [
+      "lbecker"
+     ],
+     "cc": [
+      "hschmidt",
+      "speeters"
+     ],
+     "reply_to": "m10",
+     "forward": false,
+     "body": "OK, thanks for the quick fix.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m12",
+     "date": "2026-10-13 11:00",
+     "from": "hschmidt",
+     "to": [
+      "rjansen"
+     ],
+     "cc": [
+      "speeters",
+      "lbecker"
+     ],
+     "reply_to": "m8",
+     "forward": false,
+     "body": "Week 1 summary (Tue 6 Oct to Mon 12 Oct, five working days). The average pick rate reached 96% of the baseline of 185 lines/hour. The open tasks column shows /SCWM/MON at 17:00. Day 5 was the first day at full baseline.",
+     "table": {
+      "header": [
+       "Date",
+       "Lines/hour",
+       "% of baseline",
+       "Open WTs at 17:00"
+      ],
+      "rows": [
+       [
+        "Tue 06 Oct",
+        "163",
+        "88%",
+        "214"
+       ],
+       [
+        "Wed 07 Oct",
+        "174",
+        "94%",
+        "96"
+       ],
+       [
+        "Thu 08 Oct",
+        "181",
+        "98%",
+        "61"
+       ],
+       [
+        "Fri 09 Oct",
+        "185",
+        "100%",
+        "47"
+       ],
+       [
+        "Mon 12 Oct",
+        "185",
+        "100%",
+        "40"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m13",
+     "date": "2026-10-13 11:20",
+     "from": "speeters",
+     "to": [
+      "hschmidt"
+     ],
+     "cc": [
+      "rjansen",
+      "lbecker"
+     ],
+     "reply_to": "m12",
+     "forward": false,
+     "body": "Great numbers. One remark from my two pickers who just came back from Rotterdam: in zone B the wave creates picks that jump between aisles. The supervisors now re-sort the tasks by hand, which costs around 20 minutes per wave. Is that a known issue?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m14",
+     "date": "2026-10-13 13:15",
+     "from": "hschmidt",
+     "to": [
+      "speeters"
+     ],
+     "cc": [
+      "rjansen",
+      "lbecker"
+     ],
+     "reply_to": "m13",
+     "forward": false,
+     "body": "Yes, known. The zone B wave template is broken: the sort sequence is wrong. But we cannot touch templates because wave planning is frozen until 17 Nov. Lukas is looking at the fix in a separate thread. Until then the supervisors keep re-sorting manually, sorry for that.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m18",
+     "date": "2026-10-28 15:00",
+     "from": "hschmidt",
+     "to": [
+      "rjansen"
+     ],
+     "cc": [
+      "speeters",
+      "lbecker"
+     ],
+     "reply_to": "m14",
+     "forward": false,
+     "body": "Hypercare closes this Friday, 30 Oct. The last stand-up is Thursday 29 Oct at 08:30. After that, questions go to the normal SAP key user route (Lukas) and not to the project mailbox. Pick rates have been stable at 100% of baseline since 9 Oct. Open items for after hypercare: zone B wave template (after the customs go-live) and the dock 4 label printer.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  },
+  {
+   "key": "t2",
+   "subject": "Zone B wave template: fix timing",
+   "emails": [
+    {
+     "id": "m15",
+     "date": "2026-10-15 10:00",
+     "from": "lbecker",
+     "to": [
+      "hschmidt"
+     ],
+     "cc": [
+      "rjansen",
+      "speeters"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "I found the cause of the zone B problem. Wave template ZB_WAVE_01 sorts by storage bin ID instead of by pick path sequence, so tasks jump between aisles B03 and B11. The fix is a small change to the template and takes about 2 hours including a test in the quality system. I can do it today if we release the freeze for this one template.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m16",
+     "date": "2026-10-15 11:30",
+     "from": "hschmidt",
+     "to": [
+      "lbecker"
+     ],
+     "cc": [
+      "rjansen",
+      "speeters"
+     ],
+     "reply_to": "m15",
+     "forward": false,
+     "body": "Thanks, but I would keep the freeze. If customs go-live on 17 Nov leads to delivery block problems, I want to have changed nothing in the waves before. Decision: the zone B template fix is done in the week after the go-live (week of 23 Nov). Until then the supervisors re-sort manually, and Sofie's pickers can share the tip for the manual sort.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m17",
+     "date": "2026-10-16 08:20",
+     "from": "rjansen",
+     "to": [
+      "hschmidt"
+     ],
+     "cc": [
+      "lbecker",
+      "speeters"
+     ],
+     "reply_to": "m16",
+     "forward": false,
+     "body": "Agreed. 20 minutes per wave is acceptable for a few more weeks. Customs go-live has priority.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "Rotterdam EWM go-live was on Tuesday 6 Oct 2026 at 06:00, after the legacy WM freeze on Fri 2 Oct at 18:00.",
+   "emails": [
+    "m1",
+    "m7"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "Hypercare runs until 30 Oct, with a daily stand-up at 08:30 in the Rotterdam control room.",
+   "emails": [
+    "m1",
+    "m18"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "Wave planning is frozen until 17 Nov, the customs go-live date; waves are released manually at 10:00 and 14:00 meanwhile.",
+   "emails": [
+    "m2",
+    "m3"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "The reason for the freeze is that customs go-live changes the delivery block logic for export deliveries, and Hanna did not want to change waves and customs checks at the same time.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "The pick rate baseline is 185 lines/hour; day 1 reached 163 lines/hour (88%).",
+   "emails": [
+    "m8",
+    "m12"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "Week 1 (6-12 Oct) averaged 96% of baseline; 9 and 12 Oct reached 100%.",
+   "emails": [
+    "m12"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "On day 1 at 16:00, /SCWM/MON showed 214 open warehouse tasks, 180 of them in replenishment queue REPL-B.",
+   "emails": [
+    "m8",
+    "m10"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "Queue REPL-B was not assigned to a resource group, so nobody received the tasks on RF; Lukas assigned it to RG_REPL.",
+   "emails": [
+    "m10"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "The supervisor role lacked the /SCWM/MON authorisation because it was copied from the Venlo test system; Lukas fixed it with a transport in production by 30 Sep.",
+   "emails": [
+    "m5",
+    "m6"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "Sofie Peeters from Antwerp lent two RF-trained pickers to Rotterdam for 6-9 Oct, arriving 5 Oct for the dry run.",
+   "emails": [
+    "m4",
+    "m7"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "Zone B wave template ZB_WAVE_01 sorts by storage bin ID instead of pick path sequence, so tasks jump between aisles B03 and B11.",
+   "emails": [
+    "m15"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "The manual re-sort in zone B costs about 20 minutes per wave.",
+   "emails": [
+    "m13",
+    "m17"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "Hanna decided the zone B template fix is done in the week of 23 Nov, after the customs go-live, not earlier.",
+   "emails": [
+    "m16"
+   ]
+  },
+  {
+   "id": "F14",
+   "text": "38 Rotterdam users were created: 31 pickers, 5 supervisors, 2 key users.",
+   "emails": [
+    "m5"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "Why can't the zone B wave template be fixed right away?",
+   "a": "Wave planning is frozen until the 17 Nov customs go-live, to avoid changing waves and customs checks at the same time.",
+   "facts": [
+    "F3",
+    "F4",
+    "F13"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "What was the Rotterdam week 1 average pick rate versus baseline?",
+   "a": "96% of the 185 lines/hour baseline.",
+   "facts": [
+    "F5",
+    "F6"
+   ],
+   "type": "fact"
+  },
+  {
+   "q": "What caused the 214 open warehouse tasks on go-live day?",
+   "a": "180 were replenishment tasks in queue REPL-B, which was not assigned to a resource group; Lukas assigned it to RG_REPL.",
+   "facts": [
+    "F7",
+    "F8"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "Which transaction is used to see open warehouse tasks in EWM?",
+   "a": "/SCWM/MON",
+   "facts": [
+    "F2",
+    "F7"
+   ],
+   "type": "identifier"
+  },
+  {
+   "q": "When is the zone B template fix planned, and what is wrong with the template?",
+   "a": "Week of 23 Nov; template ZB_WAVE_01 sorts by storage bin ID instead of pick path sequence.",
+   "facts": [
+    "F11",
+    "F13"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "How much overtime budget was approved for the Rotterdam hypercare?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "ewm_rotterdam",
+  "title": "Rotterdam DC SAP EWM rollout",
+  "level": "project",
+  "korean": false
+ }
+}

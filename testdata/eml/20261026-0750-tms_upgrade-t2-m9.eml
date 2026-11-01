@@ -1,0 +1,50 @@
+Message-ID: <tms_upgrade.t2.m9.307e97d815@corp-europe.example>
+Date: Mon, 26 Oct 2026 07:50:00 +0100
+From: "Pieter Bakker" <p.bakker@corp-europe.example>
+To: "Tom Hendriks" <t.hendriks@corp-europe.example>
+Cc: "DL CT" <dl-ct@corp-europe.example>
+Subject: TMS 9.2 go-live - status message times off by one hour
+Thread-Index: Ad1lFjhYc17AZiJVylRn5W5qWB+1Zg==
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============5583141562724715178=="
+
+--===============5583141562724715178==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+The upgrade went through: smoke tests were green on Saturday evening, so we t=
+ook the go decision at 22:00 and the system was back on Sunday at 11:30. The =
+booking bot is running again. This morning I see one issue: the pickup and de=
+livery times in the status messages to the carriers are one hour off. I think=
+ it is related to the clock change on Sunday 25 Oct, as timestamps before 03:=
+00 are fine. Planners at Felixstowe noticed it first. Can you raise this with=
+ RouteWise as priority?
+
+Kind regards,
+Pieter Bakker
+RPA and IT developer
+Corp Europe B.V. | Rotterdam
+T +31 10 878 4475
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============5583141562724715178==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>The upgrade went through: smoke tests were green on Saturday e=
+vening, so we took the go decision at 22:00 and the system was back on Sunday=
+ at 11:30. The booking bot is running again. This morning I see one issue: th=
+e pickup and delivery times in the status messages to the carriers are one ho=
+ur off. I think it is related to the clock change on Sunday 25 Oct, as timest=
+amps before 03:00 are fine. Planners at Felixstowe noticed it first. Can you =
+raise this with RouteWise as priority?</p><p>Kind regards,<br>Pieter Bakker<b=
+r>RPA and IT developer<br>Corp Europe B.V. | Rotterdam<br>T +31 10 878 4475<b=
+r><br>This e-mail and any attachments are confidential and intended solely fo=
+r the addressee. If you received it in error, please delete it.</p></body></h=
+tml>
+
+--===============5583141562724715178==--

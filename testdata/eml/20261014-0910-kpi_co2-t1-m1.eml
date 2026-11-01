@@ -1,0 +1,58 @@
+Message-ID: <kpi_co2.t1.m1.418864d5e2@corp-europe.example>
+Date: Wed, 14 Oct 2026 09:10:00 +0200
+From: "Tom Hendriks" <t.hendriks@corp-europe.example>
+To: "RouteWise Support" <routewise@routewise.example>
+Cc: "Pieter Bakker" <p.bakker@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: TMS export: CO2 per shipment column from week 44
+Thread-Index: Ad1bqwalgXCdZkHoYH/fho3msmrKYA==
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============2935503530961216411=="
+
+--===============2935503530961216411==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+We want to show CO2 per shipment on the logistics KPI dashboard and would lik=
+e to get it straight from the TMS export instead of calculating it in Excel.
+
+Could you add a column co2_kg_per_shipment to the standard shipment export? O=
+ur scope:
+- road legs only, no sea or rail
+- well-to-wheel (WTW), calculated according to the GLEC framework
+- value in kg, per shipment
+
+Pieter Bakker (in cc) maintains the dashboard mapping and needs a sample file=
+ before he can change anything. Our target is that the column is in the expor=
+t from week 44. Is that realistic on your side?
+
+Kind regards,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 485 8385
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============2935503530961216411==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>We want to show CO2 per shipment on the logistics KPI dashboar=
+d and would like to get it straight from the TMS export instead of calculatin=
+g it in Excel.</p>
+<p>Could you add a column co2_kg_per_shipment to the standard shipment export=
+? Our scope:<br>- road legs only, no sea or rail<br>- well-to-wheel (WTW), ca=
+lculated according to the GLEC framework<br>- value in kg, per shipment</p>
+<p>Pieter Bakker (in cc) maintains the dashboard mapping and needs a sample f=
+ile before he can change anything. Our target is that the column is in the ex=
+port from week 44. Is that realistic on your side?</p><p>Kind regards,<br>Tom=
+ Hendriks<br>Transport planner<br>Corp Europe B.V. | Rotterdam<br>T +31 10 48=
+5 8385<br><br>This e-mail and any attachments are confidential and intended s=
+olely for the addressee. If you received it in error, please delete it.</p></=
+body></html>
+
+--===============2935503530961216411==--

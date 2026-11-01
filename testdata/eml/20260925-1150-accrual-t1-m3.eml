@@ -1,0 +1,126 @@
+Message-ID: <accrual.t1.m3.12db294625@corp-europe.example>
+Date: Fri, 25 Sep 2026 11:50:00 +0200
+From: "Ana Novak" <a.novak@corp-europe.example>
+To: "Tom Hendriks" <t.hendriks@corp-europe.example>
+Cc: "DL FIN" <dl-fin@corp-europe.example>
+Subject: RE: Weekly freight accrual - week 39
+In-Reply-To: <accrual.t1.m2.f659334bdd@corp-europe.example>
+References: <accrual.t1.m1.a78c327f43@corp-europe.example>
+ <accrual.t1.m2.f659334bdd@corp-europe.example>
+Thread-Index: Ad1M0zrXNfoXqNLsN5wJkCBqnkJsw/PoIggHWmn8Fzc=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============5238469333559148673=="
+
+--===============5238469333559148673==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Thanks Tom. I think the filter is the problem: for the accrual I need the act=
+ual delivery date (POD date) up to 25.09, not the planned date. Shipments del=
+ivered early with a planned date of 26-28.09 are missing, and those are costs=
+ of September.
+
+Could you rerun it with POD date? And yes, INV-48213 is cleared in FBL1N, so =
+that line will drop out on my side.
+
+Kind regards,
+Ana Novak
+Accounts payable analyst (Finance)
+Corp Europe B.V. | Rotterdam
+T +31 10 804 7912
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Tom Hendriks <t.hendriks@corp-europe.example>
+Sent: Friday, 25 September 2026 11:10
+To: Ana Novak
+Subject: RE: Weekly freight accrual - week 39
+
+Hi Ana, report attached. 39 shipments, total EUR 176,850. I filtered on plann=
+ed delivery date up to 25.09, as that is the default variant in the TMS.
+
+Example line: delivery 80412233 with Veltrans, Venlo, EUR 1,840. Note that IN=
+V-48213 for that one is already booked, so you should see it cleared in FBL1N.
+
+Best regards,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 428 3286
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Ana Novak <a.novak@corp-europe.example>
+Sent: Friday, 25 September 2026 09:30
+To: Tom Hendriks
+Subject: Weekly freight accrual - week 39
+
+Hi Tom, it's Friday, so time for the weekly freight accrual. This week it is =
+also the September close, so the figure will be booked for the month.
+
+Could you send me the TMS report of shipments delivered but not yet invoiced,=
+ cut-off today 25.09? I need it by 12:00 if possible. My routine is: take you=
+r report, match against open items in FBL1N, post the accrual with FB50 to G/=
+L 4711000, and set the reversal for the 1st of the month.
+
+Please include shipment number, delivery number, carrier, site and the agreed=
+ freight amount.
+
+Kind regards,
+Ana Novak
+Accounts payable analyst (Finance)
+Corp Europe B.V. | Rotterdam
+T +31 10 225 5506
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============5238469333559148673==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Thanks Tom. I think the filter is the problem: for the accrual=
+ I need the actual delivery date (POD date) up to 25.09, not the planned date=
+. Shipments delivered early with a planned date of 26-28.09 are missing, and =
+those are costs of September.</p>
+<p>Could you rerun it with POD date? And yes, INV-48213 is cleared in FBL1N, =
+so that line will drop out on my side.</p><p>Kind regards,<br>Ana Novak<br>Ac=
+counts payable analyst (Finance)<br>Corp Europe B.V. | Rotterdam<br>T +31 10 =
+804 7912<br><br>This e-mail and any attachments are confidential and intended=
+ solely for the addressee. If you received it in error, please delete it.</p>=
+<div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0c=
+m 0cm'><p><b>From:</b> Tom Hendriks &lt;t.hendriks@corp-europe.example&gt;<br=
+><b>Sent:</b> Friday, 25 September 2026 11:10<br><b>To:</b> Ana Novak<br><b>C=
+c:</b> DL FIN<br><b>Subject:</b> RE: Weekly freight accrual - week 39</p></di=
+v><p>Hi Ana, report attached. 39 shipments, total EUR 176,850. I filtered on =
+planned delivery date up to 25.09, as that is the default variant in the TMS.=
+</p>
+<p>Example line: delivery 80412233 with Veltrans, Venlo, EUR 1,840. Note that=
+ INV-48213 for that one is already booked, so you should see it cleared in FB=
+L1N.</p><p>Best regards,<br>Tom Hendriks<br>Transport planner<br>Corp Europe =
+B.V. | Rotterdam<br>T +31 10 428 3286<br><br>This e-mail and any attachments =
+are confidential and intended solely for the addressee. If you received it in=
+ error, please delete it.</p><div style=3D'border:none;border-top:solid #E1E1=
+E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Ana Novak &lt;a.novak@cor=
+p-europe.example&gt;<br><b>Sent:</b> Friday, 25 September 2026 09:30<br><b>To=
+:</b> Tom Hendriks<br><b>Cc:</b> DL FIN<br><b>Subject:</b> Weekly freight acc=
+rual - week 39</p></div><p>Hi Tom, it&#x27;s Friday, so time for the weekly f=
+reight accrual. This week it is also the September close, so the figure will =
+be booked for the month.</p>
+<p>Could you send me the TMS report of shipments delivered but not yet invoic=
+ed, cut-off today 25.09? I need it by 12:00 if possible. My routine is: take =
+your report, match against open items in FBL1N, post the accrual with FB50 to=
+ G/L 4711000, and set the reversal for the 1st of the month.</p>
+<p>Please include shipment number, delivery number, carrier, site and the agr=
+eed freight amount.</p><p>Kind regards,<br>Ana Novak<br>Accounts payable anal=
+yst (Finance)<br>Corp Europe B.V. | Rotterdam<br>T +31 10 225 5506<br><br>Thi=
+s e-mail and any attachments are confidential and intended solely for the add=
+ressee. If you received it in error, please delete it.</p></body></html>
+
+--===============5238469333559148673==--

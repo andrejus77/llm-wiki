@@ -1,0 +1,82 @@
+Message-ID: <venlo_cutover.t2.m9.07f87432f8@corp-europe.example>
+Date: Tue, 27 Oct 2026 15:30:00 +0100
+From: "Hanna Schmidt" <h.schmidt@corp-europe.example>
+To: "Jeroen de Vries" <j.devries@corp-europe.example>
+Cc: "Mark de Boer" <m.deboer@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: FW: Rotterdam EWM lessons learned
+Thread-Index: Ad1mH6Wk/G8mwnMcYWvdIetkCp/pkw==
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============0623765040490146269=="
+
+--===============0623765040490146269==
+Content-Type: multipart/alternative;
+ boundary="===============5869264254193770562=="
+
+--===============5869264254193770562==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Forwarding the lessons learned from the Rotterdam go-live that Ruud Jansen sh=
+ared with me. Please read it before the workshop on 5 Nov.
+
+The points that matter most for Venlo: 38 of about 4,100 bins had stock diffe=
+rences after migration, the one-day handheld training was too short, and the =
+cut-over took 31 hours instead of the 24 planned. I want to use these in the =
+Venlo plan.
+
+Regards,
+Hanna Schmidt
+EWM project lead (Rotterdam and Venlo rollouts)
+Corp Europe B.V. | Rotterdam
+T +31 10 814 6119
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============5869264254193770562==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Forwarding the lessons learned from the Rotterdam go-live that=
+ Ruud Jansen shared with me. Please read it before the workshop on 5 Nov.</p>
+<p>The points that matter most for Venlo: 38 of about 4,100 bins had stock di=
+fferences after migration, the one-day handheld training was too short, and t=
+he cut-over took 31 hours instead of the 24 planned. I want to use these in t=
+he Venlo plan.</p><p>Regards,<br>Hanna Schmidt<br>EWM project lead (Rotterdam=
+ and Venlo rollouts)<br>Corp Europe B.V. | Rotterdam<br>T +31 10 814 6119<br>=
+<br>This e-mail and any attachments are confidential and intended solely for =
+the addressee. If you received it in error, please delete it.</p></body></htm=
+l>
+
+--===============5869264254193770562==--
+
+--===============0623765040490146269==
+Content-Type: application/pdf
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Rotterdam_EWM_lessons_learned.pdf"
+MIME-Version: 1.0
+
+JVBERi0xLjQKMSAwIG9iago8PCAvVHlwZSAvQ2F0YWxvZyAvUGFnZXMgMiAwIFIgPj4KZW5kb2Jq
+CjIgMCBvYmoKPDwgL1R5cGUgL1BhZ2VzIC9LaWRzIFszIDAgUl0gL0NvdW50IDEgPj4KZW5kb2Jq
+CjMgMCBvYmoKPDwgL1R5cGUgL1BhZ2UgL1BhcmVudCAyIDAgUiAvTWVkaWFCb3ggWzAgMCA1OTUg
+ODQyXSAvQ29udGVudHMgNCAwIFIgL1Jlc291cmNlcyA8PCAvRm9udCA8PCAvRjEgNSAwIFIgPj4g
+Pj4gPj4KZW5kb2JqCjQgMCBvYmoKPDwgL0xlbmd0aCA1ODMgPj4Kc3RyZWFtCkJUIC9GMSAxMCBU
+ZiA1MCA4MDAgVGQgMTMgVEwKKFJvdHRlcmRhbSBFV00gZ28tbGl2ZSAtIGxlc3NvbnMgbGVhcm5l
+ZCkgJwooKSAnCigxLiBEYXRhIG1pZ3JhdGlvbjogMzggb2YgYWJvdXQgNCwxMDAgYmlucyBzaG93
+ZWQgc3RvY2sgZGlmZmVyZW5jZXMgYWZ0ZXIgdGhlIGZpbmFsIGxvYWQuKSAnCihDYXVzZTogb3Bl
+biB0cmFuc2ZlciBvcmRlcnMgbm90IGNsb3NlZCBiZWZvcmUgdGhlIGV4dHJhY3QuIEFjdGlvbjog
+Y2xvc2UgYWxsIG9wZW4gVE9zIGFuZCBydW4pICcKKGEgY291bnQgMiBkYXlzIGJlZm9yZSBjdXQt
+b3Zlci4pICcKKDIuIFRyYWluaW5nOiBvbmUgZGF5IG9mIGhhbmRoZWxkIFwoSEhUXCkgdHJhaW5p
+bmcgd2FzIHRvbyBzaG9ydC4gVHdvIGRheXMgcmVjb21tZW5kZWQuKSAnCigzLiBDdXQtb3Zlcjog
+cGxhbm5lZCAyNCBob3VycywgYWN0dWFsIDMxIGhvdXJzLiBMYWJlbCBwcmludGVyIHF1ZXVlcyBo
+YWQgdG8gYmUgcmVjb25maWd1cmVkIG9uKSAnCih0aGUgU3VuZGF5LikgJwooNC4gSHlwZXJjYXJl
+OiAyIHdlZWtzIHdpdGggMyBwZW9wbGUgb24gdGhlIGZsb29yIHdhcyBqdXN0IGVub3VnaC4pICcK
+RVQKZW5kc3RyZWFtCmVuZG9iago1IDAgb2JqCjw8IC9UeXBlIC9Gb250IC9TdWJ0eXBlIC9UeXBl
+MSAvQmFzZUZvbnQgL0hlbHZldGljYSA+PgplbmRvYmoKeHJlZgowIDYKMDAwMDAwMDAwMCA2NTUz
+NSBmIAowMDAwMDAwMDA5IDAwMDAwIG4gCjAwMDAwMDAwNTggMDAwMDAgbiAKMDAwMDAwMDExNSAw
+MDAwMCBuIAowMDAwMDAwMjQxIDAwMDAwIG4gCjAwMDAwMDA4NzUgMDAwMDAgbiAKdHJhaWxlcgo8
+PCAvU2l6ZSA2IC9Sb290IDEgMCBSID4+CnN0YXJ0eHJlZgo5NDUKJSVFT0YK
+
+--===============0623765040490146269==--

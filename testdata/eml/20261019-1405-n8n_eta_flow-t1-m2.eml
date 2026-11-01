@@ -1,0 +1,79 @@
+Message-ID: <n8n_eta_flow.t1.m2.f33f8adb60@corp-europe.example>
+Date: Mon, 19 Oct 2026 14:05:00 +0200
+From: "Stefan Kovac" <s.kovac@corp-europe.example>
+To: "Tom Hendriks" <t.hendriks@corp-europe.example>
+Cc: "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: Carrier ETA mails into RouteWise automatically
+In-Reply-To: <n8n_eta_flow.t1.m1.761d40da63@corp-europe.example>
+References: <n8n_eta_flow.t1.m1.761d40da63@corp-europe.example>
+Thread-Index: Ad1fwhC7+TkB1c/hnUN27GevLOq3sClBEFqz
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============4681719233578878722=="
+
+--===============4681719233578878722==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Tom, the n8n flow polls the ETA mailbox every 10 minutes, extracts the shipme=
+nt number and the new ETA, and calls the RouteWise API to update the shipment=
+. For mails without a fixed layout an extraction step with the language model=
+ on our tenant reads the text. Anything below 0.8 confidence goes to a review=
+ list in Teams instead of being written.
+
+Regards,
+Stefan Kovac
+Automation engineer (n8n, Python, LLM tooling)
+Corp Europe B.V. | Rotterdam
+T +31 10 635 6419
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Tom Hendriks <t.hendriks@corp-europe.example>
+Sent: Monday, 19 October 2026 10:30
+To: DL CT
+Subject: Carrier ETA mails into RouteWise automatically
+
+Hi all, every day we copy around 120 ETA updates from carrier mails into Rout=
+eWise by hand, mostly from Nordline and Veltrans. Stefan offered to build a f=
+low that reads those mails and updates the shipments. Stefan, can you share h=
+ow it would work before we agree?
+
+Regards,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 684 9698
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============4681719233578878722==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Tom, the n8n flow polls the ETA mailbox every 10 minutes, extr=
+acts the shipment number and the new ETA, and calls the RouteWise API to upda=
+te the shipment. For mails without a fixed layout an extraction step with the=
+ language model on our tenant reads the text. Anything below 0.8 confidence g=
+oes to a review list in Teams instead of being written.</p><p>Regards,<br>Ste=
+fan Kovac<br>Automation engineer (n8n, Python, LLM tooling)<br>Corp Europe B.=
+V. | Rotterdam<br>T +31 10 635 6419<br><br>This e-mail and any attachments ar=
+e confidential and intended solely for the addressee. If you received it in e=
+rror, please delete it.</p><div style=3D'border:none;border-top:solid #E1E1E1=
+ 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Tom Hendriks &lt;t.hendriks=
+@corp-europe.example&gt;<br><b>Sent:</b> Monday, 19 October 2026 10:30<br><b>=
+To:</b> DL CT<br><b>Cc:</b> Stefan Kovac<br><b>Subject:</b> Carrier ETA mails=
+ into RouteWise automatically</p></div><p>Hi all, every day we copy around 12=
+0 ETA updates from carrier mails into RouteWise by hand, mostly from Nordline=
+ and Veltrans. Stefan offered to build a flow that reads those mails and upda=
+tes the shipments. Stefan, can you share how it would work before we agree?</=
+p><p>Regards,<br>Tom Hendriks<br>Transport planner<br>Corp Europe B.V. | Rott=
+erdam<br>T +31 10 684 9698<br><br>This e-mail and any attachments are confide=
+ntial and intended solely for the addressee. If you received it in error, ple=
+ase delete it.</p></body></html>
+
+--===============4681719233578878722==--

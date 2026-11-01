@@ -1,0 +1,110 @@
+Message-ID: <tms_upgrade.t1.m5.62e8e8aa56@routewise.example>
+Date: Mon, 12 Oct 2026 11:15:00 +0200
+From: "RouteWise Support" <routewise@routewise.example>
+To: "Tom Hendriks" <t.hendriks@corp-europe.example>
+Cc: "Pieter Bakker" <p.bakker@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: Re: TMS upgrade to RouteWise 9.2 - weekend 24-25 Oct
+In-Reply-To: <tms_upgrade.t1.m4.1b885c6718@corp-europe.example>
+References: <tms_upgrade.t1.m1.350e499d4a@routewise.example>
+ <tms_upgrade.t1.m4.1b885c6718@corp-europe.example>
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============0653770844180145675=="
+
+--===============0653770844180145675==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Thanks for the clear description. RW-48213 is confirmed: the stop surcharge w=
+as indeed applied from the first drop instead of from the second. Fix is incl=
+uded in build 9.2.0.3. RW-48217: the CO2 value is calculated, but not written=
+ to legs 2 and 3 because of a mapping bug in the reporting table. Same build =
+fixes it. We will install 9.2.0.3 on RW-QA on 16 October. Production will get=
+ 9.2.0.3 directly during the weekend upgrade, so no extra downtime.
+
+Best regards,
+RouteWise Support
+TMS software vendor
+
+-----Original Message-----
+From: Tom Hendriks <t.hendriks@corp-europe.example>
+Sent: Thursday, 08 October 2026 09:30
+To: RouteWise Support
+Subject: RE: TMS upgrade to RouteWise 9.2 - weekend 24-25 Oct
+
+We finished the first test run on RW-QA. 38 of 40 cases are fine, but we foun=
+d two defects. 1) Multi-stop rate calculation (TC-017): a 3-drop route is cal=
+culated at EUR 612.40 where our contract tariff gives EUR 584.90. It looks li=
+ke the stop surcharge is applied to the first drop as well. 2) CO2 field (TC-=
+033): empty for the second and third leg of multi-leg shipments. We logged th=
+em as tickets RW-48213 (rate) and RW-48217 (CO2). Please tell us if a fix is =
+possible before 24 October, otherwise we need to discuss go or no-go.
+
+Thanks,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 579 9850
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: RouteWise Support <routewise@routewise.example>
+Sent: Wednesday, 23 September 2026 10:05
+To: Tom Hendriks
+Subject: TMS upgrade to RouteWise 9.2 - weekend 24-25 Oct
+
+Following our call yesterday, we confirm the upgrade of your production TMS f=
+rom 9.0 to 9.2 for the weekend of 24-25 October. The window runs from Saturda=
+y 06:00 to Sunday 14:00 CET. Your QA system RW-QA will be upgraded to 9.2.0.2=
+ by us on 5 October, so you have about three weeks for testing. Main changes:=
+ new multi-stop rate engine, extended CO2 reporting per shipment leg and a ne=
+w REST API version. Please note the old API v2 stays available, so existing i=
+ntegrations should keep working, but we recommend testing them. Can you send =
+us your test plan before the QA upgrade?
+
+Best regards,
+RouteWise Support
+TMS software vendor
+
+--===============0653770844180145675==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Thanks for the clear description. RW-48213 is confirmed: the s=
+top surcharge was indeed applied from the first drop instead of from the seco=
+nd. Fix is included in build 9.2.0.3. RW-48217: the CO2 value is calculated, =
+but not written to legs 2 and 3 because of a mapping bug in the reporting tab=
+le. Same build fixes it. We will install 9.2.0.3 on RW-QA on 16 October. Prod=
+uction will get 9.2.0.3 directly during the weekend upgrade, so no extra down=
+time.</p><p>Best regards,<br>RouteWise Support<br>TMS software vendor</p><div=
+ class=3D'gmail_quote'>On Thu, 08 Oct 2026 at 09:30, Tom Hendriks &lt;t.hendr=
+iks@corp-europe.example&gt; wrote:<br><p>We finished the first test run on RW=
+-QA. 38 of 40 cases are fine, but we found two defects. 1) Multi-stop rate ca=
+lculation (TC-017): a 3-drop route is calculated at EUR 612.40 where our cont=
+ract tariff gives EUR 584.90. It looks like the stop surcharge is applied to =
+the first drop as well. 2) CO2 field (TC-033): empty for the second and third=
+ leg of multi-leg shipments. We logged them as tickets RW-48213 (rate) and RW=
+-48217 (CO2). Please tell us if a fix is possible before 24 October, otherwis=
+e we need to discuss go or no-go.</p><p>Thanks,<br>Tom Hendriks<br>Transport =
+planner<br>Corp Europe B.V. | Rotterdam<br>T +31 10 579 9850<br><br>This e-ma=
+il and any attachments are confidential and intended solely for the addressee=
+. If you received it in error, please delete it.</p><div style=3D'border:none=
+;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Ro=
+uteWise Support &lt;routewise@routewise.example&gt;<br><b>Sent:</b> Wednesday=
+, 23 September 2026 10:05<br><b>To:</b> Tom Hendriks<br><b>Cc:</b> Pieter Bak=
+ker; DL CT<br><b>Subject:</b> TMS upgrade to RouteWise 9.2 - weekend 24-25 Oc=
+t</p></div><p>Following our call yesterday, we confirm the upgrade of your pr=
+oduction TMS from 9.0 to 9.2 for the weekend of 24-25 October. The window run=
+s from Saturday 06:00 to Sunday 14:00 CET. Your QA system RW-QA will be upgra=
+ded to 9.2.0.2 by us on 5 October, so you have about three weeks for testing.=
+ Main changes: new multi-stop rate engine, extended CO2 reporting per shipmen=
+t leg and a new REST API version. Please note the old API v2 stays available,=
+ so existing integrations should keep working, but we recommend testing them.=
+ Can you send us your test plan before the QA upgrade?</p><p>Best regards,<br=
+>RouteWise Support<br>TMS software vendor</p></div></body></html>
+
+--===============0653770844180145675==--

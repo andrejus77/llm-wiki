@@ -1,0 +1,44 @@
+Message-ID: <n8n_eta_flow.t1.m1.761d40da63@corp-europe.example>
+Date: Mon, 19 Oct 2026 10:30:00 +0200
+From: "Tom Hendriks" <t.hendriks@corp-europe.example>
+To: "DL CT" <dl-ct@corp-europe.example>
+Cc: "Stefan Kovac" <s.kovac@corp-europe.example>
+Subject: Carrier ETA mails into RouteWise automatically
+Thread-Index: Ad1fpAe7+TkB1c/hnUN27GevLOq3sA==
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============1048747430239792204=="
+
+--===============1048747430239792204==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi all, every day we copy around 120 ETA updates from carrier mails into Rout=
+eWise by hand, mostly from Nordline and Veltrans. Stefan offered to build a f=
+low that reads those mails and updates the shipments. Stefan, can you share h=
+ow it would work before we agree?
+
+Regards,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 684 9698
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============1048747430239792204==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Hi all, every day we copy around 120 ETA updates from carrier =
+mails into RouteWise by hand, mostly from Nordline and Veltrans. Stefan offer=
+ed to build a flow that reads those mails and updates the shipments. Stefan, =
+can you share how it would work before we agree?</p><p>Regards,<br>Tom Hendri=
+ks<br>Transport planner<br>Corp Europe B.V. | Rotterdam<br>T +31 10 684 9698<=
+br><br>This e-mail and any attachments are confidential and intended solely f=
+or the addressee. If you received it in error, please delete it.</p></body></=
+html>
+
+--===============1048747430239792204==--

@@ -1,0 +1,49 @@
+{
+ "run": {
+  "units": 304,
+  "unit_errors": 0,
+  "emails": 354,
+  "pages_edited": 91,
+  "edit_rejected": 0,
+  "new_pages": 25,
+  "windows": 6,
+  "fast": 270,
+  "staged": 34,
+  "learned_rules": 2,
+  "seconds": 1384.0
+ },
+ "ingest": {
+  "true_emails": 368,
+  "stored": 368,
+  "missing": 0,
+  "alias_copies_merged": 3,
+  "resent_marked_duplicate": 1,
+  "thread_purity": 1.0,
+  "thread_completeness": 0.9917,
+  "true_threads": 43,
+  "stored_threads_for_real_mail": 45,
+  "noise_skipped": 13,
+  "noise_total": 125,
+  "quoted_only_in_truth": 5,
+  "emails_processed": 354,
+  "notes_per_processed_email": 1.0,
+  "routing_accuracy": 0.955,
+  "pages_per_storyline (\u22652 emails)": 1.0,
+  "storylines": 25,
+  "pages": 24,
+  "page_purity": 0.98,
+  "storylines_with_own_page": "24/25",
+  "units": 304,
+  "units_retried_share": 0.0,
+  "fast_path_fallbacks": 0,
+  "section_versions": 342,
+  "drafts_rejected_or_replaced": 67,
+  "items_written": 635,
+  "items_pending_or_failed": 0,
+  "llm_calls": 644,
+  "llm_calls_by_status": {
+   "ok": 618,
+   "rejected": 26
+  }
+ }
+}

@@ -1,0 +1,450 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "Brightwater Retail - onboarding and master data",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-09-21 09:10",
+     "from": "elaurent",
+     "to": [
+      "dvisser"
+     ],
+     "cc": [
+      "lbecker",
+      "thendriks"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Brightwater Retail signed last week and wants to start shipping on Monday 12 October. They have 3 delivery points, two in the Netherlands and one in Belgium. Everything ships from Venlo.\n\nDaan, can you create the customer master once I have the data? I will ask Brightwater for addresses, VAT numbers and receiving hours this week. Lukas, I would like you to run a test order through the whole chain before go-live (order, delivery, shipment). Tom, please keep an eye on transport capacity for the first weeks, we expect about 6 deliveries per week at the start.\n\nLet me know if you need anything else from my side.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-09-22 10:20",
+     "from": "elaurent",
+     "to": [
+      "brightwater"
+     ],
+     "cc": [
+      "dvisser"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Thank you for the signed contract. To set up your account in our system we need the following for the sold-to party and for each of the 3 delivery points: full delivery address, contact person with phone number, VAT number, and the unloading times of each location.\n\nPlease send this by Thursday 24 September if possible, so that our master data team can create everything before the test deliveries start. Daan Visser from master data is in copy and will be your contact for any questions on the data.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-09-24 14:05",
+     "from": "brightwater",
+     "to": [
+      "elaurent"
+     ],
+     "cc": [
+      "dvisser"
+     ],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Please find our delivery points below. All three locations can only receive goods between 06:00 and 14:00, Monday to Friday. The dock is closed outside these hours. Our VAT number and the contact persons are in the attached sheet.\n\nPlease note that Zaandam is a store hub and has only one unloading dock, so trucks are unloaded in order of arrival.",
+     "table": {
+      "header": [
+       "Location",
+       "Country",
+       "Unloading window"
+      ],
+      "rows": [
+       [
+        "DC Mechelen",
+        "BE",
+        "06:00-14:00"
+       ],
+       [
+        "DC Tilburg",
+        "NL",
+        "06:00-14:00"
+       ],
+       [
+        "Store hub Zaandam",
+        "NL",
+        "06:00-14:00"
+       ]
+      ]
+     },
+     "attachment": {
+      "kind": "xlsx",
+      "name": "Brightwater_delivery_points.xlsx",
+      "rows": [
+       [
+        "Location",
+        "Country",
+        "Contact",
+        "Unloading window"
+       ],
+       [
+        "DC Mechelen",
+        "BE",
+        "Receiving desk",
+        "06:00-14:00"
+       ],
+       [
+        "DC Tilburg",
+        "NL",
+        "Receiving desk",
+        "06:00-14:00"
+       ],
+       [
+        "Store hub Zaandam",
+        "NL",
+        "Hub manager",
+        "06:00-14:00"
+       ]
+      ]
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m4",
+     "date": "2026-09-25 11:30",
+     "from": "dvisser",
+     "to": [
+      "elaurent"
+     ],
+     "cc": [
+      "lbecker",
+      "thendriks"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Master data for Brightwater is created. Sold-to is 100845 (created in XD01). The three delivery points are ship-to 100846 (DC Mechelen), 100847 (DC Tilburg) and 100848 (Store hub Zaandam). Shipping condition is 02 (standard) on all of them, as agreed in the contract. The unloading times 06:00-14:00 are maintained in the unloading points of each ship-to.\n\nScreenshot of the sold-to below. Lukas, you can start your test order now.",
+     "table": null,
+     "attachment": null,
+     "screenshot": {
+      "title": "XD03 Display Customer: Sales Area Data",
+      "lines": [
+       "Customer: 100845  Brightwater Retail",
+       "Sales org 1000 / Dist. chnl 10 / Div 00",
+       "Shipping Cond.: 02 Standard",
+       "Delivering plant: Venlo",
+       "Partner functions: SP, SH 100846 / 100847 / 100848"
+      ]
+     }
+    },
+    {
+     "id": "m5",
+     "date": "2026-09-28 09:40",
+     "from": "lbecker",
+     "to": [
+      "dvisser"
+     ],
+     "cc": [
+      "elaurent"
+     ],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "I ran the test order for all three ship-tos. Delivery 80412377 (to Mechelen) came out fine: shipping condition 02, route found, the unloading window 06:00-14:00 is visible on the delivery.\n\nOne problem: for 100848 (Zaandam) the unloading times are empty, so the system falls back on the default and the delivery shows no window at all. I think the unloading point was created but the hours were not filled in. Can you check?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m6",
+     "date": "2026-09-29 08:50",
+     "from": "dvisser",
+     "to": [
+      "lbecker"
+     ],
+     "cc": [
+      "elaurent"
+     ],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "You are right, I forgot to save the hours on the unloading point of 100848. Fixed now, 06:00-14:00 Monday to Friday like the other two. Can you run the Zaandam test once more?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m7",
+     "date": "2026-10-02 15:10",
+     "from": "thendriks",
+     "to": [
+      "elaurent"
+     ],
+     "cc": [
+      "lbecker",
+      "dvisser"
+     ],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Question for planning the first week. I see the window 06:00-14:00 on the ship-tos. Is this a delivery slot that we can miss by an hour or two, or a hard limit? For Zaandam from Venlo I would need the truck to leave around 03:30-04:00 to be on the dock at 06:00 at the earliest. If it is a soft window I can plan normal daytime departures.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m8",
+     "date": "2026-10-05 10:00",
+     "from": "elaurent",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "lbecker",
+      "dvisser"
+     ],
+     "reply_to": "m7",
+     "forward": false,
+     "body": "I checked with Brightwater. It is a hard limit: the dock closes at 14:00 and there is nobody to unload after that. A truck arriving after 14:00 is refused and has to come back the next working day. So please plan departures so we are on the dock before 14:00, with some buffer. Arriving before 06:00 is not useful either, the truck would just wait outside.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  },
+  {
+   "key": "t2",
+   "subject": "Brightwater - late deliveries in first week",
+   "emails": [
+    {
+     "id": "m9",
+     "date": "2026-10-14 09:30",
+     "from": "elaurent",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "lbecker",
+      "dvisser"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Brightwater called me this morning. We had 2 late deliveries in the first week:\n\n- 80412455 to Store hub Zaandam, shipped 12 Oct, arrived 14:25, dock was already closed\n- 80412461 to DC Mechelen, shipped 14 Oct, arrived 14:50\n\nBoth were refused and have to be redelivered the next day. Brightwater is not happy but accepted it for now because it is the first week. Can you tell me what went wrong? I need an answer for them by tomorrow.",
+     "table": {
+      "header": [
+       "Delivery",
+       "Ship-to",
+       "Arrival",
+       "Window closes"
+      ],
+      "rows": [
+       [
+        "80412455",
+        "100848 Zaandam",
+        "14:25",
+        "14:00"
+       ],
+       [
+        "80412461",
+        "100846 Mechelen",
+        "14:50",
+        "14:00"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m10",
+     "date": "2026-10-15 11:15",
+     "from": "thendriks",
+     "to": [
+      "elaurent"
+     ],
+     "cc": [
+      "lbecker",
+      "dvisser"
+     ],
+     "reply_to": "m9",
+     "forward": false,
+     "body": "I looked at both. The orders were entered in the morning of the shipping day, so picking and loading in Venlo only finished around 09:30 and the trucks left at 09:45 and 10:20. With the drive time this was too late for a 14:00 limit. It was not a master data problem, the window was correct on both deliveries.\n\nProposal: Brightwater orders must be in by 14:00 the day before, we load in the evening and the trucks leave at 04:00 for Zaandam and 05:00 for Mechelen. Lukas, can the system calculate the dates in a way that supports this?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m11",
+     "date": "2026-10-16 09:00",
+     "from": "lbecker",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "elaurent",
+      "dvisser"
+     ],
+     "reply_to": "m10",
+     "forward": false,
+     "body": "Done. I adjusted the transit times of the three routes in OVRR and set the loading lead time, so the delivery date is calculated back from 06:00 at the ship-to. Orders entered after 14:00 now get the next possible day automatically. I tested with two dummy orders, dates look right. Elena, you can tell Brightwater that the next deliveries follow the new schedule from Monday 19 October.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "Brightwater Retail starts shipping on Monday 12 October 2026, everything ships from Venlo.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "Brightwater has 3 delivery points: DC Mechelen (BE), DC Tilburg (NL) and Store hub Zaandam (NL).",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "All Brightwater delivery points can only receive goods between 06:00 and 14:00, Monday to Friday.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "Daan Visser created sold-to 100845 for Brightwater in XD01 on 25 September.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "Shipping condition 02 (standard) is set for Brightwater, as agreed in the contract.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "The ship-tos are 100846 (Mechelen), 100847 (Tilburg) and 100848 (Zaandam).",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "In Lukas Becker's test, ship-to 100848 (Zaandam) had empty unloading hours because Daan forgot to save them; Daan fixed this on 29 September.",
+   "emails": [
+    "m5",
+    "m6"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "Test delivery 80412377 to Mechelen worked correctly with route and window.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "Brightwater's window is a hard limit: the dock closes at 14:00 and a late truck is refused and must return the next working day.",
+   "emails": [
+    "m8"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "Two deliveries were late in the first week: 80412455 to Zaandam arrived 14:25 on 12 Oct and 80412461 to Mechelen arrived 14:50 on 14 Oct.",
+   "emails": [
+    "m9"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "The lateness was caused by orders being entered on the morning of the shipping day, so loading in Venlo finished around 09:30 and the trucks left at 09:45 and 10:20; master data was not the cause.",
+   "emails": [
+    "m10"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "Tom Hendriks proposed order entry by 14:00 the day before, evening loading, and departures at 04:00 for Zaandam and 05:00 for Mechelen.",
+   "emails": [
+    "m10"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "Lukas Becker adjusted the route transit times in OVRR and the loading lead time so delivery dates are calculated back from 06:00; the new schedule applies from Monday 19 October.",
+   "emails": [
+    "m11"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "What is the sold-to number of Brightwater Retail and which shipping condition does it have?",
+   "a": "Sold-to 100845, shipping condition 02 (standard).",
+   "facts": [
+    "F4",
+    "F5"
+   ],
+   "type": "identifier"
+  },
+  {
+   "q": "Why were the two Brightwater deliveries in the first week late?",
+   "a": "Orders were entered on the morning of the shipping day, so loading in Venlo finished around 09:30 and the trucks left too late for the 14:00 dock closing. It was not a master data problem.",
+   "facts": [
+    "F10",
+    "F11"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "What happens to a truck that arrives at a Brightwater location after 14:00?",
+   "a": "It is refused and has to come back the next working day.",
+   "facts": [
+    "F9"
+   ],
+   "type": "fact"
+  },
+  {
+   "q": "Who fixed the missing unloading hours on the Zaandam ship-to and who found the problem?",
+   "a": "Lukas Becker found it in his test; Daan Visser fixed it on 29 September.",
+   "facts": [
+    "F7"
+   ],
+   "type": "who"
+  },
+  {
+   "q": "What changed in the system after the late deliveries and from when does it apply?",
+   "a": "Lukas Becker adjusted route transit times in OVRR and the loading lead time so delivery dates are calculated back from 06:00 at the ship-to; the new schedule applies from Monday 19 October.",
+   "facts": [
+    "F13"
+   ],
+   "type": "howto"
+  },
+  {
+   "q": "At what time must the trucks leave Venlo for Zaandam and Mechelen under the new proposal?",
+   "a": "04:00 for Zaandam and 05:00 for Mechelen.",
+   "facts": [
+    "F12"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "Which carrier transports the Brightwater deliveries from Venlo?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "onboarding",
+  "title": "Onboarding new customer Brightwater Retail",
+  "level": "project",
+  "korean": false
+ }
+}

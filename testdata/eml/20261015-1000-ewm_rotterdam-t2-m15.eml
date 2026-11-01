@@ -1,0 +1,48 @@
+Message-ID: <ewm_rotterdam.t2.m15.9b1178a700@corp-europe.example>
+Date: Thu, 15 Oct 2026 10:00:00 +0200
+From: "Lukas Becker" <l.becker@corp-europe.example>
+To: "Hanna Schmidt" <h.schmidt@corp-europe.example>
+Cc: "Ruud Jansen" <r.jansen@corp-europe.example>,
+ "Sofie Peeters" <s.peeters@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: Zone B wave template: fix timing
+Thread-Index: Ad1cey0y8uMM6Y1mQqiO1zijgr/FTA==
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============8903667327675372817=="
+
+--===============8903667327675372817==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+I found the cause of the zone B problem. Wave template ZB_WAVE_01 sorts by st=
+orage bin ID instead of by pick path sequence, so tasks jump between aisles B=
+03 and B11. The fix is a small change to the template and takes about 2 hours=
+ including a test in the quality system. I can do it today if we release the =
+freeze for this one template.
+
+Best regards,
+Lukas Becker
+SAP key user SD/LE
+Corp Europe B.V. | Rotterdam
+T +31 10 592 3503
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============8903667327675372817==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>I found the cause of the zone B problem. Wave template ZB_WAVE=
+_01 sorts by storage bin ID instead of by pick path sequence, so tasks jump b=
+etween aisles B03 and B11. The fix is a small change to the template and take=
+s about 2 hours including a test in the quality system. I can do it today if =
+we release the freeze for this one template.</p><p>Best regards,<br>Lukas Bec=
+ker<br>SAP key user SD/LE<br>Corp Europe B.V. | Rotterdam<br>T +31 10 592 350=
+3<br><br>This e-mail and any attachments are confidential and intended solely=
+ for the addressee. If you received it in error, please delete it.</p></body>=
+</html>
+
+--===============8903667327675372817==--

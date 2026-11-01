@@ -1,0 +1,58 @@
+Message-ID: <venlo_cutover.t1.m1.2beb568f99@corp-europe.example>
+Date: Mon, 12 Oct 2026 09:10:00 +0200
+From: "Hanna Schmidt" <h.schmidt@corp-europe.example>
+To: "Jeroen de Vries" <j.devries@corp-europe.example>
+Cc: "Mark de Boer" <m.deboer@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: Venlo EWM cut-over date options
+Thread-Index: Ad1aGLHRzourdt7HXXhll3xuIrONpg==
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============1313604702262649486=="
+
+--===============1313604702262649486==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Venlo moves to the new EWM release in Q1 2027, after Rotterdam. We need to fi=
+x the cut-over weekend and I see three options: 16 Jan, 30 Jan or 13 Feb 2027.
+
+The plan has four phases: data migration, training, dress rehearsal and the c=
+ut-over weekend itself. Each option shifts all four. My gut feeling is that J=
+anuary is tight because of peak season, but I want your view on the outbound =
+volumes before I put a recommendation together.
+
+I would like to decide in a workshop on 5 Nov at 09:00. Jeroen, can you tell =
+me which weeks are critical for Venlo outbound? Mark, you are in copy so you =
+can see where we stand.
+
+Kind regards,
+Hanna Schmidt
+EWM project lead (Rotterdam and Venlo rollouts)
+Corp Europe B.V. | Rotterdam
+T +31 10 529 3430
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============1313604702262649486==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Venlo moves to the new EWM release in Q1 2027, after Rotterdam=
+. We need to fix the cut-over weekend and I see three options: 16 Jan, 30 Jan=
+ or 13 Feb 2027.</p>
+<p>The plan has four phases: data migration, training, dress rehearsal and th=
+e cut-over weekend itself. Each option shifts all four. My gut feeling is tha=
+t January is tight because of peak season, but I want your view on the outbou=
+nd volumes before I put a recommendation together.</p>
+<p>I would like to decide in a workshop on 5 Nov at 09:00. Jeroen, can you te=
+ll me which weeks are critical for Venlo outbound? Mark, you are in copy so y=
+ou can see where we stand.</p><p>Kind regards,<br>Hanna Schmidt<br>EWM projec=
+t lead (Rotterdam and Venlo rollouts)<br>Corp Europe B.V. | Rotterdam<br>T +3=
+1 10 529 3430<br><br>This e-mail and any attachments are confidential and int=
+ended solely for the addressee. If you received it in error, please delete it=
+.</p></body></html>
+
+--===============1313604702262649486==--

@@ -1,0 +1,374 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "Reefers MSKU4021553 and TGHU7781204 held at Felixstowe",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-09-28 10:05",
+     "from": "owright",
+     "to": [
+      "harbour",
+      "mkowalska"
+     ],
+     "cc": [],
+     "reply_to": null,
+     "forward": false,
+     "body": "Both reefers came off the vessel this morning and are on customs hold: MSKU4021553 and TGHU7781204. The terminal says release is blocked because the import declaration shows commodity code 0811.90 (frozen fruit), while the invoice and packing list describe frozen vegetables.\n\nSince Brexit reefers can't be released without a full import declaration, so we need a corrected one before anything moves. Both boxes are on reefer plug at the terminal and the clock on free time is running.\n\nHarbour, can you check what you lodged and amend it today? Marta, please send the corrected commodity code and the invoice lines as soon as you have them.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-09-28 11:20",
+     "from": "harbour",
+     "to": [
+      "owright"
+     ],
+     "cc": [
+      "mkowalska"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Confirmed. We lodged the entry on Friday using the code 0811.90 that was on the supplier's pre-advice. We did not compare it with the invoice descriptions, which is our gap.\n\nWe can amend as soon as we have the right code. Please confirm 0710.80 (vegetables, frozen) is correct for both containers, and send the invoice lines. Once the amendment is submitted, the system normally needs several hours to re-assess and the goods can then be released.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-09-29 09:00",
+     "from": "mkowalska",
+     "to": [
+      "harbour"
+     ],
+     "cc": [
+      "owright"
+     ],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Checked with the supplier documents this morning. The correct code for both containers is 0710.80, not 0811.90. The wrong code was on the supplier's pre-advice and nobody here caught it either, so it is not only on your side.\n\nI am attaching the invoice lines to this mail by separate message to avoid size issues. Please amend both entries today and confirm the new entry numbers to Oliver and me.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m4",
+     "date": "2026-10-02 12:10",
+     "from": "owright",
+     "to": [
+      "mkowalska",
+      "harbour"
+     ],
+     "cc": [],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "Update: both reefers MSKU4021553 and TGHU7781204 were released at 11:40 today. Total hold time was 4 days (28 Sep to 2 Oct) because the amended declaration needed a further check after it was resubmitted.\n\nFree time ran out during the hold, so demurrage will be charged. I will get the invoice and send it to Finance when it arrives. Thanks both for the quick turnaround on the amendment.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m8",
+     "date": "2026-10-07 10:30",
+     "from": "mkowalska",
+     "to": [
+      "owright",
+      "harbour"
+     ],
+     "cc": [],
+     "reply_to": null,
+     "forward": false,
+     "body": "To avoid a repeat I suggest a short checklist for every reefer import to Felixstowe. Draft attached.\n\nKey point: Harbour Agency checks the commodity code against the invoice and packing list before the vessel arrives, not after. Proposal is at least 2 working days before ETA. If the code and the description don't match, Harbour calls me and we clear it with the supplier first.\n\nOliver, can you confirm this works on your side? Harbour, can you confirm you can do this check?",
+     "table": null,
+     "attachment": {
+      "kind": "pdf",
+      "name": "Felixstowe_reefer_import_checklist_v1.pdf",
+      "text": "Reefer import checklist Felixstowe\n1. Customs coordinator sends invoice and packing list to Harbour Agency on booking confirmation.\n2. Harbour Agency checks commodity code against goods description at least 2 working days before vessel ETA.\n3. Mismatch: Harbour calls Marta Kowalska, code corrected with supplier before arrival.\n4. Full import declaration lodged and accepted before arrival.\n5. Oliver Wright confirms release status on day of arrival."
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m9",
+     "date": "2026-10-09 11:00",
+     "from": "harbour",
+     "to": [
+      "mkowalska"
+     ],
+     "cc": [
+      "owright"
+     ],
+     "reply_to": "m8",
+     "forward": false,
+     "body": "Agreed. We can do the commodity code check at least 2 working days before ETA, provided we get invoice and packing list at booking confirmation. If documents come later, we will tell you straight away that the check is not done.\n\nWe have added the step to our internal procedure for Corp Europe reefer imports.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m10",
+     "date": "2026-10-12 08:20",
+     "from": "owright",
+     "to": [
+      "harbour",
+      "mkowalska"
+     ],
+     "cc": [],
+     "reply_to": "m9",
+     "forward": false,
+     "body": "Good, thanks. The checklist is in use from today for all reefer imports to Felixstowe. I will keep the next arrivals on my list and report if any check is missing.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  },
+  {
+   "key": "t2",
+   "subject": "Demurrage invoice reefers Felixstowe",
+   "emails": [
+    {
+     "id": "m5",
+     "date": "2026-10-05 09:30",
+     "from": "owright",
+     "to": [
+      "anovak"
+     ],
+     "cc": [
+      "mkowalska"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Ana, the demurrage invoice for the two reefers held at Felixstowe has arrived. Details below. Total is EUR 2,350.\n\nThe reason is a wrong commodity code on the import declaration, which caused a hold of 4 days. The containers are released and delivered. Please post the invoice and let me know what else you need.",
+     "table": {
+      "header": [
+       "Container",
+       "Invoice",
+       "Amount"
+      ],
+      "rows": [
+       [
+        "MSKU4021553",
+        "INV-48213",
+        "EUR 1,175"
+       ],
+       [
+        "TGHU7781204",
+        "INV-48213",
+        "EUR 1,175"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m6",
+     "date": "2026-10-05 14:15",
+     "from": "anovak",
+     "to": [
+      "owright"
+     ],
+     "cc": [
+      "mkowalska"
+     ],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "Thanks. Two questions before I post INV-48213: which cost center should it go to, and is Harbour Agency being charged for it? I see their name in the story and an error on their declaration, so I wonder if we should recharge.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m7",
+     "date": "2026-10-06 08:50",
+     "from": "owright",
+     "to": [
+      "anovak"
+     ],
+     "cc": [
+      "mkowalska"
+     ],
+     "reply_to": "m6",
+     "forward": false,
+     "body": "Cost center 41020 (Felixstowe import). No recharge to Harbour: the wrong code 0811.90 came from the supplier's pre-advice, and our own team did not catch it either. Marta and I agreed that the cost stays with us.\n\nInstead we agreed a new checklist with Harbour so the code is checked before the vessel arrives.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m11",
+     "date": "2026-10-14 16:00",
+     "from": "anovak",
+     "to": [
+      "owright"
+     ],
+     "cc": [
+      "mkowalska"
+     ],
+     "reply_to": "m7",
+     "forward": false,
+     "body": "INV-48213 is posted to cost center 41020, EUR 2,350. Payment is due 28 October. Thanks for the explanation.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "Reefer containers MSKU4021553 and TGHU7781204 were put on customs hold at Felixstowe on 28 September 2026.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "The declaration showed commodity code 0811.90 (frozen fruit) while the goods were frozen vegetables.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "Since Brexit, reefers at Felixstowe cannot be released without a full import declaration.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "Harbour Agency lodged the entry using the code from the supplier's pre-advice and did not compare it with the invoice descriptions.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "The correct commodity code for both containers is 0710.80.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "Both reefers were released on 2 October 2026 at 11:40 after a hold of 4 days.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "The demurrage invoice is INV-48213 for EUR 2,350, EUR 1,175 per container.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "The demurrage cost is booked to cost center 41020 (Felixstowe import).",
+   "emails": [
+    "m7",
+    "m11"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "Harbour Agency is not charged for the demurrage because the wrong code came from the supplier's pre-advice and was also missed internally.",
+   "emails": [
+    "m7"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "Marta Kowalska proposed a checklist on 7 October: Harbour Agency checks the commodity code against invoice and packing list at least 2 working days before vessel ETA.",
+   "emails": [
+    "m8"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "Harbour Agency agreed on 9 October, provided it receives invoice and packing list at booking confirmation.",
+   "emails": [
+    "m9"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "The checklist has been in use for Felixstowe reefer imports since 12 October 2026.",
+   "emails": [
+    "m10"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "Ana Novak posted INV-48213 with payment due on 28 October.",
+   "emails": [
+    "m11"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "Why were the two reefers held at Felixstowe in September 2026?",
+   "a": "The import declaration had commodity code 0811.90 (frozen fruit) instead of 0710.80 for frozen vegetables.",
+   "facts": [
+    "F1",
+    "F2",
+    "F5"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "How much demurrage was charged for the Felixstowe reefers and on which invoice?",
+   "a": "EUR 2,350 on INV-48213 (EUR 1,175 per container).",
+   "facts": [
+    "F7"
+   ],
+   "type": "identifier"
+  },
+  {
+   "q": "Why was Harbour Agency not recharged for the demurrage?",
+   "a": "The wrong code came from the supplier's pre-advice and was also missed by Corp Europe's own team, so the cost stays with Corp Europe.",
+   "facts": [
+    "F9",
+    "F4"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "What does the new checklist for Felixstowe reefer imports require, and who does the check?",
+   "a": "Harbour Agency checks the commodity code against the invoice and packing list at least 2 working days before vessel ETA.",
+   "facts": [
+    "F10",
+    "F11"
+   ],
+   "type": "howto"
+  },
+  {
+   "q": "When were the held reefers released, and which cost center carries the demurrage?",
+   "a": "Released on 2 October 2026 at 11:40; cost center 41020.",
+   "facts": [
+    "F6",
+    "F8"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "What daily demurrage rate did the terminal apply to the reefers?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "reefer_holds",
+  "title": "Reefer holds on Felixstowe imports",
+  "level": "topic",
+  "korean": false
+ }
+}

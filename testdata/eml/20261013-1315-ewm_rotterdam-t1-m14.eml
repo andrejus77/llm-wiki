@@ -1,0 +1,249 @@
+Message-ID: <ewm_rotterdam.t1.m14.45ffa0842b@corp-europe.example>
+Date: Tue, 13 Oct 2026 13:15:00 +0200
+From: "Hanna Schmidt" <h.schmidt@corp-europe.example>
+To: "Sofie Peeters" <s.peeters@corp-europe.example>
+Cc: "Ruud Jansen" <r.jansen@corp-europe.example>,
+ "Lukas Becker" <l.becker@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: Rotterdam DC EWM go-live: cutover and hypercare
+In-Reply-To: <ewm_rotterdam.t1.m13.f1f0758e11@corp-europe.example>
+References: <ewm_rotterdam.t1.m1.be61a86dd4@corp-europe.example>
+ <ewm_rotterdam.t1.m7.18ad5af680@corp-europe.example>
+ <ewm_rotterdam.t1.m8.27a19327ba@corp-europe.example>
+ <ewm_rotterdam.t1.m12.f8e98d55ea@corp-europe.example>
+ <ewm_rotterdam.t1.m13.f1f0758e11@corp-europe.example>
+Thread-Index: Ad1bBBYdL+eLBoUDym4gsn7p8PRZLo5xdMA/DUEB16Ni4P1GxLmyFceF2IwOfKA=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============1957739321201338536=="
+
+--===============1957739321201338536==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Yes, known. The zone B wave template is broken: the sort sequence is wrong. B=
+ut we cannot touch templates because wave planning is frozen until 17 Nov. Lu=
+kas is looking at the fix in a separate thread. Until then the supervisors ke=
+ep re-sorting manually, sorry for that.
+
+Thanks,
+Hanna Schmidt
+EWM project lead (Rotterdam and Venlo rollouts)
+Corp Europe B.V. | Rotterdam
+T +31 10 660 5246
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Sofie Peeters <s.peeters@corp-europe.example>
+Sent: Tuesday, 13 October 2026 11:20
+To: Hanna Schmidt
+Subject: RE: Rotterdam DC EWM go-live: cutover and hypercare
+
+Great numbers. One remark from my two pickers who just came back from Rotterd=
+am: in zone B the wave creates picks that jump between aisles. The supervisor=
+s now re-sort the tasks by hand, which costs around 20 minutes per wave. Is t=
+hat a known issue?
+
+Regards,
+Sofie Peeters
+Warehouse supervisor Antwerp
+Corp Europe B.V. | Rotterdam
+T +31 10 653 9270
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Hanna Schmidt <h.schmidt@corp-europe.example>
+Sent: Tuesday, 13 October 2026 11:00
+To: Ruud Jansen
+Subject: RE: Rotterdam DC EWM go-live: cutover and hypercare
+
+Week 1 summary (Tue 6 Oct to Mon 12 Oct, five working days). The average pick=
+ rate reached 96% of the baseline of 185 lines/hour. The open tasks column sh=
+ows /SCWM/MON at 17:00. Day 5 was the first day at full baseline.
+
+Date | Lines/hour | % of baseline | Open WTs at 17:00
+Tue 06 Oct | 163 | 88% | 214
+Wed 07 Oct | 174 | 94% | 96
+Thu 08 Oct | 181 | 98% | 61
+Fri 09 Oct | 185 | 100% | 47
+Mon 12 Oct | 185 | 100% | 40
+
+Kind regards,
+Hanna Schmidt
+EWM project lead (Rotterdam and Venlo rollouts)
+Corp Europe B.V. | Rotterdam
+T +31 10 667 3184
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Hanna Schmidt <h.schmidt@corp-europe.example>
+Sent: Tuesday, 06 October 2026 16:30
+To: Ruud Jansen
+Subject: RE: Rotterdam DC EWM go-live: cutover and hypercare
+
+Day 1 is done. Go-live at 06:00 went without a stop. Pick rate was 163 lines/=
+hour, which is 88% of the baseline of 185 lines/hour. That is in line with th=
+e expectation for day 1. At 16:00 /SCWM/MON showed 214 open warehouse tasks, =
+which is higher than I expected. Lukas, can you look at this? Screenshot atta=
+ched.
+
+Best regards,
+Hanna Schmidt
+EWM project lead (Rotterdam and Venlo rollouts)
+Corp Europe B.V. | Rotterdam
+T +31 10 403 3414
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Hanna Schmidt <h.schmidt@corp-europe.example>
+Sent: Friday, 02 October 2026 17:50
+To: Ruud Jansen
+Subject: RE: Rotterdam DC EWM go-live: cutover and hypercare
+
+Go/no-go done at 17:30: GO. Legacy WM is frozen as of 18:00. Open points are =
+not blocking: the label printer in dock 4 is still being swapped, and we use =
+dock 3 until it is done. Sofie, yes please, send your two pickers on Monday 5=
+ Oct, they are welcome. Count starts tomorrow at 07:00.
+
+Regards,
+Hanna Schmidt
+EWM project lead (Rotterdam and Venlo rollouts)
+Corp Europe B.V. | Rotterdam
+T +31 10 295 4848
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Hanna Schmidt <h.schmidt@corp-europe.example>
+Sent: Monday, 21 September 2026 09:10
+To: Ruud Jansen
+Subject: Rotterdam DC EWM go-live: cutover and hypercare
+
+Cutover plan for Rotterdam is final. Legacy WM is frozen on Friday 2 Oct at 1=
+8:00, physical count runs Saturday 3 Oct, and EWM go-live is Tuesday 6 Oct at=
+ 06:00 with the first shift. Hypercare runs until 30 Oct, with a daily 15-min=
+ute stand-up at 08:30 in the Rotterdam control room.
+
+For open warehouse tasks please use /SCWM/MON, not the old LT23 lists. Lukas,=
+ I need the supervisor and picker roles loaded by 30 Sep. Ruud, please confir=
+m that the Rotterdam shift leaders can attend the stand-up. The plan is attac=
+hed.
+
+Best regards,
+Hanna Schmidt
+EWM project lead (Rotterdam and Venlo rollouts)
+Corp Europe B.V. | Rotterdam
+T +31 10 396 7888
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============1957739321201338536==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Yes, known. The zone B wave template is broken: the sort seque=
+nce is wrong. But we cannot touch templates because wave planning is frozen u=
+ntil 17 Nov. Lukas is looking at the fix in a separate thread. Until then the=
+ supervisors keep re-sorting manually, sorry for that.</p><p>Thanks,<br>Hanna=
+ Schmidt<br>EWM project lead (Rotterdam and Venlo rollouts)<br>Corp Europe B.=
+V. | Rotterdam<br>T +31 10 660 5246<br><br>This e-mail and any attachments ar=
+e confidential and intended solely for the addressee. If you received it in e=
+rror, please delete it.</p><div style=3D'border:none;border-top:solid #E1E1E1=
+ 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Sofie Peeters &lt;s.peeters=
+@corp-europe.example&gt;<br><b>Sent:</b> Tuesday, 13 October 2026 11:20<br><b=
+>To:</b> Hanna Schmidt<br><b>Cc:</b> Ruud Jansen; Lukas Becker; DL CT<br><b>S=
+ubject:</b> RE: Rotterdam DC EWM go-live: cutover and hypercare</p></div><p>G=
+reat numbers. One remark from my two pickers who just came back from Rotterda=
+m: in zone B the wave creates picks that jump between aisles. The supervisors=
+ now re-sort the tasks by hand, which costs around 20 minutes per wave. Is th=
+at a known issue?</p><p>Regards,<br>Sofie Peeters<br>Warehouse supervisor Ant=
+werp<br>Corp Europe B.V. | Rotterdam<br>T +31 10 653 9270<br><br>This e-mail =
+and any attachments are confidential and intended solely for the addressee. I=
+f you received it in error, please delete it.</p><div style=3D'border:none;bo=
+rder-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Hanna=
+ Schmidt &lt;h.schmidt@corp-europe.example&gt;<br><b>Sent:</b> Tuesday, 13 Oc=
+tober 2026 11:00<br><b>To:</b> Ruud Jansen<br><b>Cc:</b> Sofie Peeters; Lukas=
+ Becker; DL CT<br><b>Subject:</b> RE: Rotterdam DC EWM go-live: cutover and h=
+ypercare</p></div><p>Week 1 summary (Tue 6 Oct to Mon 12 Oct, five working da=
+ys). The average pick rate reached 96% of the baseline of 185 lines/hour. The=
+ open tasks column shows /SCWM/MON at 17:00. Day 5 was the first day at full =
+baseline.</p><table style=3D'border-collapse:collapse;font-size:10pt'><tr><th=
+ style=3D'border:1px solid #999;padding:3px 6px'>Date</th><th style=3D'border=
+:1px solid #999;padding:3px 6px'>Lines/hour</th><th style=3D'border:1px solid=
+ #999;padding:3px 6px'>% of baseline</th><th style=3D'border:1px solid #999;p=
+adding:3px 6px'>Open WTs at 17:00</th></tr><tr><td style=3D'border:1px solid =
+#999;padding:3px 6px'>Tue 06 Oct</td><td style=3D'border:1px solid #999;paddi=
+ng:3px 6px'>163</td><td style=3D'border:1px solid #999;padding:3px 6px'>88%</=
+td><td style=3D'border:1px solid #999;padding:3px 6px'>214</td></tr><tr><td s=
+tyle=3D'border:1px solid #999;padding:3px 6px'>Wed 07 Oct</td><td style=3D'bo=
+rder:1px solid #999;padding:3px 6px'>174</td><td style=3D'border:1px solid #9=
+99;padding:3px 6px'>94%</td><td style=3D'border:1px solid #999;padding:3px 6p=
+x'>96</td></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>Thu 08=
+ Oct</td><td style=3D'border:1px solid #999;padding:3px 6px'>181</td><td styl=
+e=3D'border:1px solid #999;padding:3px 6px'>98%</td><td style=3D'border:1px s=
+olid #999;padding:3px 6px'>61</td></tr><tr><td style=3D'border:1px solid #999=
+;padding:3px 6px'>Fri 09 Oct</td><td style=3D'border:1px solid #999;padding:3=
+px 6px'>185</td><td style=3D'border:1px solid #999;padding:3px 6px'>100%</td>=
+<td style=3D'border:1px solid #999;padding:3px 6px'>47</td></tr><tr><td style=
+=3D'border:1px solid #999;padding:3px 6px'>Mon 12 Oct</td><td style=3D'border=
+:1px solid #999;padding:3px 6px'>185</td><td style=3D'border:1px solid #999;p=
+adding:3px 6px'>100%</td><td style=3D'border:1px solid #999;padding:3px 6px'>=
+40</td></tr></table><p>Kind regards,<br>Hanna Schmidt<br>EWM project lead (Ro=
+tterdam and Venlo rollouts)<br>Corp Europe B.V. | Rotterdam<br>T +31 10 667 3=
+184<br><br>This e-mail and any attachments are confidential and intended sole=
+ly for the addressee. If you received it in error, please delete it.</p><div =
+style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm=
+'><p><b>From:</b> Hanna Schmidt &lt;h.schmidt@corp-europe.example&gt;<br><b>S=
+ent:</b> Tuesday, 06 October 2026 16:30<br><b>To:</b> Ruud Jansen<br><b>Cc:</=
+b> Sofie Peeters; Lukas Becker; DL CT<br><b>Subject:</b> RE: Rotterdam DC EWM=
+ go-live: cutover and hypercare</p></div><p>Day 1 is done. Go-live at 06:00 w=
+ent without a stop. Pick rate was 163 lines/hour, which is 88% of the baselin=
+e of 185 lines/hour. That is in line with the expectation for day 1. At 16:00=
+ /SCWM/MON showed 214 open warehouse tasks, which is higher than I expected. =
+Lukas, can you look at this? Screenshot attached.</p><p><img src=3D'cid:img7.=
+d8436d7a@corp' alt=3D'Warehouse Monitor /SCWM/MON - Whse RTD1' width=3D'600'>=
+</p><p>Best regards,<br>Hanna Schmidt<br>EWM project lead (Rotterdam and Venl=
+o rollouts)<br>Corp Europe B.V. | Rotterdam<br>T +31 10 403 3414<br><br>This =
+e-mail and any attachments are confidential and intended solely for the addre=
+ssee. If you received it in error, please delete it.</p><div style=3D'border:=
+none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b=
+> Hanna Schmidt &lt;h.schmidt@corp-europe.example&gt;<br><b>Sent:</b> Friday,=
+ 02 October 2026 17:50<br><b>To:</b> Ruud Jansen<br><b>Cc:</b> Sofie Peeters;=
+ Lukas Becker; DL CT<br><b>Subject:</b> RE: Rotterdam DC EWM go-live: cutover=
+ and hypercare</p></div><p>Go/no-go done at 17:30: GO. Legacy WM is frozen as=
+ of 18:00. Open points are not blocking: the label printer in dock 4 is still=
+ being swapped, and we use dock 3 until it is done. Sofie, yes please, send y=
+our two pickers on Monday 5 Oct, they are welcome. Count starts tomorrow at 0=
+7:00.</p><p>Regards,<br>Hanna Schmidt<br>EWM project lead (Rotterdam and Venl=
+o rollouts)<br>Corp Europe B.V. | Rotterdam<br>T +31 10 295 4848<br><br>This =
+e-mail and any attachments are confidential and intended solely for the addre=
+ssee. If you received it in error, please delete it.</p><div style=3D'border:=
+none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b=
+> Hanna Schmidt &lt;h.schmidt@corp-europe.example&gt;<br><b>Sent:</b> Monday,=
+ 21 September 2026 09:10<br><b>To:</b> Ruud Jansen<br><b>Cc:</b> Sofie Peeter=
+s; Lukas Becker; DL CT<br><b>Subject:</b> Rotterdam DC EWM go-live: cutover a=
+nd hypercare</p></div><p>Cutover plan for Rotterdam is final. Legacy WM is fr=
+ozen on Friday 2 Oct at 18:00, physical count runs Saturday 3 Oct, and EWM go=
+-live is Tuesday 6 Oct at 06:00 with the first shift. Hypercare runs until 30=
+ Oct, with a daily 15-minute stand-up at 08:30 in the Rotterdam control room.=
+</p>
+<p>For open warehouse tasks please use /SCWM/MON, not the old LT23 lists. Luk=
+as, I need the supervisor and picker roles loaded by 30 Sep. Ruud, please con=
+firm that the Rotterdam shift leaders can attend the stand-up. The plan is at=
+tached.</p><p>Best regards,<br>Hanna Schmidt<br>EWM project lead (Rotterdam a=
+nd Venlo rollouts)<br>Corp Europe B.V. | Rotterdam<br>T +31 10 396 7888<br><b=
+r>This e-mail and any attachments are confidential and intended solely for th=
+e addressee. If you received it in error, please delete it.</p></body></html>
+
+--===============1957739321201338536==--

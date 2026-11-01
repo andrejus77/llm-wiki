@@ -1,0 +1,204 @@
+{
+ "created": "2026-11-01T00:29:15",
+ "questions": 163,
+ "note": "",
+ "settings": {
+  "embed_model": "hashed",
+  "rrf_k": 60,
+  "top_k": 8
+ },
+ "retrieval": [
+  {
+   "name": "BM25 only (FTS5)",
+   "recall_1": 0.587,
+   "recall_5": 0.913,
+   "recall_10": 0.964,
+   "mrr": 0.729,
+   "ndcg_10": 0.751,
+   "ms": 4.2,
+   "recall_5_by_type": {
+    "why": 0.882,
+    "identifier": 0.842,
+    "howto": 0.889,
+    "multihop": 0.96,
+    "when": 0.941,
+    "fact": 0.947,
+    "who": 0.933
+   }
+  },
+  {
+   "name": "vector only · hashed",
+   "recall_1": 0.529,
+   "recall_5": 0.862,
+   "recall_10": 0.92,
+   "mrr": 0.665,
+   "ndcg_10": 0.698,
+   "ms": 23.9,
+   "recall_5_by_type": {
+    "why": 0.853,
+    "identifier": 0.789,
+    "howto": 0.889,
+    "multihop": 0.96,
+    "when": 0.882,
+    "fact": 0.789,
+    "who": 0.867
+   }
+  },
+  {
+   "name": "hybrid RRF · hashed",
+   "recall_1": 0.594,
+   "recall_5": 0.92,
+   "recall_10": 0.964,
+   "mrr": 0.731,
+   "ndcg_10": 0.743,
+   "ms": 24.5,
+   "recall_5_by_type": {
+    "why": 0.941,
+    "identifier": 0.789,
+    "howto": 0.889,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 0.895,
+    "who": 0.933
+   }
+  },
+  {
+   "name": "hybrid + source weights · hashed",
+   "recall_1": 0.609,
+   "recall_5": 0.906,
+   "recall_10": 0.949,
+   "mrr": 0.739,
+   "ndcg_10": 0.739,
+   "ms": 13.8,
+   "recall_5_by_type": {
+    "why": 0.941,
+    "identifier": 0.842,
+    "howto": 0.889,
+    "multihop": 0.88,
+    "when": 0.941,
+    "fact": 0.895,
+    "who": 0.933
+   }
+  },
+  {
+   "name": "hybrid + weights + recency · hashed",
+   "recall_1": 0.587,
+   "recall_5": 0.899,
+   "recall_10": 0.957,
+   "mrr": 0.723,
+   "ndcg_10": 0.726,
+   "ms": 12.7,
+   "recall_5_by_type": {
+    "why": 0.912,
+    "identifier": 0.842,
+    "howto": 0.889,
+    "multihop": 0.88,
+    "when": 0.941,
+    "fact": 0.895,
+    "who": 0.933
+   }
+  },
+  {
+   "name": "vector only · bge-small-en-v1.5",
+   "recall_1": 0.5,
+   "recall_5": 0.928,
+   "recall_10": 0.957,
+   "mrr": 0.676,
+   "ndcg_10": 0.727,
+   "ms": 26.6,
+   "recall_5_by_type": {
+    "why": 0.971,
+    "identifier": 0.895,
+    "howto": 0.778,
+    "multihop": 0.92,
+    "when": 0.941,
+    "fact": 0.947,
+    "who": 0.933
+   }
+  },
+  {
+   "name": "hybrid RRF · bge-small-en-v1.5",
+   "recall_1": 0.601,
+   "recall_5": 0.957,
+   "recall_10": 0.986,
+   "mrr": 0.745,
+   "ndcg_10": 0.775,
+   "ms": 27.4,
+   "recall_5_by_type": {
+    "why": 0.941,
+    "identifier": 0.947,
+    "howto": 0.889,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 0.933
+   }
+  },
+  {
+   "name": "hybrid + source weights · bge-small-en-v1.5",
+   "recall_1": 0.565,
+   "recall_5": 0.942,
+   "recall_10": 0.986,
+   "mrr": 0.721,
+   "ndcg_10": 0.734,
+   "ms": 26.2,
+   "recall_5_by_type": {
+    "why": 0.971,
+    "identifier": 0.842,
+    "howto": 0.889,
+    "multihop": 0.96,
+    "when": 0.941,
+    "fact": 1.0,
+    "who": 0.933
+   }
+  },
+  {
+   "name": "hybrid + weights + recency · bge-small-en-v1.5",
+   "recall_1": 0.587,
+   "recall_5": 0.935,
+   "recall_10": 0.986,
+   "mrr": 0.728,
+   "ndcg_10": 0.725,
+   "ms": 26.3,
+   "recall_5_by_type": {
+    "why": 0.971,
+    "identifier": 0.842,
+    "howto": 0.889,
+    "multihop": 0.96,
+    "when": 0.941,
+    "fact": 1.0,
+    "who": 0.867
+   }
+  }
+ ],
+ "ingest": {
+  "true_emails": 368,
+  "stored": 368,
+  "missing": 0,
+  "alias_copies_merged": 3,
+  "resent_marked_duplicate": 1,
+  "thread_purity": 1.0,
+  "thread_completeness": 0.9917,
+  "true_threads": 43,
+  "stored_threads_for_real_mail": 45,
+  "noise_skipped": 13,
+  "noise_total": 125,
+  "quoted_only_in_truth": 5,
+  "emails_processed": 354,
+  "notes_per_processed_email": 1.0,
+  "routing_accuracy": 0.723,
+  "pages_per_storyline (≥2 emails)": 1.76,
+  "storylines": 25,
+  "units": 304,
+  "units_retried_share": 0.0,
+  "fast_path_fallbacks": 0,
+  "section_versions": 67,
+  "drafts_rejected_or_replaced": 0,
+  "items_written": 322,
+  "items_pending_or_failed": 0,
+  "llm_calls": 411,
+  "llm_calls_by_status": {
+   "ok": 411
+  }
+ }
+}

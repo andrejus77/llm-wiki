@@ -1,0 +1,455 @@
+Message-ID: <z1_block.t1.m10.fbfb2d7c21@corp-europe.example>
+Date: Fri, 23 Oct 2026 11:30:00 +0200
+From: "Jeroen de Vries" <j.devries@corp-europe.example>
+To: "Ana Novak" <a.novak@corp-europe.example>
+Cc: "Lukas Becker" <l.becker@corp-europe.example>,
+ "Daan Visser" <d.visser@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: Delivery block Z1 on Venlo deliveries
+In-Reply-To: <z1_block.t1.m9.9dc662d3b1@corp-europe.example>
+References: <z1_block.t1.m1.b1166136ba@corp-europe.example>
+ <z1_block.t1.m2.473e75a66f@corp-europe.example>
+ <z1_block.t1.m3.5f6e0cc9ab@corp-europe.example>
+ <z1_block.t1.m4.7800eb3b51@corp-europe.example>
+ <z1_block.t1.m5.c44a98432a@corp-europe.example>
+ <z1_block.t1.m6.27ff210432@corp-europe.example>
+ <z1_block.t1.m7.7a2fa5ef81@corp-europe.example>
+ <z1_block.t1.m9.9dc662d3b1@corp-europe.example>
+Thread-Index: =?utf-8?q?Ad1i0RMn1tFOA2iweOeFKiJ/fajE8xGlVH+/Omg/bix8UBIhYRdR?=
+ =?utf-8?q?V4i0JonoOoDugQiP1X80BavOL7OqWhI=3D?=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============8709965835633220059=="
+
+--===============8709965835633220059==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Thanks Ana and Lukas. The 5 deliveries were released and all of them left Ven=
+lo on the 12:00 truck. All 14 are now shipped.
+
+Daan, one request for next time: please send a short note to the Venlo outbou=
+nd team before any mass change on customer credit data.
+
+Regards,
+Jeroen de Vries
+Outbound team lead Venlo
+Corp Europe B.V. | Rotterdam
+T +31 10 322 1126
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Ana Novak <a.novak@corp-europe.example>
+Sent: Friday, 23 October 2026 08:50
+To: Jeroen de Vries
+Subject: RE: Delivery block Z1 on Venlo deliveries
+
+Approval from credit management came in at 08:30. I have set a temporary cred=
+it limit of EUR 120,000 for each of the 5 customers in UKM_BP, valid until 6 =
+Nov 2026. After that date the limit falls back to the segment limit unless Da=
+an has corrected the setup by then.
+
+Lukas, you can run VKM3 again for 80012354 to 80012358, the block should rele=
+ase now. Jeroen, please make sure these five ship today.
+
+Regards,
+Ana Novak
+Accounts payable analyst (Finance)
+Corp Europe B.V. | Rotterdam
+T +31 10 246 4612
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Ana Novak <a.novak@corp-europe.example>
+Sent: Thursday, 22 October 2026 09:20
+To: Lukas Becker
+Subject: RE: Delivery block Z1 on Venlo deliveries
+
+Lukas, I checked the 5 customers: no overdue items, so I support the request.=
+ But I cannot decide on a temporary limit myself. Any temporary increase has =
+to be approved by Finance credit management first, and I only process it in U=
+KM_BP afterwards. I sent the approval request yesterday evening and have no a=
+nswer yet.
+
+Sorry, this means the trucks for today will leave without these 5 deliveries.=
+ I expect the approval tomorrow morning. I will propose EUR 120,000 per custo=
+mer, valid for 14 days, so Daan has time to fix the segment setup properly.
+
+Daan, please do not change the segment again until I confirm.
+
+Kind regards,
+Ana Novak
+Accounts payable analyst (Finance)
+Corp Europe B.V. | Rotterdam
+T +31 10 253 3549
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Lukas Becker <l.becker@corp-europe.example>
+Sent: Wednesday, 21 October 2026 16:05
+To: Ana Novak
+Subject: RE: Delivery block Z1 on Venlo deliveries
+
+Ana, we need a temporary credit limit for 5 deliveries in Venlo that are stil=
+l on Z1: 80012354 (Maas Installatie, EUR 58,400), 80012355 (Rhein Haustechnik=
+, EUR 64,900), 80012356 (Keukens Limburg, EUR 71,300), 80012357 (Van Dijk Tec=
+hniek, EUR 49,750) and 80012358 (Techni-Care BV, EUR 52,100). Together EUR 29=
+6,450.
+
+The customers have no overdue items. The only reason for the block is the seg=
+ment change from 0001 to 0002 by master data, which cut the limit from EUR 25=
+0,000 to EUR 50,000. Trucks are booked for 22 Oct, but the goods can also lea=
+ve on 23 Oct if needed. Can you raise the limits in UKM_BP?
+
+Kind regards,
+Lukas Becker
+SAP key user SD/LE
+Corp Europe B.V. | Rotterdam
+T +31 10 293 9691
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Lukas Becker <l.becker@corp-europe.example>
+Sent: Wednesday, 21 October 2026 15:20
+To: Jeroen de Vries
+Subject: RE: Delivery block Z1 on Venlo deliveries
+
+Jeroen, update. Daan confirmed the cause: a mass change moved the Venlo custo=
+mers to credit segment 0002 (limit EUR 50,000 instead of 250,000).
+
+I have released 9 deliveries in VKM3: 80012345 to 80012353. As key user I can=
+ release single deliveries below EUR 35,000 on my own. The remaining 5 (80012=
+354 to 80012358) are all above that, so Finance has to approve them. I'm aski=
+ng Ana now.
+
+To recognise this in future: in VL02N open the status overview and look at th=
+e credit line. The message names the credit segment. If it says 0002 for a Ve=
+nlo customer where you expect 0001, the block comes from a segment change and=
+ not from real overdue items. You can check the customer's limit in UKM_BP.
+
+Regards,
+Lukas Becker
+SAP key user SD/LE
+Corp Europe B.V. | Rotterdam
+T +31 10 559 1100
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Daan Visser <d.visser@corp-europe.example>
+Sent: Wednesday, 21 October 2026 13:10
+To: Lukas Becker
+Subject: RE: Delivery block Z1 on Venlo deliveries
+
+Yes, that was me. Yesterday afternoon I ran a mass change on the Venlo custom=
+ers as part of the segment clean-up ticket, to move them from 0001 to 0002. T=
+he new segment has a default limit of EUR 50,000, and I did not realise the o=
+ld individual limits would not carry over. That was my mistake, and I should =
+have warned logistics and Finance before the run.
+
+23 Venlo customers were included. I can set the segment back to 0001, but the=
+ open exposure would then be recalculated overnight and I would rather not to=
+uch it again without Finance agreeing. Ana would need to confirm how she want=
+s it handled.
+
+Kind regards,
+Daan Visser
+Master data specialist
+Corp Europe B.V. | Rotterdam
+T +31 10 823 5381
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Lukas Becker <l.becker@corp-europe.example>
+Sent: Wednesday, 21 October 2026 10:50
+To: Daan Visser
+Subject: RE: Delivery block Z1 on Venlo deliveries
+
+Daan, did master data change anything on the Venlo customers yesterday? 14 de=
+liveries got Z1 this morning. In the credit data of Maas Installatie, Rhein H=
+austechnik and Keukens Limburg I see segment 0002 with a limit of EUR 50,000.=
+ Last week the same customers were in segment 0001 with EUR 250,000.
+
+If this was a mass change, can you tell me which customers were included and =
+why? Logistics was not informed and we have trucks booked for tomorrow.
+
+Regards,
+Lukas Becker
+SAP key user SD/LE
+Corp Europe B.V. | Rotterdam
+T +31 10 787 4705
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Lukas Becker <l.becker@corp-europe.example>
+Sent: Wednesday, 21 October 2026 09:35
+To: Jeroen de Vries
+Subject: RE: Delivery block Z1 on Venlo deliveries
+
+Jeroen, looking at it now. The screenshot already shows a hint: the credit me=
+ssage mentions segment 0002. For Venlo customers I would expect 0001, so I su=
+spect the credit segment was changed in the customer master overnight.
+
+I'll check the credit data of a few customers to confirm and will come back t=
+o you before noon. Please don't do a manual goods issue workaround, it will n=
+ot work anyway with the block in place.
+
+Regards,
+Lukas Becker
+SAP key user SD/LE
+Corp Europe B.V. | Rotterdam
+T +31 10 769 7022
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Jeroen de Vries <j.devries@corp-europe.example>
+Sent: Wednesday, 21 October 2026 08:40
+To: Lukas Becker
+Subject: Delivery block Z1 on Venlo deliveries
+
+Lukas, we have a problem in Venlo. When we started picking this morning, 14 o=
+utbound deliveries for tomorrow's trucks came up with delivery block Z1 (cred=
+it check) in VL02N. Yesterday evening none of them had a block. I have pasted=
+ the list below and a screenshot of the first one, 80012354.
+
+We have carriers booked for 10:00 and 14:00 tomorrow, so I need to know today=
+ what can be released. Total value is about EUR 458k. Nobody in the team has =
+changed anything on the orders.
+
+Can you have a look? I assume it has to do with the credit settings of the cu=
+stomers, but I don't know what changed.
+
+Delivery | Customer | Value EUR | Block
+80012345 | Hoogeveen Bouw | 18,400 | Z1
+80012346 | Van Dijk Techniek | 12,950 | Z1
+80012347 | Maas Installatie | 9,780 | Z1
+80012348 | Keukens Limburg | 22,300 | Z1
+80012349 | Rhein Haustechnik | 31,600 | Z1
+80012350 | Peeters Sanitair | 14,250 | Z1
+80012351 | Techni-Care BV | 8,900 | Z1
+80012352 | Hoogeveen Bouw | 27,500 | Z1
+80012353 | Venray Metaal | 16,200 | Z1
+80012354 | Maas Installatie | 58,400 | Z1
+80012355 | Rhein Haustechnik | 64,900 | Z1
+80012356 | Keukens Limburg | 71,300 | Z1
+80012357 | Van Dijk Techniek | 49,750 | Z1
+80012358 | Techni-Care BV | 52,100 | Z1
+
+Thanks,
+Jeroen de Vries
+Outbound team lead Venlo
+Corp Europe B.V. | Rotterdam
+T +31 10 429 2773
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============8709965835633220059==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Thanks Ana and Lukas. The 5 deliveries were released and all o=
+f them left Venlo on the 12:00 truck. All 14 are now shipped.</p>
+<p>Daan, one request for next time: please send a short note to the Venlo out=
+bound team before any mass change on customer credit data.</p><p>Regards,<br>=
+Jeroen de Vries<br>Outbound team lead Venlo<br>Corp Europe B.V. | Rotterdam<b=
+r>T +31 10 322 1126<br><br>This e-mail and any attachments are confidential a=
+nd intended solely for the addressee. If you received it in error, please del=
+ete it.</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3=
+.0pt 0cm 0cm 0cm'><p><b>From:</b> Ana Novak &lt;a.novak@corp-europe.example&g=
+t;<br><b>Sent:</b> Friday, 23 October 2026 08:50<br><b>To:</b> Jeroen de Vrie=
+s<br><b>Cc:</b> Lukas Becker; Daan Visser; DL CT<br><b>Subject:</b> RE: Deliv=
+ery block Z1 on Venlo deliveries</p></div><p>Approval from credit management =
+came in at 08:30. I have set a temporary credit limit of EUR 120,000 for each=
+ of the 5 customers in UKM_BP, valid until 6 Nov 2026. After that date the li=
+mit falls back to the segment limit unless Daan has corrected the setup by th=
+en.</p>
+<p>Lukas, you can run VKM3 again for 80012354 to 80012358, the block should r=
+elease now. Jeroen, please make sure these five ship today.</p><p>Regards,<br=
+>Ana Novak<br>Accounts payable analyst (Finance)<br>Corp Europe B.V. | Rotter=
+dam<br>T +31 10 246 4612<br><br>This e-mail and any attachments are confident=
+ial and intended solely for the addressee. If you received it in error, pleas=
+e delete it.</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padd=
+ing:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Ana Novak &lt;a.novak@corp-europe.exam=
+ple&gt;<br><b>Sent:</b> Thursday, 22 October 2026 09:20<br><b>To:</b> Lukas B=
+ecker<br><b>Cc:</b> Jeroen de Vries; Daan Visser; DL CT<br><b>Subject:</b> RE=
+: Delivery block Z1 on Venlo deliveries</p></div><p>Lukas, I checked the 5 cu=
+stomers: no overdue items, so I support the request. But I cannot decide on a=
+ temporary limit myself. Any temporary increase has to be approved by Finance=
+ credit management first, and I only process it in UKM_BP afterwards. I sent =
+the approval request yesterday evening and have no answer yet.</p>
+<p>Sorry, this means the trucks for today will leave without these 5 deliveri=
+es. I expect the approval tomorrow morning. I will propose EUR 120,000 per cu=
+stomer, valid for 14 days, so Daan has time to fix the segment setup properly=
+.</p>
+<p>Daan, please do not change the segment again until I confirm.</p><p>Kind r=
+egards,<br>Ana Novak<br>Accounts payable analyst (Finance)<br>Corp Europe B.V=
+. | Rotterdam<br>T +31 10 253 3549<br><br>This e-mail and any attachments are=
+ confidential and intended solely for the addressee. If you received it in er=
+ror, please delete it.</p><div style=3D'border:none;border-top:solid #E1E1E1 =
+1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Lukas Becker &lt;l.becker@co=
+rp-europe.example&gt;<br><b>Sent:</b> Wednesday, 21 October 2026 16:05<br><b>=
+To:</b> Ana Novak<br><b>Cc:</b> Jeroen de Vries; DL CT<br><b>Subject:</b> RE:=
+ Delivery block Z1 on Venlo deliveries</p></div><p>Ana, we need a temporary c=
+redit limit for 5 deliveries in Venlo that are still on Z1: 80012354 (Maas In=
+stallatie, EUR 58,400), 80012355 (Rhein Haustechnik, EUR 64,900), 80012356 (K=
+eukens Limburg, EUR 71,300), 80012357 (Van Dijk Techniek, EUR 49,750) and 800=
+12358 (Techni-Care BV, EUR 52,100). Together EUR 296,450.</p>
+<p>The customers have no overdue items. The only reason for the block is the =
+segment change from 0001 to 0002 by master data, which cut the limit from EUR=
+ 250,000 to EUR 50,000. Trucks are booked for 22 Oct, but the goods can also =
+leave on 23 Oct if needed. Can you raise the limits in UKM_BP?</p><p>Kind reg=
+ards,<br>Lukas Becker<br>SAP key user SD/LE<br>Corp Europe B.V. | Rotterdam<b=
+r>T +31 10 293 9691<br><br>This e-mail and any attachments are confidential a=
+nd intended solely for the addressee. If you received it in error, please del=
+ete it.</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3=
+.0pt 0cm 0cm 0cm'><p><b>From:</b> Lukas Becker &lt;l.becker@corp-europe.examp=
+le&gt;<br><b>Sent:</b> Wednesday, 21 October 2026 15:20<br><b>To:</b> Jeroen =
+de Vries<br><b>Cc:</b> Ana Novak; DL CT<br><b>Subject:</b> RE: Delivery block=
+ Z1 on Venlo deliveries</p></div><p>Jeroen, update. Daan confirmed the cause:=
+ a mass change moved the Venlo customers to credit segment 0002 (limit EUR 50=
+,000 instead of 250,000).</p>
+<p>I have released 9 deliveries in VKM3: 80012345 to 80012353. As key user I =
+can release single deliveries below EUR 35,000 on my own. The remaining 5 (80=
+012354 to 80012358) are all above that, so Finance has to approve them. I&#x2=
+7;m asking Ana now.</p>
+<p>To recognise this in future: in VL02N open the status overview and look at=
+ the credit line. The message names the credit segment. If it says 0002 for a=
+ Venlo customer where you expect 0001, the block comes from a segment change =
+and not from real overdue items. You can check the customer&#x27;s limit in U=
+KM_BP.</p><p>Regards,<br>Lukas Becker<br>SAP key user SD/LE<br>Corp Europe B.=
+V. | Rotterdam<br>T +31 10 559 1100<br><br>This e-mail and any attachments ar=
+e confidential and intended solely for the addressee. If you received it in e=
+rror, please delete it.</p><div style=3D'border:none;border-top:solid #E1E1E1=
+ 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Daan Visser &lt;d.visser@co=
+rp-europe.example&gt;<br><b>Sent:</b> Wednesday, 21 October 2026 13:10<br><b>=
+To:</b> Lukas Becker<br><b>Cc:</b> Jeroen de Vries; DL CT<br><b>Subject:</b> =
+RE: Delivery block Z1 on Venlo deliveries</p></div><p>Yes, that was me. Yeste=
+rday afternoon I ran a mass change on the Venlo customers as part of the segm=
+ent clean-up ticket, to move them from 0001 to 0002. The new segment has a de=
+fault limit of EUR 50,000, and I did not realise the old individual limits wo=
+uld not carry over. That was my mistake, and I should have warned logistics a=
+nd Finance before the run.</p>
+<p>23 Venlo customers were included. I can set the segment back to 0001, but =
+the open exposure would then be recalculated overnight and I would rather not=
+ touch it again without Finance agreeing. Ana would need to confirm how she w=
+ants it handled.</p><p>Kind regards,<br>Daan Visser<br>Master data specialist=
+<br>Corp Europe B.V. | Rotterdam<br>T +31 10 823 5381<br><br>This e-mail and =
+any attachments are confidential and intended solely for the addressee. If yo=
+u received it in error, please delete it.</p><div style=3D'border:none;border=
+-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Lukas Bec=
+ker &lt;l.becker@corp-europe.example&gt;<br><b>Sent:</b> Wednesday, 21 Octobe=
+r 2026 10:50<br><b>To:</b> Daan Visser<br><b>Cc:</b> Jeroen de Vries; DL CT<b=
+r><b>Subject:</b> RE: Delivery block Z1 on Venlo deliveries</p></div><p>Daan,=
+ did master data change anything on the Venlo customers yesterday? 14 deliver=
+ies got Z1 this morning. In the credit data of Maas Installatie, Rhein Hauste=
+chnik and Keukens Limburg I see segment 0002 with a limit of EUR 50,000. Last=
+ week the same customers were in segment 0001 with EUR 250,000.</p>
+<p>If this was a mass change, can you tell me which customers were included a=
+nd why? Logistics was not informed and we have trucks booked for tomorrow.</p=
+><p>Regards,<br>Lukas Becker<br>SAP key user SD/LE<br>Corp Europe B.V. | Rott=
+erdam<br>T +31 10 787 4705<br><br>This e-mail and any attachments are confide=
+ntial and intended solely for the addressee. If you received it in error, ple=
+ase delete it.</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;pa=
+dding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Lukas Becker &lt;l.becker@corp-europ=
+e.example&gt;<br><b>Sent:</b> Wednesday, 21 October 2026 09:35<br><b>To:</b> =
+Jeroen de Vries<br><b>Cc:</b> DL CT<br><b>Subject:</b> RE: Delivery block Z1 =
+on Venlo deliveries</p></div><p>Jeroen, looking at it now. The screenshot alr=
+eady shows a hint: the credit message mentions segment 0002. For Venlo custom=
+ers I would expect 0001, so I suspect the credit segment was changed in the c=
+ustomer master overnight.</p>
+<p>I&#x27;ll check the credit data of a few customers to confirm and will com=
+e back to you before noon. Please don&#x27;t do a manual goods issue workarou=
+nd, it will not work anyway with the block in place.</p><p>Regards,<br>Lukas =
+Becker<br>SAP key user SD/LE<br>Corp Europe B.V. | Rotterdam<br>T +31 10 769 =
+7022<br><br>This e-mail and any attachments are confidential and intended sol=
+ely for the addressee. If you received it in error, please delete it.</p><div=
+ style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0c=
+m'><p><b>From:</b> Jeroen de Vries &lt;j.devries@corp-europe.example&gt;<br><=
+b>Sent:</b> Wednesday, 21 October 2026 08:40<br><b>To:</b> Lukas Becker<br><b=
+>Cc:</b> DL CT<br><b>Subject:</b> Delivery block Z1 on Venlo deliveries</p></=
+div><p>Lukas, we have a problem in Venlo. When we started picking this mornin=
+g, 14 outbound deliveries for tomorrow&#x27;s trucks came up with delivery bl=
+ock Z1 (credit check) in VL02N. Yesterday evening none of them had a block. I=
+ have pasted the list below and a screenshot of the first one, 80012354.</p>
+<p>We have carriers booked for 10:00 and 14:00 tomorrow, so I need to know to=
+day what can be released. Total value is about EUR 458k. Nobody in the team h=
+as changed anything on the orders.</p>
+<p>Can you have a look? I assume it has to do with the credit settings of the=
+ customers, but I don&#x27;t know what changed.</p><table style=3D'border-col=
+lapse:collapse;font-size:10pt'><tr><th style=3D'border:1px solid #999;padding=
+:3px 6px'>Delivery</th><th style=3D'border:1px solid #999;padding:3px 6px'>Cu=
+stomer</th><th style=3D'border:1px solid #999;padding:3px 6px'>Value EUR</th>=
+<th style=3D'border:1px solid #999;padding:3px 6px'>Block</th></tr><tr><td st=
+yle=3D'border:1px solid #999;padding:3px 6px'>80012345</td><td style=3D'borde=
+r:1px solid #999;padding:3px 6px'>Hoogeveen Bouw</td><td style=3D'border:1px =
+solid #999;padding:3px 6px'>18,400</td><td style=3D'border:1px solid #999;pad=
+ding:3px 6px'>Z1</td></tr><tr><td style=3D'border:1px solid #999;padding:3px =
+6px'>80012346</td><td style=3D'border:1px solid #999;padding:3px 6px'>Van Dij=
+k Techniek</td><td style=3D'border:1px solid #999;padding:3px 6px'>12,950</td=
+><td style=3D'border:1px solid #999;padding:3px 6px'>Z1</td></tr><tr><td styl=
+e=3D'border:1px solid #999;padding:3px 6px'>80012347</td><td style=3D'border:=
+1px solid #999;padding:3px 6px'>Maas Installatie</td><td style=3D'border:1px =
+solid #999;padding:3px 6px'>9,780</td><td style=3D'border:1px solid #999;padd=
+ing:3px 6px'>Z1</td></tr><tr><td style=3D'border:1px solid #999;padding:3px 6=
+px'>80012348</td><td style=3D'border:1px solid #999;padding:3px 6px'>Keukens =
+Limburg</td><td style=3D'border:1px solid #999;padding:3px 6px'>22,300</td><t=
+d style=3D'border:1px solid #999;padding:3px 6px'>Z1</td></tr><tr><td style=
+=3D'border:1px solid #999;padding:3px 6px'>80012349</td><td style=3D'border:1=
+px solid #999;padding:3px 6px'>Rhein Haustechnik</td><td style=3D'border:1px =
+solid #999;padding:3px 6px'>31,600</td><td style=3D'border:1px solid #999;pad=
+ding:3px 6px'>Z1</td></tr><tr><td style=3D'border:1px solid #999;padding:3px =
+6px'>80012350</td><td style=3D'border:1px solid #999;padding:3px 6px'>Peeters=
+ Sanitair</td><td style=3D'border:1px solid #999;padding:3px 6px'>14,250</td>=
+<td style=3D'border:1px solid #999;padding:3px 6px'>Z1</td></tr><tr><td style=
+=3D'border:1px solid #999;padding:3px 6px'>80012351</td><td style=3D'border:1=
+px solid #999;padding:3px 6px'>Techni-Care BV</td><td style=3D'border:1px sol=
+id #999;padding:3px 6px'>8,900</td><td style=3D'border:1px solid #999;padding=
+:3px 6px'>Z1</td></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'=
+>80012352</td><td style=3D'border:1px solid #999;padding:3px 6px'>Hoogeveen B=
+ouw</td><td style=3D'border:1px solid #999;padding:3px 6px'>27,500</td><td st=
+yle=3D'border:1px solid #999;padding:3px 6px'>Z1</td></tr><tr><td style=3D'bo=
+rder:1px solid #999;padding:3px 6px'>80012353</td><td style=3D'border:1px sol=
+id #999;padding:3px 6px'>Venray Metaal</td><td style=3D'border:1px solid #999=
+;padding:3px 6px'>16,200</td><td style=3D'border:1px solid #999;padding:3px 6=
+px'>Z1</td></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>80012=
+354</td><td style=3D'border:1px solid #999;padding:3px 6px'>Maas Installatie<=
+/td><td style=3D'border:1px solid #999;padding:3px 6px'>58,400</td><td style=
+=3D'border:1px solid #999;padding:3px 6px'>Z1</td></tr><tr><td style=3D'borde=
+r:1px solid #999;padding:3px 6px'>80012355</td><td style=3D'border:1px solid =
+#999;padding:3px 6px'>Rhein Haustechnik</td><td style=3D'border:1px solid #99=
+9;padding:3px 6px'>64,900</td><td style=3D'border:1px solid #999;padding:3px =
+6px'>Z1</td></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>8001=
+2356</td><td style=3D'border:1px solid #999;padding:3px 6px'>Keukens Limburg<=
+/td><td style=3D'border:1px solid #999;padding:3px 6px'>71,300</td><td style=
+=3D'border:1px solid #999;padding:3px 6px'>Z1</td></tr><tr><td style=3D'borde=
+r:1px solid #999;padding:3px 6px'>80012357</td><td style=3D'border:1px solid =
+#999;padding:3px 6px'>Van Dijk Techniek</td><td style=3D'border:1px solid #99=
+9;padding:3px 6px'>49,750</td><td style=3D'border:1px solid #999;padding:3px =
+6px'>Z1</td></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>8001=
+2358</td><td style=3D'border:1px solid #999;padding:3px 6px'>Techni-Care BV</=
+td><td style=3D'border:1px solid #999;padding:3px 6px'>52,100</td><td style=
+=3D'border:1px solid #999;padding:3px 6px'>Z1</td></tr></table><p><img src=3D=
+'cid:img0.4f00c45b@corp' alt=3D'Change Outbound Delivery 80012354 (VL02N)' wi=
+dth=3D'600'></p><p>Thanks,<br>Jeroen de Vries<br>Outbound team lead Venlo<br>=
+Corp Europe B.V. | Rotterdam<br>T +31 10 429 2773<br><br>This e-mail and any =
+attachments are confidential and intended solely for the addressee. If you re=
+ceived it in error, please delete it.</p></body></html>
+
+--===============8709965835633220059==--

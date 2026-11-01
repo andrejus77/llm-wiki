@@ -1,0 +1,570 @@
+{
+ "date": "01 Nov 2026",
+ "pytest": "54",
+ "retrieval": [
+  {
+   "name": "BM25 only (FTS5)",
+   "recall_1": 0.703,
+   "recall_5": 0.971,
+   "recall_10": 0.986,
+   "mrr": 0.815,
+   "ndcg_10": 0.836,
+   "ms": 3.6,
+   "recall_5_by_type": {
+    "why": 0.971,
+    "identifier": 1.0,
+    "howto": 0.778,
+    "multihop": 1.0,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "vector only · multilingual-e5-small",
+   "recall_1": 0.732,
+   "recall_5": 0.957,
+   "recall_10": 0.978,
+   "mrr": 0.821,
+   "ndcg_10": 0.829,
+   "ms": 25.4,
+   "recall_5_by_type": {
+    "why": 0.971,
+    "identifier": 1.0,
+    "howto": 0.778,
+    "multihop": 0.92,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 0.933
+   }
+  },
+  {
+   "name": "hybrid RRF · multilingual-e5-small",
+   "recall_1": 0.768,
+   "recall_5": 0.978,
+   "recall_10": 0.993,
+   "mrr": 0.861,
+   "ndcg_10": 0.86,
+   "ms": 24.5,
+   "recall_5_by_type": {
+    "why": 0.971,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 1.0,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid + source weights · multilingual-e5-small",
+   "recall_1": 0.906,
+   "recall_5": 0.978,
+   "recall_10": 0.993,
+   "mrr": 0.941,
+   "ndcg_10": 0.933,
+   "ms": 22.6,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 1.0,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 0.933
+   }
+  },
+  {
+   "name": "hybrid + weights + recency · multilingual-e5-small",
+   "recall_1": 0.913,
+   "recall_5": 0.978,
+   "recall_10": 0.993,
+   "mrr": 0.946,
+   "ndcg_10": 0.935,
+   "ms": 23.4,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 1.0,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 0.933
+   }
+  },
+  {
+   "name": "vector only · bge-small-en-v1.5",
+   "recall_1": 0.681,
+   "recall_5": 0.942,
+   "recall_10": 0.964,
+   "mrr": 0.785,
+   "ndcg_10": 0.805,
+   "ms": 24.9,
+   "recall_5_by_type": {
+    "why": 0.971,
+    "identifier": 1.0,
+    "howto": 0.778,
+    "multihop": 0.92,
+    "when": 0.941,
+    "fact": 1.0,
+    "who": 0.867
+   }
+  },
+  {
+   "name": "hybrid RRF · bge-small-en-v1.5",
+   "recall_1": 0.725,
+   "recall_5": 0.964,
+   "recall_10": 0.993,
+   "mrr": 0.829,
+   "ndcg_10": 0.843,
+   "ms": 26.2,
+   "recall_5_by_type": {
+    "why": 0.971,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 0.933
+   }
+  },
+  {
+   "name": "hybrid + source weights · bge-small-en-v1.5",
+   "recall_1": 0.913,
+   "recall_5": 0.971,
+   "recall_10": 0.993,
+   "mrr": 0.941,
+   "ndcg_10": 0.931,
+   "ms": 25.8,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 1.0,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 0.867
+   }
+  },
+  {
+   "name": "hybrid + weights + recency · bge-small-en-v1.5",
+   "recall_1": 0.899,
+   "recall_5": 0.971,
+   "recall_10": 0.993,
+   "mrr": 0.934,
+   "ndcg_10": 0.93,
+   "ms": 25.7,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 1.0,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 0.867
+   }
+  },
+  {
+   "name": "vector only · hashed",
+   "recall_1": 0.638,
+   "recall_5": 0.942,
+   "recall_10": 0.964,
+   "mrr": 0.765,
+   "ndcg_10": 0.786,
+   "ms": 8.7,
+   "recall_5_by_type": {
+    "why": 0.971,
+    "identifier": 0.947,
+    "howto": 0.889,
+    "multihop": 0.96,
+    "when": 0.941,
+    "fact": 0.947,
+    "who": 0.867
+   }
+  },
+  {
+   "name": "hybrid RRF · hashed",
+   "recall_1": 0.783,
+   "recall_5": 0.986,
+   "recall_10": 0.986,
+   "mrr": 0.867,
+   "ndcg_10": 0.862,
+   "ms": 9.9,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 1.0,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid + source weights · hashed",
+   "recall_1": 0.906,
+   "recall_5": 0.971,
+   "recall_10": 0.993,
+   "mrr": 0.935,
+   "ndcg_10": 0.913,
+   "ms": 10.1,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 0.947,
+    "howto": 0.889,
+    "multihop": 1.0,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 0.933
+   }
+  },
+  {
+   "name": "hybrid + weights + recency · hashed",
+   "recall_1": 0.906,
+   "recall_5": 0.978,
+   "recall_10": 0.993,
+   "mrr": 0.934,
+   "ndcg_10": 0.913,
+   "ms": 9.9,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 1.0,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 0.933
+   }
+  }
+ ],
+ "ingest": {
+  "true_emails": 368,
+  "stored": 368,
+  "missing": 0,
+  "alias_copies_merged": 3,
+  "resent_marked_duplicate": 1,
+  "thread_purity": 1.0,
+  "thread_completeness": 0.9917,
+  "true_threads": 43,
+  "stored_threads_for_real_mail": 45,
+  "noise_skipped": 13,
+  "noise_total": 125,
+  "quoted_only_in_truth": 5,
+  "emails_processed": 354,
+  "notes_per_processed_email": 1.0,
+  "routing_accuracy": 0.955,
+  "pages_per_storyline (≥2 emails)": 1.0,
+  "storylines": 25,
+  "pages": 24,
+  "page_purity": 0.98,
+  "storylines_with_own_page": "24/25",
+  "units": 304,
+  "units_retried_share": 0.0,
+  "fast_path_fallbacks": 0,
+  "section_versions": 342,
+  "drafts_rejected_or_replaced": 67,
+  "items_written": 635,
+  "items_pending_or_failed": 0,
+  "llm_calls": 644,
+  "llm_calls_by_status": {
+   "ok": 618,
+   "rejected": 26
+  }
+ },
+ "run": {
+  "units": 304,
+  "unit_errors": 0,
+  "emails": 354,
+  "pages_edited": 91,
+  "edit_rejected": 0,
+  "new_pages": 25,
+  "windows": 6,
+  "fast": 270,
+  "staged": 34,
+  "learned_rules": 2,
+  "seconds": 1384.0
+ },
+ "answers": [
+  {
+   "name": "langgraph · fast",
+   "n": 10,
+   "correct": 1.0,
+   "faithful": 0.9,
+   "source_precision": 0.855,
+   "abstention": 1.0,
+   "seconds": 6.3
+  },
+  {
+   "name": "plain · fast",
+   "n": 10,
+   "correct": 0.9,
+   "faithful": 1.0,
+   "source_precision": 0.855,
+   "abstention": 1.0,
+   "seconds": 5.5
+  },
+  {
+   "name": "langgraph · deep",
+   "n": 9,
+   "correct": 1.0,
+   "faithful": 1.0,
+   "source_precision": 0.774,
+   "abstention": 1.0,
+   "seconds": 22.1
+  }
+ ],
+ "korean": {
+  "Emails in the Korean slice (Korean-language)": "19 (7)",
+  "Threads with 회신/전달 prefixes and Korean quote headers: purity / completeness": "1.0 / 1.0",
+  "Unit errors in the pipeline run": 0,
+  "Notes for Korean emails written in English": "7 of 7",
+  "Pages (English titles)": "EU-Korea FTA origin statement on Pyeongtaek export invoices; Q4 2026 inbound forecast Busan/Incheon to Rotterdam",
+  "Hangul query '원산지 증명' (FTS5 trigram + vectors): top hits": "emails: 회신: Refund request duty Korea shipments EUR 18,400 · Park Ji; emails: 회신: Missing FTA origin statement on Pyeongtaek invoices - du; emails: 회신: Missing FTA origin statement on Pyeongtaek invoices - du",
+  "English query → finds the page written from Korean mail": "wiki: Page: EU-Korea FTA origin statement on Pyeongtaek export invoices (top"
+ },
+ "dataset": {
+  "storylines": 25,
+  "files": 418,
+  "story_emails": 257,
+  "noise": 157,
+  "golden": 169
+ },
+ "h5": {
+  "run": [
+   [
+    "Mailbox",
+    "418 files to 4 department addresses (27 storylines incl. 2 AI storylines, 157 automated mails)"
+   ],
+   [
+    "Stored / lost · thread purity / completeness",
+    "415 / 0 · 1.0 / 0.9922"
+   ],
+   [
+    "Units · unit errors",
+    "249 (224 fast path, 25 staged) · 0"
+   ],
+   [
+    "Pages",
+    "25 for 27 storylines; 10 projects, 10 topics, 5 tasks (22 promotions by the size check during the run)"
+   ],
+   [
+    "Storylines in the right department's report",
+    "27 / 27 (incl. the n8n flow mailed only to Control Tower → AI & Automation)"
+   ],
+   [
+    "AI flag",
+    "15 of 15 AI emails flagged, 0 false positives (the classic RPA invoice bot is not AI)"
+   ],
+   [
+    "Automated mail",
+    "40 skipped by rules; of the other 117, 111 recognised as automated; 91 % of all automated mail skipped or not important; 0 routed to a page"
+   ],
+   [
+    "Storyline (human) emails wrongly marked automated",
+    "0"
+   ],
+   [
+    "Retrieval on this store (e5, weights)",
+    "recall@1 0.92 · recall@5 0.98 · MRR 0.94 (169 golden questions)"
+   ]
+  ],
+  "reports": [
+   [
+    "Weekly · Thu 29 Oct (22–28 Oct)",
+    "Control Tower 6 stories · Customs 1 · Finance 3 · AI & Automation 2 — no topic in two reports; all texts by the agent (16 requests)"
+   ],
+   [
+    "Daily · Sun 1 Nov (25–31 Oct)",
+    "Control Tower 5 · Customs 2 · Finance 4 · AI & Automation 2 — no overlaps; 17 requests"
+   ],
+   [
+    "Team filter",
+    "'Nordline ocean rate renewal 2027' left out of both (only partner mail in the window); 'AEO audit' left out of the weekly, in the daily once a team member wrote"
+   ],
+   [
+    "Window only",
+    "story texts mention only events inside their window (checked: the 29 Oct go/no-go of the AI pilot is not in the weekly ending 28 Oct)"
+   ]
+  ]
+ },
+ "pages": {
+  "rewrite": [
+   [
+    "Pages accepted by the guards",
+    "25 of 25"
+   ],
+   [
+    "Words on the pages",
+    "38,872 → 9,884 (budget 9,977; the mail behind them: 20,815 words of new text by people)"
+   ],
+   [
+    "Pages over their budget (> 15 %)",
+    2
+   ],
+   [
+    "Pages with a repeated sentence (script check)",
+    5
+   ],
+   [
+    "Pages with a sentence about the sources",
+    0
+   ],
+   [
+    "Editor requests · confirm rounds (to shorten or fix)",
+    "25 · 15"
+   ]
+  ],
+  "example": {
+   "title": "Felixstowe reefer import checklist",
+   "before": 759,
+   "after": 147,
+   "source": 302,
+   "html": "<p><b>Summary</b><br>Felixstowe reefer import checklist: Harbour Agency checks each reefer&#x27;s commodity code against the invoice and packing list before the vessel arrives. In use since 12 Oct 2026; Oliver Wright tracks arrivals. Next: Tom Hendriks&#x27; customs team to check codes on all UK-bound reefers before submission.</p><p><b>How the check works</b><br>1. Booking confirmed: customs coordinator sends invoice and packing list to Harbour.<br>2. At least 2 working days before vessel ETA: Harbour checks the code against the goods description.<br>3. Mismatch: Harbour calls Marta Kowalska; code corrected with supplier before arrival.<br>4. Import declaration lodged and accepted before arrival.<br>5. Arrival day: Oliver Wright confirms release status.</p><p><b>Decisions</b><br>Marta Kowalska drafted v1. Harbour agreed 9 Oct, provided documents arrive at booking; otherwise it says so at once. The 22–25 Sep hold was our wrong code, not Veltrans&#x27; (Tom Hendriks, 14 Oct). Demurrage EUR 1,260.00 stays with Corp Europe (Mark de Boer, 21 Oct).</p>"
+  },
+  "fresh": [
+   [
+    "Emails processed · units · unit errors",
+    "374 · 249 · 0"
+   ],
+   [
+    "Pages for 27 storylines · page purity · routing accuracy",
+    "24 · 0.939 · 0.97"
+   ],
+   [
+    "Words on all pages vs the mail behind them",
+    "8,607 vs 20,802 (0.41×; budget 10,116)"
+   ],
+   [
+    "Page length / mail length, median page",
+    "0.45"
+   ],
+   [
+    "Pages over their budget (> 15 %)",
+    "0 of 24"
+   ],
+   [
+    "Pages with a repeated sentence (script check)",
+    3
+   ],
+   [
+    "Pages with a sentence about the sources",
+    0
+   ],
+   [
+    "Editor requests · confirm rounds · rewrites rejected by the guards",
+    "75 · 49 · 0"
+   ],
+   [
+    "Time",
+    "≈ 36 min at 2–3 parallel requests (stopped once by the PC for low memory after 4 of 6 weeks, resumed where it stopped)"
+   ]
+  ]
+ },
+ "recheck": {
+  "ingest": [
+   [
+    "Emails expected / stored / lost",
+    "368 / 368 / 0"
+   ],
+   [
+    "Thread purity / completeness",
+    "1.0 / 0.9917 (unchanged: the shared-history join merged nothing it shouldn't)"
+   ],
+   [
+    "Automated noise mails skipped",
+    "39 of 125 (before: 13) — 26 more from no-reply senders"
+   ],
+   [
+    "Real (storyline) emails skipped",
+    "0"
+   ]
+  ],
+  "transfer": [
+   [
+    "Export of the final Haiku store",
+    "9.7 MB zip (368 emails, 25 pages, settings, LLM call log)"
+   ],
+   [
+    "Import into an empty data folder",
+    "368 emails, 25 pages, 963 vectors rebuilt into Qdrant; hybrid search answers"
+   ],
+   [
+    "Endpoints after import",
+    "this machine's settings.yaml (server-api-b), not the exporting machine's"
+   ],
+   [
+    "Second import without --force",
+    "refused (\"this machine already has 368 emails\")"
+   ],
+   [
+    "package.bat --with-data, then install.bat in an empty folder (server simulation)",
+    "offline install, data imported automatically (368 emails, 963 vectors), doctor: 0 problems"
+   ]
+  ]
+ },
+ "chat_example": {
+  "question": "Why did the Rotterdam EWM go-live move, and what is the new date?",
+  "answer": "The sources don't show the Rotterdam EWM go-live itself being moved. EWM went live at 06:00 on Tue 6 Oct 2026 [4].\nThe date that moved is the Dutch customs DMS go-live:\n- It was moved from 3 Nov to 17 Nov 2026 on 20 Oct 2026 [2][6].\n- Reason: Nordline's DMS release slipped to 10 Nov [2].\n- Ruud Jansen chose a single cut-over with no parallel declaration formats, and Mark de Boer decides the go/no-go on 12 Nov [2][6].\n- The 3 Nov date on other pages is superseded [1].\nRelated: the Rotterdam EWM change freeze was extended to 17 Nov to match the customs cut-over [2]. Hypercare closes 30 Oct 2026 [4][8].",
+  "meta": "LangGraph agent, fast mode, Haiku · 13.7 s · 5 sources (wiki sections and one email), each opens in the side drawer. The question's premise was wrong; the agent corrected it from the sources instead of inventing a reason."
+ },
+ "zip_mb": 440,
+ "zip_path": "C:\\Users\\andre\\Documents\\llm-wiki\\dist\\llmwiki-offline-20261101-win_amd64-py311.zip",
+ "screenshots": [
+  [
+   "C:\\Users\\andre\\Documents\\llm-wiki\\eval\\screens\\reports.png",
+   "Reports: one tab per department; Daily / Weekly / Monthly; the weekly report (Thursday) with the mail-per-day strip, coloured stat cards and 2-column story cards"
+  ],
+  [
+   "C:\\Users\\andre\\Documents\\llm-wiki\\eval\\screens\\reports_monthly.png",
+   "A monthly report: the month as a calendar, story cards counting mail per week, the lists below at most one card tall"
+  ],
+  [
+   "C:\\Users\\andre\\Documents\\llm-wiki\\eval\\screens\\reports_ai.png",
+   "The AI & Automation report: the n8n ETA flow was mailed to Control Tower only, but the AI flag puts it here"
+  ],
+  [
+   "C:\\Users\\andre\\Documents\\llm-wiki\\eval\\screens\\topicweek.png",
+   "Reports › Topic week: which topics got mail on which day and hour (script only)"
+  ],
+  [
+   "C:\\Users\\andre\\Documents\\llm-wiki\\eval\\screens\\thread.png",
+   "A thread with parallel branches: the department never received the original, two people answered it separately"
+  ],
+  [
+   "C:\\Users\\andre\\Documents\\llm-wiki\\eval\\screens\\page.png",
+   "Wiki page: a summary and the editor's own sections within the length budget (header: words / budget), full width; people from the headers in the rail"
+  ],
+  [
+   "C:\\Users\\andre\\Documents\\llm-wiki\\eval\\screens\\wiki.png",
+   "Wiki: cards with tag pills (2 rows max) and a one-row footer"
+  ],
+  [
+   "C:\\Users\\andre\\Documents\\llm-wiki\\eval\\screens\\emails.png",
+   "Emails: list with the per-email notes, importance labels and the reading pane"
+  ],
+  [
+   "C:\\Users\\andre\\Documents\\llm-wiki\\eval\\screens\\drawer.png",
+   "Side drawer: an email with the earlier emails of its thread"
+  ],
+  [
+   "C:\\Users\\andre\\Documents\\llm-wiki\\eval\\screens\\chat.png",
+   "Chat: answer with numbered sources (LangGraph agent)"
+  ],
+  [
+   "C:\\Users\\andre\\Documents\\llm-wiki\\eval\\screens\\pipeline.png",
+   "Agent › Pipeline: one unit's requests with prompt sections, budgets and answers"
+  ],
+  [
+   "C:\\Users\\andre\\Documents\\llm-wiki\\eval\\screens\\pool.png",
+   "Agent › Pool: endpoints (external marked), and the Refusals panel that lists every blocked request"
+  ],
+  [
+   "C:\\Users\\andre\\Documents\\llm-wiki\\eval\\screens\\rules.png",
+   "Agent › Rules: automatic replies always skipped; rules for automated mail let people's replies through unless 'also replies' is ticked"
+  ],
+  [
+   "C:\\Users\\andre\\Documents\\llm-wiki\\eval\\screens\\settings.png",
+   "Agent › Settings: generated from the Pydantic model, endpoints with rpm per API"
+  ]
+ ]
+}

@@ -1,0 +1,191 @@
+Message-ID: <accrual.t1.m2.f659334bdd@corp-europe.example>
+Date: Fri, 25 Sep 2026 11:10:00 +0200
+From: "Tom Hendriks" <t.hendriks@corp-europe.example>
+To: "Ana Novak" <a.novak@corp-europe.example>
+Cc: "DL FIN" <dl-fin@corp-europe.example>
+Subject: RE: Weekly freight accrual - week 39
+In-Reply-To: <accrual.t1.m1.a78c327f43@corp-europe.example>
+References: <accrual.t1.m1.a78c327f43@corp-europe.example>
+Thread-Index: Ad1MzaRUNfoXqNLsN5wJkCBqnkJsw6lgibwa
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============8002310955974380431=="
+
+--===============8002310955974380431==
+Content-Type: multipart/alternative;
+ boundary="===============2349236400554503707=="
+
+--===============2349236400554503707==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Ana, report attached. 39 shipments, total EUR 176,850. I filtered on plann=
+ed delivery date up to 25.09, as that is the default variant in the TMS.
+
+Example line: delivery 80412233 with Veltrans, Venlo, EUR 1,840. Note that IN=
+V-48213 for that one is already booked, so you should see it cleared in FBL1N.
+
+Best regards,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 428 3286
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Ana Novak <a.novak@corp-europe.example>
+Sent: Friday, 25 September 2026 09:30
+To: Tom Hendriks
+Subject: Weekly freight accrual - week 39
+
+Hi Tom, it's Friday, so time for the weekly freight accrual. This week it is =
+also the September close, so the figure will be booked for the month.
+
+Could you send me the TMS report of shipments delivered but not yet invoiced,=
+ cut-off today 25.09? I need it by 12:00 if possible. My routine is: take you=
+r report, match against open items in FBL1N, post the accrual with FB50 to G/=
+L 4711000, and set the reversal for the 1st of the month.
+
+Please include shipment number, delivery number, carrier, site and the agreed=
+ freight amount.
+
+Kind regards,
+Ana Novak
+Accounts payable analyst (Finance)
+Corp Europe B.V. | Rotterdam
+T +31 10 225 5506
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============2349236400554503707==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Hi Ana, report attached. 39 shipments, total EUR 176,850. I fi=
+ltered on planned delivery date up to 25.09, as that is the default variant i=
+n the TMS.</p>
+<p>Example line: delivery 80412233 with Veltrans, Venlo, EUR 1,840. Note that=
+ INV-48213 for that one is already booked, so you should see it cleared in FB=
+L1N.</p><p>Best regards,<br>Tom Hendriks<br>Transport planner<br>Corp Europe =
+B.V. | Rotterdam<br>T +31 10 428 3286<br><br>This e-mail and any attachments =
+are confidential and intended solely for the addressee. If you received it in=
+ error, please delete it.</p><div style=3D'border:none;border-top:solid #E1E1=
+E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Ana Novak &lt;a.novak@cor=
+p-europe.example&gt;<br><b>Sent:</b> Friday, 25 September 2026 09:30<br><b>To=
+:</b> Tom Hendriks<br><b>Cc:</b> DL FIN<br><b>Subject:</b> Weekly freight acc=
+rual - week 39</p></div><p>Hi Tom, it&#x27;s Friday, so time for the weekly f=
+reight accrual. This week it is also the September close, so the figure will =
+be booked for the month.</p>
+<p>Could you send me the TMS report of shipments delivered but not yet invoic=
+ed, cut-off today 25.09? I need it by 12:00 if possible. My routine is: take =
+your report, match against open items in FBL1N, post the accrual with FB50 to=
+ G/L 4711000, and set the reversal for the 1st of the month.</p>
+<p>Please include shipment number, delivery number, carrier, site and the agr=
+eed freight amount.</p><p>Kind regards,<br>Ana Novak<br>Accounts payable anal=
+yst (Finance)<br>Corp Europe B.V. | Rotterdam<br>T +31 10 225 5506<br><br>Thi=
+s e-mail and any attachments are confidential and intended solely for the add=
+ressee. If you received it in error, please delete it.</p></body></html>
+
+--===============2349236400554503707==--
+
+--===============8002310955974380431==
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+ filename="TMS_delivered_not_invoiced_KW39_v1.xlsx"
+MIME-Version: 1.0
+
+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
+
+--===============8002310955974380431==--

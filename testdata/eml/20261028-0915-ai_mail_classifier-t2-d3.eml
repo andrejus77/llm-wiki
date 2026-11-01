@@ -1,0 +1,104 @@
+Message-ID: <ai_mail_classifier.t2.d3.368f2a13f0@corp-europe.example>
+Date: Wed, 28 Oct 2026 09:15:00 +0100
+From: "Daan Visser" <d.visser@corp-europe.example>
+To: "Nina Meijer" <n.meijer@corp-europe.example>
+Cc: "Stefan Kovac" <s.kovac@corp-europe.example>,
+ "DL AI" <dl-ai@corp-europe.example>
+Subject: RE: Data protection check for the mail sorting pilot
+In-Reply-To: <ai_mail_classifier.t2.d2.bcca0165e4@corp-europe.example>
+References: <ai_mail_classifier.t2.d1.7c32cd4843@corp-europe.example>
+ <ai_mail_classifier.t2.d2.bcca0165e4@corp-europe.example>
+Thread-Index: Ad1mtG0CcinbNXR2hlfUQYszlJZOzGli7RW74d5pfNA=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============1592228310252438530=="
+
+--===============1592228310252438530==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+DP-07-2026-114 is approved, valid until 31 Mar 2027. Condition: mails with me=
+dical or HR content must be excluded, the classifier should route them to 'ot=
+her' without processing the body.
+
+Best regards,
+Daan Visser
+Master data specialist
+Corp Europe B.V. | Rotterdam
+T +31 10 780 2290
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Daan Visser <d.visser@corp-europe.example>
+Sent: Wednesday, 21 October 2026 13:30
+To: Nina Meijer
+Subject: RE: Data protection check for the mail sorting pilot
+
+Nina, it is the short DPIA screening form (DP-07). With EU processing and no =
+retention it is normally approved within a week. I filed it today as DP-07-20=
+26-114.
+
+Kind regards,
+Daan Visser
+Master data specialist
+Corp Europe B.V. | Rotterdam
+T +31 10 571 6038
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Nina Meijer <n.meijer@corp-europe.example>
+Sent: Tuesday, 20 October 2026 10:00
+To: Daan Visser
+Subject: Data protection check for the mail sorting pilot
+
+Daan, for the shadow run we need the data protection check. Mails are process=
+ed in the EU region of our Vertex AI tenant, nothing is stored by the provide=
+r and no training on our data. Can you confirm which form we need?
+
+Regards,
+Nina Meijer
+AI lead, Logistics Europe
+Corp Europe B.V. | Rotterdam
+T +31 10 700 1319
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============1592228310252438530==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>DP-07-2026-114 is approved, valid until 31 Mar 2027. Condition=
+: mails with medical or HR content must be excluded, the classifier should ro=
+ute them to &#x27;other&#x27; without processing the body.</p><p>Best regards=
+,<br>Daan Visser<br>Master data specialist<br>Corp Europe B.V. | Rotterdam<br=
+>T +31 10 780 2290<br><br>This e-mail and any attachments are confidential an=
+d intended solely for the addressee. If you received it in error, please dele=
+te it.</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.=
+0pt 0cm 0cm 0cm'><p><b>From:</b> Daan Visser &lt;d.visser@corp-europe.example=
+&gt;<br><b>Sent:</b> Wednesday, 21 October 2026 13:30<br><b>To:</b> Nina Meij=
+er<br><b>Cc:</b> Stefan Kovac; DL AI<br><b>Subject:</b> RE: Data protection c=
+heck for the mail sorting pilot</p></div><p>Nina, it is the short DPIA screen=
+ing form (DP-07). With EU processing and no retention it is normally approved=
+ within a week. I filed it today as DP-07-2026-114.</p><p>Kind regards,<br>Da=
+an Visser<br>Master data specialist<br>Corp Europe B.V. | Rotterdam<br>T +31 =
+10 571 6038<br><br>This e-mail and any attachments are confidential and inten=
+ded solely for the addressee. If you received it in error, please delete it.<=
+/p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm=
+ 0cm 0cm'><p><b>From:</b> Nina Meijer &lt;n.meijer@corp-europe.example&gt;<br=
+><b>Sent:</b> Tuesday, 20 October 2026 10:00<br><b>To:</b> Daan Visser<br><b>=
+Cc:</b> Stefan Kovac; DL AI<br><b>Subject:</b> Data protection check for the =
+mail sorting pilot</p></div><p>Daan, for the shadow run we need the data prot=
+ection check. Mails are processed in the EU region of our Vertex AI tenant, n=
+othing is stored by the provider and no training on our data. Can you confirm=
+ which form we need?</p><p>Regards,<br>Nina Meijer<br>AI lead, Logistics Euro=
+pe<br>Corp Europe B.V. | Rotterdam<br>T +31 10 700 1319<br><br>This e-mail an=
+d any attachments are confidential and intended solely for the addressee. If =
+you received it in error, please delete it.</p></body></html>
+
+--===============1592228310252438530==--

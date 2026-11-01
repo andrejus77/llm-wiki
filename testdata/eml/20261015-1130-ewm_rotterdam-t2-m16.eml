@@ -1,0 +1,83 @@
+Message-ID: <ewm_rotterdam.t2.m16.c29779d41f@corp-europe.example>
+Date: Thu, 15 Oct 2026 11:30:00 +0200
+From: "Hanna Schmidt" <h.schmidt@corp-europe.example>
+To: "Lukas Becker" <l.becker@corp-europe.example>
+Cc: "Ruud Jansen" <r.jansen@corp-europe.example>,
+ "Sofie Peeters" <s.peeters@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: Zone B wave template: fix timing
+In-Reply-To: <ewm_rotterdam.t2.m15.9b1178a700@corp-europe.example>
+References: <ewm_rotterdam.t2.m15.9b1178a700@corp-europe.example>
+Thread-Index: Ad1ch7/Z8uMM6Y1mQqiO1zijgr/FTLpuWGhU
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============0585176158922923246=="
+
+--===============0585176158922923246==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Thanks, but I would keep the freeze. If customs go-live on 17 Nov leads to de=
+livery block problems, I want to have changed nothing in the waves before. De=
+cision: the zone B template fix is done in the week after the go-live (week o=
+f 23 Nov). Until then the supervisors re-sort manually, and Sofie's pickers c=
+an share the tip for the manual sort.
+
+Best regards,
+Hanna Schmidt
+EWM project lead (Rotterdam and Venlo rollouts)
+Corp Europe B.V. | Rotterdam
+T +31 10 265 7797
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Lukas Becker <l.becker@corp-europe.example>
+Sent: Thursday, 15 October 2026 10:00
+To: Hanna Schmidt
+Subject: Zone B wave template: fix timing
+
+I found the cause of the zone B problem. Wave template ZB_WAVE_01 sorts by st=
+orage bin ID instead of by pick path sequence, so tasks jump between aisles B=
+03 and B11. The fix is a small change to the template and takes about 2 hours=
+ including a test in the quality system. I can do it today if we release the =
+freeze for this one template.
+
+Best regards,
+Lukas Becker
+SAP key user SD/LE
+Corp Europe B.V. | Rotterdam
+T +31 10 592 3503
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============0585176158922923246==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Thanks, but I would keep the freeze. If customs go-live on 17 =
+Nov leads to delivery block problems, I want to have changed nothing in the w=
+aves before. Decision: the zone B template fix is done in the week after the =
+go-live (week of 23 Nov). Until then the supervisors re-sort manually, and So=
+fie&#x27;s pickers can share the tip for the manual sort.</p><p>Best regards,=
+<br>Hanna Schmidt<br>EWM project lead (Rotterdam and Venlo rollouts)<br>Corp =
+Europe B.V. | Rotterdam<br>T +31 10 265 7797<br><br>This e-mail and any attac=
+hments are confidential and intended solely for the addressee. If you receive=
+d it in error, please delete it.</p><div style=3D'border:none;border-top:soli=
+d #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Lukas Becker &lt;l=
+.becker@corp-europe.example&gt;<br><b>Sent:</b> Thursday, 15 October 2026 10:=
+00<br><b>To:</b> Hanna Schmidt<br><b>Cc:</b> Ruud Jansen; Sofie Peeters; DL C=
+T<br><b>Subject:</b> Zone B wave template: fix timing</p></div><p>I found the=
+ cause of the zone B problem. Wave template ZB_WAVE_01 sorts by storage bin I=
+D instead of by pick path sequence, so tasks jump between aisles B03 and B11.=
+ The fix is a small change to the template and takes about 2 hours including =
+a test in the quality system. I can do it today if we release the freeze for =
+this one template.</p><p>Best regards,<br>Lukas Becker<br>SAP key user SD/LE<=
+br>Corp Europe B.V. | Rotterdam<br>T +31 10 592 3503<br><br>This e-mail and a=
+ny attachments are confidential and intended solely for the addressee. If you=
+ received it in error, please delete it.</p></body></html>
+
+--===============0585176158922923246==--

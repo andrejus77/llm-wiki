@@ -1,0 +1,196 @@
+Message-ID: <onboarding.t1.m3.fb0a30f43f@brightwater.example>
+Date: Thu, 24 Sep 2026 14:05:00 +0200
+From: "Brightwater Retail Logistics" <brightwater@brightwater.example>
+To: "Emma Laurent" <e.laurent@corp-europe.example>
+Cc: "Daan Visser" <d.visser@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: Re: Brightwater Retail - onboarding and master data
+In-Reply-To: <onboarding.t1.m2.f34b3a461f@corp-europe.example>
+References: <onboarding.t1.m2.f34b3a461f@corp-europe.example>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============3235928042285906902=="
+
+--===============3235928042285906902==
+Content-Type: multipart/alternative;
+ boundary="===============1588594819930251033=="
+
+--===============1588594819930251033==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Please find our delivery points below. All three locations can only receive g=
+oods between 06:00 and 14:00, Monday to Friday. The dock is closed outside th=
+ese hours. Our VAT number and the contact persons are in the attached sheet.
+
+Please note that Zaandam is a store hub and has only one unloading dock, so t=
+rucks are unloaded in order of arrival.
+
+Location | Country | Unloading window
+DC Mechelen | BE | 06:00-14:00
+DC Tilburg | NL | 06:00-14:00
+Store hub Zaandam | NL | 06:00-14:00
+
+Best regards,
+Brightwater Retail Logistics
+New customer (retail)
+
+-----Original Message-----
+From: Emma Laurent <e.laurent@corp-europe.example>
+Sent: Tuesday, 22 September 2026 10:20
+To: Brightwater Retail Logistics
+Subject: Brightwater Retail - onboarding and master data
+
+Thank you for the signed contract. To set up your account in our system we ne=
+ed the following for the sold-to party and for each of the 3 delivery points:=
+ full delivery address, contact person with phone number, VAT number, and the=
+ unloading times of each location.
+
+Please send this by Thursday 24 September if possible, so that our master dat=
+a team can create everything before the test deliveries start. Daan Visser fr=
+om master data is in copy and will be your contact for any questions on the d=
+ata.
+
+Best regards,
+Emma Laurent
+Customer service lead
+Corp Europe B.V. | Rotterdam
+T +31 10 853 9042
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============1588594819930251033==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Please find our delivery points below. All three locations can=
+ only receive goods between 06:00 and 14:00, Monday to Friday. The dock is cl=
+osed outside these hours. Our VAT number and the contact persons are in the a=
+ttached sheet.</p>
+<p>Please note that Zaandam is a store hub and has only one unloading dock, s=
+o trucks are unloaded in order of arrival.</p><table style=3D'border-collapse=
+:collapse;font-size:10pt'><tr><th style=3D'border:1px solid #999;padding:3px =
+6px'>Location</th><th style=3D'border:1px solid #999;padding:3px 6px'>Country=
+</th><th style=3D'border:1px solid #999;padding:3px 6px'>Unloading window</th=
+></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>DC Mechelen</td=
+><td style=3D'border:1px solid #999;padding:3px 6px'>BE</td><td style=3D'bord=
+er:1px solid #999;padding:3px 6px'>06:00-14:00</td></tr><tr><td style=3D'bord=
+er:1px solid #999;padding:3px 6px'>DC Tilburg</td><td style=3D'border:1px sol=
+id #999;padding:3px 6px'>NL</td><td style=3D'border:1px solid #999;padding:3p=
+x 6px'>06:00-14:00</td></tr><tr><td style=3D'border:1px solid #999;padding:3p=
+x 6px'>Store hub Zaandam</td><td style=3D'border:1px solid #999;padding:3px 6=
+px'>NL</td><td style=3D'border:1px solid #999;padding:3px 6px'>06:00-14:00</t=
+d></tr></table><p>Best regards,<br>Brightwater Retail Logistics<br>New custom=
+er (retail)</p><div class=3D'gmail_quote'>On Tue, 22 Sep 2026 at 10:20, Emma =
+Laurent &lt;e.laurent@corp-europe.example&gt; wrote:<br><p>Thank you for the =
+signed contract. To set up your account in our system we need the following f=
+or the sold-to party and for each of the 3 delivery points: full delivery add=
+ress, contact person with phone number, VAT number, and the unloading times o=
+f each location.</p>
+<p>Please send this by Thursday 24 September if possible, so that our master =
+data team can create everything before the test deliveries start. Daan Visser=
+ from master data is in copy and will be your contact for any questions on th=
+e data.</p><p>Best regards,<br>Emma Laurent<br>Customer service lead<br>Corp =
+Europe B.V. | Rotterdam<br>T +31 10 853 9042<br><br>This e-mail and any attac=
+hments are confidential and intended solely for the addressee. If you receive=
+d it in error, please delete it.</p></div></body></html>
+
+--===============1588594819930251033==--
+
+--===============3235928042285906902==
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Brightwater_delivery_points.xlsx"
+MIME-Version: 1.0
+
+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
+XS54bWxQSwUGAAAAAAkACQA+AgAAJhEAAAAA
+
+--===============3235928042285906902==--

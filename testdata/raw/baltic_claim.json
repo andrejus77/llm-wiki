@@ -1,0 +1,404 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "Damage claim CLM-2026-0912 - 14 pallets electronics Gdynia-Rotterdam",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-09-29 15:05",
+     "from": "kzielinska",
+     "to": [
+      "balticship"
+     ],
+     "cc": [
+      "anovak"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "We are filing a cargo damage claim for the shipment that left Gdynia on 25 Sep and was discharged in Rotterdam on 28 Sep (container MSKU4471826, delivery 80412257, PO 4500318842). On opening the container this morning, the receiving team found 14 of 22 pallets of electronics wet. Cartons are soaked at the bottom and sides, and several have mould spots already. Water marks on the container wall suggest ingress from above, not from our loading.\n\nInvoice value of the 14 damaged pallets is EUR 8,200. Please register the claim under CLM-2026-0912 and confirm the surveyor appointment. The goods are quarantined in Rotterdam and we will not scrap anything before the survey. Photos are shown below.",
+     "table": null,
+     "attachment": null,
+     "screenshot": {
+      "title": "Photo viewer - CLM-2026-0912_damage_01-06.jpg",
+      "lines": [
+       "IMG_0912_01  Pallet 3/22  carton base soaked, water line approx. 40 cm",
+       "IMG_0912_02  Pallet 7/22  mould spots on outer cartons",
+       "IMG_0912_03  Container ceiling near door, rust streaks and drip marks",
+       "IMG_0912_04  Pallet 11/22  stretch wrap intact, cartons wet inside",
+       "Taken: 2026-09-29 08:40, Rotterdam goods receipt"
+      ]
+     }
+    },
+    {
+     "id": "m2",
+     "date": "2026-10-02 10:30",
+     "from": "balticship",
+     "to": [
+      "kzielinska"
+     ],
+     "cc": [
+      "anovak"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "We have reviewed claim CLM-2026-0912 and regret that we must reject it. According to the loading record, the pallets were only stretch-wrapped, with no top cover or moisture barrier. Under our terms of carriage, sensitive electronics must be packed to withstand normal humidity during sea transport. We therefore consider insufficient packaging to be the cause of the damage, and the carrier is not liable.\n\nIf you disagree, please send additional evidence within 14 days, in particular photos of the packaging before loading and any independent inspection report.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-10-02 14:00",
+     "from": "kzielinska",
+     "to": [
+      "anovak"
+     ],
+     "cc": [],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Baltic Shipping rejected the claim this morning, saying the packaging was insufficient. I do not agree. The pallets had stretch wrap plus corner boards, which is our standard for this product, and the ceiling of the container showed drip marks. I will push back and ask for a joint survey.\n\nCan you send me the exact invoice and PO values for the 14 damaged pallets? I need them for the dispute letter. Also, please do not book anything against the carrier yet.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m4",
+     "date": "2026-10-05 09:45",
+     "from": "anovak",
+     "to": [
+      "kzielinska"
+     ],
+     "cc": [],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "Here are the values from the invoice. The total for the 14 damaged pallets is EUR 8,200, which matches your claim. I have put the amount on a manual provision for now and will not post any carrier credit until we have a written settlement. If the claim is only partly accepted, tell me the percentage so I can book the write-off for the remainder correctly.",
+     "table": {
+      "header": [
+       "Item",
+       "Reference",
+       "Pallets",
+       "Value EUR"
+      ],
+      "rows": [
+       [
+        "Supplier invoice",
+        "INV-48213",
+        "22",
+        "12,890.00"
+       ],
+       [
+        "Damaged part (PO 4500318842)",
+        "Delivery 80412257",
+        "14",
+        "8,200.00"
+       ],
+       [
+        "Undamaged part",
+        "Delivery 80412257",
+        "8",
+        "4,690.00"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-10-07 11:15",
+     "from": "kzielinska",
+     "to": [
+      "balticship"
+     ],
+     "cc": [
+      "anovak"
+     ],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "We dispute your rejection of CLM-2026-0912. Our packing photos from Gdansk dated 24 Sep show stretch wrap plus four corner boards on every pallet, and the damage pattern (wet from the top and one side) does not fit a humidity problem inside the cartons. New photos from the independent inspection in Rotterdam on 6 Oct are attached below.\n\nThe surveyor has taken samples and will issue a report. We ask you to hold your decision until you have seen it. The 8,200 EUR claim stays open.",
+     "table": null,
+     "attachment": null,
+     "screenshot": {
+      "title": "Photo viewer - survey_6Oct_Rotterdam.jpg",
+      "lines": [
+       "IMG_0912_11  Container MSKU4471826 door seal, gasket cracked at upper left corner",
+       "IMG_0912_12  Moisture meter reading on pallet 3: 31% (limit 14%)",
+       "IMG_0912_13  Packing photo Gdansk 24 Sep, pallet with 4 corner boards",
+       "Taken: 2026-10-06 13:20, surveyor on site"
+      ]
+     }
+    },
+    {
+     "id": "m6",
+     "date": "2026-10-14 16:20",
+     "from": "balticship",
+     "to": [
+      "kzielinska"
+     ],
+     "cc": [
+      "anovak"
+     ],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "We have received the surveyor report SR-2026-1187 (attached). It finds that water entered through a defective door seal on the container during heavy weather, which is a carrier-side cause. It also notes that the cartons had no moisture barrier, which made the damage worse.\n\nBased on this, we withdraw our rejection and offer a settlement of 60% of the claimed value: EUR 4,920 of EUR 8,200, in full and final settlement of CLM-2026-0912. Please confirm in writing if you accept.",
+     "table": null,
+     "attachment": {
+      "kind": "pdf",
+      "name": "SR-2026-1187_surveyor_report.pdf",
+      "text": "Surveyor report SR-2026-1187\nClaim: CLM-2026-0912\nContainer: MSKU4471826, sailing Gdynia-Rotterdam, discharged 28 Sep 2026\nInspection: 6 Oct 2026, Rotterdam warehouse\n\nFindings:\n1. 14 of 22 pallets show water damage. Moisture content of cartons 28-33% (acceptable maximum 14%).\n2. The door seal gasket of the container is cracked at the upper left corner. Water ingress during the sea passage is probable.\n3. Pallets were stretch-wrapped with corner boards. No moisture barrier or top cover was used.\n\nConclusion: Primary cause is the defective container seal (carrier side). Contributory cause is the missing moisture protection on the cartons.\nRecommended liability split: carrier 60%, shipper 40%."
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m7",
+     "date": "2026-10-15 09:40",
+     "from": "kzielinska",
+     "to": [
+      "anovak"
+     ],
+     "cc": [],
+     "reply_to": "m6",
+     "forward": false,
+     "body": "Baltic Shipping now accepts liability after the surveyor report and offers 60%, which is EUR 4,920. The remaining 40% (EUR 3,280) would stay with us, because the report says the missing moisture barrier contributed. I think this is fair and I would not go to court over it. The surveyor recommended the same split.\n\nDo you agree from the finance side? If yes, I will accept in writing. We should also add a moisture barrier to the packing instruction for electronics from Gdansk.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m8",
+     "date": "2026-10-16 13:10",
+     "from": "anovak",
+     "to": [
+      "kzielinska"
+     ],
+     "cc": [],
+     "reply_to": "m7",
+     "forward": false,
+     "body": "Agreed, accept the 60%. I will book the EUR 3,280 as a write-off once the money has arrived and release the provision for the rest. Please ask them to pay within 14 days and to quote CLM-2026-0912 as payment reference, otherwise I cannot match it to the open item.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m9",
+     "date": "2026-10-19 10:00",
+     "from": "kzielinska",
+     "to": [
+      "balticship"
+     ],
+     "cc": [
+      "anovak"
+     ],
+     "reply_to": "m6",
+     "forward": false,
+     "body": "We accept your offer of EUR 4,920 (60% of EUR 8,200) in full and final settlement of CLM-2026-0912, based on surveyor report SR-2026-1187. Please transfer the amount within 14 days and quote CLM-2026-0912 as payment reference, so our accounts payable colleague can match it. Please also confirm that the container seal has been repaired or taken out of service.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m10",
+     "date": "2026-10-27 11:30",
+     "from": "balticship",
+     "to": [
+      "kzielinska"
+     ],
+     "cc": [
+      "anovak"
+     ],
+     "reply_to": "m9",
+     "forward": false,
+     "body": "We have transferred EUR 4,920 today, 27 Oct, with reference CLM-2026-0912. This closes the claim. The container MSKU4471826 has been taken out of service for seal replacement.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m11",
+     "date": "2026-10-27 14:00",
+     "from": "anovak",
+     "to": [
+      "kzielinska"
+     ],
+     "cc": [],
+     "reply_to": "m10",
+     "forward": false,
+     "body": "Thanks, I will check the bank statement tomorrow morning and match the payment. Then I will book the EUR 3,280 write-off and close the item.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "Claim CLM-2026-0912 concerns 14 of 22 pallets of electronics damaged by water on the Gdynia-Rotterdam sailing (container MSKU4471826).",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "The container left Gdynia on 25 Sep, was discharged in Rotterdam on 28 Sep, and the damage was found on 29 Sep.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "The claimed value of the 14 damaged pallets is EUR 8,200 (delivery 80412257, PO 4500318842).",
+   "emails": [
+    "m1",
+    "m4"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "On 2 Oct Baltic Shipping rejected the claim, arguing the packaging (only stretch wrap, no top cover or moisture barrier) was insufficient.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "Supplier invoice INV-48213 covers all 22 pallets for EUR 12,890; the 8 undamaged pallets are worth EUR 4,690.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "Ana Novak put the amount on a manual provision and does not post a carrier credit until there is a written settlement.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "Marta Kowalska disputed the rejection on 7 Oct, citing stretch wrap plus four corner boards per pallet and an independent inspection in Rotterdam on 6 Oct.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "Surveyor report SR-2026-1187 found a cracked door seal gasket on the container as primary cause, with the missing moisture barrier as contributory cause.",
+   "emails": [
+    "m6"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "The surveyor recommended a liability split of 60% carrier and 40% shipper; on 14 Oct Baltic Shipping withdrew its rejection and offered 60%, EUR 4,920.",
+   "emails": [
+    "m6",
+    "m7"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "The remaining 40%, EUR 3,280, stays with Corp Europe and is booked as a write-off by Ana Novak after the money arrives.",
+   "emails": [
+    "m7",
+    "m8",
+    "m11"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "Ana Novak approved accepting the 60% on 16 Oct and asked for payment within 14 days with reference CLM-2026-0912.",
+   "emails": [
+    "m8",
+    "m9"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "Marta Kowalska accepted the offer in writing on 19 Oct as full and final settlement.",
+   "emails": [
+    "m9"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "Baltic Shipping paid EUR 4,920 on 27 Oct and took the container out of service for seal replacement.",
+   "emails": [
+    "m10"
+   ]
+  },
+  {
+   "id": "F14",
+   "text": "Marta Kowalska suggested adding a moisture barrier to the packing instruction for electronics from Gdansk.",
+   "emails": [
+    "m7"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "Why did Baltic Shipping first reject claim CLM-2026-0912?",
+   "a": "They said the packaging was insufficient: pallets were only stretch-wrapped, with no top cover or moisture barrier.",
+   "facts": [
+    "F4"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "What did the surveyor report find as the main cause of the water damage?",
+   "a": "A cracked door seal gasket on the container (carrier side), with the missing moisture barrier as a contributory cause.",
+   "facts": [
+    "F8"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "How much was finally settled for the Baltic Shipping damage claim and when was it paid?",
+   "a": "EUR 4,920 (60% of EUR 8,200), paid on 27 October.",
+   "facts": [
+    "F9",
+    "F13"
+   ],
+   "type": "fact"
+  },
+  {
+   "q": "How much of the damaged goods value did Corp Europe have to write off?",
+   "a": "EUR 3,280 (the remaining 40%).",
+   "facts": [
+    "F10"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "Which container and invoice are linked to claim CLM-2026-0912?",
+   "a": "Container MSKU4471826 and supplier invoice INV-48213.",
+   "facts": [
+    "F1",
+    "F5"
+   ],
+   "type": "identifier"
+  },
+  {
+   "q": "Who approved the 60% settlement on the finance side?",
+   "a": "Ana Novak, on 16 October.",
+   "facts": [
+    "F11"
+   ],
+   "type": "who"
+  },
+  {
+   "q": "Which insurer reimbursed the remaining 40% of the loss?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "baltic_claim",
+  "title": "Damaged goods claim with Baltic Shipping",
+  "level": "topic",
+  "korean": false
+ }
+}

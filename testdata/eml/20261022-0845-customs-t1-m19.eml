@@ -1,0 +1,456 @@
+Message-ID: <customs.t1.m19.d620fd7dff@corp-europe.example>
+Date: Thu, 22 Oct 2026 08:45:00 +0200
+From: "Ruud Jansen" <r.jansen@corp-europe.example>
+To: "Mark de Boer" <m.deboer@corp-europe.example>
+Cc: "Hanna Schmidt" <h.schmidt@corp-europe.example>,
+ "Marta Kowalska" <m.kowalska@corp-europe.example>,
+ "DL CUS" <dl-cus@corp-europe.example>
+Subject: RE: Customs migration to DMS - plan, tests and go-live
+In-Reply-To: <customs.t1.m18.90bb1830b3@corp-europe.example>
+References: <customs.t1.m1.188feabede@corp-europe.example>
+ <customs.t1.m3.382306b362@corp-europe.example>
+ <customs.t1.m8.93c9bd33ac@customs-authority.example>
+ <customs.t1.m9.98917a903f@corp-europe.example>
+ <customs.t1.m11.c9285c2b42@corp-europe.example>
+ <customs.t1.m12.e671acef59@corp-europe.example>
+ <customs.t1.m13.7e929b5450@corp-europe.example>
+ <customs.t1.m14.a032784393@corp-europe.example>
+ <customs.t1.m16.126341eef6@corp-europe.example>
+ <customs.t1.m18.90bb1830b3@corp-europe.example>
+Thread-Index: =?utf-8?q?Ad1h8NvhMh4GKmsFXzP5PLaBnbzIpBb2Y1XFoGV9IaPiCdT6Q79v?=
+ =?utf-8?q?XSm9ySEccY08n6a0bbCXl48CSMSjHBOj2+7x4mmp5rDn?=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============8189014508792917925=="
+
+--===============8189014508792917925==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Three reasons. First, the customs gateway can only run one message format per=
+ partner profile, so a fallback would need a second profile and a second mapp=
+ing. Second, we would have to test both paths, which doubles the test effort =
+in a very short window. Third, customs switches off the old system at go-live=
+ anyway, so the old format would have no receiver. The real fallback is the 1=
+2 Nov go/no-go: if we are not ready, we stay on the old system and move the d=
+ate.
+
+Hanna: yes, 12 Nov is the last point to stop.
+
+Regards,
+Ruud Jansen
+Logistics manager Rotterdam, owner of the customs migration project
+Corp Europe B.V. | Rotterdam
+T +31 10 245 1058
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Mark de Boer <m.deboer@corp-europe.example>
+Sent: Wednesday, 21 October 2026 14:20
+To: Ruud Jansen
+Subject: RE: Customs migration to DMS - plan, tests and go-live
+
+I agree with 17 Nov and the call on 12 Nov. One question: why no parallel for=
+mats? It would feel safer to keep the old format as a fallback for a week or =
+two.
+
+Regards,
+Mark de Boer
+Head of Logistics Europe
+Corp Europe B.V. | Rotterdam
+T +31 10 488 4450
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Ruud Jansen <r.jansen@corp-europe.example>
+Sent: Tuesday, 20 October 2026 11:40
+To: Mark de Boer; Hanna Schmidt; Marta Kowalska
+Subject: RE: Customs migration to DMS - plan, tests and go-live
+
+Nordline just told us that their DMS release slips from the end of October to=
+ 10 Nov. We cannot go live on 3 Nov without them, so I decided:
+
+1. Go-live moves from 3 Nov to 17 Nov 2026.
+2. No parallel formats: we do not run old and new declaration format side by =
+side. One cut-over.
+3. EWM change freeze in Rotterdam stays until 17 Nov (Hanna).
+4. End-to-end test with customs stays on 4-6 Nov, at least 20 declarations.
+5. Go/no-go call on 12 Nov, Mark decides.
+6. Nordline test file is due 31 Oct.
+
+Marta, please inform the customs test team.
+
+Kind regards,
+Ruud Jansen
+Logistics manager Rotterdam, owner of the customs migration project
+Corp Europe B.V. | Rotterdam
+T +31 10 275 9808
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Mark de Boer <m.deboer@corp-europe.example>
+Sent: Thursday, 15 October 2026 08:30
+To: Ruud Jansen
+Subject: RE: Customs migration to DMS - plan, tests and go-live
+
+Thanks Ruud, clear. Please keep me posted on Nordline weekly. If the date mov=
+es, I want a go/no-go call with all of you after the test and before we switc=
+h.
+
+Regards,
+Mark de Boer
+Head of Logistics Europe
+Corp Europe B.V. | Rotterdam
+T +31 10 444 5351
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Ruud Jansen <r.jansen@corp-europe.example>
+Sent: Tuesday, 13 October 2026 15:00
+To: Mark de Boer
+Subject: RE: Customs migration to DMS - plan, tests and go-live
+
+Status customs migration, short version:
+- Go-live still 3 Nov.
+- Test window with customs booked for 4-6 Nov, 22 declarations planned (minim=
+um 20).
+- Export mapping: 103 of 105 fields done, two goods-item fields are waiting f=
+or Finance.
+- Nordline has not yet shown a stable DMS build. I expect their test file by =
+31 Oct and will chase Erik.
+- EWM freeze in Rotterdam starts 19 Oct.
+
+Biggest risk is Nordline. I will tell you immediately if that changes.
+
+Best regards,
+Ruud Jansen
+Logistics manager Rotterdam, owner of the customs migration project
+Corp Europe B.V. | Rotterdam
+T +31 10 792 1651
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Hanna Schmidt <h.schmidt@corp-europe.example>
+Sent: Friday, 09 October 2026 09:40
+To: Marta Kowalska
+Subject: RE: Customs migration to DMS - plan, tests and go-live
+
+Checked both deliveries in VL03N. 80412611 is goods-issued, fine for TC3. 804=
+12702 was still open in EWM, so I asked the Rotterdam team to post the goods =
+issue today, it should be ready by Monday. Reminder: the EWM change freeze in=
+ Rotterdam starts on 19 Oct, so please tell me before then if you need any ot=
+her delivery created or changed.
+
+Kind regards,
+Hanna Schmidt
+EWM project lead (Rotterdam and Venlo rollouts)
+Corp Europe B.V. | Rotterdam
+T +31 10 720 2312
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Marta Kowalska <m.kowalska@corp-europe.example>
+Sent: Thursday, 08 October 2026 13:15
+To: Ruud Jansen
+Subject: RE: Customs migration to DMS - plan, tests and go-live
+
+Here is the first draft of the test cases for 4-6 Nov. Customs asks for at le=
+ast 20 declarations, I planned 22 so we have a buffer of two. Delivery number=
+s are real Rotterdam and Venlo test deliveries. Nordline submits the TC5 decl=
+arations from their side with their DMS build.
+
+Hanna, TC3 and TC4 need EWM deliveries that are already goods-issued, can you=
+ check the two deliveries?
+
+TC | Scenario | Declarations | Example delivery | Expected result
+TC1 | Standard export, one goods item | 8 | 80412233 | Accepted
+TC2 | Export with multiple goods items | 4 | 80412590 | Accepted
+TC3 | Amendment after goods issue | 2 | 80412611 | Accepted, version 2
+TC4 | Cancellation of a declaration | 2 | 80412702 | Cancelled
+TC5 | Declaration submitted by Nordline | 4 | 80412845 | Accepted
+TC6 | Deliberate error (wrong commodity code) | 2 | 80412903 | Rejected with =
+error code
+
+Kind regards,
+Marta Kowalska
+Customs coordinator
+Corp Europe B.V. | Rotterdam
+T +31 10 521 1936
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Marta Kowalska <m.kowalska@corp-europe.example>
+Sent: Friday, 02 October 2026 08:50
+To: Customs test team
+Subject: RE: Customs migration to DMS - plan, tests and go-live
+
+Thanks, we confirm the window 4-6 November. I will send the list of test decl=
+arations before the deadline.
+
+Thanks,
+Marta Kowalska
+Customs coordinator
+Corp Europe B.V. | Rotterdam
+T +31 10 358 4111
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Customs test team <customstest@customs-authority.example>
+Sent: Thursday, 01 October 2026 10:20
+To: Marta Kowalska
+Subject: Re: Customs migration to DMS - plan, tests and go-live
+
+Thank you for your request. We can offer the end-to-end test window on 4, 5 a=
+nd 6 November. We expect at least 20 declarations in total from each declaran=
+t, covering exports, amendments and at least one rejection scenario. Please s=
+end us the list of test declarations (local reference, goods items, expected =
+result) one week before the window. Rejections are returned on the same day w=
+ith an error code, so you can correct and resubmit within the window.
+
+Best regards,
+Customs test team
+Dutch customs authority, test coordination
+
+-----Original Message-----
+From: Marta Kowalska <m.kowalska@corp-europe.example>
+Sent: Wednesday, 23 September 2026 14:05
+To: Customs test team
+Subject: RE: Customs migration to DMS - plan, tests and go-live
+
+Dear customs test team, we are Corp Europe B.V. and will submit declarations =
+to DMS through our gateway. We would like to book an end-to-end test in the f=
+irst week of November, ahead of our planned go-live on 3 Nov. Could you tell =
+us which days you can offer and how many declarations you expect from us? Ple=
+ase also send the test plan and the technical contact for message rejections.
+
+Regards,
+Marta Kowalska
+Customs coordinator
+Corp Europe B.V. | Rotterdam
+T +31 10 665 5673
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Ruud Jansen <r.jansen@corp-europe.example>
+Sent: Monday, 21 September 2026 09:10
+To: Marta Kowalska; Hanna Schmidt
+Subject: Customs migration to DMS - plan, tests and go-live
+
+Kick-off note for the Q4 customs migration. Dutch customs switches from the o=
+ld declaration system to DMS. Our declarations go out through the customs gat=
+eway, from SAP and from Nordline as forwarder. Go-live is planned for 3 Nov 2=
+026.
+
+My proposal for the workstreams:
+- Marta: contact with the customs test team, test cases, export mapping
+- Hanna: EWM side, so that nothing changes in Rotterdam while we cut over
+- Me: Nordline, planning, reporting to Mark
+
+Please flag anything that threatens 3 Nov as early as possible. I would like =
+a first status in two weeks.
+
+Best regards,
+Ruud Jansen
+Logistics manager Rotterdam, owner of the customs migration project
+Corp Europe B.V. | Rotterdam
+T +31 10 610 1960
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============8189014508792917925==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Three reasons. First, the customs gateway can only run one mes=
+sage format per partner profile, so a fallback would need a second profile an=
+d a second mapping. Second, we would have to test both paths, which doubles t=
+he test effort in a very short window. Third, customs switches off the old sy=
+stem at go-live anyway, so the old format would have no receiver. The real fa=
+llback is the 12 Nov go/no-go: if we are not ready, we stay on the old system=
+ and move the date.</p>
+<p>Hanna: yes, 12 Nov is the last point to stop.</p><p>Regards,<br>Ruud Janse=
+n<br>Logistics manager Rotterdam, owner of the customs migration project<br>C=
+orp Europe B.V. | Rotterdam<br>T +31 10 245 1058<br><br>This e-mail and any a=
+ttachments are confidential and intended solely for the addressee. If you rec=
+eived it in error, please delete it.</p><div style=3D'border:none;border-top:=
+solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Mark de Boer &=
+lt;m.deboer@corp-europe.example&gt;<br><b>Sent:</b> Wednesday, 21 October 202=
+6 14:20<br><b>To:</b> Ruud Jansen<br><b>Cc:</b> Hanna Schmidt; Marta Kowalska=
+; DL CUS<br><b>Subject:</b> RE: Customs migration to DMS - plan, tests and go=
+-live</p></div><p>I agree with 17 Nov and the call on 12 Nov. One question: w=
+hy no parallel formats? It would feel safer to keep the old format as a fallb=
+ack for a week or two.</p><p>Regards,<br>Mark de Boer<br>Head of Logistics Eu=
+rope<br>Corp Europe B.V. | Rotterdam<br>T +31 10 488 4450<br><br>This e-mail =
+and any attachments are confidential and intended solely for the addressee. I=
+f you received it in error, please delete it.</p><div style=3D'border:none;bo=
+rder-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Ruud =
+Jansen &lt;r.jansen@corp-europe.example&gt;<br><b>Sent:</b> Tuesday, 20 Octob=
+er 2026 11:40<br><b>To:</b> Mark de Boer; Hanna Schmidt; Marta Kowalska<br><b=
+>Cc:</b> DL CUS<br><b>Subject:</b> RE: Customs migration to DMS - plan, tests=
+ and go-live</p></div><p>Nordline just told us that their DMS release slips f=
+rom the end of October to 10 Nov. We cannot go live on 3 Nov without them, so=
+ I decided:</p>
+<p>1. Go-live moves from 3 Nov to 17 Nov 2026.<br>2. No parallel formats: we =
+do not run old and new declaration format side by side. One cut-over.<br>3. E=
+WM change freeze in Rotterdam stays until 17 Nov (Hanna).<br>4. End-to-end te=
+st with customs stays on 4-6 Nov, at least 20 declarations.<br>5. Go/no-go ca=
+ll on 12 Nov, Mark decides.<br>6. Nordline test file is due 31 Oct.</p>
+<p>Marta, please inform the customs test team.</p><p>Kind regards,<br>Ruud Ja=
+nsen<br>Logistics manager Rotterdam, owner of the customs migration project<b=
+r>Corp Europe B.V. | Rotterdam<br>T +31 10 275 9808<br><br>This e-mail and an=
+y attachments are confidential and intended solely for the addressee. If you =
+received it in error, please delete it.</p><div style=3D'border:none;border-t=
+op:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Mark de Boe=
+r &lt;m.deboer@corp-europe.example&gt;<br><b>Sent:</b> Thursday, 15 October 2=
+026 08:30<br><b>To:</b> Ruud Jansen<br><b>Cc:</b> Marta Kowalska; Hanna Schmi=
+dt; DL CUS<br><b>Subject:</b> RE: Customs migration to DMS - plan, tests and =
+go-live</p></div><p>Thanks Ruud, clear. Please keep me posted on Nordline wee=
+kly. If the date moves, I want a go/no-go call with all of you after the test=
+ and before we switch.</p><p>Regards,<br>Mark de Boer<br>Head of Logistics Eu=
+rope<br>Corp Europe B.V. | Rotterdam<br>T +31 10 444 5351<br><br>This e-mail =
+and any attachments are confidential and intended solely for the addressee. I=
+f you received it in error, please delete it.</p><div style=3D'border:none;bo=
+rder-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Ruud =
+Jansen &lt;r.jansen@corp-europe.example&gt;<br><b>Sent:</b> Tuesday, 13 Octob=
+er 2026 15:00<br><b>To:</b> Mark de Boer<br><b>Cc:</b> Marta Kowalska; Hanna =
+Schmidt; DL CUS<br><b>Subject:</b> RE: Customs migration to DMS - plan, tests=
+ and go-live</p></div><p>Status customs migration, short version:<br>- Go-liv=
+e still 3 Nov.<br>- Test window with customs booked for 4-6 Nov, 22 declarati=
+ons planned (minimum 20).<br>- Export mapping: 103 of 105 fields done, two go=
+ods-item fields are waiting for Finance.<br>- Nordline has not yet shown a st=
+able DMS build. I expect their test file by 31 Oct and will chase Erik.<br>- =
+EWM freeze in Rotterdam starts 19 Oct.</p>
+<p>Biggest risk is Nordline. I will tell you immediately if that changes.</p>=
+<p>Best regards,<br>Ruud Jansen<br>Logistics manager Rotterdam, owner of the =
+customs migration project<br>Corp Europe B.V. | Rotterdam<br>T +31 10 792 165=
+1<br><br>This e-mail and any attachments are confidential and intended solely=
+ for the addressee. If you received it in error, please delete it.</p><div st=
+yle=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'>=
+<p><b>From:</b> Hanna Schmidt &lt;h.schmidt@corp-europe.example&gt;<br><b>Sen=
+t:</b> Friday, 09 October 2026 09:40<br><b>To:</b> Marta Kowalska<br><b>Cc:</=
+b> Ruud Jansen; DL CUS<br><b>Subject:</b> RE: Customs migration to DMS - plan=
+, tests and go-live</p></div><p>Checked both deliveries in VL03N. 80412611 is=
+ goods-issued, fine for TC3. 80412702 was still open in EWM, so I asked the R=
+otterdam team to post the goods issue today, it should be ready by Monday. Re=
+minder: the EWM change freeze in Rotterdam starts on 19 Oct, so please tell m=
+e before then if you need any other delivery created or changed.</p><p>Kind r=
+egards,<br>Hanna Schmidt<br>EWM project lead (Rotterdam and Venlo rollouts)<b=
+r>Corp Europe B.V. | Rotterdam<br>T +31 10 720 2312<br><br>This e-mail and an=
+y attachments are confidential and intended solely for the addressee. If you =
+received it in error, please delete it.</p><div style=3D'border:none;border-t=
+op:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Marta Kowal=
+ska &lt;m.kowalska@corp-europe.example&gt;<br><b>Sent:</b> Thursday, 08 Octob=
+er 2026 13:15<br><b>To:</b> Ruud Jansen<br><b>Cc:</b> Hanna Schmidt; Mark de =
+Boer; DL CUS<br><b>Subject:</b> RE: Customs migration to DMS - plan, tests an=
+d go-live</p></div><p>Here is the first draft of the test cases for 4-6 Nov. =
+Customs asks for at least 20 declarations, I planned 22 so we have a buffer o=
+f two. Delivery numbers are real Rotterdam and Venlo test deliveries. Nordlin=
+e submits the TC5 declarations from their side with their DMS build.</p>
+<p>Hanna, TC3 and TC4 need EWM deliveries that are already goods-issued, can =
+you check the two deliveries?</p><table style=3D'border-collapse:collapse;fon=
+t-size:10pt'><tr><th style=3D'border:1px solid #999;padding:3px 6px'>TC</th><=
+th style=3D'border:1px solid #999;padding:3px 6px'>Scenario</th><th style=3D'=
+border:1px solid #999;padding:3px 6px'>Declarations</th><th style=3D'border:1=
+px solid #999;padding:3px 6px'>Example delivery</th><th style=3D'border:1px s=
+olid #999;padding:3px 6px'>Expected result</th></tr><tr><td style=3D'border:1=
+px solid #999;padding:3px 6px'>TC1</td><td style=3D'border:1px solid #999;pad=
+ding:3px 6px'>Standard export, one goods item</td><td style=3D'border:1px sol=
+id #999;padding:3px 6px'>8</td><td style=3D'border:1px solid #999;padding:3px=
+ 6px'>80412233</td><td style=3D'border:1px solid #999;padding:3px 6px'>Accept=
+ed</td></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>TC2</td><=
+td style=3D'border:1px solid #999;padding:3px 6px'>Export with multiple goods=
+ items</td><td style=3D'border:1px solid #999;padding:3px 6px'>4</td><td styl=
+e=3D'border:1px solid #999;padding:3px 6px'>80412590</td><td style=3D'border:=
+1px solid #999;padding:3px 6px'>Accepted</td></tr><tr><td style=3D'border:1px=
+ solid #999;padding:3px 6px'>TC3</td><td style=3D'border:1px solid #999;paddi=
+ng:3px 6px'>Amendment after goods issue</td><td style=3D'border:1px solid #99=
+9;padding:3px 6px'>2</td><td style=3D'border:1px solid #999;padding:3px 6px'>=
+80412611</td><td style=3D'border:1px solid #999;padding:3px 6px'>Accepted, ve=
+rsion 2</td></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>TC4<=
+/td><td style=3D'border:1px solid #999;padding:3px 6px'>Cancellation of a dec=
+laration</td><td style=3D'border:1px solid #999;padding:3px 6px'>2</td><td st=
+yle=3D'border:1px solid #999;padding:3px 6px'>80412702</td><td style=3D'borde=
+r:1px solid #999;padding:3px 6px'>Cancelled</td></tr><tr><td style=3D'border:=
+1px solid #999;padding:3px 6px'>TC5</td><td style=3D'border:1px solid #999;pa=
+dding:3px 6px'>Declaration submitted by Nordline</td><td style=3D'border:1px =
+solid #999;padding:3px 6px'>4</td><td style=3D'border:1px solid #999;padding:=
+3px 6px'>80412845</td><td style=3D'border:1px solid #999;padding:3px 6px'>Acc=
+epted</td></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>TC6</t=
+d><td style=3D'border:1px solid #999;padding:3px 6px'>Deliberate error (wrong=
+ commodity code)</td><td style=3D'border:1px solid #999;padding:3px 6px'>2</t=
+d><td style=3D'border:1px solid #999;padding:3px 6px'>80412903</td><td style=
+=3D'border:1px solid #999;padding:3px 6px'>Rejected with error code</td></tr>=
+</table><p>Kind regards,<br>Marta Kowalska<br>Customs coordinator<br>Corp Eur=
+ope B.V. | Rotterdam<br>T +31 10 521 1936<br><br>This e-mail and any attachme=
+nts are confidential and intended solely for the addressee. If you received i=
+t in error, please delete it.</p><div style=3D'border:none;border-top:solid #=
+E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Marta Kowalska &lt;m.=
+kowalska@corp-europe.example&gt;<br><b>Sent:</b> Friday, 02 October 2026 08:5=
+0<br><b>To:</b> Customs test team<br><b>Cc:</b> Ruud Jansen; DL CUS<br><b>Sub=
+ject:</b> RE: Customs migration to DMS - plan, tests and go-live</p></div><p>=
+Thanks, we confirm the window 4-6 November. I will send the list of test decl=
+arations before the deadline.</p><p>Thanks,<br>Marta Kowalska<br>Customs coor=
+dinator<br>Corp Europe B.V. | Rotterdam<br>T +31 10 358 4111<br><br>This e-ma=
+il and any attachments are confidential and intended solely for the addressee=
+. If you received it in error, please delete it.</p><div style=3D'border:none=
+;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Cu=
+stoms test team &lt;customstest@customs-authority.example&gt;<br><b>Sent:</b>=
+ Thursday, 01 October 2026 10:20<br><b>To:</b> Marta Kowalska<br><b>Cc:</b> R=
+uud Jansen; DL CUS<br><b>Subject:</b> Re: Customs migration to DMS - plan, te=
+sts and go-live</p></div><p>Thank you for your request. We can offer the end-=
+to-end test window on 4, 5 and 6 November. We expect at least 20 declarations=
+ in total from each declarant, covering exports, amendments and at least one =
+rejection scenario. Please send us the list of test declarations (local refer=
+ence, goods items, expected result) one week before the window. Rejections ar=
+e returned on the same day with an error code, so you can correct and resubmi=
+t within the window.</p><p>Best regards,<br>Customs test team<br>Dutch custom=
+s authority, test coordination</p><div class=3D'gmail_quote'>On Wed, 23 Sep 2=
+026 at 14:05, Marta Kowalska &lt;m.kowalska@corp-europe.example&gt; wrote:<br=
+><p>Dear customs test team, we are Corp Europe B.V. and will submit declarati=
+ons to DMS through our gateway. We would like to book an end-to-end test in t=
+he first week of November, ahead of our planned go-live on 3 Nov. Could you t=
+ell us which days you can offer and how many declarations you expect from us?=
+ Please also send the test plan and the technical contact for message rejecti=
+ons.</p><p>Regards,<br>Marta Kowalska<br>Customs coordinator<br>Corp Europe B=
+.V. | Rotterdam<br>T +31 10 665 5673<br><br>This e-mail and any attachments a=
+re confidential and intended solely for the addressee. If you received it in =
+error, please delete it.</p><div style=3D'border:none;border-top:solid #E1E1E=
+1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Ruud Jansen &lt;r.jansen@c=
+orp-europe.example&gt;<br><b>Sent:</b> Monday, 21 September 2026 09:10<br><b>=
+To:</b> Marta Kowalska; Hanna Schmidt<br><b>Cc:</b> Mark de Boer<br><b>Subjec=
+t:</b> Customs migration to DMS - plan, tests and go-live</p></div><p>Kick-of=
+f note for the Q4 customs migration. Dutch customs switches from the old decl=
+aration system to DMS. Our declarations go out through the customs gateway, f=
+rom SAP and from Nordline as forwarder. Go-live is planned for 3 Nov 2026.</p>
+<p>My proposal for the workstreams:<br>- Marta: contact with the customs test=
+ team, test cases, export mapping<br>- Hanna: EWM side, so that nothing chang=
+es in Rotterdam while we cut over<br>- Me: Nordline, planning, reporting to M=
+ark</p>
+<p>Please flag anything that threatens 3 Nov as early as possible. I would li=
+ke a first status in two weeks.</p><p>Best regards,<br>Ruud Jansen<br>Logisti=
+cs manager Rotterdam, owner of the customs migration project<br>Corp Europe B=
+.V. | Rotterdam<br>T +31 10 610 1960<br><br>This e-mail and any attachments a=
+re confidential and intended solely for the addressee. If you received it in =
+error, please delete it.</p></div></body></html>
+
+--===============8189014508792917925==--

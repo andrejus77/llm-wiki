@@ -1,0 +1,260 @@
+Message-ID: <veltrans_invoices.t1.m6.c93f52459a@corp-europe.example>
+Date: Wed, 14 Oct 2026 09:40:00 +0200
+From: "Tom Hendriks" <t.hendriks@corp-europe.example>
+To: "Ana Novak" <a.novak@corp-europe.example>
+Cc: "Mark de Boer" <m.deboer@corp-europe.example>,
+ "DL FIN" <dl-fin@corp-europe.example>
+Subject: RE: Veltrans INV-88213 - rates above contract VT-2026-03
+In-Reply-To: <veltrans_invoices.t1.m5.7edcfbee26@corp-europe.example>
+References: <veltrans_invoices.t1.m1.94d374e76b@corp-europe.example>
+ <veltrans_invoices.t1.m2.0728c41bb4@corp-europe.example>
+ <veltrans_invoices.t1.m3.d3080824db@corp-europe.example>
+ <veltrans_invoices.t1.m4.c301a35e9e@veltrans.example>
+ <veltrans_invoices.t1.m5.7edcfbee26@corp-europe.example>
+Thread-Index: Ad1brzeHuwFSWHGaQwkDnxpy40y/1F9vPMrJ5xXpPJbZr+JSBC5mmyxDswVqDSA=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============6518043341330426301=="
+
+--===============6518043341330426301==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Ana, I checked with Oliver Wright in Felixstowe. Both reefers were held from =
+22 to 25 September because our import declaration had a wrong commodity code,=
+ and Harbour Agency UK had to amend it before customs released them. So the h=
+old was caused by our customs paperwork, not by Veltrans. The demurrage of EU=
+R 1,260.00 stays with Corp Europe. Please release line 4 for payment and book=
+ it to logistics Felixstowe. Mark, FYI, since it is a cost on our side.
+
+Best regards,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 215 6869
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Ana Novak <a.novak@corp-europe.example>
+Sent: Tuesday, 13 October 2026 10:05
+To: Tom Hendriks
+Subject: RE: Veltrans INV-88213 - rates above contract VT-2026-03
+
+Tom, now line 4: EUR 1,260.00 demurrage for two reefers, MSKU4471920 and TGHU=
+8830154, 3 days each at EUR 210 per day. Veltrans says it is a pass-through. =
+Do you know why they were held at Felixstowe in September? I need to know if =
+we can push this back to Veltrans or if the cost belongs to us, so I can book=
+ it on the right cost centre.
+
+Regards,
+Ana Novak
+Accounts payable analyst (Finance)
+Corp Europe B.V. | Rotterdam
+T +31 10 348 3129
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Jan Novotny <jnovotny@veltrans.example>
+Sent: Friday, 09 October 2026 14:30
+To: Tom Hendriks
+Subject: Re: Veltrans INV-88213 - rates above contract VT-2026-03
+
+Tom, thanks for catching this and sorry for the trouble. We checked: our bill=
+ing system still used the 2025 rate card for your account, the 2026 rates of =
+VT-2026-03 were not activated, and the fuel surcharge came from the old tarif=
+f. You are right on lines 1 to 3. Our billing team will issue a credit note f=
+or EUR 4,657.50 (EUR 4,140.00 plus the EUR 517.50 surcharge) against INV-8821=
+3. Line 4, the demurrage for the two reefers at Felixstowe, is a pass-through=
+ from the terminal and is correct as invoiced.
+
+Best regards,
+Jan Novotny
+Key account manager at Veltrans
+
+-----Original Message-----
+From: Tom Hendriks <t.hendriks@corp-europe.example>
+Sent: Tuesday, 06 October 2026 11:10
+To: Jan Novotny
+Subject: RE: Veltrans INV-88213 - rates above contract VT-2026-03
+
+Jan, invoice INV-88213 does not match our contract VT-2026-03. Lines 1 and 2 =
+are charged at EUR 1,310 and EUR 756 per trip instead of the contract EUR 1,1=
+80 and EUR 640, which makes EUR 4,140.00 too much. On top, line 3 adds a EUR =
+517.50 fuel surcharge, but the contract rate is all-in. Please check your rat=
+e card and send us a credit note for the difference. We have blocked the invo=
+ice until we have it. Can you confirm by Friday?
+
+Best regards,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 536 3417
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Tom Hendriks <t.hendriks@corp-europe.example>
+Sent: Tuesday, 06 October 2026 08:45
+To: Ana Novak
+Subject: RE: Veltrans INV-88213 - rates above contract VT-2026-03
+
+Ana, your contract rates are correct: EUR 1,180 per trip Venlo - Gdansk and E=
+UR 640 per trip Venlo - Hamburg, valid from 1 January 2026 under VT-2026-03. =
+Fuel is included in the all-in rate, so line 3 should not be there at all. Th=
+e invoiced rates look exactly like the 2025 rate card to me. I will write to =
+Jan Novotny at Veltrans today and ask for a corrected invoice or a credit not=
+e. Please keep the block on INV-88213 in the meantime.
+
+Kind regards,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 767 4394
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Ana Novak <a.novak@corp-europe.example>
+Sent: Monday, 05 October 2026 09:20
+To: Tom Hendriks
+Subject: Veltrans INV-88213 - rates above contract VT-2026-03
+
+Tom, during the three-way match for Veltrans invoice INV-88213 (total EUR 35,=
+237.50) I found that lines 1 and 2 are well above contract VT-2026-03. Togeth=
+er they are EUR 4,140.00 over. There is also a fuel surcharge of EUR 517.50 a=
+s line 3, although the contract rate is all-in. Comparison below. Line 4 is d=
+emurrage for two reefers at Felixstowe, which I will come back to separately.=
+ Can you confirm the contract rates are correct as I have them in the vendor =
+master? I have blocked the invoice for payment (block reason R) until this is=
+ cleared.
+
+Line | Description | Qty | Invoiced rate (EUR) | Contract rate (EUR) | Differ=
+ence (EUR)
+1 | FTL Venlo - Gdansk | 14 trips | 1,310.00 | 1,180.00 | +1,820.00
+2 | FTL Venlo - Hamburg | 20 trips | 756.00 | 640.00 | +2,320.00
+3 | Fuel surcharge | 1 | 517.50 | 0.00 (all-in rate) | +517.50
+4 | Demurrage 2 reefers Felixstowe | 1 | 1,260.00 | n/a | tbc
+
+Best regards,
+Ana Novak
+Accounts payable analyst (Finance)
+Corp Europe B.V. | Rotterdam
+T +31 10 778 4362
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============6518043341330426301==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Ana, I checked with Oliver Wright in Felixstowe. Both reefers =
+were held from 22 to 25 September because our import declaration had a wrong =
+commodity code, and Harbour Agency UK had to amend it before customs released=
+ them. So the hold was caused by our customs paperwork, not by Veltrans. The =
+demurrage of EUR 1,260.00 stays with Corp Europe. Please release line 4 for p=
+ayment and book it to logistics Felixstowe. Mark, FYI, since it is a cost on =
+our side.</p><p>Best regards,<br>Tom Hendriks<br>Transport planner<br>Corp Eu=
+rope B.V. | Rotterdam<br>T +31 10 215 6869<br><br>This e-mail and any attachm=
+ents are confidential and intended solely for the addressee. If you received =
+it in error, please delete it.</p><div style=3D'border:none;border-top:solid =
+#E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Ana Novak &lt;a.nova=
+k@corp-europe.example&gt;<br><b>Sent:</b> Tuesday, 13 October 2026 10:05<br><=
+b>To:</b> Tom Hendriks<br><b>Cc:</b> Mark de Boer; DL FIN<br><b>Subject:</b> =
+RE: Veltrans INV-88213 - rates above contract VT-2026-03</p></div><p>Tom, now=
+ line 4: EUR 1,260.00 demurrage for two reefers, MSKU4471920 and TGHU8830154,=
+ 3 days each at EUR 210 per day. Veltrans says it is a pass-through. Do you k=
+now why they were held at Felixstowe in September? I need to know if we can p=
+ush this back to Veltrans or if the cost belongs to us, so I can book it on t=
+he right cost centre.</p><p>Regards,<br>Ana Novak<br>Accounts payable analyst=
+ (Finance)<br>Corp Europe B.V. | Rotterdam<br>T +31 10 348 3129<br><br>This e=
+-mail and any attachments are confidential and intended solely for the addres=
+see. If you received it in error, please delete it.</p><div style=3D'border:n=
+one;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b>=
+ Jan Novotny &lt;jnovotny@veltrans.example&gt;<br><b>Sent:</b> Friday, 09 Oct=
+ober 2026 14:30<br><b>To:</b> Tom Hendriks<br><b>Cc:</b> Veltrans Billing; An=
+a Novak; Mark de Boer; DL FIN<br><b>Subject:</b> Re: Veltrans INV-88213 - rat=
+es above contract VT-2026-03</p></div><p>Tom, thanks for catching this and so=
+rry for the trouble. We checked: our billing system still used the 2025 rate =
+card for your account, the 2026 rates of VT-2026-03 were not activated, and t=
+he fuel surcharge came from the old tariff. You are right on lines 1 to 3. Ou=
+r billing team will issue a credit note for EUR 4,657.50 (EUR 4,140.00 plus t=
+he EUR 517.50 surcharge) against INV-88213. Line 4, the demurrage for the two=
+ reefers at Felixstowe, is a pass-through from the terminal and is correct as=
+ invoiced.</p><p>Best regards,<br>Jan Novotny<br>Key account manager at Veltr=
+ans</p><div class=3D'gmail_quote'>On Tue, 06 Oct 2026 at 11:10, Tom Hendriks =
+&lt;t.hendriks@corp-europe.example&gt; wrote:<br><p>Jan, invoice INV-88213 do=
+es not match our contract VT-2026-03. Lines 1 and 2 are charged at EUR 1,310 =
+and EUR 756 per trip instead of the contract EUR 1,180 and EUR 640, which mak=
+es EUR 4,140.00 too much. On top, line 3 adds a EUR 517.50 fuel surcharge, bu=
+t the contract rate is all-in. Please check your rate card and send us a cred=
+it note for the difference. We have blocked the invoice until we have it. Can=
+ you confirm by Friday?</p><p>Best regards,<br>Tom Hendriks<br>Transport plan=
+ner<br>Corp Europe B.V. | Rotterdam<br>T +31 10 536 3417<br><br>This e-mail a=
+nd any attachments are confidential and intended solely for the addressee. If=
+ you received it in error, please delete it.</p><div style=3D'border:none;bor=
+der-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Tom He=
+ndriks &lt;t.hendriks@corp-europe.example&gt;<br><b>Sent:</b> Tuesday, 06 Oct=
+ober 2026 08:45<br><b>To:</b> Ana Novak<br><b>Cc:</b> Mark de Boer; DL FIN<br=
+><b>Subject:</b> RE: Veltrans INV-88213 - rates above contract VT-2026-03</p>=
+</div><p>Ana, your contract rates are correct: EUR 1,180 per trip Venlo - Gda=
+nsk and EUR 640 per trip Venlo - Hamburg, valid from 1 January 2026 under VT-=
+2026-03. Fuel is included in the all-in rate, so line 3 should not be there a=
+t all. The invoiced rates look exactly like the 2025 rate card to me. I will =
+write to Jan Novotny at Veltrans today and ask for a corrected invoice or a c=
+redit note. Please keep the block on INV-88213 in the meantime.</p><p>Kind re=
+gards,<br>Tom Hendriks<br>Transport planner<br>Corp Europe B.V. | Rotterdam<b=
+r>T +31 10 767 4394<br><br>This e-mail and any attachments are confidential a=
+nd intended solely for the addressee. If you received it in error, please del=
+ete it.</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3=
+.0pt 0cm 0cm 0cm'><p><b>From:</b> Ana Novak &lt;a.novak@corp-europe.example&g=
+t;<br><b>Sent:</b> Monday, 05 October 2026 09:20<br><b>To:</b> Tom Hendriks<b=
+r><b>Cc:</b> Mark de Boer; DL FIN<br><b>Subject:</b> Veltrans INV-88213 - rat=
+es above contract VT-2026-03</p></div><p>Tom, during the three-way match for =
+Veltrans invoice INV-88213 (total EUR 35,237.50) I found that lines 1 and 2 a=
+re well above contract VT-2026-03. Together they are EUR 4,140.00 over. There=
+ is also a fuel surcharge of EUR 517.50 as line 3, although the contract rate=
+ is all-in. Comparison below. Line 4 is demurrage for two reefers at Felixsto=
+we, which I will come back to separately. Can you confirm the contract rates =
+are correct as I have them in the vendor master? I have blocked the invoice f=
+or payment (block reason R) until this is cleared.</p><table style=3D'border-=
+collapse:collapse;font-size:10pt'><tr><th style=3D'border:1px solid #999;padd=
+ing:3px 6px'>Line</th><th style=3D'border:1px solid #999;padding:3px 6px'>Des=
+cription</th><th style=3D'border:1px solid #999;padding:3px 6px'>Qty</th><th =
+style=3D'border:1px solid #999;padding:3px 6px'>Invoiced rate (EUR)</th><th s=
+tyle=3D'border:1px solid #999;padding:3px 6px'>Contract rate (EUR)</th><th st=
+yle=3D'border:1px solid #999;padding:3px 6px'>Difference (EUR)</th></tr><tr><=
+td style=3D'border:1px solid #999;padding:3px 6px'>1</td><td style=3D'border:=
+1px solid #999;padding:3px 6px'>FTL Venlo - Gdansk</td><td style=3D'border:1p=
+x solid #999;padding:3px 6px'>14 trips</td><td style=3D'border:1px solid #999=
+;padding:3px 6px'>1,310.00</td><td style=3D'border:1px solid #999;padding:3px=
+ 6px'>1,180.00</td><td style=3D'border:1px solid #999;padding:3px 6px'>+1,820=
+.00</td></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>2</td><t=
+d style=3D'border:1px solid #999;padding:3px 6px'>FTL Venlo - Hamburg</td><td=
+ style=3D'border:1px solid #999;padding:3px 6px'>20 trips</td><td style=3D'bo=
+rder:1px solid #999;padding:3px 6px'>756.00</td><td style=3D'border:1px solid=
+ #999;padding:3px 6px'>640.00</td><td style=3D'border:1px solid #999;padding:=
+3px 6px'>+2,320.00</td></tr><tr><td style=3D'border:1px solid #999;padding:3p=
+x 6px'>3</td><td style=3D'border:1px solid #999;padding:3px 6px'>Fuel surchar=
+ge</td><td style=3D'border:1px solid #999;padding:3px 6px'>1</td><td style=3D=
+'border:1px solid #999;padding:3px 6px'>517.50</td><td style=3D'border:1px so=
+lid #999;padding:3px 6px'>0.00 (all-in rate)</td><td style=3D'border:1px soli=
+d #999;padding:3px 6px'>+517.50</td></tr><tr><td style=3D'border:1px solid #9=
+99;padding:3px 6px'>4</td><td style=3D'border:1px solid #999;padding:3px 6px'=
+>Demurrage 2 reefers Felixstowe</td><td style=3D'border:1px solid #999;paddin=
+g:3px 6px'>1</td><td style=3D'border:1px solid #999;padding:3px 6px'>1,260.00=
+</td><td style=3D'border:1px solid #999;padding:3px 6px'>n/a</td><td style=3D=
+'border:1px solid #999;padding:3px 6px'>tbc</td></tr></table><p>Best regards,=
+<br>Ana Novak<br>Accounts payable analyst (Finance)<br>Corp Europe B.V. | Rot=
+terdam<br>T +31 10 778 4362<br><br>This e-mail and any attachments are confid=
+ential and intended solely for the addressee. If you received it in error, pl=
+ease delete it.</p></div></body></html>
+
+--===============6518043341330426301==--

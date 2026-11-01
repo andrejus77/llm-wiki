@@ -1,0 +1,196 @@
+Message-ID: <kpi_co2.t1.m2.66aca70afb@routewise.example>
+Date: Thu, 15 Oct 2026 11:20:00 +0200
+From: "RouteWise Support" <routewise@routewise.example>
+To: "Tom Hendriks" <t.hendriks@corp-europe.example>
+Cc: "Pieter Bakker" <p.bakker@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: Re: TMS export: CO2 per shipment column from week 44
+In-Reply-To: <kpi_co2.t1.m1.418864d5e2@corp-europe.example>
+References: <kpi_co2.t1.m1.418864d5e2@corp-europe.example>
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary="===============8702021561453828864=="
+
+--===============8702021561453828864==
+Content-Type: multipart/alternative;
+ boundary="===============6021648969656578336=="
+
+--===============6021648969656578336==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Thanks Tom, this is feasible. We can enable the column co2_kg_per_shipment fo=
+r your tenant so that it appears in the export from week 44 (Monday 26 Octobe=
+r).
+
+Points to be aware of:
+- The calculation covers road legs only, WTW, based on GLEC default emission =
+factors per vehicle type and distance.
+- As long as carriers do not send actual fuel consumption, the value is an es=
+timate based on these defaults.
+- Decimal separator is a dot, two decimals, empty value for shipments without=
+ a road leg.
+
+I attached a sample export with 5 shipments so Pieter can start on the mappin=
+g.
+
+Best regards,
+RouteWise Support
+TMS software vendor
+
+-----Original Message-----
+From: Tom Hendriks <t.hendriks@corp-europe.example>
+Sent: Wednesday, 14 October 2026 09:10
+To: RouteWise Support
+Subject: TMS export: CO2 per shipment column from week 44
+
+We want to show CO2 per shipment on the logistics KPI dashboard and would lik=
+e to get it straight from the TMS export instead of calculating it in Excel.
+
+Could you add a column co2_kg_per_shipment to the standard shipment export? O=
+ur scope:
+- road legs only, no sea or rail
+- well-to-wheel (WTW), calculated according to the GLEC framework
+- value in kg, per shipment
+
+Pieter Bakker (in cc) maintains the dashboard mapping and needs a sample file=
+ before he can change anything. Our target is that the column is in the expor=
+t from week 44. Is that realistic on your side?
+
+Kind regards,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 485 8385
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============6021648969656578336==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Thanks Tom, this is feasible. We can enable the column co2_kg_=
+per_shipment for your tenant so that it appears in the export from week 44 (M=
+onday 26 October).</p>
+<p>Points to be aware of:<br>- The calculation covers road legs only, WTW, ba=
+sed on GLEC default emission factors per vehicle type and distance.<br>- As l=
+ong as carriers do not send actual fuel consumption, the value is an estimate=
+ based on these defaults.<br>- Decimal separator is a dot, two decimals, empt=
+y value for shipments without a road leg.</p>
+<p>I attached a sample export with 5 shipments so Pieter can start on the map=
+ping.</p><p>Best regards,<br>RouteWise Support<br>TMS software vendor</p><div=
+ class=3D'gmail_quote'>On Wed, 14 Oct 2026 at 09:10, Tom Hendriks &lt;t.hendr=
+iks@corp-europe.example&gt; wrote:<br><p>We want to show CO2 per shipment on =
+the logistics KPI dashboard and would like to get it straight from the TMS ex=
+port instead of calculating it in Excel.</p>
+<p>Could you add a column co2_kg_per_shipment to the standard shipment export=
+? Our scope:<br>- road legs only, no sea or rail<br>- well-to-wheel (WTW), ca=
+lculated according to the GLEC framework<br>- value in kg, per shipment</p>
+<p>Pieter Bakker (in cc) maintains the dashboard mapping and needs a sample f=
+ile before he can change anything. Our target is that the column is in the ex=
+port from week 44. Is that realistic on your side?</p><p>Kind regards,<br>Tom=
+ Hendriks<br>Transport planner<br>Corp Europe B.V. | Rotterdam<br>T +31 10 48=
+5 8385<br><br>This e-mail and any attachments are confidential and intended s=
+olely for the addressee. If you received it in error, please delete it.</p></=
+div></body></html>
+
+--===============6021648969656578336==--
+
+--===============8702021561453828864==
+Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="sample_export_co2_wk44.xlsx"
+MIME-Version: 1.0
+
+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
+
+--===============8702021561453828864==--

@@ -1,0 +1,513 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "Nordline rate renewal 2027 - ocean lanes",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-10-06 10:05",
+     "from": "plindqvist",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "mdeboer",
+      "erossi"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Dear Tom,\n\nWe are opening the 2027 rate round. Attached you will find our offer for all 19 ocean lanes you currently have with us. Due to higher vessel operating costs and port surcharges, we are proposing an increase of +6% on every lane, effective 1 January 2027.\n\nThe offer is valid until 30 November 2026. To secure allocations for Q1, we would appreciate your answer by 18 November.\n\nHappy to walk you through the calculation in a call this week or next. Just let me know what suits you.\n\nBest regards, Pia",
+     "table": null,
+     "attachment": {
+      "kind": "xlsx",
+      "name": "Nordline_Rate_Offer_2027_Ocean.xlsx",
+      "rows": [
+       [
+        "Lane no",
+        "Lane",
+        "Current rate 2026 (EUR/TEU)",
+        "Offered rate 2027 (EUR/TEU)",
+        "Change"
+       ],
+       [
+        "1",
+        "Rotterdam - Shanghai",
+        "1150",
+        "1219",
+        "+6%"
+       ],
+       [
+        "2",
+        "Rotterdam - Ningbo",
+        "1180",
+        "1251",
+        "+6%"
+       ],
+       [
+        "3",
+        "Rotterdam - Shenzhen",
+        "1210",
+        "1283",
+        "+6%"
+       ],
+       [
+        "4",
+        "Rotterdam - Busan",
+        "1260",
+        "1336",
+        "+6%"
+       ],
+       [
+        "5",
+        "Rotterdam - Singapore",
+        "1040",
+        "1102",
+        "+6%"
+       ],
+       [
+        "6",
+        "Rotterdam - Nhava Sheva",
+        "980",
+        "1039",
+        "+6%"
+       ],
+       [
+        "7",
+        "Rotterdam - New York",
+        "890",
+        "943",
+        "+6%"
+       ],
+       [
+        "8",
+        "Rotterdam - Savannah",
+        "960",
+        "1018",
+        "+6%"
+       ],
+       [
+        "9",
+        "Rotterdam - Houston",
+        "1020",
+        "1081",
+        "+6%"
+       ],
+       [
+        "10",
+        "Antwerp - Shanghai",
+        "1170",
+        "1240",
+        "+6%"
+       ],
+       [
+        "11",
+        "Antwerp - Ningbo",
+        "1190",
+        "1261",
+        "+6%"
+       ],
+       [
+        "12",
+        "Antwerp - New York",
+        "900",
+        "954",
+        "+6%"
+       ],
+       [
+        "13",
+        "Hamburg - Shanghai",
+        "1190",
+        "1261",
+        "+6%"
+       ],
+       [
+        "14",
+        "Hamburg - Busan",
+        "1280",
+        "1357",
+        "+6%"
+       ],
+       [
+        "15",
+        "Hamburg - Singapore",
+        "1060",
+        "1124",
+        "+6%"
+       ],
+       [
+        "16",
+        "Hamburg - Charleston",
+        "950",
+        "1007",
+        "+6%"
+       ],
+       [
+        "17",
+        "Felixstowe - Shanghai",
+        "1210",
+        "1283",
+        "+6%"
+       ],
+       [
+        "18",
+        "Felixstowe - New York",
+        "930",
+        "986",
+        "+6%"
+       ],
+       [
+        "19",
+        "Gdansk - Shanghai (transhipment)",
+        "1330",
+        "1410",
+        "+6%"
+       ]
+      ]
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-10-06 14:20",
+     "from": "thendriks",
+     "to": [
+      "mdeboer",
+      "erossi"
+     ],
+     "cc": [],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Mark, Elena, Nordline's 2027 offer is in: +6% flat on all 19 lanes, valid until 30 Nov. They want our answer by 18 Nov. No differentiation per lane at all, which looks like a standard uplift rather than a calculated one.\n\nI will benchmark against what we see from other forwarders and the index data before we react. Should have it by the end of next week. Elena, can you pull the 2026 TEU actuals per lane from the contract report so we know what volume we can put on the table?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-10-12 16:40",
+     "from": "thendriks",
+     "to": [
+      "mdeboer",
+      "erossi"
+     ],
+     "cc": [],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Benchmark is done. The market is moving +2 to +4% for 2027 on comparable Europe - Asia and Europe - US East Coast lanes, so +6% is clearly above market. Overview of what I found:\n\nOnly the Q3 index average gets close to the top of that range. Gdansk - Shanghai is the one lane where a higher increase is plausible because of the transhipment, but even there I would not go beyond +4%.\n\nProposal: we counter at +3% across the board and offer a committed volume in return.",
+     "table": {
+      "header": [
+       "Source",
+       "Increase 2027 vs 2026"
+      ],
+      "rows": [
+       [
+        "Forwarder B quote (Europe - Asia)",
+        "+2.0%"
+       ],
+       [
+        "Carrier C direct quote (Europe - USEC)",
+        "+3.5%"
+       ],
+       [
+        "Spot/contract index, Q3 average",
+        "+4.0%"
+       ],
+       [
+        "Nordline offer",
+        "+6.0%"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m4",
+     "date": "2026-10-13 09:30",
+     "from": "mdeboer",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "erossi"
+     ],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "Good work Tom. I agree with +3% as the counter. For the volume side I am fine with a commitment of 1,800 TEU for 2027. That gives Nordline planning security, which is the argument they respond to. Please make clear it is a commitment on the total, not per lane, otherwise we lose flexibility between Rotterdam and Antwerp.\n\nElena, please check that the 1,800 is realistic against the 2026 numbers before it goes out.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-10-14 11:10",
+     "from": "erossi",
+     "to": [
+      "thendriks",
+      "mdeboer"
+     ],
+     "cc": [],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Quick check: is the 1,800 TEU per quarter? Our 2026 actuals from the contract report are about 1,650 TEU for the full year (forecast incl. Q4), so per quarter would be way too high, and per year would be only a small step up. Just want to be sure we are talking about the same thing before I update the volume sheet.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m6",
+     "date": "2026-10-14 13:45",
+     "from": "thendriks",
+     "to": [
+      "erossi"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "No, 1,800 TEU is per year, for the whole of 2027, across all 19 lanes. That is roughly 9% above the 2026 forecast of 1,650, driven by the Brightwater start-up and the Gdansk growth. So it is a real commitment but one we can reach.\n\nPlease keep the volume sheet on annual totals and add a column with the share per lane.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m7",
+     "date": "2026-10-20 10:25",
+     "from": "thendriks",
+     "to": [
+      "plindqvist"
+     ],
+     "cc": [
+      "mdeboer",
+      "erossi"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Dear Pia,\n\nThank you for the 2027 offer. We have benchmarked it, and +6% is clearly above what we see in the market (+2 to +4% on comparable lanes). We therefore propose the following:\n\n- an increase of +3% on all 19 lanes, e.g. Rotterdam - Shanghai at EUR 1,185 per TEU (instead of 1,219)\n- in return, a volume commitment of 1,800 TEU for 2027 in total, versus a 2026 forecast of about 1,650 TEU\n\nWe will give you our formal answer by 18 November as requested. Please let us know whether your pricing team can work with this.\n\nBest regards, Tom",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m8",
+     "date": "2026-10-22 15:05",
+     "from": "plindqvist",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "mdeboer",
+      "erossi"
+     ],
+     "reply_to": "m7",
+     "forward": false,
+     "body": "Hi Tom,\n\nThank you for the counter and the volume figure, that helps. I have passed both to our pricing team. +3% will be difficult for us, as our own cost base is going up more than that, but the 1,800 TEU commitment is a good argument on our side. I expect to come back to you with a revised proposal by 29 October.\n\nOur offer deadline of 30 November remains unchanged.\n\nBest, Pia",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m9",
+     "date": "2026-10-29 17:15",
+     "from": "plindqvist",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "mdeboer",
+      "erossi"
+     ],
+     "reply_to": "m8",
+     "forward": false,
+     "body": "Hi Tom,\n\nI discussed this with management. Given the 1,800 TEU commitment, we can move from +6% to +4.5% on all 19 lanes. We cannot go down to +3%. The revised offer is valid until 30 November, like the original one.\n\nI know this is still above your counter, but it is a clear step. Let me know if you want to talk it through before your decision on 18 November.\n\nBest, Pia",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m10",
+     "date": "2026-10-30 09:50",
+     "from": "mdeboer",
+     "to": [
+      "thendriks",
+      "erossi"
+     ],
+     "cc": [],
+     "reply_to": "m9",
+     "forward": false,
+     "body": "Thanks both. +4.5% is a move but still above the market range Tom found. Tom, please calculate what +4.5% versus +3% means in EUR on the 1,800 TEU, using the lane split from Elena's sheet. We then decide next week whether we go back with +3.5% or accept. The answer to Nordline stays due 18 November.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "Nordline opened the 2027 rate round on 6 Oct 2026 with an increase of +6% on all 19 ocean lanes, effective 1 January 2027.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "The Nordline offer is valid until 30 November 2026.",
+   "emails": [
+    "m1",
+    "m8",
+    "m9"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "Nordline asked for Corp Europe's answer by 18 November 2026 to secure Q1 allocations.",
+   "emails": [
+    "m1",
+    "m7",
+    "m10"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "Tom's benchmark showed the market at +2 to +4% for 2027 on comparable lanes.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "Benchmark sources: Forwarder B +2.0%, Carrier C direct +3.5%, Q3 index average +4.0%.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "Mark de Boer approved a counter of +3% with a volume commitment of 1,800 TEU for 2027, as a total and not per lane.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "Elena Rossi thought the 1,800 TEU might be per quarter; Tom clarified it is per year across all 19 lanes.",
+   "emails": [
+    "m5",
+    "m6"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "The 2026 TEU forecast is about 1,650 TEU, so 1,800 TEU is roughly 9% higher, driven by Brightwater and Gdansk growth.",
+   "emails": [
+    "m5",
+    "m6"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "Tom sent the counter to Pia on 20 Oct; example: Rotterdam - Shanghai at EUR 1,185 per TEU instead of 1,219.",
+   "emails": [
+    "m7"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "Nordline offered Rotterdam - Shanghai at EUR 1,219 per TEU for 2027, up from 1,150.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "On 22 Oct Pia said +3% would be difficult and promised a revised proposal by 29 October.",
+   "emails": [
+    "m8"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "On 29 Oct Nordline revised its offer to +4.5% on all 19 lanes, conditional on the 1,800 TEU commitment, and refused +3%.",
+   "emails": [
+    "m9"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "Mark asked Tom to calculate the EUR difference between +4.5% and +3% on 1,800 TEU, to decide whether to counter with +3.5% or accept.",
+   "emails": [
+    "m10"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "By what date does Corp Europe have to answer Nordline on the 2027 rates?",
+   "a": "18 November 2026 (the Nordline offer itself is valid until 30 November).",
+   "facts": [
+    "F2",
+    "F3"
+   ],
+   "type": "when"
+  },
+  {
+   "q": "What counter-offer did Corp Europe make to Nordline's +6%?",
+   "a": "+3% on all 19 lanes in return for a volume commitment of 1,800 TEU for 2027.",
+   "facts": [
+    "F6",
+    "F9"
+   ],
+   "type": "fact"
+  },
+  {
+   "q": "Why did Tom consider Nordline's +6% too high?",
+   "a": "His benchmark showed the market at +2 to +4% for 2027 on comparable lanes.",
+   "facts": [
+    "F4",
+    "F5"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "Is the 1,800 TEU commitment per quarter or per year, and how does it compare to 2026?",
+   "a": "It is per year across all lanes, about 9% above the 2026 forecast of roughly 1,650 TEU.",
+   "facts": [
+    "F7",
+    "F8"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "What was Nordline's revised offer on 29 October?",
+   "a": "+4.5% on all 19 lanes, tied to the 1,800 TEU commitment; they would not go to +3%.",
+   "facts": [
+    "F12"
+   ],
+   "type": "fact"
+  },
+  {
+   "q": "Who asked Tom to calculate the cost difference between +4.5% and +3%?",
+   "a": "Mark de Boer.",
+   "facts": [
+    "F13"
+   ],
+   "type": "who"
+  },
+  {
+   "q": "Which container line did Corp Europe choose for the Gdansk - Shanghai lane for 2027?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "rates_2027",
+  "title": "Carrier rate renewal 2027 (Nordline offer)",
+  "level": "project",
+  "korean": false
+ }
+}

@@ -1,0 +1,186 @@
+Message-ID: <ewm_rotterdam.t1.m10.6655cc0ea5@corp-europe.example>
+Date: Tue, 06 Oct 2026 17:10:00 +0200
+From: "Lukas Becker" <l.becker@corp-europe.example>
+To: "Ruud Jansen" <r.jansen@corp-europe.example>
+Cc: "Hanna Schmidt" <h.schmidt@corp-europe.example>,
+ "Sofie Peeters" <s.peeters@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: Rotterdam DC EWM go-live: cutover and hypercare
+In-Reply-To: <ewm_rotterdam.t1.m9.78aba6c461@corp-europe.example>
+References: <ewm_rotterdam.t1.m1.be61a86dd4@corp-europe.example>
+ <ewm_rotterdam.t1.m7.18ad5af680@corp-europe.example>
+ <ewm_rotterdam.t1.m8.27a19327ba@corp-europe.example>
+ <ewm_rotterdam.t1.m9.78aba6c461@corp-europe.example>
+Thread-Index: Ad1VpMF6L+eLBoUDym4gsn7p8PRZLrTDdT4l6Wrzp7CHYmsB5Dg1P8Dc
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============0165529008969697348=="
+
+--===============0165529008969697348==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+No, they are not picks. 180 of the 214 are replenishment tasks in queue REPL-=
+B. The queue was not assigned to any resource group, so nobody on RF received=
+ them. I have assigned REPL-B to the resource group RG_REPL and told the two =
+Antwerp pickers to take it tomorrow. The remaining 34 are normal picks in pro=
+gress. I will check /SCWM/MON again at 07:00.
+
+Thanks,
+Lukas Becker
+SAP key user SD/LE
+Corp Europe B.V. | Rotterdam
+T +31 10 706 7547
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Ruud Jansen <r.jansen@corp-europe.example>
+Sent: Tuesday, 06 October 2026 16:45
+To: Lukas Becker
+Subject: RE: Rotterdam DC EWM go-live: cutover and hypercare
+
+Why are 214 tasks open? Are these real picks that are stuck?
+
+Thanks,
+Ruud Jansen
+Logistics manager Rotterdam, owner of the customs migration project
+Corp Europe B.V. | Rotterdam
+T +31 10 825 2193
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Hanna Schmidt <h.schmidt@corp-europe.example>
+Sent: Tuesday, 06 October 2026 16:30
+To: Ruud Jansen
+Subject: RE: Rotterdam DC EWM go-live: cutover and hypercare
+
+Day 1 is done. Go-live at 06:00 went without a stop. Pick rate was 163 lines/=
+hour, which is 88% of the baseline of 185 lines/hour. That is in line with th=
+e expectation for day 1. At 16:00 /SCWM/MON showed 214 open warehouse tasks, =
+which is higher than I expected. Lukas, can you look at this? Screenshot atta=
+ched.
+
+Best regards,
+Hanna Schmidt
+EWM project lead (Rotterdam and Venlo rollouts)
+Corp Europe B.V. | Rotterdam
+T +31 10 403 3414
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Hanna Schmidt <h.schmidt@corp-europe.example>
+Sent: Friday, 02 October 2026 17:50
+To: Ruud Jansen
+Subject: RE: Rotterdam DC EWM go-live: cutover and hypercare
+
+Go/no-go done at 17:30: GO. Legacy WM is frozen as of 18:00. Open points are =
+not blocking: the label printer in dock 4 is still being swapped, and we use =
+dock 3 until it is done. Sofie, yes please, send your two pickers on Monday 5=
+ Oct, they are welcome. Count starts tomorrow at 07:00.
+
+Regards,
+Hanna Schmidt
+EWM project lead (Rotterdam and Venlo rollouts)
+Corp Europe B.V. | Rotterdam
+T +31 10 295 4848
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Hanna Schmidt <h.schmidt@corp-europe.example>
+Sent: Monday, 21 September 2026 09:10
+To: Ruud Jansen
+Subject: Rotterdam DC EWM go-live: cutover and hypercare
+
+Cutover plan for Rotterdam is final. Legacy WM is frozen on Friday 2 Oct at 1=
+8:00, physical count runs Saturday 3 Oct, and EWM go-live is Tuesday 6 Oct at=
+ 06:00 with the first shift. Hypercare runs until 30 Oct, with a daily 15-min=
+ute stand-up at 08:30 in the Rotterdam control room.
+
+For open warehouse tasks please use /SCWM/MON, not the old LT23 lists. Lukas,=
+ I need the supervisor and picker roles loaded by 30 Sep. Ruud, please confir=
+m that the Rotterdam shift leaders can attend the stand-up. The plan is attac=
+hed.
+
+Best regards,
+Hanna Schmidt
+EWM project lead (Rotterdam and Venlo rollouts)
+Corp Europe B.V. | Rotterdam
+T +31 10 396 7888
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============0165529008969697348==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>No, they are not picks. 180 of the 214 are replenishment tasks=
+ in queue REPL-B. The queue was not assigned to any resource group, so nobody=
+ on RF received them. I have assigned REPL-B to the resource group RG_REPL an=
+d told the two Antwerp pickers to take it tomorrow. The remaining 34 are norm=
+al picks in progress. I will check /SCWM/MON again at 07:00.</p><p>Thanks,<br=
+>Lukas Becker<br>SAP key user SD/LE<br>Corp Europe B.V. | Rotterdam<br>T +31 =
+10 706 7547<br><br>This e-mail and any attachments are confidential and inten=
+ded solely for the addressee. If you received it in error, please delete it.<=
+/p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm=
+ 0cm 0cm'><p><b>From:</b> Ruud Jansen &lt;r.jansen@corp-europe.example&gt;<br=
+><b>Sent:</b> Tuesday, 06 October 2026 16:45<br><b>To:</b> Lukas Becker<br><b=
+>Cc:</b> Hanna Schmidt; Sofie Peeters; DL CT<br><b>Subject:</b> RE: Rotterdam=
+ DC EWM go-live: cutover and hypercare</p></div><p>Why are 214 tasks open? Ar=
+e these real picks that are stuck?</p><p>Thanks,<br>Ruud Jansen<br>Logistics =
+manager Rotterdam, owner of the customs migration project<br>Corp Europe B.V.=
+ | Rotterdam<br>T +31 10 825 2193<br><br>This e-mail and any attachments are =
+confidential and intended solely for the addressee. If you received it in err=
+or, please delete it.</p><div style=3D'border:none;border-top:solid #E1E1E1 1=
+.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Hanna Schmidt &lt;h.schmidt@c=
+orp-europe.example&gt;<br><b>Sent:</b> Tuesday, 06 October 2026 16:30<br><b>T=
+o:</b> Ruud Jansen<br><b>Cc:</b> Sofie Peeters; Lukas Becker; DL CT<br><b>Sub=
+ject:</b> RE: Rotterdam DC EWM go-live: cutover and hypercare</p></div><p>Day=
+ 1 is done. Go-live at 06:00 went without a stop. Pick rate was 163 lines/hou=
+r, which is 88% of the baseline of 185 lines/hour. That is in line with the e=
+xpectation for day 1. At 16:00 /SCWM/MON showed 214 open warehouse tasks, whi=
+ch is higher than I expected. Lukas, can you look at this? Screenshot attache=
+d.</p><p><img src=3D'cid:img7.d8436d7a@corp' alt=3D'Warehouse Monitor /SCWM/M=
+ON - Whse RTD1' width=3D'600'></p><p>Best regards,<br>Hanna Schmidt<br>EWM pr=
+oject lead (Rotterdam and Venlo rollouts)<br>Corp Europe B.V. | Rotterdam<br>=
+T +31 10 403 3414<br><br>This e-mail and any attachments are confidential and=
+ intended solely for the addressee. If you received it in error, please delet=
+e it.</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0=
+pt 0cm 0cm 0cm'><p><b>From:</b> Hanna Schmidt &lt;h.schmidt@corp-europe.examp=
+le&gt;<br><b>Sent:</b> Friday, 02 October 2026 17:50<br><b>To:</b> Ruud Janse=
+n<br><b>Cc:</b> Sofie Peeters; Lukas Becker; DL CT<br><b>Subject:</b> RE: Rot=
+terdam DC EWM go-live: cutover and hypercare</p></div><p>Go/no-go done at 17:=
+30: GO. Legacy WM is frozen as of 18:00. Open points are not blocking: the la=
+bel printer in dock 4 is still being swapped, and we use dock 3 until it is d=
+one. Sofie, yes please, send your two pickers on Monday 5 Oct, they are welco=
+me. Count starts tomorrow at 07:00.</p><p>Regards,<br>Hanna Schmidt<br>EWM pr=
+oject lead (Rotterdam and Venlo rollouts)<br>Corp Europe B.V. | Rotterdam<br>=
+T +31 10 295 4848<br><br>This e-mail and any attachments are confidential and=
+ intended solely for the addressee. If you received it in error, please delet=
+e it.</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0=
+pt 0cm 0cm 0cm'><p><b>From:</b> Hanna Schmidt &lt;h.schmidt@corp-europe.examp=
+le&gt;<br><b>Sent:</b> Monday, 21 September 2026 09:10<br><b>To:</b> Ruud Jan=
+sen<br><b>Cc:</b> Sofie Peeters; Lukas Becker; DL CT<br><b>Subject:</b> Rotte=
+rdam DC EWM go-live: cutover and hypercare</p></div><p>Cutover plan for Rotte=
+rdam is final. Legacy WM is frozen on Friday 2 Oct at 18:00, physical count r=
+uns Saturday 3 Oct, and EWM go-live is Tuesday 6 Oct at 06:00 with the first =
+shift. Hypercare runs until 30 Oct, with a daily 15-minute stand-up at 08:30 =
+in the Rotterdam control room.</p>
+<p>For open warehouse tasks please use /SCWM/MON, not the old LT23 lists. Luk=
+as, I need the supervisor and picker roles loaded by 30 Sep. Ruud, please con=
+firm that the Rotterdam shift leaders can attend the stand-up. The plan is at=
+tached.</p><p>Best regards,<br>Hanna Schmidt<br>EWM project lead (Rotterdam a=
+nd Venlo rollouts)<br>Corp Europe B.V. | Rotterdam<br>T +31 10 396 7888<br><b=
+r>This e-mail and any attachments are confidential and intended solely for th=
+e addressee. If you received it in error, please delete it.</p></body></html>
+
+--===============0165529008969697348==--

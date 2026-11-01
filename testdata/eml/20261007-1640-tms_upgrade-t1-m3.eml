@@ -1,0 +1,135 @@
+Message-ID: <tms_upgrade.t1.m3.c8f5c1e695@corp-europe.example>
+Date: Wed, 07 Oct 2026 16:40:00 +0200
+From: "Pieter Bakker" <p.bakker@corp-europe.example>
+To: "Tom Hendriks" <t.hendriks@corp-europe.example>
+Cc: "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: TMS upgrade to RouteWise 9.2 - weekend 24-25 Oct
+In-Reply-To: <tms_upgrade.t1.m2.96fb0d23ce@corp-europe.example>
+References: <tms_upgrade.t1.m1.350e499d4a@routewise.example>
+ <tms_upgrade.t1.m2.96fb0d23ce@corp-europe.example>
+Thread-Index: Ad1WabsBt6ZV9pfzHSx1uUdiGzt62hptI+OJDuG6ImM=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============8968906105978233873=="
+
+--===============8968906105978233873==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Status after the first full run on RW-QA: 38 of 40 cases passed, 2 failed. Th=
+e interface cases 36-40 are all fine, the booking bot works on API v2 without=
+ changes. The failures are both in your area, see table. For TC-017 the diffe=
+rence is small per shipment but would add up. I have the screenshots if you n=
+eed them for RouteWise.
+
+Test case | Result | Finding
+TC-017 | Failed | Multi-stop rate: 3 drops calculated EUR 612.40, tariff says=
+ EUR 584.90
+TC-033 | Failed | CO2 field empty for leg 2 and 3 of multi-leg shipments
+Other 38 | Passed | -
+
+Kind regards,
+Pieter Bakker
+RPA and IT developer
+Corp Europe B.V. | Rotterdam
+T +31 10 299 4846
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Tom Hendriks <t.hendriks@corp-europe.example>
+Sent: Friday, 25 September 2026 14:20
+To: Pieter Bakker
+Subject: RE: TMS upgrade to RouteWise 9.2 - weekend 24-25 Oct
+
+Pieter, RouteWise confirmed the 9.2 upgrade for 24-25 Oct. I drafted a test p=
+lan with 40 test cases, see attachment. Cases 1-25 are planner functions (ten=
+dering, rate calculation, multi-stop, carrier assignment), 26-35 are reports =
+incl. CO2, and 36-40 are the interfaces. Could you take the interface cases 3=
+6-40 and check that the booking bot still works against API v2? I will do the=
+ rest from 5 Oct when QA is upgraded. Target: first full run done by 7 Oct.
+
+Kind regards,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 238 5986
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: RouteWise Support <routewise@routewise.example>
+Sent: Wednesday, 23 September 2026 10:05
+To: Tom Hendriks
+Subject: TMS upgrade to RouteWise 9.2 - weekend 24-25 Oct
+
+Following our call yesterday, we confirm the upgrade of your production TMS f=
+rom 9.0 to 9.2 for the weekend of 24-25 October. The window runs from Saturda=
+y 06:00 to Sunday 14:00 CET. Your QA system RW-QA will be upgraded to 9.2.0.2=
+ by us on 5 October, so you have about three weeks for testing. Main changes:=
+ new multi-stop rate engine, extended CO2 reporting per shipment leg and a ne=
+w REST API version. Please note the old API v2 stays available, so existing i=
+ntegrations should keep working, but we recommend testing them. Can you send =
+us your test plan before the QA upgrade?
+
+Best regards,
+RouteWise Support
+TMS software vendor
+
+--===============8968906105978233873==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Status after the first full run on RW-QA: 38 of 40 cases passe=
+d, 2 failed. The interface cases 36-40 are all fine, the booking bot works on=
+ API v2 without changes. The failures are both in your area, see table. For T=
+C-017 the difference is small per shipment but would add up. I have the scree=
+nshots if you need them for RouteWise.</p><table style=3D'border-collapse:col=
+lapse;font-size:10pt'><tr><th style=3D'border:1px solid #999;padding:3px 6px'=
+>Test case</th><th style=3D'border:1px solid #999;padding:3px 6px'>Result</th=
+><th style=3D'border:1px solid #999;padding:3px 6px'>Finding</th></tr><tr><td=
+ style=3D'border:1px solid #999;padding:3px 6px'>TC-017</td><td style=3D'bord=
+er:1px solid #999;padding:3px 6px'>Failed</td><td style=3D'border:1px solid #=
+999;padding:3px 6px'>Multi-stop rate: 3 drops calculated EUR 612.40, tariff s=
+ays EUR 584.90</td></tr><tr><td style=3D'border:1px solid #999;padding:3px 6p=
+x'>TC-033</td><td style=3D'border:1px solid #999;padding:3px 6px'>Failed</td>=
+<td style=3D'border:1px solid #999;padding:3px 6px'>CO2 field empty for leg 2=
+ and 3 of multi-leg shipments</td></tr><tr><td style=3D'border:1px solid #999=
+;padding:3px 6px'>Other 38</td><td style=3D'border:1px solid #999;padding:3px=
+ 6px'>Passed</td><td style=3D'border:1px solid #999;padding:3px 6px'>-</td></=
+tr></table><p>Kind regards,<br>Pieter Bakker<br>RPA and IT developer<br>Corp =
+Europe B.V. | Rotterdam<br>T +31 10 299 4846<br><br>This e-mail and any attac=
+hments are confidential and intended solely for the addressee. If you receive=
+d it in error, please delete it.</p><div style=3D'border:none;border-top:soli=
+d #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Tom Hendriks &lt;t=
+.hendriks@corp-europe.example&gt;<br><b>Sent:</b> Friday, 25 September 2026 1=
+4:20<br><b>To:</b> Pieter Bakker<br><b>Cc:</b> DL CT<br><b>Subject:</b> RE: T=
+MS upgrade to RouteWise 9.2 - weekend 24-25 Oct</p></div><p>Pieter, RouteWise=
+ confirmed the 9.2 upgrade for 24-25 Oct. I drafted a test plan with 40 test =
+cases, see attachment. Cases 1-25 are planner functions (tendering, rate calc=
+ulation, multi-stop, carrier assignment), 26-35 are reports incl. CO2, and 36=
+-40 are the interfaces. Could you take the interface cases 36-40 and check th=
+at the booking bot still works against API v2? I will do the rest from 5 Oct =
+when QA is upgraded. Target: first full run done by 7 Oct.</p><p>Kind regards=
+,<br>Tom Hendriks<br>Transport planner<br>Corp Europe B.V. | Rotterdam<br>T +=
+31 10 238 5986<br><br>This e-mail and any attachments are confidential and in=
+tended solely for the addressee. If you received it in error, please delete i=
+t.</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt =
+0cm 0cm 0cm'><p><b>From:</b> RouteWise Support &lt;routewise@routewise.exampl=
+e&gt;<br><b>Sent:</b> Wednesday, 23 September 2026 10:05<br><b>To:</b> Tom He=
+ndriks<br><b>Cc:</b> Pieter Bakker; DL CT<br><b>Subject:</b> TMS upgrade to R=
+outeWise 9.2 - weekend 24-25 Oct</p></div><p>Following our call yesterday, we=
+ confirm the upgrade of your production TMS from 9.0 to 9.2 for the weekend o=
+f 24-25 October. The window runs from Saturday 06:00 to Sunday 14:00 CET. You=
+r QA system RW-QA will be upgraded to 9.2.0.2 by us on 5 October, so you have=
+ about three weeks for testing. Main changes: new multi-stop rate engine, ext=
+ended CO2 reporting per shipment leg and a new REST API version. Please note =
+the old API v2 stays available, so existing integrations should keep working,=
+ but we recommend testing them. Can you send us your test plan before the QA =
+upgrade?</p><p>Best regards,<br>RouteWise Support<br>TMS software vendor</p><=
+/body></html>
+
+--===============8968906105978233873==--

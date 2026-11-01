@@ -1,0 +1,335 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "Invoice bot errors on Veltrans invoices",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-10-20 09:15",
+     "from": "anovak",
+     "to": [
+      "pbakker"
+     ],
+     "cc": [],
+     "reply_to": null,
+     "forward": false,
+     "body": "Pieter, the invoice bot sent error mails again this morning. All Veltrans invoices from the weekend mailbox are sitting in the exception folder, 12 in total (INV-48211 to INV-48222). Other carriers went through fine, so it looks specific to Veltrans. Nothing has been posted in FB60 for them.\n\nPayment run for Veltrans is planned for 30 Oct, so I have some time, but I would like to know soon whether this is a quick fix or not. Can you have a look?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-10-20 11:40",
+     "from": "pbakker",
+     "to": [
+      "anovak"
+     ],
+     "cc": [],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Had a look at the logs. The bot reads the invoice total from page 1, but in the new Veltrans PDFs the total is no longer there. I opened INV-48211 and the totals block is now on page 2, page 1 only has the line items. So the field 'InvoiceTotal' is not found and the bot stops by design instead of guessing.\n\nExcerpt of the failed runs below. I think the layout changed on Veltrans side, not our side. I will ask them to confirm and meanwhile build a fix.",
+     "table": {
+      "header": [
+       "Run ID",
+       "Start",
+       "Invoices in batch",
+       "Result",
+       "Error"
+      ],
+      "rows": [
+       [
+        "RPA-INV-0412",
+        "2026-10-20 06:00",
+        "12",
+        "FAILED",
+        "E204 InvoiceTotal not found (page 1)"
+       ],
+       [
+        "RPA-INV-0413",
+        "2026-10-20 10:00",
+        "12",
+        "FAILED",
+        "E204 InvoiceTotal not found (page 1)"
+       ],
+       [
+        "RPA-INV-0414",
+        "2026-10-20 14:00",
+        "12",
+        "FAILED",
+        "E204 InvoiceTotal not found (page 1)"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-10-21 10:05",
+     "from": "pbakker",
+     "to": [
+      "vbilling"
+     ],
+     "cc": [
+      "anovak"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Hello Veltrans Billing team, since 20 Oct our automated invoice processing fails on your PDF invoices (for example INV-48211). It looks like the invoice total has moved from page 1 to page 2. Can you confirm whether you changed the invoice template, since when, and whether this is the final layout? Also please tell us if any other fields changed, so we can adapt once.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m4",
+     "date": "2026-10-21 14:20",
+     "from": "vbilling",
+     "to": [
+      "pbakker"
+     ],
+     "cc": [
+      "anovak"
+     ],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "Hello Pieter, yes, we moved to a new invoice template with our billing system update on 19 Oct. For invoices with more than one page the totals block now sits on the last page. This is the final layout and we will not revert it. Other fields (invoice number, date, PO reference, IBAN) have the same labels as before, only the position differs slightly. Sorry for the inconvenience, we should have announced it.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-10-22 16:30",
+     "from": "pbakker",
+     "to": [
+      "anovak"
+     ],
+     "cc": [],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Veltrans confirmed the new template since 19 Oct and will not revert, so I changed the bot instead. It now has a fallback: if the total is not on page 1 it searches all pages for the totals block. I tested it on 3 of the 12 invoices in the test environment and the totals matched.\n\nI scheduled a rerun of the whole batch of 12 for the night of 23 Oct. The bot will post what it can and leave anything with missing data in the exception folder. You can check the results afterwards.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m6",
+     "date": "2026-10-23 17:10",
+     "from": "anovak",
+     "to": [
+      "pbakker"
+     ],
+     "cc": [],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "Thanks Pieter, good to hear. I will check the results on Monday morning.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m7",
+     "date": "2026-10-26 09:40",
+     "from": "anovak",
+     "to": [
+      "pbakker"
+     ],
+     "cc": [],
+     "reply_to": "m6",
+     "forward": false,
+     "body": "Checked the rerun from Friday night. 11 of 12 Veltrans invoices are posted correctly and the totals match the PDFs. One is still in the exception folder: INV-48217 has no PO reference on the invoice, so the bot cannot do the three-way match. That is not a bot problem, the field is simply empty on the PDF. From SAP I can see it belongs to PO 4500318872, delivery 82014467. I will ask Veltrans for a corrected invoice.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m8",
+     "date": "2026-10-26 11:15",
+     "from": "anovak",
+     "to": [
+      "vbilling"
+     ],
+     "cc": [
+      "pbakker"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Hello Veltrans Billing team, thanks for the info on the new template. 11 of your 12 invoices are now processed. Invoice INV-48217 cannot be posted because the PO reference is missing. It should refer to PO 4500318872 (delivery 82014467). Please send a corrected invoice with the PO number filled in, and cancel the old one. Without the PO we cannot release it for the 30 Oct payment run.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "Since 20 Oct 2026 the RPA invoice bot failed on all 12 Veltrans invoices (INV-48211 to INV-48222).",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "The failure cause was that the invoice total moved from page 1 to page 2 in the Veltrans PDF, so the bot raised error E204 InvoiceTotal not found.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "The failed runs on 20 Oct were RPA-INV-0412 (06:00), RPA-INV-0413 (10:00) and RPA-INV-0414 (14:00), each with a batch of 12 invoices.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "Veltrans introduced a new invoice template with a billing system update on 19 Oct.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "Veltrans said the new layout is final and will not be reverted; for multi-page invoices the totals block is on the last page.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "Other fields such as invoice number, date, PO reference and IBAN kept the same labels in the new Veltrans template.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "Pieter Bakker added a fallback to the bot that searches all pages for the totals block when the total is not on page 1.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "Pieter tested the fallback on 3 of the 12 invoices in the test environment before the rerun.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "The rerun of the batch of 12 invoices was scheduled for the night of 23 Oct.",
+   "emails": [
+    "m5",
+    "m7"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "On 26 Oct Ana Novak checked the rerun: 11 of 12 invoices were posted correctly with totals matching the PDFs.",
+   "emails": [
+    "m7"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "Invoice INV-48217 stayed in the exception folder because it has no PO reference, so the three-way match is not possible.",
+   "emails": [
+    "m7"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "INV-48217 belongs to PO 4500318872 and delivery 82014467 according to SAP.",
+   "emails": [
+    "m7",
+    "m8"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "Ana asked Veltrans Billing for a corrected invoice with the PO number and cancellation of the old one, needed for the 30 Oct payment run.",
+   "emails": [
+    "m8"
+   ]
+  },
+  {
+   "id": "F14",
+   "text": "The Veltrans payment run is planned for 30 Oct.",
+   "emails": [
+    "m1",
+    "m8"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "Why did the invoice bot fail on the Veltrans invoices from 20 October?",
+   "a": "Veltrans changed its PDF template and the invoice total moved from page 1 to page 2, so the bot could not find InvoiceTotal (error E204).",
+   "facts": [
+    "F2",
+    "F4"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "How did Pieter fix the bot problem?",
+   "a": "He added a fallback that searches all pages for the totals block if the total is not on page 1.",
+   "facts": [
+    "F7"
+   ],
+   "type": "howto"
+  },
+  {
+   "q": "Which Veltrans invoice could not be posted after the rerun and why?",
+   "a": "INV-48217, because the PO reference is missing on the invoice.",
+   "facts": [
+    "F11"
+   ],
+   "type": "identifier"
+  },
+  {
+   "q": "When was the rerun of the 12 invoices done and how many were OK?",
+   "a": "In the night of 23 Oct; 11 of 12 were posted correctly.",
+   "facts": [
+    "F9",
+    "F10"
+   ],
+   "type": "when"
+  },
+  {
+   "q": "Which PO should the corrected invoice INV-48217 refer to, and who asked Veltrans for it?",
+   "a": "PO 4500318872; Ana Novak asked Veltrans Billing.",
+   "facts": [
+    "F12",
+    "F13"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "Will Veltrans revert to the old invoice layout?",
+   "a": "No, Veltrans said the new layout is final.",
+   "facts": [
+    "F5"
+   ],
+   "type": "fact"
+  },
+  {
+   "q": "How much is the total amount of the 12 Veltrans invoices?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "rpa_bot",
+  "title": "Invoice bot errors after Veltrans PDF layout change",
+  "level": "topic",
+  "korean": false
+ }
+}

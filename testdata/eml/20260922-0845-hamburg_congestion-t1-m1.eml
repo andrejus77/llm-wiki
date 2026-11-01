@@ -1,0 +1,40 @@
+Message-ID: <hamburg_congestion.t1.m1.b301432188@hht-terminal.example>
+Date: Tue, 22 Sep 2026 08:45:00 +0200
+From: "HHT Terminal Operations" <hht@hht-terminal.example>
+To: "Tom Hendriks" <t.hendriks@corp-europe.example>
+Cc: "DL CT" <dl-ct@corp-europe.example>
+Subject: Hamburg terminal congestion - 6 containers affected
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============3190965060961933665=="
+
+--===============3190965060961933665==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Customer advisory: yard utilisation at Hamburg is currently above 92% and sti=
+ll rising. Several vessel arrivals are delayed by 3-5 days because berth and =
+yard capacity are tight. Import gate-out appointments are limited and we cann=
+ot guarantee same-day pick-up for containers discharged this week. We recomme=
+nd you do not book truck slots until you receive a discharge confirmation fro=
+m us. We will update you every Monday and Thursday.
+
+Best regards,
+HHT Terminal Operations
+Container terminal Hamburg
+
+--===============3190965060961933665==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Customer advisory: yard utilisation at Hamburg is currently ab=
+ove 92% and still rising. Several vessel arrivals are delayed by 3-5 days bec=
+ause berth and yard capacity are tight. Import gate-out appointments are limi=
+ted and we cannot guarantee same-day pick-up for containers discharged this w=
+eek. We recommend you do not book truck slots until you receive a discharge c=
+onfirmation from us. We will update you every Monday and Thursday.</p><p>Best=
+ regards,<br>HHT Terminal Operations<br>Container terminal Hamburg</p></body>=
+</html>
+
+--===============3190965060961933665==--

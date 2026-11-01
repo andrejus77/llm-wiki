@@ -1,0 +1,423 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "TMS upgrade to RouteWise 9.2 - weekend 24-25 Oct",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-09-23 10:05",
+     "from": "routewise",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "pbakker"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Following our call yesterday, we confirm the upgrade of your production TMS from 9.0 to 9.2 for the weekend of 24-25 October. The window runs from Saturday 06:00 to Sunday 14:00 CET. Your QA system RW-QA will be upgraded to 9.2.0.2 by us on 5 October, so you have about three weeks for testing. Main changes: new multi-stop rate engine, extended CO2 reporting per shipment leg and a new REST API version. Please note the old API v2 stays available, so existing integrations should keep working, but we recommend testing them. Can you send us your test plan before the QA upgrade?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-09-25 14:20",
+     "from": "thendriks",
+     "to": [
+      "pbakker"
+     ],
+     "cc": [],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Pieter, RouteWise confirmed the 9.2 upgrade for 24-25 Oct. I drafted a test plan with 40 test cases, see attachment. Cases 1-25 are planner functions (tendering, rate calculation, multi-stop, carrier assignment), 26-35 are reports incl. CO2, and 36-40 are the interfaces. Could you take the interface cases 36-40 and check that the booking bot still works against API v2? I will do the rest from 5 Oct when QA is upgraded. Target: first full run done by 7 Oct.",
+     "table": null,
+     "attachment": {
+      "kind": "xlsx",
+      "name": "TMS_92_testplan_v1.xlsx",
+      "rows": [
+       [
+        "Test case",
+        "Area",
+        "Description",
+        "Owner"
+       ],
+       [
+        "TC-001",
+        "Tendering",
+        "Create tender for FTL Venlo-Rotterdam",
+        "thendriks"
+       ],
+       [
+        "TC-017",
+        "Rate calculation",
+        "Multi-stop route with 3 drops, tariff check",
+        "thendriks"
+       ],
+       [
+        "TC-033",
+        "Reporting",
+        "CO2 per shipment leg in report",
+        "thendriks"
+       ],
+       [
+        "TC-038",
+        "Interface",
+        "Booking bot via API v2",
+        "pbakker"
+       ]
+      ]
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-10-07 16:40",
+     "from": "pbakker",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Status after the first full run on RW-QA: 38 of 40 cases passed, 2 failed. The interface cases 36-40 are all fine, the booking bot works on API v2 without changes. The failures are both in your area, see table. For TC-017 the difference is small per shipment but would add up. I have the screenshots if you need them for RouteWise.",
+     "table": {
+      "header": [
+       "Test case",
+       "Result",
+       "Finding"
+      ],
+      "rows": [
+       [
+        "TC-017",
+        "Failed",
+        "Multi-stop rate: 3 drops calculated EUR 612.40, tariff says EUR 584.90"
+       ],
+       [
+        "TC-033",
+        "Failed",
+        "CO2 field empty for leg 2 and 3 of multi-leg shipments"
+       ],
+       [
+        "Other 38",
+        "Passed",
+        "-"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m4",
+     "date": "2026-10-08 09:30",
+     "from": "thendriks",
+     "to": [
+      "routewise"
+     ],
+     "cc": [
+      "pbakker"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "We finished the first test run on RW-QA. 38 of 40 cases are fine, but we found two defects. 1) Multi-stop rate calculation (TC-017): a 3-drop route is calculated at EUR 612.40 where our contract tariff gives EUR 584.90. It looks like the stop surcharge is applied to the first drop as well. 2) CO2 field (TC-033): empty for the second and third leg of multi-leg shipments. We logged them as tickets RW-48213 (rate) and RW-48217 (CO2). Please tell us if a fix is possible before 24 October, otherwise we need to discuss go or no-go.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-10-12 11:15",
+     "from": "routewise",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "pbakker"
+     ],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Thanks for the clear description. RW-48213 is confirmed: the stop surcharge was indeed applied from the first drop instead of from the second. Fix is included in build 9.2.0.3. RW-48217: the CO2 value is calculated, but not written to legs 2 and 3 because of a mapping bug in the reporting table. Same build fixes it. We will install 9.2.0.3 on RW-QA on 16 October. Production will get 9.2.0.3 directly during the weekend upgrade, so no extra downtime.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m6",
+     "date": "2026-10-19 10:00",
+     "from": "pbakker",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "Retest on RW-QA with 9.2.0.3 is done: TC-017 now gives EUR 584.90 and TC-033 shows CO2 on all legs. I also re-ran the other 38 cases as a regression, all 40 passed. For the rollback I propose: full database snapshot by RouteWise on Friday 23 Oct at 18:00 after the freeze, decision point Saturday 24 Oct at 22:00 after smoke tests, and if no-go we restore the snapshot, which takes about 3 hours. The booking bot is paused during the window and I restart it manually.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m7",
+     "date": "2026-10-19 15:45",
+     "from": "thendriks",
+     "to": [
+      "mdeboer"
+     ],
+     "cc": [
+      "pbakker",
+      "dl-ct"
+     ],
+     "reply_to": "m6",
+     "forward": false,
+     "body": "Mark, short update on the TMS upgrade: all 40 test cases passed on 9.2.0.3 after RouteWise fixed two defects (multi-stop rates and CO2 field). Rollback plan: snapshot on Friday 23 Oct 18:00, decision point Saturday 22:00, restore takes about 3 hours. Planning will be limited from Friday 18:00 until Sunday 14:00, so Venlo and Rotterdam should book urgent loads by Friday noon. Can you give us your OK for the go-live?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m8",
+     "date": "2026-10-20 08:20",
+     "from": "mdeboer",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "pbakker",
+      "dl-ct"
+     ],
+     "reply_to": "m7",
+     "forward": false,
+     "body": "OK from my side, go ahead as planned. Please make sure the sites know about the Friday noon cut-off.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  },
+  {
+   "key": "t2",
+   "subject": "TMS 9.2 go-live - status message times off by one hour",
+   "emails": [
+    {
+     "id": "m9",
+     "date": "2026-10-26 07:50",
+     "from": "pbakker",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [],
+     "reply_to": null,
+     "forward": false,
+     "body": "The upgrade went through: smoke tests were green on Saturday evening, so we took the go decision at 22:00 and the system was back on Sunday at 11:30. The booking bot is running again. This morning I see one issue: the pickup and delivery times in the status messages to the carriers are one hour off. I think it is related to the clock change on Sunday 25 Oct, as timestamps before 03:00 are fine. Planners at Felixstowe noticed it first. Can you raise this with RouteWise as priority?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m10",
+     "date": "2026-10-26 10:25",
+     "from": "thendriks",
+     "to": [
+      "routewise"
+     ],
+     "cc": [
+      "pbakker"
+     ],
+     "reply_to": "m9",
+     "forward": false,
+     "body": "Production is live on 9.2.0.3, thanks for the support over the weekend. We have one issue: timestamps in the outgoing status messages are shifted by one hour since the clock change on 25 Oct. Example: a pickup planned 08:00 local is sent as 07:00. Ticket RW-48302, priority high because carriers use these times for slot planning. Can you provide a hotfix today?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m11",
+     "date": "2026-10-26 14:10",
+     "from": "routewise",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "pbakker"
+     ],
+     "reply_to": "m10",
+     "forward": false,
+     "body": "We reproduced RW-48302: the new interface module converted local time with the standard-time offset after the DST change. Hotfix 9.2.0.4 was installed on your production system at 13:00 and needs no restart of the bot. Please check a few new status messages. Messages sent between Sunday 03:00 and Monday 13:00 are not corrected automatically; we can resend them if you give us the list of shipments.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "The RouteWise TMS upgrade from 9.0 to 9.2 was scheduled for the weekend of 24-25 October, window Saturday 06:00 to Sunday 14:00 CET.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "RouteWise upgraded the QA system RW-QA to 9.2.0.2 on 5 October.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "The test plan has 40 test cases; Tom Hendriks covers cases 1-35 and Pieter Bakker the interface cases 36-40.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "The first full test run on 7 October had 38 passed and 2 failed: TC-017 (multi-stop rate) and TC-033 (CO2 field).",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "In TC-017 a 3-drop route was calculated at EUR 612.40 instead of the tariff amount of EUR 584.90.",
+   "emails": [
+    "m3",
+    "m4"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "The defects were logged as RW-48213 (rate calculation) and RW-48217 (CO2 field).",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "The rate defect was caused by the stop surcharge being applied from the first drop instead of from the second; the CO2 defect was a mapping bug in the reporting table. Both were fixed in build 9.2.0.3.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "The booking bot works against API v2 without changes.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "After the retest with 9.2.0.3 on RW-QA all 40 test cases passed.",
+   "emails": [
+    "m6"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "Rollback plan: database snapshot by RouteWise on Friday 23 Oct 18:00, decision point Saturday 24 Oct 22:00 after smoke tests, restore takes about 3 hours.",
+   "emails": [
+    "m6",
+    "m7"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "Mark de Boer approved the go-live on 20 October and asked that sites be told about the Friday noon cut-off for urgent bookings.",
+   "emails": [
+    "m7",
+    "m8"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "The go decision was taken Saturday 22:00 and the system was back on Sunday 11:30.",
+   "emails": [
+    "m9"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "On 26 Oct status message timestamps were one hour off after the DST change on 25 Oct; ticket RW-48302 was raised.",
+   "emails": [
+    "m9",
+    "m10"
+   ]
+  },
+  {
+   "id": "F14",
+   "text": "RouteWise installed hotfix 9.2.0.4 on production on 26 Oct at 13:00; messages sent between Sunday 03:00 and Monday 13:00 are not corrected automatically but can be resent.",
+   "emails": [
+    "m11"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "What were the two defects found in the TMS 9.2 test and how were they fixed?",
+   "a": "Multi-stop rate calculation (stop surcharge applied from the first drop) and the empty CO2 field on legs 2 and 3 (reporting table mapping bug); both fixed in build 9.2.0.3.",
+   "facts": [
+    "F4",
+    "F7"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "When is the decision point for the TMS upgrade rollback and how long would a restore take?",
+   "a": "Saturday 24 Oct at 22:00; the restore takes about 3 hours.",
+   "facts": [
+    "F10"
+   ],
+   "type": "when"
+  },
+  {
+   "q": "Why were status message times wrong after the TMS go-live?",
+   "a": "The interface module used the standard-time offset after the clock change on 25 Oct, shifting times by one hour.",
+   "facts": [
+    "F13",
+    "F14"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "Which ticket number was raised for the one-hour timestamp shift?",
+   "a": "RW-48302",
+   "facts": [
+    "F13"
+   ],
+   "type": "identifier"
+  },
+  {
+   "q": "Who approved the go-live of TMS 9.2?",
+   "a": "Mark de Boer, Head of Logistics Europe.",
+   "facts": [
+    "F11"
+   ],
+   "type": "who"
+  },
+  {
+   "q": "Which hotfix version was installed on 26 October and when?",
+   "a": "Hotfix 9.2.0.4, installed at 13:00 on 26 Oct.",
+   "facts": [
+    "F14"
+   ],
+   "type": "identifier"
+  },
+  {
+   "q": "How much does the RouteWise 9.2 upgrade cost the company in license fees?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "tms_upgrade",
+  "title": "RouteWise TMS upgrade",
+  "level": "project",
+  "korean": false
+ }
+}

@@ -1,0 +1,48 @@
+Message-ID: <rpa_bot.t1.m8.4911104c73@corp-europe.example>
+Date: Mon, 26 Oct 2026 11:15:00 +0100
+From: "Ana Novak" <a.novak@corp-europe.example>
+To: "Veltrans Billing" <vbilling@veltrans.example>
+Cc: "Pieter Bakker" <p.bakker@corp-europe.example>,
+ "DL FIN" <dl-fin@corp-europe.example>
+Subject: Invoice bot errors on Veltrans invoices
+Thread-Index: Ad1lMtu3EnyYQLth5LkTrbmWfHX+0A==
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============1979709667961909229=="
+
+--===============1979709667961909229==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hello Veltrans Billing team, thanks for the info on the new template. 11 of y=
+our 12 invoices are now processed. Invoice INV-48217 cannot be posted because=
+ the PO reference is missing. It should refer to PO 4500318872 (delivery 8201=
+4467). Please send a corrected invoice with the PO number filled in, and canc=
+el the old one. Without the PO we cannot release it for the 30 Oct payment ru=
+n.
+
+Thanks,
+Ana Novak
+Accounts payable analyst (Finance)
+Corp Europe B.V. | Rotterdam
+T +31 10 319 3290
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============1979709667961909229==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Hello Veltrans Billing team, thanks for the info on the new te=
+mplate. 11 of your 12 invoices are now processed. Invoice INV-48217 cannot be=
+ posted because the PO reference is missing. It should refer to PO 4500318872=
+ (delivery 82014467). Please send a corrected invoice with the PO number fill=
+ed in, and cancel the old one. Without the PO we cannot release it for the 30=
+ Oct payment run.</p><p>Thanks,<br>Ana Novak<br>Accounts payable analyst (Fin=
+ance)<br>Corp Europe B.V. | Rotterdam<br>T +31 10 319 3290<br><br>This e-mail=
+ and any attachments are confidential and intended solely for the addressee. =
+If you received it in error, please delete it.</p></body></html>
+
+--===============1979709667961909229==--

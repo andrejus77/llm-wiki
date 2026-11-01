@@ -1,0 +1,15 @@
+{
+ "ingest": [
+  ["Emails expected / stored / lost", "368 / 368 / 0"],
+  ["Thread purity / completeness", "1.0 / 0.9917 (unchanged: the shared-history join merged nothing it shouldn't)"],
+  ["Automated noise mails skipped", "39 of 125 (before: 13) — 26 more from no-reply senders"],
+  ["Real (storyline) emails skipped", "0"]
+ ],
+ "transfer": [
+  ["Export of the final Haiku store", "9.7 MB zip (368 emails, 25 pages, settings, LLM call log)"],
+  ["Import into an empty data folder", "368 emails, 25 pages, 963 vectors rebuilt into Qdrant; hybrid search answers"],
+  ["Endpoints after import", "this machine's settings.yaml (server-api-b), not the exporting machine's"],
+  ["Second import without --force", "refused (\"this machine already has 368 emails\")"],
+  ["package.bat --with-data, then install.bat in an empty folder (server simulation)", "offline install, data imported automatically (368 emails, 963 vectors), doctor: 0 problems"]
+ ]
+}

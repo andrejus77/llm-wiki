@@ -1,0 +1,563 @@
+{
+ "created": "2026-11-01T01:08:09",
+ "questions": 163,
+ "note": "chat answers, fast mode, both engines (Haiku judge)",
+ "settings": {
+  "embed_model": "multilingual-e5-small",
+  "rrf_k": 60,
+  "top_k": 8
+ },
+ "retrieval": [
+  {
+   "name": "BM25 only (FTS5)",
+   "recall_1": 0.667,
+   "recall_5": 0.942,
+   "recall_10": 0.986,
+   "mrr": 0.782,
+   "ndcg_10": 0.816,
+   "ms": 8.2,
+   "recall_5_by_type": {
+    "why": 0.912,
+    "identifier": 1.0,
+    "howto": 0.667,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "vector only · multilingual-e5-small",
+   "recall_1": 0.645,
+   "recall_5": 0.935,
+   "recall_10": 0.978,
+   "mrr": 0.772,
+   "ndcg_10": 0.814,
+   "ms": 1002.9,
+   "recall_5_by_type": {
+    "why": 0.941,
+    "identifier": 1.0,
+    "howto": 0.667,
+    "multihop": 0.88,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 0.933
+   }
+  },
+  {
+   "name": "hybrid RRF · multilingual-e5-small",
+   "recall_1": 0.732,
+   "recall_5": 0.971,
+   "recall_10": 0.993,
+   "mrr": 0.832,
+   "ndcg_10": 0.845,
+   "ms": 572.7,
+   "recall_5_by_type": {
+    "why": 0.941,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid + source weights · multilingual-e5-small",
+   "recall_1": 0.949,
+   "recall_5": 0.978,
+   "recall_10": 0.986,
+   "mrr": 0.965,
+   "ndcg_10": 0.938,
+   "ms": 489.9,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.92,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid + weights + recency · multilingual-e5-small",
+   "recall_1": 0.957,
+   "recall_5": 0.978,
+   "recall_10": 0.986,
+   "mrr": 0.967,
+   "ndcg_10": 0.943,
+   "ms": 237.1,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.92,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "vector only · bge-small-en-v1.5",
+   "recall_1": 0.638,
+   "recall_5": 0.964,
+   "recall_10": 0.971,
+   "mrr": 0.768,
+   "ndcg_10": 0.797,
+   "ms": 29.4,
+   "recall_5_by_type": {
+    "why": 0.971,
+    "identifier": 1.0,
+    "howto": 0.778,
+    "multihop": 0.92,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid RRF · bge-small-en-v1.5",
+   "recall_1": 0.71,
+   "recall_5": 0.971,
+   "recall_10": 0.993,
+   "mrr": 0.819,
+   "ndcg_10": 0.828,
+   "ms": 30.1,
+   "recall_5_by_type": {
+    "why": 0.941,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid + source weights · bge-small-en-v1.5",
+   "recall_1": 0.935,
+   "recall_5": 0.986,
+   "recall_10": 0.986,
+   "mrr": 0.957,
+   "ndcg_10": 0.923,
+   "ms": 28.2,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid + weights + recency · bge-small-en-v1.5",
+   "recall_1": 0.935,
+   "recall_5": 0.978,
+   "recall_10": 0.986,
+   "mrr": 0.955,
+   "ndcg_10": 0.926,
+   "ms": 30.7,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.92,
+    "when": 1.0,
+    "fact": 1.0,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "vector only · hashed",
+   "recall_1": 0.623,
+   "recall_5": 0.957,
+   "recall_10": 0.978,
+   "mrr": 0.76,
+   "ndcg_10": 0.784,
+   "ms": 7.7,
+   "recall_5_by_type": {
+    "why": 0.971,
+    "identifier": 0.947,
+    "howto": 0.889,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 0.895,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid RRF · hashed",
+   "recall_1": 0.761,
+   "recall_5": 0.957,
+   "recall_10": 0.986,
+   "mrr": 0.848,
+   "ndcg_10": 0.845,
+   "ms": 9.6,
+   "recall_5_by_type": {
+    "why": 0.941,
+    "identifier": 1.0,
+    "howto": 0.778,
+    "multihop": 0.96,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid + source weights · hashed",
+   "recall_1": 0.928,
+   "recall_5": 0.971,
+   "recall_10": 0.986,
+   "mrr": 0.949,
+   "ndcg_10": 0.914,
+   "ms": 10.2,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.92,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 1.0
+   }
+  },
+  {
+   "name": "hybrid + weights + recency · hashed",
+   "recall_1": 0.928,
+   "recall_5": 0.971,
+   "recall_10": 0.986,
+   "mrr": 0.949,
+   "ndcg_10": 0.918,
+   "ms": 10.5,
+   "recall_5_by_type": {
+    "why": 1.0,
+    "identifier": 1.0,
+    "howto": 0.889,
+    "multihop": 0.92,
+    "when": 1.0,
+    "fact": 0.947,
+    "who": 1.0
+   }
+  }
+ ],
+ "answers": [
+  {
+   "name": "langgraph · fast",
+   "n": 10,
+   "correct": 1.0,
+   "faithful": 0.5,
+   "source_precision": 0.847,
+   "abstention": 0.0,
+   "seconds": 6.0,
+   "items": [
+    {
+     "q": "Why was the first week 39 freight accrual report rejected?",
+     "gold": "It was filtered on planned delivery date instead of the actual delivery (POD) date, so five early-delivered shipments were missing.",
+     "answer": "The week 39 report (v1) was not accepted because it was filtered on the planned delivery date instead of the actual POD date [5][2].\n\n- v1 showed 39 shipments totalling EUR 176,850, filtered on planned delivery date up to 25.09 (the TMS default) [5].\n- It missed five shipments that were delivered early, with planned dates of 26-28 Sep. These were costs of the closing month [2].\n- The POD-date version (v2) showed 44 shipments totalling EUR 184,300. This became the required variant from 25 Sep 2026, and v1 is superseded [1][2].\n\nThe sources do not use the word \"rejected\". They describe v1 as superseded and say it should not be used [2][3].",
+     "judge": {
+      "correct": 1,
+      "faithful": 1,
+      "reason": "The answer gives the reference's key fact: v1 was filtered on planned delivery date rather than the actual POD date, which left out early-delivered shipments. The cited figures (44 shipments, EUR 184,300 for v2) match source [1]. Some details, such as the five missing shipments and the 25 Sep requirement, rely on source excerpts that are truncated, but nothing shown contradicts them."
+     },
+     "precision": 1.0,
+     "seconds": 5.9
+    },
+    {
+     "q": "What was the September freight accrual amount and which document was posted?",
+     "gold": "EUR 184,300, accounting document 1900004127, posted to account 4711000 with FB50.",
+     "answer": "- **Amount:** EUR 184,300 (44 shipments with POD date up to 25.09.2026) [1][2][6]\n- **Document:** Accounting document 1900004127, posted with FB50 to G/L 4711000 on 25 Sep 2026 [2][6]\n- **Reversal:** Scheduled for 01.10.2026 and reversed automatically on 1 Oct 2026 [2][5]\n- **Superseded figure:** The planned-date report (v1) showed EUR 176,850 and should not be used [2][3]",
+     "judge": {
+      "correct": 1,
+      "faithful": 0,
+      "reason": "Amount EUR 184,300, document 1900004127, FB50 to 4711000 and the 1 Oct reversal all match the sources. The claim that the planned-date v1 report showed EUR 176,850 and should not be used does not appear in the visible excerpts of [2] or [3], so it is unverified."
+     },
+     "precision": 0.8,
+     "seconds": 3.0
+    },
+    {
+     "q": "Which steps does Ana follow for the weekly freight accrual?",
+     "gold": "Get the TMS report, match in FBL1N, post with FB50 to G/L 4711000, and set the reversal for the 1st of the month.",
+     "answer": "Ana Novak's weekly freight accrual steps, per the wiki's How-to section:\n\n- **Step 1, request the report:** Every Friday, she asks Tom Hendriks for the TMS report of delivered-but-not-invoiced shipments, with cut-off that Friday, due by 12:00. It must include shipment number, delivery number, carrier, site and agreed freight amount. On the last Friday of the month, the request covers the month-end close [3].\n- **Step 2, filter on POD date:** Filter by actual delivery (POD) date up to the cut-off, not planned date. This has been required since 25 Sep 2026. The planned-date v1 report is superseded [3][2].\n- **Step 3, clear invoiced items:** Match each shipment against open items in FBL1N. Invoiced shipments are cleared and drop out [3][1].\n- **Step 4, post the accrual:** Post the remaining t",
+     "judge": {
+      "correct": 1,
+      "faithful": 1,
+      "reason": "Covers all reference steps: TMS report request, FBL1N matching, FB50 posting to G/L 4711000, and reversal on the 1st. The POD-date and superseded-v1 details are not fully visible in the truncated sources, but they are plausibly in the wiki's How-to section."
+     },
+     "precision": 0.0,
+     "seconds": 4.7
+    },
+    {
+     "q": "Why were deliveries 80419876 and 80419902 included in the October accrual even without a POD?",
+     "gold": "The carrier (Nordline) confirmed delivery on 29.10 by mail.",
+     "answer": "Deliveries 80419876 and 80419902 (Hamburg, Nordline) were included because the carrier confirmed delivery on 29.10 by email, and Ana Novak approved them on that basis [7][1].\n\n- Tom Hendriks noted that neither had a POD in the TMS yet, but included them because the carrier confirmed delivery by mail [7].\n- Ana Novak approved the two shipments on the strength of the carrier mail and posted the EUR 201,950 accrual [1][3].\n- The wiki lists this as an open point: the POD still needs to be recorded in the TMS, and the sources do not show that it has been [1][3].\n- The wiki does not state a general rule permitting accruals without a POD. The required filter is POD date up to the cut-off [2].",
+     "judge": {
+      "correct": 1,
+      "faithful": 0,
+      "reason": "The answer gives the key fact: the carrier confirmed delivery by mail on 29.10. But it claims Ana Novak approved the shipments on that basis and posted the EUR 201,950 accrual, and that the wiki lists an open POD point. The visible sources only show Tom Hendriks including them, so these claims are not supported."
+     },
+     "precision": 1.0,
+     "seconds": 5.4
+    },
+    {
+     "q": "How large was the October accrual, and what reversal date was set?",
+     "gold": "EUR 201,950, reversal date 01.11.",
+     "answer": "- **Accrual:** EUR 201,950, posted with FB50 to G/L 4711000 [2][3][4].\n- **Reversal date:** 01.11.2026 (1 Nov 2026) [2][4].\n- **Sites:** Rotterdam 66,300; Venlo 52,100; Antwerp 29,800; Hamburg 23,450; Felixstowe 15,900; Gdansk 14,400 [3].\n- **Caveats:** The total includes two Hamburg Nordline shipments (80419876, 80419902) that had no POD in the TMS. Ana approved them based on carrier mail [2][4]. The sources do not confirm that the October reversal actually ran on 01.11.2026, so that remains an open check [2].",
+     "judge": {
+      "correct": 1,
+      "faithful": 0,
+      "reason": "The accrual (EUR 201,950) and reversal date (01.11) match the reference. However, the October per-site breakdown and the shipment numbers 80419876/80419902 do not appear in the visible source excerpts, so those claims are not verified."
+     },
+     "precision": 1.0,
+     "seconds": 5.7
+    },
+    {
+     "q": "Why did Antwerp choose a dispatcher check before loading instead of a check at the gate?",
+     "gold": "The gate only checks driver ID and delivery number, and a dispatcher check before loading also avoids reloading a truck that cannot leave.",
+     "answer": "Antwerp chose a dispatcher check before loading because the gate check would have missed the problem:\n\n- **The gate check is too narrow.** It only verifies the driver ID and delivery number, so it would not catch a missing dangerous goods declaration (DGD) [3].\n- **Earlier is better.** The dispatcher check happens before loading, which prevents loading trucks that cannot leave and avoids reloading them [1].\n- **Timeline.** Marta Kowalska first proposed a gate check on 2 Oct 2026. Sofie Peeters proposed the dispatcher check on 5 Oct, and Marta agreed on 8 Oct, effective 12 Oct 2026 [1][8].\n\nThe root cause was that DGDs existed in SAP but were never printed, so they never reached the shipment folder [3].",
+     "judge": {
+      "correct": 1,
+      "faithful": 1,
+      "reason": "Covers the reference's key points: the gate check is narrow, and the dispatcher check avoids reloading a truck that cannot leave. The cited timeline and root-cause claims match the visible sources. The 2 Oct gate-proposal date is not visible in the excerpts, so faithfulness is only probable."
+     },
+     "precision": 0.67,
+     "seconds": 4.0
+    },
+    {
+     "q": "What caused the DGDs for the two UN 1263 shipments to be missing?",
+     "gold": "They existed in SAP but were not printed because the print job went to the wrong printer in the office.",
+     "answer": "The DGDs were not missing from SAP. They existed there but were never printed, so they never reached the shipment folder [1][2].\n\n- **Cause:** the print job went to the wrong office printer [1][5].\n- **Root cause confirmed:** Sofie Peeters identified it on 5 Oct 2026 [1][6].\n- **Affected deliveries:** 80451233 (12 pallets, 29 Sep 2026) and 80451290 (8 pallets, 30 Sep 2026), both UN 1263 paint, class 3 [1][3].\n- **Consequence:** the trucks were held about 2.5 hours until the paperwork was printed. Nothing left without documents [3].\n\nThe gap was found at the dock because the gate check only verifies driver ID and delivery number [2][6].",
+     "judge": {
+      "correct": 1,
+      "faithful": 1,
+      "reason": "The answer gives the reference's key fact: the DGDs existed in SAP but were not printed because the print job went to the wrong office printer. Its other claims (delivery numbers, 2.5-hour hold, gate check verifying only driver ID and delivery number) are supported by the cited sources."
+     },
+     "precision": 1.0,
+     "seconds": 4.4
+    },
+    {
+     "q": "When does the new ADR dispatcher check rule start and where is it recorded?",
+     "gold": "From Monday 12 Oct, in a checklist in the WMS.",
+     "answer": "The dispatcher check rule took effect on Monday 12 Oct 2026, with the WMS checklist going live that morning. Dispatchers were briefed beforehand [2][3].\n\nIt is recorded in a WMS checklist:\n- Built by Lukas Becker as a mandatory step in the loading task for ADR deliveries [1][4].\n- All five items must be ticked before the loading task can be closed [1]:\n  - DGD printed and signed\n  - UN number and quantity match the delivery\n  - Packing group stated\n  - Driver ADR certificate valid\n  - Written instructions in the cab\n- The rule is no ADR loading without a recorded WMS checklist [7].\n\nThe decision was agreed by Marta Kowalska on 8 Oct 2026 [2][7].",
+     "judge": {
+      "correct": 1,
+      "faithful": 0,
+      "reason": "The answer gives the key facts: the rule starts Mon 12 Oct and the check is a WMS checklist. It is not faithful, though. The claims that the checklist went live 'that morning' and that dispatchers were briefed beforehand do not appear in the cited sources. The five checklist items are also not in the visible excerpts of source [1]."
+     },
+     "precision": 1.0,
+     "seconds": 3.6
+    },
+    {
+     "q": "Which deliveries were found without ADR documents?",
+     "gold": "Deliveries 80451233 and 80451290.",
+     "answer": "Two Antwerp outbound deliveries were found without ADR transport documents [1][2]:\n\n- Delivery 80451233 (12 pallets), found 29 Sep 2026 [1][2]\n- Delivery 80451290 (8 pallets), found 30 Sep 2026 [1][2]\n\nBoth carried paint, UN 1263, class 3 [1][2]. The trucks were already at the dock, and were held about 2.5 hours until the paperwork was printed [1][2][7]. Nothing left the site without documents [1][2]. The root cause was that the dangerous goods declarations existed in SAP but were never printed, because the print job went to the wrong office printer [1][5].",
+     "judge": {
+      "correct": 1,
+      "faithful": 1,
+      "reason": "The answer names deliveries 80451233 and 80451290, matching the reference. The paint/UN 1263 details, 2.5-hour hold, and printer root cause all appear in the cited sources. The 'until paperwork was printed' wording is a mild paraphrase, not an unsupported claim."
+     },
+     "precision": 1.0,
+     "seconds": 4.9
+    },
+    {
+     "q": "How many drivers attended the 20 Oct ADR refresher and who ran the ADR part?",
+     "gold": "All 18 drivers attended; Marta Kowalska ran the ADR part.",
+     "answer": "- **Attendance:** 18 drivers attended the 20 Oct 2026 ADR refresher. Sofie Peeters corrected the figure from 16 to 18 on 21 Oct, after two drivers joined from the evening shift [1][5].\n- **ADR part:** Marta Kowalska ran it, about 45 minutes, including the UN 1263 examples from the two Antwerp cases [1][7].\n- **Source conflict:** The Overview section says the final count was still to be confirmed, with 16 and 18 both listed [2]. That is out of date. The later email and the People section both confirm all 18 attended [1][5].",
+     "judge": {
+      "correct": 1,
+      "faithful": 0,
+      "reason": "Correctly gives 18 attendees and Marta Kowalska as the ADR presenter, matching the reference. Not fully faithful: the claim that the Overview lists 16 and 18 as unconfirmed [2] and that the People section confirms all 18 attended [1] are not in the excerpts shown. The 'from the two Antwerp cases' detail is also not in the source, which says only 'UN 1263 examples'."
+     },
+     "precision": 1.0,
+     "seconds": 4.8
+    },
+    {
+     "q": "Who is the approver for freight accruals above EUR 200,000?",
+     "answer": "The sources do not state an approver for freight accruals above EUR 200,000.\n\n- Ana Novak is the finance owner of the weekly freight accrual [2].\n- She approved the October 2026 accrual of EUR 201,950, which includes two Hamburg shipments without a POD, based on carrier mail [9].\n- The only explicit Finance approval rule is for deliveries of EUR 35,000 or more, also Ana Novak [11]. That rule concerns credit limits, not accruals.\n\nAna Novak is the likely approver based on this precedent, but no s",
+     "abstained": false
+    },
+    {
+     "q": "Which carrier was responsible for the two shipments with missing ADR documents?",
+     "answer": "The wiki does not name a carrier for deliveries 80451233 or 80451290. The Antwerp ADR pages [1][2] and the related emails [11][14] describe the held trucks and the missing DGD, but never identify the carrier.\n\n- Do not assume Nordline. It is named only for different deliveries, 80419876 and 80419902 from Hamburg [15][16].\n- The carrier may be in the TMS or a carrier-specific record, which the wiki does not cover.",
+     "abstained": false
+    }
+   ]
+  },
+  {
+   "name": "plain · fast",
+   "n": 10,
+   "correct": 1.0,
+   "faithful": 0.3,
+   "source_precision": 0.817,
+   "abstention": 0.0,
+   "seconds": 6.4,
+   "items": [
+    {
+     "q": "Why was the first week 39 freight accrual report rejected?",
+     "gold": "It was filtered on planned delivery date instead of the actual delivery (POD) date, so five early-delivered shipments were missing.",
+     "answer": "The sources don't use the word \"rejected\", but they do explain why the week 39 report was replaced:\n\n- Tom Hendriks first sent report v1 on 25 Sep 2026, filtered on the planned delivery date. It showed 39 shipments totalling EUR 176,850 [5].\n- That filter missed five shipments delivered early, with planned dates of 26-28 Sep. Those deliveries belonged to the closing month [2].\n- The POD-date version (v2) showed 44 shipments totalling EUR 184,300. This became the required variant from 25 Sep 2026 [2][3].\n- The accrual was posted at EUR 184,300 (doc 1900004127). The v1 report is superseded and should not be used [2][3].",
+     "judge": {
+      "correct": 1,
+      "faithful": 0,
+      "reason": "Answer matches the reference: v1 filtered on planned delivery date missed early-delivered shipments, and the POD-date version replaced it. But the cited excerpts don't visibly support the five-shipment count, the 26-28 Sep dates, v2 being 'required from 25 Sep', or v1 'should not be used'."
+     },
+     "precision": 1.0,
+     "seconds": 4.0
+    },
+    {
+     "q": "What was the September freight accrual amount and which document was posted?",
+     "gold": "EUR 184,300, accounting document 1900004127, posted to account 4711000 with FB50.",
+     "answer": "- **Amount:** EUR 184,300 (44 shipments, POD date up to 25.09.2026) [2][6]\n- **Document:** Accounting document 1900004127, posted with FB50 to G/L 4711000 on 25 Sep 2026 [2][6]\n- **Reversal:** Scheduled for 01.10.2026 and reversed automatically on 1 Oct 2026 [2][5]\n- **Superseded figure:** The planned-date v1 report showed EUR 176,850 (39 shipments). It should not be used [2][3]",
+     "judge": {
+      "correct": 1,
+      "faithful": 0,
+      "reason": "The amount EUR 184,300, document 1900004127, G/L 4711000, FB50, and the 01.10 reversal all match the sources. The superseded v1 figure (EUR 176,850, 39 shipments) and the 'should not be used' advice do not appear in the visible text of any cited source; source [2] is truncated and [3] does not mention v1."
+     },
+     "precision": 0.75,
+     "seconds": 5.1
+    },
+    {
+     "q": "Which steps does Ana follow for the weekly freight accrual?",
+     "gold": "Get the TMS report, match in FBL1N, post with FB50 to G/L 4711000, and set the reversal for the 1st of the month.",
+     "answer": "Ana's weekly freight accrual follows four steps:\n\n- **1. Request the report:** Every Friday she asks Tom Hendriks for the TMS report of delivered-but-not-invoiced shipments, with that Friday as cut-off, due by 12:00. She asks for shipment number, delivery number, carrier, site and agreed freight amount [3][7]. On the last Friday of the month, the same request covers the month-end close [3].\n- **2. Filter on POD date:** The report must be filtered on actual delivery (POD) date, not planned date. The planned-date version missed early deliveries that belong to the closing month [1][3][8].\n- **3. Clear invoiced items in FBL1N:** She matches each shipment against open items in FBL1N. Invoiced shipments are cleared and drop out of the accrual [1][3][5].\n- **4. Post the accrual:** She posts the r",
+     "judge": {
+      "correct": 1,
+      "faithful": 1,
+      "reason": "The answer covers the reference's key steps: TMS report, matching in FBL1N, FB50 posting to G/L 4711000, and a reversal on the 1st of the following month. The cited excerpts support the steps. The planned-versus-POD claim is only partly visible in the truncated sources, but it is plausibly in the full pages."
+     },
+     "precision": 0.0,
+     "seconds": 7.7
+    },
+    {
+     "q": "Why were deliveries 80419876 and 80419902 included in the October accrual even without a POD?",
+     "gold": "The carrier (Nordline) confirmed delivery on 29.10 by mail.",
+     "answer": "Deliveries 80419876 and 80419902 (Hamburg, Nordline) were included because the carrier confirmed delivery on 29.10 by mail, and Tom Hendriks included them on that basis [7]. Ana Novak approved them on the basis of the carrier mail [1].\n\n- No POD was recorded in the TMS at the time, so this departs from the usual rule to filter on actual POD date [1][3].\n- The wiki lists a follow-up: check that the POD is recorded. The sources do not show that it has been [1][3].\n- Also to confirm: that the October reversal on 01.11.2026 ran as scheduled [1].",
+     "judge": {
+      "correct": 1,
+      "faithful": 0,
+      "reason": "The answer gives the reference's key fact: Nordline confirmed delivery on 29.10 by mail, which Tom Hendriks relied on [7]. It is not fully faithful. The claim that Ana Novak approved the deliveries on the basis of the carrier mail is not in the excerpt of source [1]. The wiki follow-up to check the POD is also not visible in the excerpts of [1] or [3]."
+     },
+     "precision": 1.0,
+     "seconds": 5.1
+    },
+    {
+     "q": "How large was the October accrual, and what reversal date was set?",
+     "gold": "EUR 201,950, reversal date 01.11.",
+     "answer": "- **October accrual:** EUR 201,950 across six sites, posted with FB50 to G/L 4711000 [2][3].\n- **Reversal date:** 01.11.2026 (1 Nov 2026), set by Ana Novak [2][4].\n- **Open point:** The wiki says the October reversal on 01.11.2026 should be confirmed as having run as scheduled [2]. Today is 1 Nov 2026, so this check is due now. The sources do not show that it has run.\n- **Included items:** The total includes two Hamburg Nordline deliveries (80419876 and 80419902) with no POD recorded in the TMS. Ana approved them based on carrier mail [2][3][4].",
+     "judge": {
+      "correct": 1,
+      "faithful": 0,
+      "reason": "The answer states the reference's EUR 201,950 accrual and 01.11 reversal date, which sources [4] and [8] support. However, the claims of six sites, the two Hamburg delivery numbers, the 'no POD recorded' detail, and the wiki note about confirming the reversal ran do not appear in the provided source excerpts."
+     },
+     "precision": 1.0,
+     "seconds": 4.1
+    },
+    {
+     "q": "Why did Antwerp choose a dispatcher check before loading instead of a check at the gate?",
+     "gold": "The gate only checks driver ID and delivery number, and a dispatcher check before loading also avoids reloading a truck that cannot leave.",
+     "answer": "Antwerp chose the dispatcher check because the gate could not catch the problem:\n\n- **The gate only checks driver ID and delivery number**, so it would miss a missing dangerous goods declaration (DGD) [3].\n- **The dispatcher check happens before loading**, which prevents trucks from being loaded that cannot leave. Without it, a truck would be loaded and then have to be reloaded [1].\n- **Timeline:** Marta Kowalska first proposed a gate check on 2 Oct 2026. Sofie Peeters proposed the dispatcher check on 5 Oct, and Marta agreed on 8 Oct, effective 12 Oct 2026 [1][8].\n\nThe WMS checklist, with five required items, has been mandatory for ADR loading since 12 Oct 2026 [3].",
+     "judge": {
+      "correct": 1,
+      "faithful": 0,
+      "reason": "Covers both reference points: the gate checks only driver ID and delivery number, and the pre-loading check avoids reloading a truck that cannot leave. Faithfulness is uncertain: the visible excerpts don't show the 2 Oct gate proposal, the five-item checklist, or the gate's ID/delivery-number check, though the excerpts are truncated."
+     },
+     "precision": 0.67,
+     "seconds": 5.3
+    },
+    {
+     "q": "What caused the DGDs for the two UN 1263 shipments to be missing?",
+     "gold": "They existed in SAP but were not printed because the print job went to the wrong printer in the office.",
+     "answer": "The DGDs were not missing from SAP. They existed there but were never printed, so they never reached the shipment folder [1][6].\n\n- The print job for both UN 1263 shipments went to the wrong office printer [1][5][6].\n- Sofie Peeters identified this on 5 Oct 2026 [1][6].\n- Marta Kowalska had asked on 2 Oct whether the DGD was never created or only not printed [8].\n- Affected deliveries: 80451233 (29 Sep) and 80451290 (30 Sep) [1].",
+     "judge": {
+      "correct": 1,
+      "faithful": 1,
+      "reason": "The answer gives the reference's key fact: the DGDs existed in SAP but were not printed because the print job went to the wrong office printer. Its other claims (Sofie Peeters identifying the cause on 5 Oct, Marta Kowalska's 2 Oct question, the delivery numbers and dates) all match the cited sources."
+     },
+     "precision": 0.75,
+     "seconds": 5.0
+    },
+    {
+     "q": "When does the new ADR dispatcher check rule start and where is it recorded?",
+     "gold": "From Monday 12 Oct, in a checklist in the WMS.",
+     "answer": "The dispatcher check rule took effect on Monday 12 Oct 2026. The WMS checklist went live that morning, and dispatchers were briefed beforehand [2][1].\n\nIt is recorded in a WMS checklist, which is a mandatory step in the loading task for ADR deliveries. Lukas Becker built it [1][7]. All five items must be ticked before the loading task can be closed:\n- DGD printed and signed\n- UN number and quantity match the delivery\n- Packing group stated\n- Driver ADR certificate valid\n- Written instructions in the cab [1]\n\nThe rule is that no dangerous goods loading happens without a dispatcher check of the DGD, recorded in that checklist [2].",
+     "judge": {
+      "correct": 1,
+      "faithful": 0,
+      "reason": "The answer gives the correct start date (Mon 12 Oct 2026) and the WMS checklist as the record. However, it claims the checklist 'went live that morning' and that dispatchers 'were briefed beforehand', which the visible sources don't state. The five-item list and the 'before the loading task can be closed' rule also aren't visible in the excerpts provided."
+     },
+     "precision": 1.0,
+     "seconds": 3.8
+    },
+    {
+     "q": "Which deliveries were found without ADR documents?",
+     "gold": "Deliveries 80451233 and 80451290.",
+     "answer": "Two Antwerp outbound deliveries were found without ADR transport documents, both carrying paint, UN 1263, class 3 [1][2]:\n\n- Delivery 80451233 (12 pallets), found 29 Sep 2026 [1]\n- Delivery 80451290 (8 pallets), found 30 Sep 2026 [1]\n\nIn both cases the truck was already at the dock. The trucks were held about 2.5 hours until the paperwork was printed, and nothing left the site without documents [1][2]. The root cause was that the dangerous goods declarations existed in SAP but were never printed, because the print job went to the wrong office printer [1].",
+     "judge": {
+      "correct": 1,
+      "faithful": 1,
+      "reason": "The answer names deliveries 80451233 and 80451290, matching the reference. Each detail it adds (paint, UN 1263, class 3, pallet counts, find dates, 2.5-hour hold, printer root cause) appears in the cited sources."
+     },
+     "precision": 1.0,
+     "seconds": 7.4
+    },
+    {
+     "q": "How many drivers attended the 20 Oct ADR refresher and who ran the ADR part?",
+     "gold": "All 18 drivers attended; Marta Kowalska ran the ADR part.",
+     "answer": "- **18 drivers attended** the 20 Oct 2026 ADR refresher. Sofie Peeters corrected the figure from 16 to 18 on 21 Oct, because two more drivers joined from the evening shift [1][5].\n- **Marta Kowalska ran the ADR part** (about 45 minutes, including the UN 1263 examples from the two Antwerp cases) [1][7].\n- Note: the wiki Overview still says the final count is \"to be confirmed\" [2]. This is outdated, since the later email and the People section record all 18 attending [1][5].",
+     "judge": {
+      "correct": 1,
+      "faithful": 0,
+      "reason": "Both key facts match the reference: 18 drivers attended and Marta Kowalska ran the ADR part. Faithfulness fails on two details: the source [7] mentions UN 1263 examples but not that they came from 'the two Antwerp cases', and the excerpt of source [2] shown does not contain the 'to be confirmed' wording the answer attributes to the Overview."
+     },
+     "precision": 1.0,
+     "seconds": 4.2
+    },
+    {
+     "q": "Who is the approver for freight accruals above EUR 200,000?",
+     "answer": "The wiki does not state an approval threshold of EUR 200,000 for freight accruals. The named finance owner is Ana Novak [2]. She approved the two Hamburg Nordline shipments and recorded the October accrual of EUR 201,950, which is above EUR 200,000 [9]. She also confirmed the October matching in FBL1N [10]. Ana Novak is also the Finance approver for deliveries of EUR 35,000 or more, but that rule covers credit limits, not accruals [11]. Confirm the accrual approval rule with Finance.",
+     "abstained": false
+    },
+    {
+     "q": "Which carrier was responsible for the two shipments with missing ADR documents?",
+     "answer": "The wiki and the emails I can see do not name the carrier for deliveries 80451233 (12 pallets, 29 Sep 2026) or 80451290 (8 pallets, 30 Sep 2026) [2][10]. The carrier is not recorded in the ADR page or the related notes and emails.\n\n- The TMS extracts list carriers only for other deliveries, such as 80412233, 80412580, 80413390 and 80413011 [14][15]. None of them are these two shipments.\n- The root cause was a DGD that was created in SAP but never printed, so the carrier is not part of the explan",
+     "abstained": false
+    }
+   ]
+  }
+ ],
+ "ingest": {
+  "true_emails": 368,
+  "stored": 368,
+  "missing": 0,
+  "alias_copies_merged": 3,
+  "resent_marked_duplicate": 1,
+  "thread_purity": 1.0,
+  "thread_completeness": 0.9917,
+  "true_threads": 43,
+  "stored_threads_for_real_mail": 45,
+  "noise_skipped": 13,
+  "noise_total": 125,
+  "quoted_only_in_truth": 5,
+  "emails_processed": 354,
+  "notes_per_processed_email": 1.0,
+  "routing_accuracy": 0.922,
+  "pages_per_storyline (≥2 emails)": 1.16,
+  "storylines": 25,
+  "pages": 16,
+  "page_purity": 0.793,
+  "storylines_with_own_page": "16/25",
+  "units": 304,
+  "units_retried_share": 0.0,
+  "fast_path_fallbacks": 0,
+  "section_versions": 284,
+  "drafts_rejected_or_replaced": 71,
+  "items_written": 656,
+  "items_pending_or_failed": 0,
+  "llm_calls": 601,
+  "llm_calls_by_status": {
+   "ok": 601
+  }
+ }
+}

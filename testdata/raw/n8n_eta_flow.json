@@ -1,0 +1,41 @@
+{
+ "storyline": {"key": "n8n_eta_flow", "title": "n8n flow that writes carrier ETA updates into the TMS", "level": "topic", "korean": false},
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "Carrier ETA mails into RouteWise automatically",
+   "emails": [
+    {"id": "m1", "date": "2026-10-19 10:30", "from": "thendriks", "to": ["dl-ct"], "cc": ["skovac"], "reply_to": null, "forward": false,
+     "body": "Hi all, every day we copy around 120 ETA updates from carrier mails into RouteWise by hand, mostly from Nordline and Veltrans. Stefan offered to build a flow that reads those mails and updates the shipments. Stefan, can you share how it would work before we agree?",
+     "table": null, "attachment": null, "screenshot": null},
+    {"id": "m2", "date": "2026-10-19 14:05", "from": "skovac", "to": ["thendriks"], "cc": ["dl-ct"], "reply_to": "m1", "forward": false,
+     "body": "Tom, the n8n flow polls the ETA mailbox every 10 minutes, extracts the shipment number and the new ETA, and calls the RouteWise API to update the shipment. For mails without a fixed layout an extraction step with the language model on our tenant reads the text. Anything below 0.8 confidence goes to a review list in Teams instead of being written.",
+     "table": null, "attachment": null, "screenshot": null},
+    {"id": "m3", "date": "2026-10-21 09:40", "from": "thendriks", "to": ["skovac"], "cc": ["dl-ct"], "reply_to": "m2", "forward": false,
+     "body": "Sounds good. Please start with Nordline only, their mails are the most consistent. We need the old ETA kept in the shipment history so we can see what changed.",
+     "table": null, "attachment": null, "screenshot": null},
+    {"id": "m4", "date": "2026-10-26 16:20", "from": "skovac", "to": ["thendriks"], "cc": ["dl-ct"], "reply_to": "m3", "forward": false,
+     "body": "Nordline test week done: 412 ETA mails, 398 written automatically, 14 sent to the review list (mostly mails with two shipment numbers). No wrong ETA written. The old ETA is kept as a history entry in RouteWise.",
+     "table": {"header": ["Day", "Mails", "Written", "To review"], "rows": [["Tue 20 Oct", "81", "78", "3"], ["Wed 21 Oct", "86", "84", "2"], ["Thu 22 Oct", "79", "76", "3"], ["Fri 23 Oct", "88", "85", "3"], ["Mon 26 Oct", "78", "75", "3"]]},
+     "attachment": null, "screenshot": null},
+    {"id": "m5", "date": "2026-10-28 11:00", "from": "thendriks", "to": ["skovac"], "cc": ["dl-ct", "mdeboer"], "reply_to": "m4", "forward": false,
+     "body": "Great result, that saves my planners about an hour a day. Let's switch Nordline to production on 2 Nov and add Veltrans after two clean weeks. Mails with two shipment numbers stay on the review list for now.",
+     "table": null, "attachment": null, "screenshot": null},
+    {"id": "m6", "date": "2026-10-30 15:10", "from": "skovac", "to": ["thendriks"], "cc": ["dl-ct"], "reply_to": "m5", "forward": false,
+     "body": "Production switch for Nordline is planned for Mon 2 Nov 06:00. I will watch the first run. Veltrans test starts on 16 Nov if Nordline stays clean.",
+     "table": null, "attachment": null, "screenshot": null}
+   ]
+  }
+ ],
+ "facts": [
+  {"id": "F1", "text": "Transport planners copy about 120 carrier ETA updates a day into RouteWise by hand.", "emails": ["m1"]},
+  {"id": "F2", "text": "The n8n flow polls the ETA mailbox every 10 minutes, extracts shipment number and ETA (with the language model for free-text mails) and updates RouteWise via its API; below 0.8 confidence it goes to a Teams review list.", "emails": ["m2"]},
+  {"id": "F3", "text": "In the Nordline test week 398 of 412 ETA mails were written automatically and 14 went to review; no wrong ETA was written.", "emails": ["m4"]},
+  {"id": "F4", "text": "Nordline goes to production on Mon 2 Nov 06:00; Veltrans follows after two clean weeks, its test starting 16 Nov.", "emails": ["m5", "m6"]}
+ ],
+ "questions": [
+  {"q": "How does the ETA flow decide whether to write an ETA into RouteWise?", "a": "It writes the ETA when the extraction confidence is at least 0.8; below that the mail goes to a review list in Teams.", "facts": ["F2"], "type": "howto"},
+  {"q": "How did the Nordline test week of the ETA flow go?", "a": "398 of 412 ETA mails were written automatically, 14 went to the review list and no wrong ETA was written.", "facts": ["F3"], "type": "fact"},
+  {"q": "When does the ETA flow go live for Nordline?", "a": "On Monday 2 November at 06:00; Veltrans follows after two clean weeks with a test from 16 November.", "facts": ["F4"], "type": "when"}
+ ]
+}

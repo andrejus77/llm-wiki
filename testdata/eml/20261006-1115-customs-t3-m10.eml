@@ -1,0 +1,119 @@
+Message-ID: <customs.t3.m10.57186fb8d2@corp-europe.example>
+Date: Tue, 06 Oct 2026 11:15:00 +0200
+From: "Ana Novak" <a.novak@corp-europe.example>
+To: "Ruud Jansen" <r.jansen@corp-europe.example>
+Cc: "Marta Kowalska" <m.kowalska@corp-europe.example>,
+ "DL CUS" <dl-cus@corp-europe.example>
+Subject: RE: DMS export mapping - open fields
+In-Reply-To: <customs.t3.m7.2680d67c1c@corp-europe.example>
+References: <customs.t3.m6.393ee80b52@corp-europe.example>
+ <customs.t3.m7.2680d67c1c@corp-europe.example>
+Thread-Index: Ad1VcymwOZLgLkRL91HqUH6Zaz46ngthTUQoP2CRybM=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============6422037397393694418=="
+
+--===============6422037397393694418==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Ruud, I checked with my colleagues. The values today come from a manual al=
+location of freight cost per invoice, for example INV-30418, which is done af=
+ter the month-end close. We need to decide whether the automatic rule can be =
+used in the declaration at all. I cannot promise it before the October close,=
+ so please plan with an answer by 6 Nov. Until then both fields stay open on =
+your side.
+
+Regards,
+Ana Novak
+Accounts payable analyst (Finance)
+Corp Europe B.V. | Rotterdam
+T +31 10 621 5065
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Ruud Jansen <r.jansen@corp-europe.example>
+Sent: Tuesday, 29 September 2026 10:25
+To: Ana Novak
+Subject: RE: DMS export mapping - open fields
+
+Ana, for the new customs declaration we need two values per goods item: the s=
+tatistical value and the customs value. Today they are calculated in a Financ=
+e process. Can you tell us the rule (net invoice value, freight and insurance=
+ allocation, currency) and the source in SAP? Marta has the sheet with the op=
+en fields. Without it the mapping stays at 103 of 105 fields.
+
+Best regards,
+Ruud Jansen
+Logistics manager Rotterdam, owner of the customs migration project
+Corp Europe B.V. | Rotterdam
+T +31 10 622 1406
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Marta Kowalska <m.kowalska@corp-europe.example>
+Sent: Monday, 28 September 2026 09:00
+To: Ruud Jansen
+Subject: DMS export mapping - open fields
+
+Attached is the current export mapping from the SAP delivery/billing data to =
+the DMS declaration. 103 of 105 fields are mapped and reviewed. Two fields at=
+ goods-item level are still open because the values come from Finance: the st=
+atistical value and the customs value per item. I put both on yellow in the s=
+heet. I also added dl-cus on this mail so the team sees the current version.
+
+Best regards,
+Marta Kowalska
+Customs coordinator
+Corp Europe B.V. | Rotterdam
+T +31 10 442 3662
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============6422037397393694418==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Hi Ruud, I checked with my colleagues. The values today come f=
+rom a manual allocation of freight cost per invoice, for example INV-30418, w=
+hich is done after the month-end close. We need to decide whether the automat=
+ic rule can be used in the declaration at all. I cannot promise it before the=
+ October close, so please plan with an answer by 6 Nov. Until then both field=
+s stay open on your side.</p><p>Regards,<br>Ana Novak<br>Accounts payable ana=
+lyst (Finance)<br>Corp Europe B.V. | Rotterdam<br>T +31 10 621 5065<br><br>Th=
+is e-mail and any attachments are confidential and intended solely for the ad=
+dressee. If you received it in error, please delete it.</p><div style=3D'bord=
+er:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:=
+</b> Ruud Jansen &lt;r.jansen@corp-europe.example&gt;<br><b>Sent:</b> Tuesday=
+, 29 September 2026 10:25<br><b>To:</b> Ana Novak<br><b>Cc:</b> Marta Kowalsk=
+a; DL CUS<br><b>Subject:</b> RE: DMS export mapping - open fields</p></div><p=
+>Ana, for the new customs declaration we need two values per goods item: the =
+statistical value and the customs value. Today they are calculated in a Finan=
+ce process. Can you tell us the rule (net invoice value, freight and insuranc=
+e allocation, currency) and the source in SAP? Marta has the sheet with the o=
+pen fields. Without it the mapping stays at 103 of 105 fields.</p><p>Best reg=
+ards,<br>Ruud Jansen<br>Logistics manager Rotterdam, owner of the customs mig=
+ration project<br>Corp Europe B.V. | Rotterdam<br>T +31 10 622 1406<br><br>Th=
+is e-mail and any attachments are confidential and intended solely for the ad=
+dressee. If you received it in error, please delete it.</p><div style=3D'bord=
+er:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:=
+</b> Marta Kowalska &lt;m.kowalska@corp-europe.example&gt;<br><b>Sent:</b> Mo=
+nday, 28 September 2026 09:00<br><b>To:</b> Ruud Jansen<br><b>Cc:</b> Hanna S=
+chmidt; DL CUS<br><b>Subject:</b> DMS export mapping - open fields</p></div><=
+p>Attached is the current export mapping from the SAP delivery/billing data t=
+o the DMS declaration. 103 of 105 fields are mapped and reviewed. Two fields =
+at goods-item level are still open because the values come from Finance: the =
+statistical value and the customs value per item. I put both on yellow in the=
+ sheet. I also added dl-cus on this mail so the team sees the current version=
+.</p><p>Best regards,<br>Marta Kowalska<br>Customs coordinator<br>Corp Europe=
+ B.V. | Rotterdam<br>T +31 10 442 3662<br><br>This e-mail and any attachments=
+ are confidential and intended solely for the addressee. If you received it i=
+n error, please delete it.</p></body></html>
+
+--===============6422037397393694418==--

@@ -1,0 +1,285 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "Missing ADR documents UN 1263 - Antwerp",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-10-01 09:10",
+     "from": "speeters",
+     "to": [
+      "mkowalska"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Marta, we found two outbound shipments in Antwerp this week without ADR transport documents. Both contain paint, UN 1263 (class 3). Delivery 80451233 (12 pallets) was found on 29 Sep, delivery 80451290 (8 pallets) on 30 Sep. In both cases the truck was already at the dock and the dangerous goods declaration was not in the shipment folder. We held the trucks until the paperwork was printed, which cost about 2.5 hours in total. Nothing left the site without documents, but it was close. Can you help me define what must be checked before loading?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-10-02 10:05",
+     "from": "mkowalska",
+     "to": [
+      "speeters"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Hi Sofie, thanks for catching this. For UN 1263 the driver needs the signed dangerous goods declaration (DGD) with UN number, class, packing group and quantity. Was the DGD created in SAP but just not printed, or was it never created? I assume the gate check should have stopped it, so my first thought is to add a check at the gate. Please confirm how the trucks are handled today.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-10-05 08:40",
+     "from": "speeters",
+     "to": [
+      "mkowalska"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "The DGDs existed in SAP but were never printed, because the print job went to the wrong printer in the office. The gate only checks the driver ID and the delivery number, so a gate check would not help much. I would rather put the check with the dispatcher before loading starts. Nobody loads a pallet of UN 1263 until the dispatcher has the printed and signed DGD in hand. That is earlier than the gate and also avoids reloading a truck that cannot leave.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m4",
+     "date": "2026-10-08 11:30",
+     "from": "mkowalska",
+     "to": [
+      "speeters"
+     ],
+     "cc": [
+      "mdeboer",
+      "lbecker"
+     ],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "Agreed, the dispatcher check before loading is the better place. Proposal for the new rule, effective Monday 12 Oct: no loading of dangerous goods without a dispatcher check of the DGD, recorded in a checklist in the WMS. Lukas, can you build the checklist as a mandatory step in the loading task for ADR deliveries? Items I suggest: DGD printed and signed, UN number and quantity match the delivery, packing group stated, driver ADR certificate valid, written instructions in the cab. Five items, all must be ticked before the task can be closed.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-10-12 07:55",
+     "from": "speeters",
+     "to": [
+      "mkowalska"
+     ],
+     "cc": [
+      "lbecker"
+     ],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "The checklist is live in the WMS since this morning, thanks Lukas. The dispatchers have been briefed. I also booked the refresher training for the drivers: Tuesday 20 Oct at 13:00 in the Antwerp training room. 18 drivers are on the list. I would like you to run the ADR part, about 45 minutes, including the UN 1263 examples from the two cases.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  },
+  {
+   "key": "t2",
+   "subject": "ADR refresher 20 Oct - material and attendance",
+   "emails": [
+    {
+     "id": "m6",
+     "date": "2026-10-14 14:20",
+     "from": "mkowalska",
+     "to": [
+      "speeters"
+     ],
+     "cc": [],
+     "reply_to": null,
+     "forward": false,
+     "body": "Sofie, I can do the ADR session on 20 Oct. I will send the slides on Friday. I had noted 16 drivers in my planning, is that still right? I want to print the right number of handouts with the DGD example.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m7",
+     "date": "2026-10-21 09:00",
+     "from": "speeters",
+     "to": [
+      "mkowalska"
+     ],
+     "cc": [
+      "mdeboer"
+     ],
+     "reply_to": "m6",
+     "forward": false,
+     "body": "It is 18, not 16, two extra drivers joined from the evening shift, so please keep the list at 18. The training took place yesterday and all 18 attended. First check of the new rule: 41 ADR loadings since 12 Oct, all with a completed WMS checklist and no missing documents. Thanks for the session, the drivers liked the real cases.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "Antwerp found two shipments with missing ADR transport documents; both contained paint UN 1263 (class 3).",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "Delivery 80451233 (12 pallets) was found on 29 Sep and delivery 80451290 (8 pallets) on 30 Sep.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "The trucks were held until the paperwork was printed, costing about 2.5 hours in total.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "The DGDs existed in SAP but were not printed because the print job went to the wrong printer in the office.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "The gate only checks driver ID and delivery number, so a check at the gate was rejected in favour of a dispatcher check before loading.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "New rule effective Monday 12 Oct: no loading of dangerous goods without the dispatcher checking the DGD, recorded in a WMS checklist.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "The WMS checklist has five items: DGD printed and signed, UN number and quantity match the delivery, packing group stated, driver ADR certificate valid, written instructions in the cab.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "Marta asked Lukas Becker to build the checklist as a mandatory step in the loading task for ADR deliveries.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "The checklist went live in the WMS on 12 Oct.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "Refresher training for drivers was on Tuesday 20 Oct at 13:00 in the Antwerp training room, with the ADR part (about 45 minutes) run by Marta.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "Marta planned for 16 drivers, but the correct number is 18 because two evening shift drivers joined.",
+   "emails": [
+    "m6",
+    "m7"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "All 18 drivers attended the training.",
+   "emails": [
+    "m7"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "Between 12 Oct and 20 Oct, 41 ADR loadings were done, all with a completed WMS checklist and no missing documents.",
+   "emails": [
+    "m7"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "Why did Antwerp choose a dispatcher check before loading instead of a check at the gate?",
+   "a": "The gate only checks driver ID and delivery number, and a dispatcher check before loading also avoids reloading a truck that cannot leave.",
+   "facts": [
+    "F5"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "What caused the DGDs for the two UN 1263 shipments to be missing?",
+   "a": "They existed in SAP but were not printed because the print job went to the wrong printer in the office.",
+   "facts": [
+    "F4"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "When does the new ADR dispatcher check rule start and where is it recorded?",
+   "a": "From Monday 12 Oct, in a checklist in the WMS.",
+   "facts": [
+    "F6",
+    "F9"
+   ],
+   "type": "when"
+  },
+  {
+   "q": "Which deliveries were found without ADR documents?",
+   "a": "Deliveries 80451233 and 80451290.",
+   "facts": [
+    "F2"
+   ],
+   "type": "identifier"
+  },
+  {
+   "q": "How many drivers attended the 20 Oct ADR refresher and who ran the ADR part?",
+   "a": "All 18 drivers attended; Marta Kowalska ran the ADR part.",
+   "facts": [
+    "F10",
+    "F11",
+    "F12"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "Which carrier was responsible for the two shipments with missing ADR documents?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "adr",
+  "title": "Dangerous goods (ADR) document checks",
+  "level": "task",
+  "korean": false
+ }
+}

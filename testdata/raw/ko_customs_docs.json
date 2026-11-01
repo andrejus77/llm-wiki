@@ -1,0 +1,481 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "Missing FTA origin statement on Pyeongtaek invoices - duty charged in Rotterdam",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-10-12 09:20",
+     "from": "mkowalska",
+     "to": [
+      "leeplant"
+     ],
+     "cc": [
+      "kimhq",
+      "rjansen"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "While reviewing our import declarations I found three Pyeongtaek shipments that cleared in Rotterdam on 8 and 9 October without the EU-Korea FTA origin statement on the commercial invoice. Because the proof of origin was missing, customs could not apply the preference and charged full duty: EUR 18,400 in total for the three shipments (details below).\n\nCould you please check why the statement is missing from your export invoices? We need two things: (1) a corrected invoice with the origin statement for each of the three shipments, and (2) the statement on all future invoices. Without the corrected invoices I cannot file the refund request. Please tell me if you need the exact wording from our side.",
+     "table": {
+      "header": [
+       "Invoice",
+       "Delivery",
+       "Container",
+       "Duty charged (EUR)"
+      ],
+      "rows": [
+       [
+        "INV-48211",
+        "80456721",
+        "MSKU4417203",
+        "6,200"
+       ],
+       [
+        "INV-48212",
+        "80456734",
+        "TGHU8820154",
+        "7,150"
+       ],
+       [
+        "INV-48219",
+        "80456790",
+        "CAIU5539017",
+        "5,050"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-10-13 08:40",
+     "from": "leeplant",
+     "to": [
+      "mkowalska"
+     ],
+     "cc": [
+      "kimhq"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "마르타 님, 안녕하세요. 문의하신 3건(INV-48211, INV-48212, INV-48219)을 확인했습니다. 평택 공장의 수출 인보이스 양식에 한-EU FTA 원산지 문구가 들어 있지 않았습니다. 올해 ERP 인보이스 양식을 변경할 때 해당 문구가 누락된 것으로 보입니다. 죄송합니다.\n\n정확한 영문 문구와 기재 위치(인보이스 하단 등)를 알려주시면 IT팀에 바로 수정을 요청하겠습니다. 또한 승인수출자 번호도 기재해야 하는지 확인 부탁드립니다. 각 건의 금액이 6,000유로를 넘기 때문에 번호가 필요할 것 같습니다. 정정 인보이스는 문구가 확정되는 대로 발행하겠습니다.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-10-13 10:15",
+     "from": "mkowalska",
+     "to": [
+      "leeplant"
+     ],
+     "cc": [
+      "kimhq",
+      "rjansen"
+     ],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Thanks for the quick check. Yes, the approved exporter number is required, because each of the three invoices is above EUR 6,000. Please put this text at the bottom of the invoice, in English:\n\n\"The exporter of the products covered by this document (Approved Exporter Authorisation No. KR-AE-20417) declares that, except where otherwise clearly indicated, these products are of Korean preferential origin.\"\n\nPlease also add the place and date and the name of the signatory. For the corrected invoices of the three shipments I need signed PDFs that keep the original invoice numbers, with the statement added. Do you know when the new invoice template could go live?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m4",
+     "date": "2026-10-14 08:05",
+     "from": "kimhq",
+     "to": [
+      "mkowalska"
+     ],
+     "cc": [
+      "leeplant",
+      "parkhq"
+     ],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "마르타 님, 본사 물류 기획 김민준입니다. 상황 공유 감사합니다. 두 가지 확인하고 싶습니다.\n\n첫째, 현재 운송 중인 다른 평택발 화물 중에도 같은 문제가 생길 수 있는 건이 있나요? 둘째, 이미 납부한 관세 18,400유로는 환급받을 수 있나요? 가능하다면 신청 기한이 언제까지인지 알려주세요. 본사에서도 재무팀에 보고해야 해서 일정이 필요합니다.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-10-14 14:30",
+     "from": "mkowalska",
+     "to": [
+      "kimhq"
+     ],
+     "cc": [
+      "leeplant",
+      "parkhq",
+      "rjansen"
+     ],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Answers to your two questions:\n\n1) Two more Pyeongtaek shipments are on the water: deliveries 80456802 and 80456811, arriving in Rotterdam on 23 and 24 October. They were invoiced with the old template, so they would have the same problem. I will hold the declarations until the plant sends corrected invoices with the statement. Please make sure the corrected PDFs reach me by 21 October.\n\n2) A refund is possible. A repayment request can be filed within 3 years of the debt notification, but I want to file as soon as we have the corrected invoices, so that the money is not tied up for long. I will need the corrected invoices for INV-48211, INV-48212 and INV-48219 for the file.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m6",
+     "date": "2026-10-19 07:50",
+     "from": "leeplant",
+     "to": [
+      "mkowalska"
+     ],
+     "cc": [
+      "kimhq"
+     ],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "마르타 님, 수출팀 이서연입니다. 새 인보이스 양식이 내일 10월 20일부터 적용됩니다. 20일 이후 출고분부터 모든 인보이스 하단에 원산지 문구와 승인수출자 번호(KR-AE-20417)가 자동으로 인쇄됩니다.\n\n환급 신청에 필요한 3건(INV-48211, INV-48212, INV-48219)의 정정 인보이스는 서명한 PDF로 별도 메일로 보냈습니다. 운송 중인 2건(납품 80456802, 80456811)의 정정 인보이스도 포함되어 있습니다. 첨부 파일은 정정 인보이스 목록입니다. 누락된 것이 있으면 알려주세요.",
+     "table": null,
+     "attachment": {
+      "kind": "xlsx",
+      "name": "corrected_invoices_pyeongtaek.xlsx",
+      "rows": [
+       [
+        "Invoice",
+        "Delivery",
+        "Status",
+        "Origin statement"
+       ],
+       [
+        "INV-48211",
+        "80456721",
+        "Corrected, signed PDF sent",
+        "Yes"
+       ],
+       [
+        "INV-48212",
+        "80456734",
+        "Corrected, signed PDF sent",
+        "Yes"
+       ],
+       [
+        "INV-48219",
+        "80456790",
+        "Corrected, signed PDF sent",
+        "Yes"
+       ],
+       [
+        "INV-48240",
+        "80456802",
+        "Corrected, signed PDF sent",
+        "Yes"
+       ],
+       [
+        "INV-48247",
+        "80456811",
+        "Corrected, signed PDF sent",
+        "Yes"
+       ]
+      ]
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m7",
+     "date": "2026-10-21 09:10",
+     "from": "mkowalska",
+     "to": [
+      "leeplant"
+     ],
+     "cc": [
+      "kimhq"
+     ],
+     "reply_to": "m6",
+     "forward": false,
+     "body": "Received all five corrected invoices, thank you. They look complete and the statement and exporter number are correct. I have released the two in-transit shipments for declaration with the corrected invoices attached. The first shipment on the new template, INV-48305 (delivery 80456855), also looks good. I will start the refund request for the three cleared shipments today.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  },
+  {
+   "key": "t2",
+   "subject": "Refund request duty Korea shipments EUR 18,400",
+   "emails": [
+    {
+     "id": "m8",
+     "date": "2026-10-21 11:30",
+     "from": "mkowalska",
+     "to": [
+      "rjansen"
+     ],
+     "cc": [
+      "dl-cus",
+      "anovak"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Short summary for the record. Three Pyeongtaek shipments cleared in Rotterdam on 8 and 9 October without the FTA origin statement, so customs charged full duty, EUR 18,400 in total. The plant has now sent corrected invoices and the new invoice template is live from 20 October.\n\nI would like to file the refund request with Dutch customs tomorrow, based on the corrected invoices. Ruud, can you confirm? Ana, please keep the EUR 18,400 as a receivable and do not book it as final cost until the refund decision. Total per shipment is in my earlier mail to the plant: EUR 6,200, 7,150 and 5,050.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m9",
+     "date": "2026-10-21 16:20",
+     "from": "rjansen",
+     "to": [
+      "mkowalska"
+     ],
+     "cc": [
+      "dl-cus",
+      "anovak"
+     ],
+     "reply_to": "m8",
+     "forward": false,
+     "body": "Approved, please file tomorrow. I will tell Mark in our weekly. Ana, can you park the amount on the Rotterdam customs cost center as an open item until the refund comes in?\n\nMarta, how long will customs take to decide? And please send me the case number once you have it.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m10",
+     "date": "2026-10-22 10:05",
+     "from": "mkowalska",
+     "to": [
+      "rjansen"
+     ],
+     "cc": [
+      "dl-cus",
+      "anovak"
+     ],
+     "reply_to": "m9",
+     "forward": false,
+     "body": "The refund request for the three shipments is filed as of today, 22 October. Case number is RFD-2026-10-7731. I attached the corrected invoices and the original duty notices. The summary is in the attached PDF.\n\nCustoms normally decides in 6 to 8 weeks, so I expect an answer around early to mid December. I will check the status every Friday.",
+     "table": null,
+     "attachment": {
+      "kind": "pdf",
+      "name": "refund_request_RFD-2026-10-7731.pdf",
+      "text": "Refund request RFD-2026-10-7731, filed 22 October 2026. Subject: duty paid on 3 shipments from Pyeongtaek (Korea), cleared in Rotterdam on 8-9 October 2026 without proof of origin. Invoices: INV-48211 (delivery 80456721, EUR 6,200), INV-48212 (delivery 80456734, EUR 7,150), INV-48219 (delivery 80456790, EUR 5,050). Total EUR 18,400. Basis: EU-Korea FTA preferential origin, corrected invoices with origin statement and approved exporter number KR-AE-20417 attached."
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m11",
+     "date": "2026-10-27 07:45",
+     "from": "parkhq",
+     "to": [
+      "mkowalska"
+     ],
+     "cc": [
+      "kimhq",
+      "leeplant",
+      "rjansen"
+     ],
+     "reply_to": "m10",
+     "forward": false,
+     "body": "마르타 님, 본사 글로벌 SCM 담당 박지호입니다. 환급 신청이 10월 22일에 접수되었다는 보고를 받았습니다. 두 가지 확인 부탁드립니다.\n\n첫째, 환급 결정은 언제쯤 나올 것으로 예상하시나요? 둘째, 10월 20일 이후 평택발 인보이스는 모두 원산지 문구가 들어가 있는지 유럽 측에서 확인 가능한가요? 다른 한국 공장에도 같은 문제가 있는지 점검하려고 합니다.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m12",
+     "date": "2026-10-27 11:00",
+     "from": "mkowalska",
+     "to": [
+      "parkhq"
+     ],
+     "cc": [
+      "kimhq",
+      "leeplant",
+      "rjansen"
+     ],
+     "reply_to": "m11",
+     "forward": false,
+     "body": "The refund request was filed on 22 October under case number RFD-2026-10-7731 for EUR 18,400. Customs usually needs 6 to 8 weeks, so I expect a decision in early to mid December.\n\nOn your second question: I check every Pyeongtaek invoice at declaration. All invoices issued from 20 October, for example INV-48305, carry the statement and the approved exporter number. I cannot see invoices from other Korean plants, since we only receive shipments from Pyeongtaek at the moment, so those would have to be checked on your side. I recommend comparing their invoice templates with the Pyeongtaek one.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "Three Pyeongtaek shipments cleared in Rotterdam on 8 and 9 October 2026 without the EU-Korea FTA origin statement on the invoice.",
+   "emails": [
+    "m1",
+    "m8"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "Because the proof of origin was missing, customs in Rotterdam charged full duty of EUR 18,400 on the three shipments.",
+   "emails": [
+    "m1",
+    "m8",
+    "m10"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "The affected invoices are INV-48211 (EUR 6,200), INV-48212 (EUR 7,150) and INV-48219 (EUR 5,050).",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "The plant's ERP invoice template lost the origin statement when the template was changed.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "The approved exporter number KR-AE-20417 is required on the invoices because each invoice is above EUR 6,000.",
+   "emails": [
+    "m2",
+    "m3"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "The new Pyeongtaek invoice template with the origin statement and exporter number is live from 20 October 2026.",
+   "emails": [
+    "m6",
+    "m8"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "A repayment request can be filed within 3 years of the debt notification, but Marta files as soon as possible.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "Two more shipments (deliveries 80456802 and 80456811) were in transit and arriving 23 and 24 October; Marta held the declarations until corrected invoices arrived.",
+   "emails": [
+    "m5",
+    "m7"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "The plant sent signed corrected invoices for five shipments (the three cleared ones and the two in-transit ones).",
+   "emails": [
+    "m6",
+    "m7"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "The first shipment on the new template was INV-48305 (delivery 80456855) and it looked good.",
+   "emails": [
+    "m7",
+    "m12"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "Ruud Jansen approved filing the refund request, and Ana Novak was asked to keep EUR 18,400 as an open item/receivable on the Rotterdam customs cost center.",
+   "emails": [
+    "m8",
+    "m9"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "The refund request was filed on 22 October 2026 under case number RFD-2026-10-7731.",
+   "emails": [
+    "m10",
+    "m12"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "Customs normally decides in 6 to 8 weeks, so Marta expects a decision in early to mid December.",
+   "emails": [
+    "m10",
+    "m12"
+   ]
+  },
+  {
+   "id": "F14",
+   "text": "Europe only receives shipments from Pyeongtaek, so HQ has to check other Korean plants' invoice templates themselves.",
+   "emails": [
+    "m12"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "How much duty did Rotterdam customs charge on the three Pyeongtaek shipments and why?",
+   "a": "EUR 18,400 in full duty, because the invoices had no EU-Korea FTA origin statement so the preference could not be applied.",
+   "facts": [
+    "F1",
+    "F2"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "From which date does the Pyeongtaek plant put the origin statement on its invoices?",
+   "a": "From 20 October 2026.",
+   "facts": [
+    "F6"
+   ],
+   "type": "when"
+  },
+  {
+   "q": "What is the case number of the refund request for the Korea shipments?",
+   "a": "RFD-2026-10-7731.",
+   "facts": [
+    "F12"
+   ],
+   "type": "identifier"
+  },
+  {
+   "q": "Why does the invoice have to show the approved exporter number KR-AE-20417?",
+   "a": "Each of the invoices is above EUR 6,000, so an approved exporter number is required with the origin statement.",
+   "facts": [
+    "F5"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "When can the refund decision be expected and who approved filing the request?",
+   "a": "Early to mid December (6 to 8 weeks after filing on 22 October); Ruud Jansen approved filing.",
+   "facts": [
+    "F11",
+    "F12",
+    "F13"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "Which invoice was the first one issued on the new template and which deliveries were still in transit when the problem was found?",
+   "a": "INV-48305 (delivery 80456855) was the first on the new template; deliveries 80456802 and 80456811 were in transit.",
+   "facts": [
+    "F8",
+    "F10"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "Will the refund from Dutch customs include interest?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "ko_customs_docs",
+  "title": "Korea plant: missing certificates of origin (Korean-language mail)",
+  "level": "topic",
+  "korean": true
+ }
+}

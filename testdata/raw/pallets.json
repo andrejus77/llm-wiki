@@ -1,0 +1,372 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "EUR pallet stock Venlo",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-10-13 08:20",
+     "from": "jdevries",
+     "to": [
+      "erossi"
+     ],
+     "cc": [],
+     "reply_to": null,
+     "forward": false,
+     "body": "Stock check this morning: we are down to 284 EUR pallets in Venlo. Outbound is using about 120 per day, so we have roughly 2.5 working days left. I can't see any open PO or inbound for pallets in the system, so nothing is coming. Can you find out how fast PalletPro can deliver? Screenshot of the stock is below. If we run dry, the afternoon trucks can't be loaded and we miss the carrier cut-offs.",
+     "table": null,
+     "attachment": null,
+     "screenshot": {
+      "title": "Stock Overview: Company Code/Plant/Storage Location (MMBE)",
+      "lines": [
+       "Material: PAL-EUR-01  EUR pallet 1200x800",
+       "Plant: VNL1   Storage location: 0001",
+       "Unrestricted-use stock: 284 PC",
+       "Open POs: none"
+      ]
+     }
+    },
+    {
+     "id": "m2",
+     "date": "2026-10-13 11:40",
+     "from": "erossi",
+     "to": [
+      "jdevries"
+     ],
+     "cc": [],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "I just spoke to PalletPro. They can deliver 1,000 EUR pallets on 30 Oct, but only if PO 4500123456 is approved. The PO is in the release strategy and waits for Mark, I am sending him the request now. Their production is fully booked, so nothing earlier is possible.\n\nThe gap is the problem: 30 Oct is 13 working days away. Borrowing 400 from Antwerp gives you 684 pallets, which is only about 5.7 days at 120 per day. So that alone does not bridge it.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-10-13 13:00",
+     "from": "jdevries",
+     "to": [
+      "erossi"
+     ],
+     "cc": [],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "You are right, I had counted the 400 as covering the whole gap. It doesn't.\n\nWhat we can do: about 60 pallets per day of our volume are domestic shipments that can go on one-way pallets, and we have those in stock. If I switch those from tomorrow, EUR pallet use drops to roughly 60 per day and the 684 should just last until the 30 Oct delivery. Very tight, but it works on paper.\n\nI am asking Sofie for the 400 now. After this I want the safety stock raised so we never end up here again.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  },
+  {
+   "key": "t2",
+   "subject": "PO 4500123456 approval - PalletPro EUR pallets",
+   "emails": [
+    {
+     "id": "m4",
+     "date": "2026-10-13 14:05",
+     "from": "erossi",
+     "to": [
+      "mdeboer"
+     ],
+     "cc": [
+      "jdevries"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Mark, please release PO 4500123456 in ME29N. It is for 1,000 EUR pallets from PalletPro for Venlo, where we have only 284 left and use 120 per day. PalletPro needs the release by Wed 14 Oct to keep the delivery slot on 30 Oct. Details below. Total value is EUR 7,800.",
+     "table": {
+      "header": [
+       "PO",
+       "Vendor",
+       "Material",
+       "Qty",
+       "Price/pc",
+       "Value",
+       "Delivery"
+      ],
+      "rows": [
+       [
+        "4500123456",
+        "PalletPro",
+        "PAL-EUR-01",
+        "1,000",
+        "EUR 7.80",
+        "EUR 7,800",
+        "30 Oct 2026"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-10-14 09:10",
+     "from": "mdeboer",
+     "to": [
+      "erossi"
+     ],
+     "cc": [
+      "jdevries"
+     ],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Approved, PO 4500123456 is released. Please confirm the 30 Oct slot with PalletPro in writing.\n\nVenlo got too close to zero. I also agree to raise the safety stock for EUR pallets in Venlo to 800. Jeroen, please ask Daan to change it in the material master.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m6",
+     "date": "2026-10-14 15:10",
+     "from": "palletpro",
+     "to": [
+      "erossi"
+     ],
+     "cc": [],
+     "reply_to": null,
+     "forward": false,
+     "body": "Order confirmation for your PO 4500123456 (our ref PP-SO-77412): 1,000 EPAL EUR pallets at EUR 7.80 each, delivery to Venlo on Friday 30 Oct 2026. The truck will arrive between 08:00 and 12:00. An earlier delivery is not possible because our production is fully booked until then. Please make sure the Venlo dock is free for unloading.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  },
+  {
+   "key": "t3",
+   "subject": "Pallet transfer Antwerp to Venlo",
+   "emails": [
+    {
+     "id": "m7",
+     "date": "2026-10-13 15:30",
+     "from": "jdevries",
+     "to": [
+      "speeters"
+     ],
+     "cc": [
+      "thendriks",
+      "erossi"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Sofie, Venlo is almost out of EUR pallets. Can Antwerp lend us 400 EUR pallets? We need them in Venlo by Thu 15 Oct. PalletPro delivers 1,000 on 30 Oct, and we will send the 400 back right after that. Tom, can you plan the truck once Sofie confirms?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m8",
+     "date": "2026-10-14 08:45",
+     "from": "speeters",
+     "to": [
+      "jdevries"
+     ],
+     "cc": [
+      "thendriks"
+     ],
+     "reply_to": "m7",
+     "forward": false,
+     "body": "OK, we can spare 400 without hurting our own inbound. I posted the stock transfer as STO 4500123501. The pallets are ready for pickup from 06:00 tomorrow. Please send them back by Fri 6 Nov.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  },
+  {
+   "key": "t4",
+   "subject": "Safety stock EUR pallet Venlo",
+   "emails": [
+    {
+     "id": "m9",
+     "date": "2026-10-15 10:00",
+     "from": "jdevries",
+     "to": [
+      "dvisser"
+     ],
+     "cc": [
+      "erossi"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Daan, please raise the safety stock for material PAL-EUR-01 (EUR pallet) in plant VNL1 from 500 to 800. Mark approved this on 14 Oct after we nearly ran out of pallets in Venlo. It should be changed in MM02, MRP1 view, so that the next MRP run picks it up.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "On 13 Oct 2026 Venlo had 284 EUR pallets left (material PAL-EUR-01, plant VNL1).",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "Venlo consumes about 120 EUR pallets per day.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "PalletPro can deliver 1,000 EUR pallets on 30 Oct 2026 only if PO 4500123456 is approved.",
+   "emails": [
+    "m2",
+    "m6"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "Borrowing 400 pallets from Antwerp gives 684 pallets, which lasts only about 5.7 days at 120 per day.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "Jeroen de Vries moves about 60 pallets per day of domestic volume to one-way pallets, cutting EUR pallet use to roughly 60 per day so the stock lasts until 30 Oct.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "PO 4500123456 is for 1,000 EUR pallets at EUR 7.80 each, total EUR 7,800.",
+   "emails": [
+    "m4",
+    "m6"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "PalletPro needed the PO release by Wed 14 Oct to keep the 30 Oct delivery slot.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "Mark de Boer approved PO 4500123456 on 14 Oct 2026.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "Mark de Boer agreed to raise the safety stock for EUR pallets in Venlo to 800.",
+   "emails": [
+    "m5",
+    "m9"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "PalletPro confirmed delivery to Venlo on Fri 30 Oct between 08:00 and 12:00 under their reference PP-SO-77412.",
+   "emails": [
+    "m6"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "Sofie Peeters agreed to lend 400 EUR pallets from Antwerp using stock transfer order STO 4500123501, ready for pickup from 06:00 on 15 Oct.",
+   "emails": [
+    "m8"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "Venlo must return the 400 borrowed pallets to Antwerp by Fri 6 Nov.",
+   "emails": [
+    "m8"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "The safety stock for PAL-EUR-01 in plant VNL1 goes from 500 to 800; Jeroen asked Daan Visser to change it in MM02, MRP1 view.",
+   "emails": [
+    "m9"
+   ]
+  },
+  {
+   "id": "F14",
+   "text": "PalletPro could not deliver earlier than 30 Oct because its production was fully booked.",
+   "emails": [
+    "m2",
+    "m6"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "Why can PalletPro not deliver the EUR pallets to Venlo before 30 Oct?",
+   "a": "Their production is fully booked until then.",
+   "facts": [
+    "F14"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "Which stock transfer order was used to move 400 pallets from Antwerp to Venlo?",
+   "a": "STO 4500123501",
+   "facts": [
+    "F11"
+   ],
+   "type": "identifier"
+  },
+  {
+   "q": "Why was borrowing 400 pallets from Antwerp not enough on its own, and how did Jeroen solve it?",
+   "a": "684 pallets last only about 5.7 days at 120 per day; Jeroen moved about 60 pallets per day of domestic volume to one-way pallets so the stock lasts until 30 Oct.",
+   "facts": [
+    "F2",
+    "F4",
+    "F5"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "Who approved PO 4500123456 and what else did that person decide?",
+   "a": "Mark de Boer approved it and also agreed to raise the EUR pallet safety stock in Venlo to 800.",
+   "facts": [
+    "F8",
+    "F9"
+   ],
+   "type": "who"
+  },
+  {
+   "q": "By when must Venlo return the 400 borrowed pallets to Antwerp?",
+   "a": "By Friday 6 Nov 2026.",
+   "facts": [
+    "F12"
+   ],
+   "type": "when"
+  },
+  {
+   "q": "What is the total value of PO 4500123456?",
+   "a": "EUR 7,800 (1,000 pallets at EUR 7.80).",
+   "facts": [
+    "F6"
+   ],
+   "type": "fact"
+  },
+  {
+   "q": "Which carrier transported the 400 pallets from Antwerp to Venlo and what did it cost?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "pallets",
+  "title": "Pallet shortage in Venlo",
+  "level": "topic",
+  "korean": false
+ }
+}

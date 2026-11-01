@@ -1,0 +1,59 @@
+Message-ID: <packaging.t1.m1.a564164ff0@corp-europe.example>
+Date: Tue, 13 Oct 2026 09:20:00 +0200
+From: "Daan Visser" <d.visser@corp-europe.example>
+To: "Sofie Peeters" <s.peeters@corp-europe.example>
+Cc: "Lukas Becker" <l.becker@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: New carton sizes S2 / M3 / L4 from 2 Nov - master data and EWM
+Thread-Index: Ad1a40HcMFeVGQsClQYqoD+kZQvtig==
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============3300416626684905571=="
+
+--===============3300416626684905571==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Sofie, Lukas - heads-up on the packaging change. From Monday 2 Nov we switch =
+to three new carton sizes: S2, M3 and L4. They replace the old S1, M2 and L3.
+
+On my side I will update the packaging data in the material master with MM02.=
+ By my count that is 312 materials. I plan to have this done by Wed 21 Oct, s=
+o there is a buffer before go-live.
+
+Lukas, the packaging instructions in EWM will need adjusting as well. Can you=
+ take that?
+
+Sofie, can you send me the current stock of the old cartons in Antwerp? I wan=
+t to know if we need to do anything special with the leftovers before 2 Nov.
+
+Best regards,
+Daan Visser
+Master data specialist
+Corp Europe B.V. | Rotterdam
+T +31 10 840 4457
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============3300416626684905571==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Sofie, Lukas - heads-up on the packaging change. From Monday 2=
+ Nov we switch to three new carton sizes: S2, M3 and L4. They replace the old=
+ S1, M2 and L3.</p>
+<p>On my side I will update the packaging data in the material master with MM=
+02. By my count that is 312 materials. I plan to have this done by Wed 21 Oct=
+, so there is a buffer before go-live.</p>
+<p>Lukas, the packaging instructions in EWM will need adjusting as well. Can =
+you take that?</p>
+<p>Sofie, can you send me the current stock of the old cartons in Antwerp? I =
+want to know if we need to do anything special with the leftovers before 2 No=
+v.</p><p>Best regards,<br>Daan Visser<br>Master data specialist<br>Corp Europ=
+e B.V. | Rotterdam<br>T +31 10 840 4457<br><br>This e-mail and any attachment=
+s are confidential and intended solely for the addressee. If you received it =
+in error, please delete it.</p></body></html>
+
+--===============3300416626684905571==--

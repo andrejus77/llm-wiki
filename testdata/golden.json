@@ -1,0 +1,2903 @@
+[
+ {
+  "id": "accrual-q1",
+  "storyline": "accrual",
+  "q": "Why was the first week 39 freight accrual report rejected?",
+  "a": "It was filtered on planned delivery date instead of the actual delivery (POD) date, so five early-delivered shipments were missing.",
+  "type": "why",
+  "facts": [
+   "The first week 39 report (39 shipments, EUR 176,850) used the planned delivery date filter, the TMS default variant.",
+   "The accrual needs the actual delivery date (POD date) as the filter, because early-delivered shipments with a later planned date are September costs."
+  ],
+  "gold_email_keys": [
+   "m2",
+   "m3"
+  ],
+  "gold_message_ids": [
+   "accrual.t1.m2.f659334bdd@corp-europe.example",
+   "accrual.t1.m3.12db294625@corp-europe.example"
+  ]
+ },
+ {
+  "id": "accrual-q2",
+  "storyline": "accrual",
+  "q": "What was the September freight accrual amount and which document was posted?",
+  "a": "EUR 184,300, accounting document 1900004127, posted to account 4711000 with FB50.",
+  "type": "identifier",
+  "facts": [
+   "The rerun with POD date up to 25.09 gave 44 shipments and EUR 184,300, 5 shipments more than the first report.",
+   "The September accrual of EUR 184,300 was posted on 25.09 with FB50 to account 4711000 as document 1900004127, with reversal date 01.10."
+  ],
+  "gold_email_keys": [
+   "m4",
+   "m5"
+  ],
+  "gold_message_ids": [
+   "accrual.t1.m4.586c14a381@corp-europe.example",
+   "accrual.t1.m5.b72e483e7f@corp-europe.example"
+  ]
+ },
+ {
+  "id": "accrual-q3",
+  "storyline": "accrual",
+  "q": "Which steps does Ana follow for the weekly freight accrual?",
+  "a": "Get the TMS report, match in FBL1N, post with FB50 to G/L 4711000, and set the reversal for the 1st of the month.",
+  "type": "howto",
+  "facts": [
+   "Ana's routine: take the TMS report, match in FBL1N, post the accrual with FB50 to G/L 4711000, and set the reversal for the 1st of the month."
+  ],
+  "gold_email_keys": [
+   "m1"
+  ],
+  "gold_message_ids": [
+   "accrual.t1.m1.a78c327f43@corp-europe.example"
+  ]
+ },
+ {
+  "id": "accrual-q4",
+  "storyline": "accrual",
+  "q": "Why were deliveries 80419876 and 80419902 included in the October accrual even without a POD?",
+  "a": "The carrier (Nordline) confirmed delivery on 29.10 by mail.",
+  "type": "why",
+  "facts": [
+   "Deliveries 80419876 and 80419902 (Nordline, Hamburg) had no POD in the TMS on 30.10 but were included because the carrier confirmed delivery on 29.10 by mail."
+  ],
+  "gold_email_keys": [
+   "m8",
+   "m9"
+  ],
+  "gold_message_ids": [
+   "accrual.t3.m8.a27f8d8b61@corp-europe.example",
+   "accrual.t3.m9.d90198ed65@corp-europe.example"
+  ]
+ },
+ {
+  "id": "accrual-q5",
+  "storyline": "accrual",
+  "q": "How large was the October accrual, and what reversal date was set?",
+  "a": "EUR 201,950, reversal date 01.11.",
+  "type": "multihop",
+  "facts": [
+   "The October accrual (week 44 report) totalled EUR 201,950, with Rotterdam the largest part at EUR 66,300.",
+   "The October accrual was posted on 30.10 with FB50 to account 4711000 and reversal date 01.11."
+  ],
+  "gold_email_keys": [
+   "m7",
+   "m8",
+   "m9"
+  ],
+  "gold_message_ids": [
+   "accrual.t3.m7.5dd115bdbd@corp-europe.example",
+   "accrual.t3.m8.a27f8d8b61@corp-europe.example",
+   "accrual.t3.m9.d90198ed65@corp-europe.example"
+  ]
+ },
+ {
+  "id": "accrual-q6",
+  "storyline": "accrual",
+  "q": "Who is the approver for freight accruals above EUR 200,000?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "adr-q1",
+  "storyline": "adr",
+  "q": "Why did Antwerp choose a dispatcher check before loading instead of a check at the gate?",
+  "a": "The gate only checks driver ID and delivery number, and a dispatcher check before loading also avoids reloading a truck that cannot leave.",
+  "type": "why",
+  "facts": [
+   "The gate only checks driver ID and delivery number, so a check at the gate was rejected in favour of a dispatcher check before loading."
+  ],
+  "gold_email_keys": [
+   "m3"
+  ],
+  "gold_message_ids": [
+   "adr.t1.m3.00382851f7@corp-europe.example"
+  ]
+ },
+ {
+  "id": "adr-q2",
+  "storyline": "adr",
+  "q": "What caused the DGDs for the two UN 1263 shipments to be missing?",
+  "a": "They existed in SAP but were not printed because the print job went to the wrong printer in the office.",
+  "type": "why",
+  "facts": [
+   "The DGDs existed in SAP but were not printed because the print job went to the wrong printer in the office."
+  ],
+  "gold_email_keys": [
+   "m3"
+  ],
+  "gold_message_ids": [
+   "adr.t1.m3.00382851f7@corp-europe.example"
+  ]
+ },
+ {
+  "id": "adr-q3",
+  "storyline": "adr",
+  "q": "When does the new ADR dispatcher check rule start and where is it recorded?",
+  "a": "From Monday 12 Oct, in a checklist in the WMS.",
+  "type": "when",
+  "facts": [
+   "New rule effective Monday 12 Oct: no loading of dangerous goods without the dispatcher checking the DGD, recorded in a WMS checklist.",
+   "The checklist went live in the WMS on 12 Oct."
+  ],
+  "gold_email_keys": [
+   "m4",
+   "m5"
+  ],
+  "gold_message_ids": [
+   "adr.t1.m4.d2b764c570@corp-europe.example",
+   "adr.t1.m5.652102e169@corp-europe.example"
+  ]
+ },
+ {
+  "id": "adr-q4",
+  "storyline": "adr",
+  "q": "Which deliveries were found without ADR documents?",
+  "a": "Deliveries 80451233 and 80451290.",
+  "type": "identifier",
+  "facts": [
+   "Delivery 80451233 (12 pallets) was found on 29 Sep and delivery 80451290 (8 pallets) on 30 Sep."
+  ],
+  "gold_email_keys": [
+   "m1"
+  ],
+  "gold_message_ids": [
+   "adr.t1.m1.7675a7ba0b@corp-europe.example"
+  ]
+ },
+ {
+  "id": "adr-q5",
+  "storyline": "adr",
+  "q": "How many drivers attended the 20 Oct ADR refresher and who ran the ADR part?",
+  "a": "All 18 drivers attended; Marta Kowalska ran the ADR part.",
+  "type": "multihop",
+  "facts": [
+   "Refresher training for drivers was on Tuesday 20 Oct at 13:00 in the Antwerp training room, with the ADR part (about 45 minutes) run by Marta.",
+   "Marta planned for 16 drivers, but the correct number is 18 because two evening shift drivers joined.",
+   "All 18 drivers attended the training."
+  ],
+  "gold_email_keys": [
+   "m5",
+   "m6",
+   "m7"
+  ],
+  "gold_message_ids": [
+   "adr.t1.m5.652102e169@corp-europe.example",
+   "adr.t2.m6.e4e5870594@corp-europe.example",
+   "adr.t2.m7.9e7df54ac4@corp-europe.example"
+  ]
+ },
+ {
+  "id": "adr-q6",
+  "storyline": "adr",
+  "q": "Which carrier was responsible for the two shipments with missing ADR documents?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "aeo-q1",
+  "storyline": "aeo",
+  "q": "When is the AEO audit by the customs authority and where does it start?",
+  "a": "9 December 2026 at 09:00 at the Rotterdam site.",
+  "type": "when",
+  "facts": [
+   "The customs authority audits the AEO certificate of Corp Europe on 9 December 2026, starting at 09:00 at the Rotterdam site."
+  ],
+  "gold_email_keys": [
+   "m1"
+  ],
+  "gold_message_ids": [
+   "aeo.t1.m1.13b419571b@customs-authority.example"
+  ]
+ },
+ {
+  "id": "aeo-q2",
+  "storyline": "aeo",
+  "q": "What exactly was the gap found in Venlo during the AEO walk-through?",
+  "a": "Visitors only sign a paper sheet, no ID is checked and there is no record of when the badge is returned.",
+  "type": "fact",
+  "facts": [
+   "The gap in Venlo: visitors sign a paper sheet, no ID is checked and there is no record of badge return."
+  ],
+  "gold_email_keys": [
+   "m4"
+  ],
+  "gold_message_ids": [
+   "aeo.t2.m4.6f358a6cd9@corp-europe.example"
+  ]
+ },
+ {
+  "id": "aeo-q3",
+  "storyline": "aeo",
+  "q": "Why are truck drivers not included in the new Venlo visitor log?",
+  "a": "They are covered by the separate outbound gate procedure with a driver check, which was ok in the walk-through.",
+  "type": "why",
+  "facts": [
+   "Truck drivers are not part of the visitor log because they are covered by the separate outbound gate procedure."
+  ],
+  "gold_email_keys": [
+   "m6"
+  ],
+  "gold_message_ids": [
+   "aeo.t2.m6.c8f0150265@corp-europe.example"
+  ]
+ },
+ {
+  "id": "aeo-q4",
+  "storyline": "aeo",
+  "q": "Who owns the Venlo visitor registration fix and by when must it be live?",
+  "a": "Jeroen de Vries, live by 6 November 2026.",
+  "type": "who",
+  "facts": [
+   "The fix is a digital visitor log with ID check, numbered badges and sign-out time, kept for 12 months, to be live by 6 November; Jeroen de Vries owns the action in Venlo."
+  ],
+  "gold_email_keys": [
+   "m4",
+   "m5",
+   "m8"
+  ],
+  "gold_message_ids": [
+   "aeo.t2.m4.6f358a6cd9@corp-europe.example",
+   "aeo.t2.m5.a88d3905ce@corp-europe.example",
+   "aeo.t1.m8.2db1065d79@corp-europe.example"
+  ]
+ },
+ {
+  "id": "aeo-q5",
+  "storyline": "aeo",
+  "q": "Which items were still open on the Rotterdam yard checklist at the end of October and what did the fence repair cost?",
+  "a": "Lighting at gate 2, a damaged fence section near the container stack and camera 6 out of focus; the fence repair is about EUR 4,800.",
+  "type": "multihop",
+  "facts": [
+   "The Rotterdam yard checklist has 31 points with 3 open: lighting at gate 2, a damaged fence section near the container stack, and camera 6 out of focus.",
+   "The fence repair costs around EUR 4,800 and Marta asked Mark de Boer for approval."
+  ],
+  "gold_email_keys": [
+   "m8"
+  ],
+  "gold_message_ids": [
+   "aeo.t1.m8.2db1065d79@corp-europe.example"
+  ]
+ },
+ {
+  "id": "aeo-q6",
+  "storyline": "aeo",
+  "q": "How many auditors from the customs authority will attend the AEO audit on the final day, and what are their names?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "ai_mail_classifier-q1",
+  "storyline": "ai_mail_classifier",
+  "q": "What accuracy did the mail sorting pilot reach on the test set?",
+  "a": "93 % on the first run (186 of 200) and 97 % (194 of 200) after adding German examples and the claim number format.",
+  "type": "fact",
+  "facts": [
+   "The first run classified 186 of 200 correctly (93 %); after adding German examples and the CLM claim format 194 of 200 (97 %), at about 0.4 cent per mail."
+  ],
+  "gold_email_keys": [
+   "m4"
+  ],
+  "gold_message_ids": [
+   "ai_mail_classifier.t1.m4.f08d9eb6e0@corp-europe.example"
+  ]
+ },
+ {
+  "id": "ai_mail_classifier-q2",
+  "storyline": "ai_mail_classifier",
+  "q": "What was decided at the go/no-go of the mail sorting pilot?",
+  "a": "A shadow run from 9 Nov to 4 Dec in which the model only suggests queues; automatic sorting is decided on 7 Dec with a 95 % target.",
+  "type": "decision",
+  "facts": [
+   "On 29 Oct the go/no-go decided a shadow run from 9 Nov to 4 Dec where the model only suggests a queue; automatic sorting is decided on 7 Dec with a 95 % target."
+  ],
+  "gold_email_keys": [
+   "m6"
+  ],
+  "gold_message_ids": [
+   "ai_mail_classifier.t1.m6.d5d8c25043@corp-europe.example"
+  ]
+ },
+ {
+  "id": "ai_mail_classifier-q3",
+  "storyline": "ai_mail_classifier",
+  "q": "What condition came with the data protection approval for the mail classifier?",
+  "a": "DP-07-2026-114 is valid until 31 Mar 2027 and medical or HR mails must be routed to 'other' without processing the body.",
+  "type": "fact",
+  "facts": [
+   "The data protection screening DP-07-2026-114 was approved until 31 Mar 2027 on condition that medical or HR mails go to 'other' unprocessed."
+  ],
+  "gold_email_keys": [
+   "d3"
+  ],
+  "gold_message_ids": [
+   "ai_mail_classifier.t2.d3.368f2a13f0@corp-europe.example"
+  ]
+ },
+ {
+  "id": "authorizations-q1",
+  "storyline": "authorizations",
+  "q": "Which ticket number was used to request the SAP roles for the new transport planner?",
+  "a": "REQ0048213",
+  "type": "identifier",
+  "facts": [
+   "Tom requested access via the IT portal under request REQ0048213 on 19 Oct 2026."
+  ],
+  "gold_email_keys": [
+   "m1"
+  ],
+  "gold_message_ids": [
+   "authorizations.t1.m1.401ccccc6a@corp-europe.example"
+  ]
+ },
+ {
+  "id": "authorizations-q2",
+  "storyline": "authorizations",
+  "q": "Why did Lukas ask Tom to confirm the plants before approving?",
+  "a": "Tom only named Rotterdam but also plans Venlo runs; without shipping point VN01, VT01N would refuse Venlo deliveries.",
+  "type": "why",
+  "facts": [
+   "Tom's original request named only Rotterdam, but he also plans Venlo outbound runs.",
+   "Without shipping point VN01 in the authorization, VT01N would refuse Venlo deliveries with 'no authorization for shipping point'."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m2",
+   "m3"
+  ],
+  "gold_message_ids": [
+   "authorizations.t1.m1.401ccccc6a@corp-europe.example",
+   "authorizations.t1.m2.2a156c922a@corp-europe.example",
+   "authorizations.t1.m3.4a7fde3c72@corp-europe.example"
+  ]
+ },
+ {
+  "id": "authorizations-q3",
+  "storyline": "authorizations",
+  "q": "Which SAP roles cover VT01N/VT02N and VL06O?",
+  "a": "Z_LE_SHIPMENT_PLANNER covers VT01N/VT02N; Z_LE_DELIVERY_MONITOR covers VL06O.",
+  "type": "fact",
+  "facts": [
+   "VT01N/VT02N are covered by role Z_LE_SHIPMENT_PLANNER and VL06O by role Z_LE_DELIVERY_MONITOR; no extra sign-off is needed for them."
+  ],
+  "gold_email_keys": [
+   "m2"
+  ],
+  "gold_message_ids": [
+   "authorizations.t1.m2.2a156c922a@corp-europe.example"
+  ]
+ },
+ {
+  "id": "authorizations-q4",
+  "storyline": "authorizations",
+  "q": "Who approves SAP role requests for shipment planning and when were Tom's roles active?",
+  "a": "Lukas Becker approves as role owner; the roles were active from Wednesday 21 Oct 2026, after overnight provisioning.",
+  "type": "multihop",
+  "facts": [
+   "Lukas Becker approves the request as role owner.",
+   "Lukas approved the request on 20 Oct 2026 at about 16:30.",
+   "IT provisions approved requests overnight, so the roles were active from Wed 21 Oct 2026."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m4",
+   "m5"
+  ],
+  "gold_message_ids": [
+   "authorizations.t1.m1.401ccccc6a@corp-europe.example",
+   "authorizations.t1.m4.2302b29cf6@corp-europe.example",
+   "authorizations.t1.m5.66ae056fe0@corp-europe.example"
+  ]
+ },
+ {
+  "id": "authorizations-q5",
+  "storyline": "authorizations",
+  "q": "What should a user do after IT has provisioned new SAP roles?",
+  "a": "Log off and on again in SAP, because authorizations are only loaded at login.",
+  "type": "howto",
+  "facts": [
+   "Authorizations are only loaded at login, so the user has to log off and on again in SAP."
+  ],
+  "gold_email_keys": [
+   "m4"
+  ],
+  "gold_message_ids": [
+   "authorizations.t1.m4.2302b29cf6@corp-europe.example"
+  ]
+ },
+ {
+  "id": "authorizations-q6",
+  "storyline": "authorizations",
+  "q": "How long is the password validity of Tom's new SAP account?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "baltic_claim-q1",
+  "storyline": "baltic_claim",
+  "q": "Why did Baltic Shipping first reject claim CLM-2026-0912?",
+  "a": "They said the packaging was insufficient: pallets were only stretch-wrapped, with no top cover or moisture barrier.",
+  "type": "why",
+  "facts": [
+   "On 2 Oct Baltic Shipping rejected the claim, arguing the packaging (only stretch wrap, no top cover or moisture barrier) was insufficient."
+  ],
+  "gold_email_keys": [
+   "m2"
+  ],
+  "gold_message_ids": [
+   "baltic_claim.t1.m2.0f69ca60a8@balticship.example"
+  ]
+ },
+ {
+  "id": "baltic_claim-q2",
+  "storyline": "baltic_claim",
+  "q": "What did the surveyor report find as the main cause of the water damage?",
+  "a": "A cracked door seal gasket on the container (carrier side), with the missing moisture barrier as a contributory cause.",
+  "type": "why",
+  "facts": [
+   "Surveyor report SR-2026-1187 found a cracked door seal gasket on the container as primary cause, with the missing moisture barrier as contributory cause."
+  ],
+  "gold_email_keys": [
+   "m6"
+  ],
+  "gold_message_ids": [
+   "baltic_claim.t1.m6.e114bba466@balticship.example"
+  ]
+ },
+ {
+  "id": "baltic_claim-q3",
+  "storyline": "baltic_claim",
+  "q": "How much was finally settled for the Baltic Shipping damage claim and when was it paid?",
+  "a": "EUR 4,920 (60% of EUR 8,200), paid on 27 October.",
+  "type": "fact",
+  "facts": [
+   "The surveyor recommended a liability split of 60% carrier and 40% shipper; on 14 Oct Baltic Shipping withdrew its rejection and offered 60%, EUR 4,920.",
+   "Baltic Shipping paid EUR 4,920 on 27 Oct and took the container out of service for seal replacement."
+  ],
+  "gold_email_keys": [
+   "m10",
+   "m6",
+   "m7"
+  ],
+  "gold_message_ids": [
+   "baltic_claim.t1.m10.44702b4156@balticship.example",
+   "baltic_claim.t1.m6.e114bba466@balticship.example",
+   "baltic_claim.t1.m7.dbde4148a0@corp-europe.example"
+  ]
+ },
+ {
+  "id": "baltic_claim-q4",
+  "storyline": "baltic_claim",
+  "q": "How much of the damaged goods value did Corp Europe have to write off?",
+  "a": "EUR 3,280 (the remaining 40%).",
+  "type": "multihop",
+  "facts": [
+   "The remaining 40%, EUR 3,280, stays with Corp Europe and is booked as a write-off by Ana Novak after the money arrives."
+  ],
+  "gold_email_keys": [
+   "m11",
+   "m7",
+   "m8"
+  ],
+  "gold_message_ids": [
+   "baltic_claim.t1.m11.192f91c425@corp-europe.example",
+   "baltic_claim.t1.m7.dbde4148a0@corp-europe.example",
+   "baltic_claim.t1.m8.bd94900eec@corp-europe.example"
+  ]
+ },
+ {
+  "id": "baltic_claim-q5",
+  "storyline": "baltic_claim",
+  "q": "Which container and invoice are linked to claim CLM-2026-0912?",
+  "a": "Container MSKU4471826 and supplier invoice INV-48213.",
+  "type": "identifier",
+  "facts": [
+   "Claim CLM-2026-0912 concerns 14 of 22 pallets of electronics damaged by water on the Gdynia-Rotterdam sailing (container MSKU4471826).",
+   "Supplier invoice INV-48213 covers all 22 pallets for EUR 12,890; the 8 undamaged pallets are worth EUR 4,690."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m4"
+  ],
+  "gold_message_ids": [
+   "baltic_claim.t1.m1.1f139fe929@corp-europe.example",
+   "baltic_claim.t1.m4.af609e7495@corp-europe.example"
+  ]
+ },
+ {
+  "id": "baltic_claim-q6",
+  "storyline": "baltic_claim",
+  "q": "Who approved the 60% settlement on the finance side?",
+  "a": "Ana Novak, on 16 October.",
+  "type": "who",
+  "facts": [
+   "Ana Novak approved accepting the 60% on 16 Oct and asked for payment within 14 days with reference CLM-2026-0912."
+  ],
+  "gold_email_keys": [
+   "m8",
+   "m9"
+  ],
+  "gold_message_ids": [
+   "baltic_claim.t1.m8.bd94900eec@corp-europe.example",
+   "baltic_claim.t1.m9.211ed3d565@corp-europe.example"
+  ]
+ },
+ {
+  "id": "baltic_claim-q7",
+  "storyline": "baltic_claim",
+  "q": "Which insurer reimbursed the remaining 40% of the loss?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "customs-q1",
+  "storyline": "customs",
+  "q": "When is the new go-live of the DMS customs migration and why was it moved?",
+  "a": "17 Nov 2026; Nordline's DMS release slipped from the end of October to 10 Nov.",
+  "type": "why",
+  "facts": [
+   "On 20 Oct Nordline announced that its DMS release slips from the end of October to 10 Nov because testing found two issues with amendments.",
+   "Ruud Jansen moved the go-live from 3 Nov to 17 Nov 2026 with no parallel formats."
+  ],
+  "gold_email_keys": [
+   "m15",
+   "m16"
+  ],
+  "gold_message_ids": [
+   "customs.t2.m15.eb83e7c682@nordline.example",
+   "customs.t1.m16.126341eef6@corp-europe.example"
+  ]
+ },
+ {
+  "id": "customs-q2",
+  "storyline": "customs",
+  "q": "Why do we not run the old and the new declaration format in parallel?",
+  "a": "The gateway supports only one message format per partner profile, testing both would double the effort, and customs switches off the old system at go-live.",
+  "type": "why",
+  "facts": [
+   "No parallel formats because the gateway supports only one message format per partner profile, testing both would double the effort, and customs switches off the old system at go-live."
+  ],
+  "gold_email_keys": [
+   "m19"
+  ],
+  "gold_message_ids": [
+   "customs.t1.m19.d620fd7dff@corp-europe.example"
+  ]
+ },
+ {
+  "id": "customs-q3",
+  "storyline": "customs",
+  "q": "Which two mapping fields are still open and who do they wait for?",
+  "a": "GI_STAT_VALUE and GI_CUSTOMS_VALUE (goods-item statistical and customs value); they wait for Finance (Ana Novak, answer by 6 Nov).",
+  "type": "identifier",
+  "facts": [
+   "The two open mapping fields are GI_STAT_VALUE and GI_CUSTOMS_VALUE (statistical and customs value per goods item), which depend on Finance; Ana Novak expects an answer by 6 Nov."
+  ],
+  "gold_email_keys": [
+   "m10",
+   "m6"
+  ],
+  "gold_message_ids": [
+   "customs.t3.m10.57186fb8d2@corp-europe.example",
+   "customs.t3.m6.393ee80b52@corp-europe.example"
+  ]
+ },
+ {
+  "id": "customs-q4",
+  "storyline": "customs",
+  "q": "What are the dates of the end-to-end test with customs and the go/no-go call?",
+  "a": "Test on 4-6 Nov 2026 (at least 20 declarations); go/no-go call on 12 Nov.",
+  "type": "when",
+  "facts": [
+   "The end-to-end test with customs takes place on 4-6 Nov 2026 and needs at least 20 declarations.",
+   "The go/no-go call is on 12 Nov and Mark de Boer decides; 12 Nov is the last point to stop the cut-over."
+  ],
+  "gold_email_keys": [
+   "m16",
+   "m19",
+   "m8"
+  ],
+  "gold_message_ids": [
+   "customs.t1.m16.126341eef6@corp-europe.example",
+   "customs.t1.m19.d620fd7dff@corp-europe.example",
+   "customs.t1.m8.93c9bd33ac@customs-authority.example"
+  ]
+ },
+ {
+  "id": "customs-q5",
+  "storyline": "customs",
+  "q": "How long does the Rotterdam EWM change freeze last in the end, and who proposed it?",
+  "a": "From 19 Oct until 17 Nov; proposed by Hanna Schmidt.",
+  "type": "multihop",
+  "facts": [
+   "The EWM change freeze in Rotterdam was proposed by Hanna Schmidt to start on 19 Oct and was extended to 17 Nov."
+  ],
+  "gold_email_keys": [
+   "m17",
+   "m2"
+  ],
+  "gold_message_ids": [
+   "customs.t1.m17.bfc1fe3541@corp-europe.example",
+   "customs.t1.m2.ebbf027317@corp-europe.example"
+  ]
+ },
+ {
+  "id": "customs-q6",
+  "storyline": "customs",
+  "q": "Who in Corp Europe is the contact for the customs test team and how many test declarations are planned?",
+  "a": "Marta Kowalska; 22 declarations planned (minimum 20).",
+  "type": "who",
+  "facts": [
+   "The end-to-end test with customs takes place on 4-6 Nov 2026 and needs at least 20 declarations.",
+   "Marta Kowalska is the contact for the customs test team and planned 22 test declarations (6 test cases) as buffer over the minimum of 20."
+  ],
+  "gold_email_keys": [
+   "m11",
+   "m16",
+   "m3",
+   "m8"
+  ],
+  "gold_message_ids": [
+   "customs.t1.m11.c9285c2b42@corp-europe.example",
+   "customs.t1.m16.126341eef6@corp-europe.example",
+   "customs.t1.m3.382306b362@corp-europe.example",
+   "customs.t1.m8.93c9bd33ac@customs-authority.example"
+  ]
+ },
+ {
+  "id": "customs-q7",
+  "storyline": "customs",
+  "q": "Which SAP transport number carries the gateway mapping change for DMS?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "detention-q1",
+  "storyline": "detention",
+  "q": "How much does Corp Europe finally pay Nordline for the detention of container MSKU1234567, and for how many days?",
+  "a": "EUR 900 for 6 days (EUR 150 per day), after a EUR 750 credit note.",
+  "type": "fact",
+  "facts": [
+   "The charge is 11 chargeable days (19 to 29 September 2026) at EUR 150 per day; free time ended on 2026-09-18.",
+   "Pia Lindqvist agreed on 2026-10-26 to a credit note CN-20931 of EUR 750 (5 days), so Corp Europe pays 6 days, EUR 900."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m7"
+  ],
+  "gold_message_ids": [
+   "detention.t1.m1.001894686f@nordline.example",
+   "detention.t2.m7.2b7635b9e7@nordline.example"
+  ]
+ },
+ {
+  "id": "detention-q2",
+  "storyline": "detention",
+  "q": "Why did Sofie Peeters reject Nordline's offer of a EUR 450 credit?",
+  "a": "Annex 2 of the transport agreement accepts same-day requests until 18:00 (hers came at 17:42), and Nordline's own booking confirmation said no slots were available until 09-28.",
+  "type": "why",
+  "facts": [
+   "Nordline first offered a credit of EUR 450 (3 days), arguing the request came after 17:00 and the terminal had no slots until 09-28.",
+   "Sofie rejected the offer because Annex 2 of the transport agreement accepts same-day requests until 18:00, and Nordline's own BK-77120 confirmation said slots were unavailable until 09-28."
+  ],
+  "gold_email_keys": [
+   "m5",
+   "m6"
+  ],
+  "gold_message_ids": [
+   "detention.t2.m5.029ce4ba54@nordline.example",
+   "detention.t2.m6.dd794e04ab@corp-europe.example"
+  ]
+ },
+ {
+  "id": "detention-q3",
+  "storyline": "detention",
+  "q": "What is the number of the credit note that Nordline issues for the Antwerp detention dispute?",
+  "a": "CN-20931",
+  "type": "identifier",
+  "facts": [
+   "Pia Lindqvist agreed on 2026-10-26 to a credit note CN-20931 of EUR 750 (5 days), so Corp Europe pays 6 days, EUR 900."
+  ],
+  "gold_email_keys": [
+   "m7"
+  ],
+  "gold_message_ids": [
+   "detention.t2.m7.2b7635b9e7@nordline.example"
+  ]
+ },
+ {
+  "id": "detention-q4",
+  "storyline": "detention",
+  "q": "On what date was Nordline's pickup booking BK-77120 confirmed, and when had Antwerp asked for the empty to be collected?",
+  "a": "It was confirmed on 2026-09-28; the request was sent on 2026-09-23 at 17:42.",
+  "type": "when",
+  "facts": [
+   "Sofie sent the empty release request to the Nordline ops desk on 2026-09-23 at 17:42.",
+   "Nordline confirmed pickup booking BK-77120 only on 2026-09-28 and collected the empty on 2026-09-29."
+  ],
+  "gold_email_keys": [
+   "m3",
+   "m4"
+  ],
+  "gold_message_ids": [
+   "detention.t1.m3.45740d1131@corp-europe.example",
+   "detention.t2.m4.ea4ada52cc@corp-europe.example"
+  ]
+ },
+ {
+  "id": "detention-q5",
+  "storyline": "detention",
+  "q": "Who in Finance releases invoice INV-48213 and when can she pay it?",
+  "a": "Ana Novak, after credit note CN-20931 arrives, paying EUR 900 before the due date 2026-11-07.",
+  "type": "who",
+  "facts": [
+   "The due date of INV-48213 is 2026-11-07 (30 day payment term).",
+   "Ana Novak will release INV-48213 after CN-20931 arrives and pay the net EUR 900 before 2026-11-07."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m7",
+   "m8"
+  ],
+  "gold_message_ids": [
+   "detention.t1.m1.001894686f@nordline.example",
+   "detention.t2.m7.2b7635b9e7@nordline.example",
+   "detention.t1.m8.8839b96c0c@corp-europe.example"
+  ]
+ },
+ {
+  "id": "detention-q6",
+  "storyline": "detention",
+  "q": "Which of the 11 chargeable days were Nordline's responsibility, and how do they add up to the credit amount?",
+  "a": "24 to 28 September (5 days); 5 x EUR 150 = EUR 750 credit.",
+  "type": "multihop",
+  "facts": [
+   "The charge is 11 chargeable days (19 to 29 September 2026) at EUR 150 per day; free time ended on 2026-09-18.",
+   "The 5 days from 24 to 28 September were caused by Nordline's late pickup booking.",
+   "Pia Lindqvist agreed on 2026-10-26 to a credit note CN-20931 of EUR 750 (5 days), so Corp Europe pays 6 days, EUR 900."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m3",
+   "m4",
+   "m6",
+   "m7"
+  ],
+  "gold_message_ids": [
+   "detention.t1.m1.001894686f@nordline.example",
+   "detention.t1.m3.45740d1131@corp-europe.example",
+   "detention.t2.m4.ea4ada52cc@corp-europe.example",
+   "detention.t2.m6.dd794e04ab@corp-europe.example",
+   "detention.t2.m7.2b7635b9e7@nordline.example"
+  ]
+ },
+ {
+  "id": "detention-q7",
+  "storyline": "detention",
+  "q": "Which pallet supplier caused the count difference during unloading of MSKU1234567?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "edi_asn-q1",
+  "storyline": "edi_asn",
+  "q": "Why did the DESADV IDocs for Brightwater end in status 51 from 7 October?",
+  "a": "A change to the DESADV mapping transported on 6 Oct filled the SSCC field from the wrong source for mixed pallets, so the SSCC segment (which expects 18 digits) rejected the message.",
+  "type": "why",
+  "facts": [
+   "The failed DESADV IDocs were in status 51 in WE02, partner BRIGHTW, and were never sent to the EDI gateway.",
+   "The error was a mapping error in the pallet SSCC segment.",
+   "The cause was a DESADV mapping change transported on 6 Oct for the new pallet label layout; for mixed pallets the SSCC was filled from the wrong source field, while the target segment expects 18 digits."
+  ],
+  "gold_email_keys": [
+   "m2",
+   "m3"
+  ],
+  "gold_message_ids": [
+   "edi_asn.t1.m2.43d725d61d@corp-europe.example",
+   "edi_asn.t1.m3.9229bebc1a@corp-europe.example"
+  ]
+ },
+ {
+  "id": "edi_asn-q2",
+  "storyline": "edi_asn",
+  "q": "How many Brightwater IDocs were reprocessed with BD87 and when?",
+  "a": "37 IDocs, on 14 Oct at 11:00.",
+  "type": "fact",
+  "facts": [
+   "37 IDocs were reprocessed with BD87 on 14 Oct at 11:00 and all reached status 03."
+  ],
+  "gold_email_keys": [
+   "m7",
+   "m8"
+  ],
+  "gold_message_ids": [
+   "edi_asn.t1.m7.cdbadc7cd0@corp-europe.example",
+   "edi_asn.t2.m8.1fe1405424@corp-europe.example"
+  ]
+ },
+ {
+  "id": "edi_asn-q3",
+  "storyline": "edi_asn",
+  "q": "Who found the cause of the SSCC mapping error and who reprocessed the IDocs?",
+  "a": "Pieter Bakker found the cause; Lukas Becker reprocessed the IDocs with BD87.",
+  "type": "who",
+  "facts": [
+   "The cause was a DESADV mapping change transported on 6 Oct for the new pallet label layout; for mixed pallets the SSCC was filled from the wrong source field, while the target segment expects 18 digits.",
+   "37 IDocs were reprocessed with BD87 on 14 Oct at 11:00 and all reached status 03."
+  ],
+  "gold_email_keys": [
+   "m3",
+   "m7",
+   "m8"
+  ],
+  "gold_message_ids": [
+   "edi_asn.t1.m3.9229bebc1a@corp-europe.example",
+   "edi_asn.t1.m7.cdbadc7cd0@corp-europe.example",
+   "edi_asn.t2.m8.1fe1405424@corp-europe.example"
+  ]
+ },
+ {
+  "id": "edi_asn-q4",
+  "storyline": "edi_asn",
+  "q": "What interim solution did Brightwater get while the ASN flow was broken?",
+  "a": "A daily Excel list per shipment with delivery number, pallet SSCCs and quantities, sent before 08:00.",
+  "type": "howto",
+  "facts": [
+   "As an interim solution Emma Laurent offered Brightwater a daily Excel list with delivery number, pallet SSCCs and quantities before 08:00.",
+   "Brightwater accepted the manual Excel process only until 15 Oct at the latest because they have to key it in by hand."
+  ],
+  "gold_email_keys": [
+   "m4",
+   "m5"
+  ],
+  "gold_message_ids": [
+   "edi_asn.t2.m4.3cc6922b47@corp-europe.example",
+   "edi_asn.t2.m5.2d586f34b1@brightwater.example"
+  ]
+ },
+ {
+  "id": "edi_asn-q5",
+  "storyline": "edi_asn",
+  "q": "Which delivery was used to verify the fix in production, and what was the result?",
+  "a": "Delivery 80412398; its IDoc went to status 03 immediately.",
+  "type": "identifier",
+  "facts": [
+   "Lukas Becker checked the fix with test delivery 80412398, whose IDoc went straight to status 03."
+  ],
+  "gold_email_keys": [
+   "m7"
+  ],
+  "gold_message_ids": [
+   "edi_asn.t1.m7.cdbadc7cd0@corp-europe.example"
+  ]
+ },
+ {
+  "id": "edi_asn-q6",
+  "storyline": "edi_asn",
+  "q": "How many IDocs had failed by the morning of 8 Oct, and how many of the later total of 37 failed on 12 and 13 Oct?",
+  "a": "15 had failed by 8 Oct (6 from 7 Oct and 9 from 8 Oct); 15 of the 37 failed on 12 and 13 Oct (8 + 7).",
+  "type": "multihop",
+  "facts": [
+   "The 37 failed IDocs were distributed over days as 6 (7 Oct), 9 (8 Oct), 7 (9 Oct), 8 (12 Oct) and 7 (13 Oct)."
+  ],
+  "gold_email_keys": [
+   "m7"
+  ],
+  "gold_message_ids": [
+   "edi_asn.t1.m7.cdbadc7cd0@corp-europe.example"
+  ]
+ },
+ {
+  "id": "edi_asn-q7",
+  "storyline": "edi_asn",
+  "q": "What compensation or credit did Corp Europe offer Brightwater for the missing ASNs?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "ewm_rotterdam-q1",
+  "storyline": "ewm_rotterdam",
+  "q": "Why can't the zone B wave template be fixed right away?",
+  "a": "Wave planning is frozen until the 17 Nov customs go-live, to avoid changing waves and customs checks at the same time.",
+  "type": "why",
+  "facts": [
+   "Wave planning is frozen until 17 Nov, the customs go-live date; waves are released manually at 10:00 and 14:00 meanwhile.",
+   "The reason for the freeze is that customs go-live changes the delivery block logic for export deliveries, and Hanna did not want to change waves and customs checks at the same time.",
+   "Hanna decided the zone B template fix is done in the week of 23 Nov, after the customs go-live, not earlier."
+  ],
+  "gold_email_keys": [
+   "m16",
+   "m2",
+   "m3"
+  ],
+  "gold_message_ids": [
+   "ewm_rotterdam.t2.m16.c29779d41f@corp-europe.example",
+   "ewm_rotterdam.t1.m2.6801fb16f6@corp-europe.example",
+   "ewm_rotterdam.t1.m3.f2e4dfc0e8@corp-europe.example"
+  ]
+ },
+ {
+  "id": "ewm_rotterdam-q2",
+  "storyline": "ewm_rotterdam",
+  "q": "What was the Rotterdam week 1 average pick rate versus baseline?",
+  "a": "96% of the 185 lines/hour baseline.",
+  "type": "fact",
+  "facts": [
+   "The pick rate baseline is 185 lines/hour; day 1 reached 163 lines/hour (88%).",
+   "Week 1 (6-12 Oct) averaged 96% of baseline; 9 and 12 Oct reached 100%."
+  ],
+  "gold_email_keys": [
+   "m12",
+   "m8"
+  ],
+  "gold_message_ids": [
+   "ewm_rotterdam.t1.m12.f8e98d55ea@corp-europe.example",
+   "ewm_rotterdam.t1.m8.27a19327ba@corp-europe.example"
+  ]
+ },
+ {
+  "id": "ewm_rotterdam-q3",
+  "storyline": "ewm_rotterdam",
+  "q": "What caused the 214 open warehouse tasks on go-live day?",
+  "a": "180 were replenishment tasks in queue REPL-B, which was not assigned to a resource group; Lukas assigned it to RG_REPL.",
+  "type": "why",
+  "facts": [
+   "On day 1 at 16:00, /SCWM/MON showed 214 open warehouse tasks, 180 of them in replenishment queue REPL-B.",
+   "Queue REPL-B was not assigned to a resource group, so nobody received the tasks on RF; Lukas assigned it to RG_REPL."
+  ],
+  "gold_email_keys": [
+   "m10",
+   "m8"
+  ],
+  "gold_message_ids": [
+   "ewm_rotterdam.t1.m10.6655cc0ea5@corp-europe.example",
+   "ewm_rotterdam.t1.m8.27a19327ba@corp-europe.example"
+  ]
+ },
+ {
+  "id": "ewm_rotterdam-q4",
+  "storyline": "ewm_rotterdam",
+  "q": "Which transaction is used to see open warehouse tasks in EWM?",
+  "a": "/SCWM/MON",
+  "type": "identifier",
+  "facts": [
+   "Hypercare runs until 30 Oct, with a daily stand-up at 08:30 in the Rotterdam control room.",
+   "On day 1 at 16:00, /SCWM/MON showed 214 open warehouse tasks, 180 of them in replenishment queue REPL-B."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m10",
+   "m18",
+   "m8"
+  ],
+  "gold_message_ids": [
+   "ewm_rotterdam.t1.m1.be61a86dd4@corp-europe.example",
+   "ewm_rotterdam.t1.m10.6655cc0ea5@corp-europe.example",
+   "ewm_rotterdam.t1.m18.285a578e75@corp-europe.example",
+   "ewm_rotterdam.t1.m8.27a19327ba@corp-europe.example"
+  ]
+ },
+ {
+  "id": "ewm_rotterdam-q5",
+  "storyline": "ewm_rotterdam",
+  "q": "When is the zone B template fix planned, and what is wrong with the template?",
+  "a": "Week of 23 Nov; template ZB_WAVE_01 sorts by storage bin ID instead of pick path sequence.",
+  "type": "multihop",
+  "facts": [
+   "Zone B wave template ZB_WAVE_01 sorts by storage bin ID instead of pick path sequence, so tasks jump between aisles B03 and B11.",
+   "Hanna decided the zone B template fix is done in the week of 23 Nov, after the customs go-live, not earlier."
+  ],
+  "gold_email_keys": [
+   "m15",
+   "m16"
+  ],
+  "gold_message_ids": [
+   "ewm_rotterdam.t2.m15.9b1178a700@corp-europe.example",
+   "ewm_rotterdam.t2.m16.c29779d41f@corp-europe.example"
+  ]
+ },
+ {
+  "id": "ewm_rotterdam-q6",
+  "storyline": "ewm_rotterdam",
+  "q": "How much overtime budget was approved for the Rotterdam hypercare?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "gdansk_lease-q1",
+  "storyline": "gdansk_lease",
+  "q": "Why was Kowale chosen over Port Logistics Park for the new Gdansk warehouse?",
+  "a": "Kowale has the lower rent (EUR 4.10 vs EUR 4.80 per m2), which outweighs the longer drive to the port; it also has more docks and a rent-free month.",
+  "type": "why",
+  "facts": [
+   "Port Logistics Park asked EUR 4.80/m2 per month (EUR 57,600 per month) and refused to lower it; Kowale asked EUR 4.10/m2 (EUR 49,200 per month).",
+   "Kowale agreed to 1 month rent-free from handover, so first rent is due 1 March 2027.",
+   "Mark de Boer decided on 21 October to choose Kowale because the lower rent outweighs the longer drive."
+  ],
+  "gold_email_keys": [
+   "m10",
+   "m3",
+   "m5"
+  ],
+  "gold_message_ids": [
+   "gdansk_lease.t1.m10.b3d84e17e6@corp-europe.example",
+   "gdansk_lease.t1.m3.2056ac4dca@corp-europe.example",
+   "gdansk_lease.t1.m5.bc5a532833@corp-europe.example"
+  ]
+ },
+ {
+  "id": "gdansk_lease-q2",
+  "storyline": "gdansk_lease",
+  "q": "When is the Gdansk lease planned to be signed?",
+  "a": "20 November 2026, after legal review.",
+  "type": "when",
+  "facts": [
+   "Lease signing is planned for 20 November 2026, after legal review."
+  ],
+  "gold_email_keys": [
+   "m10",
+   "m11"
+  ],
+  "gold_message_ids": [
+   "gdansk_lease.t1.m10.b3d84e17e6@corp-europe.example",
+   "gdansk_lease.t1.m11.c42b49f565@corp-europe.example"
+  ]
+ },
+ {
+  "id": "gdansk_lease-q3",
+  "storyline": "gdansk_lease",
+  "q": "How much is the Kowale deposit and when is it due?",
+  "a": "EUR 147,600 (3 months rent), due 14 days after signing, around 4 December.",
+  "type": "fact",
+  "facts": [
+   "Kowale accepted the deposit of EUR 147,600 (3 months rent) payable 14 days after signing, around 4 December."
+  ],
+  "gold_email_keys": [
+   "m11"
+  ],
+  "gold_message_ids": [
+   "gdansk_lease.t1.m11.c42b49f565@corp-europe.example"
+  ]
+ },
+ {
+  "id": "gdansk_lease-q4",
+  "storyline": "gdansk_lease",
+  "q": "Who negotiated the commercial terms with the Gdansk landlords?",
+  "a": "Elena Rossi (procurement buyer).",
+  "type": "who",
+  "facts": [
+   "Elena Rossi leads the commercial negotiation and sent the draft lease to Legal on 23 October; Legal expects to finish by 13 November."
+  ],
+  "gold_email_keys": [
+   "m11",
+   "m2"
+  ],
+  "gold_message_ids": [
+   "gdansk_lease.t1.m11.c42b49f565@corp-europe.example",
+   "gdansk_lease.t1.m2.5618c15fad@corp-europe.example"
+  ]
+ },
+ {
+  "id": "gdansk_lease-q5",
+  "storyline": "gdansk_lease",
+  "q": "What is the net monthly saving of Kowale versus Port Logistics Park after extra shuttle costs, and what is the monthly rent difference behind it?",
+  "a": "Rent is EUR 8,400 per month lower; after about EUR 1,500 extra shuttle cost the net saving is about EUR 6,900 per month.",
+  "type": "multihop",
+  "facts": [
+   "Port Logistics Park asked EUR 4.80/m2 per month (EUR 57,600 per month) and refused to lower it; Kowale asked EUR 4.10/m2 (EUR 49,200 per month).",
+   "Extra port shuttle cost for Kowale is estimated at about EUR 1,500 per month (25 moves per week, about EUR 14 more each), leaving a net saving of about EUR 6,900 per month."
+  ],
+  "gold_email_keys": [
+   "m3",
+   "m5",
+   "m7"
+  ],
+  "gold_message_ids": [
+   "gdansk_lease.t1.m3.2056ac4dca@corp-europe.example",
+   "gdansk_lease.t1.m5.bc5a532833@corp-europe.example",
+   "gdansk_lease.t1.m7.c380082f38@corp-europe.example"
+  ]
+ },
+ {
+  "id": "gdansk_lease-q6",
+  "storyline": "gdansk_lease",
+  "q": "Did the longer drive to Kowale put the next-day delivery promise at risk?",
+  "a": "No. The last shuttle still arrives before 14:30 against the 16:00 cut-off, and driver hours stay below the 9 hour limit.",
+  "type": "why",
+  "facts": [
+   "The next-day delivery cut-off to Baltic customers is 16:00 and the last shuttle still arrives before 14:30; the longest driver day rises from 7h20 to about 7h45, below the 9 hour limit."
+  ],
+  "gold_email_keys": [
+   "m9"
+  ],
+  "gold_message_ids": [
+   "gdansk_lease.t1.m9.6aafce4de7@corp-europe.example"
+  ]
+ },
+ {
+  "id": "gdansk_lease-q7",
+  "storyline": "gdansk_lease",
+  "q": "How many employees will work at the new Gdansk warehouse?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "hamburg_congestion-q1",
+  "storyline": "hamburg_congestion",
+  "q": "How much extra did the rebooking via Bremerhaven cost in total, and what was the cost per container?",
+  "a": "EUR 11,400 in total, EUR 1,900 per container for trucking.",
+  "type": "fact",
+  "facts": [
+   "Extra trucking cost is EUR 1,900 per container, EUR 11,400 in total, booked on the freight cost centre."
+  ],
+  "gold_email_keys": [
+   "m6",
+   "m9"
+  ],
+  "gold_message_ids": [
+   "hamburg_congestion.t1.m6.e8b700efe3@corp-europe.example",
+   "hamburg_congestion.t1.m9.5088459718@corp-europe.example"
+  ]
+ },
+ {
+  "id": "hamburg_congestion-q2",
+  "storyline": "hamburg_congestion",
+  "q": "Why did Tom move the containers to Bremerhaven instead of waiting for Hamburg?",
+  "a": "Hamburg could not offer gate-out slots before 6 October, which would miss the 5 October deadline for the two EWM containers in Venlo.",
+  "type": "why",
+  "facts": [
+   "Hanna needed the two critical containers in Venlo by 5 October for cycle count preparation.",
+   "On 25 Sep HHT's utilisation was 94% and the earliest gate-out slots were from 6 October, not guaranteed.",
+   "Rebooking was needed because Hamburg could not offer gate-out slots before 6 October, missing the 5 October date."
+  ],
+  "gold_email_keys": [
+   "m3",
+   "m5",
+   "m6"
+  ],
+  "gold_message_ids": [
+   "hamburg_congestion.t1.m3.197094640b@corp-europe.example",
+   "hamburg_congestion.t1.m5.2c0afc7755@hht-terminal.example",
+   "hamburg_congestion.t1.m6.e8b700efe3@corp-europe.example"
+  ]
+ },
+ {
+  "id": "hamburg_congestion-q3",
+  "storyline": "hamburg_congestion",
+  "q": "Which containers were critical for the EWM rollout and what was in them?",
+  "a": "MSKU4417302 and TGHU8820154, with racking components and scanners for the EWM test area in Venlo.",
+  "type": "identifier",
+  "facts": [
+   "MSKU4417302 and TGHU8820154 were critical, holding racking components and scanners for the EWM test area in Venlo."
+  ],
+  "gold_email_keys": [
+   "m3"
+  ],
+  "gold_message_ids": [
+   "hamburg_congestion.t1.m3.197094640b@corp-europe.example"
+  ]
+ },
+ {
+  "id": "hamburg_congestion-q4",
+  "storyline": "hamburg_congestion",
+  "q": "When did the situation at HHT Hamburg return to normal?",
+  "a": "From 8 October 2026, when utilisation dropped to 81%.",
+  "type": "when",
+  "facts": [
+   "From 8 Oct 2026 HHT utilisation fell to 81% and normal gate-out appointments resumed."
+  ],
+  "gold_email_keys": [
+   "m8"
+  ],
+  "gold_message_ids": [
+   "hamburg_congestion.t1.m8.c00f898c3d@hht-terminal.example"
+  ]
+ },
+ {
+  "id": "hamburg_congestion-q5",
+  "storyline": "hamburg_congestion",
+  "q": "Which PO belongs to the container that was expected in Venlo on 3 October, and what is that container's number?",
+  "a": "CMAU5503917, PO 4500218904.",
+  "type": "multihop",
+  "facts": [
+   "CMAU5503917 (PO 4500218904) was expected in Venlo on 3 Oct; HLXU3391028 (PO 4500218955) on 5 Oct."
+  ],
+  "gold_email_keys": [
+   "m6"
+  ],
+  "gold_message_ids": [
+   "hamburg_congestion.t1.m6.e8b700efe3@corp-europe.example"
+  ]
+ },
+ {
+  "id": "hamburg_congestion-q6",
+  "storyline": "hamburg_congestion",
+  "q": "Which shipping line agreed to change the discharge port to Bremerhaven, and what did it charge for the change?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "kpi_co2-q1",
+  "storyline": "kpi_co2",
+  "q": "From when does the TMS export contain the co2_kg_per_shipment column?",
+  "a": "From week 44, i.e. Monday 26 October 2026.",
+  "type": "when",
+  "facts": [
+   "From week 44 (Monday 26 October 2026) the TMS shipment export contains a column co2_kg_per_shipment."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m2"
+  ],
+  "gold_message_ids": [
+   "kpi_co2.t1.m1.418864d5e2@corp-europe.example",
+   "kpi_co2.t1.m2.66aca70afb@routewise.example"
+  ]
+ },
+ {
+  "id": "kpi_co2-q2",
+  "storyline": "kpi_co2",
+  "q": "Why is the CO2 figure on the dashboard labelled as an estimate?",
+  "a": "Because it is based on GLEC default emission factors; carriers have not yet delivered actual fuel consumption data.",
+  "type": "why",
+  "facts": [
+   "RouteWise calculates the value with GLEC default emission factors per vehicle type and distance, so it is an estimate until carriers send actual fuel consumption.",
+   "The dashboard tile is labelled \"CO2 (est.)\" with a tooltip: road legs only, WTW, GLEC, estimate until carriers deliver actual fuel data."
+  ],
+  "gold_email_keys": [
+   "m2",
+   "m4",
+   "m5"
+  ],
+  "gold_message_ids": [
+   "kpi_co2.t1.m2.66aca70afb@routewise.example",
+   "kpi_co2.t1.m4.513758045b@corp-europe.example",
+   "kpi_co2.t1.m5.770057631f@corp-europe.example"
+  ]
+ },
+ {
+  "id": "kpi_co2-q3",
+  "storyline": "kpi_co2",
+  "q": "Which transport legs are included in the CO2 per shipment value?",
+  "a": "Road legs only, calculated well-to-wheel according to the GLEC framework.",
+  "type": "fact",
+  "facts": [
+   "The CO2 value covers road legs only; sea and rail are not included.",
+   "The calculation is well-to-wheel (WTW) and follows the GLEC framework."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m2"
+  ],
+  "gold_message_ids": [
+   "kpi_co2.t1.m1.418864d5e2@corp-europe.example",
+   "kpi_co2.t1.m2.66aca70afb@routewise.example"
+  ]
+ },
+ {
+  "id": "kpi_co2-q4",
+  "storyline": "kpi_co2",
+  "q": "Who updated the dashboard mapping for the new CO2 column?",
+  "a": "Pieter Bakker.",
+  "type": "who",
+  "facts": [
+   "Tom de Vries's colleague Tom Hendriks requested the column from RouteWise; Pieter Bakker maintains the dashboard mapping.",
+   "On 21 October Pieter updated the mapping in the test dashboard; the production dashboard switches to the new field with the first export of week 44."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m5"
+  ],
+  "gold_message_ids": [
+   "kpi_co2.t1.m1.418864d5e2@corp-europe.example",
+   "kpi_co2.t1.m5.770057631f@corp-europe.example"
+  ]
+ },
+ {
+  "id": "kpi_co2-q5",
+  "storyline": "kpi_co2",
+  "q": "How are shipments without a road leg, such as Felixstowe - Rotterdam delivery 80412377, treated in the dashboard average?",
+  "a": "Their CO2 value is blank, shown as blank (not 0) and excluded from the average.",
+  "type": "multihop",
+  "facts": [
+   "Delivery 80412377 (Felixstowe - Rotterdam) is a sea shipment and has a blank CO2 value.",
+   "Blank CO2 values are shown as blank instead of 0 and excluded from the average, to avoid distorting the monthly average."
+  ],
+  "gold_email_keys": [
+   "m2",
+   "m3",
+   "m4",
+   "m5"
+  ],
+  "gold_message_ids": [
+   "kpi_co2.t1.m2.66aca70afb@routewise.example",
+   "kpi_co2.t1.m3.84fade43d6@corp-europe.example",
+   "kpi_co2.t1.m4.513758045b@corp-europe.example",
+   "kpi_co2.t1.m5.770057631f@corp-europe.example"
+  ]
+ },
+ {
+  "id": "kpi_co2-q6",
+  "storyline": "kpi_co2",
+  "q": "When will carriers deliver the actual fuel data for the CO2 calculation?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [
+   "There is no date yet for when carriers will deliver actual fuel data."
+  ],
+  "gold_email_keys": [
+   "m4"
+  ],
+  "gold_message_ids": [
+   "kpi_co2.t1.m4.513758045b@corp-europe.example"
+  ]
+ },
+ {
+  "id": "n8n_eta_flow-q1",
+  "storyline": "n8n_eta_flow",
+  "q": "How does the ETA flow decide whether to write an ETA into RouteWise?",
+  "a": "It writes the ETA when the extraction confidence is at least 0.8; below that the mail goes to a review list in Teams.",
+  "type": "howto",
+  "facts": [
+   "The n8n flow polls the ETA mailbox every 10 minutes, extracts shipment number and ETA (with the language model for free-text mails) and updates RouteWise via its API; below 0.8 confidence it goes to a Teams review list."
+  ],
+  "gold_email_keys": [
+   "m2"
+  ],
+  "gold_message_ids": [
+   "n8n_eta_flow.t1.m2.f33f8adb60@corp-europe.example"
+  ]
+ },
+ {
+  "id": "n8n_eta_flow-q2",
+  "storyline": "n8n_eta_flow",
+  "q": "How did the Nordline test week of the ETA flow go?",
+  "a": "398 of 412 ETA mails were written automatically, 14 went to the review list and no wrong ETA was written.",
+  "type": "fact",
+  "facts": [
+   "In the Nordline test week 398 of 412 ETA mails were written automatically and 14 went to review; no wrong ETA was written."
+  ],
+  "gold_email_keys": [
+   "m4"
+  ],
+  "gold_message_ids": [
+   "n8n_eta_flow.t1.m4.92091b12f1@corp-europe.example"
+  ]
+ },
+ {
+  "id": "n8n_eta_flow-q3",
+  "storyline": "n8n_eta_flow",
+  "q": "When does the ETA flow go live for Nordline?",
+  "a": "On Monday 2 November at 06:00; Veltrans follows after two clean weeks with a test from 16 November.",
+  "type": "when",
+  "facts": [
+   "Nordline goes to production on Mon 2 Nov 06:00; Veltrans follows after two clean weeks, its test starting 16 Nov."
+  ],
+  "gold_email_keys": [
+   "m5",
+   "m6"
+  ],
+  "gold_message_ids": [
+   "n8n_eta_flow.t1.m5.95c58c5155@corp-europe.example",
+   "n8n_eta_flow.t1.m6.73f4092ad3@corp-europe.example"
+  ]
+ },
+ {
+  "id": "onboarding-q1",
+  "storyline": "onboarding",
+  "q": "What is the sold-to number of Brightwater Retail and which shipping condition does it have?",
+  "a": "Sold-to 100845, shipping condition 02 (standard).",
+  "type": "identifier",
+  "facts": [
+   "Daan Visser created sold-to 100845 for Brightwater in XD01 on 25 September.",
+   "Shipping condition 02 (standard) is set for Brightwater, as agreed in the contract."
+  ],
+  "gold_email_keys": [
+   "m4"
+  ],
+  "gold_message_ids": [
+   "onboarding.t1.m4.62feb27ebd@corp-europe.example"
+  ]
+ },
+ {
+  "id": "onboarding-q2",
+  "storyline": "onboarding",
+  "q": "Why were the two Brightwater deliveries in the first week late?",
+  "a": "Orders were entered on the morning of the shipping day, so loading in Venlo finished around 09:30 and the trucks left too late for the 14:00 dock closing. It was not a master data problem.",
+  "type": "why",
+  "facts": [
+   "Two deliveries were late in the first week: 80412455 to Zaandam arrived 14:25 on 12 Oct and 80412461 to Mechelen arrived 14:50 on 14 Oct.",
+   "The lateness was caused by orders being entered on the morning of the shipping day, so loading in Venlo finished around 09:30 and the trucks left at 09:45 and 10:20; master data was not the cause."
+  ],
+  "gold_email_keys": [
+   "m10",
+   "m9"
+  ],
+  "gold_message_ids": [
+   "onboarding.t2.m10.b0d3836880@corp-europe.example",
+   "onboarding.t2.m9.8c3d001934@corp-europe.example"
+  ]
+ },
+ {
+  "id": "onboarding-q3",
+  "storyline": "onboarding",
+  "q": "What happens to a truck that arrives at a Brightwater location after 14:00?",
+  "a": "It is refused and has to come back the next working day.",
+  "type": "fact",
+  "facts": [
+   "Brightwater's window is a hard limit: the dock closes at 14:00 and a late truck is refused and must return the next working day."
+  ],
+  "gold_email_keys": [
+   "m8"
+  ],
+  "gold_message_ids": [
+   "onboarding.t1.m8.42e83f3680@corp-europe.example"
+  ]
+ },
+ {
+  "id": "onboarding-q4",
+  "storyline": "onboarding",
+  "q": "Who fixed the missing unloading hours on the Zaandam ship-to and who found the problem?",
+  "a": "Lukas Becker found it in his test; Daan Visser fixed it on 29 September.",
+  "type": "who",
+  "facts": [
+   "In Lukas Becker's test, ship-to 100848 (Zaandam) had empty unloading hours because Daan forgot to save them; Daan fixed this on 29 September."
+  ],
+  "gold_email_keys": [
+   "m5",
+   "m6"
+  ],
+  "gold_message_ids": [
+   "onboarding.t1.m5.982b9ca975@corp-europe.example",
+   "onboarding.t1.m6.15c04de7bd@corp-europe.example"
+  ]
+ },
+ {
+  "id": "onboarding-q5",
+  "storyline": "onboarding",
+  "q": "What changed in the system after the late deliveries and from when does it apply?",
+  "a": "Lukas Becker adjusted route transit times in OVRR and the loading lead time so delivery dates are calculated back from 06:00 at the ship-to; the new schedule applies from Monday 19 October.",
+  "type": "howto",
+  "facts": [
+   "Lukas Becker adjusted the route transit times in OVRR and the loading lead time so delivery dates are calculated back from 06:00; the new schedule applies from Monday 19 October."
+  ],
+  "gold_email_keys": [
+   "m11"
+  ],
+  "gold_message_ids": [
+   "onboarding.t2.m11.76748c2fa2@corp-europe.example"
+  ]
+ },
+ {
+  "id": "onboarding-q6",
+  "storyline": "onboarding",
+  "q": "At what time must the trucks leave Venlo for Zaandam and Mechelen under the new proposal?",
+  "a": "04:00 for Zaandam and 05:00 for Mechelen.",
+  "type": "multihop",
+  "facts": [
+   "Tom Hendriks proposed order entry by 14:00 the day before, evening loading, and departures at 04:00 for Zaandam and 05:00 for Mechelen."
+  ],
+  "gold_email_keys": [
+   "m10"
+  ],
+  "gold_message_ids": [
+   "onboarding.t2.m10.b0d3836880@corp-europe.example"
+  ]
+ },
+ {
+  "id": "onboarding-q7",
+  "storyline": "onboarding",
+  "q": "Which carrier transports the Brightwater deliveries from Venlo?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "packaging-q1",
+  "storyline": "packaging",
+  "q": "Which new carton sizes replace the old ones from 2 November, and which old sizes do they replace?",
+  "a": "S2, M3 and L4 replace S1, M2 and L3.",
+  "type": "fact",
+  "facts": [
+   "Three new carton sizes S2, M3 and L4 replace the old S1, M2 and L3 from 2 Nov 2026."
+  ],
+  "gold_email_keys": [
+   "m1"
+  ],
+  "gold_message_ids": [
+   "packaging.t1.m1.a564164ff0@corp-europe.example"
+  ]
+ },
+ {
+  "id": "packaging-q2",
+  "storyline": "packaging",
+  "q": "Why does Antwerp not have to scrap the old cartons on 2 Nov?",
+  "a": "Daan decided that the old cartons are used up first; the new sizes become standard in the master data from 2 Nov, but Antwerp keeps packing with the old ones until empty.",
+  "type": "why",
+  "facts": [
+   "Three new carton sizes S2, M3 and L4 replace the old S1, M2 and L3 from 2 Nov 2026.",
+   "Decision: the old cartons are used up first; nothing is scrapped or sent back to the supplier."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m3"
+  ],
+  "gold_message_ids": [
+   "packaging.t1.m1.a564164ff0@corp-europe.example",
+   "packaging.t1.m3.2599e755e8@corp-europe.example"
+  ]
+ },
+ {
+  "id": "packaging-q3",
+  "storyline": "packaging",
+  "q": "Who adjusted the EWM packaging instructions, and from when are the new ones valid?",
+  "a": "Lukas Becker; they are valid from 2 Nov.",
+  "type": "who",
+  "facts": [
+   "Lukas Becker adjusts the packaging instructions in EWM.",
+   "The new EWM packaging instructions are valid from 2 Nov; the old ones stay active in parallel until the old stock is gone."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m4"
+  ],
+  "gold_message_ids": [
+   "packaging.t1.m1.a564164ff0@corp-europe.example",
+   "packaging.t1.m4.c40e401016@corp-europe.example"
+  ]
+ },
+ {
+  "id": "packaging-q4",
+  "storyline": "packaging",
+  "q": "When is the first delivery of new cartons planned for Antwerp and where will they be stored?",
+  "a": "Thu 29 Oct, in bay 14.",
+  "type": "when",
+  "facts": [
+   "The first delivery of new cartons for Antwerp is planned for Thu 29 Oct and goes to bay 14."
+  ],
+  "gold_email_keys": [
+   "m3",
+   "m6"
+  ],
+  "gold_message_ids": [
+   "packaging.t1.m3.2599e755e8@corp-europe.example",
+   "packaging.t1.m6.c3372eaf9e@corp-europe.example"
+  ]
+ },
+ {
+  "id": "packaging-q5",
+  "storyline": "packaging",
+  "q": "How many of the 312 materials failed in the first MM02 run and why?",
+  "a": "14 failed because they were locked by a batch job; they were repeated afterwards and are fine.",
+  "type": "multihop",
+  "facts": [
+   "Daan Visser updates the packaging data in the material master with MM02 for 312 materials.",
+   "In the MM02 update 298 materials went through in the first run; 14 were blocked by a batch job lock and were repeated successfully."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m5"
+  ],
+  "gold_message_ids": [
+   "packaging.t1.m1.a564164ff0@corp-europe.example",
+   "packaging.t1.m5.4d70943676@corp-europe.example"
+  ]
+ },
+ {
+  "id": "packaging-q6",
+  "storyline": "packaging",
+  "q": "What is the price per carton for the new S2, M3 and L4 sizes?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "pallets-q1",
+  "storyline": "pallets",
+  "q": "Why can PalletPro not deliver the EUR pallets to Venlo before 30 Oct?",
+  "a": "Their production is fully booked until then.",
+  "type": "why",
+  "facts": [
+   "PalletPro could not deliver earlier than 30 Oct because its production was fully booked."
+  ],
+  "gold_email_keys": [
+   "m2",
+   "m6"
+  ],
+  "gold_message_ids": [
+   "pallets.t1.m2.639a786ad0@corp-europe.example",
+   "pallets.t2.m6.b06311d886@palletpro.example"
+  ]
+ },
+ {
+  "id": "pallets-q2",
+  "storyline": "pallets",
+  "q": "Which stock transfer order was used to move 400 pallets from Antwerp to Venlo?",
+  "a": "STO 4500123501",
+  "type": "identifier",
+  "facts": [
+   "Sofie Peeters agreed to lend 400 EUR pallets from Antwerp using stock transfer order STO 4500123501, ready for pickup from 06:00 on 15 Oct."
+  ],
+  "gold_email_keys": [
+   "m8"
+  ],
+  "gold_message_ids": [
+   "pallets.t3.m8.b1b2f0cd85@corp-europe.example"
+  ]
+ },
+ {
+  "id": "pallets-q3",
+  "storyline": "pallets",
+  "q": "Why was borrowing 400 pallets from Antwerp not enough on its own, and how did Jeroen solve it?",
+  "a": "684 pallets last only about 5.7 days at 120 per day; Jeroen moved about 60 pallets per day of domestic volume to one-way pallets so the stock lasts until 30 Oct.",
+  "type": "multihop",
+  "facts": [
+   "Venlo consumes about 120 EUR pallets per day.",
+   "Borrowing 400 pallets from Antwerp gives 684 pallets, which lasts only about 5.7 days at 120 per day.",
+   "Jeroen de Vries moves about 60 pallets per day of domestic volume to one-way pallets, cutting EUR pallet use to roughly 60 per day so the stock lasts until 30 Oct."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m2",
+   "m3"
+  ],
+  "gold_message_ids": [
+   "pallets.t1.m1.9c42c7ecee@corp-europe.example",
+   "pallets.t1.m2.639a786ad0@corp-europe.example",
+   "pallets.t1.m3.3006e5ac47@corp-europe.example"
+  ]
+ },
+ {
+  "id": "pallets-q4",
+  "storyline": "pallets",
+  "q": "Who approved PO 4500123456 and what else did that person decide?",
+  "a": "Mark de Boer approved it and also agreed to raise the EUR pallet safety stock in Venlo to 800.",
+  "type": "who",
+  "facts": [
+   "Mark de Boer approved PO 4500123456 on 14 Oct 2026.",
+   "Mark de Boer agreed to raise the safety stock for EUR pallets in Venlo to 800."
+  ],
+  "gold_email_keys": [
+   "m5",
+   "m9"
+  ],
+  "gold_message_ids": [
+   "pallets.t2.m5.cfa05de1f9@corp-europe.example",
+   "pallets.t4.m9.45b5ead336@corp-europe.example"
+  ]
+ },
+ {
+  "id": "pallets-q5",
+  "storyline": "pallets",
+  "q": "By when must Venlo return the 400 borrowed pallets to Antwerp?",
+  "a": "By Friday 6 Nov 2026.",
+  "type": "when",
+  "facts": [
+   "Venlo must return the 400 borrowed pallets to Antwerp by Fri 6 Nov."
+  ],
+  "gold_email_keys": [
+   "m8"
+  ],
+  "gold_message_ids": [
+   "pallets.t3.m8.b1b2f0cd85@corp-europe.example"
+  ]
+ },
+ {
+  "id": "pallets-q6",
+  "storyline": "pallets",
+  "q": "What is the total value of PO 4500123456?",
+  "a": "EUR 7,800 (1,000 pallets at EUR 7.80).",
+  "type": "fact",
+  "facts": [
+   "PO 4500123456 is for 1,000 EUR pallets at EUR 7.80 each, total EUR 7,800."
+  ],
+  "gold_email_keys": [
+   "m4",
+   "m6"
+  ],
+  "gold_message_ids": [
+   "pallets.t2.m4.9e3bc925e3@corp-europe.example",
+   "pallets.t2.m6.b06311d886@palletpro.example"
+  ]
+ },
+ {
+  "id": "pallets-q7",
+  "storyline": "pallets",
+  "q": "Which carrier transported the 400 pallets from Antwerp to Venlo and what did it cost?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "peak-q1",
+  "storyline": "peak",
+  "q": "How much budget was approved for the year-end peak plan in Venlo and when?",
+  "a": "€310,000, approved by Mark de Boer on 22 October 2026.",
+  "type": "fact",
+  "facts": [
+   "The budget request of €310,000 consists of temps €142,000, Saturday premiums €38,000, Veltrans trucks €105,000, equipment/PPE/training €15,000 and contingency €10,000.",
+   "Mark de Boer approved the €310,000 budget on 22 October 2026."
+  ],
+  "gold_email_keys": [
+   "m5",
+   "m8"
+  ],
+  "gold_message_ids": [
+   "peak.t1.m5.da36be456a@corp-europe.example",
+   "peak.t1.m8.b17e42dbff@corp-europe.example"
+  ]
+ },
+ {
+  "id": "peak-q2",
+  "storyline": "peak",
+  "q": "Why were Saturday shifts chosen instead of a third shift in Venlo?",
+  "a": "Dock doors and pick zones are already full in the two weekday shifts, so a third shift adds no door capacity; Saturday does, and night premiums and extra supervision would cost more.",
+  "type": "why",
+  "facts": [
+   "Saturday shifts were chosen over a third shift because dock doors and pick zones are fully used in the two weekday shifts, a third shift would not add door capacity, and night premiums would cost more and need extra supervision."
+  ],
+  "gold_email_keys": [
+   "m7"
+  ],
+  "gold_message_ids": [
+   "peak.t1.m7.f98c559266@corp-europe.example"
+  ]
+ },
+ {
+  "id": "peak-q3",
+  "storyline": "peak",
+  "q": "When do the 25 temps start in Venlo and what is the deadline to sign the agency contract?",
+  "a": "They start Monday 9 November; the contract must be signed by the end of October.",
+  "type": "when",
+  "facts": [
+   "The plan for Venlo is 25 temporary workers starting Monday 9 November, Saturday shifts, and 12 extra Veltrans trucks per day.",
+   "The agency contract has to be signed by the end of October, otherwise the agency cannot guarantee the 25 people for 9 Nov."
+  ],
+  "gold_email_keys": [
+   "m1"
+  ],
+  "gold_message_ids": [
+   "peak.t1.m1.6d8bacfa94@corp-europe.example"
+  ]
+ },
+ {
+  "id": "peak-q4",
+  "storyline": "peak",
+  "q": "Why can Antwerp not take over overflow from Venlo during the peak?",
+  "a": "Storage utilisation in Antwerp is already 91% and the racking extension only arrives in Q1.",
+  "type": "why",
+  "facts": [
+   "Antwerp cannot take Venlo overflow because storage utilisation is already 91% and the racking extension only comes in Q1."
+  ],
+  "gold_email_keys": [
+   "m3"
+  ],
+  "gold_message_ids": [
+   "peak.t1.m3.697a033bb4@corp-europe.example"
+  ]
+ },
+ {
+  "id": "peak-q5",
+  "storyline": "peak",
+  "q": "What part of the €310,000 budget goes to extra trucks, and who provides the trucks?",
+  "a": "About €105,000 for 12 extra trucks per day from Veltrans.",
+  "type": "multihop",
+  "facts": [
+   "Veltrans can supply 12 extra trucks per day from 9 November until 18 December, with a firm booking needed by 30 October.",
+   "The Veltrans extra trucks are budgeted at about €105,000 for the whole period."
+  ],
+  "gold_email_keys": [
+   "m4",
+   "m5"
+  ],
+  "gold_message_ids": [
+   "peak.t1.m4.49755cb613@corp-europe.example",
+   "peak.t1.m5.da36be456a@corp-europe.example"
+  ]
+ },
+ {
+  "id": "peak-q6",
+  "storyline": "peak",
+  "q": "Who had to confirm the Veltrans booking and by when?",
+  "a": "Tom Hendriks, before the 30 October deadline.",
+  "type": "who",
+  "facts": [
+   "Veltrans can supply 12 extra trucks per day from 9 November until 18 December, with a firm booking needed by 30 October.",
+   "After approval Jeroen signs the agency contract, Tom confirms the Veltrans booking before 30 October, and spend is reported against budget every two weeks from mid November."
+  ],
+  "gold_email_keys": [
+   "m4",
+   "m8"
+  ],
+  "gold_message_ids": [
+   "peak.t1.m4.49755cb613@corp-europe.example",
+   "peak.t1.m8.b17e42dbff@corp-europe.example"
+  ]
+ },
+ {
+  "id": "peak-q7",
+  "storyline": "peak",
+  "q": "How many temporary workers will Gdansk hire for the peak season?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "po_approval-q1",
+  "storyline": "po_approval",
+  "q": "Why was PO 4500123456 not approved for two weeks after it was created?",
+  "a": "The ME21N release workflow still routed the approval task to a colleague who had moved to Antwerp, so nobody in Rotterdam or Venlo saw it.",
+  "type": "why",
+  "facts": [
+   "The PO stayed in 'awaiting release' because the ME21N release workflow still routed the approval task to a colleague who moved to Antwerp in September."
+  ],
+  "gold_email_keys": [
+   "m2",
+   "m3"
+  ],
+  "gold_message_ids": [
+   "po_approval.t1.m2.e1a6f21d31@corp-europe.example",
+   "po_approval.t1.m3.d473b70548@corp-europe.example"
+  ]
+ },
+ {
+  "id": "po_approval-q2",
+  "storyline": "po_approval",
+  "q": "Who became the approver for release code 02 and who made the change?",
+  "a": "Mark de Boer became the approver; Pieter Bakker changed it on 27 Oct.",
+  "type": "who",
+  "facts": [
+   "On 27 Oct Pieter Bakker changed the approver position for release code 02 to Mark de Boer and re-triggered the workflow."
+  ],
+  "gold_email_keys": [
+   "m8"
+  ],
+  "gold_message_ids": [
+   "po_approval.t1.m8.1f547c8ee1@corp-europe.example"
+  ]
+ },
+ {
+  "id": "po_approval-q3",
+  "storyline": "po_approval",
+  "q": "When was PO 4500123456 released and when was the delivery to Venlo confirmed for?",
+  "a": "Released on 28 Oct at 10:05; delivery confirmed for Friday 30 Oct.",
+  "type": "when",
+  "facts": [
+   "PO 4500123456 was released on 28 Oct at 10:05 and sent to PalletPro, with delivery to Venlo confirmed for Fri 30 Oct."
+  ],
+  "gold_email_keys": [
+   "m9"
+  ],
+  "gold_message_ids": [
+   "po_approval.t1.m9.45e080bafb@corp-europe.example"
+  ]
+ },
+ {
+  "id": "po_approval-q4",
+  "storyline": "po_approval",
+  "q": "What is the value and quantity of PO 4500123456?",
+  "a": "EUR 12,480 for 4,000 EUR pallets (EUR 3.12 each) from PalletPro.",
+  "type": "identifier",
+  "facts": [
+   "Purchase order 4500123456 for 4,000 EUR pallets from PalletPro was created on 14 Oct 2026 and has a total value of EUR 12,480 (EUR 3.12 per pallet)."
+  ],
+  "gold_email_keys": [
+   "m2",
+   "m6"
+  ],
+  "gold_message_ids": [
+   "po_approval.t1.m2.e1a6f21d31@corp-europe.example",
+   "po_approval.t2.m6.538394e57f@corp-europe.example"
+  ]
+ },
+ {
+  "id": "po_approval-q5",
+  "storyline": "po_approval",
+  "q": "Why did the PO have to reach PalletPro by 28 Oct, and what was the risk after 30 Oct?",
+  "a": "Delivery takes two working days, so 28 Oct meant delivery on 30 Oct; after 30 Oct PalletPro could not guarantee the stock or the EUR 3.12 price.",
+  "type": "multihop",
+  "facts": [
+   "PalletPro agreed on 26 Oct to reserve 4,000 pallets and hold the price of EUR 3.12 until Friday 30 Oct.",
+   "PalletPro delivers to Venlo two working days after receiving the PO, so the PO had to arrive by Wed 28 Oct for delivery on Fri 30 Oct."
+  ],
+  "gold_email_keys": [
+   "m7"
+  ],
+  "gold_message_ids": [
+   "po_approval.t2.m7.8193874f66@palletpro.example"
+  ]
+ },
+ {
+  "id": "po_approval-q6",
+  "storyline": "po_approval",
+  "q": "What is the name of the buyer who moved to Antwerp and whose approval was blocking the PO?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "qm_block-q1",
+  "storyline": "qm_block",
+  "q": "Which t-code is used to make the usage decision that releases stock from quality inspection?",
+  "a": "QA11",
+  "type": "identifier",
+  "facts": [
+   "The how-to steps: MMBE to check stock in Q, QA32 to find the inspection lot, supplier sends certificates and the lot number goes to QA, QE51N to record results, QA11 for the usage decision, MMBE to verify.",
+   "The QA11 usage decision uses code A (accepted); in the example for lot 010000004871 the quality score is 100 and 12 PAL are posted to unrestricted."
+  ],
+  "gold_email_keys": [
+   "m2",
+   "m4"
+  ],
+  "gold_message_ids": [
+   "qm_block.t1.m2.ccae10d6b6@corp-europe.example",
+   "qm_block.t1.m4.8836a3f08b@corp-europe.example"
+  ]
+ },
+ {
+  "id": "qm_block-q2",
+  "storyline": "qm_block",
+  "q": "Why did the first release of supplier stock without certificates take 3 days?",
+  "a": "The supplier sent the certificates only on Wednesday and QA was not told the inspection lot existed, so the usage decision was made on Thursday.",
+  "type": "why",
+  "facts": [
+   "The first time (September) it took 3 days because the supplier sent certificates only on Wednesday and QA was not told about the lot, so the usage decision came on Thursday."
+  ],
+  "gold_email_keys": [
+   "m2"
+  ],
+  "gold_message_ids": [
+   "qm_block.t1.m2.ccae10d6b6@corp-europe.example"
+  ]
+ },
+ {
+  "id": "qm_block-q3",
+  "storyline": "qm_block",
+  "q": "How do I find the inspection lot for stock sitting in Q?",
+  "a": "Use QA32 and search by plant, material or PO, then note the lot number and send it to QA.",
+  "type": "howto",
+  "facts": [
+   "The how-to steps: MMBE to check stock in Q, QA32 to find the inspection lot, supplier sends certificates and the lot number goes to QA, QE51N to record results, QA11 for the usage decision, MMBE to verify.",
+   "Sofie Peeters found the inspection lot 010000004871 in QA32 and mailed the number to QA on 5 October."
+  ],
+  "gold_email_keys": [
+   "m2",
+   "m3"
+  ],
+  "gold_message_ids": [
+   "qm_block.t1.m2.ccae10d6b6@corp-europe.example",
+   "qm_block.t1.m3.0fe88965f6@corp-europe.example"
+  ]
+ },
+ {
+  "id": "qm_block-q4",
+  "storyline": "qm_block",
+  "q": "The inspection lot is closed in QA11 but the stock is still in Q. What should I check?",
+  "a": "Check that the stock posting was ticked in QA11; otherwise the stock does not move to unrestricted.",
+  "type": "howto",
+  "facts": [
+   "In QA11 the stock posting must be ticked so the stock moves from Q to unrestricted with the usage decision; otherwise it stays in Q although the lot is closed."
+  ],
+  "gold_email_keys": [
+   "m4",
+   "m6"
+  ],
+  "gold_message_ids": [
+   "qm_block.t1.m4.8836a3f08b@corp-europe.example",
+   "qm_block.t1.m6.52772c9a69@corp-europe.example"
+  ]
+ },
+ {
+  "id": "qm_block-q5",
+  "storyline": "qm_block",
+  "q": "When was delivery 80651234 released to unrestricted stock and who made the decision?",
+  "a": "On Wednesday 7 October 2026 at 14:20, by QA with usage decision code A in QA11.",
+  "type": "multihop",
+  "facts": [
+   "The QA11 usage decision uses code A (accepted); in the example for lot 010000004871 the quality score is 100 and 12 PAL are posted to unrestricted.",
+   "QA made the usage decision in QA11 on Wednesday 7 October at 14:20 and the 12 pallets moved to unrestricted immediately; this was verified in MMBE and MB51."
+  ],
+  "gold_email_keys": [
+   "m4",
+   "m5"
+  ],
+  "gold_message_ids": [
+   "qm_block.t1.m4.8836a3f08b@corp-europe.example",
+   "qm_block.t1.m5.3120b5331e@corp-europe.example"
+  ]
+ },
+ {
+  "id": "qm_block-q6",
+  "storyline": "qm_block",
+  "q": "Which supplier price discount or penalty was agreed for the late certificates on delivery 80651234?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "rates_2027-q1",
+  "storyline": "rates_2027",
+  "q": "By what date does Corp Europe have to answer Nordline on the 2027 rates?",
+  "a": "18 November 2026 (the Nordline offer itself is valid until 30 November).",
+  "type": "when",
+  "facts": [
+   "The Nordline offer is valid until 30 November 2026.",
+   "Nordline asked for Corp Europe's answer by 18 November 2026 to secure Q1 allocations."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m10",
+   "m7",
+   "m8",
+   "m9"
+  ],
+  "gold_message_ids": [
+   "rates_2027.t1.m1.4f8ec937c5@nordline.example",
+   "rates_2027.t1.m10.811d283df3@corp-europe.example",
+   "rates_2027.t1.m7.e4bc7f1344@corp-europe.example",
+   "rates_2027.t1.m8.eab92dd3e3@nordline.example",
+   "rates_2027.t1.m9.1e36965919@nordline.example"
+  ]
+ },
+ {
+  "id": "rates_2027-q2",
+  "storyline": "rates_2027",
+  "q": "What counter-offer did Corp Europe make to Nordline's +6%?",
+  "a": "+3% on all 19 lanes in return for a volume commitment of 1,800 TEU for 2027.",
+  "type": "fact",
+  "facts": [
+   "Mark de Boer approved a counter of +3% with a volume commitment of 1,800 TEU for 2027, as a total and not per lane.",
+   "Tom sent the counter to Pia on 20 Oct; example: Rotterdam - Shanghai at EUR 1,185 per TEU instead of 1,219."
+  ],
+  "gold_email_keys": [
+   "m4",
+   "m7"
+  ],
+  "gold_message_ids": [
+   "rates_2027.t1.m4.b6acbf02b3@corp-europe.example",
+   "rates_2027.t1.m7.e4bc7f1344@corp-europe.example"
+  ]
+ },
+ {
+  "id": "rates_2027-q3",
+  "storyline": "rates_2027",
+  "q": "Why did Tom consider Nordline's +6% too high?",
+  "a": "His benchmark showed the market at +2 to +4% for 2027 on comparable lanes.",
+  "type": "why",
+  "facts": [
+   "Tom's benchmark showed the market at +2 to +4% for 2027 on comparable lanes.",
+   "Benchmark sources: Forwarder B +2.0%, Carrier C direct +3.5%, Q3 index average +4.0%."
+  ],
+  "gold_email_keys": [
+   "m3"
+  ],
+  "gold_message_ids": [
+   "rates_2027.t1.m3.91fdcd7758@corp-europe.example"
+  ]
+ },
+ {
+  "id": "rates_2027-q4",
+  "storyline": "rates_2027",
+  "q": "Is the 1,800 TEU commitment per quarter or per year, and how does it compare to 2026?",
+  "a": "It is per year across all lanes, about 9% above the 2026 forecast of roughly 1,650 TEU.",
+  "type": "multihop",
+  "facts": [
+   "Elena Rossi thought the 1,800 TEU might be per quarter; Tom clarified it is per year across all 19 lanes.",
+   "The 2026 TEU forecast is about 1,650 TEU, so 1,800 TEU is roughly 9% higher, driven by Brightwater and Gdansk growth."
+  ],
+  "gold_email_keys": [
+   "m5",
+   "m6"
+  ],
+  "gold_message_ids": [
+   "rates_2027.t1.m5.428aa0233c@corp-europe.example",
+   "rates_2027.t1.m6.0619442190@corp-europe.example"
+  ]
+ },
+ {
+  "id": "rates_2027-q5",
+  "storyline": "rates_2027",
+  "q": "What was Nordline's revised offer on 29 October?",
+  "a": "+4.5% on all 19 lanes, tied to the 1,800 TEU commitment; they would not go to +3%.",
+  "type": "fact",
+  "facts": [
+   "On 29 Oct Nordline revised its offer to +4.5% on all 19 lanes, conditional on the 1,800 TEU commitment, and refused +3%."
+  ],
+  "gold_email_keys": [
+   "m9"
+  ],
+  "gold_message_ids": [
+   "rates_2027.t1.m9.1e36965919@nordline.example"
+  ]
+ },
+ {
+  "id": "rates_2027-q6",
+  "storyline": "rates_2027",
+  "q": "Who asked Tom to calculate the cost difference between +4.5% and +3%?",
+  "a": "Mark de Boer.",
+  "type": "who",
+  "facts": [
+   "Mark asked Tom to calculate the EUR difference between +4.5% and +3% on 1,800 TEU, to decide whether to counter with +3.5% or accept."
+  ],
+  "gold_email_keys": [
+   "m10"
+  ],
+  "gold_message_ids": [
+   "rates_2027.t1.m10.811d283df3@corp-europe.example"
+  ]
+ },
+ {
+  "id": "rates_2027-q7",
+  "storyline": "rates_2027",
+  "q": "Which container line did Corp Europe choose for the Gdansk - Shanghai lane for 2027?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "reefer_holds-q1",
+  "storyline": "reefer_holds",
+  "q": "Why were the two reefers held at Felixstowe in September 2026?",
+  "a": "The import declaration had commodity code 0811.90 (frozen fruit) instead of 0710.80 for frozen vegetables.",
+  "type": "why",
+  "facts": [
+   "Reefer containers MSKU4021553 and TGHU7781204 were put on customs hold at Felixstowe on 28 September 2026.",
+   "The declaration showed commodity code 0811.90 (frozen fruit) while the goods were frozen vegetables.",
+   "The correct commodity code for both containers is 0710.80."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m3"
+  ],
+  "gold_message_ids": [
+   "reefer_holds.t1.m1.0ca9bd286b@corp-europe.example",
+   "reefer_holds.t1.m3.656a5120b0@corp-europe.example"
+  ]
+ },
+ {
+  "id": "reefer_holds-q2",
+  "storyline": "reefer_holds",
+  "q": "How much demurrage was charged for the Felixstowe reefers and on which invoice?",
+  "a": "EUR 2,350 on INV-48213 (EUR 1,175 per container).",
+  "type": "identifier",
+  "facts": [
+   "The demurrage invoice is INV-48213 for EUR 2,350, EUR 1,175 per container."
+  ],
+  "gold_email_keys": [
+   "m5"
+  ],
+  "gold_message_ids": [
+   "reefer_holds.t2.m5.fecb0aad93@corp-europe.example"
+  ]
+ },
+ {
+  "id": "reefer_holds-q3",
+  "storyline": "reefer_holds",
+  "q": "Why was Harbour Agency not recharged for the demurrage?",
+  "a": "The wrong code came from the supplier's pre-advice and was also missed by Corp Europe's own team, so the cost stays with Corp Europe.",
+  "type": "why",
+  "facts": [
+   "Harbour Agency lodged the entry using the code from the supplier's pre-advice and did not compare it with the invoice descriptions.",
+   "Harbour Agency is not charged for the demurrage because the wrong code came from the supplier's pre-advice and was also missed internally."
+  ],
+  "gold_email_keys": [
+   "m2",
+   "m7"
+  ],
+  "gold_message_ids": [
+   "reefer_holds.t1.m2.9d63244275@harbour-agency.example",
+   "reefer_holds.t2.m7.e9b10579e9@corp-europe.example"
+  ]
+ },
+ {
+  "id": "reefer_holds-q4",
+  "storyline": "reefer_holds",
+  "q": "What does the new checklist for Felixstowe reefer imports require, and who does the check?",
+  "a": "Harbour Agency checks the commodity code against the invoice and packing list at least 2 working days before vessel ETA.",
+  "type": "howto",
+  "facts": [
+   "Marta Kowalska proposed a checklist on 7 October: Harbour Agency checks the commodity code against invoice and packing list at least 2 working days before vessel ETA.",
+   "Harbour Agency agreed on 9 October, provided it receives invoice and packing list at booking confirmation."
+  ],
+  "gold_email_keys": [
+   "m8",
+   "m9"
+  ],
+  "gold_message_ids": [
+   "reefer_holds.t1.m8.1f552484e0@corp-europe.example",
+   "reefer_holds.t1.m9.61b674bc31@harbour-agency.example"
+  ]
+ },
+ {
+  "id": "reefer_holds-q5",
+  "storyline": "reefer_holds",
+  "q": "When were the held reefers released, and which cost center carries the demurrage?",
+  "a": "Released on 2 October 2026 at 11:40; cost center 41020.",
+  "type": "multihop",
+  "facts": [
+   "Both reefers were released on 2 October 2026 at 11:40 after a hold of 4 days.",
+   "The demurrage cost is booked to cost center 41020 (Felixstowe import)."
+  ],
+  "gold_email_keys": [
+   "m11",
+   "m4",
+   "m7"
+  ],
+  "gold_message_ids": [
+   "reefer_holds.t2.m11.5e56956e8c@corp-europe.example",
+   "reefer_holds.t1.m4.ef23fabfc0@corp-europe.example",
+   "reefer_holds.t2.m7.e9b10579e9@corp-europe.example"
+  ]
+ },
+ {
+  "id": "reefer_holds-q6",
+  "storyline": "reefer_holds",
+  "q": "What daily demurrage rate did the terminal apply to the reefers?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "rpa_bot-q1",
+  "storyline": "rpa_bot",
+  "q": "Why did the invoice bot fail on the Veltrans invoices from 20 October?",
+  "a": "Veltrans changed its PDF template and the invoice total moved from page 1 to page 2, so the bot could not find InvoiceTotal (error E204).",
+  "type": "why",
+  "facts": [
+   "The failure cause was that the invoice total moved from page 1 to page 2 in the Veltrans PDF, so the bot raised error E204 InvoiceTotal not found.",
+   "Veltrans introduced a new invoice template with a billing system update on 19 Oct."
+  ],
+  "gold_email_keys": [
+   "m2",
+   "m4"
+  ],
+  "gold_message_ids": [
+   "rpa_bot.t1.m2.72bcc32d7b@corp-europe.example",
+   "rpa_bot.t1.m4.8ec1073a63@veltrans.example"
+  ]
+ },
+ {
+  "id": "rpa_bot-q2",
+  "storyline": "rpa_bot",
+  "q": "How did Pieter fix the bot problem?",
+  "a": "He added a fallback that searches all pages for the totals block if the total is not on page 1.",
+  "type": "howto",
+  "facts": [
+   "Pieter Bakker added a fallback to the bot that searches all pages for the totals block when the total is not on page 1."
+  ],
+  "gold_email_keys": [
+   "m5"
+  ],
+  "gold_message_ids": [
+   "rpa_bot.t1.m5.62fd10b5c6@corp-europe.example"
+  ]
+ },
+ {
+  "id": "rpa_bot-q3",
+  "storyline": "rpa_bot",
+  "q": "Which Veltrans invoice could not be posted after the rerun and why?",
+  "a": "INV-48217, because the PO reference is missing on the invoice.",
+  "type": "identifier",
+  "facts": [
+   "Invoice INV-48217 stayed in the exception folder because it has no PO reference, so the three-way match is not possible."
+  ],
+  "gold_email_keys": [
+   "m7"
+  ],
+  "gold_message_ids": [
+   "rpa_bot.t1.m7.3f884c0670@corp-europe.example"
+  ]
+ },
+ {
+  "id": "rpa_bot-q4",
+  "storyline": "rpa_bot",
+  "q": "When was the rerun of the 12 invoices done and how many were OK?",
+  "a": "In the night of 23 Oct; 11 of 12 were posted correctly.",
+  "type": "when",
+  "facts": [
+   "The rerun of the batch of 12 invoices was scheduled for the night of 23 Oct.",
+   "On 26 Oct Ana Novak checked the rerun: 11 of 12 invoices were posted correctly with totals matching the PDFs."
+  ],
+  "gold_email_keys": [
+   "m5",
+   "m7"
+  ],
+  "gold_message_ids": [
+   "rpa_bot.t1.m5.62fd10b5c6@corp-europe.example",
+   "rpa_bot.t1.m7.3f884c0670@corp-europe.example"
+  ]
+ },
+ {
+  "id": "rpa_bot-q5",
+  "storyline": "rpa_bot",
+  "q": "Which PO should the corrected invoice INV-48217 refer to, and who asked Veltrans for it?",
+  "a": "PO 4500318872; Ana Novak asked Veltrans Billing.",
+  "type": "multihop",
+  "facts": [
+   "INV-48217 belongs to PO 4500318872 and delivery 82014467 according to SAP.",
+   "Ana asked Veltrans Billing for a corrected invoice with the PO number and cancellation of the old one, needed for the 30 Oct payment run."
+  ],
+  "gold_email_keys": [
+   "m7",
+   "m8"
+  ],
+  "gold_message_ids": [
+   "rpa_bot.t1.m7.3f884c0670@corp-europe.example",
+   "rpa_bot.t1.m8.4911104c73@corp-europe.example"
+  ]
+ },
+ {
+  "id": "rpa_bot-q6",
+  "storyline": "rpa_bot",
+  "q": "Will Veltrans revert to the old invoice layout?",
+  "a": "No, Veltrans said the new layout is final.",
+  "type": "fact",
+  "facts": [
+   "Veltrans said the new layout is final and will not be reverted; for multi-page invoices the totals block is on the last page."
+  ],
+  "gold_email_keys": [
+   "m4"
+  ],
+  "gold_message_ids": [
+   "rpa_bot.t1.m4.8ec1073a63@veltrans.example"
+  ]
+ },
+ {
+  "id": "rpa_bot-q7",
+  "storyline": "rpa_bot",
+  "q": "How much is the total amount of the 12 Veltrans invoices?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "tms_upgrade-q1",
+  "storyline": "tms_upgrade",
+  "q": "What were the two defects found in the TMS 9.2 test and how were they fixed?",
+  "a": "Multi-stop rate calculation (stop surcharge applied from the first drop) and the empty CO2 field on legs 2 and 3 (reporting table mapping bug); both fixed in build 9.2.0.3.",
+  "type": "multihop",
+  "facts": [
+   "The first full test run on 7 October had 38 passed and 2 failed: TC-017 (multi-stop rate) and TC-033 (CO2 field).",
+   "The rate defect was caused by the stop surcharge being applied from the first drop instead of from the second; the CO2 defect was a mapping bug in the reporting table. Both were fixed in build 9.2.0.3."
+  ],
+  "gold_email_keys": [
+   "m3",
+   "m5"
+  ],
+  "gold_message_ids": [
+   "tms_upgrade.t1.m3.c8f5c1e695@corp-europe.example",
+   "tms_upgrade.t1.m5.62e8e8aa56@routewise.example"
+  ]
+ },
+ {
+  "id": "tms_upgrade-q2",
+  "storyline": "tms_upgrade",
+  "q": "When is the decision point for the TMS upgrade rollback and how long would a restore take?",
+  "a": "Saturday 24 Oct at 22:00; the restore takes about 3 hours.",
+  "type": "when",
+  "facts": [
+   "Rollback plan: database snapshot by RouteWise on Friday 23 Oct 18:00, decision point Saturday 24 Oct 22:00 after smoke tests, restore takes about 3 hours."
+  ],
+  "gold_email_keys": [
+   "m6",
+   "m7"
+  ],
+  "gold_message_ids": [
+   "tms_upgrade.t1.m6.7ef764a8c0@corp-europe.example",
+   "tms_upgrade.t1.m7.901ed313d8@corp-europe.example"
+  ]
+ },
+ {
+  "id": "tms_upgrade-q3",
+  "storyline": "tms_upgrade",
+  "q": "Why were status message times wrong after the TMS go-live?",
+  "a": "The interface module used the standard-time offset after the clock change on 25 Oct, shifting times by one hour.",
+  "type": "why",
+  "facts": [
+   "On 26 Oct status message timestamps were one hour off after the DST change on 25 Oct; ticket RW-48302 was raised.",
+   "RouteWise installed hotfix 9.2.0.4 on production on 26 Oct at 13:00; messages sent between Sunday 03:00 and Monday 13:00 are not corrected automatically but can be resent."
+  ],
+  "gold_email_keys": [
+   "m10",
+   "m11",
+   "m9"
+  ],
+  "gold_message_ids": [
+   "tms_upgrade.t2.m10.f47a6b70ed@corp-europe.example",
+   "tms_upgrade.t2.m11.8590c111cf@routewise.example",
+   "tms_upgrade.t2.m9.307e97d815@corp-europe.example"
+  ]
+ },
+ {
+  "id": "tms_upgrade-q4",
+  "storyline": "tms_upgrade",
+  "q": "Which ticket number was raised for the one-hour timestamp shift?",
+  "a": "RW-48302",
+  "type": "identifier",
+  "facts": [
+   "On 26 Oct status message timestamps were one hour off after the DST change on 25 Oct; ticket RW-48302 was raised."
+  ],
+  "gold_email_keys": [
+   "m10",
+   "m9"
+  ],
+  "gold_message_ids": [
+   "tms_upgrade.t2.m10.f47a6b70ed@corp-europe.example",
+   "tms_upgrade.t2.m9.307e97d815@corp-europe.example"
+  ]
+ },
+ {
+  "id": "tms_upgrade-q5",
+  "storyline": "tms_upgrade",
+  "q": "Who approved the go-live of TMS 9.2?",
+  "a": "Mark de Boer, Head of Logistics Europe.",
+  "type": "who",
+  "facts": [
+   "Mark de Boer approved the go-live on 20 October and asked that sites be told about the Friday noon cut-off for urgent bookings."
+  ],
+  "gold_email_keys": [
+   "m7",
+   "m8"
+  ],
+  "gold_message_ids": [
+   "tms_upgrade.t1.m7.901ed313d8@corp-europe.example",
+   "tms_upgrade.t1.m8.5e23fa4cbe@corp-europe.example"
+  ]
+ },
+ {
+  "id": "tms_upgrade-q6",
+  "storyline": "tms_upgrade",
+  "q": "Which hotfix version was installed on 26 October and when?",
+  "a": "Hotfix 9.2.0.4, installed at 13:00 on 26 Oct.",
+  "type": "identifier",
+  "facts": [
+   "RouteWise installed hotfix 9.2.0.4 on production on 26 Oct at 13:00; messages sent between Sunday 03:00 and Monday 13:00 are not corrected automatically but can be resent."
+  ],
+  "gold_email_keys": [
+   "m11"
+  ],
+  "gold_message_ids": [
+   "tms_upgrade.t2.m11.8590c111cf@routewise.example"
+  ]
+ },
+ {
+  "id": "tms_upgrade-q7",
+  "storyline": "tms_upgrade",
+  "q": "How much does the RouteWise 9.2 upgrade cost the company in license fees?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "veltrans_invoices-q1",
+  "storyline": "veltrans_invoices",
+  "q": "Why was invoice INV-88213 from Veltrans too high?",
+  "a": "Veltrans' billing system still used the 2025 rate card instead of the 2026 rates in contract VT-2026-03, and added a fuel surcharge although the rate is all-in.",
+  "type": "why",
+  "facts": [
+   "Line 3 of INV-88213 was a fuel surcharge of EUR 517.50, which should not apply because the contract rate is all-in.",
+   "Jan Novotny admitted that Veltrans' billing system still used the 2025 rate card for Corp Europe, so the 2026 rates were not activated."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m2",
+   "m4"
+  ],
+  "gold_message_ids": [
+   "veltrans_invoices.t1.m1.94d374e76b@corp-europe.example",
+   "veltrans_invoices.t1.m2.0728c41bb4@corp-europe.example",
+   "veltrans_invoices.t1.m4.c301a35e9e@veltrans.example"
+  ]
+ },
+ {
+  "id": "veltrans_invoices-q2",
+  "storyline": "veltrans_invoices",
+  "q": "What was the amount and number of the Veltrans credit note for INV-88213?",
+  "a": "Credit note CN-40377 for EUR 4,657.50.",
+  "type": "identifier",
+  "facts": [
+   "Veltrans issued credit note CN-40377 on 16 October 2026 for EUR 4,657.50 (EUR 4,140.00 rate difference plus EUR 517.50 fuel surcharge)."
+  ],
+  "gold_email_keys": [
+   "m4",
+   "m7"
+  ],
+  "gold_message_ids": [
+   "veltrans_invoices.t1.m4.c301a35e9e@veltrans.example",
+   "veltrans_invoices.t1.m7.d619afe505@veltrans.example"
+  ]
+ },
+ {
+  "id": "veltrans_invoices-q3",
+  "storyline": "veltrans_invoices",
+  "q": "How is the credit note amount of EUR 4,657.50 made up?",
+  "a": "EUR 4,140.00 rate difference on lines 1 and 2 plus the EUR 517.50 fuel surcharge on line 3.",
+  "type": "multihop",
+  "facts": [
+   "Ana Novak found that Veltrans invoice INV-88213 (total EUR 35,237.50) had lines 1 and 2 EUR 4,140.00 above contract VT-2026-03.",
+   "Line 3 of INV-88213 was a fuel surcharge of EUR 517.50, which should not apply because the contract rate is all-in.",
+   "Veltrans issued credit note CN-40377 on 16 October 2026 for EUR 4,657.50 (EUR 4,140.00 rate difference plus EUR 517.50 fuel surcharge)."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m2",
+   "m4",
+   "m7"
+  ],
+  "gold_message_ids": [
+   "veltrans_invoices.t1.m1.94d374e76b@corp-europe.example",
+   "veltrans_invoices.t1.m2.0728c41bb4@corp-europe.example",
+   "veltrans_invoices.t1.m4.c301a35e9e@veltrans.example",
+   "veltrans_invoices.t1.m7.d619afe505@veltrans.example"
+  ]
+ },
+ {
+  "id": "veltrans_invoices-q4",
+  "storyline": "veltrans_invoices",
+  "q": "Who pays the demurrage for the two reefers held at Felixstowe, and why?",
+  "a": "Corp Europe pays the EUR 1,260.00, because the hold (22-25 September) was caused by a wrong commodity code in its own import declaration.",
+  "type": "why",
+  "facts": [
+   "The two reefers were held at Felixstowe from 22 to 25 September because Corp Europe's import declaration had a wrong commodity code that Harbour Agency UK had to amend.",
+   "The demurrage of EUR 1,260.00 stays with Corp Europe because the hold was caused by its own customs paperwork; it is booked to logistics Felixstowe."
+  ],
+  "gold_email_keys": [
+   "m6",
+   "m9"
+  ],
+  "gold_message_ids": [
+   "veltrans_invoices.t1.m6.c93f52459a@corp-europe.example",
+   "veltrans_invoices.t1.m9.e5e31d4857@corp-europe.example"
+  ]
+ },
+ {
+  "id": "veltrans_invoices-q5",
+  "storyline": "veltrans_invoices",
+  "q": "What is the net amount to pay on INV-88213 after the credit note?",
+  "a": "EUR 30,580.00 (EUR 35,237.50 minus EUR 4,657.50), including the demurrage.",
+  "type": "fact",
+  "facts": [
+   "Ana Novak found that Veltrans invoice INV-88213 (total EUR 35,237.50) had lines 1 and 2 EUR 4,140.00 above contract VT-2026-03.",
+   "Veltrans issued credit note CN-40377 on 16 October 2026 for EUR 4,657.50 (EUR 4,140.00 rate difference plus EUR 517.50 fuel surcharge).",
+   "After the credit note, the net amount payable on INV-88213 is EUR 30,580.00, including the demurrage; Ana released the payment block on 19 October."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m4",
+   "m7",
+   "m8"
+  ],
+  "gold_message_ids": [
+   "veltrans_invoices.t1.m1.94d374e76b@corp-europe.example",
+   "veltrans_invoices.t1.m4.c301a35e9e@veltrans.example",
+   "veltrans_invoices.t1.m7.d619afe505@veltrans.example",
+   "veltrans_invoices.t1.m8.f94d7cce41@corp-europe.example"
+  ]
+ },
+ {
+  "id": "veltrans_invoices-q6",
+  "storyline": "veltrans_invoices",
+  "q": "When did Veltrans correct its rate card for Corp Europe?",
+  "a": "On 27 October 2026.",
+  "type": "when",
+  "facts": [
+   "Veltrans corrected the rate card for Corp Europe in its billing system on 27 October 2026, without fuel surcharge."
+  ],
+  "gold_email_keys": [
+   "m12"
+  ],
+  "gold_message_ids": [
+   "veltrans_invoices.t2.m12.662a9c6e1f@veltrans.example"
+  ]
+ },
+ {
+  "id": "veltrans_invoices-q7",
+  "storyline": "veltrans_invoices",
+  "q": "What penalty clause applies in contract VT-2026-03 if Veltrans invoices wrongly again?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "venlo_cutover-q1",
+  "storyline": "venlo_cutover",
+  "q": "Why does Venlo prefer 13 Feb 2027 over the January dates for the EWM cut-over?",
+  "a": "January is still peak (about 2,400 deliveries per day vs about 1,600 in Feb), temp contracts end 31 Jan, and 16 Jan would put training in the December peak.",
+  "type": "why",
+  "facts": [
+   "Jeroen de Vries prefers 13 Feb because January outbound averages about 2,400 deliveries per day versus about 1,600 per day in February.",
+   "Venlo temp staff contracts end on 31 Jan, which argues against a 30 Jan go-live.",
+   "The 16 Jan option would put training on 7-18 Dec, in the December peak."
+  ],
+  "gold_email_keys": [
+   "m2",
+   "m4"
+  ],
+  "gold_message_ids": [
+   "venlo_cutover.t1.m2.15b16e15a2@corp-europe.example",
+   "venlo_cutover.t1.m4.7513043430@corp-europe.example"
+  ]
+ },
+ {
+  "id": "venlo_cutover-q2",
+  "storyline": "venlo_cutover",
+  "q": "What is the fallback if the Venlo EWM dress rehearsal fails?",
+  "a": "A go/no-go on Monday 8 Feb; with a no-go the next cut-over slot is the weekend of 27 Feb.",
+  "type": "multihop",
+  "facts": [
+   "If the dress rehearsal fails, a go/no-go is held on Monday 8 Feb and the fallback slot is the weekend of 27 Feb."
+  ],
+  "gold_email_keys": [
+   "m6"
+  ],
+  "gold_message_ids": [
+   "venlo_cutover.t1.m6.89e1f4ee5b@corp-europe.example"
+  ]
+ },
+ {
+  "id": "venlo_cutover-q3",
+  "storyline": "venlo_cutover",
+  "q": "When is the workshop that decides the Venlo EWM cut-over date?",
+  "a": "5 Nov 2026 at 09:00.",
+  "type": "when",
+  "facts": [
+   "A workshop on 5 Nov at 09:00 decides the cut-over date."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m8"
+  ],
+  "gold_message_ids": [
+   "venlo_cutover.t1.m1.2beb568f99@corp-europe.example",
+   "venlo_cutover.t1.m8.7ed57775f5@corp-europe.example"
+  ]
+ },
+ {
+  "id": "venlo_cutover-q4",
+  "storyline": "venlo_cutover",
+  "q": "How many Venlo operators need EWM training and how are they grouped?",
+  "a": "42 operators, in three groups of 14.",
+  "type": "fact",
+  "facts": [
+   "42 Venlo operators need training, in three groups of 14 with two sessions per group."
+  ],
+  "gold_email_keys": [
+   "m5",
+   "m6"
+  ],
+  "gold_message_ids": [
+   "venlo_cutover.t1.m5.0a05e60b6f@corp-europe.example",
+   "venlo_cutover.t1.m6.89e1f4ee5b@corp-europe.example"
+  ]
+ },
+ {
+  "id": "venlo_cutover-q5",
+  "storyline": "venlo_cutover",
+  "q": "What went wrong with the data migration in Rotterdam according to the lessons learned?",
+  "a": "38 of about 4,100 bins showed stock differences, caused by open transfer orders not closed before the extract.",
+  "type": "fact",
+  "facts": [
+   "In Rotterdam, 38 of about 4,100 bins had stock differences after migration, and the cut-over took 31 hours instead of 24."
+  ],
+  "gold_email_keys": [
+   "m9"
+  ],
+  "gold_message_ids": [
+   "venlo_cutover.t2.m9.07f87432f8@corp-europe.example"
+  ]
+ },
+ {
+  "id": "venlo_cutover-q6",
+  "storyline": "venlo_cutover",
+  "q": "What is the budget for the Venlo EWM cut-over?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ },
+ {
+  "id": "z1_block-q1",
+  "storyline": "z1_block",
+  "q": "Why did 14 Venlo deliveries get delivery block Z1 on 21 Oct 2026?",
+  "a": "Master data moved the Venlo customers from credit segment 0001 to 0002 in a mass change, cutting the limit from EUR 250,000 to EUR 50,000, so the credit check failed.",
+  "type": "why",
+  "facts": [
+   "On the morning of 21 Oct 2026, 14 outbound deliveries in Venlo (80012345 to 80012358) had delivery block Z1 (credit check) in VL02N, total value about EUR 458k.",
+   "Daan Visser ran a mass change on 20 Oct 2026 that moved 23 Venlo customers from credit segment 0001 to 0002 as part of a segment clean-up ticket.",
+   "Segment 0002 has a default limit of EUR 50,000, while the previous limit in segment 0001 was EUR 250,000; the old individual limits did not carry over."
+  ],
+  "gold_email_keys": [
+   "m1",
+   "m3",
+   "m4"
+  ],
+  "gold_message_ids": [
+   "z1_block.t1.m1.b1166136ba@corp-europe.example",
+   "z1_block.t1.m3.5f6e0cc9ab@corp-europe.example",
+   "z1_block.t1.m4.7800eb3b51@corp-europe.example"
+  ]
+ },
+ {
+  "id": "z1_block-q2",
+  "storyline": "z1_block",
+  "q": "How can I tell in VL02N that a Z1 block comes from a credit segment change?",
+  "a": "Open the status overview and check the credit line: if it names segment 0002 for a Venlo customer who should be in 0001, it is a segment change, not overdue items. The limit can be checked in UKM_BP.",
+  "type": "howto",
+  "facts": [
+   "To recognise a segment change, open the status overview in VL02N and read the credit line: if it names segment 0002 for a Venlo customer who should be in 0001, the block comes from the segment change and not from overdue items; the limit can be checked in UKM_BP."
+  ],
+  "gold_email_keys": [
+   "m5"
+  ],
+  "gold_message_ids": [
+   "z1_block.t1.m5.c44a98432a@corp-europe.example"
+  ]
+ },
+ {
+  "id": "z1_block-q3",
+  "storyline": "z1_block",
+  "q": "Who can approve a temporary credit limit, and who enters it in the system?",
+  "a": "Finance credit management approves it; Ana Novak then sets it in UKM_BP.",
+  "type": "who",
+  "facts": [
+   "A temporary credit limit must be approved by Finance credit management; Ana Novak then processes it in UKM_BP but cannot decide it herself."
+  ],
+  "gold_email_keys": [
+   "m7"
+  ],
+  "gold_message_ids": [
+   "z1_block.t1.m7.7a2fa5ef81@corp-europe.example"
+  ]
+ },
+ {
+  "id": "z1_block-q4",
+  "storyline": "z1_block",
+  "q": "Until when is the temporary credit limit of EUR 120,000 valid for the five Venlo customers?",
+  "a": "Until 6 Nov 2026.",
+  "type": "when",
+  "facts": [
+   "On 23 Oct at 08:30 credit management approved, and Ana set a temporary limit of EUR 120,000 per customer for the 5 customers, valid until 6 Nov 2026."
+  ],
+  "gold_email_keys": [
+   "m9"
+  ],
+  "gold_message_ids": [
+   "z1_block.t1.m9.9dc662d3b1@corp-europe.example"
+  ]
+ },
+ {
+  "id": "z1_block-q5",
+  "storyline": "z1_block",
+  "q": "Which delivery numbers did Lukas release in VKM3 and which needed Finance?",
+  "a": "Lukas released 80012345 to 80012353 (9 deliveries, each below EUR 35,000); 80012354 to 80012358 needed Finance.",
+  "type": "identifier",
+  "facts": [
+   "Lukas Becker released 9 deliveries (80012345 to 80012353) in VKM3 on 21 Oct.",
+   "A key user can release single deliveries below EUR 35,000 on their own in VKM3; the remaining 5 deliveries were above that and needed Finance.",
+   "The 5 remaining deliveries (80012354 to 80012358) were worth EUR 296,450 together, and the customers had no overdue items."
+  ],
+  "gold_email_keys": [
+   "m5",
+   "m6",
+   "m7"
+  ],
+  "gold_message_ids": [
+   "z1_block.t1.m5.c44a98432a@corp-europe.example",
+   "z1_block.t1.m6.27ff210432@corp-europe.example",
+   "z1_block.t1.m7.7a2fa5ef81@corp-europe.example"
+  ]
+ },
+ {
+  "id": "z1_block-q6",
+  "storyline": "z1_block",
+  "q": "Why could Lukas not release deliveries 80012354 to 80012358 himself, and how were they finally shipped?",
+  "a": "Each was above his EUR 35,000 release authority, so Finance credit management approved a temporary limit of EUR 120,000 per customer on 23 Oct, after which they were released and shipped on the 12:00 truck.",
+  "type": "multihop",
+  "facts": [
+   "A key user can release single deliveries below EUR 35,000 on their own in VKM3; the remaining 5 deliveries were above that and needed Finance.",
+   "A temporary credit limit must be approved by Finance credit management; Ana Novak then processes it in UKM_BP but cannot decide it herself.",
+   "On 23 Oct at 08:30 credit management approved, and Ana set a temporary limit of EUR 120,000 per customer for the 5 customers, valid until 6 Nov 2026.",
+   "All 5 remaining deliveries were released and left Venlo on the 12:00 truck on 23 Oct, so all 14 shipped."
+  ],
+  "gold_email_keys": [
+   "m10",
+   "m5",
+   "m7",
+   "m9"
+  ],
+  "gold_message_ids": [
+   "z1_block.t1.m10.fbfb2d7c21@corp-europe.example",
+   "z1_block.t1.m5.c44a98432a@corp-europe.example",
+   "z1_block.t1.m7.7a2fa5ef81@corp-europe.example",
+   "z1_block.t1.m9.9dc662d3b1@corp-europe.example"
+  ]
+ },
+ {
+  "id": "z1_block-q7",
+  "storyline": "z1_block",
+  "q": "What is the permanent new credit limit that Finance decided for Venlo customers after the clean-up?",
+  "a": "not in the emails",
+  "type": "unanswerable",
+  "facts": [],
+  "gold_email_keys": [],
+  "gold_message_ids": []
+ }
+]

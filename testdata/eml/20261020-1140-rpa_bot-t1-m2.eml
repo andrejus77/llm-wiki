@@ -1,0 +1,116 @@
+Message-ID: <rpa_bot.t1.m2.72bcc32d7b@corp-europe.example>
+Date: Tue, 20 Oct 2026 11:40:00 +0200
+From: "Pieter Bakker" <p.bakker@corp-europe.example>
+To: "Ana Novak" <a.novak@corp-europe.example>
+Cc: "DL FIN" <dl-fin@corp-europe.example>
+Subject: RE: Invoice bot errors on Veltrans invoices
+In-Reply-To: <rpa_bot.t1.m1.4e275b24c5@corp-europe.example>
+References: <rpa_bot.t1.m1.4e275b24c5@corp-europe.example>
+Thread-Index: Ad1gdvmKEnyYQLth5LkTrbmWfHX+0F0skAND
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============2680801080237464321=="
+
+--===============2680801080237464321==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Had a look at the logs. The bot reads the invoice total from page 1, but in t=
+he new Veltrans PDFs the total is no longer there. I opened INV-48211 and the=
+ totals block is now on page 2, page 1 only has the line items. So the field =
+'InvoiceTotal' is not found and the bot stops by design instead of guessing.
+
+Excerpt of the failed runs below. I think the layout changed on Veltrans side=
+, not our side. I will ask them to confirm and meanwhile build a fix.
+
+Run ID | Start | Invoices in batch | Result | Error
+RPA-INV-0412 | 2026-10-20 06:00 | 12 | FAILED | E204 InvoiceTotal not found (=
+page 1)
+RPA-INV-0413 | 2026-10-20 10:00 | 12 | FAILED | E204 InvoiceTotal not found (=
+page 1)
+RPA-INV-0414 | 2026-10-20 14:00 | 12 | FAILED | E204 InvoiceTotal not found (=
+page 1)
+
+Regards,
+Pieter Bakker
+RPA and IT developer
+Corp Europe B.V. | Rotterdam
+T +31 10 292 7464
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Ana Novak <a.novak@corp-europe.example>
+Sent: Tuesday, 20 October 2026 09:15
+To: Pieter Bakker
+Subject: Invoice bot errors on Veltrans invoices
+
+Pieter, the invoice bot sent error mails again this morning. All Veltrans inv=
+oices from the weekend mailbox are sitting in the exception folder, 12 in tot=
+al (INV-48211 to INV-48222). Other carriers went through fine, so it looks sp=
+ecific to Veltrans. Nothing has been posted in FB60 for them.
+
+Payment run for Veltrans is planned for 30 Oct, so I have some time, but I wo=
+uld like to know soon whether this is a quick fix or not. Can you have a look?
+
+Best regards,
+Ana Novak
+Accounts payable analyst (Finance)
+Corp Europe B.V. | Rotterdam
+T +31 10 892 7511
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============2680801080237464321==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Had a look at the logs. The bot reads the invoice total from p=
+age 1, but in the new Veltrans PDFs the total is no longer there. I opened IN=
+V-48211 and the totals block is now on page 2, page 1 only has the line items=
+. So the field &#x27;InvoiceTotal&#x27; is not found and the bot stops by des=
+ign instead of guessing.</p>
+<p>Excerpt of the failed runs below. I think the layout changed on Veltrans s=
+ide, not our side. I will ask them to confirm and meanwhile build a fix.</p><=
+table style=3D'border-collapse:collapse;font-size:10pt'><tr><th style=3D'bord=
+er:1px solid #999;padding:3px 6px'>Run ID</th><th style=3D'border:1px solid #=
+999;padding:3px 6px'>Start</th><th style=3D'border:1px solid #999;padding:3px=
+ 6px'>Invoices in batch</th><th style=3D'border:1px solid #999;padding:3px 6p=
+x'>Result</th><th style=3D'border:1px solid #999;padding:3px 6px'>Error</th><=
+/tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>RPA-INV-0412</td>=
+<td style=3D'border:1px solid #999;padding:3px 6px'>2026-10-20 06:00</td><td =
+style=3D'border:1px solid #999;padding:3px 6px'>12</td><td style=3D'border:1p=
+x solid #999;padding:3px 6px'>FAILED</td><td style=3D'border:1px solid #999;p=
+adding:3px 6px'>E204 InvoiceTotal not found (page 1)</td></tr><tr><td style=
+=3D'border:1px solid #999;padding:3px 6px'>RPA-INV-0413</td><td style=3D'bord=
+er:1px solid #999;padding:3px 6px'>2026-10-20 10:00</td><td style=3D'border:1=
+px solid #999;padding:3px 6px'>12</td><td style=3D'border:1px solid #999;padd=
+ing:3px 6px'>FAILED</td><td style=3D'border:1px solid #999;padding:3px 6px'>E=
+204 InvoiceTotal not found (page 1)</td></tr><tr><td style=3D'border:1px soli=
+d #999;padding:3px 6px'>RPA-INV-0414</td><td style=3D'border:1px solid #999;p=
+adding:3px 6px'>2026-10-20 14:00</td><td style=3D'border:1px solid #999;paddi=
+ng:3px 6px'>12</td><td style=3D'border:1px solid #999;padding:3px 6px'>FAILED=
+</td><td style=3D'border:1px solid #999;padding:3px 6px'>E204 InvoiceTotal no=
+t found (page 1)</td></tr></table><p>Regards,<br>Pieter Bakker<br>RPA and IT =
+developer<br>Corp Europe B.V. | Rotterdam<br>T +31 10 292 7464<br><br>This e-=
+mail and any attachments are confidential and intended solely for the address=
+ee. If you received it in error, please delete it.</p><div style=3D'border:no=
+ne;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'><p><b>From:</b> =
+Ana Novak &lt;a.novak@corp-europe.example&gt;<br><b>Sent:</b> Tuesday, 20 Oct=
+ober 2026 09:15<br><b>To:</b> Pieter Bakker<br><b>Cc:</b> DL FIN<br><b>Subjec=
+t:</b> Invoice bot errors on Veltrans invoices</p></div><p>Pieter, the invoic=
+e bot sent error mails again this morning. All Veltrans invoices from the wee=
+kend mailbox are sitting in the exception folder, 12 in total (INV-48211 to I=
+NV-48222). Other carriers went through fine, so it looks specific to Veltrans=
+. Nothing has been posted in FB60 for them.</p>
+<p>Payment run for Veltrans is planned for 30 Oct, so I have some time, but I=
+ would like to know soon whether this is a quick fix or not. Can you have a l=
+ook?</p><p>Best regards,<br>Ana Novak<br>Accounts payable analyst (Finance)<b=
+r>Corp Europe B.V. | Rotterdam<br>T +31 10 892 7511<br><br>This e-mail and an=
+y attachments are confidential and intended solely for the addressee. If you =
+received it in error, please delete it.</p></body></html>
+
+--===============2680801080237464321==--

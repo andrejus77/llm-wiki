@@ -1,0 +1,399 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "Nordline detention invoice INV-48213 / MSKU1234567",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-10-08 10:05",
+     "from": "plindqvist",
+     "to": [
+      "anovak"
+     ],
+     "cc": [
+      "speeters"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Hi Ana, please find attached our detention invoice for container MSKU1234567. The container was delivered to your Antwerp DC on 2026-09-16 and collected as an empty on 2026-09-29. Free time at the DC ended on 2026-09-18, so we charge 11 days (19 to 29 September) at EUR 150 per day. Payment term is 30 days, so the due date is 2026-11-07. Sofie, I put you in copy because the container was at your site. If you need the terminal gate tickets to check the dates, just let me know.",
+     "table": {
+      "header": [
+       "Invoice",
+       "Container",
+       "Chargeable days",
+       "Rate per day",
+       "Amount"
+      ],
+      "rows": [
+       [
+        "INV-48213",
+        "MSKU1234567",
+        "11",
+        "EUR 150",
+        "EUR 1,650"
+       ]
+      ]
+     },
+     "attachment": {
+      "kind": "pdf",
+      "name": "INV-48213_Nordline_detention.pdf",
+      "text": "Nordline Freight - Invoice INV-48213. Detention charge, container MSKU1234567, Antwerp DC. Chargeable period 2026-09-19 to 2026-09-29 (11 days) at EUR 150/day. Total EUR 1,650.00. Due 2026-11-07."
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-10-09 08:50",
+     "from": "anovak",
+     "to": [
+      "speeters"
+     ],
+     "cc": [],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Sofie, INV-48213 from Nordline (EUR 1,650 detention on MSKU1234567) landed in my queue. 11 days at the Antwerp DC looks long to me. I have put a payment block on it in MIR4 for now. Can you tell me when unloading was finished and when the empty was actually collected? If we want to dispute this, I need your answer by 2026-10-16 at the latest, so we stay well before the due date of 2026-11-07.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-10-13 14:20",
+     "from": "speeters",
+     "to": [
+      "anovak"
+     ],
+     "cc": [],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Ana, I went through the gate log and our mails. Unloading was finished on 2026-09-23, so the days 19 to 23 September (5 days) are ours, we were slow because of a count difference on two pallets. But on 2026-09-23 at 17:42 we asked the Nordline ops desk to collect the empty. They only confirmed a pickup booking (BK-77120) on 2026-09-28 and collected on 09-29. So 24 to 28 September (5 days) are caused by Nordline. The 29th is the pickup day, which I accept. Timeline attached. I will send this to Pia and ask for a credit for 5 days.",
+     "table": null,
+     "attachment": {
+      "kind": "xlsx",
+      "name": "MSKU1234567_timeline.xlsx",
+      "rows": [
+       [
+        "Date",
+        "Event",
+        "Source",
+        "Responsible"
+       ],
+       [
+        "2026-09-16",
+        "Container delivered to dock 4",
+        "Gate log",
+        "-"
+       ],
+       [
+        "2026-09-18",
+        "Free time ends",
+        "Nordline invoice",
+        "-"
+       ],
+       [
+        "2026-09-19 to 09-23",
+        "Unloading and pallet count difference",
+        "WMS goods receipt",
+        "Corp Europe (5 days)"
+       ],
+       [
+        "2026-09-23 17:42",
+        "Empty release request sent to Nordline ops desk",
+        "Mail",
+        "-"
+       ],
+       [
+        "2026-09-24 to 09-28",
+        "Waiting for pickup booking, BK-77120 confirmed 09-28",
+        "Nordline mail",
+        "Nordline (5 days)"
+       ],
+       [
+        "2026-09-29",
+        "Empty collected",
+        "Gate log",
+        "Corp Europe (1 day)"
+       ]
+      ]
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m8",
+     "date": "2026-10-27 09:05",
+     "from": "anovak",
+     "to": [
+      "speeters"
+     ],
+     "cc": [],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "Thanks Sofie, and thanks for the clear timeline, it made this easy. Nordline agreed on the credit, so I will release INV-48213 as soon as credit note CN-20931 arrives and pay the net EUR 900 before the due date of 2026-11-07. Nothing else needed from you.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  },
+  {
+   "key": "t2",
+   "subject": "Detention MSKU1234567 - late pickup booking",
+   "emails": [
+    {
+     "id": "m4",
+     "date": "2026-10-14 09:30",
+     "from": "speeters",
+     "to": [
+      "plindqvist"
+     ],
+     "cc": [
+      "anovak"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Hi Pia, we do not agree with the full amount on INV-48213. Our empty release request for MSKU1234567 went to your ops desk on 2026-09-23 at 17:42, but the pickup booking BK-77120 was only confirmed on 2026-09-28 and the container left on 09-29. That means 5 of the 11 days (24 to 28 September) were caused by the late booking on your side. We accept the other 6 days. Please issue a credit note for 5 days x EUR 150 = EUR 750. Timeline attached.",
+     "table": null,
+     "attachment": {
+      "kind": "xlsx",
+      "name": "MSKU1234567_timeline.xlsx",
+      "rows": [
+       [
+        "Date",
+        "Event",
+        "Responsible"
+       ],
+       [
+        "2026-09-19 to 09-23",
+        "Unloading",
+        "Corp Europe (5 days)"
+       ],
+       [
+        "2026-09-24 to 09-28",
+        "Waiting for pickup booking",
+        "Nordline (5 days)"
+       ],
+       [
+        "2026-09-29",
+        "Empty collected",
+        "Corp Europe (1 day)"
+       ]
+      ]
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-10-20 11:15",
+     "from": "plindqvist",
+     "to": [
+      "speeters"
+     ],
+     "cc": [
+      "anovak"
+     ],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Hi Sofie, sorry for the slow answer, I checked with our ops desk. They confirm they received your request on 09-23, but after 17:00, so it was only processed on 09-24, and the terminal had no pickup slots until 09-28. From our side only 3 days are on us, so I can offer a credit of EUR 450 and you pay 8 days (EUR 1,200). Can you live with that?",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m6",
+     "date": "2026-10-21 15:40",
+     "from": "speeters",
+     "to": [
+      "plindqvist"
+     ],
+     "cc": [
+      "anovak"
+     ],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "Pia, I cannot accept that. Annex 2 of our transport agreement says same-day requests are accepted until 18:00, and ours came at 17:42. Also, your own confirmation mail for BK-77120 says that slots were unavailable until 09-28, so the delay was not caused by us. Even if processing started on 09-24, the 5 days from 24 to 28 September are on your side. I stay with the credit of EUR 750 and we pay 6 days, EUR 900.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m7",
+     "date": "2026-10-26 10:10",
+     "from": "plindqvist",
+     "to": [
+      "speeters"
+     ],
+     "cc": [
+      "anovak"
+     ],
+     "reply_to": "m6",
+     "forward": false,
+     "body": "Sofie, you are right about the 18:00 cut-off in Annex 2, I missed that. We agree: 5 days are on Nordline. Credit note CN-20931 for EUR 750 will be issued this week, so you pay 6 days, EUR 900 net on INV-48213. Ana, please wait for the credit note before paying. Sorry for the trouble.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "Nordline invoice INV-48213 charges EUR 1,650 detention for container MSKU1234567 at the Antwerp DC.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "The charge is 11 chargeable days (19 to 29 September 2026) at EUR 150 per day; free time ended on 2026-09-18.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "The due date of INV-48213 is 2026-11-07 (30 day payment term).",
+   "emails": [
+    "m1",
+    "m8"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "Ana Novak put a payment block on INV-48213 in MIR4 and asked Sofie for the unloading and pickup dates by 2026-10-16.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "Unloading of MSKU1234567 finished on 2026-09-23; the 5 days from 19 to 23 September were Corp Europe's own delay because of a count difference on two pallets.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "Sofie sent the empty release request to the Nordline ops desk on 2026-09-23 at 17:42.",
+   "emails": [
+    "m3",
+    "m4"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "Nordline confirmed pickup booking BK-77120 only on 2026-09-28 and collected the empty on 2026-09-29.",
+   "emails": [
+    "m3",
+    "m4"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "The 5 days from 24 to 28 September were caused by Nordline's late pickup booking.",
+   "emails": [
+    "m3",
+    "m4",
+    "m6"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "Nordline first offered a credit of EUR 450 (3 days), arguing the request came after 17:00 and the terminal had no slots until 09-28.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "Sofie rejected the offer because Annex 2 of the transport agreement accepts same-day requests until 18:00, and Nordline's own BK-77120 confirmation said slots were unavailable until 09-28.",
+   "emails": [
+    "m6"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "Pia Lindqvist agreed on 2026-10-26 to a credit note CN-20931 of EUR 750 (5 days), so Corp Europe pays 6 days, EUR 900.",
+   "emails": [
+    "m7"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "Ana Novak will release INV-48213 after CN-20931 arrives and pay the net EUR 900 before 2026-11-07.",
+   "emails": [
+    "m8",
+    "m7"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "How much does Corp Europe finally pay Nordline for the detention of container MSKU1234567, and for how many days?",
+   "a": "EUR 900 for 6 days (EUR 150 per day), after a EUR 750 credit note.",
+   "facts": [
+    "F11",
+    "F2"
+   ],
+   "type": "fact"
+  },
+  {
+   "q": "Why did Sofie Peeters reject Nordline's offer of a EUR 450 credit?",
+   "a": "Annex 2 of the transport agreement accepts same-day requests until 18:00 (hers came at 17:42), and Nordline's own booking confirmation said no slots were available until 09-28.",
+   "facts": [
+    "F9",
+    "F10"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "What is the number of the credit note that Nordline issues for the Antwerp detention dispute?",
+   "a": "CN-20931",
+   "facts": [
+    "F11"
+   ],
+   "type": "identifier"
+  },
+  {
+   "q": "On what date was Nordline's pickup booking BK-77120 confirmed, and when had Antwerp asked for the empty to be collected?",
+   "a": "It was confirmed on 2026-09-28; the request was sent on 2026-09-23 at 17:42.",
+   "facts": [
+    "F6",
+    "F7"
+   ],
+   "type": "when"
+  },
+  {
+   "q": "Who in Finance releases invoice INV-48213 and when can she pay it?",
+   "a": "Ana Novak, after credit note CN-20931 arrives, paying EUR 900 before the due date 2026-11-07.",
+   "facts": [
+    "F12",
+    "F3"
+   ],
+   "type": "who"
+  },
+  {
+   "q": "Which of the 11 chargeable days were Nordline's responsibility, and how do they add up to the credit amount?",
+   "a": "24 to 28 September (5 days); 5 x EUR 150 = EUR 750 credit.",
+   "facts": [
+    "F8",
+    "F11",
+    "F2"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "Which pallet supplier caused the count difference during unloading of MSKU1234567?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "detention",
+  "title": "Container detention dispute in Antwerp",
+  "level": "topic",
+  "korean": false
+ }
+}

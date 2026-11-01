@@ -1,0 +1,498 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "Weekly freight accrual - week 39",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-09-25 09:30",
+     "from": "anovak",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [],
+     "reply_to": null,
+     "forward": false,
+     "body": "Hi Tom, it's Friday, so time for the weekly freight accrual. This week it is also the September close, so the figure will be booked for the month.\n\nCould you send me the TMS report of shipments delivered but not yet invoiced, cut-off today 25.09? I need it by 12:00 if possible. My routine is: take your report, match against open items in FBL1N, post the accrual with FB50 to G/L 4711000, and set the reversal for the 1st of the month.\n\nPlease include shipment number, delivery number, carrier, site and the agreed freight amount.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-09-25 11:10",
+     "from": "thendriks",
+     "to": [
+      "anovak"
+     ],
+     "cc": [],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Hi Ana, report attached. 39 shipments, total EUR 176,850. I filtered on planned delivery date up to 25.09, as that is the default variant in the TMS.\n\nExample line: delivery 80412233 with Veltrans, Venlo, EUR 1,840. Note that INV-48213 for that one is already booked, so you should see it cleared in FBL1N.",
+     "table": null,
+     "attachment": {
+      "kind": "xlsx",
+      "name": "TMS_delivered_not_invoiced_KW39_v1.xlsx",
+      "rows": [
+       [
+        "Shipment",
+        "Delivery",
+        "Carrier",
+        "Site",
+        "Amount EUR",
+        "Planned delivery"
+       ],
+       [
+        "SH-2209417",
+        "80412233",
+        "Veltrans",
+        "Venlo",
+        "1840.00",
+        "2026-09-22"
+       ],
+       [
+        "SH-2209502",
+        "80412580",
+        "Nordline",
+        "Rotterdam",
+        "3260.00",
+        "2026-09-23"
+       ],
+       [
+        "SH-2209688",
+        "80413011",
+        "Baltic Shipping",
+        "Gdansk",
+        "2150.00",
+        "2026-09-24"
+       ]
+      ]
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-09-25 11:50",
+     "from": "anovak",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "Thanks Tom. I think the filter is the problem: for the accrual I need the actual delivery date (POD date) up to 25.09, not the planned date. Shipments delivered early with a planned date of 26-28.09 are missing, and those are costs of September.\n\nCould you rerun it with POD date? And yes, INV-48213 is cleared in FBL1N, so that line will drop out on my side.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m4",
+     "date": "2026-09-25 14:20",
+     "from": "thendriks",
+     "to": [
+      "anovak"
+     ],
+     "cc": [],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "You are right, sorry. Reran with POD date up to 25.09: now 44 shipments, 5 more than before, total EUR 184,300. The extra 5 were all delivered early. Summary per site below, full list attached.",
+     "table": {
+      "header": [
+       "Site",
+       "Amount EUR"
+      ],
+      "rows": [
+       [
+        "Rotterdam",
+        "61,200"
+       ],
+       [
+        "Venlo",
+        "48,750"
+       ],
+       [
+        "Antwerp",
+        "27,400"
+       ],
+       [
+        "Hamburg",
+        "21,950"
+       ],
+       [
+        "Felixstowe",
+        "13,100"
+       ],
+       [
+        "Gdansk",
+        "11,900"
+       ],
+       [
+        "Total",
+        "184,300"
+       ]
+      ]
+     },
+     "attachment": {
+      "kind": "xlsx",
+      "name": "TMS_delivered_not_invoiced_KW39_v2.xlsx",
+      "rows": [
+       [
+        "Shipment",
+        "Delivery",
+        "Carrier",
+        "Site",
+        "Amount EUR",
+        "POD date"
+       ],
+       [
+        "SH-2209417",
+        "80412233",
+        "Veltrans",
+        "Venlo",
+        "1840.00",
+        "2026-09-22"
+       ],
+       [
+        "SH-2209502",
+        "80412580",
+        "Nordline",
+        "Rotterdam",
+        "3260.00",
+        "2026-09-23"
+       ],
+       [
+        "SH-2209741",
+        "80413390",
+        "Nordline",
+        "Antwerp",
+        "1490.00",
+        "2026-09-25"
+       ]
+      ]
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-09-25 16:40",
+     "from": "anovak",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "dl-fin"
+     ],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Matched in FBL1N, no further open invoices for these shipments. The September accrual of EUR 184,300 is posted with FB50 to account 4711000, accounting document 1900004127. Reversal date is set to 01.10.\n\nFrom now on please always use the POD date variant for this report, every Friday by 12:00.",
+     "table": null,
+     "attachment": null,
+     "screenshot": {
+      "title": "FB50 - Enter G/L Account Document",
+      "lines": [
+       "Document date: 25.09.2026   Posting date: 25.09.2026",
+       "G/L account: 4711000  Accrued freight costs",
+       "Amount: 184,300.00 EUR",
+       "Reversal date: 01.10.2026",
+       "Document 1900004127 was posted"
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "key": "t2",
+   "subject": "Weekly freight accrual - week 40",
+   "emails": [
+    {
+     "id": "m6",
+     "date": "2026-10-02 09:05",
+     "from": "anovak",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [],
+     "reply_to": null,
+     "forward": false,
+     "body": "Hi Tom, same procedure as last week. The September accrual of EUR 184,300 (doc 1900004127) was reversed automatically on 01.10, so the October accrual starts from zero.\n\nCould you send the delivered-not-invoiced report with the POD variant, cut-off 02.10, by 12:00? Thanks.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  },
+  {
+   "key": "t3",
+   "subject": "Weekly freight accrual - week 44",
+   "emails": [
+    {
+     "id": "m7",
+     "date": "2026-10-30 09:00",
+     "from": "anovak",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [],
+     "reply_to": null,
+     "forward": false,
+     "body": "Hi Tom, last Friday of the month, so this is the October close. Please send the TMS report (POD date up to 30.10) by 12:00. I will post the accrual with FB50 to 4711000 and set the reversal to 01.11.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m8",
+     "date": "2026-10-30 11:25",
+     "from": "thendriks",
+     "to": [
+      "anovak"
+     ],
+     "cc": [],
+     "reply_to": "m7",
+     "forward": false,
+     "body": "Report attached, total EUR 201,950. Two shipments, deliveries 80419876 and 80419902 (both Nordline, Hamburg), have no POD in the TMS yet. The carrier confirmed delivery on 29.10 by mail, so I included them. Figures per site below.",
+     "table": {
+      "header": [
+       "Site",
+       "Amount EUR"
+      ],
+      "rows": [
+       [
+        "Rotterdam",
+        "66,300"
+       ],
+       [
+        "Venlo",
+        "52,100"
+       ],
+       [
+        "Antwerp",
+        "29,800"
+       ],
+       [
+        "Hamburg",
+        "23,450"
+       ],
+       [
+        "Felixstowe",
+        "15,900"
+       ],
+       [
+        "Gdansk",
+        "14,400"
+       ],
+       [
+        "Total",
+        "201,950"
+       ]
+      ]
+     },
+     "attachment": {
+      "kind": "xlsx",
+      "name": "TMS_delivered_not_invoiced_KW44.xlsx",
+      "rows": [
+       [
+        "Shipment",
+        "Delivery",
+        "Carrier",
+        "Site",
+        "Amount EUR",
+        "POD date"
+       ],
+       [
+        "SH-2214120",
+        "80419876",
+        "Nordline",
+        "Hamburg",
+        "2210.00",
+        "missing (carrier mail 2026-10-29)"
+       ],
+       [
+        "SH-2214133",
+        "80419902",
+        "Nordline",
+        "Hamburg",
+        "1730.00",
+        "missing (carrier mail 2026-10-29)"
+       ]
+      ]
+     },
+     "screenshot": null
+    },
+    {
+     "id": "m9",
+     "date": "2026-10-30 15:45",
+     "from": "anovak",
+     "to": [
+      "thendriks"
+     ],
+     "cc": [
+      "dl-fin"
+     ],
+     "reply_to": "m8",
+     "forward": false,
+     "body": "Ok, fine to include the two Hamburg shipments based on the carrier mail. Matched in FBL1N, nothing else open. The October accrual of EUR 201,950 is posted with FB50 to account 4711000, reversal date 01.11. Thanks for the quick turnaround.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "Every Friday Ana Novak accrues open freight costs, meaning shipments delivered but not yet invoiced.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "Ana's routine: take the TMS report, match in FBL1N, post the accrual with FB50 to G/L 4711000, and set the reversal for the 1st of the month.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "Tom Hendriks provides the TMS delivered-not-invoiced report, requested by 12:00 on Fridays.",
+   "emails": [
+    "m1",
+    "m5"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "The first week 39 report (39 shipments, EUR 176,850) used the planned delivery date filter, the TMS default variant.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "The accrual needs the actual delivery date (POD date) as the filter, because early-delivered shipments with a later planned date are September costs.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "The rerun with POD date up to 25.09 gave 44 shipments and EUR 184,300, 5 shipments more than the first report.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "The September accrual of EUR 184,300 was posted on 25.09 with FB50 to account 4711000 as document 1900004127, with reversal date 01.10.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "Delivery 80412233 (Veltrans, Venlo, EUR 1,840) was already invoiced with INV-48213 and cleared in FBL1N.",
+   "emails": [
+    "m2",
+    "m3"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "The September accrual was reversed automatically on 01.10, so the October accrual started from zero.",
+   "emails": [
+    "m6"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "The September accrual by site: Rotterdam 61,200, Venlo 48,750, Antwerp 27,400, Hamburg 21,950, Felixstowe 13,100, Gdansk 11,900 (EUR).",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "The October accrual (week 44 report) totalled EUR 201,950, with Rotterdam the largest part at EUR 66,300.",
+   "emails": [
+    "m8",
+    "m9"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "Deliveries 80419876 and 80419902 (Nordline, Hamburg) had no POD in the TMS on 30.10 but were included because the carrier confirmed delivery on 29.10 by mail.",
+   "emails": [
+    "m8",
+    "m9"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "The October accrual was posted on 30.10 with FB50 to account 4711000 and reversal date 01.11.",
+   "emails": [
+    "m7",
+    "m9"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "Why was the first week 39 freight accrual report rejected?",
+   "a": "It was filtered on planned delivery date instead of the actual delivery (POD) date, so five early-delivered shipments were missing.",
+   "facts": [
+    "F4",
+    "F5"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "What was the September freight accrual amount and which document was posted?",
+   "a": "EUR 184,300, accounting document 1900004127, posted to account 4711000 with FB50.",
+   "facts": [
+    "F6",
+    "F7"
+   ],
+   "type": "identifier"
+  },
+  {
+   "q": "Which steps does Ana follow for the weekly freight accrual?",
+   "a": "Get the TMS report, match in FBL1N, post with FB50 to G/L 4711000, and set the reversal for the 1st of the month.",
+   "facts": [
+    "F2"
+   ],
+   "type": "howto"
+  },
+  {
+   "q": "Why were deliveries 80419876 and 80419902 included in the October accrual even without a POD?",
+   "a": "The carrier (Nordline) confirmed delivery on 29.10 by mail.",
+   "facts": [
+    "F12"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "How large was the October accrual, and what reversal date was set?",
+   "a": "EUR 201,950, reversal date 01.11.",
+   "facts": [
+    "F11",
+    "F13"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "Who is the approver for freight accruals above EUR 200,000?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "accrual",
+  "title": "Weekly freight cost accrual (month-end)",
+  "level": "task",
+  "korean": false
+ }
+}

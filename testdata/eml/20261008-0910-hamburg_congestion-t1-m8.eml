@@ -1,0 +1,34 @@
+Message-ID: <hamburg_congestion.t1.m8.c00f898c3d@hht-terminal.example>
+Date: Thu, 08 Oct 2026 09:10:00 +0200
+From: "HHT Terminal Operations" <hht@hht-terminal.example>
+To: "Tom Hendriks" <t.hendriks@corp-europe.example>
+Cc: "DL CT" <dl-ct@corp-europe.example>
+Subject: Hamburg terminal congestion - 6 containers affected
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============0424917840621104165=="
+
+--===============0424917840621104165==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Update: yard utilisation dropped to 81% this morning and normal gate-out appo=
+intments are available again from 8 October. Vessel arrivals are back on sche=
+dule. Thank you for your patience during the congestion.
+
+Best regards,
+HHT Terminal Operations
+Container terminal Hamburg
+
+--===============0424917840621104165==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Update: yard utilisation dropped to 81% this morning and norma=
+l gate-out appointments are available again from 8 October. Vessel arrivals a=
+re back on schedule. Thank you for your patience during the congestion.</p><p=
+>Best regards,<br>HHT Terminal Operations<br>Container terminal Hamburg</p></=
+body></html>
+
+--===============0424917840621104165==--

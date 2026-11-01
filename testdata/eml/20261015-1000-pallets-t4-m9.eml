@@ -1,0 +1,45 @@
+Message-ID: <pallets.t4.m9.45b5ead336@corp-europe.example>
+Date: Thu, 15 Oct 2026 10:00:00 +0200
+From: "Jeroen de Vries" <j.devries@corp-europe.example>
+To: "Daan Visser" <d.visser@corp-europe.example>
+Cc: "Elena Rossi" <e.rossi@corp-europe.example>,
+ "DL CT" <dl-ct@corp-europe.example>
+Subject: Safety stock EUR pallet Venlo
+Thread-Index: Ad1cey0yCXS1nUPcxYd+ZcRFhz368w==
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============1980929475104876472=="
+
+--===============1980929475104876472==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Daan, please raise the safety stock for material PAL-EUR-01 (EUR pallet) in p=
+lant VNL1 from 500 to 800. Mark approved this on 14 Oct after we nearly ran o=
+ut of pallets in Venlo. It should be changed in MM02, MRP1 view, so that the =
+next MRP run picks it up.
+
+Thanks,
+Jeroen de Vries
+Outbound team lead Venlo
+Corp Europe B.V. | Rotterdam
+T +31 10 484 3973
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============1980929475104876472==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Daan, please raise the safety stock for material PAL-EUR-01 (E=
+UR pallet) in plant VNL1 from 500 to 800. Mark approved this on 14 Oct after =
+we nearly ran out of pallets in Venlo. It should be changed in MM02, MRP1 vie=
+w, so that the next MRP run picks it up.</p><p>Thanks,<br>Jeroen de Vries<br>=
+Outbound team lead Venlo<br>Corp Europe B.V. | Rotterdam<br>T +31 10 484 3973=
+<br><br>This e-mail and any attachments are confidential and intended solely =
+for the addressee. If you received it in error, please delete it.</p></body><=
+/html>
+
+--===============1980929475104876472==--

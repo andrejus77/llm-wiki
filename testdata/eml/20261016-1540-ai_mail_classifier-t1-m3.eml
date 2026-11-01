@@ -1,0 +1,150 @@
+Message-ID: <ai_mail_classifier.t1.m3.56a95fab8e@corp-europe.example>
+Date: Fri, 16 Oct 2026 15:40:00 +0200
+From: "Emma Laurent" <e.laurent@corp-europe.example>
+To: "Stefan Kovac" <s.kovac@corp-europe.example>
+Cc: "Nina Meijer" <n.meijer@corp-europe.example>,
+ "DL AI" <dl-ai@corp-europe.example>
+Subject: RE: Pilot: automatic sorting of customer service mail
+In-Reply-To: <ai_mail_classifier.t1.m2.86e3991f79@corp-europe.example>
+References: <ai_mail_classifier.t1.m1.14e1206d19@corp-europe.example>
+ <ai_mail_classifier.t1.m2.86e3991f79@corp-europe.example>
+Thread-Index: Ad1dc9b1PA0iKuVudaAI5a0VOQMaaReShK7iNON2icA=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============8597313619599633669=="
+
+--===============8597313619599633669==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Stefan, the export is in the project folder: 200 mails, 38 delivery status, 4=
+1 damage, 52 invoicing, 29 booking change, 40 other. 31 of them are German, 9=
+ Polish.
+
+Queue | Mails | German | Polish
+Delivery status | 38 | 6 | 2
+Damage | 41 | 8 | 3
+Invoicing | 52 | 9 | 1
+Booking change | 29 | 4 | 2
+Other | 40 | 4 | 1
+
+Kind regards,
+Emma Laurent
+Customer service lead
+Corp Europe B.V. | Rotterdam
+T +31 10 896 2876
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Emma Laurent <e.laurent@corp-europe.example>
+Sent: Tuesday, 13 October 2026 11:25
+To: Nina Meijer
+Subject: RE: Pilot: automatic sorting of customer service mail
+
+Nina, fine for us. I will take the 200 mails from the September archive and r=
+emove names and phone numbers before I send them. Note that about 15 % of our=
+ mail is in German and some in Polish, please make sure the test covers that.
+
+Thanks,
+Emma Laurent
+Customer service lead
+Corp Europe B.V. | Rotterdam
+T +31 10 590 8668
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: Nina Meijer <n.meijer@corp-europe.example>
+Sent: Tuesday, 13 October 2026 09:10
+To: Emma Laurent; Stefan Kovac
+Subject: Pilot: automatic sorting of customer service mail
+
+Emma, Stefan,
+
+As agreed in the steering meeting we start the pilot to sort incoming custome=
+r service mail into the five queues (delivery status, damage, invoicing, book=
+ing change, other) with Gemini 2.5 Flash through the company Vertex AI tenant=
+. Customer service sorts about 900 mails a week by hand today.
+
+Plan:
+- Emma: export 200 anonymised mails from September with the queue they ended =
+up in (by 16 Oct)
+- Stefan: prompt + small evaluation script, accuracy target 90 % (by 23 Oct)
+- Go/no-go for a shadow run in November on 29 Oct
+
+Pieter, FYI because the RPA mailbox reader would feed the model later.
+
+Thanks,
+Nina Meijer
+AI lead, Logistics Europe
+Corp Europe B.V. | Rotterdam
+T +31 10 810 2040
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============8597313619599633669==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Stefan, the export is in the project folder: 200 mails, 38 del=
+ivery status, 41 damage, 52 invoicing, 29 booking change, 40 other. 31 of the=
+m are German, 9 Polish.</p><table style=3D'border-collapse:collapse;font-size=
+:10pt'><tr><th style=3D'border:1px solid #999;padding:3px 6px'>Queue</th><th =
+style=3D'border:1px solid #999;padding:3px 6px'>Mails</th><th style=3D'border=
+:1px solid #999;padding:3px 6px'>German</th><th style=3D'border:1px solid #99=
+9;padding:3px 6px'>Polish</th></tr><tr><td style=3D'border:1px solid #999;pad=
+ding:3px 6px'>Delivery status</td><td style=3D'border:1px solid #999;padding:=
+3px 6px'>38</td><td style=3D'border:1px solid #999;padding:3px 6px'>6</td><td=
+ style=3D'border:1px solid #999;padding:3px 6px'>2</td></tr><tr><td style=3D'=
+border:1px solid #999;padding:3px 6px'>Damage</td><td style=3D'border:1px sol=
+id #999;padding:3px 6px'>41</td><td style=3D'border:1px solid #999;padding:3p=
+x 6px'>8</td><td style=3D'border:1px solid #999;padding:3px 6px'>3</td></tr><=
+tr><td style=3D'border:1px solid #999;padding:3px 6px'>Invoicing</td><td styl=
+e=3D'border:1px solid #999;padding:3px 6px'>52</td><td style=3D'border:1px so=
+lid #999;padding:3px 6px'>9</td><td style=3D'border:1px solid #999;padding:3p=
+x 6px'>1</td></tr><tr><td style=3D'border:1px solid #999;padding:3px 6px'>Boo=
+king change</td><td style=3D'border:1px solid #999;padding:3px 6px'>29</td><t=
+d style=3D'border:1px solid #999;padding:3px 6px'>4</td><td style=3D'border:1=
+px solid #999;padding:3px 6px'>2</td></tr><tr><td style=3D'border:1px solid #=
+999;padding:3px 6px'>Other</td><td style=3D'border:1px solid #999;padding:3px=
+ 6px'>40</td><td style=3D'border:1px solid #999;padding:3px 6px'>4</td><td st=
+yle=3D'border:1px solid #999;padding:3px 6px'>1</td></tr></table><p>Kind rega=
+rds,<br>Emma Laurent<br>Customer service lead<br>Corp Europe B.V. | Rotterdam=
+<br>T +31 10 896 2876<br><br>This e-mail and any attachments are confidential=
+ and intended solely for the addressee. If you received it in error, please d=
+elete it.</p><div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding=
+:3.0pt 0cm 0cm 0cm'><p><b>From:</b> Emma Laurent &lt;e.laurent@corp-europe.ex=
+ample&gt;<br><b>Sent:</b> Tuesday, 13 October 2026 11:25<br><b>To:</b> Nina M=
+eijer<br><b>Cc:</b> Stefan Kovac; DL AI<br><b>Subject:</b> RE: Pilot: automat=
+ic sorting of customer service mail</p></div><p>Nina, fine for us. I will tak=
+e the 200 mails from the September archive and remove names and phone numbers=
+ before I send them. Note that about 15 % of our mail is in German and some i=
+n Polish, please make sure the test covers that.</p><p>Thanks,<br>Emma Lauren=
+t<br>Customer service lead<br>Corp Europe B.V. | Rotterdam<br>T +31 10 590 86=
+68<br><br>This e-mail and any attachments are confidential and intended solel=
+y for the addressee. If you received it in error, please delete it.</p><div s=
+tyle=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0cm 0cm'=
+><p><b>From:</b> Nina Meijer &lt;n.meijer@corp-europe.example&gt;<br><b>Sent:=
+</b> Tuesday, 13 October 2026 09:10<br><b>To:</b> Emma Laurent; Stefan Kovac<=
+br><b>Cc:</b> Pieter Bakker; DL AI<br><b>Subject:</b> Pilot: automatic sortin=
+g of customer service mail</p></div><p>Emma, Stefan,</p>
+<p>As agreed in the steering meeting we start the pilot to sort incoming cust=
+omer service mail into the five queues (delivery status, damage, invoicing, b=
+ooking change, other) with Gemini 2.5 Flash through the company Vertex AI ten=
+ant. Customer service sorts about 900 mails a week by hand today.</p>
+<p>Plan:<br>- Emma: export 200 anonymised mails from September with the queue=
+ they ended up in (by 16 Oct)<br>- Stefan: prompt + small evaluation script, =
+accuracy target 90 % (by 23 Oct)<br>- Go/no-go for a shadow run in November o=
+n 29 Oct</p>
+<p>Pieter, FYI because the RPA mailbox reader would feed the model later.</p>=
+<p>Thanks,<br>Nina Meijer<br>AI lead, Logistics Europe<br>Corp Europe B.V. | =
+Rotterdam<br>T +31 10 810 2040<br><br>This e-mail and any attachments are con=
+fidential and intended solely for the addressee. If you received it in error,=
+ please delete it.</p></body></html>
+
+--===============8597313619599633669==--

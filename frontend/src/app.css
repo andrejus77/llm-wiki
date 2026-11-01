@@ -1,0 +1,97 @@
+/* Additions to the mockup stylesheet for the real portal. */
+.tabs button { cursor: pointer; }
+.cw-fab { position: fixed; }
+.fld textarea { width: 340px; max-width: 100%; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 5px; padding: 4px 8px; font-family: var(--f-mono); font-size: .8rem; }
+.fld input[type="number"] { width: 110px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 5px; padding: 3px 6px; }
+.fld select { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 5px; padding: 3px 6px; }
+.dictnum { display: flex; flex-wrap: wrap; gap: 6px 10px; max-width: 520px; }
+.dictnum label { display: flex; flex-direction: column; font-size: .75rem; }
+.dictnum input { width: 90px !important; }
+.mt td input, .mt td select { font-size: .78rem; border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 4px; padding: 2px 4px; }
+.btn-row input, .btn-row select { border: 1px solid var(--line); background: var(--surface); color: var(--ink); border-radius: 5px; padding: 4px 8px; font: inherit; font-size: .85rem; }
+.sbar i { display: block; height: 100%; }
+.req { border: 1px solid var(--line); border-radius: 8px; padding: 8px 12px; margin: 8px 0; background: var(--surface); }
+.req .top { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+pre.json { white-space: pre-wrap; word-break: break-word; font-size: .74rem; background: var(--sunken); padding: 8px; border-radius: 6px; max-height: 320px; overflow: auto; }
+.msg-a .srcs button { text-align: left; }
+.msg-a .trace ul { margin: 2px 0 4px 16px; padding: 0; }
+.mail-grid .pane { min-width: 0; }
+.att { text-decoration: none; color: inherit; }
+.atts { display: flex; flex-wrap: wrap; gap: 8px; margin: 6px 0 10px; }
+.atts .att { border: 1px solid var(--line); border-radius: 8px; padding: 6px 10px; background: var(--sunken); font-size: .82rem; max-width: 360px; }
+
+/* Reports: one tab per department */
+.dept-tabs { display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 1px solid var(--line); margin: 0 0 12px; }
+.dept-tabs button { all: unset; cursor: pointer; padding: 7px 14px; border-radius: 8px 8px 0 0; font-weight: 600; font-size: .92rem; color: var(--muted); display: inline-flex; gap: 6px; align-items: center; border: 1px solid transparent; border-bottom: 0; margin-bottom: -1px; }
+.dept-tabs button:hover { color: var(--ink); }
+.dept-tabs button[aria-current="page"] { color: var(--ink); background: var(--surface); border-color: var(--line); }
+.dept-tabs button:focus-visible { outline: 2px solid var(--accent); }
+
+/* Day cells: an empty day stays readable (outlined on the card colour), a busy day fills with the accent */
+.daystrip { display: inline-flex; gap: 3px; vertical-align: middle; }
+.daystrip .dcell { position: relative; width: 16px; height: 18px; border-radius: 3px; border: 1px solid var(--line); background: var(--sunken);
+  display: grid; place-items: center; font: 500 .56rem/1 var(--f-mono); color: var(--muted); }
+.daystrip .dcell.on { border-color: color-mix(in srgb, var(--accent) 60%, var(--line)); background: color-mix(in srgb, var(--accent) var(--p, 50%), var(--surface)); color: var(--ink); font-weight: 700; }
+.daystrip.big { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 5px; width: 100%; margin: 4px 0 12px; }
+.daystrip.big .dcell { width: auto; height: 64px; border-radius: 8px; display: flex; flex-direction: column; justify-content: center; gap: 2px; font-size: .68rem; }
+.daystrip.big .dcell b { font: 700 1.15rem/1 var(--f-display); color: inherit; }
+.daystrip.big .dcell small { font-size: .6rem; opacity: .85; }
+.daystrip.big .dcell.on { color: var(--ink); }
+.daystrip .dcell .imp { position: absolute; top: 4px; right: 4px; width: 6px; height: 6px; border-radius: 50%; background: var(--amber); }
+
+.daystrip .dcell.wkc { width: auto; padding: 0 4px; }
+.rep-head.solo { grid-template-columns: minmax(0, 1fr); }
+
+/* Monthly report: mail per day as a calendar */
+.monthgrid { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; margin: 4px 0 12px; }
+.monthgrid .mh { font: 500 .62rem var(--f-mono); color: var(--muted); text-align: center; }
+.monthgrid .dcell { position: relative; height: 38px; border-radius: 6px; border: 1px solid var(--line); background: var(--sunken); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; color: var(--muted); }
+.monthgrid .dcell small { font: 500 .58rem var(--f-mono); position: absolute; top: 3px; left: 5px; }
+.monthgrid .dcell b { font: 700 .95rem/1 var(--f-display); color: var(--ink); }
+.monthgrid .dcell.on { border-color: color-mix(in srgb, var(--accent) 60%, var(--line)); background: color-mix(in srgb, var(--accent) var(--p, 50%), var(--surface)); }
+.monthgrid .dcell .imp { position: absolute; top: 4px; right: 4px; width: 6px; height: 6px; border-radius: 50%; background: var(--amber); }
+
+/* Topic month: topics × days */
+.wk table.tmonth { table-layout: auto; min-width: 0; }
+.tmonth th.tt { text-align: left; font-family: var(--f-body); font-size: .8rem; color: var(--ink); max-width: 240px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; background: var(--surface); position: sticky; left: 0; }
+.tmonth th.we { opacity: .6; }
+.tmonth td.dcell { width: 22px; min-width: 22px; height: 22px; padding: 0; text-align: center; font: 600 .62rem var(--f-mono); color: var(--ink); background: var(--sunken); }
+.tmonth td.dcell.on { background: color-mix(in srgb, var(--accent) var(--p, 50%), var(--surface)); }
+
+/* Lists under the stories: at most one story card tall, scrolling inside */
+.rlist { overflow: auto; overscroll-behavior: contain; }
+.rlist .sec-h { position: sticky; top: -14px; background: var(--surface); padding: 6px 0 4px; margin-top: -6px; z-index: 1; }
+.rc-dec { font-size: .86rem; border-left: 3px solid var(--green); padding: 2px 0 2px 8px; }
+.rc-dec .rc-lbl { display: inline; margin-right: 6px; }
+.rc-dec .linkbtn { text-align: left; color: var(--ink); }
+
+/* Wiki page: the sections use the full card width; the summary leads */
+.page-grid .card.prose { max-width: none; }
+.prose .psum { font-size: 1.02rem; }
+.prose .psum h2 { font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-top: 4px; }
+.lenbar { display: flex; align-items: center; gap: 8px; font-size: .78rem; color: var(--muted); }
+.lenbar .bar { flex: 0 0 120px; height: 6px; border-radius: 3px; background: var(--sunken); overflow: hidden; }
+.lenbar .bar i { display: block; height: 100%; background: var(--green); }
+.lenbar .bar i.over { background: var(--amber); }
+
+/* KPI cards under the day strip */
+.stat-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 6px; }
+.scard { border-radius: 8px; padding: 6px 9px; background: var(--sunken); border-left: 4px solid var(--muted); display: flex; flex-direction: column; min-width: 0; }
+.scard b { font: 700 1.25rem/1.15 var(--f-display); font-variant-numeric: tabular-nums; }
+.scard span { font-size: .72rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.scard.blue { border-color: var(--accent); background: var(--accent-soft); }
+.scard.amber { border-color: var(--amber); background: var(--amber-soft); }
+.scard.teal { border-color: var(--teal); background: var(--teal-soft); }
+.scard.violet { border-color: var(--violet); background: var(--violet-soft); }
+.scard.green { border-color: var(--green); background: var(--green-soft); }
+.scard.red { border-color: var(--red); background: var(--red-soft); }
+
+/* Threads: parallel replies are drawn in their own lane, never as replies to each other */
+.thread .lane { position: relative; }
+.thread .ghost { border: 1px dashed var(--muted); border-radius: 8px; padding: 6px 10px; background: transparent; font-size: .82rem; color: var(--muted); margin: 6px 0; }
+.thread .ghost b { color: var(--ink); }
+.branch { display: inline-flex; gap: 4px; align-items: center; font: 500 .68rem var(--f-mono); color: var(--violet); background: var(--violet-soft); border-radius: 4px; padding: 1px 6px; }
+.replyto { font-size: .72rem; color: var(--muted); }
+.qblock .pill.par { margin-left: 6px; }
+.dept-pill { display: inline-flex; align-items: center; gap: 4px; font-size: .72rem; padding: 1px 8px; border-radius: 999px; background: var(--teal-soft); color: var(--teal); font-weight: 600; }

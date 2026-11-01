@@ -1,0 +1,20 @@
+# Work laptop at home (only Gemini CLI available) / demo: the SYNTHETIC test mailbox (testdata\eml) processed with
+# Gemini CLI, in its own data folder (data_gemini\). test_data_only lets an external endpoint do every stage — never
+# use this file with real mail.
+#   copy tools\settings.home.yaml data_gemini\settings.yaml   (setup.bat --home does it)
+server:
+  mode: local
+sources:
+  eml_folder: testdata\eml
+pool:
+  endpoints:
+    - {name: gemini, kind: gemini_cli, model: gemini-2.5-flash, external: true, rpm: 30, max_concurrent: 3, timeout_s: 300, context_tokens: 200000}
+    - {name: gemini-pro, kind: gemini_cli, model: gemini-2.5-pro, external: true, rpm: 10, max_concurrent: 1, timeout_s: 300, context_tokens: 200000,
+       stages: ["s3", "review", "report"], priority: 1}
+    - {name: claude, kind: claude_cli, model: haiku, external: true, rpm: 30, max_concurrent: 3, timeout_s: 240, enabled: false, priority: 2}
+privacy:
+  test_data_only: true
+retrieval:
+  embed_model: multilingual-e5-small
+schedule:
+  batch_enabled: false

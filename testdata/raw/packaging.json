@@ -1,0 +1,298 @@
+{
+ "threads": [
+  {
+   "key": "t1",
+   "subject": "New carton sizes S2 / M3 / L4 from 2 Nov - master data and EWM",
+   "emails": [
+    {
+     "id": "m1",
+     "date": "2026-10-13 09:20",
+     "from": "dvisser",
+     "to": [
+      "speeters"
+     ],
+     "cc": [
+      "lbecker"
+     ],
+     "reply_to": null,
+     "forward": false,
+     "body": "Sofie, Lukas - heads-up on the packaging change. From Monday 2 Nov we switch to three new carton sizes: S2, M3 and L4. They replace the old S1, M2 and L3.\n\nOn my side I will update the packaging data in the material master with MM02. By my count that is 312 materials. I plan to have this done by Wed 21 Oct, so there is a buffer before go-live.\n\nLukas, the packaging instructions in EWM will need adjusting as well. Can you take that?\n\nSofie, can you send me the current stock of the old cartons in Antwerp? I want to know if we need to do anything special with the leftovers before 2 Nov.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m2",
+     "date": "2026-10-14 11:05",
+     "from": "speeters",
+     "to": [
+      "dvisser"
+     ],
+     "cc": [
+      "lbecker"
+     ],
+     "reply_to": "m1",
+     "forward": false,
+     "body": "Daan, counted this morning in Antwerp: S1 = 4,200 pcs, M2 = 2,800 pcs, L3 = 1,500 pcs.\n\nMy question: do we have to stop using them on 2 Nov? If yes, I need to arrange to send the rest back or scrap it, and that is a lot of cartons. At the current pick volume S1 lasts about 3 weeks after 2 Nov, L3 even longer.\n\nAlso, when do the new cartons arrive? I need floor space in bay 14 before they come.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m3",
+     "date": "2026-10-15 08:45",
+     "from": "dvisser",
+     "to": [
+      "speeters"
+     ],
+     "cc": [
+      "lbecker"
+     ],
+     "reply_to": "m2",
+     "forward": false,
+     "body": "No need to scrap anything, Sofie. Decision: the old cartons are used up first. 2 Nov is the date from which S2, M3 and L4 are the standard in the master data, but Antwerp keeps packing into S1, M2 and L3 until the stock is empty. Nothing goes back to the supplier.\n\nThe first delivery of new cartons for Antwerp is planned for Thu 29 Oct, so please keep bay 14 free from that day. Once an old size is finished, switch that size to the new one.\n\nFor reference, the new sizes (internal dimensions):",
+     "table": {
+      "header": [
+       "New size",
+       "Replaces",
+       "Internal size (mm)"
+      ],
+      "rows": [
+       [
+        "S2",
+        "S1",
+        "300 x 200 x 150"
+       ],
+       [
+        "M3",
+        "M2",
+        "400 x 300 x 200"
+       ],
+       [
+        "L4",
+        "L3",
+        "600 x 400 x 300"
+       ]
+      ]
+     },
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m4",
+     "date": "2026-10-19 14:10",
+     "from": "lbecker",
+     "to": [
+      "dvisser"
+     ],
+     "cc": [
+      "speeters"
+     ],
+     "reply_to": "m3",
+     "forward": false,
+     "body": "Daan, the packaging instructions in EWM are adjusted for S2, M3 and L4 in the quality system. I made them valid from 2 Nov. The old instructions for S1, M2 and L3 stay active in parallel, so Sofie's team can keep packing with the old cartons until they are gone. I will close them when she tells me the stock is zero.\n\nOne question: I assumed your 312 materials are only the ones shipped from Antwerp. Do they include Rotterdam and Venlo? If not, I need to check the instructions for those sites too.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    },
+    {
+     "id": "m5",
+     "date": "2026-10-21 16:30",
+     "from": "dvisser",
+     "to": [
+      "lbecker"
+     ],
+     "cc": [
+      "speeters"
+     ],
+     "reply_to": "m4",
+     "forward": false,
+     "body": "Lukas, no, the 312 is all sites, not only Antwerp. Rotterdam and Venlo use the same materials, so your instructions apply there as well. No separate check needed.\n\nStatus: the MM02 update is finished for all 312 materials. 298 went through in the first run. 14 were blocked because they were locked by a batch job; I repeated those after the job ended and they are fine now. Screenshot of the last one is below.",
+     "table": null,
+     "attachment": null,
+     "screenshot": {
+      "title": "MM02 - Change Material (Packaging data)",
+      "lines": [
+       "Plant: all plants in scope",
+       "Materials changed: 312 of 312",
+       "Carton old: S1 / M2 / L3  ->  new: S2 / M3 / L4",
+       "Status: Data has been saved"
+      ]
+     }
+    },
+    {
+     "id": "m6",
+     "date": "2026-10-27 10:40",
+     "from": "speeters",
+     "to": [
+      "dvisser"
+     ],
+     "cc": [
+      "lbecker"
+     ],
+     "reply_to": "m5",
+     "forward": false,
+     "body": "Thanks both. Bay 14 is cleared and ready for Thursday's delivery of the new cartons. We will use up S1, M2 and L3 first, as agreed, and I will tell Lukas when each size is at zero so he can close the old instructions.",
+     "table": null,
+     "attachment": null,
+     "screenshot": null
+    }
+   ]
+  }
+ ],
+ "facts": [
+  {
+   "id": "F1",
+   "text": "Three new carton sizes S2, M3 and L4 replace the old S1, M2 and L3 from 2 Nov 2026.",
+   "emails": [
+    "m1"
+   ]
+  },
+  {
+   "id": "F2",
+   "text": "Daan Visser updates the packaging data in the material master with MM02 for 312 materials.",
+   "emails": [
+    "m1",
+    "m5"
+   ]
+  },
+  {
+   "id": "F3",
+   "text": "Lukas Becker adjusts the packaging instructions in EWM.",
+   "emails": [
+    "m1",
+    "m4"
+   ]
+  },
+  {
+   "id": "F4",
+   "text": "Antwerp stock on 14 Oct: S1 = 4,200 pcs, M2 = 2,800 pcs, L3 = 1,500 pcs.",
+   "emails": [
+    "m2"
+   ]
+  },
+  {
+   "id": "F5",
+   "text": "Decision: the old cartons are used up first; nothing is scrapped or sent back to the supplier.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F6",
+   "text": "The first delivery of new cartons for Antwerp is planned for Thu 29 Oct and goes to bay 14.",
+   "emails": [
+    "m3",
+    "m6"
+   ]
+  },
+  {
+   "id": "F7",
+   "text": "Internal dimensions: S2 = 300 x 200 x 150 mm, M3 = 400 x 300 x 200 mm, L4 = 600 x 400 x 300 mm.",
+   "emails": [
+    "m3"
+   ]
+  },
+  {
+   "id": "F8",
+   "text": "The new EWM packaging instructions are valid from 2 Nov; the old ones stay active in parallel until the old stock is gone.",
+   "emails": [
+    "m4"
+   ]
+  },
+  {
+   "id": "F9",
+   "text": "Sofie Peeters will tell Lukas when each old size is at zero so he can close the old instructions.",
+   "emails": [
+    "m4",
+    "m6"
+   ]
+  },
+  {
+   "id": "F10",
+   "text": "The 312 materials cover all sites, including Rotterdam and Venlo, not only Antwerp.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F11",
+   "text": "In the MM02 update 298 materials went through in the first run; 14 were blocked by a batch job lock and were repeated successfully.",
+   "emails": [
+    "m5"
+   ]
+  },
+  {
+   "id": "F12",
+   "text": "Daan planned to finish the MM02 update by Wed 21 Oct and completed it on 21 Oct.",
+   "emails": [
+    "m1",
+    "m5"
+   ]
+  },
+  {
+   "id": "F13",
+   "text": "At current pick volume, the S1 stock in Antwerp lasts about 3 weeks after 2 Nov.",
+   "emails": [
+    "m2"
+   ]
+  }
+ ],
+ "questions": [
+  {
+   "q": "Which new carton sizes replace the old ones from 2 November, and which old sizes do they replace?",
+   "a": "S2, M3 and L4 replace S1, M2 and L3.",
+   "facts": [
+    "F1"
+   ],
+   "type": "fact"
+  },
+  {
+   "q": "Why does Antwerp not have to scrap the old cartons on 2 Nov?",
+   "a": "Daan decided that the old cartons are used up first; the new sizes become standard in the master data from 2 Nov, but Antwerp keeps packing with the old ones until empty.",
+   "facts": [
+    "F5",
+    "F1"
+   ],
+   "type": "why"
+  },
+  {
+   "q": "Who adjusted the EWM packaging instructions, and from when are the new ones valid?",
+   "a": "Lukas Becker; they are valid from 2 Nov.",
+   "facts": [
+    "F3",
+    "F8"
+   ],
+   "type": "who"
+  },
+  {
+   "q": "When is the first delivery of new cartons planned for Antwerp and where will they be stored?",
+   "a": "Thu 29 Oct, in bay 14.",
+   "facts": [
+    "F6"
+   ],
+   "type": "when"
+  },
+  {
+   "q": "How many of the 312 materials failed in the first MM02 run and why?",
+   "a": "14 failed because they were locked by a batch job; they were repeated afterwards and are fine.",
+   "facts": [
+    "F11",
+    "F2"
+   ],
+   "type": "multihop"
+  },
+  {
+   "q": "What is the price per carton for the new S2, M3 and L4 sizes?",
+   "a": "not in the emails",
+   "facts": [],
+   "type": "unanswerable"
+  }
+ ],
+ "storyline": {
+  "key": "packaging",
+  "title": "New box sizes in packaging master data",
+  "level": "task",
+  "korean": false
+ }
+}

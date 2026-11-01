@@ -1,0 +1,135 @@
+Message-ID: <kpi_co2.t1.m3.84fade43d6@corp-europe.example>
+Date: Fri, 16 Oct 2026 14:05:00 +0200
+From: "Pieter Bakker" <p.bakker@corp-europe.example>
+To: "Tom Hendriks" <t.hendriks@corp-europe.example>
+Cc: "DL CT" <dl-ct@corp-europe.example>
+Subject: RE: TMS export: CO2 per shipment column from week 44
+In-Reply-To: <kpi_co2.t1.m2.66aca70afb@routewise.example>
+References: <kpi_co2.t1.m1.418864d5e2@corp-europe.example>
+ <kpi_co2.t1.m2.66aca70afb@routewise.example>
+Thread-Index: Ad1dZpF+gXCdZkHoYH/fho3msmrKYNEWHlYH596Kftk=
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============1702936704364633291=="
+
+--===============1702936704364633291==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Got the sample, thanks. The file loads fine, I only need to add the new field=
+ to the mapping in the dashboard data model. Two questions before I do:
+
+1. Row 80412377 (Felixstowe - Rotterdam) has an empty CO2 value. I assume tha=
+t is the sea leg, so it is correctly left out? I will show it as blank, not a=
+s 0, otherwise the monthly average gets distorted.
+2. Should the dashboard show the number as a fact or as an estimate? Since ca=
+rriers do not deliver actual fuel data yet, I would rather label it.
+
+Best regards,
+Pieter Bakker
+RPA and IT developer
+Corp Europe B.V. | Rotterdam
+T +31 10 675 7209
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+-----Original Message-----
+From: RouteWise Support <routewise@routewise.example>
+Sent: Thursday, 15 October 2026 11:20
+To: Tom Hendriks
+Subject: Re: TMS export: CO2 per shipment column from week 44
+
+Thanks Tom, this is feasible. We can enable the column co2_kg_per_shipment fo=
+r your tenant so that it appears in the export from week 44 (Monday 26 Octobe=
+r).
+
+Points to be aware of:
+- The calculation covers road legs only, WTW, based on GLEC default emission =
+factors per vehicle type and distance.
+- As long as carriers do not send actual fuel consumption, the value is an es=
+timate based on these defaults.
+- Decimal separator is a dot, two decimals, empty value for shipments without=
+ a road leg.
+
+I attached a sample export with 5 shipments so Pieter can start on the mappin=
+g.
+
+Best regards,
+RouteWise Support
+TMS software vendor
+
+-----Original Message-----
+From: Tom Hendriks <t.hendriks@corp-europe.example>
+Sent: Wednesday, 14 October 2026 09:10
+To: RouteWise Support
+Subject: TMS export: CO2 per shipment column from week 44
+
+We want to show CO2 per shipment on the logistics KPI dashboard and would lik=
+e to get it straight from the TMS export instead of calculating it in Excel.
+
+Could you add a column co2_kg_per_shipment to the standard shipment export? O=
+ur scope:
+- road legs only, no sea or rail
+- well-to-wheel (WTW), calculated according to the GLEC framework
+- value in kg, per shipment
+
+Pieter Bakker (in cc) maintains the dashboard mapping and needs a sample file=
+ before he can change anything. Our target is that the column is in the expor=
+t from week 44. Is that realistic on your side?
+
+Kind regards,
+Tom Hendriks
+Transport planner
+Corp Europe B.V. | Rotterdam
+T +31 10 485 8385
+
+This e-mail and any attachments are confidential and intended solely for the =
+addressee. If you received it in error, please delete it.
+
+--===============1702936704364633291==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Got the sample, thanks. The file loads fine, I only need to ad=
+d the new field to the mapping in the dashboard data model. Two questions bef=
+ore I do:</p>
+<p>1. Row 80412377 (Felixstowe - Rotterdam) has an empty CO2 value. I assume =
+that is the sea leg, so it is correctly left out? I will show it as blank, no=
+t as 0, otherwise the monthly average gets distorted.<br>2. Should the dashbo=
+ard show the number as a fact or as an estimate? Since carriers do not delive=
+r actual fuel data yet, I would rather label it.</p><p>Best regards,<br>Piete=
+r Bakker<br>RPA and IT developer<br>Corp Europe B.V. | Rotterdam<br>T +31 10 =
+675 7209<br><br>This e-mail and any attachments are confidential and intended=
+ solely for the addressee. If you received it in error, please delete it.</p>=
+<div style=3D'border:none;border-top:solid #E1E1E1 1.0pt;padding:3.0pt 0cm 0c=
+m 0cm'><p><b>From:</b> RouteWise Support &lt;routewise@routewise.example&gt;<=
+br><b>Sent:</b> Thursday, 15 October 2026 11:20<br><b>To:</b> Tom Hendriks<br=
+><b>Cc:</b> Pieter Bakker; DL CT<br><b>Subject:</b> Re: TMS export: CO2 per s=
+hipment column from week 44</p></div><p>Thanks Tom, this is feasible. We can =
+enable the column co2_kg_per_shipment for your tenant so that it appears in t=
+he export from week 44 (Monday 26 October).</p>
+<p>Points to be aware of:<br>- The calculation covers road legs only, WTW, ba=
+sed on GLEC default emission factors per vehicle type and distance.<br>- As l=
+ong as carriers do not send actual fuel consumption, the value is an estimate=
+ based on these defaults.<br>- Decimal separator is a dot, two decimals, empt=
+y value for shipments without a road leg.</p>
+<p>I attached a sample export with 5 shipments so Pieter can start on the map=
+ping.</p><p>Best regards,<br>RouteWise Support<br>TMS software vendor</p><div=
+ class=3D'gmail_quote'>On Wed, 14 Oct 2026 at 09:10, Tom Hendriks &lt;t.hendr=
+iks@corp-europe.example&gt; wrote:<br><p>We want to show CO2 per shipment on =
+the logistics KPI dashboard and would like to get it straight from the TMS ex=
+port instead of calculating it in Excel.</p>
+<p>Could you add a column co2_kg_per_shipment to the standard shipment export=
+? Our scope:<br>- road legs only, no sea or rail<br>- well-to-wheel (WTW), ca=
+lculated according to the GLEC framework<br>- value in kg, per shipment</p>
+<p>Pieter Bakker (in cc) maintains the dashboard mapping and needs a sample f=
+ile before he can change anything. Our target is that the column is in the ex=
+port from week 44. Is that realistic on your side?</p><p>Kind regards,<br>Tom=
+ Hendriks<br>Transport planner<br>Corp Europe B.V. | Rotterdam<br>T +31 10 48=
+5 8385<br><br>This e-mail and any attachments are confidential and intended s=
+olely for the addressee. If you received it in error, please delete it.</p></=
+div></body></html>
+
+--===============1702936704364633291==--
