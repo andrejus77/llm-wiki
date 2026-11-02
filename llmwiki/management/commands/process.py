@@ -19,5 +19,8 @@ class Command(BaseCommand):
     def handle(self, *a, **o):
         def prog(i, n, w, ws):
             self.stdout.write(f"window {i}/{n} {w}: {ws}")
+        from llmwiki.llm.pool import pool
+        if pool().resume("manage.py process"):   # started by hand: try again
+            self.stdout.write("Stopped endpoints were resumed for this run.")
         stats = process(o["mode"], until_day=o["until"], since_day=o["since"], max_windows=o["windows"], review=o["review"] or None, progress=prog)
         self.stdout.write(json.dumps(stats))

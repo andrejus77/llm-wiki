@@ -66,7 +66,22 @@ class ThreadKey(models.Model):
     thread = models.ForeignKey(Thread, on_delete=models.CASCADE, related_name="keys")
 
 
+class Folder(models.Model):
+    """A mail folder in the portal (like Outlook's). Filing only: whether an email is processed is the rules' business."""
+    name = models.CharField(max_length=120, unique=True)
+    position = models.IntegerField(default=0)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        ordering = ["position", "name"]
+
+    def __str__(self):
+        return self.name
+
+
 class Email(models.Model):
+    """The row the portal lists and filters. The heavy part (the original message with its attachments, the full body)
+    lives in EmailOriginal: SQLite has to walk over a large value to reach any column stored after it."""
     STATUS = [("new", "new"), ("skipped", "skipped"), ("duplicate", "duplicate"), ("noted", "noted"),
               ("processed", "processed"), ("failed", "failed")]
     message_id = models.CharField(max_length=500, unique=True)
@@ -87,10 +102,7 @@ class Email(models.Model):
     thread_index = models.CharField(max_length=200, default="", blank=True)
     conversation_id = models.CharField(max_length=200, default="", blank=True)
     headers = models.JSONField(default=dict)          # a few interesting headers
-    raw = models.BinaryField(null=True)               # zlib-compressed original .eml
-    body_text = models.TextField(default="")          # full body as markdown-ish text
     new_text = models.TextField(default="")           # the part written in this email
-    quoted_text = models.TextField(default="")
     signature = models.TextField(default="", blank=True)
     lang = models.CharField(max_length=8, default="en")
     has_table = models.BooleanField(default=False)
@@ -101,6 +113,11 @@ class Email(models.Model):
     status = models.CharField(max_length=12, choices=STATUS, default="new", db_index=True)
     skip_rule = models.CharField(max_length=300, default="", blank=True)
     skip_action = models.CharField(max_length=12, default="", blank=True)   # skip | note_only
+    rule_ref = models.IntegerField(null=True, blank=True, db_index=True)    # the SkipRule that skipped it (undone with the rule)
+    skip_manual = models.BooleanField(default=False)  # a person decided skip / process: rules leave it alone
+    folder = models.ForeignKey(Folder, null=True, blank=True, on_delete=models.SET_NULL, related_name="emails")
+    folder_rule = models.IntegerField(null=True, blank=True)                # the SkipRule that filed it (undone with the rule)
+    folder_manual = models.BooleanField(default=False)  # a person moved it: rules leave it alone
     audit = models.BooleanField(default=False)        # processed despite a learned rule (audit sample)
     # the per-email note (S1 or fast path)
     note = models.TextField(default="", blank=True)
@@ -116,10 +133,11 @@ class Email(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        indexes = [models.Index(fields=["thread", "sent_at"]), models.Index(fields=["status", "day"])]
+        indexes = [models.Index(fields=["thread", "sent_at"]), models.Index(fields=["status", "day"]), models.Index(fields=["folder", "sent_at"])]
 
     def raw_bytes(self) -> bytes:
-        return zlib.decompress(bytes(self.raw)) if self.raw else b""
+        raw = EmailOriginal.objects.filter(email_id=self.id).values_list("raw", flat=True).first()
+        return zlib.decompress(bytes(raw)) if raw else b""
 
     @property
     def is_internal(self):
@@ -129,6 +147,14 @@ class Email(models.Model):
 
     def __str__(self):
         return f"E{self.id} {self.day} {self.from_addr} {self.subject[:50]}"
+
+
+class EmailOriginal(models.Model):
+    """The original message and the full body of an email. Only re-parsing and exports read this table."""
+    email = models.OneToOneField(Email, primary_key=True, on_delete=models.CASCADE, related_name="original")
+    raw = models.BinaryField(null=True)               # zlib-compressed original .eml
+    body_text = models.TextField(default="")          # full body as markdown-ish text
+    quoted_text = models.TextField(default="")
 
 
 class Attachment(models.Model):
@@ -162,12 +188,16 @@ class Identifier(models.Model):
 
 
 class SkipRule(models.Model):
+    """A mail rule: conditions (sender, subject, recipient; all that are set must match) and actions (skip / note only /
+    keep processing, and optionally file into a folder)."""
     KIND = [("static", "static"), ("learned", "learned"), ("candidate", "candidate")]
     kind = models.CharField(max_length=10, choices=KIND, default="static")
     sender = models.CharField(max_length=300, default="", blank=True, help_text="glob on the sender, e.g. news@*")
     subject = models.CharField(max_length=500, default="", blank=True, help_text="regex on the subject")
+    recipient = models.CharField(max_length=300, default="", blank=True, help_text="glob on To/Cc, e.g. dl-ct@*")
     template = models.CharField(max_length=500, default="", blank=True, help_text="learned: normalised subject template")
-    action = models.CharField(max_length=12, default="skip")  # skip | note_only
+    action = models.CharField(max_length=12, default="skip")  # skip | note_only | keep (only files the mail)
+    folder = models.ForeignKey(Folder, null=True, blank=True, on_delete=models.SET_NULL, related_name="rules")
     include_replies = models.BooleanField(default=False, help_text="also skip replies/forwards written by other senders")
     enabled = models.BooleanField(default=True)
     hits = models.IntegerField(default=0)
@@ -194,6 +224,7 @@ class Page(models.Model):
     created_reason = models.TextField(default="", blank=True)
     tagged_at = models.DateTimeField(null=True)
     reviewed_at = models.DateTimeField(null=True)
+    needs_rewrite = models.BooleanField(default=False)  # a rule took source emails away: the next run rewrites the page
 
     def __str__(self):
         return self.title

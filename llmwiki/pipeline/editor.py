@@ -16,7 +16,7 @@ import re
 from django.utils import timezone
 
 from llmwiki.conf import get_settings
-from llmwiki.llm.pool import StageFailed, pool
+from llmwiki.llm.pool import Halted, StageFailed, pool
 from llmwiki.logs import event
 from llmwiki.models import Email, Item, OpenIssue, Page, Section
 from llmwiki.pipeline import context as cx
@@ -126,6 +126,8 @@ def _edit_request(page: Page, sec_keys: list[str], items: dict[str, list[Item]],
     result = {"sections": sec_keys, "accepted": [], "rejected": [], "confirm": False, "calls": []}
     try:
         res = pool().run_structured("s3", unit, build, p, job=job)
+    except Halted:
+        raise
     except StageFailed as e:
         _fail_items(all_items, str(e))
         result["error"] = str(e)
@@ -195,6 +197,8 @@ def _confirm(page, keys_, old_text, drafts, checks, items, num_of, id_of, job) -
 
     try:
         res = pool().run_structured("s3", unit, build, lambda o: parse.parse_sections(o, keys_, page.level, True), job=job, max_validation=0)
+    except Halted:
+        raise
     except StageFailed as e:
         log.warning("confirm round failed for %s: %s", page.title, e)
         return {"calls": e.calls}
@@ -283,6 +287,8 @@ def edit_whole(page: Page, items: list[Item], job=None, compact: bool = False) -
     result = {"mode": "page", "accepted": [], "rejected": [], "confirm": False, "calls": [], "budget": budget, "words_before": old_words}
     try:
         res = pool().run_structured("s3", unit, build, p, job=job, schema="page")
+    except Halted:
+        raise
     except StageFailed as e:
         _fail_items(items, str(e))
         result.update(error=str(e), calls=e.calls)
@@ -345,6 +351,8 @@ def _confirm_page(page, cur, draft: guards.PageDraft, g, items, num_of, id_of, b
 
     try:
         res = pool().run_structured("s3", unit, build, lambda o: parse.parse_page(o, True), job=job, max_validation=0, schema="page")
+    except Halted:
+        raise
     except StageFailed as e:
         log.warning("confirm round failed for %s: %s", page.title, e)
         return {"calls": e.calls}
@@ -400,7 +408,8 @@ def rewrite_page(page: Page, job=None) -> dict:
     """Rewrite one page to the free structure and its length budget (also writes its pending items)."""
     items = list(Item.objects.filter(page=page, status="pending").order_by("created_at"))
     r = edit_whole(page, items, job, compact=True)
-    Page.objects.filter(id=page.id).update(updated_at=timezone.now())
+    done = {"needs_rewrite": False} if r.get("accepted") else {}
+    Page.objects.filter(id=page.id).update(updated_at=timezone.now(), **done)
     return r
 
 

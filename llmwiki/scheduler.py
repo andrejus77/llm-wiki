@@ -136,6 +136,9 @@ def run_action(name: str, **kw) -> bool:
             return False
 
         def target():
+            if name in ("process", "batch", "backfill", "review", "editor", "rewrite_pages", "report"):
+                from llmwiki.llm.pool import pool
+                pool().resume("a manual start")   # started by hand: try again
             close_old_connections()
             try:
                 actions[name]()

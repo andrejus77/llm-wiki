@@ -86,6 +86,28 @@ def index_emails(ids: list[int]) -> tuple[int, int]:
     return added, removed
 
 
+def remove_emails(ids: list[int]) -> int:
+    """Take emails (their notes, text and attachments) out of the search index, e.g. when a rule now skips them."""
+    pks: list[int] = []
+    for k in range(0, len(ids), 500):
+        pks += list(Chunk.objects.filter(email_id__in=ids[k:k + 500]).values_list("id", flat=True))
+    if not pks:
+        return 0
+    with _lock:
+        fts.delete(pks)
+        for k in range(0, len(pks), 500):
+            Chunk.objects.filter(id__in=pks[k:k + 500]).delete()
+        _store_delete(pks)
+    return len(pks)
+
+
+def remove_pages(ids: list[int]) -> None:
+    """Take archived pages out of the search index."""
+    with _lock:
+        for pid in ids:
+            _sync([f"page:{pid}:"], [])
+
+
 def index_pages(ids: list[int]) -> tuple[int, int]:
     added = removed = 0
     with _lock:

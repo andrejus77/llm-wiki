@@ -175,6 +175,11 @@ class Pool(_M):
     validation_retries: int = Field(1, ge=0, le=3, description="Retries when the output is unusable (broken schema, missing note, empty section)")
     failover_on_error: bool = Field(True, description="When an endpoint blocks the input or returns an error, send the same request to the next endpoint "
                                                       "that allows the stage (privacy rules still apply) before retrying the first one")
+    breaker_failures: int = Field(10, ge=0, le=1000, description="Stop an endpoint after this many failed or rejected requests in a row (429, timeout, refusal, error, unusable answer). "
+                                                                 "When no endpoint is left for a stage the whole run stops. 0 = never stop")
+    breaker_share: float = Field(0.8, ge=0.0, le=1.0, description="Also stop it when this share of its last 30 requests failed, even with successes in between (0 = off)")
+    breaker_cooldown_min: int = Field(60, ge=0, le=10080, description="A stopped endpoint stays stopped this long; then the next scheduled run may send one trial request and a failure stops it again. "
+                                                                      "0 = stays stopped until someone presses Resume. A run started by hand always resumes")
 
 
 class Privacy(_M):

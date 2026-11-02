@@ -250,6 +250,18 @@ The single source of truth for what was agreed, as of **1 Nov 2026**, with the r
 | **`llmwiki api probe` / `api test`:** probe tries the usual request shapes against a URL and prints the settings block that works; test shows the request (key masked), status, response, where the answer is, and a hint per failure (401, 404, 422, certificate, proxy, response path). Only a fixed test prompt is sent | A step-by-step, checkable procedure for an agent, without it ever seeing mail or keys |
 | **Both embedding models are downloaded** by setup (`models --download` gets every eval model; `retrieval.hf_endpoint` replaces the HF_ENDPOINT variable) | Only the active one was installed; the eval and a model switch need both |
 
+### 3.18 First real use: stopping, speed, rules and folders (2 Nov)
+
+| Decision | Why |
+|---|---|
+| **A run stops after 10 failed or rejected requests in a row** on an endpoint (`pool.breaker_failures`; also when 80 % of its last 30 failed). Other endpoints carry on; with none left for a stage the run ends with status `stopped`, the mail stays waiting, and a banner on every view says why. Per failed unit too, whatever the cause | An overnight run with a wrongly connected API made 600+ failed requests: each email was isolated, so nothing stopped it |
+| **It stays stopped across restarts; after 60 min the next scheduled run may send one trial request**, and one failure stops it again. Resume or any run started by hand clears it. Chat is never held back | The user leaves on 6 Nov, so an API outage must not need a person to recover; a broken API now costs about one request per scheduled run, not one per email |
+| **The stored originals moved to their own table** (`EmailOriginal`: raw mail, full body). Lists load no bodies and page: 100 emails at a time, 60 threads, 120 wiki pages, with the next page on scroll; rows off screen are not painted; stale requests are cancelled; text filters wait for typing to stop | 400 emails took 12–13 s on a 3,500-email test store with only 170 kB of originals per mail, far worse on real mail: SQLite must walk over a large value to reach any column after it, so every list and filter read the whole mailbox. Now 0.03–0.1 s. The migration took 19 s on that store (631 MB) |
+| **The sender and team filters list department members only** (`departments.team_members` / `team_by_dept`); any other sender is found through the text filter | The list showed every sender, which is far too many |
+| **A rule can run on the mail already stored**, with a live count before saving. Waiting mail is skipped before any model sees it. Processed mail is skipped, taken off its pages and out of search, and the next run rewrites those pages (with no mail left, the page is archived). Changing or removing a rule undoes what it did; the mail goes back in the queue | Before, rules only applied at import, so a new rule changed nothing among 3,500 stored emails. A skipped email that still fed a page would have made the reports and pages disagree |
+| **Outlook-style rules and folders in the Emails tab**, behind an Admin mode tick (everybody in local mode, Django staff on the server): conditions on sender, subject and To/Cc; skip, note only or process as usual; optionally file into a folder. Create a rule from an email, tick rows or drag them onto a folder. Filing never decides processing, and a person's decision on an email always wins over rules | 3,500 emails a month need sorting, and rules should work the way people know from Outlook |
+| **A wiki page linked from an email is listed at the top of the email** and opens in the side panel, as in Reports and Wiki | The link was at the bottom of the email, under the body and the thread history |
+
 ## 4. Dropped, and why
 
 | Dropped | Why |

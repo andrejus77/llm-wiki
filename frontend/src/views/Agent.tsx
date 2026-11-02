@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { get, send } from "../api";
 import { usePeek } from "../drawer";
-import { Empty, Err, fmt, k, Loading, Seg, useApi } from "../util";
+import { RulesPanel } from "../RuleEditor";
+import { Empty, Err, fmt, k, Loading, refreshMeta, Seg, useApi } from "../util";
 
 const SUBS: [string, string][] = [["logs", "Logs"], ["pipeline", "Pipeline"], ["pool", "Pool"], ["rules", "Rules"], ["tags", "Tags"], ["settings", "Settings"], ["eval", "Eval"]];
 const SEC_COLORS = ["#3B7DD8", "#16A0A8", "#C2477F", "#5FB8BE", "#D9822B", "#2E9E62", "#9B59D0", "#7A8794", "#B8A12E"];
@@ -50,8 +51,8 @@ function Logs() {
   const [pst, setPst] = useState({ since: "", until: "" });
   const r = useApi("/agent/logs", { kind, issues: issues || undefined });
   const d: any = r.data;
-  useEffect(() => { const t = setInterval(r.reload, 15000); return () => clearInterval(t); }, []);
-  const act = async (name: string, body: any = {}) => { const x = await send("POST", `/actions/${name}`, body); alert(x.started ? `${name} started — this page refreshes every 15 s` : `${name} is already running`); r.reload(); };
+  useEffect(() => { const t = setInterval(() => { if (!document.hidden) r.reload(); }, 15000); return () => clearInterval(t); }, []);
+  const act = async (name: string, body: any = {}) => { const x = await send("POST", `/actions/${name}`, body); alert(x.started ? `${name} started — this page refreshes every 15 s` : `${name} is already running`); r.reload(); refreshMeta(); };
   if (r.error) return <Err e={r.error} />;
   if (!d) return <Loading />;
   const s = d.schedule, h = d.health;
@@ -62,6 +63,7 @@ function Logs() {
           {s.live ? <span>· live every <b>{s.live_tick} min</b>, lint every {s.live_lint} min{s.live_failures ? ` · ${s.live_failures} failed ticks in a row` : ""}</span> : <span>· live mode off (Settings › Schedule)</span>}
           <span>· last 24 h: {d.rates_24h.calls} model calls, {d.rates_24h.units} units, {d.rates_24h.units_retried} retried, {d.rates_24h.fast_path_fallbacks} fast-path fallbacks, {d.rates_24h.rejected} rate-limited, {d.rates_24h.timeouts} timeouts, <b className={d.rates_24h.blocked ? "risk" : ""}>{d.rates_24h.blocked} refused</b> (Agent › Pool)</span></div>
         <div className="btn-row" style={{ marginTop: 8 }}>
+          {d.processing && <button className="btn small" onClick={async () => { await send("POST", "/agent/stop"); r.reload(); }}>Stop processing</button>}
           {[["fetch", "Fetch mail now"], ["process", "Process waiting mail"], ["batch", "Run the nightly batch now"], ["review", "Run the reviewer"], ["rewrite_pages", "Rewrite pages over budget"], ["reindex", "Re-index"], ["backup", "Back up the DB"]].map(([a, l]) =>
             <button key={a} className="btn small" onClick={() => act(a)} disabled={d.running.includes(a)}>{l}{d.running.includes(a) ? " (running)" : ""}</button>)}</div>
         <div className="btn-row" style={{ marginTop: 8 }}><span className="sim">Backfill from the Outlook .pst:</span>
@@ -81,7 +83,7 @@ function Logs() {
         <details className="run" key={run.id} open={i === 0}><summary>
           <span className={`pill ${run.kind === "fetch" ? "" : "open"}`}>{run.kind}</span><b>{fmt(run.started.slice(0, 10))} {run.started.slice(11, 16)}</b>
           <span className="sim">{run.stats.seconds ? `${run.stats.seconds} s · ` : ""}{run.stats.units !== undefined ? `${run.stats.units} units · ${run.stats.fast} fast path · ${run.stats.pages_edited} page edits · ${run.stats.new_pages} new pages` : run.stats.fetched !== undefined ? `${run.stats.fetched} fetched · ${run.stats.stored} stored · ${run.stats.merged} merged · ${run.stats.duplicate} duplicates` : ""}</span>
-          <span className={`pill ${run.status === "done" ? (run.jobs_failed ? "risk" : "ok") : run.status === "failed" ? "bad" : "open"}`}>{run.status}{run.jobs_failed ? ` · ${run.jobs_failed} failed jobs` : ""}</span></summary>
+          <span className={`pill ${run.status === "done" ? (run.jobs_failed ? "risk" : "ok") : run.status === "failed" || run.status === "stopped" ? "bad" : "open"}`}>{run.status}{run.jobs_failed ? ` · ${run.jobs_failed} failed jobs` : ""}</span></summary>
           <div className="req"><ul className="writes">{run.events.map((e: any, j: number) => <li key={j} className={e.level === "error" ? "tag" : e.level === "warning" ? "sec" : "meta2"}><span className="sim">{e.ts.slice(11, 19)} · {e.kind}</span> {e.message}</li>)}</ul>
             {run.note && <pre className="json">{run.note}</pre>}
             {Object.keys(run.jobs).length > 0 && <div className="sim">Jobs: {Object.entries(run.jobs).map(([st, n]: any) => `${st} ${n}`).join(" · ")}</div>}</div></details>))}
@@ -146,14 +148,16 @@ function Refusals({ d }: { d: any }) {
 // ---------------------------------------------------------------- Pool
 function Pool() {
   const r = useApi("/agent/pool");
-  useEffect(() => { const t = setInterval(r.reload, 5000); return () => clearInterval(t); }, []);
+  useEffect(() => { const t = setInterval(() => { if (!document.hidden) r.reload(); }, 5000); return () => clearInterval(t); }, []);
   const d: any = r.data;
   if (!d) return <Loading />;
   return (
     <>
+      <p className="sim" style={{ marginTop: 0 }}>An endpoint stops after the failed or rejected requests in a row set in Settings › Pool › breaker_failures; when no endpoint is left for a stage, the run stops.
+        {d.endpoints.some((e: any) => e.stopped) && <button className="btn small" style={{ marginLeft: 8 }} onClick={async () => { await send("POST", "/agent/resume"); r.reload(); refreshMeta(); }}>Resume</button>}</p>
       <div className="tt-grid" style={{ marginBottom: 14 }}>
         <div className="card"><div className="sec-h">Endpoints</div><div className="tbl"><table className="mt"><thead><tr><th>Name</th><th>Kind · model</th><th>Limit</th><th>Last 60 s</th><th>Context</th><th>Stats</th></tr></thead><tbody>
-          {d.endpoints.map((e: any) => <tr key={e.name} className={e.enabled ? "" : "off"}><td><b>{e.name}</b>{e.cooling_s ? <span className="pill risk"> cooling {e.cooling_s}s</span> : null}</td>
+          {d.endpoints.map((e: any) => <tr key={e.name} className={e.enabled ? "" : "off"}><td><b>{e.name}</b>{e.stopped && <span className="pill bad" title={e.stopped.reason}> stopped</span>}{e.cooling_s ? <span className="pill risk"> cooling {e.cooling_s}s</span> : null}</td>
             <td className="sim">{e.kind} · {e.model}{e.external && <span className="pill risk"> external</span>}{e.redact_pii && <span className="pill"> PII removed</span>}{e.structured && <span className="pill"> schema</span>}</td><td className="sim">{e.rpm}/min{e.rpm !== e.rpm_config ? ` (lowered from ${e.rpm_config})` : ""} · {e.max_concurrent} parallel · timeout {e.timeout_s || "none"}</td>
             <td><span className="rpm">{Array.from({ length: Math.min(e.rpm, 12) }, (_, i) => <i key={i} className={i < e.used_60s ? "on" : ""} />)}</span> {e.used_60s}/{e.rpm} · {e.in_flight} running</td>
             <td className="num">{k(e.context)}</td><td className="sim">ok {e.stats.ok} · 429 {e.stats.rejected} · timeout {e.stats.timeout} · invalid {e.stats.invalid}{e.stats.blocked ? ` · blocked ${e.stats.blocked}` : ""}{e.avg_latency_ms ? ` · avg ${(e.avg_latency_ms / 1000).toFixed(1)} s` : ""}</td></tr>)}</tbody></table></div>
@@ -174,7 +178,6 @@ function Pool() {
 // ---------------------------------------------------------------- Rules
 function Rules() {
   const r = useApi("/agent/rules");
-  const [nw, setNw] = useState({ sender: "", subject: "", action: "skip", include_replies: false });
   const d: any = r.data;
   if (!d) return <Loading />;
   const b = d.builtin;
@@ -183,22 +186,12 @@ function Rules() {
       <div className="card" style={{ marginBottom: 14 }}><div className="sec-h">How mail is skipped</div>
         <ol className="flow"><li><b>Headers</b>: Auto-Submitted → {b.auto_submitted}; Precedence bulk / List-Id → {b.bulk}.</li>
           <li><b>Automatic replies</b> → {b.auto_reply}: out-of-office / automatic-reply / 자동 회신 subjects, delivery failures, no-reply senders ({(b.noreply_senders || []).slice(0, 3).join(", ")}…). They stay skipped even when they answer a thread.</li>
-          <li><b>Static rules</b> below (sender glob, subject regex): <i>skip</i> = stored and shown greyed, never sent to the model; <i>note only</i> = noted but never routed.
+          <li><b>Mail rules</b> below (sender, subject, recipient): <i>skip</i> = stored and shown greyed, never sent to the model; <i>note only</i> = noted but never routed; any rule can also file the mail into a folder. A new rule can also run on the stored mail; changing or removing it undoes what it did.
             {b.rules_skip_replies ? " Rules also skip replies and forwards." : " A reply or forward written by someone else (e.g. feedback on an automated mail) is still processed, unless the rule has “also replies”."}</li>
           <li><b>Importance label</b> from the note-taker: <code>not_important</code> stops after the note.</li>
           <li><b>Learned rules</b> ({b.learned_enabled ? "on" : "off"}): a sender + subject template judged unimportant ≥ {b.learn_min} times on ≥ {b.learn_days} days becomes a rule; every {b.audit_every}th match is still processed and an important result disables the rule.</li></ol>
         <p className="sim">{d.skipped_30d} emails skipped in the last 30 days.</p></div>
-      <div className="card tbl"><table className="mt"><thead><tr><th>Rule</th><th>Kind</th><th>Action</th><th>Also replies</th><th>Hits</th><th>On</th><th>Why</th><th /></tr></thead><tbody>
-        {d.rules.map((x: any) => <tr key={x.id}><td><code>{[x.sender, x.subject || x.template].filter(Boolean).join(" · ")}</code></td><td>{x.kind}</td><td>{x.action}</td>
-          <td><input type="checkbox" title="Also skip replies and forwards written by other people" checked={!!x.include_replies} onChange={async () => { await send("PATCH", `/agent/rules/${x.id}`, { include_replies: !x.include_replies }); r.reload(); }} /></td>
-          <td className="num">{x.hits}</td>
-          <td><input type="checkbox" checked={x.enabled} onChange={async () => { await send("PATCH", `/agent/rules/${x.id}`, { enabled: !x.enabled }); r.reload(); }} /></td>
-          <td className="sim" style={{ whiteSpace: "normal" }}>{x.why}</td><td><button className="linkbtn sim" onClick={async () => { if (confirm("Delete this rule?")) { await send("DELETE", `/agent/rules/${x.id}`); r.reload(); } }}>delete</button></td></tr>)}</tbody></table>
-        <div className="btn-row" style={{ marginTop: 10 }}><input placeholder="sender glob, e.g. news@*" value={nw.sender} onChange={(e) => setNw({ ...nw, sender: e.target.value })} />
-          <input placeholder="subject regex (optional)" value={nw.subject} onChange={(e) => setNw({ ...nw, subject: e.target.value })} />
-          <select value={nw.action} onChange={(e) => setNw({ ...nw, action: e.target.value })}><option value="skip">skip</option><option value="note_only">note only</option></select>
-          <label className="sim"><input type="checkbox" checked={nw.include_replies} onChange={(e) => setNw({ ...nw, include_replies: e.target.checked })} /> also replies</label>
-          <button className="btn small" onClick={async () => { if (nw.sender || nw.subject) { await send("POST", "/agent/rules", nw); setNw({ sender: "", subject: "", action: "skip", include_replies: false }); r.reload(); } }}>Add rule</button></div></div>
+      <RulesPanel onChanged={r.reload} />
     </>
   );
 }
@@ -250,10 +243,10 @@ function Field({ name, spec, value, def, onChange }: { name: string; spec: any; 
 
 function Endpoints({ value, onChange, schema }: { value: any[]; onChange: (v: any[]) => void; schema: any }) {
   const spec = schema.$defs.Endpoint.properties;
-  const cols = ["name", "kind", "model", "base_url", "api_key_env", "rpm", "max_concurrent", "timeout_s", "context_tokens", "stages", "external", "redact_pii", "structured_output", "enabled", "priority"];
+  const cols = ["name", "kind", "model", "base_url", "api_key_secret", "rpm", "max_concurrent", "timeout_s", "context_tokens", "stages", "external", "redact_pii", "structured_output", "enabled", "priority"];
   const set = (i: number, kk: string, v: any) => onChange(value.map((e, j) => (j === i ? { ...e, [kk]: v } : e)));
   return (
-    <div className="fld wide"><span>Endpoints<span className="hint">Each endpoint has its own limits; a job goes to the first free one that allows its stage. Keys come from environment variables. <b>custom</b> = company_adapter.py in the data folder; <b>claude_cli / gemini_cli / codex_cli</b> = the logged-in CLI on this PC. <b>external</b> = data leaves the company: only the stages in Privacy › external_stages, PII always removed. <b>structured_output</b> = the stage's JSON schema is passed to the API.</span></span>
+    <div className="fld wide"><span>Endpoints<span className="hint">Each endpoint has its own limits; a job goes to the first free one that allows its stage. <b>api_key_secret</b> is the name of a stored key (<code>llmwiki secret set &lt;name&gt;</code>), never the key itself. <b>http_json</b> = an API described in settings (<code>llmwiki api probe</code> finds the settings); <b>custom</b> = company_adapter.py in the data folder; <b>claude_cli / gemini_cli / codex_cli</b> = the logged-in CLI on this PC. <b>external</b> = data leaves the company: only the stages in Privacy › external_stages, PII always removed. <b>structured_output</b> = the stage's JSON schema is passed to the API.</span></span>
       <div className="tbl" style={{ width: "100%" }}><table className="mt"><thead><tr>{cols.map((c) => <th key={c}>{c}</th>)}<th /></tr></thead><tbody>{value.map((e, i) => (
         <tr key={i}>{cols.map((c) => <td key={c}>{spec[c].enum ? <select value={e[c]} onChange={(x) => set(i, c, x.target.value)}>{spec[c].enum.map((o: string) => <option key={o}>{o}</option>)}</select>
           : spec[c].type === "boolean" ? <input type="checkbox" checked={e[c]} onChange={(x) => set(i, c, x.target.checked)} />
@@ -261,7 +254,7 @@ function Endpoints({ value, onChange, schema }: { value: any[]; onChange: (v: an
           : c === "stages" ? <input style={{ width: 90 }} value={(e[c] || []).join(",")} onChange={(x) => set(i, c, x.target.value.split(",").map((y) => y.trim()).filter(Boolean))} />
           : <input style={{ width: c === "base_url" ? 180 : 110 }} value={e[c] ?? ""} onChange={(x) => set(i, c, x.target.value)} />}</td>)}
           <td><button className="linkbtn sim" onClick={() => onChange(value.filter((_, j) => j !== i))}>remove</button></td></tr>))}</tbody></table></div>
-      <button className="btn small" onClick={() => onChange([...value, { name: `api-${value.length + 1}`, kind: "custom", model: "", base_url: "", api_key_env: "", rpm: 3, max_concurrent: 2, timeout_s: 0, context_tokens: 150000, max_output_tokens: 8000, stages: ["*"], external: false, redact_pii: false, structured_output: false, enabled: true, priority: 0, options: {} }])}>Add endpoint</button></div>
+      <button className="btn small" onClick={() => onChange([...value, { name: `api-${value.length + 1}`, kind: "custom", model: "", base_url: "", api_key_secret: "", rpm: 3, max_concurrent: 2, timeout_s: 0, context_tokens: 150000, max_output_tokens: 8000, stages: ["*"], external: false, redact_pii: false, structured_output: false, enabled: true, priority: 0, options: {} }])}>Add endpoint</button></div>
   );
 }
 
@@ -279,7 +272,7 @@ function SettingsView() {
   const save = async () => { try { await send("PUT", "/settings", { values: vals, note: "saved in the portal" }); setMsg("Saved."); r.reload(); } catch (e) { setMsg(String(e)); } };
   return (
     <>
-      <p className="sim" style={{ marginTop: 0 }}>Generated from the Pydantic <code>Settings</code> model, so every setting is here with its description, default and bounds. Saving validates and stores a new version (history below). API keys are never stored here — only the names of the environment variables.</p>
+      <p className="sim" style={{ marginTop: 0 }}>Generated from the Pydantic <code>Settings</code> model, so every setting is here with its description, default and bounds. Saving validates and stores a new version (history below). API keys are never stored here — only the names of the stored secrets (<code>llmwiki secret set</code>).</p>
       <div className="set-layout"><nav className="set-nav">{Object.entries(d.groups).map(([g, l]: any) => <button key={g} aria-current={grp === g} onClick={() => setGrp(g)}>{l}{changedIn(g) && <span className="chg">•</span>}</button>)}</nav>
         <div>
           {grp === "budgets" && <div className="card" style={{ marginBottom: 14 }}><div className="sec-h">Preset</div><div className="presets">{Object.entries(d.presets).map(([kk, p]: any) => (

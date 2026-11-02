@@ -53,7 +53,7 @@ the minimum.
 | 9 | How each internal API is called (URL, auth, request/response shape — or the old project's client code) | `pool.endpoints` entries `api-b` / `api-a`: kind `http_json` (no code) or `custom` (`data/company_adapter.py`) | see §3 "Connecting an API" |
 | 10 | API keys | secrets named in `api_key_secret` — **the human runs** `.\llmwiki secret set api-a` | |
 | 11 | API limits | the same endpoint entries | `rpm` (API B: 3), `timeout_s` (API A: 180), `context_tokens` (API A: 32000), `structured_output` (true if `api test --schema` works) |
-| 12 | Skip rules (newsletters, system notifications that must never be processed) | `data/rules.yaml` → `.\llmwiki rules import` | format in `llmwiki/management/commands/rules.py`; `sender` = glob, `subject` = regex, `action` skip / note_only |
+| 12 | Mail rules (newsletters, system notifications that must never be processed; folders to file mail into) | `data/rules.yaml` → `.\llmwiki rules import` | format in `llmwiki/management/commands/rules.py`; `sender` = glob, `subject` = regex, `recipient` = glob on To/Cc, `action` skip / note_only / keep, optional `folder` |
 | 13 | Automated system senders (processed but held back, never create pages) | `pipeline.automated_senders` | globs like `"*workflow*@*"`; defaults already cover noreply/notification/batch/approval |
 | 14 | AI keywords used by the old project | `departments.ai_keywords` | examples for the note-taker, not a hard filter |
 | 15 | Reference-number formats (PO, delivery, invoice, container …) | `store.identifier_patterns` | regexes; defaults are SAP-style (`45\d{8}`, `8\d{7}`, `INV-\d+`); they are never removed as personal data |
@@ -74,7 +74,14 @@ they are tested. Port values (addresses, lists, rules, patterns) and how the API
   `.\llmwiki config apply <file.yaml>` (validated; each change becomes a version in Agent › Settings › history).
 - Secrets: tell the human the exact names to store (`.\llmwiki secret list` shows which ones the settings need and
   which are missing). They run `.\llmwiki secret set <name>` themselves.
-- Skip rules: write `data/rules.yaml`, run `.\llmwiki rules import data\rules.yaml --dry-run`, fix errors, then import.
+- Mail rules: write `data/rules.yaml`, run `.\llmwiki rules import data\rules.yaml --dry-run`, fix errors, then import.
+  Rules only look at new mail until they are applied. If mail is already stored, show the human the effect of
+  `.\llmwiki rules apply --dry-run` (counts only, no mail text) and run `.\llmwiki rules apply` only when they agree:
+  it also takes processed mail off its wiki pages.
+- After any API change: `.\llmwiki api test <name>` must pass before processing. A run stops by itself after
+  `pool.breaker_failures` (10) failed requests in a row and shows why; never raise that limit to get past failures, and
+  never set it to 0. Fix the connection; a run started by hand (`.\llmwiki process`) resumes. See Agent › Pool or
+  `.\llmwiki config show pool`.
 
 ### Connecting an API (do this for api-b and api-a, one at a time)
 

@@ -1,20 +1,21 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
-import { Avatar, Empty, fmt, Loading, pagePills, Seg, Status, TagPill, useApi, useLocal } from "../util";
+import { Avatar, Empty, Err, fmt, LoadMore, Loading, pagePills, Seg, Status, TagPill, useDebounced, useLocal, useMeta, usePaged } from "../util";
 
 type F = { days: number; levels: string[]; status: string[]; depts: string[]; people: string[]; system: string; process: string; wt: string; group: string; view: string; q: string };
 
 export default function Wiki() {
   const nav = useNavigate();
   const [sp, setSp] = useSearchParams();
-  const meta = useApi("/meta");
+  const meta = useMeta();
   const m: any = meta.data;
   const [f, setF] = useLocal<F>("llmwiki.wf", { days: 0, levels: [], status: [], depts: [], people: [], system: "", process: "", wt: "", group: "none", view: "", q: "" });
   const set = (p: Partial<F>) => setF({ ...f, ...p });
   const tag = sp.get("tag") || "";
   const view = f.view || m?.wiki_view || "cards";
-  const r = useApi("/pages", { days: f.days, levels: f.levels, status: f.status, depts: f.depts, people: f.people, system: f.system, process: f.process,
-    work_type: f.wt, tag, q: f.q });
-  const rows: any[] = (r.data as any)?.rows || [];
+  const q = useDebounced(f.q, 300);
+  const r = usePaged<any>("/pages", { days: f.days, levels: f.levels, status: f.status, depts: f.depts, people: f.people, system: f.system, process: f.process,
+    work_type: f.wt, tag, q }, 120);
+  const rows: any[] = r.rows;
   const toggle = (k: keyof F, v: string) => { const a = f[k] as string[]; set({ [k]: a.includes(v) ? a.filter((x) => x !== v) : [...a, v] } as any); };
   const tagFilter = (ty: string, v: string) => setSp({ tag: `${ty}:${v}` });
   const groups: [string, any[]][] = f.group === "level" ? (m?.levels || []).map((l: string) => [`${l}s`, rows.filter((x) => x.level === l)])
@@ -52,20 +53,21 @@ export default function Wiki() {
         <div className="frow"><span className="lbl">Active</span><Seg value={f.days} options={[[7, "7 days"], [30, "30 days"], [90, "90 days"], [0, "All"]]} onChange={(v) => set({ days: +v })} />
           <input type="search" value={f.q} onChange={(e) => set({ q: e.target.value })} placeholder="title or text…" style={{ flex: "1 1 160px" }} /></div>
         <div className="frow"><span className="lbl">Department</span>{(m?.dept_info || []).map((d: any) => <button key={d.addr} className="chip dept" aria-pressed={f.depts.includes(d.addr)} onClick={() => toggle("depts", d.addr)}>{d.name}</button>)}</div>
-        <div className="frow"><span className="lbl">Participants</span><div className="cbl">{(m?.people || []).filter((p: any) => p.internal).slice(0, 20).map((p: any) => (
+        <div className="frow"><span className="lbl">Team</span><div className="cbl">{(m?.people || []).map((p: any) => (
           <label key={p.addr}><input type="checkbox" checked={f.people.includes(p.addr)} onChange={() => toggle("people", p.addr)} />{p.name}<span className="n"> {p.n}</span></label>))}</div></div>
         <div className="frow"><span className="lbl">Tags</span>{sel("System", "system", m?.tag_values?.system || [])}{sel("Process", "process", m?.tag_values?.process || [])}{sel("Work type", "wt", m?.tag_values?.work_type || [])}
           {tag && <><TagPill ty={tag.split(":")[0]} v={tag.slice(tag.indexOf(":") + 1)} small={false} /><button className="btn small" onClick={() => setSp({})}>× tag</button></>}</div>
         <div className="frow"><span className="lbl">Level</span>{(m?.levels || []).map((l: string) => <button key={l} className="chip plain" aria-pressed={f.levels.includes(l)} onClick={() => toggle("levels", l)}>{l}</button>)}
           <span className="lbl" style={{ minWidth: 0, marginLeft: 8 }}>Status</span>{(m?.statuses || []).map((s: string) => <button key={s} className="chip plain" aria-pressed={f.status.includes(s)} onClick={() => toggle("status", s)}>{s}</button>)}</div>
       </div>
-      <div className="count-line"><b>{rows.length} of {(r.data as any)?.total_pages ?? "…"} pages</b><span style={{ flex: 1 }} />
+      <div className="count-line"><b>{r.total ?? "…"} pages</b>{r.loading && <span className="sim">loading…</span>}<span style={{ flex: 1 }} />
         <Seg value={view} options={[["cards", "Cards"], ["list", "List"]]} onChange={(v) => set({ view: v })} />
         <span className="sim">group</span><Seg value={f.group} options={[["none", "none"], ["level", "level"], ["system", "system"]]} onChange={(v) => set({ group: v })} /></div>
-      {r.loading && !rows.length ? <Loading /> : !rows.length ? <Empty>No page matches. Try a longer time range.</Empty> : view === "cards" ?
+      {r.error ? <Err e={r.error} /> : r.loading && !rows.length ? <Loading /> : !rows.length ? <Empty>No page matches. Try a longer time range.</Empty> : view === "cards" ?
         groups.filter(([, rs]) => rs.length).map(([l, rs]) => <div key={l}>{l && <div className="grp-h">{l} · {rs.length}</div>}<div className="pcards">{rs.map(card)}</div></div>)
         : <div className="plist"><div className="prow head"><span>Page</span><span>Level</span><span>Status</span><span>Last active</span><span>In range</span><span>Departments</span><span>Active participants</span></div>
           {groups.filter(([, rs]) => rs.length).map(([l, rs]) => <div key={l}>{l && <div className="grp-h">{l} · {rs.length}</div>}{rs.map(row)}</div>)}</div>}
+      <LoadMore has={r.hasMore} loading={r.loading} onMore={r.more} />
     </>
   );
 }

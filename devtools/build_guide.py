@@ -163,7 +163,9 @@ def build(f: dict) -> str:
 <li>New text vs quoted history (English and <b>Korean</b> Outlook headers, 회신/전달 prefixes; notes and pages stay in English; the Korean parts are for the work version only), signatures and disclaimers cut, quoted mail that was never received (late CC) sent to the model <b>once</b></li>
 <li><b>HTML mail without stray blank lines:</b> Outlook paragraphs become lines, HTML source line breaks spaces, at most one blank line; <code>reparse_bodies</code> cleans mail stored earlier</li>
 <li>Everything in SQLite: raw mail (compressed), attachments (deduplicated), xlsx/pdf/docx/pptx extracts</li>
-<li>Skip rules: headers and <b>automatic replies</b> (out-of-office, 자동 회신, bounces, no-reply senders) always skipped; static rules and <b>learned rules</b> for automated mail, which <b>don't skip people's replies or forwards</b> to it (feedback is processed) unless the rule says "also replies"</li></ul></div>
+<li>Mail rules: headers and <b>automatic replies</b> (out-of-office, 자동 회신, bounces, no-reply senders) always skipped; static rules and <b>learned rules</b> for automated mail, which <b>don't skip people's replies or forwards</b> to it (feedback is processed) unless the rule says "also replies"</li>
+<li><b>Outlook-style rules and folders</b> in Emails › Admin mode: create a rule from an email with a live count of what it does to the stored mail; applying it skips waiting mail before any model sees it and takes processed mail off its pages; removing it undoes that</li>
+<li><b>Stops by itself:</b> 10 failed or rejected requests in a row stop an API, and with none left the run stops and a banner says why; the mail stays waiting</li></ul></div>
 <div class="feat"><h3>Pipeline that keeps the wiki up to date</h3><ul>
 <li>S1 notes (one per email, importance, kind, due date) → S2 routing to pages chosen from <b>RAG candidates</b> → S3 editor → S4 tags</li>
 <li><b>Fast path</b>: one request for single emails (S12 batch, S123 live with direct section edits); falls back to the stages</li>

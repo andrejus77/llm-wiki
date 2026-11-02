@@ -86,6 +86,9 @@ Where mail comes from. Passwords are secrets (Windows Credential Manager or data
 | `pool.max_retries_5xx` | `3` | ≥ 0 ≤ 10 | Retries on server errors |
 | `pool.validation_retries` | `1` | ≥ 0 ≤ 3 | Retries when the output is unusable (broken schema, missing note, empty section) |
 | `pool.failover_on_error` | `true` |  | When an endpoint blocks the input or returns an error, send the same request to the next endpoint that allows the stage (privacy rules still apply) before retrying the first one |
+| `pool.breaker_failures` | `10` | ≥ 0 ≤ 1000 | Stop an endpoint after this many failed or rejected requests in a row (429, timeout, refusal, error, unusable answer). When no endpoint is left for a stage the whole run stops. 0 = never stop |
+| `pool.breaker_share` | `0.8` | ≥ 0.0 ≤ 1.0 | Also stop it when this share of its last 30 requests failed, even with successes in between (0 = off) |
+| `pool.breaker_cooldown_min` | `60` | ≥ 0 ≤ 10080 | A stopped endpoint stays stopped this long; then the next scheduled run may send one trial request and a failure stops it again. 0 = stays stopped until someone presses Resume. A run started by hand always resumes |
 
 ## Privacy (`privacy`)
 

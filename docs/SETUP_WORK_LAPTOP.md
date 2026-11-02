@@ -132,9 +132,13 @@ Write them into `data\rules.yaml` (format at the top of `llmwiki\management\comm
   action: skip          # or note_only
   why: "SAP approval notifications"
 ```
-`.\llmwiki rules import data\rules.yaml --dry-run`, then without `--dry-run`. They appear in Agent › Rules.
+`.\llmwiki rules import data\rules.yaml --dry-run`, then without `--dry-run`. They appear in Agent › Rules and in
+Emails › Admin mode › Rules, where you can also make and edit them like Outlook rules, with a live count of what they do.
 Out-of-office, 자동 회신, bounces and no-reply senders are skipped without rules; people's replies to automated mail
 are processed unless a rule says `include_replies: true`.
+
+Imported rules only look at new mail. If you already imported mail, also run them on it: `.\llmwiki rules apply --dry-run`
+shows the counts, `.\llmwiki rules apply` does it.
 
 ## 9. Check everything
 
@@ -150,7 +154,8 @@ POP3 logins, privacy summary. Fix what is red (the line says what) and run it ag
 2. Import one week: `.\llmwiki fetch --pst --since <date a week ago>` (or `.\llmwiki fetch --pop3`).
 3. Process one day: `.\llmwiki process --mode batch --since <day> --until <day>`.
 4. `.\run.bat --open` → read a few notes and pages; Agent › Pool (requests, refusals), Agent › Logs (warnings).
-   Adjust skip rules / settings, then process the rest of the week.
+   Adjust skip rules / settings, then process the rest of the week. If an API keeps failing, the run stops by itself
+   after 10 failed requests in a row and a red banner says why: fix it with `.\llmwiki api test <name>`, then process again.
 5. The backlog: `.\backfill.bat <first day> <last day>` (imports and processes in week windows; at 3 requests/min a
    month takes 6–8 hours — keep the laptop plugged in and awake). Close the portal (`run.bat`) first, or run the same
    from the portal: Agent › Logs › .pst import → 1. Import mail → 2. Process as backfill. Agent › Pool shows the ETA.

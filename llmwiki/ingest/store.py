@@ -18,7 +18,7 @@ from llmwiki.ingest import identifiers, skiprules, threads
 from llmwiki.ingest.extract import extract
 from llmwiki.ingest.mime import parse
 from llmwiki.ingest.quotes import split_body
-from llmwiki.models import Attachment, Blob, Email, Identifier, QuotedBlock, Tag
+from llmwiki.models import Attachment, Blob, Email, EmailOriginal, Identifier, QuotedBlock, Tag
 from llmwiki.util import detect_lang, local_day, sha1, shingles, subject_norm, subject_template, words
 
 log = logging.getLogger(__name__)
@@ -97,8 +97,7 @@ def add(raw: bytes, source: str, source_ref: str = "", conversation_id: str = ""
                 old.depts = sorted(set(old.depts) | {dept.lower()})
                 changed = True
             if _richer(raw, old):
-                old.raw = zlib.compress(raw, 6)
-                changed = True
+                EmailOriginal.objects.update_or_create(email=old, defaults={"raw": zlib.compress(raw, 6)})
                 log.info("kept the richer copy of %s from %s", old.message_id, source)
             if changed:
                 old.save()
@@ -112,7 +111,7 @@ def add(raw: bytes, source: str, source_ref: str = "", conversation_id: str = ""
             subject_norm=sn[:1000], subject_tpl=subject_template(p.subject)[:1000], from_addr=p.from_addr, from_name=p.from_name[:320],
             to=p.to, cc=p.cc, depts=depts, sent_at=p.sent_at, day=local_day(p.sent_at, tzname), in_reply_to=p.in_reply_to,
             references=p.references[-50:], thread_index=p.thread_index[:200], conversation_id=conversation_id[:200], headers=p.headers,
-            raw=zlib.compress(raw, 6), body_text=p.body_text, new_text=sp.new_text, quoted_text=sp.quoted, signature=sp.signature,
+            new_text=sp.new_text, signature=sp.signature,
             lang=detect_lang(sp.new_text or p.body_text), has_table=p.has_table or "\n|" in sp.new_text,
         )
         # near-duplicate under another Message-ID (two aliases, resent mail)
@@ -125,6 +124,7 @@ def add(raw: bytes, source: str, source_ref: str = "", conversation_id: str = ""
                     e.status = "duplicate"
                     break
         e.save()
+        EmailOriginal.objects.create(email=e, raw=zlib.compress(raw, 6), body_text=p.body_text, quoted_text=sp.quoted)
         # attachments → blobs + extracts
         n_att = 0
         for a in p.attachments:
@@ -149,15 +149,16 @@ def add(raw: bytes, source: str, source_ref: str = "", conversation_id: str = ""
         Identifier.objects.bulk_create([Identifier(value=v[:100], type=t, email=e) for t, v in identifiers.find_identifiers(full, s.store.identifier_patterns)])
         _record_tcodes(e, full)
         if e.status != "duplicate":
-            action, rule, audit = skiprules.check(e)
+            action, rule, audit, rule_id = skiprules.check(e)
             if action == "skip":
-                e.status, e.skip_rule, e.skip_action = "skipped", rule[:300], "skip"
+                e.status, e.skip_rule, e.skip_action, e.rule_ref = "skipped", rule[:300], "skip", rule_id
             elif action == "note_only":
-                e.skip_rule, e.skip_action = rule[:300], "note_only"
+                e.skip_rule, e.skip_action, e.rule_ref = rule[:300], "note_only", rule_id
             e.audit = audit
             if rule and audit:
                 e.skip_rule = rule[:300]
-            e.save(update_fields=["status", "skip_rule", "skip_action", "audit"])
+            e.folder_id, e.folder_rule = skiprules.folder_for(e)
+            e.save(update_fields=["status", "skip_rule", "skip_action", "rule_ref", "audit", "folder", "folder_rule"])
     return AddResult("duplicate" if e.status == "duplicate" else "stored", e.id)
 
 

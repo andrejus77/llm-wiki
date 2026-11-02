@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { send } from "../api";
 import { usePeek } from "../drawer";
-import { Avatar, dow, Err, fmt, Kind, Loading, MON, Seg, Status, TagPill, useApi, useLocal } from "../util";
+import { Avatar, dow, Err, fmt, Kind, Loading, MON, Seg, Status, TagPill, useApi, useLocal, useMeta } from "../util";
 
 const SRC: Record<string, [string, string]> = { script: ["script", ""], wiki: ["wiki", "green"], agent: ["agent", "violet"], notes: ["S1 notes", "blue"] };
 const hue = (id: number) => `hsl(${(id * 47) % 360} 55% 50%)`;
@@ -93,7 +93,7 @@ export default function Reports() {
   const [area, setArea] = useState("");
   const [srcOn, setSrcOn] = useLocal("llmwiki.srcon", false);
   const [open, setOpen] = useState<number[]>([]);
-  const meta = useApi("/meta");
+  const meta = useMeta();
   const r = useApi("/reports/briefing", { period, dept, area, kind });
   const peek = usePeek();
   const nav = useNavigate();
@@ -201,7 +201,7 @@ export default function Reports() {
         <div className="rgrid" ref={gridRef}>{d.rows.map((row: any[], i: number) => <div key={i} className={`rrow${row.length === 1 ? " single" : ""}`}>{row.map((it) => card(d.stories[it.i], it))}</div>)}</div>
         {showSrc && <p className="sim">Pairing: cards within 3 ranks whose estimated heights differ by ≤ 2 lines share a row; the shorter may show one more key email; a still-taller text is clamped. Rows: {d.rows.map((x: any[]) => x.map((y) => y.h).join("/")).join(" · ")}. The lists below are at most {listH ? `${listH}px` : "one story card"} tall.</p>}
         {lists.length > 0 && <div className="rep-lists">{lists}</div>}
-        {P.other_topics && d.rest.length > 0 && <section className="card rlist" style={{ marginTop: 14, ...(listStyle || {}) }}><div className="sec-h">Other topics <span className="pill">{d.rest.length}</span>{src("script")}</div>
+        {P.other_topics && d.rest.length > 0 && <section className="card rlist" style={{ marginTop: 14, ...(listStyle || {}) }}><div className="sec-h">Other topics <span className="pill">{d.rest_total > d.rest.length ? `the top ${d.rest.length} of ${d.rest_total}` : d.rest.length}</span>{src("script")}</div>
           <div className="tbl"><table className="mt"><thead><tr><th>Page</th><th>Status</th><th>Emails</th><th>Last note</th></tr></thead><tbody>{d.rest.map((x: any) => (
             <tr key={x.page_id}><td><button className="linkbtn" onClick={() => peek({ kind: "page", id: x.page_id })}>{x.title}</button></td><td><Status s={x.status} /></td><td>{x.n}</td><td style={{ whiteSpace: "normal" }}>{x.last_note}</td></tr>))}</tbody></table></div></section>}
         {P.footer_note && <p className="sim" style={{ marginTop: 14 }}>Each department has its own report; every topic belongs to exactly one department. Agent text: the lead + one paragraph per story, written from this {monthly ? "month's" : "window's"} mail only (separate requests, lengths checked, script fallback). Written every morning at {d.daily_time}: the daily report, on Thursdays the weekly one, on the 1st the monthly report of the month before. Which parts show is set in Settings › Report parts.</p>}

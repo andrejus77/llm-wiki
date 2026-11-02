@@ -91,6 +91,25 @@ def is_team(addr: str, dept: str | None = None) -> bool:
     return a.split("@")[-1] in [d.lower() for d in get_settings().sources.internal_domains]
 
 
+def has_team_list() -> bool:
+    s = get_settings().departments
+    return bool(s.team_members or any(s.team_by_dept.values()))
+
+
+def is_member(addr: str, depts: list[str] | None = None) -> bool:
+    """A member of these departments (none given: of any department)? Same fallback as is_team without a team list."""
+    s = get_settings().departments
+    a = (addr or "").lower()
+    if a in all_depts():
+        return False
+    if not has_team_list():
+        return a.split("@")[-1] in [d.lower() for d in get_settings().sources.internal_domains]
+    by = {k.lower(): v for k, v in s.team_by_dept.items()}
+    wanted = [d.lower() for d in depts] if depts else list(by)
+    pats = list(s.team_members) + [p for d in wanted for p in by.get(d, [])]
+    return any(fnmatch.fnmatch(a, p.lower()) for p in pats if p)
+
+
 def refresh_pages(page_ids: list[int] | None = None) -> dict:
     """Script checks after a run: page level (pages.refresh_level) and department (assign)."""
     from llmwiki.pipeline import pages as pg

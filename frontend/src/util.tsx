@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { get } from "./api";
 
 export const MON = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
@@ -12,6 +12,14 @@ export const initials = (name: string) => name.split(/[\s.@]+/).filter(Boolean).
 export const short = (name: string) => { const s = (name || "").split(" "); return s.length > 1 ? `${s[0][0]}. ${s.slice(1).join(" ")}` : name; };
 export const k = (n: number) => (n >= 1000 ? (n / 1000).toFixed(n >= 10000 ? 0 : 1) + "k" : String(n));
 
+// Answers seen recently, shown at once when the same view or filter comes back while the fresh one loads.
+const seen = new Map<string, any>();
+function remember(key: string, value: any) {
+  seen.delete(key);
+  seen.set(key, value);
+  if (seen.size > 40) seen.delete(seen.keys().next().value as string);
+}
+
 export function useApi<T = any>(path: string | null, params?: any, deps: any[] = []): { data: T | null; error: string; loading: boolean; reload: () => void } {
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState("");
@@ -20,12 +28,86 @@ export function useApi<T = any>(path: string | null, params?: any, deps: any[] =
   const key = JSON.stringify([path, params]);
   useEffect(() => {
     if (!path) return;
-    let live = true;
+    const ac = new AbortController();   // a request nobody waits for any more must not hold a server thread
+    if (seen.has(key)) setData(seen.get(key));
     setLoading(true);
-    get<T>(path, params).then((d) => { if (live) { setData(d); setError(""); } }).catch((e) => live && setError(String(e))).finally(() => live && setLoading(false));
-    return () => { live = false; };
+    get<T>(path, params, ac.signal).then((d) => { remember(key, d); setData(d); setError(""); })
+      .catch((e) => { if (e.name !== "AbortError") setError(String(e)); }).finally(() => { if (!ac.signal.aborted) setLoading(false); });
+    return () => ac.abort();
   }, [key, n, ...deps]);
-  return { data, error, loading, reload: () => setN((x) => x + 1) };
+  return { data, error, loading, reload: useCallback(() => setN((x) => x + 1), []) };
+}
+
+// One shared /meta for the whole page (the header and every view need it).
+let metaLast: any = null, metaAt = 0, metaBusy: Promise<any> | null = null;
+const metaSubs = new Set<(d: any) => void>();
+function fetchMeta(force = false): Promise<any> {
+  if (metaBusy) return metaBusy;
+  if (!force && metaLast && Date.now() - metaAt < 20000) return Promise.resolve(metaLast);
+  metaBusy = get("/meta").then((d) => { metaLast = d; metaAt = Date.now(); metaSubs.forEach((f) => f(d)); return d; }).finally(() => { metaBusy = null; });
+  return metaBusy;
+}
+export const refreshMeta = () => fetchMeta(true).catch(() => null);
+export function useMeta(): { data: any } {
+  const [data, setData] = useState<any>(metaLast);
+  useEffect(() => { metaSubs.add(setData); fetchMeta().then(setData).catch(() => null); return () => { metaSubs.delete(setData); }; }, []);
+  return { data };
+}
+
+/** A long list, one page at a time: the rows so far, and more() for the next page. A new filter starts again from the top. */
+export function usePaged<T = any>(path: string | null, params: any, size = 100) {
+  const [rows, setRows] = useState<T[]>([]);
+  const [total, setTotal] = useState<number | null>(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [n, setN] = useState(0);
+  const ctl = useRef<AbortController | null>(null);
+  const key = JSON.stringify([path, params, size]);
+  useEffect(() => {
+    if (!path) return;
+    const ac = new AbortController();
+    ctl.current = ac;
+    setLoading(true);
+    get<any>(path, { ...params, limit: size, offset: 0 }, ac.signal).then((d) => { setRows(d.rows); setTotal(d.total); setError(""); })
+      .catch((e) => { if (e.name !== "AbortError") setError(String(e)); }).finally(() => { if (!ac.signal.aborted) setLoading(false); });
+    return () => ac.abort();
+  }, [key, n]);
+  const more = useCallback(() => {
+    if (!path || loading || total === null || rows.length >= total) return;
+    const ac = ctl.current;
+    setLoading(true);
+    get<any>(path, { ...params, limit: size, offset: rows.length }, ac?.signal).then((d) => { setRows((r) => [...r, ...d.rows]); setTotal(d.total); })
+      .catch((e) => { if (e.name !== "AbortError") setError(String(e)); }).finally(() => { if (!ac?.signal.aborted) setLoading(false); });
+  }, [key, loading, total, rows.length]);
+  return { rows, total, loading, error, more, hasMore: total !== null && rows.length < total, reload: useCallback(() => setN((x) => x + 1), []) };
+}
+
+/** Loads the next page when it scrolls into view; the button is there for a click too. */
+export function LoadMore({ has, loading, onMore, label = "Show more" }: { has: boolean; loading: boolean; onMore: () => void; label?: string }) {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!has || !ref.current) return;
+    // watch the list's own scroll area when it has one: its end can be below the window while the page has not scrolled
+    const box = ref.current.closest(".mlist");
+    const root = box && getComputedStyle(box).overflowY === "auto" ? box : null;
+    const io = new IntersectionObserver((es) => { if (es[0].isIntersecting) onMore(); }, { root, rootMargin: "200px" });
+    io.observe(ref.current);
+    return () => io.disconnect();
+  }, [has, onMore]);
+  if (!has) return null;
+  return <div ref={ref} className="loadmore"><button className="btn small" onClick={onMore} disabled={loading}>{loading ? "Loading…" : label}</button></div>;
+}
+
+export function useDebounced<T>(value: T, ms = 300): T {
+  const [v, setV] = useState(value);
+  useEffect(() => { const t = setTimeout(() => setV(value), ms); return () => clearTimeout(t); }, [value, ms]);
+  return v;
+}
+
+/** A <details> whose content is only built when it is opened (long threads hold hundreds of these). */
+export function Lazy({ summary, className, open = false, children }: { summary: React.ReactNode; className?: string; open?: boolean; children: () => React.ReactNode }) {
+  const [on, setOn] = useState(open);
+  return <details className={className} open={open} onToggle={(e) => { if ((e.target as HTMLDetailsElement).open) setOn(true); }}><summary>{summary}</summary>{on ? children() : null}</details>;
 }
 
 export function useLocal<T>(key: string, init: T): [T, (v: T) => void] {

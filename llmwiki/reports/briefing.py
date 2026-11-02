@@ -21,7 +21,7 @@ import math
 from collections import Counter, defaultdict
 from datetime import date, timedelta
 
-from django.db.models import Q
+from django.db.models import Max, Min, Q
 
 from llmwiki import departments as dp
 from llmwiki.conf import get_settings
@@ -50,10 +50,10 @@ def periods(kind: str | None = None) -> list[dict]:
     reports.window_days before it (a weekly report is the daily report of its weekday); "m:YYYY-MM" = the month.
     kind=None: every kind, each entry with its "kind" (a Thursday is listed as daily and as weekly)."""
     r = get_settings().reports
-    days = Email.objects.exclude(status="duplicate").values_list("day", flat=True)
-    if not days.exists():
+    span = Email.objects.exclude(status="duplicate").aggregate(a=Min("day"), b=Max("day"))
+    if not span["a"]:
         return []
-    first, last = date.fromisoformat(min(days)), date.fromisoformat(max(days))
+    first, last = date.fromisoformat(span["a"]), date.fromisoformat(span["b"])
     end = max(_today(), last + timedelta(days=1))
     dates, d = [], first + timedelta(days=1)
     while d <= end:
@@ -153,7 +153,7 @@ def dept_list() -> list[dict]:
 def _scope(d0: str, d1: str, dept: str, area: str | None = None):
     """The report's material: (window emails of this department, {page: its window emails}, pages, left-out pages)."""
     ai = dp.ai_dept()
-    emails = list(Email.objects.filter(day__gte=d0, day__lte=d1).exclude(status__in=["duplicate", "skipped"]).order_by("sent_at"))
+    emails = list(Email.objects.filter(day__gte=d0, day__lte=d1).exclude(status__in=["duplicate", "skipped"]).order_by("sent_at").defer("new_text", "signature", "headers", "references"))
     em_by_id = {e.id: e for e in emails}
     by_page: dict[int, list[Email]] = defaultdict(list)
     for pe in PageEmail.objects.filter(email_id__in=list(em_by_id), page__dept=dept, page__archived=False):
@@ -247,17 +247,20 @@ def build(period: str | None = None, filters: dict | None = None) -> dict:
         })
     rows = pair(stories) if r.layout == "2col" else [[{"i": i, "key_n": min(r.key_notes, len(st["key_emails"])), "clamp": 0, "h": 0}] for i, st in enumerate(stories)]
     lead, lead_gen = _cached_lead(cache, stories, emails, dept, d0, d1) if parts.lead else ("", False)
-    decisions = [{"id": e.id, "note": e.note, "day": e.day, "sender": e.from_name or e.from_addr, "page": _first_page(e)} for e in emails if e.kind == "decision"]
+    dec_rows = [e for e in emails if e.kind == "decision"]
     deadline_end = (date.fromisoformat(d1) + timedelta(days=14)).isoformat()
-    dl_q = Email.objects.filter(due__gte=d0, due__lte=deadline_end).exclude(status__in=["duplicate", "skipped"])
-    dl_q = dl_q.filter(Q(page_links__page__dept=dept) | Q(id__in=[e.id for e in emails])).distinct()
-    deadlines = [{"id": e.id, "due": e.due, "note": e.note, "page": _first_page(e)} for e in dl_q.order_by("due")[:30]]
+    dl_q = Email.objects.filter(due__gte=d0, due__lte=deadline_end).exclude(status__in=["duplicate", "skipped"]).filter(Q(page_links__page__dept=dept) | Q(id__in=[e.id for e in emails]))
+    dl_rows = list(dl_q.distinct().order_by("due").defer("new_text", "signature", "headers", "references")[:30])
+    first = _first_pages([e.id for e in dec_rows] + [e.id for e in dl_rows])
+    decisions = [{"id": e.id, "note": e.note, "day": e.day, "sender": e.from_name or e.from_addr, "page": first.get(e.id)} for e in dec_rows]
+    deadlines = [{"id": e.id, "due": e.due, "note": e.note, "page": first.get(e.id)} for e in dl_rows]
     waiting = _waiting(emails, d1, r.wait_days)
     attention = _attention(pages, d1, r.attn_days, emails)
     closed = OpenIssue.objects.filter(page_id__in=list(pages), closed_at__date__gte=d0, closed_at__date__lte=d1).count()
-    new_pages = sum(1 for p in pages.values() if not PageEmail.objects.filter(page=p, email__day__lt=d0).exists())
-    per_day = [{"day": d, "n": sum(1 for e in emails if e.day == d), "important": sum(1 for e in emails if e.day == d and e.importance == "important")}
-               for d in win_days]
+    older = set(PageEmail.objects.filter(page_id__in=list(pages), email__day__lt=d0).values_list("page_id", flat=True))
+    new_pages = sum(1 for pid in pages if pid not in older)
+    by_day, imp_by_day = Counter(e.day for e in emails), Counter(e.day for e in emails if e.importance == "important")
+    per_day = [{"day": d, "n": by_day[d], "important": imp_by_day[d]} for d in win_days]
     need = (len(stories) if parts.story_text else 0) + (1 if parts.lead and stories else 0)
     done = (sum(1 for x in stories if x["text_source"] == "agent") if parts.story_text else 0) + (1 if lead_gen else 0)
     return {
@@ -272,7 +275,7 @@ def build(period: str | None = None, filters: dict | None = None) -> dict:
         "left_out": [{"page_id": p.id, "title": p.title} for p in left_out],
         "stories": stories, "rows": rows, "decisions": decisions, "deadlines": deadlines, "waiting": waiting, "attention": attention,
         "rest": [{"page_id": pid, "slug": pages[pid].slug, "title": pages[pid].title, "status": pages[pid].status, "n": len(by_page[pid]),
-                  "last_note": by_page[pid][-1].note} for pid in rest],
+                  "last_note": by_page[pid][-1].note} for pid in rest[:100]], "rest_total": len(rest),
         "agent_texts": {"done": done, "total": need},
     }
 
@@ -290,7 +293,8 @@ def topic_week(period: str | None = None, dept: str | None = None) -> dict:
     tzname = get_settings().sources.time_zone
     rows = []
     for pe in (PageEmail.objects.filter(page__dept=dept, page__archived=False, email__day__gte=d0, email__day__lte=d1)
-               .exclude(email__status__in=["duplicate", "skipped"]).select_related("page", "email").order_by("email__sent_at")):
+               .exclude(email__status__in=["duplicate", "skipped"]).select_related("page", "email").order_by("email__sent_at")
+               .defer("email__new_text", "email__signature", "email__headers", "email__references", "email__note", "page__tags", "page__created_reason")):
         e = pe.email
         rows.append({"page_id": pe.page_id, "title": pe.page.title, "status": pe.page.status, "level": pe.page.level, "day": e.day,
                      "hour": local_dt(e.sent_at, tzname).hour, "email_id": e.id, "sender": e.from_name or e.from_addr,
@@ -300,9 +304,11 @@ def topic_week(period: str | None = None, dept: str | None = None) -> dict:
     return {"period": period, "kind": kind_of(period), "dept": dept, "days": days, "rows": rows}
 
 
-def _first_page(e: Email):
-    pe = PageEmail.objects.filter(email=e).select_related("page").order_by("-role").first()
-    return {"id": pe.page_id, "title": pe.page.title} if pe else None
+def _first_pages(ids: list[int]) -> dict[int, dict]:
+    out: dict[int, dict] = {}
+    for eid, pid, title in PageEmail.objects.filter(email_id__in=ids).order_by("-role").values_list("email_id", "page_id", "page__title"):
+        out.setdefault(eid, {"id": pid, "title": title})
+    return out
 
 
 def _waiting(emails, d1, wait_days):
@@ -328,7 +334,8 @@ def _attention(pages, d1, attn_days, emails):
     failed = Item.objects.filter(status="failed", page__in=list(pages.values())).values_list("page_id", flat=True).distinct()
     for pid in failed:
         out.append({"text": f"{pages[pid].title}: new facts not yet written into the page", "page_id": pid})
-    by_thread = Counter(e.thread_id for e in emails if not e.page_links.exists() and e.importance == "important")
+    routed = set(PageEmail.objects.filter(email_id__in=[e.id for e in emails if e.importance == "important"]).values_list("email_id", flat=True))
+    by_thread = Counter(e.thread_id for e in emails if e.importance == "important" and e.id not in routed)
     for tid, n in by_thread.most_common(3):
         if n >= 3:
             e = next(x for x in emails if x.thread_id == tid)

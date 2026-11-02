@@ -6,7 +6,7 @@ from llmwiki import models as m
 
 @admin.register(m.SkipRule)
 class SkipRuleAdmin(admin.ModelAdmin):
-    list_display = ("kind", "sender", "subject", "template", "action", "enabled", "hits", "why")
+    list_display = ("kind", "sender", "subject", "recipient", "template", "action", "folder", "enabled", "hits", "why")
     list_filter = ("kind", "enabled", "action")
     search_fields = ("sender", "subject", "template")
 
@@ -37,7 +37,6 @@ class EmailAdmin(admin.ModelAdmin):
     list_display = ("day", "from_addr", "subject", "status", "importance", "thread")
     list_filter = ("status", "importance", "kind", "lang")
     search_fields = ("subject", "from_addr", "message_id", "note")
-    exclude = ("raw",)
     readonly_fields = ("message_id", "thread", "parent", "dup_of")
 
 

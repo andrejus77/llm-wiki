@@ -22,7 +22,7 @@ from django.db import close_old_connections, connection
 from django.utils import timezone
 
 from llmwiki.conf import get_settings
-from llmwiki.llm.pool import pool
+from llmwiki.llm.pool import Halted, pool
 from llmwiki.logs import event, set_current_run
 from llmwiki.models import Email, Item, Job, Page, Run
 from llmwiki.pipeline import context as cx
@@ -32,6 +32,29 @@ from llmwiki.util import sha1, week_of
 log = logging.getLogger(__name__)
 _run_lock = threading.Lock()     # one processing run at a time
 cancel_flag = threading.Event()
+_stop_lock = threading.Lock()
+_stop_reason = ""                # why the current run stopped early
+_unit_fails = 0                  # units failed in a row (any cause, also ones that never reach a model)
+
+
+def stop(reason: str) -> None:
+    """Stop the current run: no new unit or page starts; requests already running finish. First reason wins."""
+    global _stop_reason
+    with _stop_lock:
+        if not _stop_reason:
+            _stop_reason = reason
+            event("pipeline", f"Stopping the run: {reason}", level="error")
+    cancel_flag.set()
+
+
+def _unit_done(ok: bool, error: str = "") -> None:
+    global _unit_fails
+    limit = get_settings().pool.breaker_failures
+    with _stop_lock:
+        _unit_fails = 0 if ok else _unit_fails + 1
+        n = _unit_fails
+    if limit and n >= limit:
+        stop(f"{n} units failed in a row; last error: {error[:300]}")
 
 
 def _job(stage: str, unit: cx.Unit, run: Run | None) -> Job:
@@ -65,6 +88,9 @@ def process_unit(unit: cx.Unit, window: str, run: Run | None) -> dict:
             r = stages.fast(unit, window, edit, job=j)
             _done(j, "done", _slim(r))
             return {"unit": unit.key, "path": stage, **_slim(r)}
+        except Halted as e:
+            _done(j, "failed", error=str(e))
+            raise
         except Exception as e:
             _done(j, "failed", error=_err(e))
             log.warning("fast path failed for %s (%s) → staged pipeline", unit.key, e)
@@ -78,6 +104,9 @@ def process_unit(unit: cx.Unit, window: str, run: Run | None) -> dict:
             r = stages.s1(unit, job=j)
             _done(j, "done", _slim(r))
             out["s1"] = len(r["notes"])
+        except Halted as e:     # not the email's fault: it stays waiting
+            _done(j, "failed", error=str(e))
+            raise
         except Exception as e:
             _done(j, "failed", error=_err(e))
             Email.objects.filter(id__in=unit.ids, status="new").update(status="failed", fail_reason=f"S1: {e}"[:2000])
@@ -94,6 +123,9 @@ def process_unit(unit: cx.Unit, window: str, run: Run | None) -> dict:
             r = stages.s2(unit, window, job=j)
             _done(j, "done" if "skipped" not in r else "skipped", _slim(r))
             out["s2"] = r.get("items", r.get("skipped"))
+        except Halted as e:
+            _done(j, "failed", error=str(e))
+            raise
         except Exception as e:
             _done(j, "failed", error=_err(e))
             Email.objects.filter(id__in=unit.ids, status="noted").update(fail_reason=f"S2: {e}"[:2000])
@@ -124,13 +156,21 @@ def _thread_task(units: list[cx.Unit], window: str, run_id: int | None) -> list[
         for u in units:
             if cancel_flag.is_set():
                 break
-            # reload emails (another task may have updated statuses)
-            u.emails = list(Email.objects.filter(id__in=u.ids).prefetch_related("attachments").order_by("sent_at"))
+            # reload emails (another task may have updated statuses; a rule added meanwhile may have skipped some)
+            u.emails = list(Email.objects.filter(id__in=u.ids).exclude(status="skipped").prefetch_related("attachments").order_by("sent_at"))
+            if not u.emails:
+                continue
             try:
                 results.append(process_unit(u, window, run))
+                _unit_done(True)
+            except Halted as e:
+                stop(str(e))
+                results.append({"unit": u.key, "error": "stopped"})
+                break
             except Exception as e:
                 log.error("unit %s failed: %s", u.key, e)
                 results.append({"unit": u.key, "error": str(e)[:300]})
+                _unit_done(False, str(e))
             try:
                 from llmwiki.rag.index import index_emails
                 index_emails(u.ids)
@@ -163,10 +203,16 @@ def window_key(day: str, mode: str) -> str:
 
 def process(mode: str = "batch", until_day: str | None = None, since_day: str | None = None, max_windows: int | None = None,
             review: bool | None = None, progress=None) -> dict:
+    global _stop_reason, _unit_fails
     if not _run_lock.acquire(blocking=False):
         log.info("a processing run is already active; skipping this one")
         return {"skipped": "another run is active"}
+    if pool().all_down():
+        _run_lock.release()
+        log.warning("%s run not started: every endpoint is stopped by the circuit breaker", mode)
+        return {"skipped": "every endpoint is stopped (Agent › Pool shows why; Resume there or wait for the cooldown)"}
     cancel_flag.clear()
+    _stop_reason, _unit_fails = "", 0
     run = Run.objects.create(kind=mode, stats={})
     set_current_run(run.id)
     t0 = time.monotonic()
@@ -189,18 +235,24 @@ def process(mode: str = "batch", until_day: str | None = None, since_day: str | 
             run.save(update_fields=["stats"])
             if progress:
                 progress(wi, len(order), w, ws)
-        # learned skip rules + lint
+        # learned skip rules + pages that lost sources to a rule + lint
         try:
             from llmwiki.ingest import skiprules
             stats["learned_rules"] = skiprules.learn()
         except Exception:
             log.exception("learning skip rules failed")
+        flagged = list(Page.objects.filter(needs_rewrite=True, archived=False).values_list("id", flat=True))
+        if flagged and not cancel_flag.is_set():
+            stats["rewritten_after_rules"] = rewrite_pages(flagged)["accepted"]
         do_review = review if review is not None else (mode == "batch" and get_settings().reviewer.schedule == "nightly")
-        if do_review:
+        if do_review and not cancel_flag.is_set():
             from llmwiki.pipeline.reviewer import run_review
             changed = list(Page.objects.filter(archived=False, updated_at__gte=run.started_at))
             stats["reviewed"] = len(run_review(changed)["pages"])
-        run.status = "done"
+        run.status = "stopped" if cancel_flag.is_set() else "done"
+        if _stop_reason:
+            run.note = _stop_reason[:4000]
+            stats["stopped"] = _stop_reason[:500]
     except Exception as e:
         log.exception("%s run failed", mode)
         run.status = "failed"
@@ -241,6 +293,8 @@ def _window(w: str, emails: list[Email], mode: str, run: Run, stats: dict) -> di
     stats["fast"] += sum(1 for r in results if r.get("path") in ("s12", "s123"))
     stats["staged"] += sum(1 for r in results if r.get("path") == "staged")
     stats["emails"] += len(emails)
+    if cancel_flag.is_set():    # what was done stays done; the pending items wait for the next run's editor
+        return {"units": len(results), "seconds": round(time.monotonic() - t0, 1), "edited": 0, "stopped": True}
     # script checks before the editor writes: level by size (the template may change) and the one owning department
     try:
         from llmwiki.departments import refresh_pages
@@ -280,6 +334,8 @@ def editor_phase(run: Run | None = None) -> dict:
     out = {"pages": 0, "rejected": 0}
 
     def one(p):
+        if cancel_flag.is_set():
+            return {"page": p.id, "stopped": True}
         close_old_connections()
         set_current_run(run.id if run else None)
         try:
@@ -294,6 +350,9 @@ def editor_phase(run: Run | None = None) -> dict:
             rej = sum(len(x.get("rejected", [])) for x in r["requests"])
             _done(j, "done", {"requests": [{k: v for k, v in x.items() if k != "calls"} for x in r["requests"]]})
             return {"page": p.id, "rejected": rej}
+        except Halted as e:
+            stop(str(e))
+            return {"page": p.id, "stopped": True}
         except Exception as e:
             log.exception("editor failed for page %s", p.id)
             return {"page": p.id, "error": str(e)}
@@ -302,7 +361,7 @@ def editor_phase(run: Run | None = None) -> dict:
 
     with ThreadPoolExecutor(max_workers=_workers(), thread_name_prefix="edit") as ex:
         for r in ex.map(one, pages):
-            out["pages"] += 1
+            out["pages"] += 0 if r.get("stopped") else 1
             out["rejected"] += r.get("rejected", 0)
     close_old_connections()
     return out
@@ -323,20 +382,28 @@ def rewrite_pages(page_ids: list[int] | None = None, everything: bool = False) -
             todo.append(p)
             continue
         info = length_info(p)
-        if info["words"] > info["budget"] * (1 + s.pages.tolerance) or not p.sections.filter(key="summary").exclude(text="").exists():
+        if p.needs_rewrite or info["words"] > info["budget"] * (1 + s.pages.tolerance) or not p.sections.filter(key="summary").exclude(text="").exists():
             todo.append(p)
     event("editor", f"Rewriting {len(todo)} page(s) to the page budget", pages=len(todo))
     out = {"pages": len(todo), "accepted": 0, "rejected": 0, "failed": 0, "words_before": 0, "words_after": 0, "budget": 0}
 
     def one(p):
+        if halted.is_set():
+            return {}
         close_old_connections()
         try:
             return rewrite_page(p)
+        except Halted as e:
+            if not halted.is_set():
+                halted.set()
+                event("editor", f"Rewriting stopped: {e}", level="error")
+            return {}
         except Exception as e:
             log.exception("rewrite of page %s failed", p.id)
             return {"error": str(e)}
         finally:
             connection.close()
+    halted = threading.Event()
     with ThreadPoolExecutor(max_workers=_workers(), thread_name_prefix="rewrite") as ex:
         for r in ex.map(one, todo):
             out["accepted"] += len(r.get("accepted", []))

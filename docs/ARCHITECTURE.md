@@ -8,8 +8,8 @@ concept to the module that implements it. Read "Invariants" and "Gotchas" before
 ```
  sources                 store (SQLite)                 pipeline (per window)                         wiki + index
  ───────                 ──────────────                 ──────────────────────                        ────────────
- POP3 ──┐                Email (raw .eml zlib,          units: thread-day (batch/backfill)            Page / Section
- .pst ──┼─► store.add() ─► new/quoted text, notes) ─►   or thread delta (live)                ─►      SectionHistory (append-only)
+ POP3 ──┐                Email (new text, notes)        units: thread-day (batch/backfill)            Page / Section
+ .pst ──┼─► store.add() ─► EmailOriginal (raw .eml) ─►  or thread delta (live)                ─►      SectionHistory (append-only)
  .eml ──┘   dedupe,      Thread / ThreadKey (union-find)  │                                            Item (pending → written)
             threading,   Attachment → Blob (dedup)        ├─ 1 email: fast path S12 / S123            Chunk + ChunkVector (SQLite)
             skip rules   QuotedBlock (linked/unseen)      ├─ else: S1 notes → S2 route                    └─► FTS5 (chunk_fts, chunk_fts_tri)
@@ -43,7 +43,7 @@ background threads of the same process. CLI commands (`fetch`, `process`, `eval`
 | Quotes | `ingest/quotes.py` | New text vs quoted history (EN/NL/DE/SK/KO markers), signature cut, quoted blocks |
 | Threads | `ingest/threads.py` | Union-find over Message-ID/References/Thread-Index/ConversationID + subject fallback + `join_shared_history()` |
 | Store | `ingest/store.py` | `add()`: dedupe, save, attachments+extracts, quoted-block linking, shared-history joins, identifiers, t-codes, skip rules |
-| Skip rules | `ingest/skiprules.py` | Header rules, automatic replies (`auto_reply_reason`), static + learned rules (replies by others exempt unless `include_replies`), audit samples |
+| Mail rules | `ingest/skiprules.py` | Header rules, automatic replies (`auto_reply_reason`), static + learned rules (replies by others exempt unless `include_replies`), audit samples, filing into folders; on stored mail: `preview()`, `apply_rule()` (skip, `unroute()`), `revert_rule()` |
 | Health | `ingest/health.py` | `check_store()` invariants |
 | Sources | `sources/pop3.py`, `sources/pst.py`, `sources/eml_folder.py`, `sources/fetch.py` | Iterators of raw messages; `fetch()` runs them and reconciles counts. `pop3.py`: one or more department mailboxes (`pop3_accounts`), a seen-list per mailbox, and the mailbox's department added to `Email.depts` (also for Bcc; the same mail in two mailboxes is stored once with both). `pst.py`: department filter (`is_dept_mail`), SMTP resolution of Exchange recipients, MAPI Message-ID/References, `scan_pst_com()` dry run |
 | LLM | `llm/adapters.py`, `llm/mock.py`, `llm/jsonparse.py`, `llm/pool.py`, `llm/schemas.py` | Adapters (`HttpJson`: an HTTP API described by settings — presets, body template, response path, auth, TLS, proxy; `Custom`: company_adapter.py or any module/function; the Claude/Gemini/Codex CLIs) and error classes (`Blocked`, `RateLimited`…, `classify()`); lenient JSON; the pool (`run_structured`); JSON schemas per stage for structured output |
@@ -65,7 +65,7 @@ background threads of the same process. CLI commands (`fetch`, `process`, `eval`
 | Scheduler | `scheduler.py` | Nightly batch, live ticks (auto-off), manual actions, DB backup |
 | API | `api.py` | All `/api` endpoints for the portal |
 | Eval | `evaluation.py` | Retrieval grid, answer judging, ingest metrics |
-| Commands | `management/commands/*.py` | `serve`, `fetch`, `process`, `eval`, `doctor`, `models`, `check_store`, `docs_config`, `export_data`, `import_data`, `pst_scan`, `refresh_pages`, `rewrite_pages`, `reparse_bodies`, `rules` (skip rules ⇄ YAML), `config` (show / set / apply settings from the command line), `secret` (keystore), `api` (probe / test an LLM API with a fixed test prompt) |
+| Commands | `management/commands/*.py` | `serve`, `fetch`, `process`, `eval`, `doctor`, `models`, `check_store`, `docs_config`, `export_data`, `import_data`, `pst_scan`, `refresh_pages`, `rewrite_pages`, `reparse_bodies`, `vacuum`, `rules` (mail rules ⇄ YAML, `apply` on stored mail), `config` (show / set / apply settings from the command line), `secret` (keystore), `api` (probe / test an LLM API with a fixed test prompt) |
 | Frontend | `frontend/src/*` | React portal (Reports, Emails, Wiki, Page, Agent, Search, Chat, drawer) |
 | Dev tools | `devtools/*` | Synthetic dataset generator, truth checks, dumps |
 | Deploy | `tools/*` | Offline packager, install/run batch files, adapter template, lock generator |
@@ -74,6 +74,17 @@ background threads of the same process. CLI commands (`fetch`, `process`, `eval`
 
 - `Email.status`: `new` → `noted` (has a note) → `processed` (routed or not important); `skipped` (rule), `duplicate`
   (dup_of set), `failed` (retried next run). Notes live on the Email row (`note`, `kind`, `importance`, `due`).
+- `EmailOriginal` holds the heavy part of an email (`raw` with its attachments, `body_text`, `quoted_text`) in its own
+  table: SQLite has to walk over a large value to reach any column after it, so with these on the Email row every list
+  and filter read the whole mailbox. Only `reparse_bodies` and `raw_bytes()` read it. **Lists use `LIST_DEFER` and pages:**
+  `/emails` 100 rows (max 500), `/emails/threads` 60, `/pages` 120, week 600, a thread's latest 200, a page's newest 300.
+- `Folder`, `Email.folder`: filing only, independent of processing. `rule_ref` / `folder_rule` = the rule that skipped or
+  filed an email (what `revert_rule()` undoes); `skip_manual` / `folder_manual` = a person decided, rules leave it alone.
+  `Page.needs_rewrite` = a rule took source emails away; the next run rewrites the page.
+- Circuit breaker (`llm/pool.py`, state in `KV 'breaker'`): `pool.breaker_failures` failed requests in a row, or
+  `breaker_share` of the last 30, stop an endpoint; with none left for a stage background work raises `Halted` and
+  `runner.stop()` ends the run (status `stopped`). `runner` also stops after that many failed units in a row, whatever the
+  cause. Chat is exempt. After `breaker_cooldown_min` one trial request; Resume or a manual start clears it.
 - `ThreadKey`: the union-find. Keys `mid:`, `conv:`, `cid:` point to a Thread; merges move emails and keys to the oldest thread.
 - `QuotedBlock`: quoted history split into blocks. `linked` = the stored email it matches; `linked IS NULL` = only copy
   ("unseen history"), sent to the model once (`sent_to_model`). `fingerprint` = hash of the block's words: the same

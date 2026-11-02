@@ -66,7 +66,7 @@ DATABASES = {
         "NAME": os.environ.get("LLMWIKI_DB", str(DATA_DIR / "llmwiki.sqlite3")),
         "OPTIONS": {
             # WAL lets the web threads read while the worker threads write.
-            "init_command": "PRAGMA journal_mode=WAL; PRAGMA synchronous=NORMAL; PRAGMA busy_timeout=30000;",
+            "init_command": "PRAGMA journal_mode=WAL; PRAGMA synchronous=NORMAL; PRAGMA busy_timeout=30000; PRAGMA cache_size=-32000;",
             "transaction_mode": "IMMEDIATE",
             "timeout": 30,
         },

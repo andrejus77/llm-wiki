@@ -17,6 +17,10 @@ Usage (every LLM request in the app goes through `run_structured`):
 - Privacy: an external endpoint only gets privacy.external_stages (privacy.endpoint_allows); prompts to external
   endpoints and to endpoints with redact_pii have personal data removed; model outputs too (privacy.redact_outputs).
 - schema: the stage's JSON schema (llm/schemas.py) is passed to endpoints with structured_output on.
+- Circuit breaker: pool.breaker_failures failed requests in a row on an endpoint (or breaker_share of its last 30) stop
+  it: nothing more is sent to it, other endpoints carry on, and when no endpoint is left for a stage background work
+  raises Halted and the run stops. The state survives a restart (KV 'breaker'). After breaker_cooldown_min the next run
+  may try again and a first failure stops it at once; Resume or a manual run clears it. Chat is never held back.
 """
 from __future__ import annotations
 
@@ -47,6 +51,14 @@ class Paused(Exception):
     pass
 
 
+class Halted(StageFailed):
+    """The circuit breaker stopped every endpoint that may serve this stage: background work must stop."""
+
+
+FAILED = ("rejected", "timeout", "blocked", "error", "invalid")
+BREAKER_WINDOW = 30
+
+
 @dataclass
 class EpState:
     cfg: object
@@ -58,6 +70,12 @@ class EpState:
     n429: int = 0
     stats: dict = field(default_factory=lambda: {"ok": 0, "rejected": 0, "timeout": 0, "invalid": 0, "error": 0, "blocked": 0,
                                                  "latency_ms": deque(maxlen=50)})
+    fails: int = 0                 # failed requests in a row
+    recent: deque = field(default_factory=lambda: deque(maxlen=BREAKER_WINDOW))   # 1 = ok, 0 = failed
+    stopped: dict | None = None    # {"at", "until" (epoch; 0 = until Resume), "reason"}: the circuit breaker tripped
+
+    def down(self) -> bool:
+        return bool(self.stopped) and (not self.stopped["until"] or time.time() < self.stopped["until"])
 
     def allows(self, stage: str, failover: bool = False) -> bool:
         st = self.cfg.stages or ["*"]
@@ -105,10 +123,103 @@ class Pool:
                 continue
             self.eps[e.name] = EpState(cfg=e, adapter=ad, rpm=e.rpm)
         self.sig = sig
+        saved = self._saved_breaker()
+        for name, st in self.eps.items():
+            st.stopped = st.stopped or saved.get(name)
+
+    # ------------------------------------------------------------ circuit breaker
+    @staticmethod
+    def _saved_breaker() -> dict:
+        """The stored state; another process (a CLI run, the portal) may have stopped or resumed an endpoint."""
+        try:
+            from llmwiki.models import KV
+            return KV.get("breaker", {}) or {}
+        except Exception:
+            return {}   # tables not there yet
+
+    def _take_saved_breaker(self) -> None:
+        """Only with no run active: a stop that was just decided may not be stored yet."""
+        saved = self._saved_breaker()
+        for name, st in self.eps.items():
+            st.stopped = saved.get(name)
+
+    def _save_breaker(self) -> None:
+        from llmwiki.models import KV
+        KV.set("breaker", {n: st.stopped for n, st in self.eps.items() if st.stopped})
+
+    def _note_result(self, st: EpState, status: str, error: str, chat: bool) -> None:
+        """Count a finished request; trips the breaker. An ok on a stopped endpoint (a trial, or a chat) clears it."""
+        from llmwiki.logs import event
+        b = get_settings().pool
+        msg, level = "", "info"
+        with self.cv:
+            if status == "ok":
+                st.fails = 0
+                st.recent.append(1)
+                if st.stopped:
+                    st.stopped = None
+                    msg = f"Endpoint {st.cfg.name} answered again: it is back in use"
+            elif not chat:
+                st.fails += 1
+                st.recent.append(0)
+                bad = st.recent.count(0)
+                full = len(st.recent) == BREAKER_WINDOW
+                in_a_row = b.breaker_failures and st.fails >= b.breaker_failures
+                share = b.breaker_share and full and bad / BREAKER_WINDOW >= b.breaker_share
+                retrial = st.stopped and not st.down()   # the first failure after the cooldown stops it again
+                if b.breaker_failures and (in_a_row or share or retrial) and (retrial or not st.stopped):
+                    why = f"{st.fails} failed or rejected requests in a row" if in_a_row else f"{bad} of its last {BREAKER_WINDOW} requests failed" if share else "the trial request failed too"
+                    until = time.time() + b.breaker_cooldown_min * 60 if b.breaker_cooldown_min else 0
+                    st.stopped = {"at": time.time(), "until": until, "reason": f"{why}; last error: {status}: {error[:300]}"}
+                    msg, level = f"Endpoint {st.cfg.name} stopped: {st.stopped['reason']}", "error"
+            self.cv.notify_all()
+        if msg:
+            try:
+                self._save_breaker()
+            except Exception:
+                log.exception("could not store the breaker state")
+            event("pool", msg, level=level, endpoint=st.cfg.name)
+
+    def down_names(self) -> set[str]:
+        return {n for n, st in self.eps.items() if st.down()}
+
+    def halted(self) -> list[dict]:
+        """The stopped endpoints, for the portal's banner. Reads only."""
+        now = time.time()
+        return [{"endpoint": n, **v, "down": not v["until"] or now < v["until"]} for n, v in self._saved_breaker().items()]
+
+    def all_down(self) -> bool:
+        """Every enabled endpoint is stopped, so a run would only fail. Called before a run starts."""
+        with self.cv:
+            self._refresh()
+            self._take_saved_breaker()
+            live = [st for st in self.eps.values() if st.cfg.enabled]
+            return bool(live) and all(st.down() for st in live)
+
+    def resume(self, who: str = "") -> int:
+        """Clear the breaker (Resume button, or a run someone starts by hand)."""
+        from llmwiki.logs import event
+        with self.cv:
+            self._refresh()
+            self._take_saved_breaker()
+            names = [n for n, st in self.eps.items() if st.stopped]
+            for st in self.eps.values():
+                st.stopped, st.fails = None, 0
+                st.recent.clear()
+            self.cv.notify_all()
+        if names:
+            self._save_breaker()
+            event("pool", f"Resumed {', '.join(names)}{' by ' + who if who else ''}: requests are sent again", level="warning")
+        return len(names)
+
+    def _halt_reason(self, stage: str) -> str:
+        parts = [f"{n}: {st.stopped['reason']}" for n, st in self.eps.items() if st.stopped and st.allows(stage, True)]
+        return f"Stopped: no endpoint left for {stage}. " + " · ".join(parts)
 
     def status(self) -> list[dict]:
         now = time.monotonic()
         out = []
+        saved = self._saved_breaker()
         with self.cv:
             self._refresh()
             for st in self.eps.values():
@@ -120,6 +231,7 @@ class Pool:
                             "rpm": st.rpm, "rpm_config": st.cfg.rpm, "used_60s": len(st.window), "in_flight": st.in_flight,
                             "max_concurrent": st.cfg.max_concurrent, "cooling_s": max(0, round(st.cooling_until - now)),
                             "context": st.cfg.context_tokens, "stages": st.cfg.stages, "timeout_s": st.cfg.timeout_s,
+                            "fails_in_a_row": st.fails, "stopped": st.stopped or saved.get(st.cfg.name),
                             "stats": {k: v for k, v in st.stats.items() if k != "latency_ms"},
                             "avg_latency_ms": int(sum(lat) / len(lat)) if lat else None})
         return out
@@ -136,6 +248,8 @@ class Pool:
         best = None
         for st in self.eps.values():
             if st.cfg.name in exclude or not st.allows(stage, failover=bool(exclude)) or now < st.cooling_until:
+                continue
+            if st.stopped and not chat and (st.down() or st.in_flight):   # after the cooldown: one trial request at a time
                 continue
             while st.window and now - st.window[0] > 60:
                 st.window.popleft()
@@ -166,6 +280,10 @@ class Pool:
             try:
                 while True:
                     now = time.monotonic()
+                    if not chat:
+                        may = [st for st in self.eps.values() if st.allows(stage, failover=True)]
+                        if may and all(st.down() for st in may):
+                            raise Halted(self._halt_reason(stage))
                     blocked = not chat and (self.paused or self.chat_active())
                     st = None if blocked else self._free(stage, chat, now, exclude)
                     if st:
@@ -218,7 +336,12 @@ class Pool:
         failed: set[str] = set()      # endpoints that blocked or failed this request (failover skips them)
         while True:
             t_wait = time.monotonic()
-            exclude = frozenset(failed) if set(self.eligible(stage, failover=True)) - failed else frozenset()
+            may = set(self.eligible(stage, failover=True))
+            down = set() if chat else self.down_names()
+            if not chat and may and may <= down:
+                raise Halted(self._halt_reason(stage), calls)
+            skip = failed | down
+            exclude = frozenset(skip) if may - skip else frozenset(down)
             st = self.acquire(stage, chat=chat, exclude=exclude)
             waited = int((time.monotonic() - t_wait) * 1000)
             cap = min(s.budgets.cap, st.cfg.context_tokens)
@@ -297,6 +420,7 @@ class Pool:
                 if status == "ok":
                     st.stats["latency_ms"].append(row.latency_ms)
                     st.n429 = 0
+            self._note_result(st, status, "; ".join(str(x) for x in (row.errors or []))[:300], chat)
             log.info("llm %s %s via %s: %s in %sms (wait %sms, ~%s tokens)", stage, unit, st.cfg.name, status, row.latency_ms, waited, ptok)
             if status == "ok":
                 return Result(obj, raw, calls, st.cfg.name, val_round + 1)

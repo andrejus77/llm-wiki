@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { send } from "../api";
 import { Cite, usePeek } from "../drawer";
-import { Err, fmt, Kind, Loading, Prose, Seg, Status, TagPill, tColor, useApi } from "../util";
+import { Err, fmt, Kind, Loading, Prose, Seg, Status, TagPill, tColor, useApi, useMeta } from "../util";
 
 function History({ pid, sec, close, reload }: { pid: string; sec: any; close: () => void; reload: () => void }) {
   const h = useApi(`/pages/${pid}/history`, { key: sec.key });
@@ -25,7 +25,7 @@ function History({ pid, sec, close, reload }: { pid: string; sec: any; close: ()
 }
 
 function DeptCard({ p, reload }: { p: any; reload: () => void }) {
-  const meta = useApi("/meta");
+  const meta = useMeta();
   const opts: any[] = (meta.data as any)?.dept_info || [];
   const set = async (v: string) => { await send("PATCH", `/pages/${p.id}`, { dept: v }); reload(); };
   return (
@@ -84,7 +84,7 @@ export default function PageView() {
       <div className="chips">{Object.entries(p.tags || {}).flatMap(([ty, vs]: any) => (vs || []).map((v: string) => <TagPill key={ty + v} ty={ty} v={v} small={false} onClick={() => nav(`/wiki?tag=${ty}:${encodeURIComponent(v)}`)} />))}</div>
       <dl className="meta"><div><dt>Level</dt><dd title={p.level_proposed !== p.level ? `The agent proposed ${p.level_proposed}; the script shows ${p.level} until the page has enough emails, days and people (Settings › Pipeline › level_min)` : "proposed by the agent, checked by the script"}>
         {p.level}{p.level_proposed !== p.level && <span className="sim"> (→ {p.level_proposed})</span>}</dd></div><div><dt>Created</dt><dd>{fmt(p.created.slice(0, 10))}</dd></div><div><dt>Last mail</dt><dd>{fmt(p.last_day)}</dd></div>
-        <div><dt>Emails</dt><dd>{p.timeline.length}</dd></div><div><dt>Updated</dt><dd>{fmt(p.updated.slice(0, 10))}</dd></div>
+        <div><dt>Emails</dt><dd>{p.timeline_total}</dd></div><div><dt>Updated</dt><dd>{fmt(p.updated.slice(0, 10))}</dd></div>
         {p.length && <div title={`Length budget: ${p.length.budget} words, from the ${p.length.source_words} words people wrote in this page's emails (Settings › Wiki pages). The script holds the editor to it.`}>
           <dt>Length</dt><dd className="lenbar">{p.length.words} / {p.length.budget} words<span className="bar"><i className={p.length.words > p.length.budget * 1.15 ? "over" : ""} style={{ width: `${Math.min(100, (100 * p.length.words) / Math.max(1, p.length.budget))}%` }} /></span></dd></div>}</dl>
       {p.merged_into && <p className="note">This page was merged into another page.</p>}
@@ -94,7 +94,7 @@ export default function PageView() {
           <span className="sim"> · opened {fmt(o.opened)}{o.closed ? ` · closed ${fmt(o.closed)}` : ""}</span></li>)}</ul></div>}
       <div className="card" style={{ marginTop: 14 }}>
         <div className="sec-h">Timeline · one row per email <span className="sp" /><Seg value={win} options={[[7, "7 days"], [30, "30 days"], [0, "All"]]} onChange={(v) => setWin(+v)} /></div>
-        <p className="sim" style={{ margin: "0 0 4px" }}>Showing {shown.length} of {p.timeline.length}. Each row is the note-taker's note for one email; the prose above is the editor's.</p>
+        <p className="sim" style={{ margin: "0 0 4px" }}>Showing {shown.length} of {p.timeline_total}{p.timeline_total > p.timeline.length ? ` (the newest ${p.timeline.length} are listed)` : ""}. Each row is the note-taker's note for one email; the prose above is the editor's.</p>
         <ul className="timeline">{shown.map((e: any) => (
           <li className={`ev ${e.role}`} key={e.id}><span className="d">{fmt(e.day)}<br /><span style={{ fontSize: ".7rem" }}>{e.time}</span></span><div className="txt">
             <Kind kind={e.kind} /> {e.note || e.subject}{e.role === "secondary" && <span className="pill"> secondary</span>}

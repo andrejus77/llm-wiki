@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { get } from "./api";
-import { fmt, dow, Kind, pagePills, Prose, Status, TagPill } from "./util";
+import { fmt, dow, Kind, Lazy, pagePills, Prose, Status, TagPill } from "./util";
 
 type Peek = { kind: "email" | "page"; id: number | string } | null;
 const Ctx = createContext<{ peek: (p: Peek) => void }>({ peek: () => {} });
@@ -43,13 +43,11 @@ function EmailPeek({ id, close }: { id: number; close: () => void }) {
       <div className="rc-lbl" style={{ marginTop: 12 }}>Earlier in this thread · {d.earlier.length}</div>
       {d.earlier.length === 0 && <p className="sim">First email of this thread.</p>}
       {d.earlier.map((x: any, i: number) => (
-        <details className="pk-prev" key={x.id} open={i === 0}>
-          <summary><span className="sim">{fmt(x.day)} {x.time}</span> <b>{x.from_name}</b>
-            {d.parent_id === x.id ? <span className="pill par">answered here</span> : !x.in_chain && (d.branch?.parallel || d.branch?.ghost) ? <span className="pill vio par">parallel branch</span> : null}
-            {x.note ? ` · ${x.note}` : ""}</summary>
+        <Lazy className="pk-prev" key={x.id} open={i === 0} summary={<><span className="sim">{fmt(x.day)} {x.time}</span> <b>{x.from_name}</b>
+          {d.parent_id === x.id ? <span className="pill par">answered here</span> : !x.in_chain && (d.branch?.parallel || d.branch?.ghost) ? <span className="pill vio par">parallel branch</span> : null}
+          {x.note ? ` · ${x.note}` : ""}</>}>{() => <>
           <div className="pk-body"><Prose text={x.new_text} /></div>
-          <button className="linkbtn sim" onClick={() => peek({ kind: "email", id: x.id })}>open this email</button>
-        </details>
+          <button className="linkbtn sim" onClick={() => peek({ kind: "email", id: x.id })}>open this email</button></>}</Lazy>
       ))}
       {d.pages.length > 0 && <><div className="rc-lbl" style={{ marginTop: 10 }}>Fed these pages</div>
         <div className="btn-row">{d.pages.map((p: any) => <button key={p.id} className="linkbtn" onClick={() => peek({ kind: "page", id: p.id })}>{p.title}</button>)}</div></>}

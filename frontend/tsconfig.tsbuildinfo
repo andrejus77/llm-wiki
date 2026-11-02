@@ -1,1 +1,1 @@
-{"root":["./src/chat.tsx","./src/api.ts","./src/drawer.tsx","./src/main.tsx","./src/util.tsx","./src/views/agent.tsx","./src/views/emails.tsx","./src/views/page.tsx","./src/views/reports.tsx","./src/views/search.tsx","./src/views/wiki.tsx"],"version":"5.6.3"}
+{"root":["./src/chat.tsx","./src/ruleeditor.tsx","./src/api.ts","./src/drawer.tsx","./src/main.tsx","./src/util.tsx","./src/views/agent.tsx","./src/views/emails.tsx","./src/views/page.tsx","./src/views/reports.tsx","./src/views/search.tsx","./src/views/wiki.tsx"],"version":"5.6.3"}
