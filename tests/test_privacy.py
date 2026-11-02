@@ -93,17 +93,15 @@ def test_schema_goes_to_the_company_adapter_and_outputs_are_redacted(tmp_path, m
             # a LangChain with_structured_output backend returns an object, not text
             return {{"notes": [{{"email": 1, "note": "Asked to call +31 6 1234 5678 back", "kind": "request", "importance": "important"}}]}}
     """), encoding="utf-8")
-    monkeypatch.setenv("LLMWIKI_ADAPTER", str(ad))
-    adapters.Custom._mod = None
     try:
-        ep = Endpoint(name="api-180s", kind="custom", rpm=600, max_concurrent=2, structured_output=True)
+        ep = Endpoint(name="api-180s", kind="custom", rpm=600, max_concurrent=2, structured_output=True, options={"module": str(ad)})
         with use_settings(settings_with([ep])):
             r = Pool().run_structured("s1", "schema", build, parse_ok)
         seen = json.loads(rec.read_text())
         assert seen["endpoint"] == "api-180s" and seen["schema"]["title"] == "Notes" and "notes" in seen["schema"]["properties"]
         assert r.obj["notes"][0]["note"] == "Asked to call [phone] back"      # privacy.redact_outputs
     finally:
-        adapters.Custom._mod = None
+        adapters.Custom._mods.clear()
 
 
 def _stub(tmp_path, name: str, body: str) -> str:

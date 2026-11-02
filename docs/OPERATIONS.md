@@ -44,9 +44,11 @@ an agent on the laptop follows [AGENTS.md](../AGENTS.md). In short:
    - `sources.internal_domains`;
    - `departments.names` (display names), `departments.ai_address` (the AI department's address) and
      `departments.team_members` (the team's addresses — reports only show topics a team member wrote about).
-5. Paste your API call code into `data\company_adapter.py` (see the file: `endpoint` is "api-b" or "api-a"; `schema` is passed
-   to API A because it has `structured_output: true`; raise `Blocked` when API B refuses input).
-   Set the API keys as environment variables (`setx NAME "value"`, then a new terminal).
+5. Connect the two APIs (details: [SETUP_WORK_LAPTOP.md](SETUP_WORK_LAPTOP.md) §6): a plain HTTP API as `kind: http_json`
+   in the settings, or Python call code in `data\company_adapter.py` as `kind: custom` (`endpoint` is "api-b" or "api-a";
+   `schema` is passed when `structured_output: true`; raise `Blocked` when API B refuses input).
+   Store the API keys: `llmwiki secret set api-b` / `api-a` (Windows Credential Manager; `llmwiki secret list` shows what is missing).
+   A plain HTTP API needs no code: `kind: http_json` — `llmwiki api probe --url …` finds the settings, `llmwiki api test api-a` checks them.
 5b. Skip rules from the old project: `data\rules.yaml` → `llmwiki rules import data\rules.yaml` (`--dry-run` first).
    Other settings without the portal: `llmwiki config set <group.key> <value>` / `llmwiki config apply <file.yaml>`.
 6. The CLIs for the wiki lint (optional, any of them): `npm i -g @google/gemini-cli` → `gemini` (log in);
@@ -101,11 +103,11 @@ files (they are in the backup). From then on local changes are detected.
    **imports `import\llmwiki-data.zip` if the package has one** (embeds anything missing and rebuilds the vector index), and
    runs `doctor --offline`.
 2. Edit `data\settings.yaml`: `sources.pop3_accounts` (one entry per shared department mailbox: `dept`, `host`, `port`,
-   `ssl`, `user`, `password_env`), the department addresses, internal domains. Mail that reaches two department mailboxes
+   `ssl`, `user`, `password_secret`), the department addresses, internal domains. Mail that reaches two department mailboxes
    is stored once and counts for both; a mailbox's department counts even when its address is not in To/Cc (Bcc).
-3. `data\company_adapter.py` comes with the data package (or paste your call code). Environment variables (System Properties ›
-   Environment Variables, for the account that runs the service): one POP3 password per mailbox (the `password_env` names,
-   e.g. `LLMWIKI_POP3_PW_A`), your API keys, optionally `LLMWIKI_DATA`. `doctor` logs in to every mailbox.
+3. `data\company_adapter.py` comes with the data package (or paste your call code). Secrets go into the Windows
+   Credential Manager of the account that runs the service: `llmwiki secret set <name>` for each POP3 password (the
+   `password_secret` names, e.g. `pop3-a`) and each API key, logged in as that account. `doctor` logs in to every mailbox.
 4. `.venv\Scripts\python manage.py createsuperuser` (more users: Django admin at `/admin`).
 5. `doctor.bat --ping` → every line OK; the report is in `data\doctor-report.txt`.
 6. `run.bat` → `http://<server>:8000`; to start at boot: `tools\install_service.bat`.
@@ -169,6 +171,7 @@ parallel roughly half. At 60 requests/min a month takes about an hour. Agent ›
 | A topic is in the wrong report | page › Department → "Move to" (kept from then on); systematic: `departments.ai_page_min_share`, `ai_keywords`, `names` |
 | A report is (almost) empty | `departments.team_members` must list the team's addresses; topics without a team member's mail in the window are left out (listed under "left out" on the report) |
 | Automated confirmations still make pages | Agent › Rules (skip rule) or `pipeline.automated_senders`; the repeated-template rule needs `automated_template_min` mails with near-identical text |
+| An API does not connect | `llmwiki api test <name>`: the request (key masked), HTTP status, response and a hint (401 key/auth · 404 path · 422 body · certificate → `options.ca_bundle` · proxy → `options.proxy: none` · answer not found → `options.response_path`). `llmwiki api probe --url …` tries the usual API shapes and prints working settings. `llmwiki secret list` shows missing keys |
 | API B blocks input | Agent › Pool › Refusals lists every one with its reason; failover sends it to API A. Fewer blocks: `redact_pii: true` on API B. If API A has no `fallback_stages`, the stage fails |
 | Department mail missing after a `.pst` import | `llmwiki pst_scan --days 30`; add `dept_aliases` (display names) or `pst_match_from: true`; the fetch run shows "N personal messages left out" |
 | Gemini CLI errors | log in again with `gemini`; quota → lower `rpm`; `doctor` shows whether the CLI is found |

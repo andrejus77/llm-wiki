@@ -30,6 +30,7 @@ class Command(BaseCommand):
             bad += 0 if ok else 1
             self.stdout.write(lines[-1])
 
+        from llmwiki import keystore
         from llmwiki.conf import get_settings
         s = get_settings()
         from llmwiki.api import code_version
@@ -57,7 +58,11 @@ class Command(BaseCommand):
         md = Path(dj.DATA_DIR) / "models"
         for name in ("multilingual-e5-small", "bge-small-en-v1.5"):
             f = md / name / "onnx" / "model.onnx"
-            check(f"model files {name}", f.exists() or s.retrieval.embed_model != name, f if f.exists() else "missing (run: manage.py models --download)")
+            if f.exists() or s.retrieval.embed_model == name:
+                check(f"model files {name}", f.exists(), f if f.exists() else "missing (run: llmwiki models --download)")
+            else:
+                lines.append(f"[INFO] model files {name}: missing — only needed for the eval / switching models (llmwiki models --download)")
+                self.stdout.write(lines[-1])
         try:
             from llmwiki.rag.embed import get_embedder
             t0 = time.time()
@@ -110,8 +115,8 @@ class Command(BaseCommand):
                 name = f"POP3 {a['user']}@{a['host']}"
                 if a["dept"] and a["dept"].lower() not in depts:
                     check(f"{name}: department", False, f"{a['dept']} is not in sources.dept_addresses")
-                if not os.environ.get(a["password_env"]):
-                    check(f"{name}: password", False, f"environment variable {a['password_env']} is not set")
+                if not keystore.where(a["password_secret"]):
+                    check(f"{name}: password", False, f"secret '{a['password_secret']}' is not stored: llmwiki secret set {a['password_secret']}")
                     continue
                 if o["offline"]:
                     continue
@@ -127,14 +132,17 @@ class Command(BaseCommand):
                 continue
             detail = f"{ep.kind} rpm {ep.rpm} · {ep.max_concurrent} parallel · timeout {ep.timeout_s or 'none'}"
             if ep.kind == "custom":
-                p = Path(os.environ.get("LLMWIKI_ADAPTER", Path(dj.DATA_DIR) / "company_adapter.py"))
-                check(f"endpoint {ep.name}: company_adapter.py", p.exists(), p)
+                from llmwiki.llm.adapters import Custom
+                p = Custom(ep).path()
+                check(f"endpoint {ep.name}: adapter file", p.exists(), p)
             if ep.kind in ("claude_cli", "gemini_cli", "codex_cli"):
                 import shutil
                 exe = {"claude_cli": "claude", "gemini_cli": "gemini", "codex_cli": "codex"}[ep.kind]
-                check(f"endpoint {ep.name}: {exe} CLI installed", bool(shutil.which(exe)), shutil.which(exe) or f"npm i -g … / see docs\\OPERATIONS.md; then log in once with `{exe}`")
-            if ep.api_key_env:
-                check(f"endpoint {ep.name}: env {ep.api_key_env}", bool(os.environ.get(ep.api_key_env)), "set" if os.environ.get(ep.api_key_env) else "not set")
+                found = ep.options.get("exe") if ep.options.get("exe") and Path(ep.options["exe"]).exists() else shutil.which(exe)
+                check(f"endpoint {ep.name}: {exe} CLI installed", bool(found), found or f"install it and log in once with `{exe}` (or set options.exe), or set enabled: false")
+            if ep.api_key_secret:
+                w_ = keystore.where(ep.api_key_secret)
+                check(f"endpoint {ep.name}: secret {ep.api_key_secret}", bool(w_), w_ or f"not stored: llmwiki secret set {ep.api_key_secret}")
             if o["ping"] and not o["offline"]:
                 try:
                     from llmwiki.llm.adapters import make_adapter
@@ -144,7 +152,7 @@ class Command(BaseCommand):
                     obj, err = extract_json(txt)
                     check(f"endpoint {ep.name}: ping", bool(obj and obj.get("ok")), f"{time.time() - t0:.1f}s · {txt[:80]!r}")
                 except Exception as ex:
-                    check(f"endpoint {ep.name}: ping", False, ex)
+                    check(f"endpoint {ep.name}: ping", False, f"{ex} — details: llmwiki api test {ep.name}")
             else:
                 lines.append(f"[INFO] endpoint {ep.name}: {detail}")
         rep = Path(dj.DATA_DIR) / "doctor-report.txt"

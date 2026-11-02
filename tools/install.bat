@@ -25,7 +25,7 @@ echo.
 echo Next:
 echo  1. Edit %LLMWIKI_DATA%\settings.yaml (pop3_accounts: one per department mailbox; department addresses)
 echo  2. Check %LLMWIKI_DATA%\company_adapter.py (it came with the data package, or paste your API call code)
-echo  3. Set the environment variables (API keys, one POP3 password per mailbox, e.g. LLMWIKI_POP3_PW_A) - see docs\OPERATIONS.md
+echo  3. Store the secrets as the account that runs the portal: .venv\Scripts\python manage.py secret set api-a  (also api-b, pop3-a ...; 'secret list' shows what is missing)
 echo  4. Create a login: .venv\Scripts\python manage.py createsuperuser
 echo  5. doctor.bat --ping   then   run.bat
 echo Later code updates: unzip a patch (tools\patch.bat on the laptop) into this folder and run its apply_patch.bat.

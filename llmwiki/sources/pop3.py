@@ -4,31 +4,31 @@ mail from the server. Mail sent to two department mailboxes is stored once (Mess
 from __future__ import annotations
 
 import logging
-import os
 import poplib
 
+from llmwiki import keystore
 from llmwiki.models import SeenUidl
 
 log = logging.getLogger(__name__)
 
 
 def accounts(cfg) -> list[dict]:
-    """The configured mailboxes as dicts (host, port, ssl, user, password_env, dept, key)."""
+    """The configured mailboxes as dicts (host, port, ssl, user, password_secret, dept, key)."""
     out = []
     for a in cfg.pop3_accounts:
         if a.enabled and a.host and a.user:
-            out.append({"host": a.host, "port": a.port, "ssl": a.ssl, "user": a.user, "password_env": a.password_env, "dept": a.dept,
+            out.append({"host": a.host, "port": a.port, "ssl": a.ssl, "user": a.user, "password_secret": a.password_secret, "dept": a.dept,
                         "key": f"{a.user}@{a.host}"})
     if not out and cfg.pop3_host:   # the single-mailbox fields (older settings); its seen-list keys stay bare UIDLs
         out.append({"host": cfg.pop3_host, "port": cfg.pop3_port, "ssl": cfg.pop3_ssl, "user": cfg.pop3_user,
-                    "password_env": cfg.pop3_password_env, "dept": "", "key": ""})
+                    "password_secret": cfg.pop3_password_secret, "dept": "", "key": ""})
     return out
 
 
 def connect(a: dict, timeout: int = 60):
     conn = poplib.POP3_SSL(a["host"], a["port"], timeout=timeout) if a["ssl"] else poplib.POP3(a["host"], a["port"], timeout=timeout)
     conn.user(a["user"])
-    conn.pass_(os.environ.get(a["password_env"], ""))
+    conn.pass_(keystore.get(a["password_secret"]))
     return conn
 
 

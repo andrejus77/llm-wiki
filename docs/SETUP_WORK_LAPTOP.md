@@ -1,7 +1,7 @@
 # Setting up the work laptop, step by step
 
 From the code on GitHub to the first processed mail on the company laptop. Steps 1–2 happen on the PC where the code
-is now; the rest on the work laptop. An agent on the laptop (Claude Code, Codex or Gemini CLI) can do steps 5–9 on its
+is now; the rest on the work laptop. An agent on the laptop (Claude Code, Codex or Gemini CLI) can do steps 6–9 on its
 own: it reads [`AGENTS.md`](../AGENTS.md), asks you for what it needs, and never touches the mail itself.
 
 Commands are for **PowerShell in `C:\llmwiki`** (PowerShell runs a script from the current folder only with `.\` in
@@ -10,7 +10,7 @@ front: `.\llmwiki`, `.\doctor.bat`; in cmd.exe the `.\` is optional).
 **What you need at hand** (from your old project or your head) — the full list with examples is the checklist in
 `AGENTS.md`:
 - the department mailbox addresses, their display names, which one is the AI department, the team members' addresses
-- the API call code for the two internal APIs and the names of the environment variables with their keys
+- how the two internal APIs are called (URL, key, or the old project's client code) and their keys
 - the POP3 host and the login of each shared mailbox (if the laptop fetches over POP3), or your `.pst` / Outlook mailbox
 - the skip rules and automated-sender lists from the old project
 
@@ -54,7 +54,7 @@ Later changes from this PC: `git add .` → `git commit -m "…"` → `git push`
 - **With git** (if installed there): `git clone https://github.com/<your-user>/llm-wiki.git C:\llmwiki`.
 
 Needed on the laptop: **Python 3.11** (`py -3.11 --version`), pip working through the company's proxy/index, classic
-Outlook (for the `.pst`), and, if Hugging Face is blocked, the internal mirror: `setx HF_ENDPOINT https://<mirror>`.
+Outlook (for the `.pst`). If Hugging Face is blocked, put the internal mirror into `tools\settings.laptop.yaml` › `retrieval.hf_endpoint` before running setup (or into `data\settings.yaml` and run `.\llmwiki models --download` afterwards).
 
 ## 3. Install
 
@@ -62,38 +62,54 @@ Outlook (for the `.pst`), and, if Hugging Face is blocked, the internal mirror: 
 cd C:\llmwiki
 .\setup.bat --laptop
 ```
-Creates `.venv`, installs the packages, downloads the embedding model, creates `data\settings.yaml` (from
+Creates `.venv`, installs the packages, downloads both embedding models, creates `data\settings.yaml` (from
 `tools\settings.laptop.yaml`) and `data\company_adapter.py`, migrates the database and runs `doctor --offline`.
 Everything under `data\` stays on this laptop and is never committed.
 
 ## 4. Start the agent (optional, recommended)
 
 Open Claude Code / Codex / Gemini CLI **in `C:\llmwiki`** and say: *"Read AGENTS.md and set up this machine. My old
-project is in `<path>`."* It works through steps 5–9, asks for what is missing, and reports what it did. Passwords and
-API keys you set yourself (step 5) — never paste them into the chat.
+project is in `<path>`."* It works through steps 6–9, asks for what is missing, and reports what it did. Passwords and
+API keys you store yourself (step 5) — never paste them into the chat.
 
-## 5. Credentials (environment variables — never in files)
+## 5. Secrets: API keys and passwords (Windows Credential Manager — never in files or environment variables)
 
-In a PowerShell window (each `setx` is stored for your Windows user; **open a new window afterwards**):
+For each secret, run this **yourself** (typing is hidden; it is stored for your Windows user as `llmwiki/<name>` in the
+Windows Credential Manager):
 ```
-setx LLMWIKI_API_B_KEY "<key of the 3 requests/min API>"
-setx LLMWIKI_API_A_KEY "<key of the 180 s API>"
-setx LLMWIKI_API_B_URL "<its URL, if your call code needs one>"
-setx LLMWIKI_API_A_URL "<its URL>"
+.\llmwiki secret set api-b        # key of the 3 requests/min API
+.\llmwiki secret set api-a        # key of the 180 s API
+.\llmwiki secret set pop3-ct      # one per department mailbox, only if this laptop reads them over POP3
+.\llmwiki secret list             # what the settings need, and what is still MISSING (values are never shown)
 ```
-If your old project used other variable names, keep those and use them in `company_adapter.py` (step 6).
-POP3 (only if this laptop reads the department mailboxes over POP3): one password per mailbox, e.g.
-`setx LLMWIKI_POP3_PW_CT "<password>"` — the names are the `password_env` values in `data\settings.yaml`.
+The names must match the settings (`api_key_secret`, `password_secret`). On the server, run the same commands as the
+Windows account that runs the portal. A machine without the Credential Manager: `--file` stores them in
+`data\secrets.yaml` instead (never committed).
 
-## 6. The API call code — `data\company_adapter.py`
+## 6. Connect the two APIs
 
-Replace the example in `call()` with your existing call code (from the old project). Rules (also in the file):
-- `endpoint` is `"api-b"` (3 rpm) or `"api-a"` (180 s); one function serves both.
-- Return the model's text — or, for API A with structured output, the dict/Pydantic object (`schema` is passed in;
-  hand it to LangChain's `with_structured_output(schema)` or your API's schema field).
-- `raise Blocked(...)` when API B refuses the input (its personal-data filter): the request moves to API A at once and
-  shows up in Agent › Pool › Refusals. `raise RateLimited(...)` on 429.
-- Keys only via `os.environ[...]`.
+Each API is EITHER described in `data\settings.yaml` (`kind: http_json`, no code — best for a plain HTTP API) OR
+called by Python code in `data\company_adapter.py` (`kind: custom` — for an SDK, a LangChain client, or the old
+project's client). The template has API B as `custom` and API A as `http_json`.
+
+1. **Let the app find the request shape** (sends only a tiny test prompt):
+   ```
+   .\llmwiki api probe --url https://<api host>/<base path> --secret api-a --proxy none
+   ```
+   It tries OpenAI-style chat, Azure OpenAI, LangServe (`/invoke`, common for LangChain backends), plain JSON and Ollama
+   and prints the endpoint entry to copy into `data\settings.yaml`. Add `--model <name>` if the API needs one, and
+   `--auth header --auth-header api-key` if the key goes in its own header instead of `Authorization: Bearer`.
+2. **Or use code**: put the old project's call code into `call()` in `data\company_adapter.py` (variants for
+   LangChain and for reusing the old client file are at the bottom of that file; keys via `secret("api-a")`).
+3. **Test until it says OK**:
+   ```
+   .\llmwiki api test api-a              # request (key masked), HTTP status, response, where the answer was found, hints
+   .\llmwiki api test api-a --schema     # does it also take a JSON schema? then structured_output: true
+   ```
+   Typical fixes, printed with the error: 401 → key or auth style · 404 → URL/path · 422 → body shape ·
+   certificate error → `options.ca_bundle` · proxy error → `options.proxy: none` · answer not found → `options.response_path`.
+4. API B the same way (`api test api-b`). With `custom`, `raise Blocked(...)` when API B refuses the input
+   (then the request moves to API A at once and shows in Agent › Pool › Refusals).
 
 ## 7. Settings — `data\settings.yaml`
 

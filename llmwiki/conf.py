@@ -6,8 +6,8 @@ Rules:
   automatically. Use `Field(description=...)`, bounds (`ge`/`le`) and `json_schema_extra={"tier": "P1"}` where useful.
 - Effective settings = defaults <- data/settings.yaml (optional, for bootstrapping a new machine) <- the latest
   row of `SettingsVersion` in the DB (what the portal saves) <- the MACHINE_KEYS that settings.yaml sets (endpoints,
-  .pst/.eml paths, server, test_data_only: they belong to the machine, not to the data). API keys are never stored:
-  only env var names.
+  .pst/.eml paths, server, test_data_only: they belong to the machine, not to the data). API keys and passwords are
+  never stored here: only the NAME of a secret (llmwiki/keystore.py: Windows Credential Manager or data/secrets.yaml).
 
 Read settings with `get_settings()` (cached for a few seconds, cheap to call anywhere).
 """
@@ -22,7 +22,7 @@ from pathlib import Path
 from typing import Literal
 
 import yaml
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field
 
 log = logging.getLogger(__name__)
 
@@ -33,20 +33,21 @@ class _M(BaseModel):
 
 # ------------------------------------------------------------------ groups
 class Pop3Account(_M):
-    """One department mailbox read over POP3. The password is read from an environment variable."""
+    """One department mailbox read over POP3. The password is a secret (llmwiki secret set <name>)."""
     dept: str = Field("", description="The department address this mailbox belongs to (one of sources.dept_addresses); its mail counts for "
                                       "that department even when the address is not in To/Cc")
     host: str = Field("", description="POP3 server host name")
     port: int = Field(995, ge=1, le=65535, description="995 for POP3 over SSL, 110 for plain")
     ssl: bool = Field(True, description="POP3 over SSL")
     user: str = Field("", description="Login of the mailbox")
-    password_env: str = Field("LLMWIKI_POP3_PASSWORD", description="Environment variable with this mailbox's password (one per mailbox, e.g. "
-                                                                   "LLMWIKI_POP3_PW_CT)")
+    password_secret: str = Field("", validation_alias=AliasChoices("password_secret", "password_env"),
+                                 description="Name of the secret with this mailbox's password (set it with `llmwiki secret set <name>`: "
+                                             "Windows Credential Manager or data/secrets.yaml), e.g. pop3-ct")
     enabled: bool = True
 
 
 class Sources(_M):
-    """Where mail comes from. Passwords are read from environment variables."""
+    """Where mail comes from. Passwords are secrets (Windows Credential Manager or data/secrets.yaml), set with llmwiki secret set."""
     pop3_enabled: bool = Field(False, description="Fetch from the department mailboxes over POP3")
     pop3_accounts: list[Pop3Account] = Field(default_factory=list, description="The department mailboxes (one entry per shared mailbox, each with "
                                                                                "its own login). Empty = the single pop3_host/pop3_user fields below")
@@ -54,7 +55,8 @@ class Sources(_M):
     pop3_port: int = Field(995, ge=1, le=65535, description="Single mailbox: 995 for POP3 over SSL, 110 for plain")
     pop3_ssl: bool = Field(True, description="Single mailbox: use POP3 over SSL")
     pop3_user: str = Field("", description="Single mailbox: POP3 user name")
-    pop3_password_env: str = Field("LLMWIKI_POP3_PASSWORD", description="Single mailbox: environment variable that holds the POP3 password")
+    pop3_password_secret: str = Field("pop3", validation_alias=AliasChoices("pop3_password_secret", "pop3_password_env"),
+                                      description="Single mailbox: name of the secret with the POP3 password")
     pop3_max_per_fetch: int = Field(5000, ge=1, le=100000, description="Safety limit per fetch")
     eml_folder: str = Field("", description="Folder of .eml files to import on every fetch (tests, manual drops)")
     pst_path: str = Field("", description="Outlook .pst file for the backfill (e.g. Documents\\Outlook Files\\<mailbox>.pst), or \"default\" "
@@ -128,8 +130,10 @@ class Schedule(_M):
 
 class Endpoint(_M):
     name: str = Field(..., description="Unique name")
-    kind: Literal["custom", "http_text", "openai_compat", "claude_cli", "gemini_cli", "codex_cli", "mock", "chaos"] = Field(
-        "custom", description="custom = company_adapter.py in the data folder; claude_cli / gemini_cli / codex_cli = the logged-in CLI on this PC (text mode)")
+    kind: Literal["custom", "http_json", "http_text", "openai_compat", "claude_cli", "gemini_cli", "codex_cli", "mock", "chaos"] = Field(
+        "custom", description="http_json = an HTTP API configured here (options.preset openai / azure_openai / langserve / simple / ollama, "
+                              "or your own body + response_path; find it with `llmwiki api probe`); custom = your Python code in "
+                              "data/company_adapter.py; claude_cli / gemini_cli / codex_cli = the logged-in CLI on this PC (text mode)")
     model: str = Field("", description="Model name passed to the adapter (e.g. haiku, sonnet, gemini-2.5-pro, gpt-5)")
     external: bool = Field(False, description="Data sent here leaves the company (Gemini/Claude/Codex CLIs, public APIs). External endpoints only get the "
                                               "stages in privacy.external_stages, always with PII removed — unless privacy.test_data_only is on")
@@ -137,8 +141,10 @@ class Endpoint(_M):
                                                 "(always on for external endpoints). Turn on for an API that blocks input with personal data")
     structured_output: bool = Field(False, description="Pass the stage's JSON schema to the adapter (custom: call(..., schema=...); openai_compat: "
                                                        "response_format; codex_cli: --output-schema). For APIs that accept a schema, e.g. LangChain with_structured_output")
-    base_url: str = Field("", description="URL for http_text / openai_compat")
-    api_key_env: str = Field("", description="Environment variable with the API key (never the key itself)")
+    base_url: str = Field("", description="URL of the API (http_json / openai_compat); http_json presets add their path, e.g. /chat/completions")
+    api_key_secret: str = Field("", validation_alias=AliasChoices("api_key_secret", "api_key_env"),
+                                description="Name of the secret with the API key (`llmwiki secret set <name>`; never the key itself). "
+                                            "Empty = no key")
     rpm: int = Field(3, ge=1, le=600, description="Requests per minute allowed (API B: 3 now, maybe 60 later)")
     max_concurrent: int = Field(2, ge=1, le=64, description="Requests in flight at the same time")
     timeout_s: int = Field(0, ge=0, le=3600, description="Request timeout in seconds (0 = none)")
@@ -149,7 +155,11 @@ class Endpoint(_M):
                                                                          "request (pool.failover_on_error), e.g. [\"*\"] on the 180 s API")
     enabled: bool = True
     priority: int = Field(0, description="Lower is tried first")
-    options: dict = Field(default_factory=dict, description="Adapter options (e.g. chaos rates, http body template)")
+    options: dict = Field(default_factory=dict, description="Adapter options. http_json: preset, path, method, body (a mapping with "
+                                                            "{system} {prompt} {messages} {lc_messages} {model} {max_tokens} {schema}), "
+                                                            "response_path, schema_field, auth (bearer/header/basic/query/none), "
+                                                            "auth_header, auth_prefix, headers ({secret:NAME} allowed), query, verify_tls, "
+                                                            "ca_bundle, proxy (system/none/URL). CLIs: exe (path to the CLI). See AGENTS.md")
 
 
 class Pool(_M):
@@ -345,6 +355,7 @@ class Retrieval(_M):
     embed_model: Literal["multilingual-e5-small", "bge-small-en-v1.5", "hashed"] = Field("multilingual-e5-small", description="Active embedding model (hashed = no model files, degraded)")
     eval_models: list[str] = Field(default_factory=lambda: ["multilingual-e5-small", "bge-small-en-v1.5", "hashed"], description="Models compared by the eval")
     hf_repo_overrides: dict[str, str] = Field(default_factory=dict, description="Model name → Hugging Face repo, if the mirror uses other names")
+    hf_endpoint: str = Field("", description="Hugging Face mirror URL for downloading the models (e.g. the company's internal mirror); empty = huggingface.co")
     embed_batch: int = Field(32, ge=1, le=512, description="Texts per embedding batch")
     fts_trigram: bool = Field(True, description="Second keyword index with the trigram tokenizer, used for Hangul/CJK queries")
     chunk_tokens: int = Field(350, ge=80, le=2000, description="Email chunk size (tokens)")

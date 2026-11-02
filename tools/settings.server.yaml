@@ -8,10 +8,10 @@ server:
   port: 8000
 sources:
   pop3_enabled: true
-  pop3_accounts:                             # <-- one entry per shared department mailbox; each password in its own env var
-    - {dept: "dl-a@your-company.example", host: "pop3.your-company.example", port: 995, ssl: true, user: "dl-a", password_env: "LLMWIKI_POP3_PW_A"}
-    - {dept: "dl-b@your-company.example", host: "pop3.your-company.example", port: 995, ssl: true, user: "dl-b", password_env: "LLMWIKI_POP3_PW_B"}
-    - {dept: "dl-c@your-company.example", host: "pop3.your-company.example", port: 995, ssl: true, user: "dl-c", password_env: "LLMWIKI_POP3_PW_C"}
+  pop3_accounts:                             # <-- one entry per shared department mailbox; passwords: .\llmwiki secret set pop3-a …
+    - {dept: "dl-a@your-company.example", host: "pop3.your-company.example", port: 995, ssl: true, user: "dl-a", password_secret: "pop3-a"}
+    - {dept: "dl-b@your-company.example", host: "pop3.your-company.example", port: 995, ssl: true, user: "dl-b", password_secret: "pop3-b"}
+    - {dept: "dl-c@your-company.example", host: "pop3.your-company.example", port: 995, ssl: true, user: "dl-c", password_secret: "pop3-c"}
   pst_path: ""                               # the backfill runs on the work laptop; leave empty here
   dept_addresses: ["dl-a@your-company.example", "dl-b@your-company.example", "dl-c@your-company.example"]   # <-- fill in
   internal_domains: ["your-company.example"]                                                                # <-- fill in
@@ -21,13 +21,17 @@ pool:
   endpoints:
     # API B: 3 requests/min (60 later), large context, sometimes blocks input with personal data.
     # redact_pii removes phone numbers / e-mail addresses / IBANs / addresses before sending, so it blocks less.
-    - {name: api-b, kind: custom, model: "", rpm: 3, max_concurrent: 3, timeout_s: 0, context_tokens: 150000, stages: ["*"],
+    # Keys: .\llmwiki secret set api-b / api-a, as the Windows user that runs the portal (Credential Manager; never in this file).
+    # Each API as kind custom (code in data\company_adapter.py) or http_json (described here; .\llmwiki api probe / api test).
+    - {name: api-b, kind: custom, api_key_secret: api-b, model: "", rpm: 3, max_concurrent: 3, timeout_s: 0, context_tokens: 150000, stages: ["*"],
        redact_pii: true}
     # API A: 180 s limit, accepts personal data (it cleans it), takes a JSON schema (LangChain with_structured_output).
     # Normally only the small stages; any stage when API B blocked or failed the request (fallback_stages).
     # redact_pii is not needed for API A, but one rule for all is simpler (reference numbers are never removed);
     # set it to false if the answers suffer.
-    - {name: api-a, kind: custom, model: "", rpm: 10, max_concurrent: 2, timeout_s: 180, context_tokens: 32000,
+    # Copy the api-a entry that works on the work laptop (data\settings.yaml there) to here.
+    - {name: api-a, kind: http_json, base_url: "https://<api-a host>/<path>", api_key_secret: api-a, model: "", options: {preset: openai, proxy: none},
+       rpm: 10, max_concurrent: 2, timeout_s: 180, context_tokens: 32000,
        stages: ["s1", "s12", "s4", "report", "judge"], fallback_stages: ["*"], structured_output: true, redact_pii: true, priority: 1}
 privacy:
   external_stages: ["review"]               # no external endpoints on the server anyway

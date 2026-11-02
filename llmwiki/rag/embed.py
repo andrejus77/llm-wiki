@@ -35,6 +35,10 @@ def model_dir(name: str) -> Path:
 
 
 def download(name: str) -> Path:
+    mirror = get_settings().retrieval.hf_endpoint
+    if mirror:   # huggingface_hub reads its endpoint from the environment when it is imported
+        os.environ["HF_ENDPOINT"] = mirror.rstrip("/")
+        os.environ.pop("HF_HUB_OFFLINE", None)
     from huggingface_hub import snapshot_download
     info = MODELS[name]
     repo = get_settings().retrieval.hf_repo_overrides.get(name, info["repo"])

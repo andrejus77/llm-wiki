@@ -32,6 +32,7 @@ background threads of the same process. CLI commands (`fetch`, `process`, `eval`
 | Area | Module | What it does |
 |---|---|---|
 | Settings | `llmwiki/conf.py` | The Pydantic `Settings` model (every tunable value), presets, load/save, `MACHINE_KEYS` (settings.yaml wins for endpoints/paths/server). `get_settings()` everywhere |
+| Secrets | `llmwiki/keystore.py` | `get(name)`: Windows Credential Manager (`llmwiki/<name>`, ctypes) → `data/secrets.yaml` → an environment variable of that name (older setups); `put`/`delete`/`needed()`; `{secret:NAME}` placeholders. Command `secret` |
 | Privacy | `llmwiki/privacy.py` | `redact()` (PII → placeholders, reference numbers protected), `endpoint_allows()` (external endpoints → `privacy.external_stages` only) |
 | Departments | `llmwiki/departments.py` | `assign()` the ONE owning department of a page (AI share → AI department, else the majority address; a person's choice is kept), `is_team()`, `refresh_pages()` (level + department after every window) |
 | Automated mail | `ingest/automated.py` | `is_automated()`: system senders (globs) or a repeated subject template with near-identical bodies; never a person's reply |
@@ -45,7 +46,7 @@ background threads of the same process. CLI commands (`fetch`, `process`, `eval`
 | Skip rules | `ingest/skiprules.py` | Header rules, automatic replies (`auto_reply_reason`), static + learned rules (replies by others exempt unless `include_replies`), audit samples |
 | Health | `ingest/health.py` | `check_store()` invariants |
 | Sources | `sources/pop3.py`, `sources/pst.py`, `sources/eml_folder.py`, `sources/fetch.py` | Iterators of raw messages; `fetch()` runs them and reconciles counts. `pop3.py`: one or more department mailboxes (`pop3_accounts`), a seen-list per mailbox, and the mailbox's department added to `Email.depts` (also for Bcc; the same mail in two mailboxes is stored once with both). `pst.py`: department filter (`is_dept_mail`), SMTP resolution of Exchange recipients, MAPI Message-ID/References, `scan_pst_com()` dry run |
-| LLM | `llm/adapters.py`, `llm/mock.py`, `llm/jsonparse.py`, `llm/pool.py`, `llm/schemas.py` | Adapters (incl. the Claude/Gemini/Codex CLIs) and error classes (`Blocked`, `RateLimited`…, `classify()`); lenient JSON; the pool (`run_structured`); JSON schemas per stage for structured output |
+| LLM | `llm/adapters.py`, `llm/mock.py`, `llm/jsonparse.py`, `llm/pool.py`, `llm/schemas.py` | Adapters (`HttpJson`: an HTTP API described by settings — presets, body template, response path, auth, TLS, proxy; `Custom`: company_adapter.py or any module/function; the Claude/Gemini/Codex CLIs) and error classes (`Blocked`, `RateLimited`…, `classify()`); lenient JSON; the pool (`run_structured`); JSON schemas per stage for structured output |
 | Prompts | `pipeline/prompts.py` | System prompts per stage |
 | Budgets | `pipeline/budget.py` | `assemble()`: sections with token budgets, fair share, cut order, meta for the UI |
 | Units/context | `pipeline/context.py` | `Unit`, `build_units()`, email blocks, parent, outline, unseen quotes, candidate cards |
@@ -64,7 +65,7 @@ background threads of the same process. CLI commands (`fetch`, `process`, `eval`
 | Scheduler | `scheduler.py` | Nightly batch, live ticks (auto-off), manual actions, DB backup |
 | API | `api.py` | All `/api` endpoints for the portal |
 | Eval | `evaluation.py` | Retrieval grid, answer judging, ingest metrics |
-| Commands | `management/commands/*.py` | `serve`, `fetch`, `process`, `eval`, `doctor`, `models`, `check_store`, `docs_config`, `export_data`, `import_data`, `pst_scan`, `refresh_pages`, `rewrite_pages`, `reparse_bodies`, `rules` (skip rules ⇄ YAML), `config` (show / set / apply settings from the command line) |
+| Commands | `management/commands/*.py` | `serve`, `fetch`, `process`, `eval`, `doctor`, `models`, `check_store`, `docs_config`, `export_data`, `import_data`, `pst_scan`, `refresh_pages`, `rewrite_pages`, `reparse_bodies`, `rules` (skip rules ⇄ YAML), `config` (show / set / apply settings from the command line), `secret` (keystore), `api` (probe / test an LLM API with a fixed test prompt) |
 | Frontend | `frontend/src/*` | React portal (Reports, Emails, Wiki, Page, Agent, Search, Chat, drawer) |
 | Dev tools | `devtools/*` | Synthetic dataset generator, truth checks, dumps |
 | Deploy | `tools/*` | Offline packager, install/run batch files, adapter template, lock generator |

@@ -54,7 +54,7 @@ sets up Gemini CLI on the synthetic data instead (`data_gemini\`, e.g. on the wo
 2. `tools\package.bat --with-data` → `dist\llmwiki-offline-<date>-win_amd64-py311-WITH-DATA.zip` (wheels + models + code +
    the processed data; company data: keep it inside the company).
 3. **Server** (no internet): unzip, `install.bat` (installs offline and imports the data), fill in `data\settings.yaml`
-   (POP3, department addresses), API keys as environment variables, `doctor.bat --ping`, `run.bat`; then live mode on.
+   (POP3, department addresses), keys with `llmwiki secret set …` (Windows Credential Manager), `doctor.bat --ping`, `run.bat`; then live mode on.
 4. **Later code changes** (from any machine): `tools\patch.bat --note "…"` → a code-only zip; unzip it into the install on
    the other machine and run its `apply_patch.bat` (keeps data and settings, detects local changes, backs up, migrates).
 

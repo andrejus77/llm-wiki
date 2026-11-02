@@ -12,6 +12,7 @@ sources:
   pop3_enabled: false                        # the server fetches the department mailboxes. If POP3 is reachable from this laptop
                                              # and the mailboxes still hold the backlog, POP3 is better than the .pst (complete
                                              # department mail): set true and fill pop3_accounts like in settings.server.yaml
+                                             # (passwords: .\llmwiki secret set pop3-a …)
   pop3_accounts: []
   pst_path: "C:\\Users\\<you>\\Documents\\Outlook Files\\<mailbox>.pst"   # <-- fill in, or "default" = your Outlook mailbox itself (.ost/Exchange)
   pst_route: com                             # classic Outlook must be installed and may stay open
@@ -23,9 +24,26 @@ sources:
 pool:
   failover_on_error: true
   endpoints:
-    - {name: api-b, kind: custom, rpm: 3, max_concurrent: 3, timeout_s: 0, context_tokens: 150000, stages: ["*"], redact_pii: true}
-    - {name: api-a, kind: custom, rpm: 10, max_concurrent: 2, timeout_s: 180, context_tokens: 32000,
-       stages: ["s1", "s12", "s4", "report", "judge"], fallback_stages: ["*"], structured_output: true, redact_pii: true, priority: 1}
+    # The two internal APIs. Each one EITHER as kind http_json (described here, no code: find base_url/options with
+    #   .\llmwiki api probe --url <API URL> --secret <name>   and check with   .\llmwiki api test <name>)
+    # OR as kind custom (your Python call code in data\company_adapter.py — for SDK / LangChain clients).
+    # Keys: .\llmwiki secret set api-b   /   .\llmwiki secret set api-a   (Windows Credential Manager; never in this file)
+    - {name: api-b, kind: custom, api_key_secret: api-b, rpm: 3, max_concurrent: 3, timeout_s: 0, context_tokens: 150000, stages: ["*"], redact_pii: true}
+    - name: api-a
+      kind: http_json
+      base_url: "https://<api-a host>/<path>"    # <-- fill in (api probe finds the rest)
+      api_key_secret: api-a
+      model: ""                                  # if the API needs a model / deployment name
+      options: {preset: openai, proxy: none}     # <-- from `api probe`: preset openai / azure_openai / langserve / simple / ollama
+      rpm: 10
+      max_concurrent: 2
+      timeout_s: 180
+      context_tokens: 32000
+      stages: ["s1", "s12", "s4", "report", "judge"]
+      fallback_stages: ["*"]                     # takes every stage when API B blocks or fails a request
+      structured_output: true                    # if `api test api-a --schema` works; else false
+      redact_pii: true
+      priority: 1
     # external: wiki lint only (privacy.external_stages); each needs its CLI installed and logged in once
     - {name: gemini, kind: gemini_cli, model: gemini-2.5-pro, external: true, rpm: 30, max_concurrent: 2, timeout_s: 300, context_tokens: 200000, priority: 2}
     - {name: claude, kind: claude_cli, model: sonnet, external: true, rpm: 20, max_concurrent: 2, timeout_s: 300, context_tokens: 150000, priority: 3}

@@ -1,6 +1,6 @@
 {
  "date": "01 Nov 2026",
- "pytest": "54",
+ "pytest": "59",
  "retrieval": [
   {
    "name": "BM25 only (FTS5)",

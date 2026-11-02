@@ -20,7 +20,7 @@ The single source of truth for what was agreed, as of **1 Nov 2026**, with the r
   - **Personal data (phone numbers, e-mail addresses, IBANs, ID numbers, addresses) is kept out of the wiki** and out of every prompt to an external model.
   - **Nothing may need manual curation after 6 Nov.** Everything runs automatically.
   - **Facts come from scripts, never the LLM:** IDs, dates, counts, participants, sources.
-  - **API keys** are read from environment variables, never stored in settings or the repo.
+  - **API keys and passwords** live in the Windows Credential Manager (`llmwiki secret set`; or a git-ignored `data/secrets.yaml`), never in settings, environment variables or the repo.
   - **The public repo/demo** uses a fictional dataset and holds no company data.
 
 ## 2. Purpose and the priority rule (required)
@@ -236,10 +236,19 @@ The single source of truth for what was agreed, as of **1 Nov 2026**, with the r
 
 | Decision | Why |
 |---|---|
-| **Several POP3 mailboxes:** one `pop3_accounts` entry per shared department mailbox (own login, password in its own environment variable, its department). A mail in two mailboxes is stored once with both departments; a mailbox's department counts even for Bcc. Separate seen-lists per mailbox | Each department has its own shared mailbox with its own credentials; the first version had room for only one |
+| **Several POP3 mailboxes:** one `pop3_accounts` entry per shared department mailbox (own login, password as its own secret, its department). A mail in two mailboxes is stored once with both departments; a mailbox's department counts even for Bcc. Separate seen-lists per mailbox | Each department has its own shared mailbox with its own credentials; the first version had room for only one |
 | **`AGENTS.md` for a coding agent on the work laptop** (+ `CLAUDE.md` / `GEMINI.md` pointing to it): the rules (it is an external model, so it never reads real mail, databases or mail logs; no secrets in files or chat), a checklist of every value needed with its place, the commands to apply and verify them, and when the setup is done | The setup should be possible without the user explaining everything; the agent must not become a privacy leak |
 | **Settings and skip rules from the command line:** `llmwiki config show/set/apply/check` (validated, versioned) and `llmwiki rules import/export` (YAML) | An agent without a browser can configure everything; the old project's rules move over as a file |
-| **Step-by-step guide** `docs/SETUP_WORK_LAPTOP.md`: GitHub (private first) → ZIP on the laptop → `setup.bat --laptop` → `setx` for keys → adapter → settings → rules → `doctor --ping` → one week / one day first → backlog | The user does it alone on the company laptop |
+| **Step-by-step guide** `docs/SETUP_WORK_LAPTOP.md`: GitHub (private first) → ZIP on the laptop → `setup.bat --laptop` → `llmwiki secret set` for keys → connect the APIs (`api probe` / `api test`) → settings → rules → `doctor --ping` → one week / one day first → backlog | The user does it alone on the company laptop |
+
+### 3.17 Secrets and connecting the APIs (2 Nov, after the first install)
+
+| Decision | Why |
+|---|---|
+| **No environment variables for secrets:** keys and passwords are stored with `llmwiki secret set <name>` (typed hidden) in the **Windows Credential Manager** (`llmwiki/<name>`, per Windows user; plain ctypes, no extra package), or in `data/secrets.yaml` with `--file`; settings hold only the name (`api_key_secret`, `password_secret`; the old `*_env` names are still read). `secret list` shows what is missing, never values | User request: env vars were awkward to set and easy to lose |
+| **APIs without code where possible:** `kind: http_json` describes an HTTP API in the settings (presets openai / azure_openai / langserve / simple / ollama, or an own body template, response path, auth style, TLS CA bundle, proxy). `custom` (Python in `company_adapter.py`, or the old project's client file via `options.module`) stays for SDK / LangChain clients | API A did not connect easily, and Gemini on the laptop must be able to connect it without help |
+| **`llmwiki api probe` / `api test`:** probe tries the usual request shapes against a URL and prints the settings block that works; test shows the request (key masked), status, response, where the answer is, and a hint per failure (401, 404, 422, certificate, proxy, response path). Only a fixed test prompt is sent | A step-by-step, checkable procedure for an agent, without it ever seeing mail or keys |
+| **Both embedding models are downloaded** by setup (`models --download` gets every eval model; `retrieval.hf_endpoint` replaces the HF_ENDPOINT variable) | Only the active one was installed; the eval and a model switch need both |
 
 ## 4. Dropped, and why
 
