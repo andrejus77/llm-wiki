@@ -134,6 +134,12 @@ def run_review(pages: list[Page] | None = None) -> dict:
         except Exception as e:
             log.exception("review of %s failed", p.id)
             results.append({"page": p.title, "error": str(e)})
+    tags = {}
+    try:
+        from llmwiki.pipeline.tagger import check_tags
+        tags = check_tags()
+    except Exception as e:
+        log.warning("the tag check failed: %s", e)
     dups = []
     try:
         for a, b, sim in duplicates(s.reviewer.dup_threshold)[:10]:
@@ -146,4 +152,4 @@ def run_review(pages: list[Page] | None = None) -> dict:
                 event("review", f"Possible duplicate pages: '{pa.title}' and '{pb.title}' (similarity {sim:.2f}) — logged only", a=a, b=b)
     except Exception as e:
         log.warning("duplicate check failed: %s", e)
-    return {"pages": results, "duplicates": dups}
+    return {"pages": results, "duplicates": dups, "tags": tags}

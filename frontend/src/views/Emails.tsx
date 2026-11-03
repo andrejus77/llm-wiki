@@ -2,8 +2,9 @@ import { memo, useCallback, useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { send } from "../api";
 import { usePeek } from "../drawer";
+import { Files, MailText, Recipients, ThreadList, ThreadMail, threadLine, TranslateToggle } from "../mail";
 import { newFolder, RuleDialog, RulesPanel } from "../RuleEditor";
-import { addDays, Avatar, dow, Empty, Err, fmt, ImpPill, Kind, Lazy, LoadMore, Loading, Prose, Seg, tColor, useApi, useDebounced, useLocal, useMeta, usePaged } from "../util";
+import { addDays, Avatar, dow, Empty, Err, fmt, ImpPill, Kind, LoadMore, Loading, Prose, Seg, tColor, useApi, useDebounced, useLocal, useMeta, usePaged } from "../util";
 
 type F = { mode: string; days: number; imp: string; depts: string[]; senders: string[]; att: boolean; tbl: boolean; status: string; q: string; wk: string; wkend: boolean; wkg: boolean; folder: string };
 const DEF: F = { mode: "messages", days: 7, imp: "any", depts: [], senders: [], att: false, tbl: false, status: "processed", q: "", wk: "", wkend: false, wkg: false, folder: "" };
@@ -12,11 +13,10 @@ function EmailPane({ id, admin, folders, onChanged, onRule }: { id: number; admi
   const r = useApi(`/emails/${id}`);
   const nav = useNavigate();
   const peek = usePeek();
+  const [allEarlier, setAllEarlier] = useState(false);
   const e: any = r.data;
   if (r.error) return <Err e={r.error} />;
   if (!e) return <Loading />;
-  const inline = e.body.attachments.filter((a: any) => a.is_image);
-  const files = e.body.attachments.filter((a: any) => !a.inline && !a.is_image);
   const move = async (v: string) => { await send("POST", "/emails/bulk", { ids: [e.id], folder: v ? +v : null }); r.reload(); onChanged(); };
   const decide = async (skip: boolean) => {
     if (skip && !confirm(e.pages.length ? "Skip this email? It is also taken off its wiki pages and out of search, and the next run rewrites those pages." : "Skip this email? It will not be sent to a model.")) return;
@@ -34,27 +34,28 @@ function EmailPane({ id, admin, folders, onChanged, onRule }: { id: number; admi
       {e.note && <div className="anote"><span className="k">agent note</span><span><Kind kind={e.kind} /> {e.note}{e.due ? ` · due ${fmt(e.due)}` : ""}</span></div>}
       {e.pages.length > 0 && <div className="wiki-links"><span className="lbl">Wiki</span>{e.pages.map((p: any) => <button key={p.id} className="chip plain" title={`Open in the side panel (${p.role})`} onClick={() => peek({ kind: "page", id: p.id })}>{p.title}</button>)}</div>}
       <div className="mhead">
-        <div className="r"><b>{e.from_name}</b><span className="sim">&lt;{e.from}&gt;</span><ImpPill imp={e.importance} />{e.status === "skipped" && <span className="pill bad">skipped</span>}{e.lang === "ko" && <span className="pill">Korean</span>}</div>
-        <div className="r"><span className="lbl">To</span><span>{e.to.join(", ")}</span></div>
-        {e.cc.length > 0 && <div className="r"><span className="lbl">Cc</span><span>{e.cc.join(", ")}</span></div>}
+        <div className="r"><b>{e.from_name}</b><span className="sim">&lt;{e.from}&gt;</span><ImpPill imp={e.importance} />{e.status === "skipped" && <span className="pill bad">skipped</span>}{e.lang !== "en" && <span className="pill">{e.lang_name}</span>}</div>
+        <Recipients to={e.to} cc={e.cc} />
         <div className="r"><span className="lbl">Date</span><span>{dow(e.day)} {fmt(e.day)} {e.day.slice(0, 4)}, {e.time}</span><span className="sim">via {e.sources.join(" + ")}</span></div>
       </div>
       {e.status === "skipped" && <p className="note"><b>{e.skip_manual ? "Skipped by hand" : "Skipped by a rule"}:</b> {e.skip_rule}. Stored, not sent to the model.</p>}
       {e.fail_reason && <p className="note"><b>Last processing error:</b> {e.fail_reason.slice(0, 300)} — retried in the next run.</p>}
-      <div className="mbody" style={{ marginTop: 14 }}><Prose text={e.body.new_text} /></div>
-      {inline.map((a: any) => <figure className="shot" key={a.id} style={{ margin: "0 0 12px" }}><div className="bar"><span>{a.filename}</span></div><img loading="lazy" src={`/api/attachments/${a.id}?inline=true`} alt={a.filename} style={{ maxWidth: "100%" }} /></figure>)}
-      {files.length > 0 && <><div className="lbl">Attachments</div><div className="atts">{files.map((a: any) => (
-        <a key={a.id} className="att" href={`/api/attachments/${a.id}`} target="_blank" rel="noreferrer"><b>📎 {a.filename}</b><span className="x"> · {Math.round(a.size / 1024)} kB</span>
-          {a.extract && <><br /><span className="x">{a.extract.slice(0, 220)}</span></>}</a>))}</div></>}
-      {e.body.signature && <details className="sig"><summary>Signature and disclaimer (cut from the new text)</summary><div>{e.body.signature}</div></details>}
+      <div className="mbody mailbox" style={{ marginTop: 14 }}><MailText id={e.id} lang={e.lang} text={e.body.new_text} images={e.body.images} />
+        {e.body.after.map((a: any) => <img key={a.id} className="mimg" loading="lazy" src={`/api/attachments/${a.id}?inline=true`} alt={a.filename} />)}
+        {!e.body.new_text && <p className="sim">No new text in this email.</p>}</div>
+      <Files files={e.body.attachments} />
+      {(e.body.signature || e.body.signature_images.length > 0) && <details className="sig"><summary>Signature and disclaimer{e.body.signature_images.length ? ` · ${e.body.signature_images.length} picture${e.body.signature_images.length > 1 ? "s" : ""}` : ""} (cut from the new text)</summary>
+        <div>{e.body.signature}{e.body.signature_images.map((a: any) => <img key={a.id} className="mimg sigimg" loading="lazy" src={`/api/attachments/${a.id}?inline=true`} alt={a.filename} />)}</div></details>}
       {e.body.quoted.length > 0 && <details className="quoted"><summary>Quoted history: {e.body.quoted.length} block{e.body.quoted.length > 1 ? "s" : ""}</summary>
-        {e.body.quoted.map((q: any) => <div className="qblock" key={q.idx}><span className="sim">{q.header.split("\n")[0]}</span><br />{q.text.slice(0, 400)}
-          {q.linked ? <button className="linkbtn" onClick={() => peek({ kind: "email", id: q.linked })}> open</button> : <span className="pill vio">only copy{q.sent_to_model ? " · sent to the model once" : ""}</span>}</div>)}</details>}
+        {e.body.quoted.map((q: any) => <div className="qblock" key={q.idx}><span className="sim">{q.header.split("\n")[0]}</span>
+          {q.linked ? <button className="linkbtn sim" onClick={() => peek({ kind: "email", id: q.linked })}> open in the side panel</button> : <span className="pill vio">only copy{q.sent_to_model ? " · sent to the model once" : ""}</span>}
+          <Prose text={q.text} images={e.body.images} breaks /></div>)}</details>}
       {e.branch?.parallel && <p className="note"><span className="branch">⑂ parallel reply {e.branch.parallel.k} of {e.branch.parallel.n}</span> This is a separate answer to {e.branch.parallel.to}, not a reply to the other answers.</p>}
-      {e.earlier.length > 0 && <details className="quoted" open><summary>Earlier in this thread: {e.earlier.length}</summary>
-        {e.earlier.slice(0, 6).map((x: any) => <div className="qblock" key={x.id}><span className="sim">{fmt(x.day)} {x.time} · {x.from_name}</span>
-          {x.in_chain ? (e.parent_id === x.id ? <span className="pill par">this email answers it</span> : null) : e.branch?.parallel || e.branch?.ghost ? <span className="pill vio par">parallel branch</span> : null}<br />{x.note || x.new_text.slice(0, 200)}
-          <button className="linkbtn" onClick={() => peek({ kind: "email", id: x.id })}> open</button></div>)}</details>}
+      {e.earlier.length > 0 && <div className="earlier"><div className="sec-h">Earlier in this thread · {e.earlier.length}{e.later > 0 && <span className="sim" style={{ fontWeight: 400 }}> · {e.later} later</span>}</div>
+        {(allEarlier ? e.earlier : e.earlier.slice(0, 6)).map((x: any) => <div className="pk-prev" key={x.id}><ThreadMail e={x}
+          head={x.in_chain ? (e.parent_id === x.id ? <span className="pill par">this email answers it</span> : null) : e.branch?.parallel || e.branch?.ghost ? <span className="pill vio par">parallel branch</span> : null}
+          foot={<button className="linkbtn sim" onClick={() => nav(`/emails/${x.id}`)}>open this email</button>} /></div>)}
+        {!allEarlier && e.earlier.length > 6 && <button className="btn small" onClick={() => setAllEarlier(true)}>Show {e.earlier.length - 6} more</button>}</div>}
       <div className="note" style={{ marginTop: 14 }}>
         {e.pages.length ? null : e.status === "skipped" ? "Not processed (skip rule)." : e.importance === "not_important" ? <>Labelled <b>not important</b>, so routing and editing were skipped.</> : "Not routed to a page (yet)."}
         {e.items.length > 0 && <div className="sim">Items: {e.items.map((it: any, i: number) => <div key={i}>{it.page} › {it.section}: {it.text} <span className="pill">{it.status}</span></div>)}</div>}
@@ -67,34 +68,14 @@ function EmailPane({ id, admin, folders, onChanged, onRule }: { id: number; admi
 function ThreadPane({ id }: { id: number }) {
   const r = useApi(`/threads/${id}`);
   const nav = useNavigate();
-  const peek = usePeek();
   const t: any = r.data;
   if (!t) return <Loading />;
-  let lastDay = "";
-  const byId: Record<string, any> = {};
-  t.emails.forEach((e: any) => { byId[`e${e.id}`] = e; });
   const lanes = t.graph?.lanes || 1;
-  const laneColor = (n: number) => n === 0 ? tColor(id) : `hsl(${(id * 47 + n * 97) % 360} 55% 50%)`;
   return (
     <div className="card" style={{ borderLeft: `4px solid ${tColor(id)}` }}><div className="crumbs">Thread view</div>
       <h2 style={{ fontSize: "1.3rem", margin: "4px 0" }}>{t.subject}</h2>
-      <p className="sim" style={{ margin: "0 0 6px" }}>{t.total > t.emails.length ? `The latest ${t.emails.length} of ${t.total} emails` : `${t.emails.length} emails`} · one note per email · grouped by day{lanes > 1 ? ` · ${lanes - 1} parallel branch${lanes > 2 ? "es" : ""}: separate replies to the same email are indented in their own lane` : ""}</p>
-      <div className="thread">{(t.graph?.order || t.emails.map((e: any) => `e${e.id}`)).map((key: string) => {
-        if (key.startsWith("q")) {
-          const g = t.graph.ghosts[key];
-          return <div key={key} className="ghost"><b>{g.header}</b> — the department never received it; several people answered it separately below<br /><span className="sim">{g.raw_header}</span><br /><span className="sim">{g.text.slice(0, 200)}</span></div>;
-        }
-        const e = byId[key];
-        const head = e.day !== lastDay ? <div className="tday">{dow(e.day)} {fmt(e.day)}</div> : null; lastDay = e.day;
-        return <div key={e.id}>{head}<div className="mail lane" style={{ ["--c" as any]: laneColor(e.lane || 0), marginLeft: Math.min(e.lane || 0, 4) * 28 }}><span className="node" /><div className="card">
-          {e.parallel && <div className="branch" title="Not a reply to the email above: a separate answer to the same earlier email">⑂ parallel reply {e.parallel.k} of {e.parallel.n} to {e.parallel.to}</div>}
-          <div className="mhead"><div className="r"><b>{e.from_name}</b><span className="sim">{e.time}</span><ImpPill imp={e.importance} />
-            {e.reply_to && !e.parallel && <span className="replyto">↳ reply to {e.reply_to}</span>}
-            {e.pages.map((p: any) => <button key={p.id} className="linkbtn sim" onClick={() => peek({ kind: "page", id: p.id })}>→ {p.title}</button>)}</div></div>
-          {e.note ? <div className="anote" style={{ margin: "6px 0 4px" }}><span className="k">note</span><span><Kind kind={e.kind} /> {e.note}</span></div> : <p className="sim">{e.new_text.slice(0, 160)}…</p>}
-          <Lazy className="full" summary={<>Full email{e.has_table ? " · table" : ""}{e.n_att ? ` · 📎 ${e.n_att}` : ""}</>}>{() => <div className="mbody" style={{ marginTop: 8 }}><Prose text={e.new_text} />{e.more && <p className="sim">Long email: open it to read the rest.</p>}</div>}</Lazy>
-          <div style={{ marginTop: 4 }}><button className="linkbtn sim" onClick={() => nav(`/emails/${e.id}`)}>open email</button></div></div></div></div>;
-      })}</div></div>
+      <p className="sim" style={{ margin: "0 0 6px" }}>{threadLine(t)}{lanes > 1 ? ` · ${lanes - 1} parallel branch${lanes > 2 ? "es" : ""}: separate replies to the same email are indented in their own lane` : ""}</p>
+      <ThreadList t={t} onOpen={(eid) => nav(`/emails/${eid}`)} /></div>
   );
 }
 
@@ -173,7 +154,7 @@ const EmailRow = memo(function EmailRow({ e, current, admin, checked, folderName
           <span className="l2">{e.subject}</span>
           <span className={`l3 ${e.note ? "note-l" : ""}`}>{e.status === "skipped" ? <span className="sim">skipped: {e.skip_rule}</span> : e.note ? <><Kind kind={e.kind} />{e.note}</> : <span className="sim">not processed yet</span>}</span>
           <span className="l4">{e.depts.map((x: string) => <span key={x} className="chip dept">{x.split("@")[0]}</span>)}{showFolder && folderName && <span className="pill">{folderName}</span>}{e.n_att > 0 && <span className="pill">📎 {e.n_att}</span>}
-            {e.has_table && <span className="pill">table</span>}<ImpPill imp={e.importance} />{e.lang === "ko" && <span className="pill">KO</span>}</span></span></button>
+            {e.has_table && <span className="pill">table</span>}<ImpPill imp={e.importance} />{e.lang !== "en" && <span className="pill">{e.lang.toUpperCase()}</span>}</span></span></button>
     </div>
   );
 });
@@ -222,7 +203,7 @@ export default function Emails() {
   const extra = f.senders.filter((x) => !x.startsWith("@") && !known.some((s) => s.addr === x)).map((x) => ({ addr: x, name: x }));
   const head = (
     <>
-      <div className="title-row"><h1>Emails</h1>{m?.admin && <label className="toggle sim admin-t"><input type="checkbox" checked={adminOn} onChange={(e) => { setAdminOn(e.target.checked); setPicked([]); }} /> Admin mode</label>}</div>
+      <div className="title-row"><h1>Emails</h1><TranslateToggle />{m?.admin && <label className="toggle sim admin-t"><input type="checkbox" checked={adminOn} onChange={(e) => { setAdminOn(e.target.checked); setPicked([]); }} /> Admin mode</label>}</div>
       <p className="h-sub">Every email is stored once (raw mail, clean text with tables, attachments — all in SQLite). The note under each subject was written by the note-taker; the label says how important it is.</p>
       <div className="filters">
         <div className="frow"><span className="lbl">Show</span><Seg value={f.mode} options={[["messages", "Messages"], ["threads", "Threads"], ["week", "Week"]]} onChange={(v) => set({ mode: v })} />

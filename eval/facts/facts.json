@@ -1,6 +1,6 @@
 {
  "date": "02 Nov 2026",
- "pytest": "72 passed",
+ "pytest": "117 passed",
  "retrieval": [
   {
    "name": "BM25 only (FTS5)",

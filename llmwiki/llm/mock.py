@@ -132,17 +132,21 @@ class Mock(Adapter):
         return json.dumps({"summary": summary, "sections": [{"title": t, "text": x} for t, x in secs.items()], "removed": ""})
 
     def _s4(self, system, prompt):
-        systems = re.search(r"system \(0–2\): (.*)$", system, re.M).group(1).split(", ")
-        procs = re.search(r"process \(0–2\): (.*)$", system, re.M).group(1).split(", ")
-        wts = re.search(r"work_type \(exactly 1\): (.*)$", system, re.M).group(1).split(", ")
+        wts = re.search(r"work_type: exactly one of (.*)$", system, re.M).group(1).split(", ")
         pages = []
-        for lab, rest in re.findall(r"^(P\d+): (.*)$", prompt, re.M):
-            low = rest.lower()
-            sy = [x for x in systems if x.split("-")[-1] in low][:2] or systems[:1]
-            pr = [x for x in procs if x.split("-")[0] in low][:2]
-            pages.append({"page": lab, "system": sy, "process": pr, "work_type": [wts[0]]})
+        for lab, title, body in re.findall(r"^### (P\d+): ([^\n]*)\n(.*?)(?=^### P\d+:|^## |\Z)", prompt, re.M | re.S):
+            names = re.findall(r"\b[A-Z][A-Z0-9/-]{2,}\b", title + " " + body)
+            pages.append({"page": lab, "system": list(dict.fromkeys(names))[:3] + ["Imaginary Suite"], "work_type": [wts[0]]})
         codes = [{"code": c, "is_tcode": True} for c in re.findall(r"^([A-Z/][A-Z0-9_/]+): …", prompt, re.M)]
         return json.dumps({"pages": pages, "tcodes": codes})
+
+    _taglint = _s4
+
+    def _translate(self, system, prompt):
+        sec = self._block(prompt, "Lines to translate")
+        subj = self._block(prompt, "Subject").strip()
+        lines = [{"n": int(n), "text": ("| EN " + x[2:]) if x.startswith("| ") else "EN " + x} for n, x in re.findall(r"^(\d+): (.*)$", sec, re.M)]
+        return json.dumps({"subject": "EN " + subj, "lines": lines})
 
     def _review(self, system, prompt):
         return json.dumps({"findings": []})

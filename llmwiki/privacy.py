@@ -23,6 +23,9 @@ PLACEHOLDER = {"phone": "[phone]", "phone_labelled": "[phone]", "phone_local": "
                "kr_rrn": "[id-number]", "street": "[address]", "postcode_nl": "[address]", "kr_address": "[address]"}
 
 
+_NAME_WITH_ID = re.compile(r"([^\x00-\u024F\s(]) \([A-Za-z0-9][\w.+-]{0,63}\)")
+
+
 @lru_cache(maxsize=16)
 def _compile(items: tuple) -> list[tuple[str, re.Pattern]]:
     out = []
@@ -68,6 +71,8 @@ def redact(text: str, keep_internal: bool = False) -> tuple[str, int]:
             n += 1
             return PLACEHOLDER.get(name, f"[{name}]")
         text = rx.sub(repl, text)
+    if not keep_internal:   # outside the company a name stays a name: "홍길동 (gd.hong)" loses the user id
+        text = _NAME_WITH_ID.sub(r"\1", text)
     if protected:
         text = re.sub(r"\x00(\d+)\x00", lambda m: protected[int(m.group(1))], text)
     return text, n

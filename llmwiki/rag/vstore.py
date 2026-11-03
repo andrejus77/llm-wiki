@@ -3,13 +3,20 @@
 - QdrantStore: Qdrant local mode (data/qdrant) or a Qdrant server (retrieval.qdrant_url). Rebuildable any time
   with `manage.py index --rebuild-vectors`.
 - SqliteStore: brute force with numpy over ChunkVector rows (the one-line fallback: retrieval.vector_store=sqlite).
+- LaggingStore: Qdrant local mode locks its folder to ONE process. Whoever comes second (a command while the portal
+  runs, or the portal while a command runs) searches the same vectors in SQLite with the same results, and its writes
+  are noted in KV 'vectors_behind'; the process holding Qdrant catches up in index.sync_vectors.
 
 Filters (both stores): collections, day_from/day_to, page_ids, email_ids, thread_ids.
 """
 from __future__ import annotations
 
+import json
 import logging
+import os
+import sys
 import threading
+import time
 
 import numpy as np
 
@@ -95,10 +102,48 @@ def _match(m: dict, f: dict) -> bool:
     return True
 
 
+class LaggingStore(SqliteStore):
+    """Qdrant's folder is held by another process: read from SQLite, and tell the holder that it has to catch up."""
+
+    def upsert(self, items):
+        super().upsert(items)
+        _note_behind()
+
+    def delete(self, chunk_ids):
+        super().delete(chunk_ids)
+        if chunk_ids:
+            _note_behind()
+
+
+def _note_behind():
+    from llmwiki.models import KV
+    try:
+        KV.set("vectors_behind", True)
+    except Exception:
+        log.warning("could not note that the vector index is behind", exc_info=True)
+
+
+class QdrantBusy(Exception):
+    pass
+
+
+def _holder_file():
+    return data_dir() / "qdrant.holder.json"
+
+
+def holder() -> dict:
+    """Who opened the Qdrant folder last: {pid, command, since}. Only informative: the lock itself is Qdrant's."""
+    try:
+        return json.loads(_holder_file().read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
 class QdrantStore:
     _client = None
     _lock = threading.Lock()
     _io = threading.RLock()   # Qdrant local mode is not thread-safe: serialise every call
+    _busy_until = 0.0         # don't try the locked folder on every search
 
     def __init__(self, model: str, dim: int):
         self.model, self.dim = model, dim
@@ -114,9 +159,21 @@ class QdrantStore:
                 if url:
                     cls._client = QdrantClient(url=url, timeout=30)
                 else:
+                    if time.monotonic() < cls._busy_until:
+                        raise QdrantBusy()
                     p = data_dir() / "qdrant"
                     p.mkdir(exist_ok=True)
-                    cls._client = QdrantClient(path=str(p))
+                    try:
+                        cls._client = QdrantClient(path=str(p))
+                    except RuntimeError as e:
+                        if "already accessed" not in str(e):
+                            raise
+                        cls._busy_until = time.monotonic() + 60
+                        raise QdrantBusy() from None
+                    try:
+                        _holder_file().write_text(json.dumps({"pid": os.getpid(), "command": " ".join(sys.argv[1:3]), "since": time.strftime("%Y-%m-%d %H:%M")}), encoding="utf-8")
+                    except OSError:
+                        pass
                 import atexit
                 atexit.register(cls.close)   # close cleanly (avoids noisy __del__ tracebacks at interpreter exit)
             return cls._client
@@ -176,10 +233,21 @@ class QdrantStore:
         return [(int(p.id), float(p.score)) for p in res.points]
 
 
+_said_busy = False
+
+
 def get_store(model: str, dim: int):
+    global _said_busy
     if get_settings().retrieval.vector_store == "qdrant":
         try:
             return QdrantStore(model, dim)
+        except QdrantBusy:
+            if not _said_busy:
+                _said_busy = True
+                h = holder()
+                log.info("The Qdrant folder is in use by another process (%s). This one uses the same vectors from SQLite, with the same results; "
+                         "the index catches up by itself.", f"pid {h.get('pid')}, {h.get('command') or 'a command'}, since {h.get('since')}" if h else "unknown")
         except Exception as e:
             log.error("Qdrant unavailable (%s) — falling back to the SQLite vector store", e)
+        return LaggingStore(model)
     return SqliteStore(model)

@@ -168,6 +168,32 @@ class Attachment(models.Model):
     content_id = models.CharField(max_length=300, default="", blank=True)
     extract = models.TextField(default="", blank=True)
     extract_error = models.CharField(max_length=500, default="", blank=True)
+    place = models.CharField(max_length=10, default="", blank=True)   # where an image is referenced: body | signature | quoted | "" = nowhere
+    is_signature = models.BooleanField(default=False)                 # a signature or logo picture: kept, not shown with the mail
+    width = models.IntegerField(null=True, blank=True)
+    height = models.IntegerField(null=True, blank=True)
+
+    @property
+    def is_file(self) -> bool:
+        """A real attachment. A picture that belongs inside a text (this mail's or the quoted history's) is not one."""
+        return not self.is_signature and not (self.is_image and self.place)
+
+
+class EmailTranslation(models.Model):
+    """A translation made on request, kept until the email's text changes. The original is never replaced."""
+    email = models.ForeignKey(Email, on_delete=models.CASCADE, related_name="translations")
+    language = models.CharField(max_length=40)
+    source_hash = models.CharField(max_length=40, default="")
+    status = models.CharField(max_length=10, default="running")    # running | done | failed
+    subject = models.TextField(default="", blank=True)
+    text = models.TextField(default="", blank=True)
+    error = models.TextField(default="", blank=True)
+    endpoint = models.CharField(max_length=100, default="", blank=True)
+    calls = models.JSONField(default=list)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        unique_together = [("email", "language")]
 
 
 class QuotedBlock(models.Model):
@@ -223,6 +249,7 @@ class Page(models.Model):
     merged_into = models.ForeignKey("self", null=True, blank=True, on_delete=models.SET_NULL, related_name="+")
     created_reason = models.TextField(default="", blank=True)
     tagged_at = models.DateTimeField(null=True)
+    tags_checked_at = models.DateTimeField(null=True, blank=True)   # the tag check last looked at it
     reviewed_at = models.DateTimeField(null=True)
     needs_rewrite = models.BooleanField(default=False)  # a rule took source emails away: the next run rewrites the page
 

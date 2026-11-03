@@ -161,6 +161,8 @@ def build(f: dict) -> str:
 <li>Threads by Message-ID / References / Outlook Thread-Index / ConversationID (from MAPI properties when transport headers are missing), subject fallback only for replies with a shared participant, conflicting joins refused</li>
 <li><b>Separate replies to one email</b> end up in one thread when their quoted history shows it, even with the headers lost</li>
 <li>New text vs quoted history (English and <b>Korean</b> Outlook headers, 회신/전달 prefixes; notes and pages stay in English; the Korean parts are for the work version only), signatures and disclaimers cut, quoted mail that was never received (late CC) sent to the model <b>once</b></li>
+<li><b>Pictures where they were written:</b> each mail shows its own, in place, also in threads and the side panel; pictures of earlier mail stay with that mail, signature pictures are found by script and kept in a dropdown</li>
+<li><b>Names in other scripts get the user id</b> (<code>김철수 (cs.kim)</code>); translations on request for any language, by an internal model, with the mail's form kept by scripts</li>
 <li><b>HTML mail without stray blank lines:</b> Outlook paragraphs become lines, HTML source line breaks spaces, at most one blank line; <code>reparse_bodies</code> cleans mail stored earlier</li>
 <li>Everything in SQLite: raw mail (compressed), attachments (deduplicated), xlsx/pdf/docx/pptx extracts</li>
 <li>Mail rules: headers and <b>automatic replies</b> (out-of-office, 자동 회신, bounces, no-reply senders) always skipped; static rules and <b>learned rules</b> for automated mail, which <b>don't skip people's replies or forwards</b> to it (feedback is processed) unless the rule says "also replies"</li>
@@ -168,6 +170,7 @@ def build(f: dict) -> str:
 <li><b>Stops by itself:</b> 10 failed or rejected requests in a row stop an API, and with none left the run stops and a banner says why; the mail stays waiting</li></ul></div>
 <div class="feat"><h3>Pipeline that keeps the wiki up to date</h3><ul>
 <li>S1 notes (one per email, importance, kind, due date) → S2 routing to pages chosen from <b>RAG candidates</b> → S3 editor → S4 tags</li>
+<li><b>No invented tags:</b> a catalog term is used whenever a page is about it, but a new term needs its exact words in the page's emails or text, so a guess is refused and logged; what follows for certain is added by script (a t-code means SAP). The catalog grows in the lint (<code>tags check</code>, page text only), and a script gives every page the terms it mentions</li>
 <li><b>Fast path</b>: one request for single emails (S12 batch, S123 live with direct section edits); falls back to the stages</li>
 <li>Every stage gets the full emails; the model only writes labels it was given (email numbers, P1…Pk)</li>
 <li><b>Pages that are faster to read than the mail:</b> a short summary + at most 4 sections the editor names itself, the whole page rewritten in one request so each fact is said once. A <b>length budget</b> from the mail behind the page (0.5 × the words people wrote, 120–650 words), section limits and a <b>repetition check</b> are enforced by script (confirm round to shorten); sentences about the sources ("the sources do not show…") are removed. All in Settings › Wiki pages; <code>rewrite_pages</code> re-applies them</li>

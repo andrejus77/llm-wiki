@@ -13,6 +13,7 @@ import re
 from dataclasses import dataclass, field
 
 from llmwiki.ingest.html2md import QUOTE_MARK
+from llmwiki.util import IMAGE_TOKEN
 
 FROM = r"(?:from|van|von|od|de|da|보낸\s*사람|발신자|보낸사람)"
 SENT = r"(?:sent|date|verzonden|gesendet|datum|odoslané|odesláno|envoyé|보낸\s*날짜|날짜|발송\s*일시)"
@@ -73,7 +74,7 @@ def _cut_signature(text: str) -> tuple[str, str]:
     for i in range(len(lines) - 1, max(-1, len(lines) - 12), -1):
         if CLOSINGS.match(lines[i]):
             tail = [x for x in lines[i + 1:] if x.strip()]
-            if len(tail) <= 8 and all(len(x) < 90 for x in tail):
+            if len(tail) <= 8 and all(len(IMAGE_TOKEN.sub("", x)) < 90 for x in tail):
                 return "\n".join(lines[:i + 1]).rstrip(), ("\n".join(lines[i + 1:]).strip() + ("\n" + sig_tail if sig_tail else "")).strip()
             break
     return "\n".join(lines).rstrip(), sig_tail.strip()

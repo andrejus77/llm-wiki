@@ -146,7 +146,7 @@ The single source of truth for what was agreed, as of **1 Nov 2026**, with the r
 
 | Decision | Why |
 |---|---|
-| **Classes:** primary (system, process, work_type; S4 from short fixed lists) · entity (site, partner; script) · code (t-codes; script) · references (PO etc.) are identifiers, not tags | Typed tags are both filterable and stable |
+| **Classes (changed 3 Nov, see 3.19):** system, site, partner, process (from the catalog whenever the page is about it; a new term needs its exact words) · work_type (fixed list) · partner also from sender domains · code (t-codes; script) · references (PO etc.) are identifiers, not tags | Only a new term can be checked against the mail; whether a known term fits is a judgement |
 | **T-codes keep growing:** a seed list, regex discovery in t-code context, automatic promotion after ≥ 2 threads (or S4 confirms), a stoplist, an optional TSTC import any time | New t-codes appear later |
 | **Coloured pills, the same everywhere** (reports, wiki list/cards, page header). The registry is visible only under Agent › Tags | Consistency |
 
@@ -262,6 +262,21 @@ The single source of truth for what was agreed, as of **1 Nov 2026**, with the r
 | **Outlook-style rules and folders in the Emails tab**, behind an Admin mode tick (everybody in local mode, Django staff on the server): conditions on sender, subject and To/Cc; skip, note only or process as usual; optionally file into a folder. Create a rule from an email, tick rows or drag them onto a folder. Filing never decides processing, and a person's decision on an email always wins over rules | 3,500 emails a month need sorting, and rules should work the way people know from Outlook |
 | **A wiki page linked from an email is listed at the top of the email** and opens in the side panel, as in Reports and Wiki | The link was at the bottom of the email, under the body and the thread history |
 
+### 3.19 Reading mail in the portal, translations and tags that are true (3 Nov)
+
+| Decision | Why |
+|---|---|
+| **A second process on the Qdrant folder is normal, not an error.** Local mode locks the folder to one process. Whoever comes second (a command while the portal runs, or the portal while a command runs) reads the same vectors from SQLite, says so once at INFO level and notes its writes in `vectors_behind`; the holder adds what is missing and removes what is gone | The user kept seeing "Qdrant unavailable". SQLite holds the vectors anyway, so results are the same, and the old warning was printed on every search |
+| **A picture stands where its reference stands.** `[image: cid:…]` keeps the Content-ID (or the file name for the .pst route) and the portal shows the picture there. A message's parts hold every picture of its quoted history, so a picture referenced only in quoted text belongs to that history, not to the new mail. Only unreferenced pictures are attachments | All pictures of a thread collected at the bottom of the newest mail, and the side panel showed none |
+| **Signature pictures are found by script and kept out of sight, not deleted:** small and below the closing, or a wide strip at the very end, or the same small picture written in ≥ 3 threads. A dropdown under the mail still shows them | They are a few lines of black text as an image. Script only, no image library, so it can be wrong; hence the dropdown and the `store.signature_*` settings |
+| **The mail looks the same everywhere** (`mail.tsx`): who and when, the agent's note in its box, then the mail under its own toggle on its own background, closed at first. Earlier mail opens in place in the Emails tab. To/Cc and attachments are dropdowns | The note and the body ran together, the arrow sat beside the note, and earlier mail only opened in the side panel |
+| **Threads open in the side panel outside the Emails tab**; the title and a button lead to the full thread. The panel has Back | User request: wiki links jumped to another tab |
+| **A name in another script gets the user id: `김철수 (cs.kim)`,** when stored, for mail already stored, and in quoted headers. The id is removed from prompts to external endpoints | Korean names are unreadable and unsearchable for most of the team. A user id is part of an address, which must not leave the company |
+| **Translation on request, for any language, kept until the text changes.** Internal models only, stage `translate`, with chat priority. Scripts keep the form: numbered lines in and out, blank lines and list markers never reach the model, tables checked cell by cell, codes and long numbers must survive; pictures, addresses and personal data are replaced by markers and put back. The thread's notes, the page summaries and the tag catalog go along as background. A line that still fails after the retry stays in the original | Nothing in it is specific to Korean except detecting the language, so it works for all. Line-by-line checks are what make "keep the formatting" true instead of hoped for |
+| **A catalog tag is used whenever a page is about it, named or not; a new term needs its exact words.** A script checks the words of a new term against the page's emails and wiki text (`tags.evidence`). `tags.implies` adds what follows for certain, by script: any t-code means SAP, even if nobody writes the word | The user's rule. An abstract tag rarely appears word for word, and someone who only writes VL02N is talking about SAP. An earlier draft also demanded the words for catalog tags: dropped the same day for that reason. The fake `power-bi` came from my default list, written for the synthetic data, which the tagger had to choose from while seeing one sentence of each page; that list is gone |
+| **The tag catalog grows in the lint, not per email.** `tags check` reads pages (text only, stage `review`, so Gemini may do it with PII removed), asks again for pages under `tags.page_min_tags`, and then a script gives every page the terms it mentions. A page may stay under the minimum: a tag is never invented to reach a number | User decision. A minimum makes no sense per email, and new terms must reach older pages without another model pass |
+| **Stored mail is brought in line once by itself:** the portal runs `update_mail` when `MAIL_FORMAT` changes (re-parse, picture places, languages, then a tag sweep), no model requests | Nothing should need manual steps after the user leaves on 6 Nov |
+
 ## 4. Dropped, and why
 
 | Dropped | Why |
@@ -277,5 +292,7 @@ The single source of truth for what was agreed, as of **1 Nov 2026**, with the r
 | GraphRAG, HyDE, LLM reranking | Too many requests at 3 rpm |
 
 ## 5. Still open
+
+**Decided 3 Nov: Qdrant stays on, for the CV (user decision).** Measured 3 Nov with the app's own classes (random 384-dimension vectors, this PC): Qdrant's local mode is exact search in Python, not an index, and gives the same top 10 as the SQLite store, but slower: 20k vectors 50 ms vs 5 ms, 50k vectors 129 ms vs 12 ms, with a filter 1304 ms vs 46 ms, and it adds the one-process lock. A real Qdrant server has an index and no lock; `retrieval.qdrant_url` already connects to one. `retrieval.vector_store: sqlite` remains the one-line fallback.
 
 Nothing blocking. The build started on 31 Oct evening. Test results and the feature list go in the guide (`llm-wiki-guide.html`); the code, README and technical docs are in `C:\Users\andre\Documents\llm-wiki\`.

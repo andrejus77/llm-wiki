@@ -41,6 +41,10 @@ Where mail comes from. Passwords are secrets (Windows Credential Manager or data
 | `store.att_extract_chars` | `6000` | ≥ 0 ≤ 100000 | Characters of text kept per attachment extract |
 | `store.max_attachment_mb` | `40` | ≥ 1 ≤ 500 | Larger attachments are recorded but not stored |
 | `store.backup_keep_days` | `14` | ≥ 0 ≤ 365 | Nightly copies of the database kept (0 = no backups) |
+| `store.signature_image_max_height` | `320` | ≥ 20 ≤ 2000 | A picture taller than this (px) is never treated as a signature |
+| `store.signature_image_max_width` | `1200` | ≥ 20 ≤ 4000 | A picture wider than this (px) is never treated as a signature |
+| `store.signature_strip_height` | `140` | ≥ 0 ≤ 1000 | A wide picture at most this tall at the very end of a mail counts as a signature (a couple of lines of text). 0 = off |
+| `store.signature_image_repeat` | `3` | ≥ 2 ≤ 100 | A small picture written in this many different threads is a signature or logo, wherever it sits |
 | `store.identifier_patterns` | `{"po": "\\b45\\d{8}\\b", "delivery": "\\b8\\d{7}\\b", "invoice": "\\bINV-?\\d…` |  | Reference number types (regex). Found by script, searchable, never tags |
 
 ## Skip rules (`skip`)
@@ -192,17 +196,40 @@ How the editor writes a wiki page. A page is read INSTEAD of the mail, so it mus
 
 ## Tags (`tags`)
 
+A tag from the catalog may be used whenever a page is about it, named or not. A term that is not in the catalog must
+    literally appear in the page's emails or text, or a script throws it away: that is what keeps invented tags out.
+
 | Setting | Default | Range / options | Description |
 |---|---|---|---|
-| `tags.systems` | `["sap-s4", "sap-ewm", "tms", "customs-gateway", "rpa-orchestrator", "edi", "e…` |  | Allowed primary values: system |
-| `tags.processes` | `["outbound-delivery", "inbound", "customs-declarations", "carrier-invoicing",…` |  | Allowed primary values: process |
-| `tags.work_types` | `["project", "incident", "recurring-task", "change-request", "how-to", "decisi…` |  | Allowed primary values: work type |
-| `tags.page_min_emails` | `2` | ≥ 1 ≤ 20 | A site/partner/t-code tag needs N source emails on the page |
+| `tags.systems` | `[]` |  | Start of the catalog: systems and tools. The tag check adds what it finds |
+| `tags.processes` | `[]` |  | Start of the catalog: business processes |
+| `tags.sites` | `[]` |  | Start of the catalog: sites, plants, subsidiaries, countries |
+| `tags.partners` | `[]` |  | Start of the catalog: external companies (the domains of outside senders are added by script) |
+| `tags.work_types` | `["project", "incident", "recurring-task", "change-request", "how-to", "decisi…` |  | Allowed values: work type (exactly one per page) |
+| `tags.evidence` | `"emails_or_page"` | emails_or_page, emails | Where a NEW tag's exact words must appear: the page's emails or its wiki text, or the emails only (stricter, but a term the mail writes in another language then never passes) |
+| `tags.implies` | `{"tcode:*": ["system:SAP"]}` |  | What follows from what, applied by script: "type:value" (or "type:*" = any of that type) → tags to add. A t-code means SAP, even when nobody writes the word. E.g. "system:EWM": ["system:SAP"], "site:Incheon": ["site:Korea"]. The tags join the catalog |
+| `tags.page_min_tags` | `3` | ≥ 0 ≤ 20 | The tag check asks again for pages with fewer tags. A page may stay below it: a tag is never made up to reach the number |
+| `tags.max_per_type` | `6` | ≥ 1 ≤ 30 | Most tags per type on one page (work type: always one); the most often mentioned win |
+| `tags.check_batch` | `8` | ≥ 1 ≤ 30 | Tag check: pages per request |
+| `tags.page_min_emails` | `2` | ≥ 1 ≤ 20 | A partner (sender domain) or t-code tag needs N source emails on the page |
 | `tags.tcode_promote_threads` | `2` | ≥ 1 ≤ 20 | A new t-code becomes active after N threads (or when S4 confirms it) |
 | `tags.tcode_stoplist` | `["ISO9001", "EUR1", "EUR", "USD", "CMR", "PDF", "XLSX", "KPI", "ETA", "ETD", …` |  | Never t-codes |
 | `tags.lifecycle_enabled` | `false` |  | **P2** · Automatic tag lifecycle (dormant/deprecated) |
 | `tags.dormant_days` | `90` | ≥ 7 ≤ 1000 | Unused this long → dormant |
 | `tags.deprecated_days` | `180` | ≥ 30 ≤ 2000 | Unused this long → deprecated |
+
+## Translation (`translate`)
+
+Translations in the Emails tab, made on request by an internal model and kept. The original stays what is stored.
+
+| Setting | Default | Range / options | Description |
+|---|---|---|---|
+| `translate.enabled` | `true` |  | Offer translations in the Emails tab |
+| `translate.language` | `"English"` |  | Translate into this language |
+| `translate.skip_langs` | `["en"]` |  | Mail in these languages (ISO codes) is shown as it is |
+| `translate.part_tokens` | `6000` | ≥ 500 ≤ 100000 | A long email is sent in parts of at most this size |
+| `translate.context_tokens` | `3000` | ≥ 0 ≤ 30000 | Background sent along: the thread's notes, the wiki pages of this email, the tag catalog |
+| `translate.workers` | `2` | ≥ 1 ≤ 8 | Translations running at the same time |
 
 ## Retrieval (`retrieval`)
 

@@ -143,8 +143,10 @@ def rebuild_vectors(model: str | None = None):
 
 
 def sync_vectors() -> int:
-    """If the vector store has fewer points than SQLite has vectors (e.g. a CLI run wrote while the server held the
-    Qdrant lock and fell back to SQLite), rebuild it from SQLite. Cheap no-op when in sync."""
+    """Bring Qdrant level with SQLite after another process wrote while this one held the folder (or the other way
+    round): remove what is gone, add what is missing. Cheap no-op when nothing happened. Returns the points added."""
+    from llmwiki.models import KV
+    from llmwiki.rag.embed import from_blob
     from llmwiki.rag.vstore import QdrantStore
     emb = get_embedder()
     store = get_store(emb.name, emb.dim)
@@ -155,25 +157,25 @@ def sync_vectors() -> int:
         n_q = store.count()
     except Exception:
         return 0
-    if n_q == n_sql:
+    if n_q == n_sql and not KV.get("vectors_behind"):
         return 0
-    log.warning("vector store out of sync (%s in Qdrant, %s in SQLite) — rebuilding", n_q, n_sql)
     with _lock:
+        KV.set("vectors_behind", False)    # first: a write from now on marks it again
         live = set(ChunkVector.objects.filter(model=emb.name).values_list("chunk_id", flat=True))
-        try:
-            ids, offset = [], None
-            while True:
-                with QdrantStore._io:
-                    pts, offset = QdrantStore.client().scroll(store.coll, limit=1000, offset=offset, with_payload=False, with_vectors=False)
-                ids += [int(p.id) for p in pts]
-                if offset is None:
-                    break
-            stale = [i for i in ids if i not in live]
-            if stale:
-                store.delete(stale)
-        except Exception as e:
-            log.warning("could not prune stale points: %s", e)
-        return rebuild_vectors()
+        have, offset = set(), None
+        while True:
+            with QdrantStore._io:
+                pts, offset = QdrantStore.client().scroll(store.coll, limit=1000, offset=offset, with_payload=False, with_vectors=False)
+            have.update(int(p.id) for p in pts)
+            if offset is None:
+                break
+        store.delete(list(have - live))
+        missing = list(live - have)
+        for k in range(0, len(missing), 256):
+            rows = ChunkVector.objects.filter(model=emb.name, chunk_id__in=missing[k:k + 256]).select_related("chunk")
+            store.upsert([(cv.chunk_id, from_blob(cv.vector), payload_for(cv.chunk)) for cv in rows])
+        log.info("vector index caught up: %s added, %s removed", len(missing), len(have - live))
+        return len(missing)
 
 
 def stats() -> dict:

@@ -172,13 +172,34 @@ def s3_confirm_system() -> str:
             'Return JSON only, like: {"sections": [{"section": "plan", "text": "...", "removed_reason": ""}]}')
 
 
-def s4_system() -> str:
-    t = get_settings().tags
-    return ("You tag wiki pages of a logistics department with values from fixed lists.\n"
-            f"- system (0–2): {', '.join(t.systems)}\n- process (0–2): {', '.join(t.processes)}\n- work_type (exactly 1): {', '.join(t.work_types)}\n"
-            "Use only these values. For each listed t-code candidate say whether it is an SAP transaction code (is_tcode true/false) from its context.\n"
-            'Return JSON only, like: {"pages": [{"page": "P1", "system": ["sap-s4"], "process": ["outbound-delivery"], "work_type": ["incident"]}], '
+def tags_system(catalog: dict[str, list[str]], work_types: list[str], min_tags: int) -> str:
+    def known(ty):
+        return ", ".join(catalog.get(ty) or []) or "(none yet)"
+    return ("You tag wiki pages of a company department, so that people can find them. For each page name the real things it is about.\n"
+            f"- system: software, tools, platforms, IT systems. Known: {known('system')}\n"
+            f"- process: business processes. Known: {known('process')}\n"
+            f"- site: sites, plants, warehouses, subsidiaries, countries. Known: {known('site')}\n"
+            f"- partner: outside companies, suppliers, customers. Known: {known('partner')}\n"
+            f"- work_type: exactly one of {', '.join(work_types)}\n"
+            "Rules:\n"
+            "- A known value: spelled as above, whenever this page is about it, also when the page never writes the word. Think about what the page implies: "
+            "a t-code means SAP, a module means its system, a warehouse means its site. Do not add one the page has nothing to do with.\n"
+            "- Anything else is new: copy it EXACTLY as the page writes it, with no translating, expanding, abbreviating or guessing. "
+            "A script checks this: if those exact words are not on the page, the new tag is thrown away.\n"
+            "- Short names, not sentences.\n"
+            + (f"- Name everything the page supports, at least {min_tags} tags if it has that many real things. Fewer is right when it has fewer: never invent one to reach a number.\n" if min_tags else "- Name everything the page supports.\n")
+            + "For each listed t-code candidate say whether it is an SAP transaction code (is_tcode true/false) from its context.\n"
+            'Return JSON only, like: {"pages": [{"page": "P1", "system": ["…"], "process": ["…"], "site": ["…"], "partner": ["…"], "work_type": ["…"]}], '
             '"tcodes": [{"code": "ZMM01", "is_tcode": true}]}')
+
+
+def translate_system(language: str, source: str) -> str:
+    return (f"You translate one email of a company department into {language}, for colleagues who read it instead of the original (written mostly in {source}). "
+            "The background tells you what it is about; use it to choose the right words, but add nothing from it.\n"
+            "Translate each numbered line into exactly one line with the same number. Translate everything said, keep the tone, summarise nothing, explain nothing.\n"
+            "Keep exactly as they are: markers like ⟦3⟧, names of people, system names, codes, numbers, dates, amounts, and anything already in "
+            f"{language}. A line starting with | is a table row: translate inside the cells and keep every | character.\n"
+            f'Return JSON only, like: {{"subject": "translated subject", "lines": [{{"n": 1, "text": "translated line"}}, {{"n": 2, "text": "…"}}]}}')
 
 
 def report_lead_system(lo: int, hi: int) -> str:

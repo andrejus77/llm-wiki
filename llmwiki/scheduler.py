@@ -126,6 +126,9 @@ def run_action(name: str, **kw) -> bool:
         "backup": backup_db,
         "morning_reports": lambda: morning_reports(),
         "pst": lambda: fetch(["pst"], pst_since=_d(kw.get("since")), pst_until=_d(kw.get("until"))),
+        "tag_check": lambda: __import__("llmwiki.pipeline.tagger", fromlist=["check_tags"]).check_tags(kw.get("limit"), bool(kw.get("all"))),
+        "tag_sweep": lambda: __import__("llmwiki.pipeline.tagger", fromlist=["sweep"]).sweep(),
+        "update_mail": lambda: _update_mail(),
         "sync_vectors": lambda: __import__("llmwiki.rag.index", fromlist=["sync_vectors"]).sync_vectors(),
     }
     if name not in actions:
@@ -136,7 +139,7 @@ def run_action(name: str, **kw) -> bool:
             return False
 
         def target():
-            if name in ("process", "batch", "backfill", "review", "editor", "rewrite_pages", "report"):
+            if name in ("process", "batch", "backfill", "review", "editor", "rewrite_pages", "report", "tag_check"):
                 from llmwiki.llm.pool import pool
                 pool().resume("a manual start")   # started by hand: try again
             close_old_connections()
@@ -161,6 +164,14 @@ def _d(s):
 
 def running_actions() -> list[str]:
     return [k for k, t in _running.items() if t.is_alive()]
+
+
+def _update_mail():
+    """Once after an update of the code: stored mail in the new form, tags held to their proof. No model requests."""
+    from llmwiki.ingest.reparse import reparse_all
+    from llmwiki.pipeline.tagger import sweep
+    reparse_all()
+    sweep()
 
 
 def _reindex():
@@ -189,6 +200,9 @@ class Scheduler(threading.Thread):
     def tick(self):
         s = get_settings().schedule
         now = local_now()
+        from llmwiki.ingest.reparse import needed
+        if needed() and "update_mail" not in running_actions():
+            run_action("update_mail")
         if time.time() - KV.get("last_vector_sync", 0) > 600:
             KV.set("last_vector_sync", time.time())
             try:

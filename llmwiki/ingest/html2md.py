@@ -6,6 +6,7 @@ QUOTE_MARK line so the quote splitter finds the start of the quoted history reli
 from __future__ import annotations
 
 import re
+from urllib.parse import unquote
 
 from bs4 import BeautifulSoup, NavigableString, Tag
 
@@ -49,12 +50,31 @@ def _is_reply_separator(el: Tag) -> bool:
     return False
 
 
+def _image_token(img: Tag) -> str:
+    """The reference that finds the picture again: its Content-ID (or web address), not its alt text. Tracking pixels go."""
+    if str(img.get("width", "")).strip() in ("0", "1") and str(img.get("height", "")).strip() in ("0", "1"):
+        return ""
+    src = (img.get("src") or "").strip()
+    alt = re.sub(r"[\[\]\s]+", " ", img.get("alt") or "").strip()
+    if src.lower().startswith("cid:"):
+        ref = "cid:" + unquote(src[4:]).strip()
+    elif src.lower().startswith(("http://", "https://")):
+        ref = src
+    elif src.lower().startswith("data:"):
+        ref = alt or "embedded image"
+    else:
+        ref = re.split(r"[/\\]", src)[-1][:60] or alt
+    return f" [image: {re.sub(r'[][]', '', ref)}] "
+
+
 def html_to_text(html: str) -> tuple[str, bool]:
     """Return (text, has_table)."""
     soup = BeautifulSoup(html or "", "html.parser")
     for bad in soup(["style", "script", "head", "title", "meta", "xml"]):
         bad.decompose()
     has_table = False
+    for img in soup.find_all("img"):      # first: a picture inside a table cell must survive the table conversion
+        img.replace_with(NavigableString(_image_token(img)))
     # mark the first reply separator: everything after it is quoted history
     for el in soup.find_all(True):
         if _is_reply_separator(el) or (el.name == "blockquote" and el.get("type") == "cite"):
@@ -71,9 +91,6 @@ def html_to_text(html: str) -> tuple[str, bool]:
         pre = soup.new_tag("pre")      # keeps the table's line breaks
         pre.string = md.strip("\n")
         t.replace_with(pre)
-    for img in soup.find_all("img"):
-        alt = img.get("alt") or img.get("src", "").split("/")[-1][:60]
-        img.replace_with(NavigableString(f" [image: {alt}] "))
     return _render(soup), has_table
 
 
@@ -94,7 +111,7 @@ def _render(soup) -> str:
             out.append(min(2, n))
 
     def is_empty_para(t: Tag) -> bool:
-        return not _INVISIBLE.sub("", t.get_text()).replace("\xa0", " ").strip() and not t.find(["img", "table"])
+        return not _INVISIBLE.sub("", t.get_text()).replace("\xa0", " ").strip() and not t.find(["table", "pre"])
 
     def walk(node, pre: bool):
         for ch in node.children:

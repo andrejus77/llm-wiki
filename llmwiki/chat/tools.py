@@ -13,7 +13,7 @@ from datetime import date, timedelta
 from llmwiki.models import Email, Identifier, Page, Thread
 from llmwiki.pipeline.templates import section_label
 from llmwiki.rag.search import hybrid
-from llmwiki.util import clip_tokens
+from llmwiki.util import clip_tokens, model_text
 
 TOOLS_DOC = """Tools (call at most one per round):
 - search_wiki {"query": "...", "days": 0}            wiki page sections (the main source)
@@ -127,7 +127,7 @@ def run_tool(name: str, args: dict, src: Sources, top_k: int, tool_tokens: int) 
             e = Email.objects.filter(id=args.get("id")).first()
         if e and name == "get_email":
             atts = "; ".join(f"{a.filename}: {a.extract[:800]}" for a in e.attachments.all() if a.extract)
-            new.append(src.add("email", f"email:{e.id}", f"{e.subject} · {e.from_name or e.from_addr}", e.new_text + (("\nAttachments: " + atts) if atts else ""),
+            new.append(src.add("email", f"email:{e.id}", f"{e.subject} · {e.from_name or e.from_addr}", model_text(e.new_text) + (("\nAttachments: " + atts) if atts else ""),
                                email_id=e.id, day=e.day))
         elif e and name == "get_thread":
             lines = [f"{x.day} {x.from_name or x.from_addr}: {x.note or x.subject}" for x in Email.objects.filter(thread_id=e.thread_id).exclude(status="duplicate").order_by("sent_at")]
@@ -137,7 +137,7 @@ def run_tool(name: str, args: dict, src: Sources, top_k: int, tool_tokens: int) 
         v = str(args.get("value") or q).strip()
         for ident in Identifier.objects.filter(value__iexact=v).select_related("email")[:6]:
             e = ident.email
-            new.append(src.add("email", f"email:{e.id}", f"{e.subject} · {e.from_name or e.from_addr} ({ident.type} {v})", e.note or e.new_text[:600], email_id=e.id, day=e.day))
+            new.append(src.add("email", f"email:{e.id}", f"{e.subject} · {e.from_name or e.from_addr} ({ident.type} {v})", e.note or model_text(e.new_text)[:600], email_id=e.id, day=e.day))
         if not new:
             new = add_hits(src, hybrid(v, {"collections": ["emails", "notes", "attachments"]}, top_k=4, mode="bm25"))
     elif name == "list_pages":

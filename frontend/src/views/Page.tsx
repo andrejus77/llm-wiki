@@ -86,7 +86,7 @@ export default function PageView() {
         {p.level}{p.level_proposed !== p.level && <span className="sim"> (→ {p.level_proposed})</span>}</dd></div><div><dt>Created</dt><dd>{fmt(p.created.slice(0, 10))}</dd></div><div><dt>Last mail</dt><dd>{fmt(p.last_day)}</dd></div>
         <div><dt>Emails</dt><dd>{p.timeline_total}</dd></div><div><dt>Updated</dt><dd>{fmt(p.updated.slice(0, 10))}</dd></div>
         {p.length && <div title={`Length budget: ${p.length.budget} words, from the ${p.length.source_words} words people wrote in this page's emails (Settings › Wiki pages). The script holds the editor to it.`}>
-          <dt>Length</dt><dd className="lenbar">{p.length.words} / {p.length.budget} words<span className="bar"><i className={p.length.words > p.length.budget * 1.15 ? "over" : ""} style={{ width: `${Math.min(100, (100 * p.length.words) / Math.max(1, p.length.budget))}%` }} /></span></dd></div>}</dl>
+          <dt>Length</dt><dd>{p.length.words} / {p.length.budget} words</dd><span className="lenbar"><i className={p.length.words > p.length.budget * 1.15 ? "over" : ""} style={{ width: `${Math.min(100, (100 * p.length.words) / Math.max(1, p.length.budget))}%` }} /></span></div>}</dl>
       {p.merged_into && <p className="note">This page was merged into another page.</p>}
       <div className="card prose">{p.sections.map(section)}</div>
       {p.open_issues.length > 0 && <div className="card" style={{ marginTop: 14 }}><div className="sec-h">Open issues (tracked by code)</div>
@@ -98,7 +98,7 @@ export default function PageView() {
         <ul className="timeline">{shown.map((e: any) => (
           <li className={`ev ${e.role}`} key={e.id}><span className="d">{fmt(e.day)}<br /><span style={{ fontSize: ".7rem" }}>{e.time}</span></span><div className="txt">
             <Kind kind={e.kind} /> {e.note || e.subject}{e.role === "secondary" && <span className="pill"> secondary</span>}
-            <div className="row2"><span className="tn"><span className="dotc" style={{ background: tColor(e.thread_id) }} /><button className="linkbtn" onClick={() => nav(`/threads/${e.thread_id}`)}>thread</button></span>
+            <div className="row2"><span className="tn"><span className="dotc" style={{ background: tColor(e.thread_id) }} /><button className="linkbtn" onClick={() => peek({ kind: "thread", id: e.thread_id })}>thread</button></span>
               <span>· <button className="linkbtn" onClick={() => peek({ kind: "email", id: e.id })}>{e.from_name}</button></span>
               {e.also.length > 0 && <span>· also on {e.also.map((a: any) => <button key={a.id} className="linkbtn" onClick={() => peek({ kind: "page", id: a.id })}>{a.title}</button>)}</span>}</div></div></li>))}</ul>
       </div>
@@ -108,7 +108,7 @@ export default function PageView() {
         {p.structure === "free" && p.people.length > 0 && <div className="card"><h3>People · from the headers</h3><ul>{p.people.slice(0, 10).map((x: any) => (
           <li key={x.addr}><span>{x.name}{!x.internal && <span className="sim"> · external</span>}</span><span className="sim">{x.n}</span></li>))}</ul></div>}
         <DeptCard p={p} reload={r.reload} />
-        <div className="card"><h3>Source threads</h3><ul>{p.threads.map((t: any) => <li key={t.id}><span className="tn"><span className="dotc" style={{ background: tColor(t.id) }} /><button className="linkbtn" onClick={() => nav(`/threads/${t.id}`)}>{t.subject.slice(0, 60)}</button></span><span className="sim">{t.n}</span></li>)}</ul></div>
+        <div className="card"><h3>Source threads</h3><ul>{p.threads.map((t: any) => <li key={t.id}><span className="tn"><span className="dotc" style={{ background: tColor(t.id) }} /><button className="linkbtn" onClick={() => peek({ kind: "thread", id: t.id })}>{t.subject.slice(0, 80)}</button></span><span className="sim">{t.n}</span></li>)}</ul></div>
         {p.attachments.length > 0 && <div className="card"><h3>Attachments</h3><ul>{p.attachments.map((a: any) => <li key={a.id}><a className="linkbtn" href={`/api/attachments/${a.id}`} target="_blank" rel="noreferrer">{a.filename}</a><span className="sim">{fmt(a.day)}</span></li>)}</ul></div>}
         {p.related.length > 0 && <div className="card"><h3>Related pages · by embedding</h3><ul>{p.related.map((x: any) => <li key={x.id}><button className="linkbtn" onClick={() => nav(`/wiki/${x.id}`)}>{x.title}</button><span className="sim">{x.sim.toFixed(2)}</span></li>)}</ul></div>}
         {p.status_changes.length > 0 && <div className="card"><h3>Status history</h3><ul>{p.status_changes.map((c: any, i: number) => <li key={i}><span>{c.old || "—"} → {c.new}</span><span className="sim">{fmt(c.at)}</span></li>)}</ul></div>}

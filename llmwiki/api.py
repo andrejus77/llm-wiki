@@ -1,7 +1,7 @@
 """JSON API for the portal (Django Ninja). OpenAPI docs: /api/docs.
 
-Read endpoints never call the LLM. The only endpoints that cause LLM requests are POST /chat, POST /reports/generate
-and POST /actions/* (which start background work through the scheduler's run_action).
+Read endpoints never call the LLM. The only endpoints that cause LLM requests are POST /chat, POST /reports/generate,
+POST /emails/{id}/translation and POST /actions/* (which start background work through the scheduler's run_action).
 """
 from __future__ import annotations
 
@@ -12,21 +12,22 @@ import threading
 import time
 from datetime import date, timedelta
 
-from django.db.models import Count, Max, Q
+from django.db.models import Count, Max, Prefetch, Q
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.utils import timezone
+from django.utils.http import content_disposition_header
 from ninja import Body, NinjaAPI
 
 from llmwiki import departments as dp
 from llmwiki.conf import GROUP_LABELS, PRESETS, Settings, get_settings, pinned_keys, save_settings
-from llmwiki.ingest import skiprules
+from llmwiki.ingest import images, skiprules
 from llmwiki.logs import event
 from llmwiki.models import json_has
 from llmwiki.models import (Attachment, ChatMessage, Email, Event, Folder, Identifier, Item, Job, KV, LlmCall, OpenIssue, Page, PageEmail, QuotedBlock, Run, Section,
                             SectionHistory, SettingsVersion, SkipRule, StatusChange, Tag, Thread)
 from llmwiki.pipeline.templates import LEVELS, STATUSES, TEMPLATES, free, label_of, section_label
-from llmwiki.util import first_sentence, local_dt
+from llmwiki.util import display_name, first_sentence, lang_name, local_dt
 
 log = logging.getLogger(__name__)
 api = NinjaAPI(title="LLM Wiki API", version="1.0")  # no auth class: views are csrf-exempt; login is enforced by middleware in server mode
@@ -60,6 +61,7 @@ def person_name(addr: str) -> str:
 
 
 # Columns no list needs. Lists never load a body: a row is a few hundred bytes, however long the mail is.
+LIGHT_ATTS = Prefetch("attachments", Attachment.objects.defer("extract"))   # a thread's emails: no attachment text
 LIST_DEFER = ("new_text", "signature", "headers", "references", "source_ref", "thread_index", "conversation_id", "subject_norm", "subject_tpl", "fail_reason")
 MAX_ROWS = 500
 
@@ -106,6 +108,14 @@ def team_senders(days: int | None = None, depts: list[str] | None = None) -> lis
     return _ttl(("team", days, tuple(depts or ()), json.dumps(get_settings().departments.team_members)), 15, load)
 
 
+def _tag_values(s) -> dict:
+    out = {"system": [], "process": [], "work_type": list(s.tags.work_types), "site": [], "partner": [], "tcode": []}
+    for ty, v in Tag.objects.filter(state="active", type__in=list(out)).values_list("type", "value"):
+        if v not in out[ty]:
+            out[ty].append(v)
+    return {k: sorted(v, key=str.casefold) for k, v in out.items()}
+
+
 # ------------------------------------------------------------------ meta + health
 @api.get("/health")
 def health(request):
@@ -130,14 +140,14 @@ def meta(request):
     s = get_settings()
     from llmwiki.llm.pool import pool
     latest = _ttl("latest_day", 15, lambda: Email.objects.aggregate(m=Max("day"))["m"])
-    tcodes = _ttl("tcodes", 60, lambda: sorted(set(Tag.objects.filter(type="tcode", state="active").values_list("value", flat=True))))
+    tag_values = _ttl("tag_values", 60, lambda: _tag_values(s))
     return {
         "title": s.portal.title, "mode": s.server.mode, "user": _user(request), "admin": _is_admin(request), "default_window": s.portal.default_window_days,
         "wiki_view": s.portal.wiki_view, "latest_day": latest, "depts": s.sources.dept_addresses,
         "dept_info": __import__("llmwiki.reports.briefing", fromlist=["dept_list"]).dept_list(), "version": code_version(),
         "people": team_senders(), "team_list": dp.has_team_list(),
         "levels": LEVELS, "statuses": STATUSES, "templates": {k: [[a, b] for a, b, _ in v] for k, v in TEMPLATES.items()},
-        "tag_values": {"tcode": tcodes, "system": s.tags.systems, "process": s.tags.processes, "work_type": s.tags.work_types},
+        "tag_values": tag_values, "translate": {"enabled": s.translate.enabled, "language": s.translate.language, "skip": s.translate.skip_langs},
         "schedule": {"live": s.schedule.live_enabled, "batch_time": s.schedule.batch_time, "paused_for_chat": pool().chat_active()},
         "chat": {"engine": s.chat.engine, "deep": s.chat.deep_enabled}, "stopped": pool().halted(),
     }
@@ -149,7 +159,7 @@ def _email_row(e: Email, pages=None) -> dict:
     return {"id": e.id, "day": e.day, "time": lt.strftime("%H:%M"), "dow": lt.strftime("%a"), "from": e.from_addr, "from_name": e.from_name or e.from_addr,
             "to": e.to, "cc": e.cc, "subject": e.subject, "note": e.note, "kind": e.kind, "importance": e.importance, "status": e.status,
             "skip_rule": e.skip_rule, "skip_action": e.skip_action, "thread_id": e.thread_id, "n_att": e.n_attachments, "has_table": e.has_table,
-            "depts": e.depts, "lang": e.lang, "due": e.due, "ai": e.ai_related, "automated": e.automated, "parent_id": e.parent_id,
+            "depts": e.depts, "lang": e.lang, "lang_name": lang_name(e.lang), "due": e.due, "ai": e.ai_related, "automated": e.automated, "parent_id": e.parent_id,
             "folder": e.folder_id, "pages": pages if pages is not None else []}
 
 
@@ -331,18 +341,32 @@ def email_week(request, start: str = None, depts: str = None, senders: str = Non
     return {"start": a.isoformat(), "end": b.isoformat(), "rows": rows, "total": total, "prev": (a - timedelta(days=7)).isoformat(), "next": (a + timedelta(days=7)).isoformat()}
 
 
+def _file_row(a: Attachment) -> dict:
+    return {"id": a.id, "filename": a.filename, "size": a.size, "is_image": a.is_image}
+
+
+def _mail_parts(e: Email, limit: int | None = None) -> dict:
+    """What every view needs to show a mail: the text with its pictures in place, and the real attachments."""
+    atts = list(e.attachments.all())
+    text = images.visible_text(e.new_text, atts)
+    return {"new_text": text[:limit] if limit else text, "more": bool(limit and len(text) > limit), "images": images.image_map(atts),
+            "files": [_file_row(a) for a in atts if a.is_file]}
+
+
 def _body(e: Email) -> dict:
-    blocks = [{"idx": q.idx, "header": q.header, "text": q.text, "linked": q.linked_id, "match": q.match, "sent_to_model": q.sent_to_model}
+    atts = list(e.attachments.all())
+    blocks = [{"idx": q.idx, "header": q.header, "text": images.visible_text(q.text, atts), "linked": q.linked_id, "match": q.match, "sent_to_model": q.sent_to_model}
               for q in e.quoted_blocks.all().order_by("idx")]
-    atts = [{"id": a.id, "filename": a.filename, "size": a.size, "is_image": a.is_image, "inline": a.inline, "content_type": a.content_type,
-             "extract": a.extract[:4000], "extract_error": a.extract_error} for a in e.attachments.all()]
-    return {"new_text": e.new_text, "signature": e.signature, "quoted": blocks, "attachments": atts}
+    files = [{**_file_row(a), "content_type": a.content_type, "extract": a.extract[:4000], "extract_error": a.extract_error} for a in atts if a.is_file]
+    return {"new_text": images.visible_text(e.new_text, atts), "signature": e.signature, "quoted": blocks, "attachments": files, "images": images.image_map(atts),
+            "after": [_file_row(a) for a in atts if a.is_image and not a.is_signature and a.place == "signature"],   # a real picture below the closing
+            "signature_images": [_file_row(a) for a in atts if a.is_signature and a.place in ("body", "signature")]}
 
 
 @api.get("/emails/{eid}")
 def email_detail(request, eid: int):
     e = get_object_or_404(Email, id=eid)
-    earlier = list(Email.objects.filter(thread_id=e.thread_id, sent_at__lt=e.sent_at).exclude(status="duplicate").order_by("-sent_at").prefetch_related("attachments")[:30])
+    earlier = list(Email.objects.filter(thread_id=e.thread_id, sent_at__lt=e.sent_at).exclude(status="duplicate").order_by("-sent_at").prefetch_related(LIGHT_ATTS)[:30])
     g = thread_graph(sorted(earlier + [e], key=lambda x: x.sent_at))
     anc, cur = set(), g["nodes"].get(f"e{e.id}", {}).get("parent")
     while cur and cur.startswith("e") and cur not in anc:
@@ -357,8 +381,7 @@ def email_detail(request, eid: int):
     t = Thread.objects.filter(id=e.thread_id).first()
     return {**_email_row(e, pages), "headers": e.headers, "message_id": e.message_id, "sources": e.sources, "in_reply_to": e.in_reply_to,
             "body": _body(e), "thread": {"id": t.id, "subject": t.subject, "n": t.n_emails} if t else None,
-            "earlier": [{**_email_row(x), "new_text": x.new_text[:6000], "attachments": [a.filename for a in x.attachments.all() if not a.inline],
-                         "in_chain": f"e{x.id}" in anc} for x in earlier], "branch": branch,
+            "earlier": [{**_email_row(x), **_mail_parts(x, 6000), "in_chain": f"e{x.id}" in anc} for x in earlier], "branch": branch,
             "later": later, "items": items, "units": unit_keys, "identifiers": [[i.type, i.value] for i in e.identifiers.all()],
             "parent_id": e.parent_id, "dup_of": e.dup_of_id, "fail_reason": e.fail_reason, "audit": e.audit, "rule_ref": e.rule_ref, "skip_manual": e.skip_manual,
             "subject_norm": e.subject_norm}
@@ -370,8 +393,25 @@ def attachment(request, aid: int, inline: bool = False):
     if not a.blob_id:
         return HttpResponse("not stored (too large)", status=404)
     resp = HttpResponse(a.blob.get(), content_type=a.content_type or "application/octet-stream")
-    resp["Content-Disposition"] = f'{"inline" if inline or a.is_image else "attachment"}; filename="{a.filename}"'
+    show = (inline or a.is_image) and "svg" not in (a.content_type or "").lower()   # an SVG opened in a tab could run scripts
+    resp["Content-Disposition"] = content_disposition_header(not show, a.filename)
+    resp["X-Content-Type-Options"] = "nosniff"
     return resp
+
+
+@api.get("/emails/{eid}/translation")
+def translation(request, eid: int):
+    from llmwiki.pipeline import translate
+    return translate.get(get_object_or_404(Email, id=eid))
+
+
+@api.post("/emails/{eid}/translation")
+def translation_start(request, eid: int):
+    """Starts the translation unless it exists. The answer comes at once; the portal asks again until it is done."""
+    from llmwiki.pipeline import translate
+    if not get_settings().translate.enabled:
+        return api.create_response(request, {"detail": "Translations are turned off (Settings › Translation)."}, status=400)
+    return translate.start(get_object_or_404(Email, id=eid))
 
 
 def thread_graph(es: list[Email]) -> dict:
@@ -398,8 +438,9 @@ def thread_graph(es: list[Email]) -> dict:
                 if key not in ghosts:
                     hdr = (qb.header if qb else "").strip()
                     who = re.search(r"(?:From|Van|Von|보낸 사람)\s*:\s*\"?([^<\"\n]+?)\"?\s*(?:<|\n|$)", hdr) or re.search(r"On .+?,\s*([^<,\n]+?)\s*<", hdr)
+                    who_addr = re.search(r"<?([\w.+-]+@[\w.-]+)>?", hdr)
                     when = re.search(r"(?:Sent|Date|Verzonden|Gesendet|보낸 날짜)\s*:\s*(?:\w+,\s*)?(\d{1,2}\s+\w+\s+\d{4}|\d{4}년\s*\d+월\s*\d+일)", hdr)
-                    label = (f"{who.group(1).strip()}'s email" if who else "an earlier email") + (f" of {when.group(1)}" if when else "") + " (not received)"
+                    label = (f"{display_name(who.group(1), who_addr.group(1) if who_addr else '')}'s email" if who else "an earlier email") + (f" of {when.group(1)}" if when else "") + " (not received)"
                     ghosts[key] = {"key": key, "header": label, "raw_header": " · ".join(x.strip() for x in hdr.splitlines()[:2])[:200],
                                    "text": (qb.text if qb else "")[:400], "first_child": e.id}
         parent[e.id] = p
@@ -454,7 +495,7 @@ def thread_detail(request, tid: int):
     t = get_object_or_404(Thread, id=tid)
     qs = Email.objects.filter(thread=t).exclude(status="duplicate")
     total = qs.count()
-    es = list(qs.order_by("-sent_at")[:200])[::-1]   # a very long thread: its latest 200
+    es = list(qs.order_by("-sent_at").prefetch_related(LIGHT_ATTS)[:200])[::-1]   # a very long thread: its latest 200
     ids = [e.id for e in es]
     links = {}
     for eid, pid, title, role in PageEmail.objects.filter(email_id__in=ids).values_list("email_id", "page_id", "page__title", "role"):
@@ -464,8 +505,7 @@ def thread_detail(request, tid: int):
         quoted.setdefault(eid, []).append(text[:1500])
     g = thread_graph(es)
     return {"id": t.id, "subject": t.subject, "participants": t.participants, "total": total, "graph": {"order": g["order"], "ghosts": g["ghosts"], "lanes": g["lanes"]},
-            "emails": [{**_email_row(e, links.get(e.id, [])), **g["nodes"][f"e{e.id}"], "new_text": e.new_text[:4000], "more": len(e.new_text) > 4000,
-                        "quoted": quoted.get(e.id, [])} for e in es]}
+            "emails": [{**_email_row(e, links.get(e.id, [])), **g["nodes"][f"e{e.id}"], **_mail_parts(e, 6000), "quoted": quoted.get(e.id, [])} for e in es]}
 
 
 # ------------------------------------------------------------------ wiki
@@ -592,7 +632,7 @@ def page_detail(request, pid: str):
     for l in links:
         threads.setdefault(l.email.thread_id, {"id": l.email.thread_id, "subject": l.email.subject, "n": 0})["n"] += 1
     atts = [{"id": i, "filename": fn, "email_id": eid, "day": day}
-            for i, fn, eid, day in Attachment.objects.filter(email__page_links__page=p, inline=False).values_list("id", "filename", "email_id", "email__day")[:30]]
+            for i, fn, eid, day in Attachment.objects.filter(Q(is_image=False) | Q(place=""), email__page_links__page=p, is_signature=False).values_list("id", "filename", "email_id", "email__day")[:30]]
     related = []
     try:
         from llmwiki.pipeline.reviewer import page_vectors
@@ -953,25 +993,38 @@ def rule_delete(request, rid: int):
 
 @api.get("/agent/tags")
 def tags(request):
-    pages = list(Page.objects.filter(archived=False).values_list("tags", flat=True))
+    from llmwiki.pipeline.tagger import seed_catalog
+    seed_catalog()
+    s = get_settings().tags
     usage: dict[tuple, int] = {}
-    for t in pages:
+    below = total = 0
+    for t in Page.objects.filter(archived=False).values_list("tags", flat=True):
+        total += 1
+        below += sum(len(v) for k, v in (t or {}).items() if k != "tcode") < s.page_min_tags
         for ty, vals in (t or {}).items():
             for v in vals or []:
                 usage[(ty, v)] = usage.get((ty, v), 0) + 1
-    s = get_settings().tags
-    lists = {"system": s.systems, "process": s.processes, "work_type": s.work_types}
-    rows = [{"type": ty, "value": v, "state": "active", "pages": usage.get((ty, v), 0), "threads": None, "why": "fixed list (Settings › Tags)"}
-            for ty, vals in lists.items() for v in vals]
-    for ty in ("site", "partner"):
-        for (t2, v), n in usage.items():
-            if t2 == ty:
-                rows.append({"type": ty, "value": v, "state": "active", "pages": n, "threads": None, "why": "script: from the page's emails"})
+    rows = []
+    known = set()
     for t in Tag.objects.all().order_by("type", "value"):
-        rows.append({"type": t.type, "value": t.value, "state": t.state, "pages": usage.get((t.type, t.value), 0), "threads": t.threads, "why": t.why,
-                     "contexts": [c.get("text") for c in (t.contexts or [])][:3]})
+        known.add((t.type, t.value))
+        rows.append({"id": t.id, "type": t.type, "value": t.value, "state": t.state, "pages": usage.get((t.type, t.value), 0), "threads": t.threads, "why": t.why,
+                     "contexts": [c.get("text") for c in (t.contexts or [])][:3], "aliases": t.aliases})
+    for (ty, v), n in usage.items():
+        if (ty, v) not in known:
+            rows.append({"type": ty, "value": v, "state": "active", "pages": n, "threads": None, "why": "script: from the page's emails"})
     log_ = [{"ts": e.ts.isoformat(), "message": e.message, "level": e.level} for e in Event.objects.filter(kind="tags").order_by("-id")[:40]]
-    return {"rows": rows, "log": log_}
+    return {"rows": rows, "log": log_, "pages": total, "below_minimum": below, "minimum": s.page_min_tags}
+
+
+@api.post("/agent/tags/{tid}/reject")
+def tag_reject(request, tid: int):
+    """Admin: this term is wrong. Off every page, and never proposed again."""
+    if not _is_admin(request):
+        return _denied(request)
+    from llmwiki.pipeline.tagger import sweep
+    Tag.objects.filter(id=tid).update(state="rejected", why=f"rejected by {_user(request) or 'a user'}")
+    return sweep()
 
 
 # ------------------------------------------------------------------ settings

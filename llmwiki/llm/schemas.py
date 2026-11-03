@@ -89,6 +89,8 @@ class PageTags(_S):
     page: str
     system: list[str] = Field(default_factory=list)
     process: list[str] = Field(default_factory=list)
+    site: list[str] = Field(default_factory=list)
+    partner: list[str] = Field(default_factory=list)
     work_type: list[str] = Field(default_factory=list)
 
 
@@ -112,6 +114,17 @@ class Finding(_S):
 class Review(_S):
     """Reviewer / wiki lint."""
     findings: list[Finding] = Field(default_factory=list)
+
+
+class TranslatedLine(_S):
+    n: int
+    text: str
+
+
+class Translation(_S):
+    """One email, line by line."""
+    subject: str = ""
+    lines: list[TranslatedLine] = Field(default_factory=list)
 
 
 class Lead(_S):
@@ -155,7 +168,7 @@ class Abstain(_S):
 
 MODELS: dict[str, type[BaseModel]] = {
     "notes": Notes, "route": Route, "sections": Sections, "page": PageOut, "combined": Combined, "tags": TagsOut, "review": Review,
-    "lead": Lead, "story": StoryText, "chat": ChatAction, "plan": Plan, "judge": Judge, "abstain": Abstain,
+    "translation": Translation, "lead": Lead, "story": StoryText, "chat": ChatAction, "plan": Plan, "judge": Judge, "abstain": Abstain,
 }
 
 

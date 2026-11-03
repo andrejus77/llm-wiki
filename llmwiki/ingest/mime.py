@@ -6,14 +6,22 @@ import email
 import email.policy
 import email.utils
 import logging
+import mimetypes
 import re
 from dataclasses import dataclass, field
 from datetime import datetime, timezone
 
 from llmwiki.ingest.html2md import clean_text, html_to_text
-from llmwiki.util import normalize_mid, sha1, split_mids
+from llmwiki.util import display_name, normalize_mid, sha1, split_mids
 
 log = logging.getLogger(__name__)
+
+
+def is_image_file(filename: str, content_type: str) -> bool:
+    """By type, or by name when the type says nothing (the .pst route rebuilds every attachment as octet-stream)."""
+    if content_type.startswith("image/"):
+        return True
+    return content_type in ("", "application/octet-stream") and (mimetypes.guess_type(filename or "")[0] or "").startswith("image/")
 
 
 @dataclass
@@ -26,7 +34,7 @@ class ParsedAttachment:
 
     @property
     def is_image(self):
-        return self.content_type.startswith("image/")
+        return is_image_file(self.filename, self.content_type)
 
 
 @dataclass
@@ -129,7 +137,7 @@ def parse(raw: bytes) -> ParsedEmail:
                                 "X-MS-Exchange-Generated-Message-Source", "Return-Path", "X-Mailer") if msg.get(k)}
     return ParsedEmail(
         message_id=mid, subject=re.sub(r"\s+", " ", hdr("Subject")).strip(), from_addr=frm[1].strip().lower(),
-        from_name=frm[0].strip() or frm[1].split("@")[0], to=_addrs(msg.get_all("To", [])), cc=_addrs(msg.get_all("Cc", [])),
+        from_name=display_name(frm[0], frm[1].strip().lower()), to=_addrs(msg.get_all("To", [])), cc=_addrs(msg.get_all("Cc", [])),
         sent_at=dt.astimezone(timezone.utc), in_reply_to=(split_mids(hdr("In-Reply-To")) or [""])[0],
         references=split_mids(hdr("References")), thread_index=hdr("Thread-Index").strip(), body_text=body,
         has_table=has_table, headers=keep, attachments=atts, raw=raw, synthetic_mid=synthetic)

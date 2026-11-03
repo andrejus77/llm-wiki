@@ -10,7 +10,7 @@ from django.utils import timezone
 from llmwiki.conf import get_settings
 from llmwiki.models import ChatMessage, ChatSession, Email, Page, Report, Thread
 from llmwiki.pipeline.templates import section_label
-from llmwiki.util import clip_tokens, first_sentence
+from llmwiki.util import clip_tokens, first_sentence, model_text
 
 log = logging.getLogger(__name__)
 
@@ -28,7 +28,7 @@ def view_context(view: dict) -> str:
             e = Email.objects.filter(id=vid).first()
             if e:
                 notes = "\n".join(f"{x.day} {x.from_name or x.from_addr}: {x.note or x.subject}" for x in Email.objects.filter(thread_id=e.thread_id).order_by("sent_at")[:40])
-                return f"Email: {e.subject}\nFrom {e.from_name} <{e.from_addr}> on {e.day}\n{e.new_text}\n\nThread notes:\n{notes}"
+                return f"Email: {e.subject}\nFrom {e.from_name} <{e.from_addr}> on {e.day}\n{model_text(e.new_text)}\n\nThread notes:\n{notes}"
         if kind == "thread" and vid:
             t = Thread.objects.filter(id=vid).first()
             if t:

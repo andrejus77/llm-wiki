@@ -19,6 +19,7 @@ from llmwiki.pipeline.budget import Section, assemble
 from llmwiki.pipeline.templates import fuzzy_key
 from llmwiki.pipeline.templates import keys as tpl_keys
 from llmwiki.rag import search
+from llmwiki.util import model_text
 
 log = logging.getLogger(__name__)
 
@@ -235,7 +236,7 @@ def fast(unit: cx.Unit, window: str, edit: bool, job=None) -> dict:
     s = get_settings()
     system = prompts.s12_system(edit)
     e0 = unit.emails[0]
-    query = (e0.subject + "\n" + " ".join(e0.new_text.split()[:300])) if len(unit.emails) == 1 else "\n".join(e.subject + " " + " ".join(e.new_text.split()[:80]) for e in unit.emails)
+    query = (e0.subject + "\n" + " ".join(model_text(e0.new_text).split()[:300])) if len(unit.emails) == 1 else "\n".join(e.subject + " " + " ".join(model_text(e.new_text).split()[:80]) for e in unit.emails)
     labels, cards, best = candidates(unit, query, s.budgets.candidates_k)
     mem = cx.memory_pages(unit)
     cur_secs = []

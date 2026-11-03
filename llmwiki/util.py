@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import re
+import unicodedata
 import zlib
 from datetime import date, datetime, timedelta, timezone
 from functools import lru_cache
@@ -10,6 +11,8 @@ from zoneinfo import ZoneInfo
 
 HANGUL = re.compile(r"[가-힣ᄀ-ᇿ㄰-㆏]")
 CJK = re.compile(r"[぀-ヿ㐀-䶿一-鿿가-힣]")
+# An image in a mail body. "[image: cid:…]" is matched to its attachment by Content-ID; "[image: https://…]" is a link.
+IMAGE_TOKEN = re.compile(r"\[image:[^\]\n]*\]")
 
 # reply/forward prefixes in EN, NL, DE, SK/CZ, FR, IT, ES, Nordic and Korean Outlook
 SUBJECT_PREFIX = re.compile(
@@ -86,8 +89,58 @@ def is_hangul(text: str, share: float = 0.15) -> bool:
     return letters > 0 and len(HANGUL.findall(text)) / letters >= share
 
 
+LANG_NAMES = {"en": "English", "ko": "Korean", "ja": "Japanese", "zh": "Chinese", "ru": "Russian", "ar": "Arabic", "he": "Hebrew", "th": "Thai", "el": "Greek", "hi": "Hindi",
+              "de": "German", "nl": "Dutch", "fr": "French", "es": "Spanish", "it": "Italian", "pt": "Portuguese", "sk": "Slovak", "cs": "Czech", "pl": "Polish"}
+_SCRIPTS = [("ko", HANGUL), ("ja", re.compile(r"[぀-ヿ]")), ("zh", re.compile(r"[㐀-䶿一-鿿]")), ("ru", re.compile(r"[Ѐ-ӿ]")), ("ar", re.compile(r"[؀-ۿ]")),
+            ("he", re.compile(r"[֐-׿]")), ("th", re.compile(r"[฀-๿]")), ("el", re.compile(r"[Ͱ-Ͽ]")), ("hi", re.compile(r"[ऀ-ॿ]"))]
+_COMMON = {"en": "the and to of is for with that this you are have will from please",
+           "de": "der die das und ist nicht mit für wir sie ein eine auf bitte",
+           "nl": "de het een en is niet met voor wij je van op dat graag",
+           "fr": "le la les des et est pas pour nous vous une dans avec merci",
+           "es": "el la los las y es no para con una por que gracias",
+           "it": "il la gli e non per con una che sono grazie della",
+           "pt": "o os as e não para com uma por que obrigado está",
+           "sk": "a je na sa to že pre som nie ako prosím ďakujem",
+           "cs": "a je na se to že pro jsem ne jako prosím děkuji",
+           "pl": "i jest na się to że dla nie jak proszę dziękuję oraz"}
+_COMMON_SETS = {k: set(v.split()) for k, v in _COMMON.items()}
+
+
 def detect_lang(text: str) -> str:
-    return "ko" if is_hangul(text) else "en"
+    """ISO code of the mail's main language, by script (a share of the letters is enough: such mail mixes in English
+    terms); Latin-script mail by its common words, English when in doubt."""
+    t = IMAGE_TOKEN.sub(" ", re.sub(r"https?://\S+", " ", text or ""))
+    letters = sum(1 for c in t if c.isalpha())
+    if not letters:
+        return "en"
+    shares = {code: len(rx.findall(t)) / letters for code, rx in _SCRIPTS}
+    if shares["ko"] < 0.08 <= shares["ja"] + shares["zh"] and shares["ja"] >= 0.05:
+        return "ja"
+    code = max(shares, key=shares.get)
+    if shares[code] >= 0.08:
+        return code
+    found = re.findall(r"[^\W\d_]+", t.lower())
+    hits = {k: sum(1 for w in found if w in v) for k, v in _COMMON_SETS.items()}
+    best = max(hits, key=hits.get)
+    return best if best != "en" and hits[best] >= 3 and hits[best] > hits["en"] * 1.5 else "en"
+
+
+def lang_name(code: str) -> str:
+    return LANG_NAMES.get(code, code)
+
+
+def model_text(text: str) -> str:
+    """Mail text for prompts and the search index: an image is only a marker, its long reference says nothing."""
+    return IMAGE_TOKEN.sub("[image]", text or "")
+
+
+def display_name(name: str, addr: str) -> str:
+    """A name in another script (Korean, …) is followed by the user id from the address, so everyone can read and find it."""
+    name, uid = (name or "").strip(), (addr or "").split("@")[0].strip()
+    if not name:
+        return uid
+    foreign = any(c.isalpha() and not unicodedata.name(c, "").startswith("LATIN") for c in name)
+    return f"{name} ({uid})" if foreign and uid and uid.lower() not in name.lower() else name
 
 
 def sha1(*parts) -> str:
@@ -99,7 +152,8 @@ def sha1(*parts) -> str:
 
 
 def words(text: str) -> list[str]:
-    return re.findall(r"[\w가-힣]+", (text or "").lower())
+    # without image references: Outlook gives the same picture another Content-ID in every reply
+    return re.findall(r"[\w가-힣]+", IMAGE_TOKEN.sub(" ", text or "").lower())
 
 
 def _h(s: str) -> int:

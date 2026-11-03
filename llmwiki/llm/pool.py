@@ -468,7 +468,7 @@ class Pool:
 
 
 STAGE_SCHEMA = {"s1": "notes", "s2": "route", "s3": "sections", "s12": "combined", "s123": "combined", "s4": "tags",
-                "review": "review", "chat": "chat", "judge": "judge", "report": "story"}
+                "review": "review", "chat": "chat", "judge": "judge", "report": "story", "translate": "translation"}
 
 _pool: Pool | None = None
 _pool_lock = threading.Lock()

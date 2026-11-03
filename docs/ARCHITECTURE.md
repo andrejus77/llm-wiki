@@ -39,7 +39,9 @@ background threads of the same process. CLI commands (`fetch`, `process`, `eval`
 | Transfer | `llmwiki/transfer.py` | `export_package()` / `import_package()`: the store as one SQLite copy + manifest; commands `export_data`, `import_data` |
 | Logging | `llmwiki/logs.py` | Python logging config (files in data/logs), `event()` for user-visible events |
 | Schema | `llmwiki/models.py` | All tables. `json_has()` helper for JSON-list filters on SQLite |
-| Parsing | `ingest/mime.py`, `ingest/html2md.py` | RFC822 → `ParsedEmail`; HTML → text with markdown tables and a quote marker. Line breaks are tokens: source newlines are spaces, Outlook `MsoNormal` paragraphs are lines, an `&nbsp;` paragraph is one blank line, never two blank lines in a row (`clean_text()` for plain parts too); `reparse_bodies` re-derives stored mail |
+| Parsing | `ingest/mime.py`, `ingest/html2md.py` | RFC822 → `ParsedEmail`; HTML → text with markdown tables and a quote marker. Line breaks are tokens: source newlines are spaces, Outlook `MsoNormal` paragraphs are lines, an `&nbsp;` paragraph is one blank line, never two blank lines in a row (`clean_text()` for plain parts too). `<img>` becomes `[image: cid:…]` where it stood, also inside table cells; tracking pixels go |
+| Pictures | `ingest/images.py` | Which picture belongs where (`place`: body, signature, quoted), its size from the file header, `is_signature`; `visible_text()` and `image_map()` for the portal |
+| Re-parse | `ingest/reparse.py` | Stored mail re-derived from the raw message; run once by the scheduler when `MAIL_FORMAT` changes (`update_mail`), or `reparse_bodies` |
 | Quotes | `ingest/quotes.py` | New text vs quoted history (EN/NL/DE/SK/KO markers), signature cut, quoted blocks |
 | Threads | `ingest/threads.py` | Union-find over Message-ID/References/Thread-Index/ConversationID + subject fallback + `join_shared_history()` |
 | Store | `ingest/store.py` | `add()`: dedupe, save, attachments+extracts, quoted-block linking, shared-history joins, identifiers, t-codes, skip rules |
@@ -56,7 +58,8 @@ background threads of the same process. CLI commands (`fetch`, `process`, `eval`
 | Editor | `pipeline/editor.py` | S3: `edit_whole()` (free structure: the whole page in one request) or per-section edits (template); draft → guards → confirm round → write or keep original; source markers; `rewrite_page()` |
 | Guards | `pipeline/guards.py` | Hard rejects, warnings, diff summary, clean-up; `check_page()` (budget, section limits, `repeats()`), `drop_meta()` |
 | Patches | `tools/patch.py` | Code-only patches between machines: build, apply (manifest-based conflict check, backups, migrate), status, rollback |
-| Tags | `pipeline/tagger.py` | Script tags (site/partner/t-code) + S4 primary tags + t-code confirmation |
+| Tags | `pipeline/tagger.py` | `Catalog` (its terms need no proof), exact words required for new terms, `tags.implies`, `sweep()` (no model), S4 first set, `check_tags()` (the lint, page text only) |
+| Translation | `pipeline/translate.py` | On request, in the background, with chat priority: masks pictures and personal data, numbered lines in and out, checked by script |
 | Reviewer | `pipeline/reviewer.py` | Lint pages vs similar sections, duplicate pages, merges |
 | Runner | `pipeline/runner.py` | `process(mode)`: windows → units (parallel per thread) → editor → index → tags → rules |
 | RAG | `rag/embed.py`, `rag/vstore.py`, `rag/fts.py`, `rag/chunking.py`, `rag/index.py`, `rag/search.py`, `rag/rerank.py` | Embeddings, vector stores, keyword index, chunks, incremental indexing, hybrid search |
@@ -65,7 +68,7 @@ background threads of the same process. CLI commands (`fetch`, `process`, `eval`
 | Scheduler | `scheduler.py` | Nightly batch, live ticks (auto-off), manual actions, DB backup |
 | API | `api.py` | All `/api` endpoints for the portal |
 | Eval | `evaluation.py` | Retrieval grid, answer judging, ingest metrics |
-| Commands | `management/commands/*.py` | `serve`, `fetch`, `process`, `eval`, `doctor`, `models`, `check_store`, `docs_config`, `export_data`, `import_data`, `pst_scan`, `refresh_pages`, `rewrite_pages`, `reparse_bodies`, `vacuum`, `rules` (mail rules ⇄ YAML, `apply` on stored mail), `config` (show / set / apply settings from the command line), `secret` (keystore), `api` (probe / test an LLM API with a fixed test prompt) |
+| Commands | `management/commands/*.py` | `serve`, `fetch`, `process`, `eval`, `doctor`, `models`, `check_store`, `docs_config`, `export_data`, `import_data`, `pst_scan`, `refresh_pages`, `rewrite_pages`, `reparse_bodies`, `vacuum`, `rules` (mail rules ⇄ YAML, `apply` on stored mail), `tags` (catalog: list, sweep, check, reject, alias), `config` (show / set / apply settings from the command line), `secret` (keystore), `api` (probe / test an LLM API with a fixed test prompt) |
 | Frontend | `frontend/src/*` | React portal (Reports, Emails, Wiki, Page, Agent, Search, Chat, drawer) |
 | Dev tools | `devtools/*` | Synthetic dataset generator, truth checks, dumps |
 | Deploy | `tools/*` | Offline packager, install/run batch files, adapter template, lock generator |
@@ -124,7 +127,7 @@ background threads of the same process. CLI commands (`fetch`, `process`, `eval`
    `apply_route()` never creates a page for a unit with only automated mail.
 4b. `departments.refresh_pages()` on the pages this window touched: the level check (below) and the owning department.
 5. `editor_phase()`: every page with pending items → `editor.edit_page()` (parallel per page).
-6. Changed pages are indexed, script tags refreshed, S4 runs on new/untagged pages, learned skip rules updated.
+6. Changed pages are indexed, tags swept (catalog terms the page mentions on, tags without proof off), S4 gives new pages a first set, learned skip rules updated.
 
 Every stage builds its prompt with `budget.assemble()` and calls `pool().run_structured(stage, unit, build, parse)`.
 `parse` is a stage fixer from `pipeline/parse.py`: it repairs what it can and only returns errors (→ one retry with the
@@ -178,8 +181,8 @@ store: 25 / 25 pages accepted, 38,872 → 9,886 words (budget 9,977). `structure
 - Search (`rag/search.py`): `hybrid()` = FTS5 BM25 (+ trigram for Hangul) and vector search, RRF with `rrf_k`, source
   weights, recency boost, optional reranker. `candidate_pages()` groups wiki hits by page (S2 routing).
 - Stores (`rag/vstore.py`): `QdrantStore` (local folder or server URL; all calls serialised — local mode is not
-  thread-safe and allows one process) or `SqliteStore` (numpy brute force over `ChunkVector`). `get_store()` falls back
-  to SQLite if Qdrant fails.
+  thread-safe and allows one process) or `SqliteStore` (numpy brute force over `ChunkVector`). A second process
+  gets `LaggingStore`: the same vectors from SQLite, its writes noted in KV `vectors_behind`; `sync_vectors()` in the holder catches up.
 - Embeddings (`rag/embed.py`): own ONNX runner (onnxruntime + tokenizers): e5 = mean pooling + query:/passage:
   prefixes; bge = CLS pooling + query instruction. `hashed` needs no files (degraded fallback).
 
@@ -251,8 +254,9 @@ portal actions in named threads.
 - **SQLite has no JSON `__contains`**: use `models.json_has(qs, field, value)`.
 - **onnxruntime ≥ 1.19 crashes on import** on Windows with an old VC++ runtime (msvcp140 < 14.40). It is pinned to
   1.18.1 (numpy < 2). `doctor` tests the import in a subprocess.
-- **Qdrant local mode = one process**. Don't run `manage.py process` while `serve` runs on the same data folder — use the
-  portal's actions instead, or set `retrieval.vector_store: sqlite` / a Qdrant server URL.
+- **Qdrant local mode = one process per folder.** Commands may run beside the portal: the second process searches SQLite
+  with the same results, and the holder catches up within 10 minutes. `retrieval.vector_store: sqlite` removes Qdrant altogether.
+- **Mail text carries image references.** Use `util.model_text()` for anything sent to a model or the index; `words()` already ignores them, because every reply gives a picture a new Content-ID.
 - **requirements.lock** is generated by `tools/lock.py` for Python 3.11.0 (some newest packages need ≥ 3.11.5).
 - PowerShell `Set-Content` writes a BOM; Python files written that way fail with U+FEFF. Use the editor or UTF-8 without BOM.
 - **CLI endpoints are separate processes** (~150–400 MB each). On an 8 GB machine keep `max_concurrent` at 2–3 per CLI.

@@ -14,7 +14,7 @@ from datetime import timedelta
 from django.db import transaction
 
 from llmwiki.conf import get_settings
-from llmwiki.ingest import identifiers, skiprules, threads
+from llmwiki.ingest import identifiers, images, skiprules, threads
 from llmwiki.ingest.extract import extract
 from llmwiki.ingest.mime import parse
 from llmwiki.ingest.quotes import split_body
@@ -126,7 +126,6 @@ def add(raw: bytes, source: str, source_ref: str = "", conversation_id: str = ""
         e.save()
         EmailOriginal.objects.create(email=e, raw=zlib.compress(raw, 6), body_text=p.body_text, quoted_text=sp.quoted)
         # attachments → blobs + extracts
-        n_att = 0
         for a in p.attachments:
             too_big = len(a.data) > s.store.max_attachment_mb * 1024 * 1024
             blob = None if too_big else Blob.put(a.data)
@@ -134,9 +133,7 @@ def add(raw: bytes, source: str, source_ref: str = "", conversation_id: str = ""
             Attachment.objects.create(email=e, filename=a.filename[:500], content_type=a.content_type[:200], size=len(a.data), blob=blob,
                                       is_image=a.is_image, inline=a.inline, content_id=a.content_id[:300], extract=text,
                                       extract_error=("too large, not stored" if too_big else err))
-            if not a.inline:
-                n_att += 1
-        e.n_attachments = n_att
+        images.classify(e, sp.quoted)
         e.save(update_fields=["n_attachments"])
         for i, b in enumerate(sp.blocks):
             QuotedBlock.objects.create(email=e, idx=i, header=b["header"][:2000], text=b["text"], fingerprint=block_fingerprint(b["text"]))

@@ -14,7 +14,7 @@ from dataclasses import dataclass, field
 from llmwiki.conf import get_settings
 from llmwiki.models import Email, OpenIssue, Page, PageEmail, QuotedBlock
 from llmwiki.pipeline.templates import TEMPLATES, free, section_label
-from llmwiki.util import first_sentence, local_dt
+from llmwiki.util import first_sentence, lang_name, local_dt, model_text
 
 
 @dataclass
@@ -54,13 +54,13 @@ def email_block(n: int, e: Email, with_quotes_note: bool = True) -> str:
     who = f"{e.from_name} <{e.from_addr}>" if e.from_name else e.from_addr
     to = ", ".join(e.to[:8]) + (" …" if len(e.to) > 8 else "")
     cc = ", ".join(e.cc[:8]) + (" …" if len(e.cc) > 8 else "")
-    atts = [a.filename for a in e.attachments.all() if not a.inline]
+    atts = [a.filename for a in e.attachments.all() if a.is_file]
     lines = [f"### [{n}] {fmt_time(e)} · {who}", f"To: {to}" + (f" · Cc: {cc}" if cc else ""), f"Subject: {e.subject}"]
-    if e.lang == "ko":
-        lines.append("(written in Korean)")
+    if e.lang != "en":
+        lines.append(f"(written in {lang_name(e.lang)})")
     if atts:
         lines.append("Attachments: " + ", ".join(atts[:10]))
-    body = e.new_text.strip() or "(no new text — only quoted mail or attachments)"
+    body = model_text(e.new_text).strip() or "(no new text — only quoted mail or attachments)"
     return "\n".join(lines) + "\n" + body
 
 
@@ -72,7 +72,7 @@ def parent_text(unit: Unit) -> str:
              .exclude(id__in=unit.ids).order_by("-sent_at").first())
     if not p:
         return ""
-    return f"[earlier email · {fmt_time(p)} · {p.from_name or p.from_addr}] Subject: {p.subject}\n{p.new_text.strip()}"
+    return f"[earlier email · {fmt_time(p)} · {p.from_name or p.from_addr}] Subject: {p.subject}\n{model_text(p.new_text).strip()}"
 
 
 def outline_text(unit: Unit, limit: int = 40) -> list[str]:
@@ -97,7 +97,7 @@ def unseen_text(blocks: list[QuotedBlock]) -> list[str]:
             continue
         seen.add(b.fingerprint)
         hdr = b.header.replace("\n", " · ")[:200]
-        out.append(f"[quoted earlier mail, not stored separately{': ' + hdr if hdr else ''}]\n{b.text}")
+        out.append(f"[quoted earlier mail, not stored separately{': ' + hdr if hdr else ''}]\n{model_text(b.text)}")
     return out
 
 
@@ -107,7 +107,7 @@ def attachment_texts(unit: Unit) -> list[str]:
         for a in e.attachments.all():
             if a.extract:
                 out.append(f"[{n}] {a.filename}:\n{a.extract}")
-            elif a.is_image and not a.inline:
+            elif a.is_image and a.is_file:
                 out.append(f"[{n}] {a.filename}: image (no text)")
     return out
 

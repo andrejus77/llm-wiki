@@ -22,7 +22,7 @@ from pathlib import Path
 from typing import Literal
 
 import yaml
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, field_validator
 
 log = logging.getLogger(__name__)
 
@@ -88,6 +88,10 @@ class Store(_M):
     att_extract_chars: int = Field(6000, ge=0, le=100000, description="Characters of text kept per attachment extract")
     max_attachment_mb: int = Field(40, ge=1, le=500, description="Larger attachments are recorded but not stored")
     backup_keep_days: int = Field(14, ge=0, le=365, description="Nightly copies of the database kept (0 = no backups)")
+    signature_image_max_height: int = Field(320, ge=20, le=2000, description="A picture taller than this (px) is never treated as a signature")
+    signature_image_max_width: int = Field(1200, ge=20, le=4000, description="A picture wider than this (px) is never treated as a signature")
+    signature_strip_height: int = Field(140, ge=0, le=1000, description="A wide picture at most this tall at the very end of a mail counts as a signature (a couple of lines of text). 0 = off")
+    signature_image_repeat: int = Field(3, ge=2, le=100, description="A small picture written in this many different threads is a signature or logo, wherever it sits")
     identifier_patterns: dict[str, str] = Field(default_factory=lambda: {
         "po": r"\b45\d{8}\b", "delivery": r"\b8\d{7}\b", "invoice": r"\bINV-?\d{4,8}\b",
         "container": r"\b[A-Z]{3}U\d{7}\b", "mrn": r"\b\d{2}[A-Z]{2}[A-Z0-9]{13,14}\b"},
@@ -341,16 +345,53 @@ class Reviewer(_M):
     max_pages: int = Field(30, ge=1, le=500, description="Max pages reviewed per run")
 
 
+# The lists shipped before 3 Nov belonged to the synthetic test data. A store that still has them exactly has never chosen its own.
+_OLD_SYSTEMS = {"sap-s4", "sap-ewm", "tms", "customs-gateway", "rpa-orchestrator", "edi", "excel", "power-bi", "wms"}
+_OLD_PROCESSES = {"outbound-delivery", "inbound", "customs-declarations", "carrier-invoicing", "transport-procurement", "warehouse-operations", "purchasing", "master-data", "kpi-reporting", "billing"}
+
+
 class Tags(_M):
-    systems: list[str] = Field(default_factory=lambda: ["sap-s4", "sap-ewm", "tms", "customs-gateway", "rpa-orchestrator", "edi", "excel", "power-bi", "wms"], description="Allowed primary values: system")
-    processes: list[str] = Field(default_factory=lambda: ["outbound-delivery", "inbound", "customs-declarations", "carrier-invoicing", "transport-procurement", "warehouse-operations", "purchasing", "master-data", "kpi-reporting", "billing"], description="Allowed primary values: process")
-    work_types: list[str] = Field(default_factory=lambda: ["project", "incident", "recurring-task", "change-request", "how-to", "decision"], description="Allowed primary values: work type")
-    page_min_emails: int = Field(2, ge=1, le=20, description="A site/partner/t-code tag needs N source emails on the page")
+    """A tag from the catalog may be used whenever a page is about it, named or not. A term that is not in the catalog must
+    literally appear in the page's emails or text, or a script throws it away: that is what keeps invented tags out."""
+    systems: list[str] = Field(default_factory=list, description="Start of the catalog: systems and tools. The tag check adds what it finds")
+    processes: list[str] = Field(default_factory=list, description="Start of the catalog: business processes")
+    sites: list[str] = Field(default_factory=list, description="Start of the catalog: sites, plants, subsidiaries, countries")
+    partners: list[str] = Field(default_factory=list, description="Start of the catalog: external companies (the domains of outside senders are added by script)")
+    work_types: list[str] = Field(default_factory=lambda: ["project", "incident", "recurring-task", "change-request", "how-to", "decision"], description="Allowed values: work type (exactly one per page)")
+    evidence: Literal["emails_or_page", "emails"] = Field("emails_or_page", description="Where a NEW tag's exact words must appear: the page's emails or its wiki text, or the emails only "
+                                                                                        "(stricter, but a term the mail writes in another language then never passes)")
+    implies: dict[str, list[str]] = Field(default_factory=lambda: {"tcode:*": ["system:SAP"]},
+                                          description='What follows from what, applied by script: "type:value" (or "type:*" = any of that type) → tags to add. A t-code means SAP, even when '
+                                                      'nobody writes the word. E.g. "system:EWM": ["system:SAP"], "site:Incheon": ["site:Korea"]. The tags join the catalog')
+    page_min_tags: int = Field(3, ge=0, le=20, description="The tag check asks again for pages with fewer tags. A page may stay below it: a tag is never made up to reach the number")
+    max_per_type: int = Field(6, ge=1, le=30, description="Most tags per type on one page (work type: always one); the most often mentioned win")
+    check_batch: int = Field(8, ge=1, le=30, description="Tag check: pages per request")
+    page_min_emails: int = Field(2, ge=1, le=20, description="A partner (sender domain) or t-code tag needs N source emails on the page")
     tcode_promote_threads: int = Field(2, ge=1, le=20, description="A new t-code becomes active after N threads (or when S4 confirms it)")
     tcode_stoplist: list[str] = Field(default_factory=lambda: ["ISO9001", "EUR1", "EUR", "USD", "CMR", "PDF", "XLSX", "KPI", "ETA", "ETD", "FYI", "ASAP"], description="Never t-codes")
     lifecycle_enabled: bool = Field(False, json_schema_extra={"tier": "P2"}, description="Automatic tag lifecycle (dormant/deprecated)")
     dormant_days: int = Field(90, ge=7, le=1000, description="Unused this long → dormant")
     deprecated_days: int = Field(180, ge=30, le=2000, description="Unused this long → deprecated")
+
+    @field_validator("systems")
+    @classmethod
+    def _old_systems(cls, v):
+        return [] if set(v) == _OLD_SYSTEMS else v
+
+    @field_validator("processes")
+    @classmethod
+    def _old_processes(cls, v):
+        return [] if set(v) == _OLD_PROCESSES else v
+
+
+class Translate(_M):
+    """Translations in the Emails tab, made on request by an internal model and kept. The original stays what is stored."""
+    enabled: bool = Field(True, description="Offer translations in the Emails tab")
+    language: str = Field("English", description="Translate into this language")
+    skip_langs: list[str] = Field(default_factory=lambda: ["en"], description="Mail in these languages (ISO codes) is shown as it is")
+    part_tokens: int = Field(6000, ge=500, le=100000, description="A long email is sent in parts of at most this size")
+    context_tokens: int = Field(3000, ge=0, le=30000, description="Background sent along: the thread's notes, the wiki pages of this email, the tag catalog")
+    workers: int = Field(2, ge=1, le=8, description="Translations running at the same time")
 
 
 class Retrieval(_M):
@@ -494,6 +535,7 @@ class Settings(_M):
     pages: Pages = Field(default_factory=Pages)
     reviewer: Reviewer = Field(default_factory=Reviewer)
     tags: Tags = Field(default_factory=Tags)
+    translate: Translate = Field(default_factory=Translate)
     retrieval: Retrieval = Field(default_factory=Retrieval)
     chat: Chat = Field(default_factory=Chat)
     departments: Departments = Field(default_factory=Departments)
@@ -506,7 +548,7 @@ class Settings(_M):
 GROUP_LABELS = {
     "sources": "Sources", "store": "Store & threads", "skip": "Skip rules", "schedule": "Schedule",
     "pool": "Endpoints & pool", "privacy": "Privacy", "budgets": "Budgets", "pipeline": "Pipeline", "guards": "Editor guards",
-    "pages": "Wiki pages", "reviewer": "Reviewer", "tags": "Tags", "retrieval": "Retrieval", "chat": "Chat", "departments": "Departments",
+    "pages": "Wiki pages", "reviewer": "Reviewer", "tags": "Tags", "translate": "Translation", "retrieval": "Retrieval", "chat": "Chat", "departments": "Departments",
     "reports": "Reports", "report_parts": "Report parts", "portal": "Portal", "server": "Server",
 }
 

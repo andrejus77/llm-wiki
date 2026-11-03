@@ -18,3 +18,7 @@ retrieval:
   embed_model: multilingual-e5-small
 schedule:
   batch_enabled: false
+tags:                # the synthetic mailbox's catalog; real mail starts empty and grows through `llmwiki tags check`
+  systems: [SAP, EWM, TMS, EDI, Excel, Power BI, DMS]
+  processes: [outbound delivery, customs declarations, carrier invoicing, transport procurement, warehouse operations, purchasing, master data, KPI reporting, billing]
+  sites: [Rotterdam, Felixstowe, Hamburg, Antwerp, Gdańsk, Venlo, Tilburg, Duisburg, Le Havre, Bremerhaven, Incheon, Busan, Pyeongtaek]

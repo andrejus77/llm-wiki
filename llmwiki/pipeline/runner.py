@@ -22,7 +22,7 @@ from django.db import close_old_connections, connection
 from django.utils import timezone
 
 from llmwiki.conf import get_settings
-from llmwiki.llm.pool import Halted, pool
+from llmwiki.llm.pool import Halted, StageFailed, pool
 from llmwiki.logs import event, set_current_run
 from llmwiki.models import Email, Item, Job, Page, Run
 from llmwiki.pipeline import context as cx
@@ -317,9 +317,12 @@ def _window(w: str, emails: list[Email], mode: str, run: Run, stats: dict) -> di
     except Exception:
         log.exception("indexing pages failed")
     try:
-        from llmwiki.pipeline.tagger import run_tagger
+        from llmwiki.pipeline.tagger import run_tagger, sweep
+        sweep(changed)
         need = [p for p in changed if not p.tagged_at or p in new_pages]
         run_tagger(need)
+    except StageFailed as e:     # also a stop: the run ends here anyway
+        log.warning("tagging stopped: %s", e)
     except Exception:
         log.exception("tagging failed")
     return {"units": len(results), "seconds": round(time.monotonic() - t0, 1), "edited": edited["pages"]}

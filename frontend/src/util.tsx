@@ -149,41 +149,71 @@ export function Avatar({ name, size = 20 }: { name: string; size?: number }) {
 
 // ---------------------------------------------------------------- text rendering
 type CiteFn = (emailId: number) => React.ReactNode;
+export type Images = Record<string, { id: number; name: string }>;
+type Ctx = { cite?: CiteFn; images?: Images };
 
-function inline(text: string, cite?: CiteFn, key = 0): React.ReactNode[] {
+function MailImage({ id, name }: { id: number; name: string }) {
+  const [bad, setBad] = useState(false);
+  const src = `/api/attachments/${id}?inline=true`;
+  if (bad) return <a className="linkbtn" href={src} target="_blank" rel="noreferrer">🖼 {name}</a>;   // e.g. an EMF, which browsers cannot show
+  return <a className="mimg-a" href={src} target="_blank" rel="noreferrer" title={name}><img className="mimg" loading="lazy" src={src} alt={name} onError={() => setBad(true)} /></a>;
+}
+
+/** A picture on a web server: only fetched when asked for, as loading it tells the server the mail was read. */
+function WebImage({ url }: { url: string }) {
+  const [show, setShow] = useState(false);
+  if (show) return <a className="mimg-a" href={url} target="_blank" rel="noreferrer noopener"><img className="mimg" src={url} alt="" referrerPolicy="no-referrer" /></a>;
+  return <button className="linkbtn sim" title={url} onClick={() => setShow(true)}>🖼 show the image from {url.replace(/^https?:\/\//, "").split("/")[0]}</button>;
+}
+
+function picture(ref: string, ctx: Ctx, key: string): React.ReactNode {
+  const r = ref.trim().toLowerCase().replace(/^cid:/, "");
+  const hit = ctx.images?.[r] || ctx.images?.[r.split("@")[0]];
+  if (hit) return <MailImage key={key} id={hit.id} name={hit.name} />;
+  if (/^https?:\/\//i.test(ref.trim())) return <WebImage key={key} url={ref.trim()} />;
+  return <span key={key} className="sim">[image{/^cid:/i.test(ref.trim()) ? "" : `: ${ref.trim()}`}]</span>;
+}
+
+function inline(text: string, ctx: Ctx, key: number | string = 0): React.ReactNode[] {
   const out: React.ReactNode[] = [];
-  const re = /\*\*([^*]+)\*\*|\[e(\d+)\]|\[image: ([^\]]+)\]/g;
+  const re = /\*\*([^*]+)\*\*|\[e(\d+)\]|\[image: ?([^\]]*)\]/g;
   let last = 0, m: RegExpExecArray | null, i = 0;
   while ((m = re.exec(text))) {
     if (m.index > last) out.push(text.slice(last, m.index));
     if (m[1]) out.push(<b key={`${key}-b${i}`}>{m[1]}</b>);
-    else if (m[2]) out.push(cite ? <React.Fragment key={`${key}-c${i}`}>{cite(+m[2])}</React.Fragment> : null);
-    else if (m[3]) out.push(<span key={`${key}-i${i}`} className="sim">[image: {m[3]}]</span>);
+    else if (m[2]) out.push(ctx.cite ? <React.Fragment key={`${key}-c${i}`}>{ctx.cite(+m[2])}</React.Fragment> : null);
+    else if (m[3] !== undefined) out.push(picture(m[3], ctx, `${key}-i${i}`));
     last = re.lastIndex; i++;
   }
   if (last < text.length) out.push(text.slice(last));
   return out;
 }
 
-function table(lines: string[], key: number) {
+function table(lines: string[], key: number, ctx: Ctx) {
   const rows = lines.map((l) => l.trim().replace(/^\||\|$/g, "").split("|").map((c) => c.trim()));
   const sep = rows.length > 1 && rows[1].every((c) => /^:?-+:?$/.test(c));
   const head = rows[0], body = rows.slice(sep ? 2 : 1);
   return (
-    <div className="mt-wrap" key={key}><table className="mt"><thead><tr>{head.map((h, i) => <th key={i}>{h}</th>)}</tr></thead>
-      <tbody>{body.map((r, i) => <tr key={i}>{r.map((c, j) => <td key={j} className={/^[\d.,%+€$ -]+$/.test(c) && c ? "num" : ""}>{c}</td>)}</tr>)}</tbody></table></div>
+    <div className="mt-wrap" key={key}><table className="mt"><thead><tr>{head.map((h, i) => <th key={i}>{inline(h, ctx, `h${i}`)}</th>)}</tr></thead>
+      <tbody>{body.map((r, i) => <tr key={i}>{r.map((c, j) => <td key={j} className={/^[\d.,%+€$ -]+$/.test(c) && c ? "num" : ""}>{inline(c, ctx, `${i}-${j}`)}</td>)}</tr>)}</tbody></table></div>
   );
 }
 
-/** Markdown-ish text → React: paragraphs, "- " lists, | tables |, **bold**, [eNN] source markers (via cite). */
-export function Prose({ text, cite, className }: { text: string; cite?: CiteFn; className?: string }) {
+/** Markdown-ish text → React: paragraphs, "- " lists, | tables |, **bold**, [eNN] source markers (via cite), [image: …] pictures.
+ *  breaks: a line break stays a line break (mail); otherwise lines flow into a paragraph (wiki text). */
+export function Prose({ text, cite, images, breaks, className }: { text: string; cite?: CiteFn; images?: Images; breaks?: boolean; className?: string }) {
   const blocks: React.ReactNode[] = [];
+  const ctx: Ctx = { cite, images };
   const lines = (text || "").replace(/\r/g, "").split("\n");
   let para: string[] = [], list: string[] = [], tab: string[] = [], key = 0;
   const flush = () => {
-    if (tab.length) { blocks.push(table(tab, key++)); tab = []; }
-    if (list.length) { blocks.push(<ul key={key++}>{list.map((l, i) => <li key={i}>{inline(l, cite, i)}</li>)}</ul>); list = []; }
-    if (para.length) { blocks.push(<p key={key++}>{inline(para.join(" "), cite, key)}</p>); para = []; }
+    if (tab.length) { blocks.push(table(tab, key++, ctx)); tab = []; }
+    if (list.length) { blocks.push(<ul key={key++}>{list.map((l, i) => <li key={i}>{inline(l, ctx, i)}</li>)}</ul>); list = []; }
+    if (para.length) {
+      const k = key++;
+      blocks.push(<p key={k}>{breaks ? para.map((l, i) => <React.Fragment key={i}>{i > 0 && <br />}{inline(l, ctx, `${k}-${i}`)}</React.Fragment>) : inline(para.join(" "), ctx, k)}</p>);
+      para = [];
+    }
   };
   for (const ln of lines) {
     const t = ln.trim();

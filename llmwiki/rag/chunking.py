@@ -4,7 +4,7 @@ from __future__ import annotations
 import re
 
 from llmwiki.conf import get_settings
-from llmwiki.util import est_tokens, sha1
+from llmwiki.util import est_tokens, model_text, sha1
 
 TABLE_LINE = re.compile(r"^\s*\|.*\|\s*$")
 
@@ -74,8 +74,8 @@ def email_chunks(e, tags_by_page: dict | None = None) -> list[dict]:
     out = []
     if e.note:
         out.append({"collection": "notes", "ref": f"note:{e.id}", "header": hdr, "text": e.note, "email": e, "day": e.day, "payload": pay})
-    body = e.new_text
-    unseen = [qb.text for qb in e.quoted_blocks.all() if qb.linked_id is None]
+    body = model_text(e.new_text)
+    unseen = [model_text(qb.text) for qb in e.quoted_blocks.all() if qb.linked_id is None]
     if unseen:
         body += "\n\n" + "\n\n".join(f"(quoted earlier mail) {t}" for t in unseen)
     for i, t in enumerate(split_text(body, r.chunk_tokens, r.chunk_overlap)):

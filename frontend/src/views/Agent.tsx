@@ -3,7 +3,7 @@ import { useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { get, send } from "../api";
 import { usePeek } from "../drawer";
 import { RulesPanel } from "../RuleEditor";
-import { Empty, Err, fmt, k, Loading, refreshMeta, Seg, useApi } from "../util";
+import { Empty, Err, fmt, k, Loading, refreshMeta, Seg, useApi, useMeta } from "../util";
 
 const SUBS: [string, string][] = [["logs", "Logs"], ["pipeline", "Pipeline"], ["pool", "Pool"], ["rules", "Rules"], ["tags", "Tags"], ["settings", "Settings"], ["eval", "Eval"]];
 const SEC_COLORS = ["#3B7DD8", "#16A0A8", "#C2477F", "#5FB8BE", "#D9822B", "#2E9E62", "#9B59D0", "#7A8794", "#B8A12E"];
@@ -199,18 +199,26 @@ function Rules() {
 // ---------------------------------------------------------------- Tags
 function Tags() {
   const r = useApi("/agent/tags");
+  const meta: any = useMeta().data;
   const [ty, setTy] = useState("");
+  const [msg, setMsg] = useState("");
   const d: any = r.data;
   if (!d) return <Loading />;
   const rows = d.rows.filter((x: any) => !ty || x.type === ty);
+  const act = async (name: string, text: string) => { await send("POST", `/actions/${name}`, {}); setMsg(text); };
   return (
     <>
       <div className="card" style={{ marginBottom: 14 }}><div className="sec-h">Tags belong to pages</div>
-        <p className="sim" style={{ margin: 0 }}>System / process / work type come from fixed lists (Settings › Tags), assigned by the S4 tagger. Site, partner and t-code tags are aggregated by script from a page's emails. New t-codes are discovered in t-code context and promoted automatically. Reference numbers (POs, invoices, deliveries) are identifiers, not tags.</p></div>
+        <p className="sim" style={{ margin: "0 0 8px" }}>A term in the catalog is used whenever a page is about it, named or not. A new term must literally stand in the page's emails or text: scripts check that, so an invented one is thrown away and logged below. What follows for certain is added by script (Settings › Tags › implies: a t-code means SAP). The catalog starts small and grows through the tag check, which sends page text only (no mail) to the lint model. After that, every page that mentions a term gets it without any model. T-codes are found in t-code context and promoted by script. Reference numbers (POs, invoices, deliveries) are identifiers, not tags.</p>
+        <div className="btn-row"><b>{d.below_minimum} of {d.pages} pages have fewer than {d.minimum} tags</b>
+          <button className="btn small" onClick={() => act("tag_check", "Tag check started: it uses model requests. Results appear in the log below.")}>Check tags now</button>
+          <button className="btn small" onClick={() => act("tag_sweep", "Sweep started: no model. Results appear in the log below.")}>Apply the catalog to all pages</button>
+          {msg && <span className="sim">{msg}</span>}</div></div>
       <div className="card tbl"><div className="sec-h">Values <span className="sp" /><Seg value={ty} options={[["", "All"], ["system", "System"], ["process", "Process"], ["work_type", "Work type"], ["site", "Site"], ["partner", "Partner"], ["tcode", "T-code"]]} onChange={setTy} /></div>
-        <table className="tag-table"><thead><tr><th>Value</th><th>Type</th><th>State</th><th>Pages</th><th>Threads</th><th>Why / context</th></tr></thead><tbody>
+        <table className="tag-table"><thead><tr><th>Value</th><th>Type</th><th>State</th><th>Pages</th><th>Threads</th><th>Why / context</th>{meta?.admin && <th />}</tr></thead><tbody>
           {rows.map((x: any, i: number) => <tr key={i}><td><span className={`chip sm t-${x.type}`}>{x.value}</span></td><td className="sim">{x.type}</td><td><span className={`life ${x.state}`}>{x.state}</span></td>
-            <td className="sim">{x.pages}</td><td className="sim">{x.threads ?? ""}</td><td className="sim" style={{ whiteSpace: "normal" }}>{x.why}{x.contexts?.length ? ` · “${x.contexts[0]}”` : ""}</td></tr>)}</tbody></table></div>
+            <td className="sim">{x.pages}</td><td className="sim">{x.threads ?? ""}</td><td className="sim" style={{ whiteSpace: "normal" }}>{x.why}{x.contexts?.length ? ` · “${x.contexts[0]}”` : ""}</td>
+            {meta?.admin && <td>{x.id && x.state !== "rejected" && x.type !== "tcode" && <button className="linkbtn sim" title="Off every page, and never proposed again" onClick={async () => { if (confirm(`Reject ${x.value}? It comes off every page and is never proposed again.`)) { await send("POST", `/agent/tags/${x.id}/reject`, {}); r.reload(); } }}>reject</button>}</td>}</tr>)}</tbody></table></div>
       {d.log.length > 0 && <div className="card" style={{ marginTop: 14 }}><div className="sec-h">Registry log</div><ul className="writes">{d.log.map((e: any, i: number) => <li key={i} className="meta2"><b>{fmt(e.ts.slice(0, 10))}</b> · {e.message}</li>)}</ul></div>}
     </>
   );

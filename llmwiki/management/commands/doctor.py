@@ -71,6 +71,15 @@ class Command(BaseCommand):
             check("embeddings", e.name == s.retrieval.embed_model, f"{e.name} dim {v.shape[1]} in {time.time() - t0:.1f}s")
         except Exception as ex:
             check("embeddings", False, ex)
+        if s.retrieval.vector_store == "qdrant" and not s.retrieval.qdrant_url:
+            from llmwiki.rag.vstore import LaggingStore, get_store, holder
+            try:
+                held = isinstance(get_store(e.name, e.dim), LaggingStore)
+                h = holder()
+                lines.append(f"[INFO] vector index: {'in use by another process (' + json.dumps(h) + '); commands then read the same vectors from SQLite' if held else 'Qdrant folder free'}")
+                self.stdout.write(lines[-1])
+            except Exception as ex:
+                check("vector index", False, ex)
         try:
             from llmwiki.models import Email
             check("database", True, f"{dj.DATABASES['default']['NAME']} · {Email.objects.count()} emails")

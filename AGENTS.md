@@ -57,7 +57,7 @@ the minimum.
 | 13 | Automated system senders (processed but held back, never create pages) | `pipeline.automated_senders` | globs like `"*workflow*@*"`; defaults already cover noreply/notification/batch/approval |
 | 14 | AI keywords used by the old project | `departments.ai_keywords` | examples for the note-taker, not a hard filter |
 | 15 | Reference-number formats (PO, delivery, invoice, container …) | `store.identifier_patterns` | regexes; defaults are SAP-style (`45\d{8}`, `8\d{7}`, `INV-\d+`); they are never removed as personal data |
-| 16 | Tag vocabularies (systems, processes, work types) | `tags.systems`, `tags.processes`, `tags.work_types` | short slugs, e.g. `sap-s4`, `customs-declarations` |
+| 16 | Tag catalog, only if the old project has one (systems, processes, sites/subsidiaries, partners, work types) | `tags.systems`, `tags.processes`, `tags.sites`, `tags.partners`, `tags.work_types` | names as the mail writes them, e.g. `SAP`. May stay empty: `.\llmwiki tags check` fills it from the wiki once mail is processed |
 | 17 | Time zone, language of the wiki | `sources.time_zone`, `pipeline.language` | `Europe/Amsterdam`, `English` (mail may be Korean; pages stay English) |
 | 18 | Report rhythm | `reports.daily_time`, `reports.weekly_weekday` (3 = Thursday), `report_parts.*` | defaults match the human's request |
 | 19 | Hugging Face mirror (only if the models must be downloaded again) | `retrieval.hf_endpoint` | then `.\llmwiki models --download` (gets both embedding models) |
@@ -78,6 +78,8 @@ they are tested. Port values (addresses, lists, rules, patterns) and how the API
   Rules only look at new mail until they are applied. If mail is already stored, show the human the effect of
   `.\llmwiki rules apply --dry-run` (counts only, no mail text) and run `.\llmwiki rules apply` only when they agree:
   it also takes processed mail off its wiki pages.
+- Tags: `.\llmwiki tags check` when the human asks for it, after mail has been processed. It sends wiki text only, via the pool. Never type tags into pages. A new term without its exact words on the page is meant to be refused: add it to `tags.systems` etc. or to `tags.implies` if it really belongs.
+- A line "The Qdrant folder is in use by another process" is normal when a command runs beside the portal. Do not delete `data\qdrant` for it.
 - After any API change: `.\llmwiki api test <name>` must pass before processing. A run stops by itself after
   `pool.breaker_failures` (10) failed requests in a row and shows why; never raise that limit to get past failures, and
   never set it to 0. Fix the connection; a run started by hand (`.\llmwiki process`) resumes. See Agent › Pool or
